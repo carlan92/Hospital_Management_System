@@ -2,6 +2,6 @@ Carla Alexandra Gonçalves Nogueira
 
 Marco Humberto Américo Manuel 
 
-Pedro André 
+Pedro Miguel Duarte André 
 
 Turma B
