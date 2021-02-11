@@ -3,42 +3,46 @@
   font-size: 20px;
 }
 
-body {
-  background-image: url("imagens/noun_backgroung.png");
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  background-size: cover;
+.container {
+  display: flex;
+  min-width: 100vw;
 }
 
-/*button {
-    
-    background-color:transparent;
-    
-}
-button:hover{
-border-width: thick;
-    border-right-color: #98C33E;
-}*/
 
 .sidenav {
   text-align: left;
 
-  
   box-shadow: 5px 0px 20px #00000029;
   opacity: 1;
 
-  height: 100%;
-  width: 30%;
-  position: fixed;
-  z-index: 1;
-  top: 0;
-  left: 0;
+  width: 25%;
+  min-height: 100vh;
+
+  z-index: 2;
+  
   background-color: white;
+  overflow-x: hidden;
+
+  color: #7e7e7e;
+  font: normal normal medium 17px/21px Lato;
+}
+
+.main{
+  text-align: left;
+
+  opacity: 1;
+  min-width: 75vw;
+  min-height: 100vh;
+  z-index: 1;
+  
+  background-image: url("imagens/noun_backgroung.png");
+  background-repeat: no-repeat;
+  background-size:cover;
+
   overflow-x: hidden;
 
 
   color: #7e7e7e;
-  font: normal normal medium 17px/21px Lato;
 }
 
 .logo {
@@ -126,11 +130,7 @@ border-width: thick;
   margin: 0px 0px 0px 20px;
 }
 
-.main {
-  margin-left: 160px; /* Same as the width of the sidenav /
-        font-size: 28px; / Increased text to enable scrolling */
-  padding: 0px 10px;
-}
+
 
 @media screen and (max-height: 450px) {
   .sidenav {
