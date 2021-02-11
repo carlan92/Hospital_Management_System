@@ -1,0 +1,74 @@
+* {
+    font-family: 'Lato', 'Comic Sans MS';
+    font-size: 20px;
+}
+
+body {
+    background-image: url('imagens/noun_backgroung.png');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+}
+
+/*button {
+    
+    background-color:transparent;
+    
+}
+button:hover{
+border-width: thick;
+    border-right-color: #98C33E;
+}*/
+
+    .sidenav {
+        height: 100%;
+        width: 30%;
+        position: fixed;
+        z-index: 1;
+        top: 0;
+        left: 0;
+        background-color: white;
+        overflow-x: hidden;
+        
+        padding: 35px 0px 26px 0px;
+      }
+      
+      .sidenav button {
+    
+        display: block;
+        width: 100%;
+        
+        background-color: transparent;
+        color: #7e7e7e;
+        border-width: 6px;
+        border-style: solid;
+        border-left-color: transparent;
+        border: transparent;
+        padding: 12.5px 38px 0px 0px;
+        cursor: pointer;
+        
+        text-align: left;
+        font: normal normal medium 17px/21px Lato;
+      }
+      
+      .sidenav button:hover {
+        color: #2c363e;
+        border-width: 6px;
+        border-style: solid;
+        
+        border-left-color: #98C33E;
+        
+      }
+      
+      .main {
+        margin-left: 160px; /* Same as the width of the sidenav /
+        font-size: 28px; / Increased text to enable scrolling */
+        padding: 0px 10px;
+      }
+      
+      @media screen and (max-height: 450px) {
+        .sidenav {padding-top: 15px;}
+        .sidenav a {font-size: 18px;}
+      
+    
+}
