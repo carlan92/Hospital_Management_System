@@ -20,6 +20,10 @@ border-width: thick;
     border-right-color: #98C33E;
 }*/
 
+.logo{
+  padding: 35px;
+}
+
     .sidenav {
         height: 100%;
         width: 30%;
@@ -30,7 +34,7 @@ border-width: thick;
         background-color: white;
         overflow-x: hidden;
         
-        padding: 35px 0px 26px 0px;
+        padding: 0px 0px 26px 0px;
       }
       
       .sidenav button {
