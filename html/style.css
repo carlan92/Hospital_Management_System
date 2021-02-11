@@ -1,13 +1,13 @@
 * {
-    font-family: 'Lato', 'Comic Sans MS';
-    font-size: 20px;
+  font-family: "Lato", "Comic Sans MS";
+  font-size: 20px;
 }
 
 body {
-    background-image: url('imagens/noun_backgroung.png');
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    background-size: cover;
+  background-image: url("imagens/noun_backgroung.png");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
 }
 
 /*button {
@@ -20,59 +20,123 @@ border-width: thick;
     border-right-color: #98C33E;
 }*/
 
-.logo{
-  padding: 35px;
+.sidenav {
+  text-align: left;
+
+  
+  box-shadow: 5px 0px 20px #00000029;
+  opacity: 1;
+
+  height: 100%;
+  width: 30%;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: white;
+  overflow-x: hidden;
+
+
+  color: #7e7e7e;
+  font: normal normal medium 17px/21px Lato;
 }
 
-    .sidenav {
-        height: 100%;
-        width: 30%;
-        position: fixed;
-        z-index: 1;
-        top: 0;
-        left: 0;
-        background-color: white;
-        overflow-x: hidden;
-        
-        padding: 0px 0px 26px 0px;
-      }
-      
-      .sidenav button {
-    
-        display: block;
-        width: 100%;
-        
-        background-color: transparent;
-        color: #7e7e7e;
-        border-width: 6px;
-        border-style: solid;
-        border-left-color: transparent;
-        border: transparent;
-        padding: 12.5px 38px 0px 0px;
-        cursor: pointer;
-        
-        text-align: left;
-        font: normal normal medium 17px/21px Lato;
-      }
-      
-      .sidenav button:hover {
-        color: #2c363e;
-        border-width: 6px;
-        border-style: solid;
-        
-        border-left-color: #98C33E;
-        
-      }
-      
-      .main {
-        margin-left: 160px; /* Same as the width of the sidenav /
+.logo {
+  margin: 35px;
+}
+
+.welcome_box {
+  margin: 0px 0px 0px 35px;
+}
+
+#welcome {
+  
+  font: normal normal medium 17px/21px Lato;
+  letter-spacing: -0.12px;
+  color: #7e7e7e;
+  opacity: 1;
+  margin-bottom: 3px;
+}
+
+#user_name {
+  
+  font: normal normal bold 29px/35px Lato;
+  letter-spacing: 0.23px;
+  color: #2c363e;
+  opacity: 1;
+  margin-bottom: 3px;
+}
+
+#user_category {
+  
+  font: normal normal 300 14px/17px Lato;
+  letter-spacing: -0.1px;
+  color: #7e7e7e;
+  opacity: 1;
+  margin-bottom: 45px;
+}
+#acessos_rapidos {
+  text-align: left;
+  font: normal normal medium 17px/21px Lato;
+  letter-spacing: -0.58px;
+  color: #ababab;
+  opacity: 1;
+  margin-left: 35px;
+  margin-top: 30px;
+  margin-bottom: 10.5px;
+}
+
+.sidenav button {
+  display: block;
+  width: 100%;
+
+  background-color: transparent;
+  color: #7e7e7e;
+  border-width: 6px;
+  border-style: solid;
+  border-left-color: transparent;
+  border-color: transparent;
+  padding: 12.5px 38px 0px 35px;
+  cursor: pointer;
+
+  text-align: left;
+}
+
+.sidenav button:hover {
+  color: #2c363e;
+  border-width: 6px;
+  border-style: solid;
+
+  border-left-color: #98c33e;
+}
+
+.log_out_box {
+	position: absolute;
+	bottom: 0px;
+}
+
+.sidenav hr {
+  border: 1px solid #DCDCDC;
+  opacity: 1;
+}
+
+.log_out_box #upskill_logo{
+  width: 98px;
+  height: 33px;
+  margin: 0px 0px 0px 20px;
+}
+
+.main {
+  margin-left: 160px; /* Same as the width of the sidenav /
         font-size: 28px; / Increased text to enable scrolling */
-        padding: 0px 10px;
-      }
-      
-      @media screen and (max-height: 450px) {
-        .sidenav {padding-top: 15px;}
-        .sidenav a {font-size: 18px;}
-      
-    
+  padding: 0px 10px;
+}
+
+@media screen and (max-height: 450px) {
+  .sidenav {
+    padding-top: 15px;
+  }
+  .sidenav a {
+    font-size: 18px;
+  }
 }
