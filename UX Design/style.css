@@ -1,6 +1,7 @@
 * {
   font-family: "Lato", "Comic Sans MS";
   font-size: 20px;
+  text-align: left;
 }
 
 .container {
@@ -11,14 +12,10 @@
 
 
 .sidenav {
-  text-align: left;
-
   box-shadow: 5px 0px 20px #00000029;
   opacity: 1;
-
   min-width: 25vw;
   min-height: 100vh;
-
   z-index: 2;
   
   background-color: white;
@@ -30,12 +27,10 @@
 
 .sidenav_row {
   box-sizing: border-box;
-  border: solid #5B6DCD 10px;
+  border: solid #5B6DCD 10px; /*to be removed*/
 }
 
 .main{
-  text-align: left;
-
   opacity: 1;
   min-width: 75vw;
   min-height: 100vh;
@@ -59,7 +54,6 @@
 }
 
 #welcome {
-  
   font: normal normal medium 17px/21px Lato;
   letter-spacing: -0.12px;
   color: #7e7e7e;
@@ -68,7 +62,6 @@
 }
 
 #user_name {
-  
   font: normal normal bold 29px/35px Lato;
   letter-spacing: 0.23px;
   color: #2c363e;
@@ -76,16 +69,15 @@
   margin-bottom: 3px;
 }
 
-#user_category {
-  
+#user_category {  
   font: normal normal 300 14px/17px Lato;
   letter-spacing: -0.1px;
   color: #7e7e7e;
   opacity: 1;
   margin-bottom: 45px;
 }
+
 #acessos_rapidos {
-  text-align: left;
   font: normal normal medium 17px/21px Lato;
   letter-spacing: -0.58px;
   color: #ababab;
@@ -101,10 +93,8 @@
 
   background-color: transparent;
   color: #7e7e7e;
-  border-width: 6px;
-  border-style: solid;
-  border-left-color: transparent;
-  border-color: transparent;
+  border: solid transparent 6px;
+  
   padding: 12.5px 38px 0px 35px;
   cursor: pointer;
 
@@ -113,8 +103,7 @@
 
 .sidenav button:hover {
   color: #2c363e;
-  border-width: 6px;
-  border-style: solid;
+  border-width: solid 6px;
 
   border-left-color: #98c33e;
 }
