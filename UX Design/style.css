@@ -4,6 +4,19 @@
   text-align: left;
 }
 
+h1 { 
+  font: normal normal bold 24px/29px Lato;
+  letter-spacing: 2.59px;
+  color: #2C363E;
+}
+
+
+p {
+  font: normal normal medium 21px/24px Lato;
+  letter-spacing: -0.73px;
+  color: #7E7E7E;
+}
+
 .container {
   display: flex;
   min-width: 100vw;
@@ -27,7 +40,7 @@
 
 .sidenav_row {
   box-sizing: border-box;
-  border: solid #5B6DCD 10px; /*to be removed*/
+  /*border: solid #5B6DCD 10px;*/ /*to be removed*/
 }
 
 .main{
@@ -43,6 +56,8 @@
   overflow-x: hidden;
 
   color: #7e7e7e;
+  padding-top: 50px;
+  padding-left: 50px;
 }
 
 .logo {
@@ -81,7 +96,6 @@
   font: normal normal medium 17px/21px Lato;
   letter-spacing: -0.58px;
   color: #ababab;
-  opacity: 1;
   margin-left: 35px;
   margin-top: 30px;
   margin-bottom: 10.5px;
@@ -96,9 +110,6 @@
   border: solid transparent 6px;
   
   padding: 12.5px 38px 0px 35px;
-  cursor: pointer;
-
-  text-align: left;
 }
 
 .sidenav button:hover {
@@ -109,13 +120,12 @@
 }
 
 .log_out_box {
-	position: absolute;
+	
 	bottom: 0px;
 }
 
 .log_out_box hr {
   border: 1px solid #DCDCDC;
-  opacity: 1;
 }
 
 .log_out_box #upskill_logo{
@@ -123,6 +133,29 @@
   height: 33px;
   margin: 0px 0px 0px 20px;
 }
+
+.main #vista_geral{
+  font: normal normal 600 15px/18px Lato;
+  letter-spacing: 2.08px;
+  color: #7E7E7E;
+
+  margin-top: 80px;
+  margin-bottom: 25px;
+}
+
+.main .middle-row {
+  background-color: white;
+  opacity: 0.5;
+  z-index: 1; /*to be checked*/
+  padding-top: 36px;
+  padding-bottom: 36px;
+  margin-bottom: 12px;
+}
+
+.main .card_box{
+  text-align: center;
+}
+
 
 
 
