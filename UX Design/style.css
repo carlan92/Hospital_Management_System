@@ -134,12 +134,16 @@ p {
   margin: 0px 0px 0px 20px;
 }
 
+.main .first_row{
+  margin-right: 125px;
+}
+
 .main #vista_geral{
   font: normal normal 600 15px/18px Lato;
   letter-spacing: 2.08px;
   color: #7E7E7E;
 
-  margin-top: 80px;
+  margin-top: 75px;
   margin-bottom: 25px;
 }
 
@@ -153,6 +157,7 @@ p {
     
   z-index: 1; /*to be checked*/
   padding-top: 36px;
+  padding-left: 12.5px;
   padding-bottom: 36px;
   margin-bottom: 12px;
 }
