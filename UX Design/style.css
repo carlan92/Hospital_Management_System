@@ -6,6 +6,7 @@
 .container {
   display: flex;
   min-width: 100vw;
+  padding: 0px;
 }
 
 
@@ -15,7 +16,7 @@
   box-shadow: 5px 0px 20px #00000029;
   opacity: 1;
 
-  width: 25%;
+  min-width: 25vw;
   min-height: 100vh;
 
   z-index: 2;
@@ -25,6 +26,11 @@
 
   color: #7e7e7e;
   font: normal normal medium 17px/21px Lato;
+}
+
+.sidenav_row {
+  box-sizing: border-box;
+  border: solid #5B6DCD 10px;
 }
 
 .main{
@@ -40,7 +46,6 @@
   background-size:cover;
 
   overflow-x: hidden;
-
 
   color: #7e7e7e;
 }
@@ -119,7 +124,7 @@
 	bottom: 0px;
 }
 
-.sidenav hr {
+.log_out_box hr {
   border: 1px solid #DCDCDC;
   opacity: 1;
 }
