@@ -140,7 +140,7 @@ p {
 
 .main .middle-row {
   box-sizing: border-box;
-  border: solid #5B6DCD 10px;
+  /*border: solid #5B6DCD 10px;*/
   box-sizing: border-box;
   background: transparent linear-gradient(90deg, #FFFFFFB9 0%, #FFFFFF7E 100%) 0% 0% no-repeat padding-box;
   border-radius: 6px;
@@ -154,7 +154,7 @@ p {
 
 .main .card_box {
   box-sizing: border-box;
-  border: solid #5fcd5b 10px;
+  /*border: solid #5fcd5b 10px;*/
   background-color: transparent;
   margin-left: 22.5px;
   margin-right: 22.5px;
@@ -164,11 +164,13 @@ p {
 .main .card_box:hover {
   background-color: white;
   z-index: 2;
+  border-bottom: solid #98c33e 6px;
+
 }
 
 .main .card {
   box-sizing: border-box;
-  border: solid #635bcd 10px;
+  /*border: solid #635bcd 10px;*/
   height: 100%;
   width: 100%;
   background-color: transparent;
@@ -177,11 +179,19 @@ p {
 .card_box * {
   text-align: center;
   box-sizing: border-box;
+  border:none;
 }
 
 .card-body {
+  padding: 25px;
+  padding-left: 31px;
+  padding-right: 31px;
+}
+
+.main h5 {
   padding: 0px;
-  ;
+  margin: 0px;
+
 }
 
 .utentes {
@@ -219,21 +229,74 @@ p {
   margin-bottom: 18px;
 }
 
-.btn-lista_espera {
+.card-title {
+  padding-top: 25px;
+  font: normal normal bold 16px/19px Lato;
+  letter-spacing: 2.22px;
+  color: #2C363E;
+
+}
+
+.card-text {
+  padding-top: 37px;
+  text-align: center;
+  font: normal normal bold 17px/21px Lato;
+  letter-spacing: 0.1px;
+  color: #98C33E;
+  margin-bottom:55px ;
+
+}
+
+#num_consulta {
+
+  padding-left: 26px;
+  padding-top: 12.5px;
+  padding-bottom: 12.5px;
+  text-align: left;
+  width: 100%;
+  margin-bottom: 20px;
+  border: 1px solid #707070;
+  border-radius: 6px;
+}
+
+.btn-button {
   background-color: transparent;
   padding: 15px 20px;
   font: normal normal bold 15px/18px Lato;
   letter-spacing: 0.61px;
   color: #2C363E;
+  opacity: 1;
   width: 100%;
   border: 1px solid #707070;
   border-radius: 6px;
 }
 
+.btn-2 {
+  border: none;
+  font: normal normal bold 17px/21px Lato;
+  letter-spacing: 1.24px;
+}
+
+.pub{
+margin-left: 308px;
+margin-right: 106px;
+}
+
+.carousel-control-next{
+  
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%2331ADE0' viewBox='0 0 8 8'%3E%3Cpath d='M2.75 0l-1.5 1.5 2.5 2.5-2.5 2.5 1.5 1.5 4-4-4-4z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 50%;
+
+}
+
+
 @media screen and (max-height: 450px) {
   .sidenav {
     padding-top: 15px;
   }
+
   .sidenav a {
     font-size: 18px;
   }
