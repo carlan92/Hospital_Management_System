@@ -284,8 +284,22 @@ margin-right: 106px;
 
 .seta{
   color: #31ADE0;
+  border: none;
+  background-color: transparent;
+  }
+
+.seta:hover{
+  color:#31ADE0;
 }
 
+.carousel-control-prev{
+  margin-left: -70px;
+ 
+}
+
+.carousel-control-next{
+  margin-right: -70px;
+ }
 
 @media screen and (max-height: 450px) {
   .sidenav {
