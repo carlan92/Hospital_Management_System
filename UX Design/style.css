@@ -140,7 +140,7 @@ p {
 
 .main .middle-row {
   box-sizing: border-box;
-  /*border: solid #5B6DCD 10px;*/
+  border: solid #5B6DCD 10px;
   box-sizing: border-box;
   background: transparent linear-gradient(90deg, #FFFFFFB9 0%, #FFFFFF7E 100%) 0% 0% no-repeat padding-box;
   border-radius: 6px;
@@ -164,20 +164,23 @@ p {
 .main .card_box:hover {
   background-color: white;
   z-index: 2;
-  border-bottom: solid #98c33e 6px;
+  /*border-bottom: solid #98c33e 6px;*/
   position: relative;
-  width: 50%;
-  height: 2px;
-  margin: 0 auto;
+  border-radius: 6px;
 }
 
-.border {
-  border: 1px solid transparent;
+.horizontal-border {
+  width: 15%;
+  margin: auto;
+  height: 6px;
+  border-radius: 6px;
 }
 
-.border:hover {
-  border: 1px solid #98c33e;
+.main .card_box:hover .horizontal-border {
+  /*https://stackoverflow.com/questions/4502633/how-to-affect-other-elements-when-one-element-is-hovered/32470900#32470900*/
+  background-color: #98c33e;
 }
+
 
 .main .card {
   box-sizing: border-box;
@@ -287,6 +290,8 @@ p {
   letter-spacing: 1.24px;
 }
 
+
+/* Carousel*/
 .pub {
   margin-left: 308px;
   margin-right: 106px;
