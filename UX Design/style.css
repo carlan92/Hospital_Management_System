@@ -161,11 +161,22 @@ p {
   width: 25%;
 }
 
-.main .card_box:hover {
+.main .card_box:hover .border {
   background-color: white;
   z-index: 2;
   border-bottom: solid #98c33e 6px;
+  position: relative;
+  width: 50%;
+  height: 2px;
+  margin: 0 auto;
+}
 
+.border {
+  border: 1px solid transparent;
+}
+
+.border:hover {
+  border: 1px solid #98c33e;
 }
 
 .main .card {
@@ -179,7 +190,7 @@ p {
 .card_box * {
   text-align: center;
   box-sizing: border-box;
-  border:none;
+  border: none;
 }
 
 .card-body {
@@ -191,7 +202,6 @@ p {
 .main h5 {
   padding: 0px;
   margin: 0px;
-
 }
 
 .utentes {
@@ -234,7 +244,6 @@ p {
   font: normal normal bold 16px/19px Lato;
   letter-spacing: 2.22px;
   color: #2C363E;
-
 }
 
 .card-text {
@@ -243,12 +252,10 @@ p {
   font: normal normal bold 17px/21px Lato;
   letter-spacing: 0.1px;
   color: #98C33E;
-  margin-bottom:55px ;
-
+  margin-bottom: 55px;
 }
 
 #num_consulta {
-
   padding-left: 26px;
   padding-top: 12.5px;
   padding-bottom: 12.5px;
@@ -277,21 +284,19 @@ p {
   letter-spacing: 1.24px;
 }
 
-.pub{
-margin-left: 308px;
-margin-right: 106px;
+.pub {
+  margin-left: 308px;
+  margin-right: 106px;
 }
 
-.seta{
+.seta {
   color: #31ADE0;
 }
-
 
 @media screen and (max-height: 450px) {
   .sidenav {
     padding-top: 15px;
   }
-
   .sidenav a {
     font-size: 18px;
   }
