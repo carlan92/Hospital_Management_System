@@ -211,9 +211,7 @@ p {
 }
 
 .card-body {
-  padding: 25px;
-  padding-left: 31px;
-  padding-right: 31px;
+  padding: 25px 31px;
 }
 
 .main h5 {
