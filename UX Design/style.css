@@ -1,3 +1,13 @@
+@font-face { font-family: Lato; src: url('fonts/Lato-Regular.ttf'); } 
+@font-face { font-family: Lato; font-weight: medium; src: url('fonts/Lato-Medium.ttf'); }
+@font-face { font-family: Lato; font-weight: bold; src: url('fonts/Lato-Bold.ttf'); }
+
+@font-face { font-family: Lato; font-style:italic; src: url('fonts/Lato-Italic.ttf'); } 
+@font-face { font-family: Lato; font-style:italic; font-weight: medium; src: url('fonts/Lato-MediumItalic.ttf'); }
+@font-face { font-family: Lato; font-style:italic; font-weight: bold; src: url('fonts/Lato-BoldItalic.ttf'); }
+
+
+
 * {
   font-family: "Lato", "Comic Sans MS";
   font-size: 20px;
