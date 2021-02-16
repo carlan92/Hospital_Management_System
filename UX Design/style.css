@@ -48,7 +48,7 @@ p {
 
 .sidenav_row {
   box-sizing: border-box;
-  border: solid #5B6DCD 10px;
+  /*border: solid #5B6DCD 10px;*/
   /*to be removed*/
 }
 
@@ -95,7 +95,7 @@ p {
   letter-spacing: -0.1px;
   color: #7e7e7e;
   opacity: 1;
-  margin-bottom: 45px;
+  margin-bottom: 32.5px;
 }
 
 #acessos_rapidos {
@@ -113,7 +113,7 @@ p {
   background-color: transparent;
   color: #7e7e7e;
   border: solid transparent 6px;
-  padding: 12.5px 38px 0px 35px;
+  padding: 12.5px 35px;
 }
 
 .sidenav button:hover {
@@ -132,6 +132,7 @@ p {
 
 .log_out_box hr {
   border: 1px solid #DCDCDC;
+  margin: 7px 0px 4px 0px;
 }
 
 .log_out_box #upskill_logo {
