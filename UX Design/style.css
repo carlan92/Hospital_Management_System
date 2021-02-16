@@ -23,6 +23,8 @@ p {
 }
 
 .sidenav {
+  /*https://stackoverflow.com/questions/15358646/css-position-div-to-bottom-of-containing-div*/
+  position: relative;
   box-shadow: 5px 0px 20px #00000029;
   opacity: 1;
   min-width: 25vw;
@@ -111,9 +113,11 @@ p {
 }
 
 .log_out_box {
-  position: relative;
+  position: absolute;
   bottom: 0;
-  top: 360px;
+  width: 100%;
+  /*position: relative;
+  top: 360px;*/
 }
 
 .log_out_box hr {
