@@ -70,7 +70,7 @@ p {
   padding-left: 50px;
 }
 
-.main::before {
+.main::before { 
   /*https://css-tricks.com/snippets/css/transparent-background-images/*/   
   content: "";
   background-image: url("imagens/noun_backgroung.png");
