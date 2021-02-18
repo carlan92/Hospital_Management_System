@@ -14,6 +14,14 @@
   text-align: left;
 }
 
+a:hover{
+  color: #2EADDF;
+}
+
+a{
+  color: #2C363E;
+}
+
 h1 {
   font: normal normal bold 24px/29px Lato;
   letter-spacing: 2.59px;
@@ -56,14 +64,25 @@ p {
   min-width: 75vw;
   min-height: 100vh;
   z-index: 1;
-  background-image: url("imagens/noun_backgroung.png");
-  background-repeat: no-repeat;
-  background-size: cover;
-  opacity: 0.7;
   overflow-x: hidden;
   color: #7e7e7e;
   padding-top: 50px;
   padding-left: 50px;
+}
+
+.main::before {
+  /*https://css-tricks.com/snippets/css/transparent-background-images/*/   
+  content: "";
+  background-image: url("imagens/noun_backgroung.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  bottom: 0px;
+  left: 0px;
+  opacity: 0.7;
+  z-index: -1;
 }
 
 .logo {
@@ -156,7 +175,6 @@ p {
 .main .middle-row {
   box-sizing: border-box;
   border: solid #5B6DCD 10px;
-  box-sizing: border-box;
   background: transparent linear-gradient(90deg, #FFFFFFB9 0%, #FFFFFF7E 100%) 0% 0% no-repeat padding-box;
   border-radius: 6px;
   z-index: 1;
@@ -329,11 +347,95 @@ p {
   color: #31ADE0;
 }
 
+
+/*Login*/
+.white_box {
+  margin: auto;
+  padding: 30px;
+  box-shadow: 5px 0px 20px #00000029;
+  background: transparent linear-gradient(90deg, #FFFFFFB9 0%, #FFFFFF7E 100%) 0% 0% no-repeat padding-box;
+  width: 650px;
+  min-height: 600px;
+}
+
+.logo_small {
+  margin: 15px;
+  max-height: 85px;
+}
+
+.main-col{
+  box-sizing: border-box;
+  margin: auto;
+  width: 350px;
+}
+
+.login-form {
+  box-sizing: border-box;
+  width: 100%;
+}
+
+.input-row {
+  box-sizing: border-box;
+  position: relative;
+  margin: 25px auto;
+  width: 100%;
+}
+
+.login-input {
+  position: relative;
+  box-sizing: border-box;
+  padding: 12.5px 25px;
+  text-align: left;
+  font: normal normal bold 15px/18px Lato;
+  color: #707070;
+  height: 50px;
+  width: 100%;
+  border: 1px solid #707070;
+  border-radius: 6px;
+}
+
+.login-a {
+  
+  display: inline-block;
+  margin: 10px auto;
+  font: normal normal bold 15px/18px Lato;
+  color: #707070;
+}
+
+.btn-green {
+  position: relative;
+  box-sizing: border-box;
+  background-color: #98C33E;
+  color: white;
+  padding: 15px 20px;
+  text-align: center;
+  font: normal normal bold 15px/18px Lato;
+  letter-spacing: 0.61px;
+  width: 100%;
+  border: 1px solid #98C33E;
+  border-radius: 6px;
+}
+  
+
+
+
+
+
 @media screen and (max-height: 450px) {
   .sidenav {
     padding-top: 15px;
   }
   .sidenav a {
     font-size: 18px;
+  }
+
+  form {
+    display: block;
+    box-sizing: border-box;
+    position: relative;
+  }
+
+  input {
+    display: inline-block;
   }
 }
