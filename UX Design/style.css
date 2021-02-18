@@ -381,7 +381,7 @@ p {
   width: 100%;
 }
 
-.login-input {
+.form-input {
   position: relative;
   box-sizing: border-box;
   padding: 12.5px 25px;
@@ -419,32 +419,24 @@ p {
 
 
 
-
-
-
-.popup{
-  box-shadow: 5px 0px 20px #00000029;
-  background-color: white;
-  margin-top: 20px;
-  margin-bottom: 70px;
-  margin-left: 300px;
-  margin-right: 300px;
-  z-index: 2;
-  padding: 20px;
-  min-width: 50vw;
-  min-height: 100vh;
-
-}
-.logo2{
+/*registo*/
+.btn-blue {
   position: relative;
-  margin: 20px;
-  max-width: 50vw;
-  
+  box-sizing: border-box;
+  background-color:  #31ADE0;
+  color: white;
+  padding: 15px 20px;
+  text-align: center;
+  font: normal normal bold 15px/18px Lato;
+  letter-spacing: 0.61px;
+  width: 100%;
+  border: 1px solid  #31ADE0;
+  border-radius: 6px;
 }
-.popup button{
-  background-color: #31ADE0;
-  align-self: center;
+.registo{
+  margin-top: 30px;
 }
+
 .nota {
   font-size: 14px;
 }
