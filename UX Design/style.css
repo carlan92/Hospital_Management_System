@@ -421,6 +421,34 @@ p {
 
 
 
+
+.popup{
+  box-shadow: 5px 0px 20px #00000029;
+  background-color: white;
+  margin-top: 20px;
+  margin-bottom: 70px;
+  margin-left: 300px;
+  margin-right: 300px;
+  z-index: 2;
+  padding: 20px;
+  min-width: 50vw;
+  min-height: 100vh;
+
+}
+.logo2{
+  position: relative;
+  margin: 20px;
+  max-width: 50vw;
+  
+}
+.popup button{
+  background-color: #31ADE0;
+  align-self: center;
+}
+.nota {
+  font-size: 14px;
+}
+
 @media screen and (max-height: 450px) {
   .sidenav {
     padding-top: 15px;
@@ -438,4 +466,5 @@ p {
   input {
     display: inline-block;
   }
+
 }
