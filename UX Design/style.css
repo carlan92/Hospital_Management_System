@@ -1,38 +1,38 @@
 @font-face {
-  font-family: 'Lato';
-  src: url('fonts/Lato-Regular.ttf');
+  font-family: "Lato";
+  src: url("fonts/Lato-Regular.ttf");
 }
 
 @font-face {
-  font-family: 'Lato';
+  font-family: "Lato";
   font-weight: medium;
-  src: url('fonts/Lato-Medium.ttf');
+  src: url("fonts/Lato-Medium.ttf");
 }
 
 @font-face {
-  font-family: 'Lato';
+  font-family: "Lato";
   font-weight: bold;
-  src: url('fonts/Lato-Bold.ttf');
+  src: url("fonts/Lato-Bold.ttf");
 }
 
 @font-face {
-  font-family: 'Lato';
+  font-family: "Lato";
   font-style: italic;
-  src: url('fonts/Lato-Italic.ttf');
+  src: url("fonts/Lato-Italic.ttf");
 }
 
 @font-face {
-  font-family: 'Lato';
+  font-family: "Lato";
   font-style: italic;
   font-weight: medium;
-  src: url('fonts/Lato-MediumItalic.ttf');
+  src: url("fonts/Lato-MediumItalic.ttf");
 }
 
 @font-face {
-  font-family: 'Lato';
+  font-family: "Lato";
   font-style: italic;
   font-weight: bold;
-  src: url('fonts/Lato-BoldItalic.ttf');
+  src: url("fonts/Lato-BoldItalic.ttf");
 }
 
 * {
@@ -42,27 +42,18 @@
 }
 
 a:hover {
-  color: #2EADDF;
+  color: #2eaddf;
 }
 
 a {
-  color: #2C363E;
+  color: #2c363e;
 }
 
-/*NAO É NECESSARIO
 h1 {
-  font: normal normal bold 24px/29px 'Lato';
-  ;
+  font: normal normal bold 24px/29px "Lato";
   letter-spacing: 2.59px;
-  color: #2C363E;
+  color: #2c363e;
 }
-
-p {
-  font: normal normal medium 21px/24px 'Lato';
-  ;
-  letter-spacing: -0.73px;
-  color: #7E7E7E;
-}*/
 
 .container {
   display: flex;
@@ -82,7 +73,7 @@ p {
   background-color: white;
   overflow-x: hidden;
   color: #7e7e7e;
-  font: normal normal medium 17px/21px 'Lato';
+  font: normal normal medium 17px/21px "Lato";
   padding-top: 20px;
 }
 
@@ -191,7 +182,7 @@ p {
 }
 
 .log_out_box hr {
-  border: 1px solid #DCDCDC;
+  border: 1px solid #dcdcdc;
   margin: 7px 0px 4px 0px;
 }
 
@@ -212,17 +203,11 @@ p {
   margin: auto;
 }
 
-.main h1 {
-  font: normal normal bold 24px/29px "Lato";
-  letter-spacing: 2.59px;
-  color: #2C363E;
-}
-
 .main #texto-intro {
   text-align: left;
   font: normal normal medium 21px/24px "Lato";
   letter-spacing: -0.73px;
-  color: #7E7E7E;
+  color: #7e7e7e;
 }
 
 .main .intro {
@@ -235,7 +220,7 @@ p {
 .main #vista_geral {
   font: normal normal 600 15px/18px Lato;
   letter-spacing: 2.08px;
-  color: #7E7E7E;
+  color: #7e7e7e;
   margin-top: 75px;
   margin-bottom: 25px;
 }
@@ -243,7 +228,8 @@ p {
 .main .middle-row {
   box-sizing: border-box;
   /*border: solid #5B6DCD 10px;*/
-  background: transparent linear-gradient(90deg, #FFFFFFB9 0%, #FFFFFF7E 100%) 0% 0% no-repeat padding-box;
+  background: transparent linear-gradient(90deg, #ffffffb9 0%, #ffffff7e 100%)
+    0% 0% no-repeat padding-box;
   border-radius: 6px;
   z-index: 1;
   /*to be checked*/
@@ -308,7 +294,7 @@ p {
 .utentes {
   font: normal normal 300 27px/33px Lato;
   letter-spacing: 0.22px;
-  color: #2C363E;
+  color: #2c363e;
 }
 
 #num_utentes {
@@ -319,19 +305,19 @@ p {
 #num_atrasados {
   font: normal normal 600 15px/18px Lato;
   letter-spacing: 0.94px;
-  color: #7E7E7E;
+  color: #7e7e7e;
 }
 
 .linha_1 {
   font: normal normal 600 15px/18px Lato;
   letter-spacing: 0.45px;
-  color: #2C363E;
+  color: #2c363e;
 }
 
 .linha_2 {
   font: normal normal 600 15px/18px Lato;
   letter-spacing: 0.94px;
-  color: #7E7E7E;
+  color: #7e7e7e;
   margin-top: 29px;
   margin-bottom: 47px;
 }
@@ -344,7 +330,7 @@ p {
   padding-top: 25px;
   font: normal normal bold 16px/19px Lato;
   letter-spacing: 2.22px;
-  color: #2C363E;
+  color: #2c363e;
 }
 
 .card-text {
@@ -352,7 +338,7 @@ p {
   text-align: center;
   font: normal normal bold 17px/21px Lato;
   letter-spacing: 0.1px;
-  color: #98C33E;
+  color: #98c33e;
   margin-bottom: 55px;
 }
 
@@ -367,24 +353,6 @@ p {
   border-radius: 6px;
 }
 
-.btn-button {
-  background-color: transparent;
-  padding: 15px 20px;
-  font: normal normal bold 15px/18px Lato;
-  letter-spacing: 0.61px;
-  color: #2C363E;
-  opacity: 1;
-  width: 100%;
-  border: 1px solid #707070;
-  border-radius: 6px;
-}
-
-.btn-2 {
-  border: none;
-  font: normal normal bold 17px/21px Lato;
-  letter-spacing: 1.24px;
-}
-
 .main .last-row {
   margin-top: 50px;
 }
@@ -394,7 +362,7 @@ p {
 .slide {
   width: 50%;
   display: block;
-  margin: auto
+  margin: auto;
 }
 
 .seta {
@@ -417,7 +385,7 @@ p {
 
 .simbolo_seta {
   font-size: 30px;
-  color: #31ADE0;
+  color: #31ade0;
 }
 
 /*Login*/
@@ -426,7 +394,8 @@ p {
   margin: auto;
   padding: 30px;
   box-shadow: 5px 0px 20px #00000029;
-  background: transparent linear-gradient(90deg, #FFFFFFB9 0%, #FFFFFF7E 100%) 0% 0% no-repeat padding-box;
+  background: transparent linear-gradient(90deg, #ffffffb9 0%, #ffffff7e 100%)
+    0% 0% no-repeat padding-box;
   width: 650px;
   min-height: 600px;
 }
@@ -465,9 +434,9 @@ p {
   width: 100%;
   border: 1px solid #707070;
   border-radius: 6px;
-
 }
-option{
+
+option {
   font: normal normal bold 15px/18px Lato;
 }
 
@@ -478,36 +447,7 @@ option{
   color: #707070;
 }
 
-.btn-green {
-  position: relative;
-  box-sizing: border-box;
-  background-color: #98C33E;
-  color: white;
-  padding: 15px 20px;
-  text-align: center;
-  font: normal normal bold 15px/18px Lato;
-  letter-spacing: 0.61px;
-  width: 100%;
-  border: 1px solid #98C33E;
-  border-radius: 6px;
-}
-
 /*registo*/
-
-.btn-blue {
-  position: relative;
-  box-sizing: border-box;
-  background-color: #31ADE0;
-  color: white;
-  padding: 15px 20px;
-  text-align: center;
-  font: normal normal bold 15px/18px Lato;
-  letter-spacing: 0.61px;
-  width: 100%;
-  border: 1px solid #31ADE0;
-  border-radius: 6px;
-}
-
 .registo {
   margin-top: 30px;
 }
@@ -528,30 +468,6 @@ option{
   letter-spacing: 0.25px;
   color: #2c363e;
   margin: auto;
-}
-
-.bt-login {
-  background-color: #98C33E;
-  color: white;
-  padding: 15px;
-  text-align: center;
-  font: normal normal bold 15px/18px "Lato";
-  letter-spacing: 0.61px;
-  border-color: transparent;
-  border-radius: 6px;
-  display: block;
-  margin: auto;
-  width: 60%;
-}
-
-.bt-login:hover {
-  opacity: 0.9;
-  cursor: pointer;
-  transition: all 0.2s ease-out;
-}
-
-button:focus {
-  outline: none;
 }
 
 .botao_acessos {
@@ -584,7 +500,7 @@ button:focus {
 }
 
 .log_out_box2 hr {
-  border: 1px solid #DCDCDC;
+  border: 1px solid #dcdcdc;
   margin: 7px 0px 50px 0px;
 }
 
@@ -604,7 +520,8 @@ button:focus {
   box-sizing: border-box;
   height: 100%;
   border-radius: 10px;
-  background: transparent linear-gradient(90deg, #FFFFFFB9 0%, #FFFFFF7E 100%) 0% 0% no-repeat padding-box;
+  background: transparent linear-gradient(90deg, #ffffffb9 0%, #ffffff7e 100%)
+    0% 0% no-repeat padding-box;
   box-shadow: 7px 7px 20px 7px grey;
 }
 
@@ -617,7 +534,7 @@ button:focus {
 }
 
 .main .card_box2:hover {
-  background-image: linear-gradient(to bottom, #31ADE0 0%, #98c33e 100%);
+  background-image: linear-gradient(to bottom, #31ade0 0%, #98c33e 100%);
   opacity: 0.9;
 }
 
@@ -635,20 +552,18 @@ button:focus {
   padding: 25px 30px;
 }
 
-.card-body2 h2, h3 {
+.card-body2 h2,
+h3 {
   color: #000000;
   margin: 10px;
   font: normal normal bold 27px/30px "Lato";
   letter-spacing: 1.5px;
-  color: #2C363E;
+  color: #2c363e;
 }
 
 .card-body2 span {
-  font-size: 40px;
+  font: normal normal bold 40px/24px "Lato";
   color: #658a17;
-  line-height: 24px;
-  font-weight: bolder;
-  font-family: "Lato";
   padding: 5px;
 }
 
@@ -668,48 +583,108 @@ button:focus {
   color: #000000;
 }
 
-
 /*Perfil*/
 .perfil-main-col {
   box-sizing: border-box;
   margin: auto;
   width: 100%;
-
-}
-.perfil-main-col .btn-blue, .perfil-main-col .btn-green {
-  width: 65%;
 }
 
-.perfil-row{
+.perfil-row {
   display: inline-flex;
   position: relative;
   box-sizing: border-box;
   width: 100%;
 }
 
-.cell-row{
+.cell-row {
   position: relative;
   box-sizing: border-box;
   width: 45%;
   margin: 12.5px auto;
-  font: normal normal normal 15px/18px Lato;
+  font: normal normal normal 15px/18px "Lato";
 }
 
 .cell-morada {
   width: 95%;
 }
 
-
-.vista_perfil{
+.vista_perfil {
   padding-left: 100px;
 }
 
 /* Forms */
+/*Buttons*/
+.btn-button {
+  background-color: transparent;
+  padding: 15px 20px;
+  font: normal normal bold 15px/18px "Lato";
+  letter-spacing: 0.61px;
+  color: #2c363e;
+  opacity: 1;
+  width: 100%;
+  border: 1px solid #707070;
+  border-radius: 6px;
+}
+
+.btn-2 {
+  border: none;
+  font: normal normal bold 17px/21px "Lato";
+  letter-spacing: 1.24px;
+}
+
+.btn-blue {
+  position: relative;
+  box-sizing: border-box;
+  background-color: #31ade0;
+  color: white;
+  padding: 15px;
+  text-align: center;
+  font: normal normal bold 15px/18px "Lato";
+  letter-spacing: 0.61px;
+  width: 100%;
+  border: transparent;
+  border-radius: 6px;
+}
+
+.btn-green {
+  position: relative;
+  box-sizing: border-box;
+  background-color: #98c33e;
+  color: white;
+  padding: 15px;
+  text-align: center;
+  font: normal normal bold 15px/18px "Lato";
+  letter-spacing: 0.61px;
+  width: 100%;
+  border: transparent;
+  border-radius: 6px;
+}
+
+.btn-login {
+  display: block;
+  margin: auto;
+  width: 60%;
+}
+
+.btn-w65 {
+  width: 65%;
+}
+
+button:focus {
+  outline: none;
+}
+
+.btn-blue:hover,
+.btn-green:hover {
+  opacity: 0.9;
+  cursor: pointer;
+  transition: all 0.2s ease-out;
+}
+
 select option:disabled {
   color: lightgrey;
 }
-
-
 
 @media screen and (max-height: 450px) {
   .sidenav {
