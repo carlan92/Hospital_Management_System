@@ -465,6 +465,10 @@ p {
   width: 100%;
   border: 1px solid #707070;
   border-radius: 6px;
+
+}
+option{
+  font: normal normal bold 15px/18px Lato;
 }
 
 .login-a {
@@ -541,7 +545,7 @@ p {
   transition: all 0.2s ease-out;
 }
 
-.bt-login:focus {
+button:focus {
   outline: none;
 }
 
@@ -665,8 +669,9 @@ p {
   box-sizing: border-box;
   margin: auto;
   width: 100%;
+
 }
-.perfil-main-col .btn-blue, .btn-green {
+.perfil-main-col .btn-blue, .perfil-main-col .btn-green {
   width: 65%;
 }
 
@@ -683,7 +688,9 @@ p {
   margin: 12.5px auto;
   font: normal normal normal 15px/18px Lato;
 }
-
+.vista_perfil{
+  padding-left: 100px;
+}
 
 @media screen and (max-height: 450px) {
   .sidenav {
