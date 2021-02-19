@@ -16,3 +16,8 @@ Notas:
 * Como é realizado o registo de pagamento? (balcão/automático);
 * Abertura de horas extra para consultas não se percebe bem a interação, quem abre as novas vagas é o médico/especialidade?
 - Comunicar (via e-mail por exemplo) a abertura de novas horas extra de consulta ao médico/especialidade
+
+-------
+Questoões para o cliente:
+
+-É necessário o perfil do utilizador ser adaptado ao tipo de utilizador (exemplo:funcionário/médico/utente)
