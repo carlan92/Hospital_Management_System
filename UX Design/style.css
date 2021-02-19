@@ -516,6 +516,11 @@ option{
   font-size: 14px;
 }
 
+.registry-form .row {
+  box-sizing: border-box;
+  padding: 10px auto;
+}
+
 /* Pagina inicial sem registo*/
 
 #bem-vindo {
@@ -691,6 +696,8 @@ button:focus {
 .vista_perfil{
   padding-left: 100px;
 }
+
+
 
 @media screen and (max-height: 450px) {
   .sidenav {

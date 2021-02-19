@@ -7,20 +7,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>Centro Hospitalar UPskill</title>
-
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
-        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
-    </script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous">
-    </script>
-
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&display=swap" rel="stylesheet">
-
+    
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
         integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous" />
-    <script src="https://kit.fontawesome.com/6afe83edf7.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="style.css" />
 
 </head>
@@ -34,13 +23,22 @@
                 Registo de Utente
             </h3>
             <form class="registry-form" action="" method="get">
+
                 <div class="row">
                     <div class="col-sm-6">
-
                         <label for="primeiroNome_id">Primeiro Nome *</label>
                         <input id="primeiroNome_id" type="text" class="form-input" name="primeiroNome" required
                             placeholder="O seu primeiro nome" /><br>
+                    </div>
+                    <div class="col-sm-6">
+                        <label for="ultimoNome_id">Último Nome *</label>
+                        <input id="ultimoNome_id" type="text" class="form-input" name="ultimoNome" required
+                            placeholder="O seu último nome" /><br>
+                    </div>
+                </div>
 
+                <div class="row">
+                    <div class="col-sm-6">
                         <label for="sexo_id">Sexo *</label>
                         <select id="sexo_id" class="form-input" name="sexo" required>
                             <option value="escolha uma opcao">Escolha uma Opção</option>
@@ -48,50 +46,24 @@
                             <option value="feminino">Feminino</option>
                         </select><br>
                     </div>
-
                     <div class="col-sm-6">
-
-                        <label for="ultimoNome_id">Último Nome *</label>
-                        <input id="ultimoNome_id" type="text" class="form-input" name="ultimoNome" required
-                            placeholder="O seu último nome" /><br>
-
                         <label for="dataDeNascimento_id">Data de Nascimento *</label>
                         <input id="dataDeNascimento_id" type="date" class="form-input" name="dataDeNascimento"
                             required><br>
                     </div>
                 </div>
-                <div class="morada">
 
+                <div class="morada">
                     <label for="morada_id">Morada</label>
                     <input id="morada_id" type="text" class="form-input" name="morada" placeholder="A sua morada" /><br>
                 </div>
+
                 <div class="row">
                     <div class="col-sm-6">
-
                         <label for="codigoPostal_id">Código Postal</label>
                         <input id="codigoPostal_id" type="text" class="form-input" name="codigoPostal"
                             placeholder="O seu Código Postal" /><br>
-
-                        <label for="documento_id">Documento de Identificação *</label>
-                        <select id="documento_id" class="form-input" name="documento" required>
-                            <option value="escolha uma opção">Escolha uma Opção</option>
-                            <option value="BI">Bilhete de Identidade</option>
-                            <option value="CC">Cartão de Cidadão</option>
-                            <option value="Passaporte">Passaporte</option>
-                        </select><br>
-
-                        <label for="nif_id">NIF</label>
-                        <input id="nif_id" type="text" class="form-input" name="nif" placeholder="NIF" /><br>
-
-                        <label for="telemovel_id">Telemóvel *</label>
-                        <input id="telemovel_id" type="text" class="form-input" name="telemovel" required
-                            placeholder="O seu número de telemóvel" /><br>
-
-                        <label for="password_id">Palavra-Passe *</label>
-                        <input id="password_id" type="password" class="form-input" name="password" required
-                            placeholder="palavra-passe" /><br>
                     </div>
-
                     <div class="col-sm-6">
                         <label for="nacionalidade_id">Nacionalidade *</label>
                         <select id="nacionalidade_id" class="form-input" name="nacionalidade" required>
@@ -293,26 +265,70 @@
                             <option value="ZMB">Zambiana</option>
                             <option value="ZWE">Zimbabueana</option>
                         </select><br>
+                    </div>
+                </div>
 
+                <div class="row">
+                    <div class="col-sm-6">
+                        <label for="documento_id">Documento de Identificação *</label>
+                        <select id="documento_id" class="form-input" name="documento" required>
+                            <option value="escolha uma opção">Escolha uma Opção</option>
+                            <option value="BI">Bilhete de Identidade</option>
+                            <option value="CC">Cartão de Cidadão</option>
+                            <option value="Passaporte">Passaporte</option>
+                        </select><br>
+                    </div>
+                    <div class="col-sm-6">
                         <label for="nrDocumento_id">Nº do Documento *</label>
                         <input id="nrDocumento_id" type="text" class="form-input" name="nrDocumento" required
                             placeholder="Nº do documento selecionado" /><br>
+                    </div>
+                </div>
 
+                <div class="row">
+                    <div class="col-sm-6">
+                        <label for="nif_id">NIF</label>
+                        <input id="nif_id" type="text" class="form-input" name="nif" placeholder="NIF" /><br>
+                    </div>
+                    <div class="col-sm-6">
                         <label for="nrUtente_id">Nº de Utente</label>
                         <input id="nrUtente_id" type="text" class="form-input" name="nrUtente"
                             placeholder="Nº de Utente" /><br>
+                    </div>
+                </div>
 
+                <div class="row">
+                    <div class="col-sm-6">
+                        <label for="telemovel_id">Telemóvel *</label>
+                        <input id="telemovel_id" type="text" class="form-input" name="telemovel" required
+                            placeholder="O seu número de telemóvel" /><br>
+                    </div>
+                    <div class="col-sm-6">
                         <label for="e-mail_id">E-mail *</label>
                         <input id="e-mail_id" type="text" class="form-input" name="e-mail" required
                             placeholder="O seu e-mail" /><br>
+                    </div>
+                </div>
 
+                <div class="row">
+                    <div class="col-sm-6">
+                        <label for="password_id">Palavra-Passe *</label>
+                        <input id="password_id" type="password" class="form-input" name="password" required
+                            placeholder="palavra-passe" /><br>
+                    </div>
+                    <div class="col-sm-6">
                         <label for="confirmarPassword_id">Confirmar Palavra-Passe *</label>
                         <input id="confirmarPassword_id" type="password" class="form-input" name="confirmarPassword"
                             required placeholder="repetir palavra-passe" /><br>
                     </div>
                 </div>
-                <input id="termos_id" type="checkbox" name="termos" required />
-                <label for="termos_id"> Declaro que aceito os <a class="link">termos e condições</a> *</label><br>
+
+                <div class="check-box">
+                    <input id="termos_id" type="checkbox" name="termos" required />
+                    <label for="termos_id"> Declaro que aceito os <a class="link">termos e
+                            condições</a> *</label><br>
+                </div>
+
             </form>
             <p class="nota">* campos de prenchimento obrigatório</p><br>
             <button type="criarConta" class="btn btn-blue" value="criarConta">Criar Conta</button>
