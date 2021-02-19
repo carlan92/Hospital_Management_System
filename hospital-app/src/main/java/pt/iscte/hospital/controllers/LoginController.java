@@ -1,4 +1,4 @@
-package pt.iscte.hospital;
+package pt.iscte.hospital.controllers;
 
 
 import org.springframework.stereotype.Controller;
