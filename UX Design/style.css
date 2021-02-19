@@ -686,15 +686,27 @@ button:focus {
   box-sizing: border-box;
   width: 100%;
 }
+
 .cell-row{
   position: relative;
   box-sizing: border-box;
-  width: 50%;
+  width: 45%;
   margin: 12.5px auto;
   font: normal normal normal 15px/18px Lato;
 }
+
+.cell-morada {
+  width: 95%;
+}
+
+
 .vista_perfil{
   padding-left: 100px;
+}
+
+/* Forms */
+select option:disabled {
+  color: lightgrey;
 }
 
 
