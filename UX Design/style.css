@@ -242,7 +242,7 @@ p {
 
 .main .middle-row {
   box-sizing: border-box;
-  border: solid #5B6DCD 10px;
+  /*border: solid #5B6DCD 10px;*/
   background: transparent linear-gradient(90deg, #FFFFFFB9 0%, #FFFFFF7E 100%) 0% 0% no-repeat padding-box;
   border-radius: 6px;
   z-index: 1;
@@ -432,7 +432,7 @@ p {
 }
 
 .logo_small {
-  margin: 15px;
+  margin: 20px;
   max-height: 85px;
 }
 
@@ -658,6 +658,32 @@ p {
 .main .card_box2:hover span {
   color: #000000;
 }
+
+
+/*Perfil*/
+.perfil-main-col {
+  box-sizing: border-box;
+  margin: auto;
+  width: 100%;
+}
+.perfil-main-col .btn-blue, .btn-green {
+  width: 65%;
+}
+
+.perfil-row{
+  display: inline-flex;
+  position: relative;
+  box-sizing: border-box;
+  width: 100%;
+}
+.cell-row{
+  position: relative;
+  box-sizing: border-box;
+  width: 50%;
+  margin: 12.5px auto;
+  font: normal normal normal 15px/18px Lato;
+}
+
 
 @media screen and (max-height: 450px) {
   .sidenav {
