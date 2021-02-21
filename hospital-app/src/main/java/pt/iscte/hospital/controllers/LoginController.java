@@ -14,9 +14,9 @@ public class LoginController {
     @Autowired
     private LoginService loginService;
 
-    @GetMapping(value = {"/login"})
+    @GetMapping(value = "/login")
     public String showLoginPage(){
-        return "login";
+        return "/login";
     }
 
     @PostMapping(value = {"/login","/main"})

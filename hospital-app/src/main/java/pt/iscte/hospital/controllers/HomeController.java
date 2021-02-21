@@ -10,7 +10,7 @@ public class HomeController {
         return "home";
     }
     @GetMapping(value="/homeToLogin")
-    public String showLoginPage(){
+    public String getLoginPage(){
         return "redirect:/login";
     }
 }

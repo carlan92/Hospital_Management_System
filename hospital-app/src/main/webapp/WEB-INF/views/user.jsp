@@ -72,7 +72,7 @@
                         </form>
                     </div>
                     <div class="cell-row">
-                        <form action="/main" method="get">
+                        <form action="/userToMain" method="get">
                             <button class="btn-green btn-w65">Página Principal</button>
                         </form>
                     </div>

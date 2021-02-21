@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
 public class RegistryController {
-    @GetMapping(value = {"/registry"})
+    @GetMapping(value = "/registry")
     public String showRegistryPage(){
         return "registry";
     }
