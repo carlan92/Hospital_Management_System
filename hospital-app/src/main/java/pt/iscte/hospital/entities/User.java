@@ -1,12 +1,14 @@
 package pt.iscte.hospital.entities;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import java.util.Date;
 
 @Entity
 public class User {
     @Id
+    @GeneratedValue
     private Long id;
     private String firstName;
     private String lastName;
@@ -18,15 +20,15 @@ public class User {
     private String documentType;
     private Long documentNumber;
     private Long nif;
-    private Long utenteNumber;
-    private Long telemovel;
+    private Long patientNumber;
+    private Long phone;
     private String email;
     private String password;
 
     public User (){
 
     }
-    public User(Long id, String firstName, String lastName, String sex, Date birthday, String address, String postalCode, String nationality, String documentType, Long documentNumber, Long nif, Long utenteNumber, Long telemovel, String email, String password) {
+    public User(Long id, String firstName, String lastName, String sex, Date birthday, String address, String postalCode, String nationality, String documentType, Long documentNumber, Long nif, Long patientNumber, Long phone, String email, String password) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -38,8 +40,8 @@ public class User {
         this.documentType = documentType;
         this.documentNumber = documentNumber;
         this.nif = nif;
-        this.utenteNumber = utenteNumber;
-        this.telemovel = telemovel;
+        this.patientNumber = patientNumber;
+        this.phone = phone;
         this.email = email;
         this.password = password;
     }
@@ -132,20 +134,20 @@ public class User {
         this.nif = nif;
     }
 
-    public Long getUtenteNumber() {
-        return utenteNumber;
+    public Long getPatientNumber() {
+        return patientNumber;
     }
 
-    public void setUtenteNumber(Long utenteNumber) {
-        this.utenteNumber = utenteNumber;
+    public void setPatientNumber(Long utenteNumber) {
+        this.patientNumber = utenteNumber;
     }
 
-    public Long getTelemovel() {
-        return telemovel;
+    public Long getPhone() {
+        return phone;
     }
 
-    public void setTelemovel(Long telemovel) {
-        this.telemovel = telemovel;
+    public void setPhone(Long telemovel) {
+        this.phone = telemovel;
     }
 
     public String getEmail() {
@@ -178,8 +180,8 @@ public class User {
                 ", documentType='" + documentType + '\'' +
                 ", documentNumber=" + documentNumber +
                 ", nif=" + nif +
-                ", utenteNumber=" + utenteNumber +
-                ", telemovel=" + telemovel +
+                ", utenteNumber=" + patientNumber +
+                ", telemovel=" + phone +
                 ", email='" + email + '\'' +
                 ", password='" + password + '\'' +
                 '}';

@@ -29,21 +29,21 @@
                     <div class="perfil-row">
                         <div class="cell-row">
                             <label for="primeiroNome_id">Primeiro Nome *</label>
-                            <input id="primeiroNome_id" type="text" class="form-input" name="primeiroNome" required
-                                placeholder="O seu primeiro nome" />
+                            <input id="primeiroNome_id" type="text" class="form-input" name="firstName" required
+                                placeholder="O seu primeiro nome" value="${user.getFirstName()}" />
                         </div>
 
                         <div class="cell-row">
                             <label for="ultimoNome_id">Último Nome *</label>
-                            <input id="ultimoNome_id" type="text" class="form-input" name="ultimoNome" required
-                                placeholder="O seu último nome" />
+                            <input id="ultimoNome_id" type="text" class="form-input" name="lastName" required
+                                placeholder="O seu último nome" value="${user.getLastName()} />
                         </div>
                     </div>
 
                     <div class="perfil-row">
                         <div class="cell-row">
                             <label for="sexo_id">Sexo *</label>
-                            <select id="sexo_id" class="form-input" name="sexo" required>
+                            <select id="sexo_id" class="form-input" name="sex" required>
                                 <option value="" disabled selected>Escolha uma Opção</option>
                                 <option value="masculino">Masculino</option>
                                 <option value="feminino">Feminino</option>
@@ -51,7 +51,7 @@
                         </div>
                         <div class="cell-row">
                             <label for="dataDeNascimento_id">Data de Nascimento *</label>
-                            <input id="dataDeNascimento_id" type="date" class="form-input" name="dataDeNascimento"
+                            <input id="dataDeNascimento_id" type="date" class="form-input" name="birthday"
                                 required>
                         </div>
                     </div>
@@ -59,7 +59,7 @@
                     <div class="perfil-row">
                         <div class="cell-row cell-morada">
                             <label for="morada_id">Morada</label>
-                            <input id="morada_id" type="text" class="form-input" name="morada"
+                            <input id="morada_id" type="text" class="form-input" name="address"
                                 placeholder="A sua morada" />
                         </div>
                     </div>
@@ -67,12 +67,12 @@
                     <div class="perfil-row">
                         <div class="cell-row">
                             <label for="codigoPostal_id">Código Postal</label>
-                            <input id="codigoPostal_id" type="text" class="form-input" name="codigoPostal"
+                            <input id="codigoPostal_id" type="text" class="form-input" name="postalCode"
                                 placeholder="O seu Código Postal" />
                         </div>
                         <div class="cell-row">
                             <label for="nacionalidade_id">Nacionalidade *</label>
-                            <select id="nacionalidade_id" class="form-input" name="nacionalidade" required>
+                            <select id="nacionalidade_id" class="form-input" name="nationality" required>
                                 <option value="nacionalidade" disabled selected>A sua nacionalidade</option>
                                 <option value="PT">Portuguesa</option>
                                 <option value="AFG">Afegã</option>
@@ -277,7 +277,7 @@
                     <div class="perfil-row">
                         <div class="cell-row">
                             <label for="documento_id">Documento de Identificação *</label>
-                            <select id="documento_id" class="form-input" name="documento" required>
+                            <select id="documento_id" class="form-input" name="documentType" required>
                                 <option value="escolha uma opção" disabled selected>Escolha uma Opção</option>
                                 <option value="BI">Bilhete de Identidade</option>
                                 <option value="CC">Cartão de Cidadão</option>
@@ -286,7 +286,7 @@
                         </div>
                         <div class="cell-row">
                             <label for="nrDocumento_id">Nº do Documento *</label>
-                            <input id="nrDocumento_id" type="text" class="form-input" name="nrDocumento" required
+                            <input id="nrDocumento_id" type="text" class="form-input" name="documentNumber" required
                                 placeholder="Nº do documento selecionado" />
                         </div>
                     </div>
@@ -298,7 +298,7 @@
                         </div>
                         <div class="cell-row">
                             <label for="nrUtente_id">Nº de Utente</label>
-                            <input id="nrUtente_id" type="text" class="form-input" name="nrUtente"
+                            <input id="nrUtente_id" type="text" class="form-input" name="patientNumber"
                                 placeholder="Nº de Utente" />
                         </div>
                     </div>
@@ -306,12 +306,12 @@
                     <div class="perfil-row">
                         <div class="cell-row">
                             <label for="telemovel_id">Telemóvel *</label>
-                            <input id="telemovel_id" type="text" class="form-input" name="telemovel" required
+                            <input id="telemovel_id" type="text" class="form-input" name="phone" required
                                 placeholder="O seu número de telemóvel" />
                         </div>
                         <div class="cell-row">
                             <label for="e-mail_id">E-mail *</label>
-                            <input id="e-mail_id" type="text" class="form-input" name="e-mail" required
+                            <input id="e-mail_id" type="text" class="form-input" name="email" required
                                 placeholder="O seu e-mail" />
                         </div>
                     </div>
@@ -340,7 +340,7 @@
 
 
                 </div>
-                <button type="submit" class="btn btn-blue" value="criarConta">Criar Conta</button>
+                <button type="submit" class="btn btn-blue"  >Criar Conta</button>
             </form>
 
 
