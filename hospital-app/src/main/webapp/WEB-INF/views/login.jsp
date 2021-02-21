@@ -17,7 +17,7 @@
             <img class="logo_small" src="/imagens/noun_centro_hospitalar_logo.svg" alt="Logo do centro hospitalar">
             <div class="main-col">
                 
-                <form class="login-form" action="" method="get">
+                <form class="login-form" action="/login" method="post">
                     <div class="input-row">
                         <input class="form-input" type="text" name="user_email" id="user_email_id" placeholder="E-mail">
                     </div>
@@ -30,7 +30,7 @@
                         <button type="submit" class="btn-green">Entrar</button>
                     </div>
                 </form>
-
+                <span style="color: red">${errorMessage}</span>
                 <div>
                     <a class="login-a" href="">Efectuar registo</a>
                 </div>
@@ -38,7 +38,6 @@
                 <div>
                     <a class="login-a" href="">Recuperar palavra-passe</a>
                 </div>
-
             </div>
         </div>
     </div>
