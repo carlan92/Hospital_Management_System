@@ -36,7 +36,7 @@
                         <div class="cell-row">
                             <label for="ultimoNome_id">Último Nome *</label>
                             <input id="ultimoNome_id" type="text" class="form-input" name="lastName" required
-                                placeholder="O seu último nome" value="${user.getLastName()} />
+                                placeholder="O seu último nome" value="${user.getLastName()}" />
                         </div>
                     </div>
 

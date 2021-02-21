@@ -1,5 +1,7 @@
 package pt.iscte.hospital.entities;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -13,7 +15,8 @@ public class User {
     private String firstName;
     private String lastName;
     private String sex;
-    private Date birthday;
+    @DateTimeFormat (iso =DateTimeFormat.ISO.DATE)
+    private Date birthday ;
     private String address;
     private String postalCode;
     private String nationality;
