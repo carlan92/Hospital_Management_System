@@ -37,10 +37,11 @@
             <div class="welcome_box">
                 <p id="bem-vindo"> Bem-vindo</p>
             </div>
-
+            <form method="get" action="/homeToLogin">
             <div class="but-login">
-                <button type="button" class="btn-green btn-login"> Login </button>
+                <button type="submit" class="btn-green btn-login"> Login </button>
             </div>
+            </form>
 
             <div class="sidenav_row">
                 <p id="acessos_rapidos">Acessos Rápidos</p>

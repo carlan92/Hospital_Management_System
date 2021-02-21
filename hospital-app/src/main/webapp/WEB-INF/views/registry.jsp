@@ -21,7 +21,7 @@
             <h3 class="registo">
                 Registo de Utente
             </h3>
-            <form class="registry-form" action="/registar" method="get">
+            <form class="registry-form" action="/registryToLogin" method="post">
 
 
                 <div class="perfil-main-col">
