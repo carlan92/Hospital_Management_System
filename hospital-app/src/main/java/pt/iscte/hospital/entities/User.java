@@ -5,6 +5,8 @@ import org.springframework.format.annotation.DateTimeFormat;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Date;
 
 @Entity
@@ -15,8 +17,8 @@ public class User {
     private String firstName;
     private String lastName;
     private String sex;
-    @DateTimeFormat (iso =DateTimeFormat.ISO.DATE)
-    private Date birthday ;
+    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
+    private Date birthday;
     private String address;
     private String postalCode;
     private String nationality;
@@ -28,9 +30,10 @@ public class User {
     private String email;
     private String password;
 
-    public User (){
+    public User() {
 
     }
+
     public User(Long id, String firstName, String lastName, String sex, Date birthday, String address, String postalCode, String nationality, String documentType, Long documentNumber, Long nif, Long patientNumber, Long phone, String email, String password) {
         this.id = id;
         this.firstName = firstName;
@@ -73,6 +76,10 @@ public class User {
         this.lastName = lastName;
     }
 
+    public String getName() {
+        return getFirstName() + " " + getLastName();
+    }
+
     public String getSex() {
         return sex;
     }
@@ -82,6 +89,8 @@ public class User {
     }
 
     public Date getBirthday() {
+        String oldstring = "2011-01-18 00:00:00.0";
+        LocalDateTime datetime = LocalDateTime.parse(oldstring, DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss.S"));
         return birthday;
     }
 
