@@ -17,7 +17,7 @@
             <img class="logo_small" src="/imagens/noun_centro_hospitalar_logo.svg" alt="Logo do centro hospitalar">
             <div class="user-type">
                 <p id="user_name">${user.getName()}</p>
-                <p id="user_category">Funcionário</p>
+                <p id="user_category">${user.getAccount()}</p>
             </div>
             <div class="perfil-main-col">
                 <div class="perfil-row">

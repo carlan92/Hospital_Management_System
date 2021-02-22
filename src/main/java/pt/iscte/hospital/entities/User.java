@@ -75,6 +75,15 @@ public class User {
         return username;
     }
 
+    public String getFirstAndLastName(){
+        String[] names =name.split(" ");
+        if (names.length>1) {
+            return names[0] + " " + names[names.length - 1];
+        } else{
+            return names[0];
+        }
+    }
+
     public void setUsername(String username) {
         this.username = username;
     }

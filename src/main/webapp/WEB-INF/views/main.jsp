@@ -34,8 +34,8 @@
       <img src="imagens\noun_centro_hospitalar_logo.svg" alt="logo" class="logo" />
       <div class="welcome_box">
         <p id="welcome">Olá de novo,</p>
-        <a id="user_name" href="/user">${user.getName()}</a>
-        <p id="user_category">Funcionário</p>
+        <a id="user_name" href="/user">${user.getFirstAndLastName()}</a>
+        <p id="user_category">${user.getAccount()}</p>
       </div>
       <div class="sidenav_row">
         <button type="button" class="">
