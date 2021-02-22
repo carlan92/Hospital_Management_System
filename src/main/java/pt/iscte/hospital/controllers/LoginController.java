@@ -30,7 +30,7 @@ public class LoginController {
     public String validateLogin(ModelMap map, @RequestParam String user_email, @RequestParam String password) {
         if (loginService.validateLogin(user_email, password)) {
             //true
-            Login.setConnectedUser(userRepository.findByEmail(user_email));
+            Login.setConnectedUser(userRepository.findByUsername(user_email));
             return "redirect:/main";
         } else {
             //Invalid Credentials

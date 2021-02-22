@@ -30,13 +30,13 @@
                         <div class="cell-row">
                             <label for="nome_id">Nome Completo *</label>
                             <input id="nome_id" type="text" class="form-input" name="name" required
-                                placeholder="O seu nome completo" value="${user.getFirstName()}" />
+                                placeholder="O seu nome completo" value="${user.getName()}" />
                         </div>
 
                         <div class="cell-row">
                             <label for="nickName_id">Nome de Utilizador *</label>
-                            <input id="nickName_id" type="text" class="form-input" name="nickName" required
-                                placeholder="O seu nome de utilizador" value="${user.getLastName()}" />
+                            <input id="nickName_id" type="text" class="form-input" name="username" required
+                                placeholder="O seu nome de utilizador" value="${user.getUsername()}" />
                         </div>
                     </div>
 
@@ -73,7 +73,7 @@
 
                         <div class="cell-row">
                              <label for="localidade_id">Localidade *</label>
-                             <input id="localidade_id" type="text" class="form-input" name="localidade" required
+                             <input id="localidade_id" type="text" class="form-input" name="locality" required
                                 placeholder="A sua localidade" />
                         </div>
                     </div>
@@ -81,7 +81,7 @@
                     <div class="perfil-row">
                         <div class="cell-row">
                             <label for="conta_id">Tipo de Utilizador *</label>
-                            <select id="conta_id" class="form-input" name="conta" required>
+                            <select id="conta_id" class="form-input" name="account" required>
                                 <option value="" disabled selected>Escolha uma Opção</option>
                                 <option value="Utente">Utente</option>
                                 <option value="Funcionário">Funcionário</option>

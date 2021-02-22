@@ -12,14 +12,15 @@ public class User {
     @Id
     @GeneratedValue
     private Long id;
+    private String name;
     private String username;
-    private String firstName;
-    private String lastName;
     private String sex;
     @DateTimeFormat (iso =DateTimeFormat.ISO.DATE)
     private Date birthday ;
     private String address;
     private String postalCode;
+    private String locality;
+    private String account;
     private String nationality;
     private String documentType;
     private Long documentNumber;
@@ -30,22 +31,16 @@ public class User {
     private String password;
     private String photoURL;
 
-    public User (){
-
-    }
-    public User(Long id, String username, String firstName, String lastName,
-                String sex, Date birthday, String address, String postalCode,
-                String nationality, String documentType, Long documentNumber,
-                Long nif, Long patientNumber, Long phone, String email,
-                String password, String photoURL) {
+    public User(Long id, String name, String username, String sex, Date birthday, String address, String postalCode, String locality, String account, String nationality, String documentType, Long documentNumber, Long nif, Long patientNumber, Long phone, String email, String password, String photoURL) {
         this.id = id;
+        this.name = name;
         this.username = username;
-        this.firstName = firstName;
-        this.lastName = lastName;
         this.sex = sex;
         this.birthday = birthday;
         this.address = address;
         this.postalCode = postalCode;
+        this.locality = locality;
+        this.account = account;
         this.nationality = nationality;
         this.documentType = documentType;
         this.documentNumber = documentNumber;
@@ -57,6 +52,9 @@ public class User {
         this.photoURL = photoURL;
     }
 
+    public User (){
+    }
+
     public Long getId() {
         return id;
     }
@@ -65,24 +63,20 @@ public class User {
         this.id = id;
     }
 
-    public String getFirstName() {
-        return firstName;
+    public String getName() {
+        return name;
     }
 
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public String getLastName() {
-        return lastName;
+    public String getUsername() {
+        return username;
     }
 
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
-
-    public String getName(){
-        return this.firstName + " " + this.lastName;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public String getSex() {
@@ -115,6 +109,22 @@ public class User {
 
     public void setPostalCode(String postalCode) {
         this.postalCode = postalCode;
+    }
+
+    public String getLocality() {
+        return locality;
+    }
+
+    public void setLocality(String locality) {
+        this.locality = locality;
+    }
+
+    public String getAccount() {
+        return account;
+    }
+
+    public void setAccount(String account) {
+        this.account = account;
     }
 
     public String getNationality() {
@@ -153,16 +163,16 @@ public class User {
         return patientNumber;
     }
 
-    public void setPatientNumber(Long utenteNumber) {
-        this.patientNumber = utenteNumber;
+    public void setPatientNumber(Long patientNumber) {
+        this.patientNumber = patientNumber;
     }
 
     public Long getPhone() {
         return phone;
     }
 
-    public void setPhone(Long telemovel) {
-        this.phone = telemovel;
+    public void setPhone(Long phone) {
+        this.phone = phone;
     }
 
     public String getEmail() {
@@ -181,24 +191,35 @@ public class User {
         this.password = password;
     }
 
+    public String getPhotoURL() {
+        return photoURL;
+    }
+
+    public void setPhotoURL(String photoURL) {
+        this.photoURL = photoURL;
+    }
+
     @Override
     public String toString() {
         return "User{" +
                 "id=" + id +
-                ", firstName='" + firstName + '\'' +
-                ", lastName='" + lastName + '\'' +
+                ", name='" + name + '\'' +
+                ", username='" + username + '\'' +
                 ", sex='" + sex + '\'' +
                 ", birthday=" + birthday +
                 ", address='" + address + '\'' +
                 ", postalCode='" + postalCode + '\'' +
+                ", locality='" + locality + '\'' +
+                ", account='" + account + '\'' +
                 ", nationality='" + nationality + '\'' +
                 ", documentType='" + documentType + '\'' +
                 ", documentNumber=" + documentNumber +
                 ", nif=" + nif +
-                ", utenteNumber=" + patientNumber +
-                ", telemovel=" + phone +
+                ", patientNumber=" + patientNumber +
+                ", phone=" + phone +
                 ", email='" + email + '\'' +
                 ", password='" + password + '\'' +
+                ", photoURL='" + photoURL + '\'' +
                 '}';
     }
 }

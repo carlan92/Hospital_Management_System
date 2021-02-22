@@ -13,11 +13,11 @@ public class LoginServiceImpl implements LoginService {
     UserService userService;
 
     @Override
-    public boolean validateLogin(String email, String password) {
-        User user = userRepository.findByEmail(email);
+    public boolean validateLogin(String username, String password) {
+        User user = userRepository.findByUsername(username);
         if (!userService.validateUser(user)) {
             return false;
-        } else if (email.equals(user.getEmail()) && password.equals(user.getPassword())) {
+        } else if (username.equals(user.getUsername()) && password.equals(user.getPassword())) {
             return true;
         }
         return false;
