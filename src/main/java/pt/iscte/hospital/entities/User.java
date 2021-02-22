@@ -73,6 +73,10 @@ public class User {
         this.lastName = lastName;
     }
 
+    public String getName(){
+        return this.firstName + " " + this.lastName;
+    }
+
     public String getSex() {
         return sex;
     }
