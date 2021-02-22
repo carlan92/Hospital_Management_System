@@ -606,6 +606,14 @@ h3 {
   padding-left: 100px;
 }
 
+/*termos e condições*/
+
+.terms p, .terms li{
+  text-align: justify  !important;
+  font-size: 17px !important;
+
+}
+
 /* Forms */
 /*Buttons*/
 .btn-button {
@@ -695,3 +703,6 @@ select option:disabled {
     display: inline-block;
   }
 }
+
+
+
