@@ -12,6 +12,7 @@ public class User {
     @Id
     @GeneratedValue
     private Long id;
+    private String username;
     private String firstName;
     private String lastName;
     private String sex;
@@ -27,12 +28,18 @@ public class User {
     private Long phone;
     private String email;
     private String password;
+    private String photoURL;
 
     public User (){
 
     }
-    public User(Long id, String firstName, String lastName, String sex, Date birthday, String address, String postalCode, String nationality, String documentType, Long documentNumber, Long nif, Long patientNumber, Long phone, String email, String password) {
+    public User(Long id, String username, String firstName, String lastName,
+                String sex, Date birthday, String address, String postalCode,
+                String nationality, String documentType, Long documentNumber,
+                Long nif, Long patientNumber, Long phone, String email,
+                String password, String photoURL) {
         this.id = id;
+        this.username = username;
         this.firstName = firstName;
         this.lastName = lastName;
         this.sex = sex;
@@ -47,6 +54,7 @@ public class User {
         this.phone = phone;
         this.email = email;
         this.password = password;
+        this.photoURL = photoURL;
     }
 
     public Long getId() {
