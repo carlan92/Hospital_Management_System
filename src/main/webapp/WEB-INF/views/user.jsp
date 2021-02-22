@@ -16,54 +16,54 @@
             
             <img class="logo_small" src="/imagens/noun_centro_hospitalar_logo.svg" alt="Logo do centro hospitalar">
             <div class="user-type">
-                <p id="user_name">Pedro Romano</p>
+                <p id="user_name">${user.getName()}</p>
                 <p id="user_category">Funcionário</p>
             </div>
             <div class="perfil-main-col">
                 <div class="perfil-row">
                     <div class="cell-row">Sexo</div>
-                    <div class="cell-row">Masculino</div>
+                    <div class="cell-row">${user.getSex()}</div>
                 </div>
                 <div class="perfil-row">
                     <div class="cell-row">Data de nascimento</div>
-                    <div class="cell-row">01/01/1990</div>
+                    <div class="cell-row">${user.getBirthday()}</div>
                 </div>
 
                 <div class="perfil-row">
                     <div class="cell-row">Morada</div>
-                    <div class="cell-row">Rua das Flores</div>
+                    <div class="cell-row">${user.getAddress()}</div>
                 </div>
                 <div class="perfil-row">
                     <div class="cell-row">Código Postal</div>
-                    <div class="cell-row">1100-100 Lisboa</div>
+                    <div class="cell-row">${user.getPostalCode()}</div>
                 </div>
                 <div class="perfil-row">
                     <div class="cell-row">Nacionalidade</div>
-                    <div class="cell-row">Portuguesa</div>
+                    <div class="cell-row">${user.getNationality()}</div>
                 </div>
                 <div class="perfil-row">
                     <div class="cell-row">Documento de identificação</div>
-                    <div class="cell-row">Cartão do cidadão</div>
+                    <div class="cell-row">${user.getDocumentType()}</div>
                 </div>
                 <div class="perfil-row">
                     <div class="cell-row">Nº do documento</div>
-                    <div class="cell-row">1665616 q 161</div>
+                    <div class="cell-row">${user.getDocumentNumber()}</div>
                 </div>
                 <div class="perfil-row">
                     <div class="cell-row">NIF</div>
-                    <div class="cell-row"> 456 851 974</div>
+                    <div class="cell-row">${user.getNif()}</div>
                 </div>
                 <div class="perfil-row">
                     <div class="cell-row">Nº de Utente</div>
-                    <div class="cell-row"> 151 515 151</div>
+                    <div class="cell-row"> ${user.getPatientNumber()}</div>
                 </div>
                 <div class="perfil-row">
                     <div class="cell-row">Telemóvel</div>
-                    <div class="cell-row">915 452 657</div>
+                    <div class="cell-row">${user.getPhone()}</div>
                 </div>
                 <div class="perfil-row">
                     <div class="cell-row">E-mail</div>
-                    <div class="cell-row">promano@upskill.pt</div>
+                    <div class="cell-row">${user.getEmail()}</div>
                 </div>
                 <div class="perfil-row">
                     <div class="cell-row">

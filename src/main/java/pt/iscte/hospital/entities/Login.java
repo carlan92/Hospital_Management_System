@@ -1,6 +1,6 @@
 package pt.iscte.hospital.entities;
 
-public class LogIn {
+public class Login {
 
     private static User connectedUser=null;
 
@@ -9,6 +9,6 @@ public class LogIn {
     }
 
     public static void setConnectedUser(User connectedUser) {
-        LogIn.connectedUser = connectedUser;
+        Login.connectedUser = connectedUser;
     }
 }
