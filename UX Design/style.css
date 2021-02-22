@@ -80,8 +80,6 @@ h1 {
 .sidenav_row {
   box-sizing: border-box;
   width: 100%;
-  /*border: solid #5B6DCD 10px;*/
-  /*to be removed*/
 }
 
 .main {
@@ -117,7 +115,6 @@ h1 {
   display: block;
   margin: 35px;
   margin-top: 20px;
-  /*revercarla*/
 }
 
 .welcome_box {
@@ -127,7 +124,7 @@ h1 {
 }
 
 #welcome {
-  font: normal normal medium 17px/21px Lato;
+  font: normal normal medium 17px/21px "Lato";
   letter-spacing: -0.12px;
   color: #7e7e7e;
   opacity: 1;
@@ -135,7 +132,7 @@ h1 {
 }
 
 #user_name {
-  font: normal normal bold 29px/35px Lato;
+  font: normal normal bold 29px/35px "Lato";
   letter-spacing: 0.23px;
   color: #2c363e;
   opacity: 1;
@@ -143,7 +140,7 @@ h1 {
 }
 
 #user_category {
-  font: normal normal 300 14px/17px Lato;
+  font: normal normal 300 14px/17px "Lato";
   letter-spacing: -0.1px;
   color: #7e7e7e;
   opacity: 1;
@@ -152,7 +149,7 @@ h1 {
 
 #acessos_rapidos {
   box-sizing: border-box;
-  font: normal normal medium 17px/21px Lato;
+  font: normal normal medium 17px/21px "Lato";
   letter-spacing: -0.58px;
   color: #ababab;
   margin-left: 35px;
@@ -218,7 +215,7 @@ h1 {
 }
 
 .main #vista_geral {
-  font: normal normal 600 15px/18px Lato;
+  font: normal normal 600 15px/18px "Lato";
   letter-spacing: 2.08px;
   color: #7e7e7e;
   margin-top: 75px;
@@ -227,7 +224,6 @@ h1 {
 
 .main .middle-row {
   box-sizing: border-box;
-  /*border: solid #5B6DCD 10px;*/
   background: transparent linear-gradient(90deg, #ffffffb9 0%, #ffffff7e 100%)
     0% 0% no-repeat padding-box;
   border-radius: 6px;
@@ -241,7 +237,6 @@ h1 {
 
 .main .card_box {
   box-sizing: border-box;
-  /*border: solid #5fcd5b 10px;*/
   background-color: transparent;
   margin-left: 22.5px;
   margin-right: 22.5px;
@@ -251,7 +246,6 @@ h1 {
 .main .card_box:hover {
   background-color: white;
   z-index: 2;
-  /*border-bottom: solid #98c33e 6px;*/
   position: relative;
   border-radius: 6px;
 }
@@ -270,7 +264,6 @@ h1 {
 
 .main .card {
   box-sizing: border-box;
-  /*border: solid #635bcd 10px;*/
   height: 100%;
   width: 100%;
   background-color: transparent;
