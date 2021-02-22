@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Centro Hospitalar UPskill</title>
+
+    <link rel="stylesheet" href="style.css" />
+
+</head>
+
+<body>
+    <div class="main">
+        <div class="white_box">
+
+            <img src="imagens\noun_centro_hospitalar_logo.svg" alt="logo" class="logo_small" />
+            <h3 class="registo">
+                Registo de Utente
+            </h3>
+            <form class="registry-form" action="/registryToLogin" method="post">
+
+
+                <div class="perfil-main-col">
+
+                    <div class="perfil-row">
+                        <div class="cell-row">
+                            <label for="primeiroNome_id">Primeiro Nome *</label>
+                            <input id="primeiroNome_id" type="text" class="form-input" name="firstName" required
+                                placeholder="O seu primeiro nome" value="${user.getFirstName()}" />
+                        </div>
+
+                        <div class="cell-row">
+                            <label for="ultimoNome_id">Último Nome *</label>
+                            <input id="ultimoNome_id" type="text" class="form-input" name="lastName" required
+                                placeholder="O seu último nome" value="${user.getLastName()}" />
+                        </div>
+                    </div>
+
+                    <div class="perfil-row">
+                        <div class="cell-row">
+                            <label for="sexo_id">Sexo *</label>
+                            <select id="sexo_id" class="form-input" name="sex" required>
+                                <option value="" disabled selected>Escolha uma Opção</option>
+                                <option value="masculino">Masculino</option>
+                                <option value="feminino">Feminino</option>
+                            </select>
+                        </div>
+                        <div class="cell-row">
+                            <label for="dataDeNascimento_id">Data de Nascimento *</label>
+                            <input id="dataDeNascimento_id" type="date" class="form-input" name="birthday"
+                                required>
+                        </div>
+                    </div>
+
+                    <div class="perfil-row">
+                        <div class="cell-row cell-morada">
+                            <label for="morada_id">Morada</label>
+                            <input id="morada_id" type="text" class="form-input" name="address"
+                                placeholder="A sua morada" />
+                        </div>
+                    </div>
+
+                    <div class="perfil-row">
+                        <div class="cell-row">
+                            <label for="codigoPostal_id">Código Postal</label>
+                            <input id="codigoPostal_id" type="text" class="form-input" name="postalCode"
+                                placeholder="O seu Código Postal" />
+                        </div>
+                        <div class="cell-row">
+                            <label for="nacionalidade_id">Nacionalidade *</label>
+                            <select id="nacionalidade_id" class="form-input" name="nationality" required>
+                                <option value="nacionalidade" disabled selected>A sua nacionalidade</option>
+                                <option value="PT">Portuguesa</option>
+                                <option value="AFG">Afegã</option>
+                                <option value="ALB">Albanesa</option>
+                                <option value="GER">Alemã</option>
+                                <option value="USA">Americana</option>
+                                <option value="AND">Andorrana</option>
+                                <option value="AN">Angolana</option>
+                                <option value="ATG">Antígua/Barbudiana</option>
+                                <option value="APT">Apátrida</option>
+                                <option value="ARE">Árabe-emiradense</option>
+                                <option value="DZA">Argelina</option>
+                                <option value="ARG">Argentina</option>
+                                <option value="ARM">Arménia</option>
+                                <option value="AUS">Australiana</option>
+                                <option value="AUT">Austríaca</option>
+                                <option value="AZE">Azerbaijana/Azeri</option>
+                                <option value="BGD">Bangladense</option>
+                                <option value="BRB">Barbadiana</option>
+                                <option value="BHR">Barenita</option>
+                                <option value="OBE">Belga</option>
+                                <option value="BLZ">Belizenha</option>
+                                <option value="BEN">Beninemse</option>
+                                <option value="BLR">Bielorussa</option>
+                                <option value="BOL">Boliviana</option>
+                                <option value="BIH">Bósnia</option>
+                                <option value="BWA">Botsuanense</option>
+                                <option value="OBR">Brasileira</option>
+                                <option value="GBR">Britânica</option>
+                                <option value="BRN">Bruneína</option>
+                                <option value="BUL">Bulgara</option>
+                                <option value="BFA">Burquinense</option>
+                                <option value="BDI">Burundesa</option>
+                                <option value="BTN">Butanesa</option>
+                                <option value="OCB">Cabo-verdiana</option>
+                                <option value="CMA">Camaronesa</option>
+                                <option value="KHM">Cambojana</option>
+                                <option value="CAN">Canadiana</option>
+                                <option value="QAT">Catariana</option>
+                                <option value="KAZ">Cazaquistanesa</option>
+                                <option value="CAF">Centro-africana</option>
+                                <option value="TCD">Chadiana</option>
+                                <option value="CZE">Checa</option>
+                                <option value="CHL">Chilena</option>
+                                <option value="CHN">Chinesa</option>
+                                <option value="CYP">Cipriota</option>
+                                <option value="COL">Colombiana</option>
+                                <option value="COM">Comorense</option>
+                                <option value="COG">Congolesa (República do Congo)</option>
+                                <option value="COD">Congolesa (Rep. Democ. Congo)</option>
+                                <option value="CRI">Costa-riquenha</option>
+                                <option value="HRV">Croata</option>
+                                <option value="OCU">Cubana</option>
+                                <option value="ON/">Desconhecida</option>
+                                <option value="DNK">Dinamarquesa</option>
+                                <option value="DJI">Djibutiana</option>
+                                <option value="DOM">Dominicana</option>
+                                <option value="DMA">Dominiquense</option>
+                                <option value="EGY">Egípcia</option>
+                                <option value="ECU">Equatoriana</option>
+                                <option value="ERI">Eritreia</option>
+                                <option value="ESL">Eslovaca</option>
+                                <option value="SVN">Eslovena</option>
+                                <option value="OES">Espanhola</option>
+                                <option value="EST">Estoniana</option>
+                                <option value="ETH">Etíope</option>
+                                <option value="FJI">Fijiana</option>
+                                <option value="PHL">Filipina</option>
+                                <option value="FIN">Finlandesa</option>
+                                <option value="OFR">Francesa</option>
+                                <option value="GAB">Gabonesa</option>
+                                <option value="GMB">Gambiana</option>
+                                <option value="GHA">Ganesa</option>
+                                <option value="GEO">Georgiana</option>
+                                <option value="GRC">Grega</option>
+                                <option value="GRD">Grenada</option>
+                                <option value="GRL">Gronelandesa</option>
+                                <option value="GTM">Guatemalense</option>
+                                <option value="GUY">Guianesa</option>
+                                <option value="GIN">Guineense (Conacri)</option>
+                                <option value="GNQ">Guineense (Equatorial)</option>
+                                <option value="OG/">Guineense (Bissau)</option>
+                                <option value="HTI">Haitiana</option>
+                                <option value="NLD">Neerlandesa/Holandesa</option>
+                                <option value="HND">Hondurenha</option>
+                                <option value="HUN">Húngara</option>
+                                <option value="YEM">Iemenita</option>
+                                <option value="IND">Indiana</option>
+                                <option value="IDN">Indonésia</option>
+                                <option value="IRN">Iraniana</option>
+                                <option value="IRQ">Iraquiana</option>
+                                <option value="IRL">Irlandesa</option>
+                                <option value="ISL">Islandesa</option>
+                                <option value="ISR">Israelita</option>
+                                <option value="ITL">Italiana</option>
+                                <option value="JAM">Jamaicana</option>
+                                <option value="JPN">Japonesa</option>
+                                <option value="JOR">Jordana</option>
+                                <option value="KOS">Kosovar</option>
+                                <option value="KWT">Kuwaitiana</option>
+                                <option value="LAO">Laosiana</option>
+                                <option value="LSO">Lesotiana</option>
+                                <option value="LVA">Letã</option>
+                                <option value="LBN">Libanesa</option>
+                                <option value="LBR">Liberiana</option>
+                                <option value="LBY">Líbia</option>
+                                <option value="LIE">Liechtensteinense</option>
+                                <option value="LTU">Lituana</option>
+                                <option value="LUX">Luxemburguesa</option>
+                                <option value="MKD">Macedónia</option>
+                                <option value="MDG">Madagascarense</option>
+                                <option value="MYS">Malásia</option>
+                                <option value="MWI">Malauiana</option>
+                                <option value="MDV">Maldívia</option>
+                                <option value="MLI">Malinesa</option>
+                                <option value="MLT">Maltesa</option>
+                                <option value="CIV">Marfinense</option>
+                                <option value="MAR">Marroquina</option>
+                                <option value="MUS">Mauriciana</option>
+                                <option value="MRT">Mauritana</option>
+                                <option value="MEX">Mexicana</option>
+                                <option value="MMR">Mianmarense/Birmã</option>
+                                <option value="OMÇ">Moçambicana</option>
+                                <option value="MDA">Moldava</option>
+                                <option value="MNC">Monegasco</option>
+                                <option value="MNG">Mongol</option>
+                                <option value="MCO">Montenegrina</option>
+                                <option value="NAM">Namibiana</option>
+                                <option value="NRU">Nauruana</option>
+                                <option value="NZL">Neozelandesa</option>
+                                <option value="NPL">Nepalesa</option>
+                                <option value="NIC">Nicaraguana</option>
+                                <option value="NGA">Nigeriana</option>
+                                <option value="NER">Nigerina</option>
+                                <option value="PRK">Norte-coreana</option>
+                                <option value="NOR">Norueguesa</option>
+                                <option value="OMN">Omanense</option>
+                                <option value="PLW">Palauense</option>
+                                <option value="PSE">Palestiniana</option>
+                                <option value="PAN">Panamenha</option>
+                                <option value="PNG">Papua</option>
+                                <option value="PAK">Paquistanesa</option>
+                                <option value="PRY">Paraguaia</option>
+                                <option value="PER">Peruana</option>
+                                <option value="POL">Polaca</option>
+                                <option value="PRI">Porto-riquenha</option>
+                                <option value="KEN">Queniana</option>
+                                <option value="KGZ">Quirguistanesa</option>
+                                <option value="KIR">Quiribatiana</option>
+                                <option value="ROU">Romena</option>
+                                <option value="RWA">Ruandesa</option>
+                                <option value="RUS">Russa</option>
+                                <option value="ESH">Sahari</option>
+                                <option value="SLV">Salvadorenha</option>
+                                <option value="SMR">Samarinesa</option>
+                                <option value="WSM">Samoana</option>
+                                <option value="LCA">Santa-lucense</option>
+                                <option value="OST">Santomense</option>
+                                <option value="KNA">São-cristovense</option>
+                                <option value="VCT">São-vicentino</option>
+                                <option value="SAU">Saudita</option>
+                                <option value="SYC">Seichelense</option>
+                                <option value="SEN">Senegalesa</option>
+                                <option value="SLE">Serra-leonesa</option>
+                                <option value="SRB">Sérvia</option>
+                                <option value="SGP">Singapurana</option>
+                                <option value="SYR">Síria</option>
+                                <option value="SOM">Somalí</option>
+                                <option value="LKA">Srilanquesa</option>
+                                <option value="SWZ">Suazilandesa</option>
+                                <option value="SDN">Sudanesa</option>
+                                <option value="SWE">Sueca</option>
+                                <option value="CHE">Suíça</option>
+                                <option value="ZAF">Sul-africana</option>
+                                <option value="KOR">Sul-coreana</option>
+                                <option value="SUR">Surinamesa</option>
+                                <option value="THA">Tailandesa</option>
+                                <option value="TWN">Taiwanesa</option>
+                                <option value="TJK">Tajiquistanesa</option>
+                                <option value="TZA">Tanzaniana</option>
+                                <option value="TLS">Timorense</option>
+                                <option value="TGO">Togolesa</option>
+                                <option value="TON">Tonganesa</option>
+                                <option value="TTO">Trindade e Tobago</option>
+                                <option value="TUN">Tunisina</option>
+                                <option value="TUR">Turca</option>
+                                <option value="TKM">Turquemenistanesa</option>
+                                <option value="TUV">Tuvaluana</option>
+                                <option value="OUC">Ucraniana</option>
+                                <option value="UGA">Ugandesa</option>
+                                <option value="URY">Uruguaia</option>
+                                <option value="UZB">Usbequistanesa</option>
+                                <option value="VUT">Vanuatuana</option>
+                                <option value="VNZ">Venezuelana</option>
+                                <option value="VNM">Vietnamita</option>
+                                <option value="ZMB">Zambiana</option>
+                                <option value="ZWE">Zimbabueana</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="perfil-row">
+                        <div class="cell-row">
+                            <label for="documento_id">Documento de Identificação *</label>
+                            <select id="documento_id" class="form-input" name="documentType" required>
+                                <option value="escolha uma opção" disabled selected>Escolha uma Opção</option>
+                                <option value="BI">Bilhete de Identidade</option>
+                                <option value="CC">Cartão de Cidadão</option>
+                                <option value="Passaporte">Passaporte</option>
+                            </select>
+                        </div>
+                        <div class="cell-row">
+                            <label for="nrDocumento_id">Nº do Documento *</label>
+                            <input id="nrDocumento_id" type="text" class="form-input" name="documentNumber" required
+                                placeholder="Nº do documento selecionado" />
+                        </div>
+                    </div>
+
+                    <div class="perfil-row">
+                        <div class="cell-row">
+                            <label for="nif_id">NIF</label>
+                            <input id="nif_id" type="text" class="form-input" name="nif" placeholder="NIF" />
+                        </div>
+                        <div class="cell-row">
+                            <label for="nrUtente_id">Nº de Utente</label>
+                            <input id="nrUtente_id" type="text" class="form-input" name="patientNumber"
+                                placeholder="Nº de Utente" />
+                        </div>
+                    </div>
+
+                    <div class="perfil-row">
+                        <div class="cell-row">
+                            <label for="telemovel_id">Telemóvel *</label>
+                            <input id="telemovel_id" type="text" class="form-input" name="phone" required
+                                placeholder="O seu número de telemóvel" />
+                        </div>
+                        <div class="cell-row">
+                            <label for="e-mail_id">E-mail *</label>
+                            <input id="e-mail_id" type="text" class="form-input" name="email" required
+                                placeholder="O seu e-mail" />
+                        </div>
+                    </div>
+
+                    <div class="perfil-row">
+                        <div class="cell-row">
+                            <label for="password_id">Palavra-Passe *</label>
+                            <input id="password_id" type="password" class="form-input" name="password" required
+                                placeholder="palavra-passe" />
+                        </div>
+                        <div class="cell-row">
+                            <label for="confirmarPassword_id">Confirmar Palavra-Passe *</label>
+                            <input id="confirmarPassword_id" type="password" class="form-input" name="confirmarPassword"
+                                required placeholder="repetir palavra-passe" />
+                        </div>
+                    </div>
+
+                    <div class="perfil-row">
+                        <div class="cell-row cell-morada">
+                            <input id="termos_id" type="checkbox" name="termos" required />
+                            <label for="termos_id"> Declaro que aceito os <a class="link">termos e
+                                    condições</a> *</label>
+                            <p class="nota">* campos de prenchimento obrigatório</p>
+                        </div>
+                    </div>
+
+
+                </div>
+                <button type="submit" class="btn btn-blue"  >Criar Conta</button>
+            </form>
+
+
+        </div>
+    </div>
+</body>
+
+</html>
