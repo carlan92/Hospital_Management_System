@@ -16,7 +16,7 @@
             
             <img class="logo_small" src="/imagens/noun_centro_hospitalar_logo.svg" alt="Logo do centro hospitalar">
             <div class="user-type">
-                <p id="user_name">${user.getName()}</p>
+                <p id="user_name">${user.getName()} (${user.getUsername()})</p>
                 <p id="user_category">${user.getAccount()}</p>
             </div>
             <div class="perfil-main-col">
@@ -36,6 +36,10 @@
                 <div class="perfil-row">
                     <div class="cell-row">Código Postal</div>
                     <div class="cell-row">${user.getPostalCode()}</div>
+                </div>
+                <div class="perfil-row">
+                    <div class="cell-row">Localidade</div>
+                    <div class="cell-row">${user.getLocality()}</div>
                 </div>
                 <div class="perfil-row">
                     <div class="cell-row">Nacionalidade</div>

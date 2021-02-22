@@ -311,8 +311,8 @@
 
                     <div class="perfil-row">
                         <div class="cell-row">
-                            <label for="nif_id">NIF</label>
-                            <input id="nif_id" type="text" class="form-input" name="nif" placeholder="NIF" />
+                            <label for="nif_id">NIF *</label>
+                            <input id="nif_id" type="text" class="form-input" name="nif" required placeholder="NIF" />
                         </div>
                         <div class="cell-row">
                             <label for="nrUtente_id">Nº de Utente</label>
