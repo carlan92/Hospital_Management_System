@@ -36,7 +36,7 @@
                 </div>
 
                 <div>
-                    <a class="login-a" href="">Recuperar palavra-passe</a>
+                    <a class="login-a" href="/recoverPass">Recuperar palavra-passe</a>
                 </div>
             </div>
         </div>

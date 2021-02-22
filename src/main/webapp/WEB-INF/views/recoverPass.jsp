@@ -15,20 +15,20 @@
         <img class="logo_small" src="/imagens/noun_centro_hospitalar_logo.svg" alt="Logo do centro hospitalar">
         <div class="main-col">
 
-            <form class="login-form" action="" method="get">
+            <form class="recoverPass-form" action="/recoverToLogin" method="post">
                 <div class="input-row">
                     <input class="form-input input1" type="text" name="user_email" id="user_email_id"
-                           placeholder="Introduza o seu e-mail">
+                           required placeholder="*Introduza o seu e-mail">
                     <input class="form-input input1" type="text" name="user_nif" id="user_nif_id"
-                           placeholder="Introduza o seu NIF">
+                           required placeholder="*Introduza o seu NIF">
 
                 </div>
 
                 <div class="input-row">
                     <input class="form-input pass1" type="password" name="password" id="password_id"
-                           placeholder="Nova palavra-passe">
+                           required placeholder="*Nova palavra-passe">
                     <input class="form-input pass1" type="password" name="password" id="password_id"
-                           placeholder="Repetir palavra-passe">
+                           required placeholder="*Repetir palavra-passe">
                 </div>
 
                 <div class="input-row">

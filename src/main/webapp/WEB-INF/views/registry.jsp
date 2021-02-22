@@ -23,7 +23,6 @@
             </h3>
             <form class="registry-form" action="/registryToLogin" method="post">
 
-
                 <div class="perfil-main-col">
 
                     <div class="perfil-row">
@@ -352,7 +351,7 @@
                             <input id="termos_id" type="checkbox" name="termos" required />
                             <label for="termos_id"> Declaro que aceito os <a href="termsandconditions.html" class="link">termos e
                                     condições</a> *</label>
-                            <p class="nota">* campos de prenchimento obrigatório</p>
+                            <p class="nota">* campos de preenchimento obrigatório</p>
                         </div>
                     </div>
 
