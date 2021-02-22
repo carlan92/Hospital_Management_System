@@ -610,7 +610,33 @@ h3 {
 .terms p, .terms li{
   text-align: justify  !important;
   font-size: 17px !important;
+}
 
+/* Recover Password */
+.input1 {
+  margin-top: 5px;
+  margin-bottom: 5px;
+  border-color: #98c33e;
+}
+
+.pass1 {
+  margin-top: 5px;
+  margin-bottom: 5px;
+  border-color: #31ade0;
+}
+
+.suggestion {
+  font: normal normal bold 14px/18px "Lato";
+}
+
+.suggestion2 {
+  font: normal normal normal 12px/18px "Lato";
+}
+
+.footerPass ul {
+  text-align: justify;
+  padding: 5px;
+  margin-top: 5px;
 }
 
 /* Forms */
