@@ -12,6 +12,9 @@ public class MainController {
     public String showMainPage(ModelMap modelMap){
         User user = Login.getConnectedUser();
         modelMap.put("user", user);
+        if(!Login.isConnected()){
+            return "redirect:/home";
+        }
         return "main";
     }
 

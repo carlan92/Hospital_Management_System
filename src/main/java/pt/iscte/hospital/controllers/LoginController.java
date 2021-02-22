@@ -20,7 +20,10 @@ public class LoginController {
 
     @GetMapping(value = "/login")
     public String showLoginPage(){
-        return "/login";
+        if(Login.isConnected()){
+            return "main";
+        }
+        return "login";
     }
 
     @PostMapping(value = {"/login","/main"})
@@ -34,6 +37,12 @@ public class LoginController {
             map.put("errorMessage", "Invalid Credentials");
             return "login";
         }
+    }
+
+    @GetMapping(value = "/logout")
+    public String logout(){
+        Login.logout();
+        return "redirect:/"; // redirects to home page
     }
 
 }
