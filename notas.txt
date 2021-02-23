@@ -25,28 +25,20 @@ Questões para o cliente:
 --------------------
 Tarefas:
 
+-Colocar Postal-Code como Long
 -Login: username e password
 -Perfil: fotografia
 -Possível alterar dados (excepto username, e-mail, NIF)
-
 -Utente e Funcionário(Medico+Recepcionista)
-
 -Medico: nº cedula + especialidade
-
 -Utente: Página pagamentos: historico, faturas, recibos
-
 -Médico: horario proxima consulta,chamada para a proxima consulta,
 info da consulta, visualizar proximos utentes(lista de espera),
 terminar consulta, historico + info de consultas dadas
-
 -Historico das consultas
-
 -Página Lista de Espera: Geral e por especialidade
-
 -Utente: marcação de consultas, visualiza lista de medicos
-
 -Dashboard Utente: proxima consulta, historico de consultas
-
 -Recepcionista: criar novas especialidades
 
 Desenho:
@@ -56,24 +48,14 @@ Desenho:
 -Contactos:
 
     main:
-se Utente
--Inicio:
--Utentes:
--Médicos:
--Consultas:
+se Utente:
+
 
 Medico!=Recepcionista (pagamentos, fazer check-in)
-se Médico
--Inicio:
--Utentes:
--Médicos:
--Consultas:
+se Médico:
 
-se Recepcionista
--Inicio:
--Utentes:
--Médicos:
--Consultas:
+se Recepcionista:
+
 
 ---
 Lógica:
