@@ -27,16 +27,26 @@ Tarefas:
 
 -Login: username e password
 -Perfil: fotografia
--Possível alterar dados (excepto username, e-mail, NIF(?))
+-Possível alterar dados (excepto username, e-mail, NIF)
+
+-Utente e Funcionário(Medico+Recepcionista)
+
+-Medico: nº cedula + especialidade
 
 -Utente: Página pagamentos: historico, faturas, recibos
--Médico: horario proxima consulta,chamada para a proxima consulta, info da consulta, visualizar proximos utentes(lista de espera), terminar consulta, historico + info de consultas dadas
+
+-Médico: horario proxima consulta,chamada para a proxima consulta,
+info da consulta, visualizar proximos utentes(lista de espera),
+terminar consulta, historico + info de consultas dadas
+
 -Historico das consultas
+
 -Página Lista de Espera: Geral e por especialidade
+
 -Utente: marcação de consultas, visualiza lista de medicos
--Utente e Funcionário(Medico+Recepcionista)
--Medico: nº cedula + especialidade
+
 -Dashboard Utente: proxima consulta, historico de consultas
+
 -Recepcionista: criar novas especialidades
 
 Desenho:
