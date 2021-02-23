@@ -25,7 +25,7 @@ Questões para o cliente:
 --------------------
 Tarefas:
 
--isValidData(): condições de limitação para cada campo do user
+-isDataValid(): condições de limitação para cada campo do user
 -Colocar mensagens de erro;
 -Colocar Postal-Code como Long
 -Login: username e password
