@@ -16,6 +16,7 @@
         <div class="white_box vista_perfil">
             
             <img class="logo_small" src="/imagens/noun_centro_hospitalar_logo.svg" alt="Logo do centro hospitalar">
+            <img src="/uploaded_images/001.jpg" width="20%" height="20%"/>
             <div class="user-type">
                 <p id="user_name">${user.getName()} (${user.getUsername()})</p>
                 <p id="user_category">${user.getAccount()}</p>
