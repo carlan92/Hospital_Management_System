@@ -25,24 +25,24 @@ Questões para o cliente:
 --------------------
 Tarefas:
 
--isDataValid(): condições de limitação para cada campo do user
--Colocar mensagens de erro;
--Colocar Postal-Code como Long
--Colocar mudança de data no data_change com o formato correcto
--Login: username e password
--Perfil: fotografia
--Possível alterar dados (excepto username, e-mail, NIF)
+-isDataValid(): condições de limitação para cada campo do user      -> Marco
+-Colocar mensagens de erro;                                         -> Marco
+-Colocar Postal-Code como Long e locality->city                     -> Marco
+-Colocar mudança de data no data_change com o formato correcto      -> Marco
+-Login: username e password                                         -> Feito
+-Perfil: fotografia                                                 -> Pedro
+-Possível alterar dados (excepto username, e-mail, NIF)             -> Feito
 -Utente e Funcionário (Medico+Recepcionista)
 -Medico: nº cedula + especialidade
--Utente: Página pagamentos: historico, faturas, recibos
+-Utente: Página pagamentos: historico, faturas, recibos             -> Rodrigo
 -Médico: horario proxima consulta,chamada para a proxima consulta,
 info da consulta, visualizar proximos utentes(lista de espera),
 terminar consulta, historico + info de consultas dadas
--Historico das consultas
--Página Lista de Espera: Geral e por especialidade
--Utente: marcação de consultas, visualiza lista de medicos
--Dashboard Utente: proxima consulta, historico de consultas
--Recepcionista: criar novas especialidades
+-Historico das consultas                                            -> Carla
+-Página Lista de Espera: Geral e por especialidade                  -> Carla
+-Utente: marcação de consultas, visualiza lista de medicos          -> Carla
+-Dashboard Utente: proxima consulta, historico de consultas         -> Carla
+-Recepcionista: criar novas especialidades                          -> Carla
 
 Desenho:
     home:

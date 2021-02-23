@@ -46,7 +46,7 @@ public class ChangeDataController {
 
             user.setName(name);
             user.setSex(sex);
-            /*user.setBirthday(birthday);*/
+            /*user.setBirthday(birthday);*//*TODO*/
             user.setAddress(address);
             user.setPostalCode(postalCode);
             user.setLocality(locality);
