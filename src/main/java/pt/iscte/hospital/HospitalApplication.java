@@ -11,7 +11,6 @@ import java.nio.file.Paths;
 public class HospitalApplication {
 
 	public static void main(String[] args) {
-		System.out.println(System.getProperty("user.dir"));
 		SpringApplication.run(HospitalApplication.class, args);
 	}
 

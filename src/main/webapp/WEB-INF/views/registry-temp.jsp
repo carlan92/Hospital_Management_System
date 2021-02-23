@@ -29,7 +29,7 @@
                 <div class="perfil-row">
                     <div class="cell-row">
                         <label for="foto_perfil_id">Foto de perfil</label>
-                        <input type="file" name="file"/>
+                        <input type="file" name="file" accept="image/jpeg"/>
                     </div>
                 </div>
 
@@ -38,7 +38,7 @@
 
             </div>
             <button type="submit" class="btn btn-blue">Criar Conta</button>
-            <img src="/uploaded_images/001.jpg" />
+            <img src="/uploaded_images/001.jpg" width="20%" height="20%"/>
         </form>
 
 
