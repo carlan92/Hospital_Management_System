@@ -72,7 +72,7 @@
                 </div>
                 <div class="perfil-row">
                     <div class="cell-row">
-                        <form action="/alterar_registo" method="get">
+                        <form action="/change_data" method="get">
                             <button class="btn-blue btn-w65">Alterar Registo</button>
                         </form>
                     </div>
