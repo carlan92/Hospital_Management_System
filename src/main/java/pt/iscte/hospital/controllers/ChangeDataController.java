@@ -63,7 +63,7 @@ public class ChangeDataController {
 
         } else {
             // case error in info validation
-            // TODO mensagens de erro
+            modelMap.put("errorMessage", "Dados inválidos");
             modelMap.put("name", name);
             modelMap.put("sex", sex);
             modelMap.put("birthday", birthday);

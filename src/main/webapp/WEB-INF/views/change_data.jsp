@@ -318,6 +318,7 @@
                     <div class="cell-row cell-morada">
                         <button type="submit" class="btn btn-blue">Alterar Dados</button>
                     </div>
+                     <span style="color: red">${errorMessage}</span>
                 </div>
 
             </div>
