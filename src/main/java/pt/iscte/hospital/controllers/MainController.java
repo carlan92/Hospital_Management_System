@@ -13,7 +13,7 @@ public class MainController {
         User user = Login.getConnectedUser();
         modelMap.put("user", user);
         if(!Login.isConnected()){
-            return "redirect:/home";
+            return "redirect:/";
         }
         return "main";
     }
