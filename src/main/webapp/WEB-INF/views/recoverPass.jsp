@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+    <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
@@ -17,17 +17,16 @@
 
             <form class="recoverPass-form" action="/recoverToLogin" method="post">
                 <div class="input-row">
-                    <input class="form-input input1" type="text" name="user_email" id="user_email_id"
-                           required placeholder="*Introduza o seu e-mail">
+                    <input class="form-input input1" type="text" name="username" id="user_name_id"
+                           required placeholder="*Introduza o seu username" value="${username}">
                     <input class="form-input input1" type="text" name="user_nif" id="user_nif_id"
-                           required placeholder="*Introduza o seu NIF">
-
+                           required placeholder="*Introduza o seu NIF" value="${user_nif}">
                 </div>
 
                 <div class="input-row">
-                    <input class="form-input pass1" type="password" name="password" id="password_id"
+                    <input class="form-input pass1" type="password" name="password1" id="password_id1"
                            required placeholder="*Nova palavra-passe">
-                    <input class="form-input pass1" type="password" name="password" id="password_id"
+                    <input class="form-input pass1" type="password" name="password2" id="password_id2"
                            required placeholder="*Repetir palavra-passe">
                 </div>
 

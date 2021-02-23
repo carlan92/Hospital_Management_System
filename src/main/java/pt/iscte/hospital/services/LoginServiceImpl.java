@@ -15,10 +15,22 @@ public class LoginServiceImpl implements LoginService {
     @Override
     public boolean validateLogin(String username, String password) {
         User user = userRepository.findByUsername(username);
-        if (!userService.validateUser(user)) {
-            return false;
-        } else if (username.equals(user.getUsername()) && password.equals(user.getPassword())) {
-            return true;
+        if (userService.validateUser(user)) {
+            if (username.equals(user.getUsername()) && password.equals(user.getPassword())) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    @Override
+    public boolean validateUserNIF(String username, Long user_nif) {
+        User user = userRepository.findByUsername(username);
+        System.out.println(user);
+        if (userService.validateUser(user)) {
+            if (username.equals(user.getUsername()) && user_nif.equals(user.getNif())) {
+                return true;
+            }
         }
         return false;
     }
