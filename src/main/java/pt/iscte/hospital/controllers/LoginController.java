@@ -34,7 +34,7 @@ public class LoginController {
             return "redirect:/main";
         } else {
             //Invalid Credentials
-            map.put("errorMessage", "Invalid Credentials");
+            map.put("errorMessage", "Username/Palavra-passe inválida");
             return "login";
         }
     }

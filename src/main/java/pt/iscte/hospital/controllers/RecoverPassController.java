@@ -37,12 +37,10 @@ public class RecoverPassController {
                 userService.addUser(user);
                 return "redirect:/login";
             } else {
-                // TODO mensagens de erro
-                System.out.println("Password diferente");
+                modelMap.put("errorMessage", "Palavras-passe não coincidem");
             }
         } else {
-            // TODO mensagens de erro
-            System.out.println("Username inválido ou NIF inexistente");
+            modelMap.put("errorMessage", "Username/NIF inválido");
         }
         modelMap.put("username", username);
         modelMap.put("user_nif", user_nif);

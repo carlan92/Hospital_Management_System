@@ -33,6 +33,7 @@
                 <div class="input-row">
                     <button type="submit" class="btn-green">Guardar alterações e iniciar sessão</button>
                 </div>
+                <span style="color: red">${errorMessage}</span>
             </form>
 
             <div class="footerPass">
