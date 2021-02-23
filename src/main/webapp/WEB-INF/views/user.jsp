@@ -1,3 +1,4 @@
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -26,7 +27,7 @@
                 </div>
                 <div class="perfil-row">
                     <div class="cell-row">Data de nascimento</div>
-                    <div class="cell-row">${user.getBirthday()}</div>
+                    <div class="cell-row"><fmt:formatDate pattern="dd/MM/yyyy" value="${user.getBirthday()}"/></div>
                 </div>
 
                 <div class="perfil-row">
