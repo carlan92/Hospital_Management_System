@@ -1,8 +1,8 @@
-Propostas de inovação- apresenta funcionalidades que o grupo propõe a título de inovação. Tratam-se de funcionalidades que não são mencionadas no enunciado
+Propostas de inovação:
+apresenta funcionalidades que o grupo propõe a título de inovação. Tratam-se de funcionalidades que não são mencionadas no enunciado
 temático e que o grupo considera que se traduzirão em maior produtividade e eficiência para os processos organizacionais que o sistema suporta. Não é necessário
 que as funcionalidades aqui propostas tenham sido descritas pelos diagramas apresentados nas secções anteriores.
 
-Notas:
 - durante tolerancia voltar a fazer chamada do utente por parte do médico, pode estar distraido.
 - ["A hora de fim da consulta é registada quando o próximo utente é chamado ou quando o médico indica que a consulta terminou, fazendo o "fecho" da consulta no sistema"], e se não houver utente anterior ou  a seguir?! Será um atalho para salvaguardar esquecimento do médico em fechar consulta?! Concordo que a hora do fim da consulta seja quando o médico faz o fecho, permitindo o atalho de fechar a consulta após chamar novo utente!
 - Antes de existir uma marcação de consulta haver a criação de uma ficha de utente com os dados do utente caso seja a primeira consulta, caso contrário apenas verificar se é necessário atualizar algum dado;
@@ -17,7 +17,53 @@ Notas:
 * Abertura de horas extra para consultas não se percebe bem a interação, quem abre as novas vagas é o médico/especialidade?
 - Comunicar (via e-mail por exemplo) a abertura de novas horas extra de consulta ao médico/especialidade
 
--------
-Questoões para o cliente:
+--------------------
+Questões para o cliente:
 
 -É necessário o perfil do utilizador ser adaptado ao tipo de utilizador (exemplo:funcionário/médico/utente)
+
+--------------------
+Tarefas:
+
+-Login: username e password
+-Perfil: fotografia
+-Possível alterar dados (excepto username, e-mail, NIF(?))
+
+-Utente: Página pagamentos: historico, faturas, recibos
+-Médico: horario proxima consulta,chamada para a proxima consulta, info da consulta, visualizar proximos utentes(lista de espera), terminar consulta, historico + info de consultas dadas
+-Historico das consultas
+-Página Lista de Espera: Geral e por especialidade
+-Utente: marcação de consultas, visualiza lista de medicos
+-Utente e Funcionário(Medico+Recepcionista)
+-Medico: nº cedula + especialidade
+-Dashboard Utente: proxima consulta, historico de consultas
+-Recepcionista: criar novas especialidades
+
+Desenho:
+    home:
+-Informações gerais:
+-Calendario de vagas:
+-Contactos:
+
+    main:
+se Utente
+-Inicio:
+-Utentes:
+-Médicos:
+-Consultas:
+
+Medico!=Recepcionista (pagamentos, fazer check-in)
+se Médico
+-Inicio:
+-Utentes:
+-Médicos:
+-Consultas:
+
+se Recepcionista
+-Inicio:
+-Utentes:
+-Médicos:
+-Consultas:
+
+---
+Lógica:
