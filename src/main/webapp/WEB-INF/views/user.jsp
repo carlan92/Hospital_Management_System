@@ -36,11 +36,11 @@
                 </div>
                 <div class="perfil-row">
                     <div class="cell-row">Código Postal</div>
-                    <div class="cell-row">${user.getPostalCode()}</div>
+                    <div class="cell-row">${user.getPostCode()}</div>
                 </div>
                 <div class="perfil-row">
                     <div class="cell-row">Localidade</div>
-                    <div class="cell-row">${user.getLocality()}</div>
+                    <div class="cell-row">${user.getCity()}</div>
                 </div>
                 <div class="perfil-row">
                     <div class="cell-row">Nacionalidade</div>

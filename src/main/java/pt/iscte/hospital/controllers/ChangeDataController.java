@@ -31,8 +31,8 @@ public class ChangeDataController {
                                     @DateTimeFormat (iso = DateTimeFormat.ISO.DATE)
                                     @RequestParam Date birthday,
                                     @RequestParam String address,
-                                    @RequestParam String postalCode,
-                                    @RequestParam String locality,
+                                    @RequestParam String postCode,
+                                    @RequestParam String city,
                                     @RequestParam String nationality,
                                     @RequestParam Long phone,
                                     @RequestParam String documentType,
@@ -48,8 +48,8 @@ public class ChangeDataController {
             user.setSex(sex);
             /*user.setBirthday(birthday);*//*TODO*/
             user.setAddress(address);
-            user.setPostalCode(postalCode);
-            user.setLocality(locality);
+            user.setPostCode(postCode);
+            user.setCity(city);
             user.setNationality(nationality);
             user.setPhone(phone);
             user.setDocumentType(documentType);
@@ -68,8 +68,8 @@ public class ChangeDataController {
             modelMap.put("sex", sex);
             modelMap.put("birthday", birthday);
             modelMap.put("address", address);
-            modelMap.put("postalCode", postalCode);
-            modelMap.put("locality", locality);
+            modelMap.put("postalCode", postCode);
+            modelMap.put("city", city);
             modelMap.put("nationality", nationality);
             modelMap.put("phone", phone);
             modelMap.put("documentType", documentType);

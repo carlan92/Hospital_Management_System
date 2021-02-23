@@ -26,7 +26,7 @@ Questões para o cliente:
 Tarefas:
 
 -isDataValid(): condições de limitação para cada campo do user      -> Marco
--Colocar mensagens de erro;                                         -> Marco
+-Colocar mensagens de erro;                                         -> Marco (done)
 -Colocar Postal-Code como Long e locality->city                     -> Marco
 -Colocar mudança de data no data_change com o formato correcto      -> Marco
 -Login: username e password                                         -> Feito

@@ -62,14 +62,14 @@
                 <div class="perfil-row">
                     <div class="cell-row">
                         <label for="codigoPostal_id">Código Postal</label>
-                        <input id="codigoPostal_id" type="text" class="form-input" name="postalCode"
-                               placeholder="O seu código postal" value="${user.getPostalCode()}"/>
+                        <input id="codigoPostal_id" type="text" class="form-input" name="postCode"
+                               placeholder="O seu código postal" value="${user.getPostCode()}"/>
                     </div>
 
                     <div class="cell-row">
                         <label for="localidade_id">Localidade</label>
-                        <input id="localidade_id" type="text" class="form-input" name="locality" required
-                               placeholder="A sua localidade" value="${user.getLocality()}"/>
+                        <input id="localidade_id" type="text" class="form-input" name="city" required
+                               placeholder="A sua localidade" value="${user.getCity()}"/>
                     </div>
                 </div>
 

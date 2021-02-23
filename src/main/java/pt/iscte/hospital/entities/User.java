@@ -18,8 +18,8 @@ public class User {
     @DateTimeFormat (iso =DateTimeFormat.ISO.DATE)
     private Date birthday ;
     private String address;
-    private String postalCode;
-    private String locality;
+    private String postCode;
+    private String city;
     private String account;
     private String nationality;
     private String documentType;
@@ -31,15 +31,15 @@ public class User {
     private String password;
     private String photoURL;
 
-    public User(Long id, String name, String username, String sex, Date birthday, String address, String postalCode, String locality, String account, String nationality, String documentType, Long documentNumber, Long nif, Long patientNumber, Long phone, String email, String password, String photoURL) {
+    public User(Long id, String name, String username, String sex, Date birthday, String address, String postCode, String city, String account, String nationality, String documentType, Long documentNumber, Long nif, Long patientNumber, Long phone, String email, String password, String photoURL) {
         this.id = id;
         this.name = name;
         this.username = username;
         this.sex = sex;
         this.birthday = birthday;
         this.address = address;
-        this.postalCode = postalCode;
-        this.locality = locality;
+        this.postCode = postCode;
+        this.city = city;
         this.account = account;
         this.nationality = nationality;
         this.documentType = documentType;
@@ -112,20 +112,20 @@ public class User {
         this.address = address;
     }
 
-    public String getPostalCode() {
-        return postalCode;
+    public String getPostCode() {
+        return postCode;
     }
 
-    public void setPostalCode(String postalCode) {
-        this.postalCode = postalCode;
+    public void setPostCode(String postCode) {
+        this.postCode = postCode;
     }
 
-    public String getLocality() {
-        return locality;
+    public String getCity() {
+        return city;
     }
 
-    public void setLocality(String locality) {
-        this.locality = locality;
+    public void setCity(String city) {
+        this.city = city;
     }
 
     public String getAccount() {
@@ -217,8 +217,8 @@ public class User {
                 ", sex='" + sex + '\'' +
                 ", birthday=" + birthday +
                 ", address='" + address + '\'' +
-                ", postalCode='" + postalCode + '\'' +
-                ", locality='" + locality + '\'' +
+                ", postCode='" + postCode + '\'' +
+                ", city='" + city + '\'' +
                 ", account='" + account + '\'' +
                 ", nationality='" + nationality + '\'' +
                 ", documentType='" + documentType + '\'' +

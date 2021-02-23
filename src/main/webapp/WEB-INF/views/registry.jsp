@@ -66,13 +66,13 @@
                 <div class="perfil-row">
                     <div class="cell-row">
                         <label for="codigoPostal_id">Código Postal</label>
-                        <input id="codigoPostal_id" type="text" class="form-input" name="postalCode"
+                        <input id="codigoPostal_id" type="text" class="form-input" name="postCode"
                                placeholder="O seu código postal"/>
                     </div>
 
                     <div class="cell-row">
                         <label for="localidade_id">Localidade *</label>
-                        <input id="localidade_id" type="text" class="form-input" name="locality" required
+                        <input id="localidade_id" type="text" class="form-input" name="city" required
                                placeholder="A sua localidade"/>
                     </div>
                 </div>
