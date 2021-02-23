@@ -26,11 +26,12 @@ Questões para o cliente:
 Tarefas:
 
 -isValidData(): condições de limitação para cada campo do user
+-Colocar mensagens de erro;
 -Colocar Postal-Code como Long
 -Login: username e password
 -Perfil: fotografia
 -Possível alterar dados (excepto username, e-mail, NIF)
--Utente e Funcionário(Medico+Recepcionista)
+-Utente e Funcionário (Medico+Recepcionista)
 -Medico: nº cedula + especialidade
 -Utente: Página pagamentos: historico, faturas, recibos
 -Médico: horario proxima consulta,chamada para a proxima consulta,
