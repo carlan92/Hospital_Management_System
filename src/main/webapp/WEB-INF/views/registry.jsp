@@ -21,21 +21,15 @@
         <h3 class="registo">
             Registo de Utente
         </h3>
-        <form class="registry-form" action="/registryToLogin" method="post">
+        <form class="registry-form" action="/registryToLogin" method="post" enctype="multipart/form-data">
 
             <div class="perfil-main-col">
 
                 <div class="perfil-row">
-                    <div class="cell-row">
+                    <div class="cell-row cell-morada">
                         <label for="nome_id">Nome Completo *</label>
                         <input id="nome_id" type="text" class="form-input" name="name" required
-                               placeholder="O seu nome completo" value="${user.getName()}"/>
-                    </div>
-
-                    <div class="cell-row">
-                        <label for="nickName_id">Nome de Utilizador *</label>
-                        <input id="nickName_id" type="text" class="form-input" name="username" required
-                               placeholder="O seu nome de utilizador" value="${user.getUsername()}"/>
+                               placeholder="O seu nome completo" value=""/>
                     </div>
                 </div>
 
@@ -335,14 +329,26 @@
 
                 <div class="perfil-row">
                     <div class="cell-row">
+                        <label for="username_id">Username *</label>
+                        <input id="username_id" type="text" class="form-input" name="username" required
+                               placeholder="Introduza o username" value=""/>
+                    </div>
+                    <div class="cell-row">
+                        <label for="foto_perfil_id">Foto de perfil</label>
+                        <input type="file" name="file"/>
+                    </div>
+                </div>
+
+                <div class="perfil-row">
+                    <div class="cell-row">
                         <label for="password_id">Palavra-Passe *</label>
                         <input id="password_id" type="password" class="form-input" name="password" required
-                               placeholder="palavra-passe"/>
+                               placeholder="Palavra-passe"/>
                     </div>
                     <div class="cell-row">
                         <label for="confirmarPassword_id">Confirmar Palavra-Passe *</label>
-                        <input id="confirmarPassword_id" type="password" class="form-input" name="confirmarPassword"
-                               required placeholder="repetir palavra-passe"/>
+                        <input id="confirmarPassword_id" type="password" class="form-input" name="password2"
+                               required placeholder="Repetir palavra-passe"/>
                     </div>
                 </div>
 
