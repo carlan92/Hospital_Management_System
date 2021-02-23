@@ -28,6 +28,7 @@ Tarefas:
 -isDataValid(): condições de limitação para cada campo do user
 -Colocar mensagens de erro;
 -Colocar Postal-Code como Long
+-Colocar mudança de data no data_change com o formato correcto
 -Login: username e password
 -Perfil: fotografia
 -Possível alterar dados (excepto username, e-mail, NIF)
