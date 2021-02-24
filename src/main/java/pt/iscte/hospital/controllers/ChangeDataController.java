@@ -2,6 +2,7 @@ package pt.iscte.hospital.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.lang.Nullable;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -11,6 +12,7 @@ import pt.iscte.hospital.entities.Login;
 import pt.iscte.hospital.entities.User;
 import pt.iscte.hospital.services.UserService;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 @Controller
@@ -30,23 +32,25 @@ public class ChangeDataController {
                                     @RequestParam String sex,
                                     @DateTimeFormat (iso = DateTimeFormat.ISO.DATE)
                                     @RequestParam Date birthday,
-                                    @RequestParam String address,
-                                    @RequestParam String postCode,
+                                    @RequestParam @Nullable String address,
+                                    @RequestParam @Nullable String postCode,
                                     @RequestParam String city,
                                     @RequestParam String nationality,
                                     @RequestParam Long phone,
                                     @RequestParam String documentType,
                                     @RequestParam Long documentNumber,
                                     @RequestParam Long nif,
-                                    @RequestParam Long patientNumber) {
+                                    @RequestParam @Nullable Long patientNumber) {
+
+
+        //Date date = new Date(user.getBirthday().getTime());
 
         if (isDataValid()) {
             // Update user info
             User user = Login.getConnectedUser();
-
             user.setName(name);
             user.setSex(sex);
-            /*user.setBirthday(birthday);*//*TODO*/
+            user.setBirthday(birthday);
             user.setAddress(address);
             user.setPostCode(postCode);
             user.setCity(city);

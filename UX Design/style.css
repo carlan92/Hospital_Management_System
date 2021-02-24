@@ -55,6 +55,12 @@ h1 {
   color: #2c363e;
 }
 
+.msg-error {
+  color: #D8000C;
+  font-size: 12px;
+  margin: 2px auto;
+}
+
 .container {
   display: flex;
   min-width: 100%;
@@ -383,7 +389,7 @@ h1 {
 /*Login*/
 
 .white_box {
-  margin: auto;
+  margin: 10px auto;
   padding: 30px;
   box-shadow: 5px 0px 20px #00000029;
   background: transparent linear-gradient(90deg, #ffffffb9 0%, #ffffff7e 100%) 0% 0% no-repeat padding-box;
@@ -604,12 +610,139 @@ option {
   padding-left: 100px;
 }
 
-/*termos e condições*/
+/*Terms & Conditions*/
 
 .terms p, .terms li {
   text-align: justify !important;
   font-size: 17px !important;
 }
+
+/*Payment History*/
+
+.payment_history {
+  font-size: 30px;
+  text-align: center;
+  color: #00aec5;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+.payment_box {
+  margin: auto !important; 
+  padding: 30px !important;
+  box-shadow: 5px 0px 20px #00000029 !important;
+  background: transparent linear-gradient(90deg, #ffffffb9 0%, #ffffff7e 100%)
+    0% 0% no-repeat padding-box !important;
+  width: 650px !important;
+  min-height: 600px !important;
+}
+
+.payment_box {
+  box-sizing: border-box;
+  background-color: transparent;
+  margin-left: 22.5px;
+  margin-right: 22.5px;
+  width: 25%;
+}
+
+.payment_box:hover {
+  background-color: white;
+  z-index: 2;
+  position: relative;
+  border-radius: 6px;
+}
+
+.payment_values {
+  box-sizing: border-box;
+  height: 100%;
+  width: 100%;
+  background-color: transparent;
+}
+
+.payment_box * {
+  text-align: center;
+  box-sizing: border-box;
+  border: none;
+}
+
+.payment_values-body {
+  padding: 0px 31px;
+}
+
+.btn-invoice {
+  background-color: #00aec5;
+  border: none;
+  color: white;
+  padding: 10px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-flex;
+  font-size: 16px;
+  margin: 4px 2px;
+  
+  
+}
+ .btn-invoice:hover {
+  background-color: white;
+  z-index: 2;
+  position: relative;
+  border-radius: 6px;
+  color: black;
+}
+
+.btn-receipt {
+  background-color: #00aec5;
+  border: none;
+  color: white;
+  padding: 10px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-flex;
+  font-size: 16px;
+  margin: 4px 2px;
+  
+}
+ .btn-receipt:hover {
+  background-color: white;
+  z-index: 2;
+  position: relative;
+  border-radius: 6px;
+  color: black;
+}
+
+
+.pm_main_col {
+  display: inline-flex;
+  position: relative;
+  box-sizing: border-box;
+  width: 100%;
+}
+
+.payment_row {
+  position: relative;
+  box-sizing: border-box;
+  width: 45%;
+  margin: 5px auto;
+  font: normal normal normal 15px/18px "Lato";
+}
+
+.payment_rowbold {
+  position: relative;
+  box-sizing: border-box;
+  width: 45%;
+  margin: 5px auto;
+  font: bold 16px/18px "Lato";~
+  font-weight: bold !important;
+}
+
+hr.payment_dash{
+  border-top: 2px solid #bbb;
+}
+
+.buttons_payment{
+  margin-top: 20px;
+}
+
 
 /* Recover Password */
 
