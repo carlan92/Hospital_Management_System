@@ -26,8 +26,9 @@ Questões para o cliente:
 Tarefas:
 
 -isDataValid(): condições de limitação para cada campo do user      -> Marco
+/todo validar repetir password; nickname unique, data???, nºdocumento, nif, numero utente,
 -Colocar mensagens de erro;                                         -> Marco (done)
--Colocar Postal-Code como Long e locality->city                     -> Marco
+-Colocar Postal-Code como Long e locality->city                     -> Marco (done, postal code mantem-se string e só aceita pattern)
 -Colocar mudança de data no data_change com o formato correcto      -> Marco
 -Login: username e password                                         -> Feito
 -Perfil: fotografia                                                 -> Pedro

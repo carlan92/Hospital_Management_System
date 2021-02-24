@@ -60,7 +60,7 @@
                 <div class="perfil-row">
                     <div class="cell-row">
                         <label for="codigoPostal_id">Código Postal</label>
-                        <input id="codigoPostal_id" type="text" class="form-input" name="postCode"
+                        <input id="codigoPostal_id" type="text" pattern="\d{4}([ -]\d{3})?" class="form-input" name="postCode"
                                placeholder="O seu código postal"/>
                     </div>
 
@@ -317,12 +317,12 @@
                 <div class="perfil-row">
                     <div class="cell-row">
                         <label for="telemovel_id">Telemóvel *</label>
-                        <input id="telemovel_id" type="text" class="form-input" name="phone" required
+                        <input id="telemovel_id" type="text" pattern="^9[1236][0-9]{7}$|^2[3-9][1-9][0-9]{6}$|^2[12][0-9]{7}$" class="form-input" name="phone" required
                                placeholder="O seu número de telemóvel"/>
                     </div>
                     <div class="cell-row">
                         <label for="e-mail_id">E-mail *</label>
-                        <input id="e-mail_id" type="text" class="form-input" name="email" required
+                        <input id="e-mail_id" type="email" class="form-input" name="email" required
                                placeholder="O seu e-mail"/>
                     </div>
                 </div>
@@ -342,12 +342,12 @@
                 <div class="perfil-row">
                     <div class="cell-row">
                         <label for="password_id">Palavra-Passe *</label>
-                        <input id="password_id" type="password" class="form-input" name="password" required
+                        <input id="password_id" type="password" class="form-input" minlength="1" maxlength="15" size="8" name="password" required
                                placeholder="Palavra-passe"/>
                     </div>
                     <div class="cell-row">
                         <label for="confirmarPassword_id">Confirmar Palavra-Passe *</label>
-                        <input id="confirmarPassword_id" type="password" class="form-input" name="password2"
+                        <input id="confirmarPassword_id" type="password" class="form-input" minlength="1" maxlength="15" size="8" name="confirmarPassword2"
                                required placeholder="Repetir palavra-passe"/>
                     </div>
                 </div>

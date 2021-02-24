@@ -62,7 +62,7 @@
                 <div class="perfil-row">
                     <div class="cell-row">
                         <label for="codigoPostal_id">Código Postal</label>
-                        <input id="codigoPostal_id" type="text" class="form-input" name="postCode"
+                        <input id="codigoPostal_id" type="text" pattern="\d{4}([ -]\d{3})?" class="form-input" name="postCode"
                                placeholder="O seu código postal" value="${user.getPostCode()}"/>
                     </div>
 
@@ -281,7 +281,7 @@
 
                     <div class="cell-row">
                         <label for="telemovel_id">Telemóvel</label>
-                        <input id="telemovel_id" type="text" class="form-input" name="phone" required
+                        <input id="telemovel_id" type="text" pattern="^9[1236][0-9]{7}$|^2[3-9][1-9][0-9]{6}$|^2[12][0-9]{7}$"class="form-input" name="phone" required
                                placeholder="O seu número de telemóvel" value="${user.getPhone()}"/>
                         </div>
                 </div>
