@@ -64,7 +64,12 @@ public class RegistrationController {
                                     ModelMap mpError) {
 
         // TODO verificar elementos do user
+        boolean isFormValid=true;
 
+        if (!validaNome(user)) {
+            mpError.put("errorMsgName", errorMsgName);
+            isFormValid=false;
+        }
 
         if (file != null && !file.isEmpty() && !file.getContentType().equals("application/octet-stream")) {
             try {
@@ -83,17 +88,14 @@ public class RegistrationController {
                 return "registration";
             }
         }
-
+    if (!isFormValid){
+        return "registration";
+    }
         // Add user to database
         userService.addUser(user);
 
         return "redirect:/login";
     }
-
-
-
-
-
 
 
     // Para testes apenas!
@@ -125,6 +127,16 @@ public class RegistrationController {
         }
 
         return "redirect:/login";
+    }
+
+    public boolean validaNome(User user) {
+        String[] names = user.getName().split(" ");
+        for (int i = 0; i < names.length; i++) {
+            if (!names[i].matches("[A-ZÀ-Ÿ][a-zÀ-ÿ']{1,}")) {
+                return false;
+            }
+        }
+        return true;
     }
 
 }
