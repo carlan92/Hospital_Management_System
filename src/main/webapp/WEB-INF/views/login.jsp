@@ -32,7 +32,7 @@
                 </form>
                 <span style="color: red">${errorMessage}</span>
                 <div>
-                    <a class="login-a" href="/registry">Efectuar registo </a>
+                    <a class="login-a" href="/registration">Efectuar registo </a>
                 </div>
 
                 <div>

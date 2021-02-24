@@ -16,7 +16,7 @@ import java.io.IOException;
 
 
 @Controller
-public class RegistryController {
+public class RegistrationController {
     // Attributes
     @Autowired
     UserService userService;
@@ -25,14 +25,14 @@ public class RegistryController {
     ImageUploadService imageUploadService;
 
     // Methods
-    @GetMapping(value = "/registry")
-    public String showRegistryPage(ModelMap modelMap) {
+    @GetMapping(value = "/registration")
+    public String showRegistrationPage(ModelMap modelMap) {
         modelMap.put("user", new User());
 
-        return "registry";
+        return "registration";
     }
 
-    @PostMapping(value = "/registryToLogin")
+    @PostMapping(value = "/registrationToLogin")
     public String returnToLoginPage(@ModelAttribute User user, @RequestParam("file") MultipartFile file) {
         userService.addUser(user);
 
@@ -49,11 +49,11 @@ public class RegistryController {
     }
 
     @GetMapping(value = "/temp")
-    public String showRegistryPagetmp(ModelMap modelMap) {
+    public String showRegistrationPagetmp(ModelMap modelMap) {
         // TODO para testes
         modelMap.put("user", new User());
 
-        return "registry-temp";
+        return "registration-temp";
     }
 
     @PostMapping(value = "/temp")
