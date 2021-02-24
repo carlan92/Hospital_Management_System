@@ -9,4 +9,6 @@ import java.io.IOException;
 public interface ImageUploadService {
     void uploadImage(MultipartFile imageFile, String username)
             throws IOException, ImageSizeException, ImageTypeException;
+
+    long getImageMaxSize();
 }

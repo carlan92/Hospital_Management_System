@@ -10,7 +10,7 @@ import java.io.IOException;
 import java.util.HashMap;
 
 @Service
-public class ImageUploadImpl implements ImageUploadService {
+public class ImageUploadServiceImpl implements ImageUploadService {
     private static final String dirSavePath = "uploaded_images/";
     private static final long IMAGE_MAX_SIZE = 1000000L;   // Size in bytes
     private static final String[] IMAGE_TYPES = {"image/jpeg", "image/png"};
@@ -32,6 +32,10 @@ public class ImageUploadImpl implements ImageUploadService {
 
         // Save image
         imageFile.transferTo(new File(savePath + username + fileExtension));
+    }
+
+    public long getImageMaxSize(){
+        return IMAGE_MAX_SIZE/1000000;
     }
 
     private void verifyImage(MultipartFile imageFile) throws ImageSizeException, ImageTypeException {
