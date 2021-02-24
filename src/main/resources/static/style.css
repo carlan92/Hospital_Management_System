@@ -729,6 +729,157 @@ select option:disabled {
   color: lightgrey;
 }
 
+/*Menu inicio: Medico (falta sintetizar algumas propriedades) */
+
+.user_photo {
+  padding: 0px;
+}
+
+.user_photo img {
+  height: 80px;
+  width: 80px;
+  padding: 0;
+  border-radius: 50%;
+  margin-top: 10px;
+}
+
+.user_info2 {
+  margin: 15px;
+}
+
+.btn-perfil {
+  width: 70%;
+  display: block;
+  margin: auto;
+  margin-top: 10px;
+}
+
+.display_time {
+  display: block;
+  margin: auto;
+}
+
+.time_box {
+  text-align: center;
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+.date_box {
+  text-align: center;
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+#hour, #date {
+  margin: 10px;
+  color: #707070;
+}
+
+#hour {
+  font: normal normal bold "Lato";
+  font-size: 40px;
+  letter-spacing: 2.59px;
+  color: black;
+}
+
+#date {
+  font: normal normal normal "Lato";
+  font-size: 25px;
+}
+
+.middle-row3 {
+  margin-top: 80px;
+  margin-bottom: 40px;
+}
+
+.middle-row3 i {
+  padding: 20px;
+  font-size: 35px;
+  color: #98c33e;
+}
+
+.main .card_box2:hover i {
+  color: #000000;
+}
+
+.fa-clock {
+  font-size: 25px;
+  color: #98c33e;
+;
+}
+
+.but-patient_info {
+  margin-left: 15px;
+  background-color: #31ade0;
+}
+
+.btn-w85 {
+  width: 85%;
+  margin-left: 15px;
+  margin-top: 15px;
+}
+
+.text_nextApt {
+  font: normal normal bold "Lato";
+  font-size: 35px;
+  letter-spacing: 2.59px;
+  color: black;
+  margin-left: 15px;
+}
+
+.text_nextApt2 {
+  font: normal normal normal "Lato";
+  font-size: 15px;
+  color: #707070;
+  margin-left: 15px;
+  margin-bottom: 15px;
+}
+
+.time_box2 {
+  font: normal normal bold "Lato";
+  font-size: 35px;
+  letter-spacing: 2.59px;
+  color: black;
+  display: block;
+  margin: 0;
+}
+
+.date_box2 {
+  font: normal normal normal "Lato";
+  font-size: 15px;
+  color: #707070;
+  display: block;
+  margin: 0;
+}
+
+.data_appt {
+  margin-left: 20px
+}
+
+.appt_options {
+  margin-top: 40px;
+;
+}
+
+.icon2 {
+  width: 30%;
+}
+
+#patient_age, #first_appt_ask {
+  font: normal normal normal "Lato";
+  font-size: 15px;
+  color: black;
+}
+
+#next_patient_name {
+  font: normal normal normal "Lato";
+  font-size: 25px;
+  color: #31ade0;
+}
+/*....*/
+
+
 @media screen and (max-height: 450px) {
   .sidenav {
     padding-top: 15px;

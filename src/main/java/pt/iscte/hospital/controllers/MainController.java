@@ -18,4 +18,9 @@ public class MainController {
         return "main";
     }
 
+    @GetMapping(value = "/doctor-inicio")
+    public String showDoctorInicio(ModelMap modelMap){
+        return "doctor-inicio";
+    }
+
 }
