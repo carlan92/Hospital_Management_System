@@ -14,6 +14,13 @@
 </head>
 
 <body>
+
+<div class="container">
+
+<div class="sidenav">
+    <%@ include file="sidenavtemp.jsp"%>
+</div>
+
 <div class="main">
     <div class="white_box">
 
@@ -43,6 +50,7 @@
 
 
     </div>
+</div>
 </div>
 </body>
 
