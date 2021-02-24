@@ -26,6 +26,31 @@ public class RegistrationController {
     @Autowired
     ImageUploadService imageUploadService;
 
+    private static final String errorMsgName = "";
+    private static final String errorMsgSex = "";
+    private static final String errorMsgBirthday = "";
+    private static final String errorMsgAddress = "";
+    private static final String errorMsgPostalCode = "";
+    private static final String errorMsgCity = "";
+    private static final String errorMsg7 = "";
+    private static final String errorMsg8 = "";
+    private static final String errorMsg9 = "";
+    private static final String errorMsg10 = "";
+    private static final String errorMsg11 = "";
+    private static final String errorMsg12 = "";
+    private static final String errorMsg13 = "";
+    private static final String errorMsgPhone = "";
+    private static final String errorMsgEmail = "";
+    private static final String errorMsgUsername = "";
+    private static final String errorMsgUsername2 = "";
+    private static final String errorMsg18 = "";
+
+
+    private static final String errorMsgPhotoUpload = "Erro ao fazer upload da imagem";
+    private static final String errorMsgImageType = "Formato da imagem inválido. Usar jpg ou png.";
+    private static final String errorMsgImageSize = "Tamanho máximo permitido para a foto é de ";
+
+
     // Methods
     @GetMapping(value = "/registration")
     public String showRegistrationPage(ModelMap modelMap) {
@@ -35,20 +60,26 @@ public class RegistrationController {
     }
 
     @PostMapping(value = "/registrationToLogin")
-    public String returnToLoginPage(@ModelAttribute User user, @RequestParam("file") MultipartFile file) {
+    public String returnToLoginPage(@ModelAttribute User user,
+                                    @RequestParam("file") MultipartFile file,
+                                    ModelMap mpError) {
+
+        // TODO verificar elementos do user
         userService.addUser(user);
 
-        // TODO Adicionar lógica se utilizador não existir ou se for null
-        try {
-            // TODO dar nome de username
-            imageUploadService.uploadImage(file, user.getUsername());
-        } catch (IOException e) {
-            // TODO return message error to page
-            e.printStackTrace();
-        } catch (ImageTypeException e) {
-            e.printStackTrace();
-        } catch (ImageSizeException e) {
-            e.printStackTrace();
+        if (file != null || !file.isEmpty()) {
+            try {
+                imageUploadService.uploadImage(file, user.getUsername());
+            } catch (IOException e) {
+                mpError.put("errorMsgPhotoUpload", errorMsgPhotoUpload);
+                return "registration-temp";
+            } catch (ImageTypeException e) {
+                mpError.put("errorMsgPhotoUpload", errorMsgImageType);
+                return "registration-temp";
+            } catch (ImageSizeException e) {
+                mpError.put("errorMsgPhotoUpload", errorMsgImageSize+ imageUploadService.getImageMaxSize() + "MB");
+                return "registration-temp";
+            }
         }
 
         return "redirect:/login";
@@ -63,18 +94,20 @@ public class RegistrationController {
     }
 
     @PostMapping(value = "/temp")
-    public String returnToLoginPagetmp(@RequestParam("file") MultipartFile file, ModelMap mpError) {
+    public String returnToLoginPagetmp(@RequestParam("file") MultipartFile file,
+                                       ModelMap mpError) {
+
         try {
             // TODO dar nome de username
             imageUploadService.uploadImage(file, "user1");
         } catch (IOException e) {
-            mpError.put("errorMsgPhotoUpload", "Erro ao fazer upload da imagem");
+            mpError.put("errorMsgPhotoUpload", errorMsgPhotoUpload);
             return "registration-temp";
         } catch (ImageTypeException e) {
-            mpError.put("errorMsgPhotoUpload", "Formato da imagem inválido. Usar jpg ou png.");
+            mpError.put("errorMsgPhotoUpload", errorMsgImageType);
             return "registration-temp";
         } catch (ImageSizeException e) {
-            mpError.put("errorMsgPhotoUpload", "Tamanho do ficheiro tem de ter no máximo " + imageUploadService.getImageMaxSize() + "MB");
+            mpError.put("errorMsgPhotoUpload", errorMsgImageSize + imageUploadService.getImageMaxSize() + "MB");
             return "registration-temp";
         }
 
