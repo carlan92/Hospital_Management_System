@@ -99,6 +99,7 @@ public class RegistrationController {
     public String showRegistrationPagetmp(ModelMap modelMap) {
         // TODO para testes
         modelMap.put("user", new User());
+        modelMap.put("sidenav", "sidenavtemp");
 
         return "registration-temp";
     }
