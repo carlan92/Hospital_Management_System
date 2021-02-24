@@ -12,11 +12,8 @@ import pt.iscte.hospital.entities.User;
 import pt.iscte.hospital.services.ImageUploadService;
 import pt.iscte.hospital.services.UserService;
 
-import java.io.File;
 import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
+
 
 @Controller
 public class RegistryController {
@@ -38,6 +35,8 @@ public class RegistryController {
     @PostMapping(value = "/registryToLogin")
     public String returnToLoginPage(@ModelAttribute User user, @RequestParam("file") MultipartFile file) {
         userService.addUser(user);
+
+        // TODO Adicionar lógica se utilizador não existir ou se for null
         try {
             // TODO dar nome de username
             imageUploadService.uploadImage(file, user.getUsername());
@@ -51,6 +50,7 @@ public class RegistryController {
 
     @GetMapping(value = "/temp")
     public String showRegistryPagetmp(ModelMap modelMap) {
+        // TODO para testes
         modelMap.put("user", new User());
 
         return "registry-temp";
