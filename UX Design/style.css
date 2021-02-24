@@ -224,8 +224,7 @@ h1 {
 
 .main .middle-row {
   box-sizing: border-box;
-  background: transparent linear-gradient(90deg, #ffffffb9 0%, #ffffff7e 100%)
-    0% 0% no-repeat padding-box;
+  background: transparent linear-gradient(90deg, #ffffffb9 0%, #ffffff7e 100%) 0% 0% no-repeat padding-box;
   border-radius: 6px;
   z-index: 1;
   /*to be checked*/
@@ -387,8 +386,7 @@ h1 {
   margin: auto;
   padding: 30px;
   box-shadow: 5px 0px 20px #00000029;
-  background: transparent linear-gradient(90deg, #ffffffb9 0%, #ffffff7e 100%)
-    0% 0% no-repeat padding-box;
+  background: transparent linear-gradient(90deg, #ffffffb9 0%, #ffffff7e 100%) 0% 0% no-repeat padding-box;
   width: 650px;
   min-height: 600px;
 }
@@ -441,6 +439,7 @@ option {
 }
 
 /*registo*/
+
 .registo {
   margin-top: 30px;
 }
@@ -513,8 +512,7 @@ option {
   box-sizing: border-box;
   height: 100%;
   border-radius: 10px;
-  background: transparent linear-gradient(90deg, #ffffffb9 0%, #ffffff7e 100%)
-    0% 0% no-repeat padding-box;
+  background: transparent linear-gradient(90deg, #ffffffb9 0%, #ffffff7e 100%) 0% 0% no-repeat padding-box;
   box-shadow: 7px 7px 20px 7px grey;
 }
 
@@ -545,8 +543,7 @@ option {
   padding: 25px 30px;
 }
 
-.card-body2 h2,
-h3 {
+.card-body2 h2, h3 {
   color: #000000;
   margin: 10px;
   font: normal normal bold 27px/30px "Lato";
@@ -577,6 +574,7 @@ h3 {
 }
 
 /*Perfil*/
+
 .perfil-main-col {
   box-sizing: border-box;
   margin: auto;
@@ -607,12 +605,14 @@ h3 {
 }
 
 /*termos e condições*/
-.terms p, .terms li{
-  text-align: justify  !important;
+
+.terms p, .terms li {
+  text-align: justify !important;
   font-size: 17px !important;
 }
 
 /* Recover Password */
+
 .input1 {
   margin-top: 5px;
   margin-bottom: 5px;
@@ -640,7 +640,9 @@ h3 {
 }
 
 /* Forms */
+
 /*Buttons*/
+
 .btn-button {
   background-color: transparent;
   padding: 15px 20px;
@@ -701,8 +703,7 @@ button:focus {
   outline: none;
 }
 
-.btn-blue:hover,
-.btn-green:hover {
+.btn-blue:hover, .btn-green:hover {
   opacity: 0.9;
   cursor: pointer;
   transition: all 0.2s ease-out;
@@ -710,6 +711,82 @@ button:focus {
 
 select option:disabled {
   color: lightgrey;
+}
+
+/*Menu inicio: Medico */
+
+.user_photo {
+  padding: 0px;
+}
+
+.user_photo img {
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  border-radius: 50%;
+}
+
+.user_info {
+  width: 100%;
+}
+
+.btn-perfil {
+  width: 50%;
+  display: block;
+  margin: auto;
+  margin-top: 10px;
+}
+
+.display_time {
+  display: block;
+  margin: auto;
+}
+
+.time_box {
+  text-align: center;
+  padding: 10px;
+  box-sizing: border-box;
+  border-radius: 40px;
+  background: transparent linear-gradient(90deg, #ffffffb9 0%, #ffffff7e 100%) 0% 0% no-repeat padding-box;
+  box-shadow: 2px 2px 15px 2px #9fa0a0;
+  opacity: 0.9;
+}
+
+#hour, #date {
+  margin: 10px;
+  color: #707070;
+}
+
+#hour {
+  font: normal normal bold "Lato";
+  font-size: 45px;
+  letter-spacing: 2.59px;
+  color: black;
+}
+
+#date {
+  font: normal normal normal "Lato";
+  font-size: 25px;
+}
+
+.middle-row3 {
+  margin-top: 80px;
+  margin-bottom: 40px;
+}
+
+.middle-row3 i {
+  padding: 20px;
+  font-size: 35px;
+  color: #31ade0;
+}
+
+.main .card_box2:hover i {
+  color: #000000;
+}
+
+.fa-clock {
+  font-size: 35px;
+  color: #98c33e;
 }
 
 @media screen and (max-height: 450px) {
@@ -728,6 +805,3 @@ select option:disabled {
     display: inline-block;
   }
 }
-
-
-
