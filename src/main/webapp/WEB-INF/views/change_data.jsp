@@ -39,7 +39,7 @@
                     <div class="cell-row">
                         <label for="sexo_id">Sexo</label>
                         <select id="sexo_id" class="form-input" name="sex" required value="${user.getSex()}">
-                            <option value="" disabled>Escolha uma Opção</option>
+                            <option value="${user.getSex()}">${user.getSex()}</option>
                             <option value="Masculino">Masculino</option>
                             <option value="Feminino">Feminino</option>
                         </select>
@@ -79,7 +79,7 @@
                     <div class="cell-row">
                         <label for="nacionalidade_id">Nacionalidade</label>
                         <select id="nacionalidade_id" class="form-input" name="nationality" required value="${user.getNationality()}">
-                            <option value="nacionalidade" disabled>A sua nacionalidade</option>
+                            <option value="${user.getNationality()}">${user.getNationality()}</option>
                             <option value="Portuguesa">Portuguesa</option>
                             <option value="Afegã">Afegã</option>
                             <option value="Albanesa">Albanesa</option>
@@ -290,9 +290,9 @@
                     <div class="cell-row">
                         <label for="documento_id">Documento de Identificação</label>
                         <select id="documento_id" class="form-input" name="documentType" required value="${user.getDocumentType()}">
-                            <option value="escolha uma opção" disabled>Escolha uma Opção</option>
-                            <option value="BI">Bilhete de Identidade</option>
-                            <option value="CC">Cartão de Cidadão</option>
+                            <option value="${user.getDocumentType()}">${user.getDocumentType()}</option>
+                            <option value="Bilhete de Identidade">Bilhete de Identidade</option>
+                            <option value="Cartão de Cidadão">Cartão de Cidadão</option>
                             <option value="Passaporte">Passaporte</option>
                         </select>
                     </div>

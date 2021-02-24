@@ -2,6 +2,7 @@ package pt.iscte.hospital.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.lang.Nullable;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -30,15 +31,15 @@ public class ChangeDataController {
                                     @RequestParam String sex,
                                     @DateTimeFormat (iso = DateTimeFormat.ISO.DATE)
                                     @RequestParam Date birthday,
-                                    @RequestParam String address,
-                                    @RequestParam String postCode,
+                                    @RequestParam @Nullable String address,
+                                    @RequestParam @Nullable String postCode,
                                     @RequestParam String city,
                                     @RequestParam String nationality,
                                     @RequestParam Long phone,
                                     @RequestParam String documentType,
                                     @RequestParam Long documentNumber,
                                     @RequestParam Long nif,
-                                    @RequestParam Long patientNumber) {
+                                    @RequestParam @Nullable Long patientNumber) {
 
         if (isDataValid()) {
             // Update user info

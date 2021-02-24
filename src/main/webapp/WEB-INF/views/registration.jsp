@@ -290,8 +290,8 @@
                         <label for="documento_id">Documento de Identificação *</label>
                         <select id="documento_id" class="form-input" name="documentType" required>
                             <option value="escolha uma opção" disabled selected>Escolha uma Opção</option>
-                            <option value="BI">Bilhete de Identidade</option>
-                            <option value="CC">Cartão de Cidadão</option>
+                            <option value="Bilhete de Identidade">Bilhete de Identidade</option>
+                            <option value="Cartão de Cidadão">Cartão de Cidadão</option>
                             <option value="Passaporte">Passaporte</option>
                         </select>
                     </div>
