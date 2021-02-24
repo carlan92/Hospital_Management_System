@@ -66,13 +66,15 @@ public class RegistrationController {
         // TODO verificar elementos do user
 
 
-        if (file != null || !file.isEmpty()) {
+        if (file != null && !file.isEmpty() && !file.getContentType().equals("application/octet-stream")) {
             try {
+                System.out.println(file.getName());
+                System.out.println(file.getContentType());
                 String photoURL = imageUploadService.uploadImage(file, user.getUsername());
                 user.setPhotoURL(photoURL);
             } catch (IOException e) {
                 mpError.put("errorMsgPhotoUpload", errorMsgPhotoUpload);
-                return "registration-temp";
+                return "registration";
             } catch (ImageTypeException e) {
                 mpError.put("errorMsgPhotoUpload", errorMsgImageType);
                 return "registration";
@@ -99,6 +101,7 @@ public class RegistrationController {
     public String showRegistrationPagetmp(ModelMap modelMap) {
         // TODO para testes
         modelMap.put("user", new User());
+        modelMap.put("sidenav", "sidenavtemp");
 
         return "registration-temp";
     }

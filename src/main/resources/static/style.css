@@ -41,6 +41,10 @@
   text-align: left;
 }
 
+body {
+    margin: 0%;
+}
+
 a:hover {
   color: #2eaddf;
 }
@@ -98,8 +102,7 @@ h1 {
   z-index: 1;
   overflow-x: hidden;
   color: #7e7e7e;
-  padding-top: 50px;
-  padding-left: 50px;
+  padding: 50px 0px 50px 50px;
 }
 
 .main::before {
