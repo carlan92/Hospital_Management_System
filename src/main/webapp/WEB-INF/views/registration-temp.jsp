@@ -14,6 +14,13 @@
 </head>
 
 <body>
+
+<div class="container">
+
+<div class="sidenav">
+    <%@ include file="sidenavtemp.jsp"%>
+</div>
+
 <div class="main">
     <div class="white_box">
 
@@ -30,6 +37,7 @@
                     <div class="cell-row">
                         <label for="foto_perfil_id">Foto de perfil</label>
                         <input type="file" name="file" accept="image/jpeg"/>
+                        <span>${errorMsgPhotoUpload}</span>
                     </div>
                 </div>
 
@@ -43,6 +51,7 @@
 
 
     </div>
+</div>
 </div>
 </body>
 
