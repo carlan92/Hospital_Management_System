@@ -26,29 +26,28 @@ public class RegistrationController {
     @Autowired
     ImageUploadService imageUploadService;
 
-    private static final String errorMsgName = "";
-    private static final String errorMsgSex = "";
-    private static final String errorMsgBirthday = "";
-    private static final String errorMsgAddress = "";
-    private static final String errorMsgPostalCode = "";
-    private static final String errorMsgCity = "";
-    private static final String errorMsg7 = "";
-    private static final String errorMsg8 = "";
-    private static final String errorMsg9 = "";
-    private static final String errorMsg10 = "";
-    private static final String errorMsg11 = "";
-    private static final String errorMsg12 = "";
-    private static final String errorMsg13 = "";
-    private static final String errorMsgPhone = "";
-    private static final String errorMsgEmail = "";
-    private static final String errorMsgUsername = "";
-    private static final String errorMsgUsername2 = "";
-    private static final String errorMsg18 = "";
+    private static final String errorMsgName = "Nome inválido";
+    private static final String errorMsgSex = "Escolha uma opção válida";
+    private static final String errorMsgBirthday = "Data inválida";
+    private static final String errorMsgAddress = "Endereço inválido";
+    private static final String errorMsgPostCode = "Código postal inválido";
+    private static final String errorMsgCity = "Nome de cidade inválida";
+    private static final String errorMsgAccount = "Tipo de conta inválida";
+    private static final String errorMsgNationality = "Escolha uma opção válida";
+    private static final String errorMsgDocumentType = "Escolha uma opção válida";
+    private static final String errorMsgDocumentNumber = "Número de documento inválido";
+    private static final String errorMsgNif = "Número de NIF inválido";
+    private static final String errorMsgPatientNumber = "Número de utente inválido";
+    private static final String errorMsgPhone = "Número de telemóvel inválido";
+    private static final String errorMsgEmail = "Este endereço já se encontra em utilização";
+    private static final String errorMsgUsername = "Username já existe";
+    private static final String errorMsgPassword = "Password inválida";
+    private static final String errorMsgPassword2 = "Password não coincide";
 
 
     private static final String errorMsgPhotoUpload = "Erro ao fazer upload da imagem";
     private static final String errorMsgImageType = "Formato da imagem inválido. Usar jpg ou png.";
-    private static final String errorMsgImageSize = "Tamanho máximo permitido para a foto é de ";
+    private static final String errorMsgImageSize = "Tamanho máximo permitido para a foto é de %d MB"; // %d placehoder for an integer or long number
 
 
     // Methods
@@ -65,26 +64,37 @@ public class RegistrationController {
                                     ModelMap mpError) {
 
         // TODO verificar elementos do user
-        userService.addUser(user);
+
 
         if (file != null || !file.isEmpty()) {
             try {
-                imageUploadService.uploadImage(file, user.getUsername());
+                String photoURL = imageUploadService.uploadImage(file, user.getUsername());
+                user.setPhotoURL(photoURL);
             } catch (IOException e) {
                 mpError.put("errorMsgPhotoUpload", errorMsgPhotoUpload);
                 return "registration-temp";
             } catch (ImageTypeException e) {
                 mpError.put("errorMsgPhotoUpload", errorMsgImageType);
-                return "registration-temp";
+                return "registration";
             } catch (ImageSizeException e) {
-                mpError.put("errorMsgPhotoUpload", errorMsgImageSize+ imageUploadService.getImageMaxSize() + "MB");
-                return "registration-temp";
+                mpError.put("errorMsgPhotoUpload", String.format(errorMsgImageSize, imageUploadService.getImageMaxSize()));
+                return "registration";
             }
         }
+
+        // Add user to database
+        userService.addUser(user);
 
         return "redirect:/login";
     }
 
+
+
+
+
+
+
+    // Para testes apenas!
     @GetMapping(value = "/temp")
     public String showRegistrationPagetmp(ModelMap modelMap) {
         // TODO para testes
@@ -107,7 +117,7 @@ public class RegistrationController {
             mpError.put("errorMsgPhotoUpload", errorMsgImageType);
             return "registration-temp";
         } catch (ImageSizeException e) {
-            mpError.put("errorMsgPhotoUpload", errorMsgImageSize + imageUploadService.getImageMaxSize() + "MB");
+            mpError.put("errorMsgPhotoUpload", String.format(errorMsgImageSize, imageUploadService.getImageMaxSize()));
             return "registration-temp";
         }
 

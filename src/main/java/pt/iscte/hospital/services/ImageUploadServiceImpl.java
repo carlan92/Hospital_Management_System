@@ -17,27 +17,52 @@ public class ImageUploadServiceImpl implements ImageUploadService {
 
     // Methods
     @Override
-    public void uploadImage(MultipartFile imageFile, String username)
+    /**
+     * Saves the uploaded image.
+     *
+     * @param imageFile A MultipartFile object with an Image file.
+     * @param username A String with the username name. It will be used to name the image.
+     * @return String with the name of the file has it was saved.
+     * @throws IOException If it was not possible to save the image file
+     * @throws ImageSizeException On exceeded file size.
+     * @throws ImageTypeException On invalid image extension.
+     */
+    public String uploadImage(MultipartFile imageFile, String username)
             throws IOException, ImageSizeException, ImageTypeException {
 
         // Check if size too big & Check if image jpg or png
         verifyImage(imageFile);                              // Throws an error if not a valid image
-
 
         // Sets save path and file extension
         String contentType = imageFile.getContentType();
         String rootDir = System.getProperty("user.dir");     // root directory of the project
         String savePath = rootDir + "/" + dirSavePath;       // save directory path for images
         String fileExtension = getFileExtension(contentType);
+        String fileName = username + fileExtension;
 
         // Save image
-        imageFile.transferTo(new File(savePath + username + fileExtension));
+        imageFile.transferTo(new File(savePath + fileName));
+
+        return fileName;
     }
 
-    public long getImageMaxSize(){
-        return IMAGE_MAX_SIZE/1000000;
+    /**
+     * @return Max image size that can be uploaded. Value in <b>MB</b>.
+     */
+    @Override
+    public long getImageMaxSize() {
+        return IMAGE_MAX_SIZE / 1000000;
     }
 
+    /**
+     * Throws an Exception if the image file is bigger than the IMAGE_MAX_SIZE constant or if the file extension is not
+     * ".jpg" or ".png".
+     *
+     * @param imageFile A MultipartFile object with an Image file.
+     * @return void.
+     * @throws ImageSizeException On exceeded file size.
+     * @throws ImageTypeException On invalid image extension.
+     */
     private void verifyImage(MultipartFile imageFile) throws ImageSizeException, ImageTypeException {
         String contentType = imageFile.getContentType();
         boolean isImage = false;
@@ -54,15 +79,23 @@ public class ImageUploadServiceImpl implements ImageUploadService {
                 break;
             }
         }
-        if (!isImage){
+        if (!isImage) {
             throw new ImageTypeException();
         }
     }
 
-    private String getFileExtension(String imageType){
+    /**
+     * Gives the image extension for a given MIME type: ".jpg" or ".png".
+     *
+     * @param imageType A String with the file MIME type.
+     * @return for imageType="image/jpeg" return ".jpg".<br>
+     * for imageType="image/png" return ".png".</br>
+     */
+    @Override
+    public String getFileExtension(String imageType) {
         HashMap<String, String> imageExtensions = new HashMap<>();
-        imageExtensions.put("image/jpeg",".jpg");
-        imageExtensions.put("image/png",".png");
+        imageExtensions.put("image/jpeg", ".jpg");
+        imageExtensions.put("image/png", ".png");
         return imageExtensions.get(imageType);
     }
 
