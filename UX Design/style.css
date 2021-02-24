@@ -55,6 +55,12 @@ h1 {
   color: #2c363e;
 }
 
+.msg-error {
+  color: #D8000C;
+  font-size: 12px;
+  margin: 2px auto;
+}
+
 .container {
   display: flex;
   min-width: 100%;
@@ -383,7 +389,7 @@ h1 {
 /*Login*/
 
 .white_box {
-  margin: auto;
+  margin: 10px auto;
   padding: 30px;
   box-shadow: 5px 0px 20px #00000029;
   background: transparent linear-gradient(90deg, #ffffffb9 0%, #ffffff7e 100%) 0% 0% no-repeat padding-box;
