@@ -12,6 +12,7 @@ import pt.iscte.hospital.entities.Login;
 import pt.iscte.hospital.entities.User;
 import pt.iscte.hospital.services.UserService;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 @Controller
@@ -41,13 +42,15 @@ public class ChangeDataController {
                                     @RequestParam Long nif,
                                     @RequestParam @Nullable Long patientNumber) {
 
+
+        //Date date = new Date(user.getBirthday().getTime());
+
         if (isDataValid()) {
             // Update user info
             User user = Login.getConnectedUser();
-
             user.setName(name);
             user.setSex(sex);
-            /*user.setBirthday(birthday);*//*TODO*/
+            user.setBirthday(birthday);
             user.setAddress(address);
             user.setPostCode(postCode);
             user.setCity(city);
