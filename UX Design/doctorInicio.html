@@ -95,9 +95,12 @@
                             <i class="fas fa-clock"></i>
                             10:00
                         </span>
+                    </div>
+                    <div class="date_box">
                         <span id="date">
                             Quarta-feira 24 Fevereiro 2021
                         </span>
+
                     </div>
 
                 </div>
@@ -125,7 +128,7 @@
                         <div class="card2">
                             <div class="card-body2">
                                 <h2>
-                                    <span>0</span>
+                                    <span>1</span>
                                 </h2>
                                 <h3>Pacientes confirmados</h3>
                                 <i class="fas fa-calendar-check "></i>
@@ -168,45 +171,48 @@
             </div>
 
             <div class="row middle-row">
-                <div class="col-8">
+                <div class="col-5 data_appt">
 
                     <div class="row">
                         <div>
-                            <span>Próxima consulta</span>
-                            <p>Consulte a sua próxima consulta e paciente </p>
+                            <span class="text_nextApt">Próxima consulta</span>
+                            <p class="text_nextApt2">Consulte a sua próxima consulta e paciente</p>
                         </div>
                     </div>
 
                     <div class="row">
                         <div class="col-3">
-                            <span>10:00</span>
-                            <p>Sexta-feira</p>
-                            <p>26 Fevereiro 2021</p>
+                            <span class="time_box2">10:00</span>
+                            <p class="date_box2">Sexta-feira</p>
+                            <p class="date_box2">26 Fevereiro 2021</p>
                         </div>
                         <div class="col-9">
                             <div class="perfil-row">
-                                <div class="col-3 user_photo">
+                                <div class="col-2 user_photo">
                                     <img src="imagens/next_patient_photo.png" alt="" />
                                 </div>
-                                <div class="col user_info">
+                                <div class="col user_info2">
                                     <span id="next_patient_name">Alice Antunes</span>
                                     <p id="patient_age">Idade: 70 anos</p>
-                                    <p id="first_appt_ask">Primeira Consulta: </p>
-                                    <p id="first_appt_ask">Estado da Consulta: </p>
+                                    <span id="first_appt_ask">Primeira Consulta: SIM </span>
+                                    <p id="first_appt_ask">Estado da Consulta: CONFIRMADA </p>
 
                                 </div>
                             </div>
-                            <div class="but-patient_info">
-                                <button type="button" class="btn-green btn-perfil"> Consultar Perfil Paciente </button>
-                            </div>
+
                         </div>
+
                     </div>
-                    
+                    <div class="row">
+                        <button type="button" class="btn-green but-patient_info"> Consultar Perfil Paciente
+                        </button>
+                    </div>
+
 
                 </div>
-                
-                <div class="col-4">
-                    <div class="">
+
+                <div class="col-6">
+                    <div class="appt_options">
                         <div class="but-begin_appt">
                             <button type="button" class="btn-green btn-perfil"> Iniciar Consulta </button>
                         </div>
@@ -222,16 +228,29 @@
                     </div>
 
                 </div>
-                
-                
+
+
 
 
 
             </div>
-            <div class="row middle-row">
-                <button type="button" class="btn-green btn-perfil"> Ver Lista de espera</button>
+            <div class="row middle-row ">
+                <div class="col-6 data_appt">
+                    <div class="row">
+                        <span class="text_nextApt">Lista de pacientes em espera</span>
+                    </div>
+                    <div class="row">
+                        <button type="button" class="btn-green but-patient_info btn-w85"> Ver Lista de espera</button>
+                    </div>
+                </div>
+                <div class="col">
+                    <img src="imagens/waiting.svg" alt="" class="icon2" />
+                </div>
+
             </div>
+
         </div>
+    </div>
     </div>
 </body>
 

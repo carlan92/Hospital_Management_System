@@ -553,7 +553,7 @@ option {
 
 .card-body2 span {
   font: normal normal bold 40px/24px "Lato";
-  color: #658a17;
+  color: #000000;
   padding: 5px;
 }
 
@@ -713,25 +713,26 @@ select option:disabled {
   color: lightgrey;
 }
 
-/*Menu inicio: Medico */
+/*Menu inicio: Medico (falta sintetizar algumas propriedades) */
 
 .user_photo {
   padding: 0px;
 }
 
 .user_photo img {
-  width: 100%;
-  height: 100%;
+  height: 80px;
+  width: 80px;
   padding: 0;
   border-radius: 50%;
+  margin-top: 10px;
 }
 
-.user_info {
-  width: 100%;
+.user_info2 {
+  margin: 15px;
 }
 
 .btn-perfil {
-  width: 50%;
+  width: 70%;
   display: block;
   margin: auto;
   margin-top: 10px;
@@ -746,10 +747,12 @@ select option:disabled {
   text-align: center;
   padding: 10px;
   box-sizing: border-box;
-  border-radius: 40px;
-  background: transparent linear-gradient(90deg, #ffffffb9 0%, #ffffff7e 100%) 0% 0% no-repeat padding-box;
-  box-shadow: 2px 2px 15px 2px #9fa0a0;
-  opacity: 0.9;
+}
+
+.date_box {
+  text-align: center;
+  padding: 10px;
+  box-sizing: border-box;
 }
 
 #hour, #date {
@@ -759,7 +762,7 @@ select option:disabled {
 
 #hour {
   font: normal normal bold "Lato";
-  font-size: 45px;
+  font-size: 40px;
   letter-spacing: 2.59px;
   color: black;
 }
@@ -777,7 +780,7 @@ select option:disabled {
 .middle-row3 i {
   padding: 20px;
   font-size: 35px;
-  color: #31ade0;
+  color: #98c33e;
 }
 
 .main .card_box2:hover i {
@@ -785,9 +788,81 @@ select option:disabled {
 }
 
 .fa-clock {
-  font-size: 35px;
+  font-size: 25px;
   color: #98c33e;
+  ;
 }
+
+.but-patient_info {
+  margin-left: 15px;
+  background-color: #31ade0;
+}
+
+.btn-w85 {
+  width: 85%;
+  margin-left: 15px;
+  margin-top: 15px;
+}
+
+.text_nextApt {
+  font: normal normal bold "Lato";
+  font-size: 35px;
+  letter-spacing: 2.59px;
+  color: black;
+  margin-left: 15px;
+}
+
+.text_nextApt2 {
+  font: normal normal normal "Lato";
+  font-size: 15px;
+  color: #707070;
+  margin-left: 15px;
+  margin-bottom: 15px;
+}
+
+.time_box2 {
+  font: normal normal bold "Lato";
+  font-size: 35px;
+  letter-spacing: 2.59px;
+  color: black;
+  display: block;
+  margin: 0;
+}
+
+.date_box2 {
+  font: normal normal normal "Lato";
+  font-size: 15px;
+  color: #707070;
+  display: block;
+  margin: 0;
+}
+
+.data_appt {
+  margin-left: 20px
+}
+
+.appt_options {
+  margin-top: 40px;
+  ;
+}
+
+.icon2 {
+  width: 30%;
+}
+
+#patient_age, #first_appt_ask {
+  font: normal normal normal "Lato";
+  font-size: 15px;
+  color: black;
+}
+
+#next_patient_name {
+  font: normal normal normal "Lato";
+  font-size: 25px;
+  color: #31ade0;
+}
+
+/* ... */
 
 @media screen and (max-height: 450px) {
   .sidenav {
