@@ -25,7 +25,7 @@ public class ChangeDataController {
     }
 
     @PostMapping(value = "/change_data")
-    public String returnToLoginPage(ModelMap modelMap,
+    public String returnToUserPage(ModelMap modelMap,
                                     @RequestParam String name,
                                     @RequestParam String sex,
                                     @DateTimeFormat (iso = DateTimeFormat.ISO.DATE)
@@ -64,6 +64,7 @@ public class ChangeDataController {
         } else {
             // case error in info validation
             modelMap.put("errorMessage", "Dados inválidos");
+
             modelMap.put("name", name);
             modelMap.put("sex", sex);
             modelMap.put("birthday", birthday);
