@@ -645,12 +645,12 @@ option {
   width: 25%;
 }
 
-.payment_box:hover {
+/*.payment_box:hover {
   background-color: white;
   z-index: 2;
   position: relative;
   border-radius: 6px;
-}
+}*/
 
 .payment_values {
   box-sizing: border-box;
@@ -669,7 +669,7 @@ option {
   padding: 0px 31px;
 }
 
-.btn-invoice {
+/*.btn-invoice {
   background-color: #00aec5;
   border: none;
   color: white;
@@ -688,9 +688,9 @@ option {
   position: relative;
   border-radius: 6px;
   color: black;
-}
+}*/
 
-.btn-receipt {
+/*.btn-receipt {
   background-color: #00aec5;
   border: none;
   color: white;
@@ -708,7 +708,7 @@ option {
   position: relative;
   border-radius: 6px;
   color: black;
-}
+}*/
 
 
 .pm_main_col {
@@ -731,7 +731,7 @@ option {
   box-sizing: border-box;
   width: 45%;
   margin: 5px auto;
-  font: bold 16px/18px "Lato";~
+  font: bold 16px/18px "Lato";
   font-weight: bold !important;
 }
 
