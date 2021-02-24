@@ -27,7 +27,7 @@
 
                 <div class="perfil-row">
                     <div class="cell-row cell-morada">
-                        <label for="nome_id">Nome Completo</label>
+                        <label for="nome_id">Nome Completo *</label>
                         <input id="nome_id" type="text" class="form-input" name="name" required
                                placeholder="O seu nome completo" value="${user.getName()}"/>
                     </div>
@@ -37,7 +37,7 @@
 
                 <div class="perfil-row">
                     <div class="cell-row">
-                        <label for="sexo_id">Sexo</label>
+                        <label for="sexo_id">Sexo *</label>
                         <select id="sexo_id" class="form-input" name="sex" required value="${user.getSex()}">
                             <option value="${user.getSex()}">${user.getSex()}</option>
                             <option value="Masculino">Masculino</option>
@@ -45,7 +45,7 @@
                         </select>
                     </div>
                     <div class="cell-row">
-                        <label for="dataDeNascimento_id">Data de Nascimento</label>
+                        <label for="dataDeNascimento_id">Data de Nascimento *</label>
                         <input id="dataDeNascimento_id" type="date" class="form-input" name="birthday"
                                required value="${user.getBirthday()}">
                     </div>
@@ -67,7 +67,7 @@
                     </div>
 
                     <div class="cell-row">
-                        <label for="localidade_id">Localidade</label>
+                        <label for="localidade_id">Localidade *</label>
                         <input id="localidade_id" type="text" class="form-input" name="city" required
                                placeholder="A sua localidade" value="${user.getCity()}"/>
                     </div>
@@ -77,7 +77,7 @@
 
 
                     <div class="cell-row">
-                        <label for="nacionalidade_id">Nacionalidade</label>
+                        <label for="nacionalidade_id">Nacionalidade *</label>
                         <select id="nacionalidade_id" class="form-input" name="nationality" required value="${user.getNationality()}">
                             <option value="${user.getNationality()}">${user.getNationality()}</option>
                             <option value="Portuguesa">Portuguesa</option>
@@ -280,7 +280,7 @@
                     </div>
 
                     <div class="cell-row">
-                        <label for="telemovel_id">Telemóvel</label>
+                        <label for="telemovel_id">Telemóvel *</label>
                         <input id="telemovel_id" type="text" pattern="^9[1236][0-9]{7}$|^2[3-9][1-9][0-9]{6}$|^2[12][0-9]{7}$"class="form-input" name="phone" required
                                placeholder="O seu número de telemóvel" value="${user.getPhone()}"/>
                         </div>
@@ -288,7 +288,7 @@
 
                 <div class="perfil-row">
                     <div class="cell-row">
-                        <label for="documento_id">Documento de Identificação</label>
+                        <label for="documento_id">Documento de Identificação *</label>
                         <select id="documento_id" class="form-input" name="documentType" required value="${user.getDocumentType()}">
                             <option value="${user.getDocumentType()}">${user.getDocumentType()}</option>
                             <option value="Bilhete de Identidade">Bilhete de Identidade</option>
@@ -297,7 +297,7 @@
                         </select>
                     </div>
                     <div class="cell-row">
-                        <label for="nrDocumento_id">Nº do Documento</label>
+                        <label for="nrDocumento_id">Nº do Documento *</label>
                         <input id="nrDocumento_id" type="text" class="form-input" name="documentNumber" required
                                placeholder="Nº do documento selecionado" value="${user.getDocumentNumber()}"/>
                     </div>
@@ -305,13 +305,18 @@
 
                 <div class="perfil-row">
                     <div class="cell-row">
-                        <label for="nif_id">NIF</label>
+                        <label for="nif_id">NIF *</label>
                         <input id="nif_id" type="text" class="form-input" name="nif" required placeholder="NIF" value="${user.getNif()}"/>
                     </div>
                     <div class="cell-row">
                         <label for="nrUtente_id">Nº de Utente</label>
                         <input id="nrUtente_id" type="text" class="form-input" name="patientNumber"
                                placeholder="Nº de Utente" value="${user.getPatientNumber()}"/>
+                    </div>
+                </div>
+                <div class="perfil-row">
+                    <div class="cell-row cell-morada">
+                        <p class="nota">* campos de preenchimento obrigatório</p>
                     </div>
                 </div>
                 <div class="perfil-row">
