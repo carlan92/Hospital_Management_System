@@ -16,32 +16,7 @@ public class Receptionist extends Employee {
     public Receptionist() {
     }
 
-    public Receptionist(Long receptionistId,
-                        Long employeeId,
-                        Long userId,
-                        String name,
-                        String username,
-                        String sex,
-                        Date birthday,
-                        String address,
-                        String postCode,
-                        String city,
-                        String account,
-                        String nationality,
-                        String documentType,
-                        Long documentNumber,
-                        Long nif,
-                        Long patientNumber,
-                        Long phone,
-                        String email,
-                        String password,
-                        String photoURL) {
-        super(employeeId, userId, name, username, sex, birthday, address,
-                postCode, city, account, nationality, documentType,
-                documentNumber, nif, patientNumber, phone,
-                email, password, photoURL);
-        this.receptionistId = receptionistId;
-    }
+
 
     // Methods
     public Long getReceptionistId() {

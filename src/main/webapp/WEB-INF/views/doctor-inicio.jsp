@@ -21,9 +21,11 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
           integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous" />
     <script src="https://kit.fontawesome.com/6afe83edf7.js" crossorigin="anonymous"></script>
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
 
     <link rel="stylesheet" href="style.css" />
     <link rel="icon" href="favicon.ico" type="image/x-icon">
+
 
 </head>
 
@@ -35,7 +37,7 @@
         <div class="welcome_box">
             <div class="perfil-row">
                 <div class="col-3 user_photo">
-                    <img src="imagens/doctor_photo.png" alt="" />
+                    <img src="" alt="" />
                 </div>
                 <div class="col user_info">
                     <p id="welcome">Bem-vindo</p>
@@ -44,7 +46,7 @@
                 </div>
             </div>
             <div class="but-login">
-                <form action="/user" method="get">
+                <form action="" method="get">
                 <button type="button" class="btn-green btn-perfil"> Ver Perfil </button>
                 </form>
             </div>
