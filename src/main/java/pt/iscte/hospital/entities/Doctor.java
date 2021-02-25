@@ -4,8 +4,8 @@ import javax.persistence.*;
 import java.util.Date;
 import java.util.Set;
 
-
-public class Doctor extends Employee {
+@Entity
+public class Doctor {
     // Attributes
     @Id
     @GeneratedValue
@@ -23,21 +23,6 @@ public class Doctor extends Employee {
     public Doctor() {
     }
 
-    public Doctor(Long doctorId,
-                  Long employeeId,
-                  Long userId,
-                  String name, String username, String sex, Date birthday, String address,
-                  String postCode, String city, String account, String nationality, String documentType,
-                  Long documentNumber, Long nif, Long patientNumber,
-                  Long phone, String email, String password, String photoURL, Long licenseNumber, Set<Speciality> specialities) {
-        super(employeeId, userId, name, username, sex, birthday, address,
-                postCode, city, account, nationality, documentType,
-                documentNumber, nif, patientNumber,
-                phone, email, password, photoURL);
-        this.doctorId = doctorId;
-        this.licenseNumber = licenseNumber;
-        this.specialities = specialities;
-    }
 
     // Methods
     public Long getDoctorId() {
