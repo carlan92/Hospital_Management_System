@@ -3,7 +3,7 @@ package pt.iscte.hospital.entities;
 import javax.persistence.*;
 import java.util.List;
 
-@Entity
+
 public class Speciality {
     // Attributes
     @Id

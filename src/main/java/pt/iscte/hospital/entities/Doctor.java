@@ -4,7 +4,7 @@ import javax.persistence.*;
 import java.util.Date;
 import java.util.Set;
 
-@Entity
+
 public class Doctor extends Employee {
     // Attributes
     @Id
