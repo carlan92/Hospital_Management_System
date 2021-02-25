@@ -11,11 +11,12 @@ public class Doctor extends Employee {
     @GeneratedValue
     private Long doctorId;
     private Long licenseNumber;
-    @ManyToMany
+
+    @ManyToMany     //https://www.baeldung.com/jpa-many-to-many
     @JoinTable(
             name = "doctor_has_speciality",
-            joinColumns = @JoinColumn(name = "student_id"),
-            inverseJoinColumns = @JoinColumn(name = "course_id"))
+            joinColumns = @JoinColumn(name = "doctor_id"),
+            inverseJoinColumns = @JoinColumn(name = "speciality_id"))
     private Set<Speciality> specialities;
 
     // Constructors

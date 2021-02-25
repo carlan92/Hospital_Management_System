@@ -9,8 +9,10 @@ public class Speciality {
     @Id
     @GeneratedValue
     private Long specialityId;
-    @ManyToMany
+
+    @ManyToMany(mappedBy = "specialities")
     private List<Doctor> doctors;
+
 
     // Constructors
     public Speciality() {

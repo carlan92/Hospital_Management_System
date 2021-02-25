@@ -5,18 +5,17 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import java.util.Date;
 
-
+@Entity
 public class Patient extends User {
     // Attributes
-    @Id
-    @GeneratedValue
+
     private Long patientId;
 
     // Constructors
     public Patient() {
     }
 
-    public Patient(Long patientId,
+    /* public Patient(Long patientId,
                    Long userId,
                    String name,
                    String username,
@@ -40,7 +39,7 @@ public class Patient extends User {
                 documentNumber, nif, patientNumber,
                 phone, email, password, photoURL);
         this.patientId = patientId;
-    }
+    }*/
 
     // Methods
     public Long getPatientId() {
