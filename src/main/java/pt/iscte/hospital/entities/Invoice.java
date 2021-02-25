@@ -2,9 +2,7 @@ package pt.iscte.hospital.entities;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.util.Date;
 
 @Entity
@@ -13,8 +11,15 @@ public class Invoice {
     @Id
     @GeneratedValue
     private Long invoiceId;
-    private Long appointmentId;
-    private Long receptionistId;
+
+    @OneToOne
+    @JoinColumn(name = "appointment_id")
+    private Appointment appointment;
+
+    @OneToOne
+    @JoinColumn(name = "receptionist_id")
+    private Receptionist receptionist;
+
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
     private Date date;
     private Double value;
@@ -24,13 +29,8 @@ public class Invoice {
     public Invoice() {
     }
 
-    public Invoice(Long invoiceId,
-                   Long appointmentId,
-                   Long receptionistId,
-                   Date date, Double value, Boolean isPaid) {
+    public Invoice(Long invoiceId, Date date, Double value, Boolean isPaid) {
         this.invoiceId = invoiceId;
-        this.appointmentId = appointmentId;
-        this.receptionistId = receptionistId;
         this.date = date;
         this.value = value;
         this.isPaid = isPaid;
@@ -45,20 +45,20 @@ public class Invoice {
         this.invoiceId = invoiceId;
     }
 
-    public Long getAppointmentId() {
-        return appointmentId;
+    /*public Long getAppointment() {
+        return appointment;
+    }*/
+
+    public void setAppointment(Long appointmentId) {
+        this.appointment = appointment;
     }
 
-    public void setAppointmentId(Long appointmentId) {
-        this.appointmentId = appointmentId;
-    }
+    /*public Long getReceptionist() {
+        return receptionist;
+    }*/
 
-    public Long getReceptionistId() {
-        return receptionistId;
-    }
-
-    public void setReceptionistId(Long receptionistId) {
-        this.receptionistId = receptionistId;
+    public void setReceptionist(Long receptionistId) {
+        this.receptionist = receptionist;
     }
 
     public Date getDate() {
@@ -89,8 +89,6 @@ public class Invoice {
     public String toString() {
         return "Invoice{" +
                 "invoiceId=" + invoiceId +
-                ", appointmentId=" + appointmentId +
-                ", receptionistId=" + receptionistId +
                 ", date=" + date +
                 ", value=" + value +
                 ", isPaid=" + isPaid +

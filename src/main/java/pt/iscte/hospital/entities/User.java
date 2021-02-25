@@ -5,10 +5,9 @@ import org.springframework.format.annotation.DateTimeFormat;
 import javax.persistence.*;
 import java.util.Date;
 
-@Entity
-@Inheritance(strategy = InheritanceType.JOINED)     // https://vladmihalcea.com/the-best-way-to-use-entity-inheritance-with-jpa-and-hibernate/
-                                                    // https://www.baeldung.com/hibernate-inheritance
-public class User {
+@MappedSuperclass                   // https://vladmihalcea.com/the-best-way-to-use-entity-inheritance-with-jpa-and-hibernate/
+                                    // https://www.baeldung.com/hibernate-inheritance
+public abstract class User {
     // Attributes
     @Id
     @GeneratedValue
@@ -36,7 +35,10 @@ public class User {
     public User() {
     }
 
-    public User(Long userId, String name, String username, String sex, Date birthday, String address, String postCode, String city, String account, String nationality, String documentType, Long documentNumber, Long nif, Long patientNumber, Long phone, String email, String password, String photoURL) {
+    public User(Long userId, String name, String username, String sex, Date birthday, String address,
+                String postCode, String city, String account, String nationality, String documentType,
+                Long documentNumber, Long nif, Long patientNumber, Long phone,
+                String email, String password, String photoURL) {
         this.userId = userId;
         this.name = name;
         this.username = username;

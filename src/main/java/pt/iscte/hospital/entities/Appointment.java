@@ -2,9 +2,7 @@ package pt.iscte.hospital.entities;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.sql.Time;
 import java.util.Date;
 
@@ -13,8 +11,8 @@ public class Appointment {
     // Attributes
     @Id
     @GeneratedValue
+    @Column(name = "appointment_id")
     private Long appointmentId;
-    private Long slotId;
     private Long patientId;
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
     private Date date;
@@ -22,16 +20,18 @@ public class Appointment {
     private Time timeEnd;
     private String notes;
 
+    @OneToOne(mappedBy = "appointment")
+    private Invoice invoice;
+
+    @OneToOne
+    @JoinColumn(name = "slot_id")
+    private Slot slot;
+
     // Constructors
     public Appointment() {
     }
 
-    public Appointment(Long appointmentId,
-                       Long slotId,
-                       Long patientId,
-                       Date date, Time timeBegin, Time timeEnd, String notes) {
-        this.appointmentId = appointmentId;
-        this.slotId = slotId;
+    public Appointment(Long patientId, Date date, Time timeBegin, Time timeEnd, String notes) {
         this.patientId = patientId;
         this.date = date;
         this.timeBegin = timeBegin;
@@ -47,14 +47,6 @@ public class Appointment {
 
     public void setAppointmentId(Long appointmentId) {
         this.appointmentId = appointmentId;
-    }
-
-    public Long getSlotId() {
-        return slotId;
-    }
-
-    public void setSlotId(Long slotId) {
-        this.slotId = slotId;
     }
 
     public Long getPatientId() {
@@ -101,7 +93,6 @@ public class Appointment {
     public String toString() {
         return "Appointment{" +
                 "idAppointment=" + appointmentId +
-                ", slotId=" + slotId +
                 ", patientId=" + patientId +
                 ", date=" + date +
                 ", hourBegin=" + timeBegin +
