@@ -26,6 +26,7 @@
     <link rel="stylesheet" href="style.css" />
     <link rel="icon" href="favicon.ico" type="image/x-icon">
 
+
 </head>
 
 <body>
@@ -36,7 +37,7 @@
         <div class="welcome_box">
             <div class="perfil-row">
                 <div class="col-3 user_photo">
-                    <img src="imagens/doctor_photo.png" alt="" />
+                    <img src="" alt="" />
                 </div>
                 <div class="col user_info">
                     <p id="welcome">Bem-vindo</p>
@@ -45,7 +46,7 @@
                 </div>
             </div>
             <div class="but-login">
-                <form action="/user" method="get">
+                <form action="" method="get">
                 <button type="button" class="btn-green btn-perfil"> Ver Perfil </button>
                 </form>
             </div>
