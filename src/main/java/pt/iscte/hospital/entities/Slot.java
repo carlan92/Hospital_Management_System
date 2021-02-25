@@ -8,7 +8,7 @@ import javax.persistence.Id;
 import java.sql.Time;
 import java.util.Date;
 
-
+@Entity
 public class Slot {
     // Attributes
     @Id
