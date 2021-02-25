@@ -138,7 +138,7 @@ h1 {
 }
 
 #user_name {
-  font: normal normal bold 29px/35px "Lato";
+  font: normal normal bold 24px/35px "Lato";
   letter-spacing: 0.23px;
   color: #2c363e;
   opacity: 1;
@@ -201,7 +201,7 @@ h1 {
 
 .icon1 {
   box-sizing: border-box;
-  width: 80%;
+  width: 100%;
   display: block;
   margin: auto;
 }
@@ -560,7 +560,7 @@ option {
 .card-body2 span {
   font: normal normal bold 40px/24px "Lato";
   color: #000000;
-  padding: 5px;
+  margin: 15px;
 }
 
 .card-body2 p {
@@ -628,11 +628,10 @@ option {
 }
 
 .payment_box {
-  margin: auto !important; 
+  margin: auto !important;
   padding: 30px !important;
   box-shadow: 5px 0px 20px #00000029 !important;
-  background: transparent linear-gradient(90deg, #ffffffb9 0%, #ffffff7e 100%)
-    0% 0% no-repeat padding-box !important;
+  background: transparent linear-gradient(90deg, #ffffffb9 0%, #ffffff7e 100%) 0% 0% no-repeat padding-box !important;
   width: 650px !important;
   min-height: 600px !important;
 }
@@ -645,12 +644,12 @@ option {
   width: 25%;
 }
 
-/*.payment_box:hover {
+.payment_box:hover {
   background-color: white;
   z-index: 2;
   position: relative;
   border-radius: 6px;
-}*/
+}
 
 .payment_values {
   box-sizing: border-box;
@@ -669,7 +668,7 @@ option {
   padding: 0px 31px;
 }
 
-/*.btn-invoice {
+.btn-invoice {
   background-color: #00aec5;
   border: none;
   color: white;
@@ -679,18 +678,17 @@ option {
   display: inline-flex;
   font-size: 16px;
   margin: 4px 2px;
-  
-  
 }
- .btn-invoice:hover {
+
+.btn-invoice:hover {
   background-color: white;
   z-index: 2;
   position: relative;
   border-radius: 6px;
   color: black;
-}*/
+}
 
-/*.btn-receipt {
+.btn-receipt {
   background-color: #00aec5;
   border: none;
   color: white;
@@ -700,16 +698,15 @@ option {
   display: inline-flex;
   font-size: 16px;
   margin: 4px 2px;
-  
 }
- .btn-receipt:hover {
+
+.btn-receipt:hover {
   background-color: white;
   z-index: 2;
   position: relative;
   border-radius: 6px;
   color: black;
-}*/
-
+}
 
 .pm_main_col {
   display: inline-flex;
@@ -732,17 +729,16 @@ option {
   width: 45%;
   margin: 5px auto;
   font: bold 16px/18px "Lato";
-  font-weight: bold !important;
+  ~font-weight: bold !important;
 }
 
-hr.payment_dash{
+hr.payment_dash {
   border-top: 2px solid #bbb;
 }
 
-.buttons_payment{
+.buttons_payment {
   margin-top: 20px;
 }
-
 
 /* Recover Password */
 
@@ -846,25 +842,27 @@ select option:disabled {
   color: lightgrey;
 }
 
-/*Menu inicio: Medico (falta sintetizar algumas propriedades) */
+/*Menu inicio: Medico */
 
 .user_photo {
   padding: 0px;
+  display: block;
+  margin: auto;
 }
 
 .user_photo img {
-  height: 80px;
-  width: 80px;
-  padding: 0;
+  height: 90px;
+  width: 90px;
   border-radius: 50%;
-  margin-top: 10px;
 }
 
-.user_info2 {
-  margin: 15px;
+.user_info {
+  padding: 0;
+  display: block;
+  margin: auto;
 }
 
-.btn-perfil {
+.btn-w70 {
   width: 70%;
   display: block;
   margin: auto;
@@ -888,25 +886,20 @@ select option:disabled {
   box-sizing: border-box;
 }
 
-#hour, #date {
-  margin: 10px;
-  color: #707070;
-}
-
 #hour {
-  font: normal normal bold "Lato";
-  font-size: 40px;
-  letter-spacing: 2.59px;
-  color: black;
+  font-size: 45px;
+  letter-spacing: 5px;
+  color: #403D56;
 }
 
 #date {
-  font: normal normal normal "Lato";
-  font-size: 25px;
+  color: #7E7E7E;
+  font: normal normal bold "Lato";
+  font-size: 30px;
 }
 
 .middle-row3 {
-  margin-top: 80px;
+  margin-top: 60px;
   margin-bottom: 40px;
 }
 
@@ -921,78 +914,100 @@ select option:disabled {
 }
 
 .fa-clock {
-  font-size: 25px;
+  font-size: 40px;
   color: #98c33e;
-  ;
 }
 
-.but-patient_info {
-  margin-left: 15px;
-  background-color: #31ade0;
+.next_appt {
+  margin: auto;
+  display: block;
+  text-align: center;
 }
 
-.btn-w85 {
-  width: 85%;
-  margin-left: 15px;
-  margin-top: 15px;
-}
-
-.text_nextApt {
+.text_next_appt {
   font: normal normal bold "Lato";
-  font-size: 35px;
+  font-size: 30px;
   letter-spacing: 2.59px;
   color: black;
-  margin-left: 15px;
+  text-align: center;
 }
 
-.text_nextApt2 {
+.text_next_appt2 {
   font: normal normal normal "Lato";
   font-size: 15px;
   color: #707070;
-  margin-left: 15px;
   margin-bottom: 15px;
+  text-align: center;
+}
+
+.next_appt_time {
+  /*remover*/
+  margin: auto;
+  display: block;
 }
 
 .time_box2 {
   font: normal normal bold "Lato";
-  font-size: 35px;
-  letter-spacing: 2.59px;
+  font-size: 30px;
+  letter-spacing: 4px;
   color: black;
   display: block;
-  margin: 0;
+  margin: auto;
+  text-align: center;
 }
 
 .date_box2 {
   font: normal normal normal "Lato";
-  font-size: 15px;
+  font-size: 16px;
   color: #707070;
   display: block;
-  margin: 0;
+  margin: auto;
+  text-align: center;
 }
 
 .data_appt {
-  margin-left: 20px
+  margin-left: 20px;
 }
 
 .appt_options {
-  margin-top: 40px;
-  ;
+  margin: auto;
+  display: block;
 }
 
-.icon2 {
-  width: 30%;
-}
-
-#patient_age, #first_appt_ask {
+#patient_age {
   font: normal normal normal "Lato";
   font-size: 15px;
-  color: black;
+  color: #707070;
+  margin: 0px;
+}
+
+#first_appt_ask {
+  font: normal normal normal "Lato";
+  font-size: 15px;
+  color: #000000;
+  margin: 0px;
 }
 
 #next_patient_name {
   font: normal normal normal "Lato";
   font-size: 25px;
-  color: #31ade0;
+  color: black;
+}
+
+.btn-w100 {
+  width: 100%;
+  margin-top: 5px;
+}
+
+.btn-w70 {
+  width: 70%;
+  display: block;
+  margin: auto;
+  margin-top: 10px;
+}
+
+.icon2 {
+  width: 100%;
 }
 
 /* ... */
