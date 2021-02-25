@@ -4,7 +4,7 @@ import javax.persistence.*;
 import java.util.Date;
 
 @Entity
-@DiscriminatorValue("Receptionist")
+@PrimaryKeyJoinColumn(name = "receptionist_id")      // Same as user_id | Hibernate Inheritance Mapping: Joined Table
 public class Receptionist extends Employee {
     // Attributes
     @OneToOne(mappedBy = "receptionist")
@@ -23,7 +23,7 @@ public class Receptionist extends Employee {
                    Long documentNumber, Long nif,
                    Long patientNumber, Long phone,
                    String email, String password, String photoURL) {
-        super(userId, name, username, sex, birthday, address, postCode, city, account, nationality, documentType,
+        super(name, username, sex, birthday, address, postCode, city, account, nationality, documentType,
                 documentNumber, nif, patientNumber, phone, email, password, photoURL);
     }
 
