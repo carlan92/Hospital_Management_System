@@ -21,6 +21,7 @@ que as funcionalidades aqui propostas tenham sido descritas pelos diagramas apre
 Questões para o cliente:
 
 -É necessário o perfil do utilizador ser adaptado ao tipo de utilizador (exemplo:funcionário/médico/utente)
++ Login diferenciado para utente, medico, recepcionista e responsavel da unidade?
 
 --------------------
 Tarefas:
