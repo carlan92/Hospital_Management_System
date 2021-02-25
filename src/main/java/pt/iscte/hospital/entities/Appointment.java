@@ -13,21 +13,26 @@ public class Appointment {
     // Attributes
     @Id
     @GeneratedValue
-    private Long idAppointment;
-    private Long idSlot;
-    private Long idPatient;
+    private Long appointmentId;
+    private Long slotId;
+    private Long patientId;
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
     private Date date;
     private Time timeBegin;
     private Time timeEnd;
     private String notes;
 
-    // Constructor
-    public Appointment(Long idAppointment, Long idSlot, Long idPatient,
+    // Constructors
+    public Appointment() {
+    }
+
+    public Appointment(Long appointmentId,
+                       Long slotId,
+                       Long patientId,
                        Date date, Time timeBegin, Time timeEnd, String notes) {
-        this.idAppointment = idAppointment;
-        this.idSlot = idSlot;
-        this.idPatient = idPatient;
+        this.appointmentId = appointmentId;
+        this.slotId = slotId;
+        this.patientId = patientId;
         this.date = date;
         this.timeBegin = timeBegin;
         this.timeEnd = timeEnd;
@@ -36,28 +41,28 @@ public class Appointment {
 
 
     // Methods
-    public Long getIdAppointment() {
-        return idAppointment;
+    public Long getAppointmentId() {
+        return appointmentId;
     }
 
-    public void setIdAppointment(Long idAppointment) {
-        this.idAppointment = idAppointment;
+    public void setAppointmentId(Long appointmentId) {
+        this.appointmentId = appointmentId;
     }
 
-    public Long getIdSlot() {
-        return idSlot;
+    public Long getSlotId() {
+        return slotId;
     }
 
-    public void setIdSlot(Long idSlot) {
-        this.idSlot = idSlot;
+    public void setSlotId(Long slotId) {
+        this.slotId = slotId;
     }
 
-    public Long getIdPatient() {
-        return idPatient;
+    public Long getPatientId() {
+        return patientId;
     }
 
-    public void setIdPatient(Long idPatient) {
-        this.idPatient = idPatient;
+    public void setPatientId(Long patientId) {
+        this.patientId = patientId;
     }
 
     public Date getDate() {
@@ -95,9 +100,9 @@ public class Appointment {
     @Override
     public String toString() {
         return "Appointment{" +
-                "idAppointment=" + idAppointment +
-                ", idSlot=" + idSlot +
-                ", idPatient=" + idPatient +
+                "idAppointment=" + appointmentId +
+                ", slotId=" + slotId +
+                ", patientId=" + patientId +
                 ", date=" + date +
                 ", hourBegin=" + timeBegin +
                 ", hourEnd=" + timeEnd +

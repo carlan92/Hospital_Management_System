@@ -10,10 +10,14 @@ public class Patient extends User {
     // Attributes
     @Id
     @GeneratedValue
-    private Long idPatient;
+    private Long patientId;
 
-    public Patient(Long idPatient,
-                   Long id,
+    // Constructors
+    public Patient() {
+    }
+
+    public Patient(Long patientId,
+                   Long userId,
                    String name,
                    String username,
                    String sex,
@@ -31,26 +35,26 @@ public class Patient extends User {
                    String email,
                    String password,
                    String photoURL) {
-        super(id, name, username, sex, birthday,
+        super(userId, name, username, sex, birthday,
                 address, postCode, city, account, nationality, documentType,
                 documentNumber, nif, patientNumber,
                 phone, email, password, photoURL);
-        this.idPatient = idPatient;
+        this.patientId = patientId;
     }
 
     // Methods
-    public Long getIdPatient() {
-        return idPatient;
+    public Long getPatientId() {
+        return patientId;
     }
 
-    public void setIdPatient(Long idPatient) {
-        this.idPatient = idPatient;
+    public void setPatientId(Long patientId) {
+        this.patientId = patientId;
     }
 
     @Override
     public String toString() {
         return "Patient{" +
-                "idPatient=" + idPatient +
+                "patientId=" + patientId +
                 super.toString() +
                 '}';
     }

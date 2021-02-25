@@ -12,50 +12,53 @@ public class Invoice {
     // Attributes
     @Id
     @GeneratedValue
-    private Long idInvoice;
-    private Long idAppointment;
-    private Long idReceptionist;
+    private Long invoiceId;
+    private Long appointmentId;
+    private Long receptionistId;
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
     private Date date;
     private Double value;
     private Boolean isPaid;
 
-    // Constructor
-    public Invoice(Long idInvoice,
-                   Long idAppointment,
-                   Long idReceptionist,
+    // Constructors
+    public Invoice() {
+    }
+
+    public Invoice(Long invoiceId,
+                   Long appointmentId,
+                   Long receptionistId,
                    Date date, Double value, Boolean isPaid) {
-        this.idInvoice = idInvoice;
-        this.idAppointment = idAppointment;
-        this.idReceptionist = idReceptionist;
+        this.invoiceId = invoiceId;
+        this.appointmentId = appointmentId;
+        this.receptionistId = receptionistId;
         this.date = date;
         this.value = value;
         this.isPaid = isPaid;
     }
 
     // Methods
-    public Long getIdInvoice() {
-        return idInvoice;
+    public Long getInvoiceId() {
+        return invoiceId;
     }
 
-    public void setIdInvoice(Long idInvoice) {
-        this.idInvoice = idInvoice;
+    public void setInvoiceId(Long invoiceId) {
+        this.invoiceId = invoiceId;
     }
 
-    public Long getIdAppointment() {
-        return idAppointment;
+    public Long getAppointmentId() {
+        return appointmentId;
     }
 
-    public void setIdAppointment(Long idAppointment) {
-        this.idAppointment = idAppointment;
+    public void setAppointmentId(Long appointmentId) {
+        this.appointmentId = appointmentId;
     }
 
-    public Long getIdReceptionist() {
-        return idReceptionist;
+    public Long getReceptionistId() {
+        return receptionistId;
     }
 
-    public void setIdReceptionist(Long idReceptionist) {
-        this.idReceptionist = idReceptionist;
+    public void setReceptionistId(Long receptionistId) {
+        this.receptionistId = receptionistId;
     }
 
     public Date getDate() {
@@ -85,9 +88,9 @@ public class Invoice {
     @Override
     public String toString() {
         return "Invoice{" +
-                "idInvoice=" + idInvoice +
-                ", idAppointment=" + idAppointment +
-                ", idReceptionist=" + idReceptionist +
+                "invoiceId=" + invoiceId +
+                ", appointmentId=" + appointmentId +
+                ", receptionistId=" + receptionistId +
                 ", date=" + date +
                 ", value=" + value +
                 ", isPaid=" + isPaid +

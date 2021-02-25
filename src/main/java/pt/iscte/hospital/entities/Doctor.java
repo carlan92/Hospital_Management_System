@@ -1,41 +1,50 @@
 package pt.iscte.hospital.entities;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.util.Date;
+import java.util.Set;
 
 @Entity
 public class Doctor extends Employee {
     // Attributes
     @Id
     @GeneratedValue
-    private Long idDoctor;
+    private Long doctorId;
     private Long licenseNumber;
+    @ManyToMany
+    @JoinTable(
+            name = "doctor_has_speciality",
+            joinColumns = @JoinColumn(name = "student_id"),
+            inverseJoinColumns = @JoinColumn(name = "course_id"))
+    private Set<Speciality> specialities;
 
-    // Constructor
-    public Doctor(Long idDoctor,
-                  Long idEmployee,
-                  Long id,
+    // Constructors
+    public Doctor() {
+    }
+
+    public Doctor(Long doctorId,
+                  Long employeeId,
+                  Long userId,
                   String name, String username, String sex, Date birthday, String address,
                   String postCode, String city, String account, String nationality, String documentType,
                   Long documentNumber, Long nif, Long patientNumber,
-                  Long phone, String email, String password, String photoURL, Long licenseNumber) {
-        super(idEmployee, id, name, username, sex, birthday, address,
+                  Long phone, String email, String password, String photoURL, Long licenseNumber, Set<Speciality> specialities) {
+        super(employeeId, userId, name, username, sex, birthday, address,
                 postCode, city, account, nationality, documentType,
                 documentNumber, nif, patientNumber,
                 phone, email, password, photoURL);
-        this.idDoctor = idDoctor;
+        this.doctorId = doctorId;
         this.licenseNumber = licenseNumber;
+        this.specialities = specialities;
     }
 
     // Methods
-    public Long getIdDoctor() {
-        return idDoctor;
+    public Long getDoctorId() {
+        return doctorId;
     }
 
-    public void setIdDoctor(Long idDoctor) {
-        this.idDoctor = idDoctor;
+    public void setDoctorId(Long doctorId) {
+        this.doctorId = doctorId;
     }
 
     public Long getLicenseNumber() {
@@ -49,7 +58,7 @@ public class Doctor extends Employee {
     @Override
     public String toString() {
         return "Doctor{" +
-                "idDoctor=" + idDoctor +
+                "doctorId=" + doctorId +
                 ", licenseNumber=" + licenseNumber +
                 super.toString() +
                 '}';

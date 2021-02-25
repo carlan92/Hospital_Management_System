@@ -1,9 +1,6 @@
 package pt.iscte.hospital.entities;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 import java.util.List;
 
 @Entity
@@ -11,23 +8,26 @@ public class Speciality {
     // Attributes
     @Id
     @GeneratedValue
-    private Long idSpeciality;
-    @OneToMany
+    private Long specialityId;
+    @ManyToMany
     private List<Doctor> doctors;
 
-    // Constructor
-    public Speciality(Long idSpeciality, List<Doctor> doctors) {
-        this.idSpeciality = idSpeciality;
+    // Constructors
+    public Speciality() {
+    }
+
+    public Speciality(Long specialityId, List<Doctor> doctors) {
+        this.specialityId = specialityId;
         this.doctors = doctors;
     }
 
     // Methods
-    public Long getIdSpeciality() {
-        return idSpeciality;
+    public Long getSpecialityId() {
+        return specialityId;
     }
 
-    public void setIdSpeciality(Long idSpeciality) {
-        this.idSpeciality = idSpeciality;
+    public void setSpecialityId(Long specialityId) {
+        this.specialityId = specialityId;
     }
 
     public List<Doctor> getDoctors() {
@@ -41,7 +41,7 @@ public class Speciality {
     @Override
     public String toString() {
         return "Speciality{" +
-                "idSpeciality=" + idSpeciality +
+                "specialityId=" + specialityId +
                 ", doctors=" + doctors +
                 '}';
     }

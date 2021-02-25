@@ -13,37 +13,40 @@ public class Slot {
     // Attributes
     @Id
     @GeneratedValue
-    private Long idSlot;
-    private Long idDoctor;
+    private Long slotId;
+    private Long doctorId;
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
     private Date date;
     private Time timeBegin;
     private Time timeEnd;
 
-    // Constructor
-    public Slot(Long idSlot, Long idDoctor, Date date, Time timeBegin, Time timeEnd) {
-        this.idSlot = idSlot;
-        this.idDoctor = idDoctor;
+    // Constructors
+    public Slot() {
+    }
+
+    public Slot(Long slotId, Long doctorId, Date date, Time timeBegin, Time timeEnd) {
+        this.slotId = slotId;
+        this.doctorId = doctorId;
         this.date = date;
         this.timeBegin = timeBegin;
         this.timeEnd = timeEnd;
     }
 
     // Methods
-    public Long getIdSlot() {
-        return idSlot;
+    public Long getSlotId() {
+        return slotId;
     }
 
-    public void setIdSlot(Long idSlot) {
-        this.idSlot = idSlot;
+    public void setSlotId(Long slotId) {
+        this.slotId = slotId;
     }
 
-    public Long getIdDoctor() {
-        return idDoctor;
+    public Long getDoctorId() {
+        return doctorId;
     }
 
-    public void setIdDoctor(Long idDoctor) {
-        this.idDoctor = idDoctor;
+    public void setDoctorId(Long doctorId) {
+        this.doctorId = doctorId;
     }
 
     public Date getDate() {
@@ -73,8 +76,8 @@ public class Slot {
     @Override
     public String toString() {
         return "Slot{" +
-                "idSlot=" + idSlot +
-                ", idDoctor=" + idDoctor +
+                "slotId=" + slotId +
+                ", doctorId=" + doctorId +
                 ", date=" + date +
                 ", timeBegin=" + timeBegin +
                 ", timeEnd=" + timeEnd +

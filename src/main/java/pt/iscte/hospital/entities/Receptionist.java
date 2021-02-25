@@ -10,12 +10,15 @@ public class Receptionist extends Employee {
     // Attributes
     @Id
     @GeneratedValue
-    private Long idReceptionist;
+    private Long receptionistId;
 
-    // Constructor
-    public Receptionist(Long idReceptionist,
-                        Long idEmployee,
-                        Long id,
+    // Constructors
+    public Receptionist() {
+    }
+
+    public Receptionist(Long receptionistId,
+                        Long employeeId,
+                        Long userId,
                         String name,
                         String username,
                         String sex,
@@ -33,27 +36,27 @@ public class Receptionist extends Employee {
                         String email,
                         String password,
                         String photoURL) {
-        super(idEmployee, id, name, username, sex, birthday, address,
+        super(employeeId, userId, name, username, sex, birthday, address,
                 postCode, city, account, nationality, documentType,
                 documentNumber, nif, patientNumber, phone,
                 email, password, photoURL);
-        this.idReceptionist = idReceptionist;
+        this.receptionistId = receptionistId;
     }
 
     // Methods
-    public Long getIdReceptionist() {
-        return idReceptionist;
+    public Long getReceptionistId() {
+        return receptionistId;
     }
 
     @Override
     public String toString() {
         return "Receptionist{" +
-                "idReceptionist=" + idReceptionist +
+                "receptionistId=" + receptionistId +
                 super.toString() +
                 '}';
     }
 
-    public void setIdReceptionist(Long idReceptionist) {
-        this.idReceptionist = idReceptionist;
+    public void setReceptionistId(Long receptionistId) {
+        this.receptionistId = receptionistId;
     }
 }

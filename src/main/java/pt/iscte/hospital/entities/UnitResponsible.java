@@ -10,12 +10,15 @@ public class UnitResponsible extends Employee {
     // Attributes
     @Id
     @GeneratedValue
-    private Long idUnitResponsible;
+    private Long unitResponsibleId;
 
-    // Constructor
-    public UnitResponsible(Long idUnitResponsible,
-                           Long idEmployee,
-                           Long id,
+    // Constructors
+    public UnitResponsible() {
+    }
+
+    public UnitResponsible(Long unitResponsibleId,
+                           Long employeeId,
+                           Long userId,
                            String name,
                            String username,
                            String sex,
@@ -25,26 +28,26 @@ public class UnitResponsible extends Employee {
                            String city, String account, String nationality, String documentType,
                            Long documentNumber, Long nif, Long patientNumber, Long phone,
                            String email, String password, String photoURL) {
-        super(idEmployee, id, name, username, sex, birthday, address, postCode, city, account, nationality, documentType,
+        super(employeeId, userId, name, username, sex, birthday, address, postCode, city, account, nationality, documentType,
                 documentNumber, nif, patientNumber, phone,
                 email, password, photoURL);
-        this.idUnitResponsible = idUnitResponsible;
+        this.unitResponsibleId = unitResponsibleId;
     }
 
 
     // Methods
-    public Long getIdUnitResponsible() {
-        return idUnitResponsible;
+    public Long getUnitResponsibleId() {
+        return unitResponsibleId;
     }
 
-    public void setIdUnitResponsible(Long idUnitResponsible) {
-        this.idUnitResponsible = idUnitResponsible;
+    public void setUnitResponsibleId(Long unitResponsibleId) {
+        this.unitResponsibleId = unitResponsibleId;
     }
 
     @Override
     public String toString() {
         return "UnitResponsible{" +
-                "idUnitResponsible=" + idUnitResponsible +
+                "unitResponsibleId=" + unitResponsibleId +
                 super.toString() +
                 '}';
     }
