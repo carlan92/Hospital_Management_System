@@ -445,6 +445,19 @@ h1 {
   border-radius: 6px;
 }
 
+.big-form-input {
+  position: relative;
+  box-sizing: border-box;
+  padding: 12.5px 25px;
+  text-align: left;
+  font: normal normal bold 15px/18px Lato;
+  color: #707070;
+  height: 80%;
+  width: 100%;
+  border: 1px solid #707070;
+  border-radius: 6px;
+}
+
 option {
   font: normal normal bold 15px/18px Lato;
 }
@@ -457,8 +470,17 @@ option {
 }
 
 /*registo*/
+.box-align-left {
+  margin: 0px;
+}
+
 .registo {
-  margin-top: 30px;
+  margin: auto;
+}
+
+.img-fill-form {
+  margin: 20px;
+  max-height: 120px;
 }
 
 .nota {
@@ -628,6 +650,18 @@ h3 {
   font-size: 17px !important;
 }
 
+/* Invoice Form*/
+
+.help-form{
+  font-size: 12px;
+  font-weight: bold;
+  text-align: center;
+}
+
+.margin-form{
+  margin-top: 15px;
+}
+
 /*Payment History*/
 .payment_history {
   font-size: 30px;
@@ -655,13 +689,6 @@ h3 {
   width: 25%;
 }
 
-/*.payment_box:hover {
-  background-color: white;
-  z-index: 2;
-  position: relative;
-  border-radius: 6px;
-}*/
-
 .payment_values {
   box-sizing: border-box;
   height: 100%;
@@ -678,47 +705,6 @@ h3 {
 .payment_values-body {
   padding: 0px 31px;
 }
-
-/*.btn-invoice {
-  background-color: #00aec5;
-  border: none;
-  color: white;
-  padding: 10px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-flex;
-  font-size: 16px;
-  margin: 4px 2px;
-
-
-}
- .btn-invoice:hover {
-  background-color: white;
-  z-index: 2;
-  position: relative;
-  border-radius: 6px;
-  color: black;
-}*/
-
-/*.btn-receipt {
-  background-color: #00aec5;
-  border: none;
-  color: white;
-  padding: 10px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-flex;
-  font-size: 16px;
-  margin: 4px 2px;
-
-}
- .btn-receipt:hover {
-  background-color: white;
-  z-index: 2;
-  position: relative;
-  border-radius: 6px;
-  color: black;
-}*/
 
 .pm_main_col {
   display: inline-flex;

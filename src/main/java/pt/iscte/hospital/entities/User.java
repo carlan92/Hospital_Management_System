@@ -2,21 +2,22 @@ package pt.iscte.hospital.entities;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.util.Date;
 
 @Entity
+@Inheritance(strategy = InheritanceType.JOINED)     // https://vladmihalcea.com/the-best-way-to-use-entity-inheritance-with-jpa-and-hibernate/
+                                                    // https://www.baeldung.com/hibernate-inheritance
 public class User {
+    // Attributes
     @Id
     @GeneratedValue
-    private Long id;
+    private Long userId;
     private String name;
     private String username;
     private String sex;
-    @DateTimeFormat (iso =DateTimeFormat.ISO.DATE)
-    private Date birthday ;
+    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
+    private Date birthday;
     private String address;
     private String postCode;
     private String city;
@@ -31,8 +32,12 @@ public class User {
     private String password;
     private String photoURL;
 
-    public User(Long id, String name, String username, String sex, Date birthday, String address, String postCode, String city, String account, String nationality, String documentType, Long documentNumber, Long nif, Long patientNumber, Long phone, String email, String password, String photoURL) {
-        this.id = id;
+    // Constructors
+    public User() {
+    }
+
+    public User(Long userId, String name, String username, String sex, Date birthday, String address, String postCode, String city, String account, String nationality, String documentType, Long documentNumber, Long nif, Long patientNumber, Long phone, String email, String password, String photoURL) {
+        this.userId = userId;
         this.name = name;
         this.username = username;
         this.sex = sex;
@@ -52,15 +57,13 @@ public class User {
         this.photoURL = photoURL;
     }
 
-    public User (){
+    // Methods
+    public Long getUserId() {
+        return userId;
     }
 
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
+    public void setUserId(Long userId) {
+        this.userId = userId;
     }
 
     public String getName() {
@@ -75,11 +78,11 @@ public class User {
         return username;
     }
 
-    public String getFirstAndLastName(){
-        String[] names =name.split(" ");
-        if (names.length>1) {
+    public String getFirstAndLastName() {
+        String[] names = name.split(" ");
+        if (names.length > 1) {
             return names[0] + " " + names[names.length - 1];
-        } else{
+        } else {
             return names[0];
         }
     }
@@ -211,7 +214,7 @@ public class User {
     @Override
     public String toString() {
         return "User{" +
-                "id=" + id +
+                "userId=" + userId +
                 ", name='" + name + '\'' +
                 ", username='" + username + '\'' +
                 ", sex='" + sex + '\'' +

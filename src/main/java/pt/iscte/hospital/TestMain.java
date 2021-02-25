@@ -13,6 +13,9 @@ public class TestMain {
                 "Mário",
                 "%",
                 "'",
+                "e",
+                "o'neil",
+                "de",
                 "d."
         };
 
@@ -22,7 +25,7 @@ public class TestMain {
     }
 
     public static boolean isValid(String nome){
-        return nome.matches("[A-ZÀ-Ÿa-zÀ-ÿ'`.]{1,}");
+        return nome.matches("[A-ZÀ-Ÿa-zÀ-ÿ']{2,}||[e]{1}");
     }
 }
 

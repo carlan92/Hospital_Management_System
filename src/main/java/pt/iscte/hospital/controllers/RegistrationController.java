@@ -8,10 +8,12 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
+import pt.iscte.hospital.entities.Login;
 import pt.iscte.hospital.entities.User;
 import pt.iscte.hospital.exceptions.ImageSizeException;
 import pt.iscte.hospital.exceptions.ImageTypeException;
 import pt.iscte.hospital.services.ImageUploadService;
+import pt.iscte.hospital.services.RegistrationService;
 import pt.iscte.hospital.services.UserService;
 
 import java.io.IOException;
@@ -22,9 +24,10 @@ public class RegistrationController {
     // Attributes
     @Autowired
     UserService userService;
-
     @Autowired
     ImageUploadService imageUploadService;
+    @Autowired
+    RegistrationService registrationService;
 
     private static final String errorMsgName = "Nome inválido";
     private static final String errorMsgSex = "Escolha uma opção válida";
@@ -61,13 +64,22 @@ public class RegistrationController {
     @PostMapping(value = "/registrationToLogin")
     public String returnToLoginPage(@ModelAttribute User user,
                                     @RequestParam("file") MultipartFile file,
-                                    ModelMap mpError) {
+                                    ModelMap mpError, @RequestParam String password, @RequestParam String confirmarPassword2) {
 
         // TODO verificar elementos do user
-        boolean isFormValid=true;
+        boolean isFormValid = true;
 
-        if (!validaNome(user)) {
+        if (!registrationService.validaNome(user)) {
             mpError.put("errorMsgName", errorMsgName);
+            isFormValid = false;
+        }
+
+        if(!password.equals(confirmarPassword2)){
+            mpError.put("errorMsgPassword2", errorMsgPassword2);
+            isFormValid = false;
+        }
+        if(!registrationService.validaTelefone(user)){
+            mpError.put("errorMsgPhone", errorMsgPhone);
             isFormValid=false;
         }
 
@@ -88,15 +100,15 @@ public class RegistrationController {
                 return "registration";
             }
         }
-    if (!isFormValid){
-        return "registration";
-    }
+        if (!isFormValid) {
+
+            return "registration";
+        }
         // Add user to database
         userService.addUser(user);
 
         return "redirect:/login";
     }
-
 
     // Para testes apenas!
     @GetMapping(value = "/temp")
@@ -127,16 +139,6 @@ public class RegistrationController {
         }
 
         return "redirect:/login";
-    }
-
-    public boolean validaNome(User user) {
-        String[] names = user.getName().split(" ");
-        for (int i = 0; i < names.length; i++) {
-            if (!names[i].matches("[A-ZÀ-Ÿ][a-zÀ-ÿ']{1,}")) {
-                return false;
-            }
-        }
-        return true;
     }
 
 }

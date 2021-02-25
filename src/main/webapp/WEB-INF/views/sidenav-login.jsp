@@ -1,18 +1,7 @@
 <!DOCTYPE html>
-<html lang="en">
 
-<head>
-    <meta charset="UTF-8" />
-    <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-
-        <script src="https://kit.fontawesome.com/6afe83edf7.js" crossorigin="anonymous"></script>
-
-        <link rel="stylesheet" href="style.css" />
-</head>
-
-<body>
     <div class="sidenav">
         <!-- menu da esquerda -->
 
@@ -47,6 +36,3 @@
         </div>
 
     </div>
-</body>
-
-</html>
