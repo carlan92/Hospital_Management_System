@@ -15,8 +15,8 @@ public class User {
     private String name;
     private String username;
     private String sex;
-    @DateTimeFormat (iso =DateTimeFormat.ISO.DATE)
-    private Date birthday ;
+    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
+    private Date birthday;
     private String address;
     private String postCode;
     private String city;
@@ -52,7 +52,7 @@ public class User {
         this.photoURL = photoURL;
     }
 
-    public User (){
+    public User() {
     }
 
     public Long getId() {
@@ -75,11 +75,11 @@ public class User {
         return username;
     }
 
-    public String getFirstAndLastName(){
-        String[] names =name.split(" ");
-        if (names.length>1) {
+    public String getFirstAndLastName() {
+        String[] names = name.split(" ");
+        if (names.length > 1) {
             return names[0] + " " + names[names.length - 1];
-        } else{
+        } else {
             return names[0];
         }
     }
