@@ -645,13 +645,6 @@ option {
   width: 25%;
 }
 
-/*.payment_box:hover {
-  background-color: white;
-  z-index: 2;
-  position: relative;
-  border-radius: 6px;
-}*/
-
 .payment_values {
   box-sizing: border-box;
   height: 100%;
@@ -668,48 +661,6 @@ option {
 .payment_values-body {
   padding: 0px 31px;
 }
-
-/*.btn-invoice {
-  background-color: #00aec5;
-  border: none;
-  color: white;
-  padding: 10px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-flex;
-  font-size: 16px;
-  margin: 4px 2px;
-  
-  
-}
- .btn-invoice:hover {
-  background-color: white;
-  z-index: 2;
-  position: relative;
-  border-radius: 6px;
-  color: black;
-}*/
-
-/*.btn-receipt {
-  background-color: #00aec5;
-  border: none;
-  color: white;
-  padding: 10px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-flex;
-  font-size: 16px;
-  margin: 4px 2px;
-  
-}
- .btn-receipt:hover {
-  background-color: white;
-  z-index: 2;
-  position: relative;
-  border-radius: 6px;
-  color: black;
-}*/
-
 
 .pm_main_col {
   display: inline-flex;
