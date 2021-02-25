@@ -17,9 +17,10 @@ public class RegistrationServiceImpl implements RegistrationService{
     }
     public boolean validaTelefone(User user){
         String phone=String.valueOf(user.getPhone());
-        if(!phone.matches("[1236][0-9]{7}$|^2[3-9][1-9][0-9]{6}$|^2[12][0-9]{7}")){
+        if(!phone.matches("^9[1236][0-9]{7}$|^2[3-9][1-9][0-9]{6}$|^2[12][0-9]{7}$")){
             return false;
+        } else {
+            return true;
         }
-        return true;
     }
 }
