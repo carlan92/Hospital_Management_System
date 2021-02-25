@@ -76,7 +76,7 @@
                         <div class="perfil-row">
                             <div class="cell-row">
                                 <label for="codigoPostal_id">Código Postal</label>
-                                <input id="codigoPostal_id" type="text" pattern="\d{4}([ -]\d{3})?" class="form-input"
+                                <input id="codigoPostal_id" type="text" pattern="[0-9]{4}[-][0-9]{3}" class="form-input"
                                     name="postCode" placeholder="O seu código postal" />
                                 <p class="msg-error">${errorMsgPostCode}</p>
                             </div>
@@ -375,13 +375,13 @@
                             <div class="cell-row">
                                 <label for="password_id">Palavra-Passe *</label>
                                 <input id="password_id" type="password" class="form-input" minlength="1" maxlength="15"
-                                    size="8" name="password" required placeholder="Palavra-passe" />
+                                    name="password" required placeholder="Palavra-passe" />
                                 <p class="msg-error">${errorMsgPassword}</p>
                             </div>
                             <div class="cell-row">
                                 <label for="confirmarPassword_id">Confirmar Palavra-Passe *</label>
                                 <input id="confirmarPassword_id" type="password" class="form-input" minlength="1"
-                                    maxlength="15" size="8" name="confirmarPassword2" required
+                                    maxlength="15" name="confirmarPassword2" required
                                     placeholder="Repetir palavra-passe" />
                                 <p class="msg-error">${errorMsgPassword2}</p>
                             </div>

@@ -26,7 +26,6 @@ public class LoginServiceImpl implements LoginService {
     @Override
     public boolean validateUserNIF(String username, Long user_nif) {
         User user = userRepository.findByUsername(username);
-        System.out.println(user);
         if (userService.validateUser(user)) {
             if (username.equals(user.getUsername()) && user_nif.equals(user.getNif())) {
                 return true;

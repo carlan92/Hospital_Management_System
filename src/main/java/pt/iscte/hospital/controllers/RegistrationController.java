@@ -12,6 +12,7 @@ import pt.iscte.hospital.entities.Login;
 import pt.iscte.hospital.entities.User;
 import pt.iscte.hospital.exceptions.ImageSizeException;
 import pt.iscte.hospital.exceptions.ImageTypeException;
+import pt.iscte.hospital.repositories.UserRepository;
 import pt.iscte.hospital.services.ImageUploadService;
 import pt.iscte.hospital.services.RegistrationService;
 import pt.iscte.hospital.services.UserService;
@@ -73,14 +74,33 @@ public class RegistrationController {
             mpError.put("errorMsgName", errorMsgName);
             isFormValid = false;
         }
-
-        if(!password.equals(confirmarPassword2)){
+        if (!registrationService.validaPassword(user)) {
+            mpError.put("errorMsgPassword", errorMsgPassword);
+            isFormValid = false;
+        }
+        if (!password.equals(confirmarPassword2)) {
             mpError.put("errorMsgPassword2", errorMsgPassword2);
             isFormValid = false;
         }
-        if(!registrationService.validaTelefone(user)){
+        if (!registrationService.validaTelefone(user)) {
             mpError.put("errorMsgPhone", errorMsgPhone);
-            isFormValid=false;
+            isFormValid = false;
+        }
+        if (!registrationService.validaPostCode(user)) {
+            mpError.put("errorMsgPostCode", errorMsgPostCode);
+            isFormValid = false;
+        }
+        if (!registrationService.validaSexo(user)) {
+            mpError.put("errorMsgSex", errorMsgSex);
+            isFormValid = false;
+        }
+        if (!registrationService.validaEmail(user)) {
+            mpError.put("errorMsgEmail", errorMsgEmail);
+            isFormValid = false;
+        }
+        if (!registrationService.validaUsername(user)) {
+            mpError.put("errorMsgUsername", errorMsgUsername);
+            isFormValid = false;
         }
 
         if (file != null && !file.isEmpty() && !file.getContentType().equals("application/octet-stream")) {
