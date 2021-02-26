@@ -2,15 +2,16 @@ package pt.iscte.hospital.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import pt.iscte.hospital.entities.Patient;
 import pt.iscte.hospital.entities.User;
-import pt.iscte.hospital.repositories.UserRepository;
+import pt.iscte.hospital.repositories.PatientRepository;
 
 @Service
 public class UserServiceImpl implements UserService {
     @Autowired
-    private UserRepository userRepository;
+    private PatientRepository patientRepository;
 
-    public boolean validateUser(User user) {
+    public boolean validateUser(Patient user) {
         if (user == null) {
             return false;
         } else {
@@ -19,12 +20,12 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void addUser(User user) {
-        userRepository.save(user);
+    public void addUser(Patient user) {
+        patientRepository.save(user);
     }
 
     @Override
-    public User findUser(String username){
-        return userRepository.findByUsername(username);
+    public Patient findUser(String username){
+        return patientRepository.findByUsername(username);
     }
 }

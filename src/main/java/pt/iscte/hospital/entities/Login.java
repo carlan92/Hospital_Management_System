@@ -2,18 +2,18 @@ package pt.iscte.hospital.entities;
 
 public class Login {
 
-    private static User connectedUser = null;
+    private static Patient connectedUser = null;
 
     // Methods
     public static void logout() {
         connectedUser = null;
     }
 
-    public static User getConnectedUser() {
+    public static Patient getConnectedUser() {
         return connectedUser;
     }
 
-    public static void setConnectedUser(User connectedUser) {
+    public static void setConnectedUser(Patient connectedUser) {
         Login.connectedUser = connectedUser;
     }
 
