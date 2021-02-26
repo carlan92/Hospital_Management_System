@@ -154,6 +154,7 @@
   
   #user_name {
 	font: normal normal bold 24px/35px "Lato";
+	text-decoration: none;
 	letter-spacing: 0.23px;
 	color: #2c363e;
 	opacity: 1;
@@ -512,12 +513,14 @@
 	margin: auto;
 	width: 100%;
 	background-color: transparent;
+	text-decoration: none;
 	color: #7e7e7e;
 	border: solid transparent 6px;
 	padding: 12.5px 35px;
   }
   
   .botao_acessos:hover {
+	text-decoration: none;
 	color: #2c363e;
 	border-width: solid 6px;
 	border-left-color: #98c33e;
@@ -641,10 +644,6 @@
   
   .cell-morada {
 	width: 95%;
-  }
-  
-  .vista_perfil {
-	padding-left: 100px;
   }
   
   /*Terms & Conditions*/
