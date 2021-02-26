@@ -2,9 +2,7 @@ package pt.iscte.hospital.entities;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.sql.Time;
 import java.util.Date;
 
@@ -14,11 +12,18 @@ public class Slot {
     @Id
     @GeneratedValue
     private Long slotId;
-    private Long doctorId;
+
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
     private Date date;
     private Time timeBegin;
     private Time timeEnd;
+
+    @OneToOne(mappedBy = "slot")
+    private Appointment appointment;
+
+    @ManyToOne
+    @JoinColumn(name="doctor_id")
+    private Doctor doctor;
 
     // Constructors
     public Slot() {
@@ -26,7 +31,6 @@ public class Slot {
 
     public Slot(Long slotId, Long doctorId, Date date, Time timeBegin, Time timeEnd) {
         this.slotId = slotId;
-        this.doctorId = doctorId;
         this.date = date;
         this.timeBegin = timeBegin;
         this.timeEnd = timeEnd;
@@ -39,14 +43,6 @@ public class Slot {
 
     public void setSlotId(Long slotId) {
         this.slotId = slotId;
-    }
-
-    public Long getDoctorId() {
-        return doctorId;
-    }
-
-    public void setDoctorId(Long doctorId) {
-        this.doctorId = doctorId;
     }
 
     public Date getDate() {
@@ -77,7 +73,6 @@ public class Slot {
     public String toString() {
         return "Slot{" +
                 "slotId=" + slotId +
-                ", doctorId=" + doctorId +
                 ", date=" + date +
                 ", timeBegin=" + timeBegin +
                 ", timeEnd=" + timeEnd +
