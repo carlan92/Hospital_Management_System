@@ -41,6 +41,10 @@
   text-align: left;
 }
 
+body {
+  margin: 0%;
+}
+
 a:hover {
   color: #2eaddf;
 }
@@ -96,8 +100,7 @@ h1 {
   z-index: 1;
   overflow-x: hidden;
   color: #7e7e7e;
-  padding-top: 50px;
-  padding-left: 50px;
+  padding: 50px 0px 50px 50px;
 }
 
 .main::before {
@@ -458,9 +461,17 @@ option {
 }
 
 /*registo*/
+.box-align-left {
+  margin: 0px;
+}
 
 .registo {
-  margin-top: 30px;
+  margin: auto;
+}
+
+.img-fill-form {
+  margin: 20px;
+  max-height: 120px;
 }
 
 .nota {
@@ -562,7 +573,8 @@ option {
   padding: 25px 30px;
 }
 
-.card-body2 h2, h3 {
+.card-body2 h2,
+h3 {
   color: #000000;
   margin: 10px;
   font: normal normal bold 27px/30px "Lato";
@@ -572,8 +584,8 @@ option {
 
 .card-body2 span {
   font: normal normal bold 40px/24px "Lato";
-  color: #000000;
-  margin: 15px;
+  color: #98c33e;
+  padding: 15px;
 }
 
 .card-body2 p {
@@ -593,7 +605,6 @@ option {
 }
 
 /*Perfil*/
-
 .perfil-main-col {
   box-sizing: border-box;
   margin: auto;
@@ -619,16 +630,11 @@ option {
   width: 95%;
 }
 
-.cell-multiple-choice {
-  width: 95%;
-}
-
 .vista_perfil {
   padding-left: 100px;
 }
 
 /*Terms & Conditions*/
-
 .terms p, .terms li {
   text-align: justify !important;
   font-size: 17px !important;
@@ -647,7 +653,6 @@ option {
 }
 
 /*Payment History*/
-
 .payment_history {
   font-size: 30px;
   text-align: center;
@@ -723,7 +728,6 @@ hr.payment_dash {
 }
 
 /* Recover Password */
-
 .input1 {
   margin-top: 5px;
   margin-bottom: 5px;
@@ -751,9 +755,7 @@ hr.payment_dash {
 }
 
 /* Forms */
-
 /*Buttons*/
-
 .btn-button {
   background-color: transparent;
   padding: 15px 20px;
@@ -814,7 +816,8 @@ button:focus {
   outline: none;
 }
 
-.btn-blue:hover, .btn-green:hover {
+.btn-blue:hover,
+.btn-green:hover {
   opacity: 0.9;
   cursor: pointer;
   transition: all 0.2s ease-out;
@@ -924,6 +927,7 @@ select option:disabled {
   margin: auto;
   margin-left: 0;
 }
+
 .next_appt_time{
 margin-top: 10px;
 }
@@ -983,6 +987,11 @@ margin-top: 10px;
   color: black;
 }
 
+.btn-w100 {
+  width: 100%;
+  margin-top: 5px;
+}
+
 .btn-w85 {
   width: 85%;
   margin-top: 10px;
@@ -997,6 +1006,13 @@ margin-top: 10px;
 
 .btn-w74 {
   width: 74%;
+  margin-top: 10px;
+}
+
+.btn-w70 {
+  width: 70%;
+  display: block;
+  margin: auto;
   margin-top: 10px;
 }
 
@@ -1019,8 +1035,6 @@ margin-top: 10px;
   text-align: center;
   color: #676E74;
 }
-
-/* ... */
 
 @media screen and (max-height: 450px) {
   .sidenav {

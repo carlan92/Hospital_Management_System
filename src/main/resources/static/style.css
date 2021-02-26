@@ -90,8 +90,6 @@ h1 {
 .sidenav_row {
   box-sizing: border-box;
   width: 100%;
-  /*border: solid #5B6DCD 10px;*/
-  /*to be removed*/
 }
 
 .main {
@@ -126,7 +124,6 @@ h1 {
   display: block;
   margin: 35px;
   margin-top: 20px;
-  /*revercarla*/
 }
 
 .welcome_box {
@@ -136,7 +133,7 @@ h1 {
 }
 
 #welcome {
-  font: normal normal medium 17px/21px Lato;
+  font: normal normal medium 17px/21px "Lato";
   letter-spacing: -0.12px;
   color: #7e7e7e;
   opacity: 1;
@@ -152,7 +149,7 @@ h1 {
 }
 
 #user_category {
-  font: normal normal 300 14px/17px Lato;
+  font: normal normal 300 14px/17px "Lato";
   letter-spacing: -0.1px;
   color: #7e7e7e;
   opacity: 1;
@@ -161,7 +158,7 @@ h1 {
 
 #acessos_rapidos {
   box-sizing: border-box;
-  font: normal normal medium 17px/21px Lato;
+  font: normal normal medium 17px/21px "Lato";
   letter-spacing: -0.58px;
   color: #ababab;
   margin-left: 35px;
@@ -227,7 +224,7 @@ h1 {
 }
 
 .main #vista_geral {
-  font: normal normal 600 15px/18px Lato;
+  font: normal normal 600 15px/18px "Lato";
   letter-spacing: 2.08px;
   color: #7e7e7e;
   margin-top: 75px;
@@ -236,9 +233,7 @@ h1 {
 
 .main .middle-row {
   box-sizing: border-box;
-  /*border: solid #5B6DCD 10px;*/
-  background: transparent linear-gradient(90deg, #ffffffb9 0%, #ffffff7e 100%)
-    0% 0% no-repeat padding-box;
+  background: transparent linear-gradient(90deg, #ffffffb9 0%, #ffffff7e 100%) 0% 0% no-repeat padding-box;
   border-radius: 6px;
   z-index: 1;
   /*to be checked*/
@@ -250,7 +245,6 @@ h1 {
 
 .main .card_box {
   box-sizing: border-box;
-  /*border: solid #5fcd5b 10px;*/
   background-color: transparent;
   margin-left: 22.5px;
   margin-right: 22.5px;
@@ -260,7 +254,6 @@ h1 {
 .main .card_box:hover {
   background-color: white;
   z-index: 2;
-  /*border-bottom: solid #98c33e 6px;*/
   position: relative;
   border-radius: 6px;
 }
@@ -279,7 +272,6 @@ h1 {
 
 .main .card {
   box-sizing: border-box;
-  /*border: solid #635bcd 10px;*/
   height: 100%;
   width: 100%;
   background-color: transparent;
@@ -400,11 +392,10 @@ h1 {
 /*Login*/
 
 .white_box {
-  margin: auto;
+  margin: 10px auto;
   padding: 30px;
   box-shadow: 5px 0px 20px #00000029;
-  background: transparent linear-gradient(90deg, #ffffffb9 0%, #ffffff7e 100%)
-    0% 0% no-repeat padding-box;
+  background: transparent linear-gradient(90deg, #ffffffb9 0%, #ffffff7e 100%) 0% 0% no-repeat padding-box;
   width: 650px;
   min-height: 600px;
 }
@@ -551,8 +542,7 @@ option {
   box-sizing: border-box;
   height: 100%;
   border-radius: 10px;
-  background: transparent linear-gradient(90deg, #ffffffb9 0%, #ffffff7e 100%)
-    0% 0% no-repeat padding-box;
+  background: transparent linear-gradient(90deg, #ffffffb9 0%, #ffffff7e 100%) 0% 0% no-repeat padding-box;
   box-shadow: 7px 7px 20px 7px grey;
 }
 
@@ -644,21 +634,21 @@ h3 {
   padding-left: 100px;
 }
 
-/*termos e condições*/
-.terms p, .terms li{
-  text-align: justify  !important;
+/*Terms & Conditions*/
+.terms p, .terms li {
+  text-align: justify !important;
   font-size: 17px !important;
 }
 
 /* Invoice Form*/
 
-.help-form{
+.help-form {
   font-size: 12px;
   font-weight: bold;
   text-align: center;
 }
 
-.margin-form{
+.margin-form {
   margin-top: 15px;
 }
 
@@ -675,8 +665,7 @@ h3 {
   margin: auto !important;
   padding: 30px !important;
   box-shadow: 5px 0px 20px #00000029 !important;
-  background: transparent linear-gradient(90deg, #ffffffb9 0%, #ffffff7e 100%)
-    0% 0% no-repeat padding-box !important;
+  background: transparent linear-gradient(90deg, #ffffffb9 0%, #ffffff7e 100%) 0% 0% no-repeat padding-box !important;
   width: 650px !important;
   min-height: 600px !important;
 }
@@ -730,11 +719,11 @@ h3 {
   font-weight: bold !important;
 }
 
-hr.payment_dash{
+hr.payment_dash {
   border-top: 2px solid #bbb;
 }
 
-.buttons_payment{
+.buttons_payment {
   margin-top: 20px;
 }
 
@@ -934,15 +923,18 @@ select option:disabled {
   margin-bottom: 15px;
 }
 
-.next_appt_time {
-  /*remover*/
+.title_next_appt {
   margin: auto;
-  display: block;
+  margin-left: 0;
+}
+
+.next_appt_time{
+margin-top: 10px;
 }
 
 .time_box2 {
   font: normal normal bold "Lato";
-  font-size: 30px;
+  font-size: 35px;
   letter-spacing: 4px;
   color: black;
   display: block;
@@ -952,7 +944,7 @@ select option:disabled {
 
 .date_box2 {
   font: normal normal normal "Lato";
-  font-size: 16px;
+  font-size: 18px;
   color: #707070;
   display: block;
   margin: auto;
@@ -960,12 +952,19 @@ select option:disabled {
 }
 
 .data_appt {
-  margin-left: 20px;
+  margin-left: 30px;
 }
 
 .appt_options {
   margin: auto;
   display: block;
+}
+
+.user_photo2 img {
+  height: 120px;
+  width: 120px;
+  border-radius: 50%;
+  border-style: double
 }
 
 #patient_age {
@@ -993,6 +992,23 @@ select option:disabled {
   margin-top: 5px;
 }
 
+.btn-w85 {
+  width: 85%;
+  margin-top: 10px;
+}
+
+.btn-w75 {
+  width: 75%;
+  display: block;
+  margin: auto;
+  margin-top: 10px;
+}
+
+.btn-w74 {
+  width: 74%;
+  margin-top: 10px;
+}
+
 .btn-w70 {
   width: 70%;
   display: block;
@@ -1002,9 +1018,23 @@ select option:disabled {
 
 .icon2 {
   width: 100%;
+  margin-left: 20px;
 }
-/*....*/
 
+.icon3 {
+  padding: 0;
+}
+
+.icon3 i {
+  font-size: 50px;
+  display: block;
+  margin: auto;
+  padding-top: 10px;
+  padding-left: 40px;
+  ;
+  text-align: center;
+  color: #676E74;
+}
 
 @media screen and (max-height: 450px) {
   .sidenav {
