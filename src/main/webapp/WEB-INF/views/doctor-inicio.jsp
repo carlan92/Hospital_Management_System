@@ -35,7 +35,7 @@
         <div class="welcome_box">
             <div class="perfil-row">
                 <div class="col-4 user_photo">
-                    <img src="imagens/remove_doctor_photo.png" alt="user_photography" />
+                    <img src="imagens/doctor_photo.png" alt="user_photography" />
                 </div>
                 <div class="col user_info">
                     <p id="welcome">Bem-vindo</p>
@@ -196,7 +196,7 @@
                     <div class="col-9">
                         <div class="perfil-row">
                             <div class="col-4 user_photo2">
-                                <img src="imagens/remove_next_patient_photo.png" alt="" />
+                                <img src="imagens/next_patient_photo.png" alt="" />
                             </div>
                             <div class="col user_info">
                                 <span id="next_patient_name">Alice Antunes</span>
