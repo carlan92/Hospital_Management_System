@@ -42,7 +42,7 @@
 }
 
 body {
-    margin: 0%;
+  margin: 0%;
 }
 
 a:hover {
@@ -60,7 +60,7 @@ h1 {
 }
 
 .msg-error {
-  color: #D8000C;
+  color: #d8000c;
   font-size: 12px;
   margin: 2px auto;
 }
@@ -73,31 +73,41 @@ h1 {
 
 .sidenav {
   /*https://stackoverflow.com/questions/15358646/css-position-div-to-bottom-of-containing-div*/
-  position: relative;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+
+  display: flex;
+  flex-direction: column;
   box-sizing: border-box;
   box-shadow: 5px 0px 20px #00000029;
-  opacity: 1;
-  min-width: 25vw;
+
+  width: 25vw;
   min-height: 100vh;
   z-index: 2;
   background-color: white;
-  overflow-x: hidden;
+  overflow: hidden;
   color: #7e7e7e;
   font: normal normal medium 17px/21px "Lato";
   padding-top: 20px;
 }
 
+.panel-scroll {
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+}
+
 .sidenav_row {
   box-sizing: border-box;
   width: 100%;
-  /*border: solid #5B6DCD 10px;*/
-  /*to be removed*/
 }
 
 .main {
   position: relative;
   box-sizing: border-box;
-  min-width: 75vw;
+  margin-left: 25vw;
   min-height: 100vh;
   z-index: 1;
   overflow-x: hidden;
@@ -126,7 +136,6 @@ h1 {
   display: block;
   margin: 35px;
   margin-top: 20px;
-  /*revercarla*/
 }
 
 .welcome_box {
@@ -136,7 +145,7 @@ h1 {
 }
 
 #welcome {
-  font: normal normal medium 17px/21px Lato;
+  font: normal normal medium 17px/21px "Lato";
   letter-spacing: -0.12px;
   color: #7e7e7e;
   opacity: 1;
@@ -145,6 +154,7 @@ h1 {
 
 #user_name {
   font: normal normal bold 24px/35px "Lato";
+  text-decoration: none;
   letter-spacing: 0.23px;
   color: #2c363e;
   opacity: 1;
@@ -152,7 +162,7 @@ h1 {
 }
 
 #user_category {
-  font: normal normal 300 14px/17px Lato;
+  font: normal normal 300 14px/17px "Lato";
   letter-spacing: -0.1px;
   color: #7e7e7e;
   opacity: 1;
@@ -161,7 +171,7 @@ h1 {
 
 #acessos_rapidos {
   box-sizing: border-box;
-  font: normal normal medium 17px/21px Lato;
+  font: normal normal medium 17px/21px "Lato";
   letter-spacing: -0.58px;
   color: #ababab;
   margin-left: 35px;
@@ -185,8 +195,8 @@ h1 {
 }
 
 .log_out_box {
-  position: absolute;
-  bottom: 0px;
+  position: relative;
+
   width: 100%;
 }
 
@@ -227,7 +237,7 @@ h1 {
 }
 
 .main #vista_geral {
-  font: normal normal 600 15px/18px Lato;
+  font: normal normal 600 15px/18px "Lato";
   letter-spacing: 2.08px;
   color: #7e7e7e;
   margin-top: 75px;
@@ -236,9 +246,8 @@ h1 {
 
 .main .middle-row {
   box-sizing: border-box;
-  /*border: solid #5B6DCD 10px;*/
   background: transparent linear-gradient(90deg, #ffffffb9 0%, #ffffff7e 100%)
-    0% 0% no-repeat padding-box;
+  0% 0% no-repeat padding-box;
   border-radius: 6px;
   z-index: 1;
   /*to be checked*/
@@ -250,7 +259,6 @@ h1 {
 
 .main .card_box {
   box-sizing: border-box;
-  /*border: solid #5fcd5b 10px;*/
   background-color: transparent;
   margin-left: 22.5px;
   margin-right: 22.5px;
@@ -260,7 +268,6 @@ h1 {
 .main .card_box:hover {
   background-color: white;
   z-index: 2;
-  /*border-bottom: solid #98c33e 6px;*/
   position: relative;
   border-radius: 6px;
 }
@@ -279,7 +286,6 @@ h1 {
 
 .main .card {
   box-sizing: border-box;
-  /*border: solid #635bcd 10px;*/
   height: 100%;
   width: 100%;
   background-color: transparent;
@@ -400,11 +406,11 @@ h1 {
 /*Login*/
 
 .white_box {
-  margin: auto;
+  margin: 10px auto;
   padding: 30px;
   box-shadow: 5px 0px 20px #00000029;
   background: transparent linear-gradient(90deg, #ffffffb9 0%, #ffffff7e 100%)
-    0% 0% no-repeat padding-box;
+  0% 0% no-repeat padding-box;
   width: 650px;
   min-height: 600px;
 }
@@ -507,12 +513,14 @@ option {
   margin: auto;
   width: 100%;
   background-color: transparent;
+  text-decoration: none;
   color: #7e7e7e;
   border: solid transparent 6px;
   padding: 12.5px 35px;
 }
 
 .botao_acessos:hover {
+  text-decoration: none;
   color: #2c363e;
   border-width: solid 6px;
   border-left-color: #98c33e;
@@ -524,10 +532,8 @@ option {
 }
 
 .log_out_box2 {
-  position: absolute;
-  bottom: 0px;
+  position: relative;
   width: 100%;
-  margin: auto;
 }
 
 .log_out_box2 hr {
@@ -552,7 +558,7 @@ option {
   height: 100%;
   border-radius: 10px;
   background: transparent linear-gradient(90deg, #ffffffb9 0%, #ffffff7e 100%)
-    0% 0% no-repeat padding-box;
+  0% 0% no-repeat padding-box;
   box-shadow: 7px 7px 20px 7px grey;
 }
 
@@ -588,7 +594,7 @@ h3 {
   color: #000000;
   margin: 10px;
   font: normal normal bold 27px/30px "Lato";
-  letter-såpacing: 1.5px;
+  letter-spacing: 1.5px;
   color: #2c363e;
 }
 
@@ -640,25 +646,22 @@ h3 {
   width: 95%;
 }
 
-.vista_perfil {
-  padding-left: 100px;
-}
-
-/*termos e condições*/
-.terms p, .terms li{
-  text-align: justify  !important;
+/*Terms & Conditions*/
+.terms p,
+.terms li {
+  text-align: justify !important;
   font-size: 17px !important;
 }
 
 /* Invoice Form*/
 
-.help-form{
+.help-form {
   font-size: 12px;
   font-weight: bold;
   text-align: center;
 }
 
-.margin-form{
+.margin-form {
   margin-top: 15px;
 }
 
@@ -676,7 +679,7 @@ h3 {
   padding: 30px !important;
   box-shadow: 5px 0px 20px #00000029 !important;
   background: transparent linear-gradient(90deg, #ffffffb9 0%, #ffffff7e 100%)
-    0% 0% no-repeat padding-box !important;
+  0% 0% no-repeat padding-box !important;
   width: 650px !important;
   min-height: 600px !important;
 }
@@ -730,11 +733,11 @@ h3 {
   font-weight: bold !important;
 }
 
-hr.payment_dash{
+hr.payment_dash {
   border-top: 2px solid #bbb;
 }
 
-.buttons_payment{
+.buttons_payment {
   margin-top: 20px;
 }
 
@@ -1045,8 +1048,6 @@ select option:disabled {
   text-align: center;
   color: #676e74;
 }
-
-
 
 @media screen and (max-height: 450px) {
   .sidenav {
