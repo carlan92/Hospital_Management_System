@@ -925,7 +925,6 @@ select option:disabled {
   font-size: 30px;
   letter-spacing: 2.59px;
   color: black;
-  text-align: center;
 }
 
 .text_next_appt2 {
@@ -933,7 +932,6 @@ select option:disabled {
   font-size: 15px;
   color: #707070;
   margin-bottom: 15px;
-  text-align: center;
 }
 
 .next_appt_time {

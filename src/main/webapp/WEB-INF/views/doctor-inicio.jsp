@@ -35,7 +35,7 @@
         <div class="welcome_box">
             <div class="perfil-row">
                 <div class="col-4 user_photo">
-                    <img src="static/imagens/remove_doctor_photo.png" alt="user_photography"/>
+                    <img src="imagens/remove_doctor_photo.png" alt="user_photography"/>
                 </div>
                 <div class="col user_info">
                     <p id="welcome">Bem-vindo</p>
@@ -182,13 +182,13 @@
                     <div class="col-4 next_appt_time">
                         <span class="time_box2">10:00</span>
                         <p class="date_box2">Sexta-feira</p>
-                        <p class="date_box2">26 Fevereiro 2021</p>
+                        <p class="date_box2">27 Fevereiro 2021</p>
                     </div>
 
                     <div class="col-8">
                         <div class="perfil-row">
                             <div class="col-3 user_photo">
-                                <img src="static/imagens/remove_next_patient_photo.png" alt="patient_id_photo"/>
+                                <img src="imagens/remove_next_patient_photo.png" alt="patient_id_photo"/>
                             </div>
                             <div class="col user_info2">
                                 <span id="next_patient_name">Alice Antunes</span>
