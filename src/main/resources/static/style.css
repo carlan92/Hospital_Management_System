@@ -934,17 +934,15 @@ select option:disabled {
   margin-bottom: 15px;
 }
 
-.title_next_appt {
+.next_appt_time {
+  /*remover*/
   margin: auto;
-  margin-left: 0;
-}
-.next_appt_time{
-  margin-top: 10px;
+  display: block;
 }
 
 .time_box2 {
   font: normal normal bold "Lato";
-  font-size: 35px;
+  font-size: 30px;
   letter-spacing: 4px;
   color: black;
   display: block;
@@ -954,7 +952,7 @@ select option:disabled {
 
 .date_box2 {
   font: normal normal normal "Lato";
-  font-size: 18px;
+  font-size: 16px;
   color: #707070;
   display: block;
   margin: auto;
@@ -962,19 +960,12 @@ select option:disabled {
 }
 
 .data_appt {
-  margin-left: 30px;
+  margin-left: 20px;
 }
 
 .appt_options {
   margin: auto;
   display: block;
-}
-
-.user_photo2 img {
-  height: 120px;
-  width: 120px;
-  border-radius: 50%;
-  border-style: double
 }
 
 #patient_age {
@@ -997,44 +988,22 @@ select option:disabled {
   color: black;
 }
 
-.btn-w85 {
-  width: 85%;
-  margin-top: 10px;
+.btn-w100 {
+  width: 100%;
+  margin-top: 5px;
 }
 
-.btn-w75 {
-  width: 75%;
+.btn-w70 {
+  width: 70%;
   display: block;
   margin: auto;
-  margin-top: 10px;
-}
-
-.btn-w74 {
-  width: 74%;
   margin-top: 10px;
 }
 
 .icon2 {
   width: 100%;
-  margin-left: 20px;
 }
-
-.icon3 {
-  padding: 0;
-}
-
-.icon3 i {
-  font-size: 50px;
-  display: block;
-  margin: auto;
-  padding-top: 10px;
-  padding-left: 40px;
-  text-align: center;
-  color: #676E74;
-}
-
-/* ... */
-
+/*....*/
 
 
 @media screen and (max-height: 450px) {

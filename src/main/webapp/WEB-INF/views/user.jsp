@@ -7,16 +7,24 @@
     <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+
+    <title>Centro Hospitalar UPskill</title>
+
+    <link rel="stylesheet" href="bootstrap.min.4.5.3.css"/>
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
+<%@ include file="sidenav-main.jsp" %>
+
     <div class="main">
-        <div class="white_box vista_perfil">
-            
-            <img class="logo_small" src="/imagens/noun_centro_hospitalar_logo.svg" alt="Logo do centro hospitalar">
-            <img src="/uploaded_images/001.jpg" width="20%" height="20%"/>
+        <div class="white_box box-align-left">
+
+            <div class="perfil-row">
+                <img class="logo_small" src="/imagens/noun_centro_hospitalar_logo.svg" alt="Logo do centro hospitalar">
+                <img src="/uploaded_images/001.jpg" width="20%" height="20%"/>
+            </div>
+
             <div class="user-type">
                 <p id="user_name">${user.getName()} (${user.getUsername()})</p>
                 <p id="user_category">${user.getAccount()}</p>

@@ -16,7 +16,8 @@ public class TestName {
                 "e",
                 "o'neil",
                 "de",
-                "d."
+                "d.",
+                "Maça",
         };
 
         for (String nome: nomes) {
@@ -25,7 +26,7 @@ public class TestName {
     }
 
     public static boolean isValid(String nome){
-        return nome.matches("[A-ZÀ-Ÿa-zÀ-ÿ']{2,}||[e]{1}");
+        return nome.matches("[A-Za-zÀ-ÿ']{2,}||[e]{1}");
     }
 }
 

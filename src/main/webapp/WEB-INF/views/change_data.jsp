@@ -14,8 +14,10 @@
 </head>
 
 <body>
+<%@ include file="sidenav-main.jsp" %>
+
 <div class="main">
-    <div class="white_box">
+    <div class="white_box box-align-left">
 
         <img src="imagens\noun_centro_hospitalar_logo.svg" alt="logo" class="logo_small"/>
         <h3 class="registo">
