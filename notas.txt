@@ -34,33 +34,23 @@ Tarefas:
 -Login: username e password                                         -> Feito
 -Perfil: fotografia                                                 -> Pedro
 -Possível alterar dados (excepto username, e-mail, NIF)             -> Feito
+
 -Utente e Funcionário (Medico+Recepcionista)
 -Medico: nº cedula + especialidade
+
 -Utente: Página pagamentos: historico, faturas, recibos             -> Rodrigo
+
 -Médico: horario proxima consulta,chamada para a proxima consulta,
 info da consulta, visualizar proximos utentes(lista de espera),
-terminar consulta, historico + info de consultas dadas
--Historico das consultas                                            -> Carla
+terminar consulta, historico + info de consultas dadas, Historico das consultas -> Carla
 -Página Lista de Espera: Geral e por especialidade                  -> Carla
--Utente: marcação de consultas, visualiza lista de medicos          -> Carla
+
+-Utente: marcação de consultas ->Pedro
+
+Utente: visualiza lista de medicos          -> Carla
+
 -Dashboard Utente: proxima consulta, historico de consultas         -> Carla
--Recepcionista: criar novas especialidades                          -> Carla
 
-Desenho:
-    home:
--Informações gerais:
--Calendario de vagas:
--Contactos:
+-Utente: marcar consulta                        -> Pedro
+-Recepcionista: criar novas especialidades                          -> Pedro
 
-    main:
-se Utente:
-
-
-Medico!=Recepcionista (pagamentos, fazer check-in)
-se Médico:
-
-se Recepcionista:
-
-
----
-Lógica:
