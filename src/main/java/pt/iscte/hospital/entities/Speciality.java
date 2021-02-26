@@ -10,6 +10,8 @@ public class Speciality {
     @GeneratedValue
     private Long specialityId;
 
+    private String name;
+
     @ManyToMany(mappedBy = "specialities")
     private List<Doctor> doctors;
 
@@ -32,6 +34,14 @@ public class Speciality {
         this.specialityId = specialityId;
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
     public List<Doctor> getDoctors() {
         return doctors;
     }
@@ -44,6 +54,7 @@ public class Speciality {
     public String toString() {
         return "Speciality{" +
                 "specialityId=" + specialityId +
+                ", name='" + name + '\'' +
                 ", doctors=" + doctors +
                 '}';
     }

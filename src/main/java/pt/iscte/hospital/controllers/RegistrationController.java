@@ -8,11 +8,10 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
-import pt.iscte.hospital.entities.Login;
+import pt.iscte.hospital.entities.Patient;
 import pt.iscte.hospital.entities.User;
 import pt.iscte.hospital.exceptions.ImageSizeException;
 import pt.iscte.hospital.exceptions.ImageTypeException;
-import pt.iscte.hospital.repositories.UserRepository;
 import pt.iscte.hospital.services.ImageUploadService;
 import pt.iscte.hospital.services.RegistrationService;
 import pt.iscte.hospital.services.UserService;
@@ -57,13 +56,13 @@ public class RegistrationController {
     // Methods
     @GetMapping(value = "/registration")
     public String showRegistrationPage(ModelMap modelMap) {
-        modelMap.put("user", new User());
+        modelMap.put("user", new Patient());
 
         return "registration";
     }
 
     @PostMapping(value = "/registrationToLogin")
-    public String returnToLoginPage(@ModelAttribute User user,
+    public String returnToLoginPage(@ModelAttribute Patient user,
                                     @RequestParam("file") MultipartFile file,
                                     ModelMap mpError, @RequestParam String password, @RequestParam String confirmarPassword2) {
 
@@ -134,7 +133,7 @@ public class RegistrationController {
     @GetMapping(value = "/temp")
     public String showRegistrationPagetmp(ModelMap modelMap) {
         // TODO para testes
-        modelMap.put("user", new User());
+        modelMap.put("user", new Patient());
         modelMap.put("sidenav", "sidenavtemp");
 
         return "registration-temp";

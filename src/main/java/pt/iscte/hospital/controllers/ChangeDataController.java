@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import pt.iscte.hospital.entities.Login;
+import pt.iscte.hospital.entities.Patient;
 import pt.iscte.hospital.entities.User;
 import pt.iscte.hospital.services.UserService;
 
@@ -47,7 +48,7 @@ public class ChangeDataController {
 
         if (isDataValid()) {
             // Update user info
-            User user = Login.getConnectedUser();
+            Patient user = Login.getConnectedUser();
             user.setName(name);
             user.setSex(sex);
             user.setBirthday(birthday);

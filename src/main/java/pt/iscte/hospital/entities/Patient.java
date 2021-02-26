@@ -1,19 +1,23 @@
 package pt.iscte.hospital.entities;
 
 import javax.persistence.Entity;
-import javax.persistence.PrimaryKeyJoinColumn;
+import javax.persistence.OneToMany;
 import java.util.Date;
+import java.util.Set;
 
 @Entity
-@PrimaryKeyJoinColumn(name = "patient_id")      // Same as user_id | Hibernate Inheritance Mapping: Joined Table
 public class Patient extends User {
     // Attributes
+    @OneToMany(mappedBy="patient")
+    private Set<Appointment> appointments;
+
 
     // Constructors
     public Patient() {
     }
 
-    public Patient(String name, String username,
+    public Patient(Long userId,
+                   String name, String username,
                    String sex, Date birthday,
                    String address, String postCode,
                    String city, String account,
@@ -21,7 +25,7 @@ public class Patient extends User {
                    Long documentNumber, Long nif,
                    Long patientNumber, Long phone,
                    String email, String password, String photoURL) {
-        super(name, username, sex, birthday, address, postCode, city, account, nationality, documentType,
+        super(userId, name, username, sex, birthday, address, postCode, city, account, nationality, documentType,
                 documentNumber, nif, patientNumber, phone, email, password, photoURL);
     }
 

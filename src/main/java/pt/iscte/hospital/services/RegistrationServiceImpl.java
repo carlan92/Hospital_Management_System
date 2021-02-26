@@ -3,12 +3,12 @@ package pt.iscte.hospital.services;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import pt.iscte.hospital.entities.User;
-import pt.iscte.hospital.repositories.UserRepository;
+import pt.iscte.hospital.repositories.PatientRepository;
 
 @Service
 public class RegistrationServiceImpl implements RegistrationService {
     @Autowired
-    UserRepository userRepository;
+    PatientRepository patientRepository;
 
 
     public boolean validaNome(User user) {
@@ -56,7 +56,7 @@ public class RegistrationServiceImpl implements RegistrationService {
     }
 
     public boolean validaEmail(User user) {
-        User userUnique = userRepository.findByEmail(user.getEmail());
+        User userUnique = patientRepository.findByEmail(user.getEmail());
         if (userUnique != null) {
             return false;
         } else {
@@ -65,7 +65,7 @@ public class RegistrationServiceImpl implements RegistrationService {
     }
 
     public boolean validaUsername(User user) {
-        User userUnique = userRepository.findByUsername(user.getUsername());
+        User userUnique = patientRepository.findByUsername(user.getUsername());
         if (userUnique != null) {
             return false;
         } else {

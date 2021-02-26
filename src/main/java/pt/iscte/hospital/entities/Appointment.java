@@ -13,14 +13,16 @@ public class Appointment {
     @GeneratedValue
     @Column(name = "appointment_id")
     private Long appointmentId;
-
-    private Long patientId;
-
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
     private Date date;
     private Time timeBegin;
     private Time timeEnd;
+    private Boolean hasCheckedIn = false;
     private String notes;
+
+    @ManyToOne
+    @JoinColumn(name="patient_id")
+    private Patient patient;
 
     @OneToOne(mappedBy = "appointment")
     private Invoice invoice;
@@ -33,8 +35,7 @@ public class Appointment {
     public Appointment() {
     }
 
-    public Appointment(Long patientId, Date date, Time timeBegin, Time timeEnd, String notes) {
-        this.patientId = patientId;
+    public Appointment(Date date, Time timeBegin, Time timeEnd, String notes) {
         this.date = date;
         this.timeBegin = timeBegin;
         this.timeEnd = timeEnd;
@@ -51,12 +52,12 @@ public class Appointment {
         this.appointmentId = appointmentId;
     }
 
-    public Long getPatientId() {
-        return patientId;
+    public Patient getPatient() {
+        return patient;
     }
 
-    public void setPatientId(Long patientId) {
-        this.patientId = patientId;
+    public void setPatient(Patient patient) {
+        this.patient = patient;
     }
 
     public Date getDate() {
@@ -83,6 +84,22 @@ public class Appointment {
         this.timeEnd = timeEnd;
     }
 
+    public Boolean getHasCheckedIn() {
+        return hasCheckedIn;
+    }
+
+    public void setHasCheckedIn(Boolean hasCheckedIn) {
+        this.hasCheckedIn = hasCheckedIn;
+    }
+
+    public Invoice getInvoice() {
+        return invoice;
+    }
+
+    public void setInvoice(Invoice invoice) {
+        this.invoice = invoice;
+    }
+
     public String getNotes() {
         return notes;
     }
@@ -95,7 +112,6 @@ public class Appointment {
     public String toString() {
         return "Appointment{" +
                 "idAppointment=" + appointmentId +
-                ", patientId=" + patientId +
                 ", date=" + date +
                 ", hourBegin=" + timeBegin +
                 ", hourEnd=" + timeEnd +
