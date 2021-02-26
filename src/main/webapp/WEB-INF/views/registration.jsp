@@ -9,8 +9,8 @@
 
         <title>Centro Hospitalar UPskill</title>
 
+        <link rel="stylesheet" href="bootstrap.min.4.5.3.css"/>
         <link rel="stylesheet" href="style.css" />
-
 </head>
 
 <body>
