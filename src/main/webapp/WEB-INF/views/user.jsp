@@ -22,7 +22,9 @@
 
             <div class="perfil-row">
                 <img class="logo_small" src="/imagens/noun_centro_hospitalar_logo.svg" alt="Logo do centro hospitalar">
-                <img src="/uploaded_images/001.jpg" width="20%" height="20%"/>
+                <div class="user_photo">
+                    <img src="/uploaded_images/001.jpg"/>
+                </div>
             </div>
 
             <div class="user-type">
