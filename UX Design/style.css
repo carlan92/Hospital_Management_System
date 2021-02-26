@@ -60,7 +60,7 @@ h1 {
 }
 
 .msg-error {
-  color: #D8000C;
+  color: #d8000c;
   font-size: 12px;
   margin: 2px auto;
 }
@@ -73,18 +73,30 @@ h1 {
 
 .sidenav {
   /*https://stackoverflow.com/questions/15358646/css-position-div-to-bottom-of-containing-div*/
-  position: relative;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+
+  display: flex;
+  flex-direction: column;
   box-sizing: border-box;
   box-shadow: 5px 0px 20px #00000029;
-  opacity: 1;
-  min-width: 25vw;
+
+  width: 25vw;
   min-height: 100vh;
   z-index: 2;
   background-color: white;
-  overflow-x: hidden;
+  overflow: hidden;
   color: #7e7e7e;
   font: normal normal medium 17px/21px "Lato";
   padding-top: 20px;
+}
+
+.panel-scroll {
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
 }
 
 .sidenav_row {
@@ -95,7 +107,7 @@ h1 {
 .main {
   position: relative;
   box-sizing: border-box;
-  min-width: 75vw;
+  margin-left: 25vw;
   min-height: 100vh;
   z-index: 1;
   overflow-x: hidden;
@@ -182,8 +194,8 @@ h1 {
 }
 
 .log_out_box {
-  position: absolute;
-  bottom: 0px;
+  position: relative;
+  
   width: 100%;
 }
 
@@ -233,7 +245,8 @@ h1 {
 
 .main .middle-row {
   box-sizing: border-box;
-  background: transparent linear-gradient(90deg, #ffffffb9 0%, #ffffff7e 100%) 0% 0% no-repeat padding-box;
+  background: transparent linear-gradient(90deg, #ffffffb9 0%, #ffffff7e 100%)
+    0% 0% no-repeat padding-box;
   border-radius: 6px;
   z-index: 1;
   /*to be checked*/
@@ -395,7 +408,8 @@ h1 {
   margin: 10px auto;
   padding: 30px;
   box-shadow: 5px 0px 20px #00000029;
-  background: transparent linear-gradient(90deg, #ffffffb9 0%, #ffffff7e 100%) 0% 0% no-repeat padding-box;
+  background: transparent linear-gradient(90deg, #ffffffb9 0%, #ffffff7e 100%)
+    0% 0% no-repeat padding-box;
   width: 650px;
   min-height: 600px;
 }
@@ -515,10 +529,8 @@ option {
 }
 
 .log_out_box2 {
-  position: absolute;
-  bottom: 0px;
+  position: relative;
   width: 100%;
-  margin: auto;
 }
 
 .log_out_box2 hr {
@@ -542,7 +554,8 @@ option {
   box-sizing: border-box;
   height: 100%;
   border-radius: 10px;
-  background: transparent linear-gradient(90deg, #ffffffb9 0%, #ffffff7e 100%) 0% 0% no-repeat padding-box;
+  background: transparent linear-gradient(90deg, #ffffffb9 0%, #ffffff7e 100%)
+    0% 0% no-repeat padding-box;
   box-shadow: 7px 7px 20px 7px grey;
 }
 
@@ -635,7 +648,8 @@ h3 {
 }
 
 /*Terms & Conditions*/
-.terms p, .terms li {
+.terms p,
+.terms li {
   text-align: justify !important;
   font-size: 17px !important;
 }
@@ -665,7 +679,8 @@ h3 {
   margin: auto !important;
   padding: 30px !important;
   box-shadow: 5px 0px 20px #00000029 !important;
-  background: transparent linear-gradient(90deg, #ffffffb9 0%, #ffffff7e 100%) 0% 0% no-repeat padding-box !important;
+  background: transparent linear-gradient(90deg, #ffffffb9 0%, #ffffff7e 100%)
+    0% 0% no-repeat padding-box !important;
   width: 650px !important;
   min-height: 600px !important;
 }
@@ -874,11 +889,11 @@ select option:disabled {
 #hour {
   font-size: 45px;
   letter-spacing: 5px;
-  color: #403D56;
+  color: #403d56;
 }
 
 #date {
-  color: #7E7E7E;
+  color: #7e7e7e;
   font: normal normal bold "Lato";
   font-size: 30px;
 }
@@ -928,8 +943,8 @@ select option:disabled {
   margin-left: 0;
 }
 
-.next_appt_time{
-margin-top: 10px;
+.next_appt_time {
+  margin-top: 10px;
 }
 
 .time_box2 {
@@ -964,7 +979,7 @@ margin-top: 10px;
   height: 120px;
   width: 120px;
   border-radius: 50%;
-  border-style: double
+  border-style: double;
 }
 
 #patient_age {
@@ -1031,9 +1046,8 @@ margin-top: 10px;
   margin: auto;
   padding-top: 10px;
   padding-left: 40px;
-  ;
   text-align: center;
-  color: #676E74;
+  color: #676e74;
 }
 
 @media screen and (max-height: 450px) {
