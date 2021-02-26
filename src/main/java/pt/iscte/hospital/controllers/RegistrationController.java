@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import pt.iscte.hospital.entities.Patient;
-import pt.iscte.hospital.entities.User;
 import pt.iscte.hospital.exceptions.ImageSizeException;
 import pt.iscte.hospital.exceptions.ImageTypeException;
 import pt.iscte.hospital.services.ImageUploadService;
@@ -43,6 +42,7 @@ public class RegistrationController {
     private static final String errorMsgPatientNumber = "Número de utente inválido";
     private static final String errorMsgPhone = "Número de telemóvel inválido";
     private static final String errorMsgEmail = "Este endereço já se encontra em utilização";
+    private static final String errorMsgEmail2 = "Email inválido";
     private static final String errorMsgUsername = "Username já existe";
     private static final String errorMsgPassword = "Password inválida";
     private static final String errorMsgPassword2 = "Password não coincide";
@@ -66,14 +66,13 @@ public class RegistrationController {
                                     @RequestParam("file") MultipartFile file,
                                     ModelMap mpError, @RequestParam String password, @RequestParam String confirmarPassword2) {
 
-        // TODO verificar elementos do user
         boolean isFormValid = true;
 
-        if (!registrationService.validaNome(user)) {
+        if (!registrationService.validName(user)) {
             mpError.put("errorMsgName", errorMsgName);
             isFormValid = false;
         }
-        if (!registrationService.validaPassword(user)) {
+        if (!registrationService.validPassword(user)) {
             mpError.put("errorMsgPassword", errorMsgPassword);
             isFormValid = false;
         }
@@ -81,26 +80,66 @@ public class RegistrationController {
             mpError.put("errorMsgPassword2", errorMsgPassword2);
             isFormValid = false;
         }
-        if (!registrationService.validaTelefone(user)) {
+        if (!registrationService.validPhone(user)) {
             mpError.put("errorMsgPhone", errorMsgPhone);
             isFormValid = false;
         }
-        if (!registrationService.validaPostCode(user)) {
+        if (!registrationService.validPostCode(user)) {
             mpError.put("errorMsgPostCode", errorMsgPostCode);
             isFormValid = false;
         }
-        if (!registrationService.validaSexo(user)) {
+        if (!registrationService.validSex(user)) {
             mpError.put("errorMsgSex", errorMsgSex);
             isFormValid = false;
         }
-        if (!registrationService.validaEmail(user)) {
+        if (!registrationService.validEmail(user)) {
             mpError.put("errorMsgEmail", errorMsgEmail);
             isFormValid = false;
         }
-        if (!registrationService.validaUsername(user)) {
+        if (!registrationService.validEmail2(user)) {
+            mpError.put("errorMsgEmail", errorMsgEmail2);
+            isFormValid = false;
+        }
+        if (!registrationService.validUsername(user)) {
             mpError.put("errorMsgUsername", errorMsgUsername);
             isFormValid = false;
         }
+        if (!registrationService.validDocumentType(user)) {
+            mpError.put("errorMsgDocumentType", errorMsgDocumentType);
+            isFormValid = false;
+        }
+        if (!registrationService.validDocumentNumber(user)) {
+            mpError.put("errorMsgDocumentNumber", errorMsgDocumentNumber);
+            isFormValid = false;
+        }
+        if (!registrationService.validPatientNumber(user)) {
+            mpError.put("errorMsgPatientNumber", errorMsgPatientNumber);
+            isFormValid = false;
+        }
+        if (!registrationService.validNif(user)) {
+            mpError.put("errorMsgNif", errorMsgNif);
+            isFormValid = false;
+        }
+        if (!registrationService.validCity(user)) {
+            mpError.put("errorMsgCity", errorMsgCity);
+            isFormValid = false;
+        }
+        if (!registrationService.validAccount(user)) {
+            mpError.put("errorMsgAccount", errorMsgAccount);
+            isFormValid = false;
+        }
+        if (!registrationService.validBirthday(user)) {
+            mpError.put("errorMsgBirthday", errorMsgBirthday);
+            isFormValid = false;
+        }
+        if(!registrationService.validNationality(user)) {
+            mpError.put("errorMsgNationality", errorMsgNationality);
+            isFormValid= false;
+        }
+        if(!registrationService.validAddress(user)){
+            mpError.put("errorMsgAddress", errorMsgAddress);
+        }
+
 
         if (file != null && !file.isEmpty() && !file.getContentType().equals("application/octet-stream")) {
             try {

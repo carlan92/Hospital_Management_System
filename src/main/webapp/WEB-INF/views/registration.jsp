@@ -320,7 +320,7 @@
                             </div>
                             <div class="cell-row">
                                 <label for="nrDocumento_id">Nº do Documento *</label>
-                                <input id="nrDocumento_id" type="text" class="form-input" name="documentNumber" required
+                                <input id="nrDocumento_id" type="text" class="form-input" pattern="[0-9]{8}" name="documentNumber" required
                                     placeholder="Nº do documento selecionado" />
                                 <p class="msg-error">${errorMsgDocumentNumber}</p>
                             </div>
@@ -329,13 +329,13 @@
                         <div class="perfil-row">
                             <div class="cell-row">
                                 <label for="nif_id">NIF *</label>
-                                <input id="nif_id" type="text" class="form-input" name="nif" required
+                                <input id="nif_id" type="text" pattern="[0-9]{9}" class="form-input" name="nif" required
                                     placeholder="NIF" />
                                 <p class="msg-error">${errorMsgNif}</p>
                             </div>
                             <div class="cell-row">
                                 <label for="nrUtente_id">Nº de Utente</label>
-                                <input id="nrUtente_id" type="text" class="form-input" name="patientNumber"
+                                <input id="nrUtente_id" type="text" pattern="[0-9]{9}" class="form-input" name="patientNumber"
                                     placeholder="Nº de Utente" />
                                 <p class="msg-error">${errorMsgPatientNumber}</p>
                             </div>
