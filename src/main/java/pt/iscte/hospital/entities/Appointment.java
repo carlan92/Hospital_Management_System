@@ -13,9 +13,7 @@ public class Appointment {
     @GeneratedValue
     @Column(name = "appointment_id")
     private Long appointmentId;
-
     private Long patientId;
-
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
     private Date date;
     private Time timeBegin;
