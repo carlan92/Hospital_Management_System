@@ -9,14 +9,13 @@
 
         <title>Centro Hospitalar UPskill</title>
 
+        <link rel="stylesheet" href="bootstrap.min.4.5.3.css"/>
         <link rel="stylesheet" href="style.css" />
-
 </head>
 
 <body>
-    <div class="container">
+    <%@ include file="sidenav-login.jsp" %>
 
-        <%@ include file="sidenav-login.jsp" %>
         <div class="main">
             <div class="white_box box-align-left">
 
@@ -57,6 +56,7 @@
                                 </select>
                                 <p class="msg-error">${errorMsgSex}</p>
                             </div>
+                            
                             <div class="cell-row">
                                 <label for="dataDeNascimento_id">Data de Nascimento *</label>
                                 <input id="dataDeNascimento_id" type="date" class="form-input" name="birthday" required>
@@ -405,7 +405,7 @@
 
             </div>
         </div>
-    </div>
+
 </body>
 
 </html>
