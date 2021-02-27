@@ -17,7 +17,7 @@
         <img src="imagens\noun_centro_hospitalar_logo.svg" alt="logo" class="logo" />
 
         <div class="welcome_box">
-            <p id="bem-vindo"> Bem-vindo</p>
+            <p id="bem-vindo"> Bem-vindo</p>            
         </div>
 
         <form method="get" action="/homeToLogin">
@@ -52,8 +52,8 @@
 
             <img class="logo_small" src="/imagens/noun_centro_hospitalar_logo.svg" alt="Logo do centro hospitalar">
             <div class="user-type">
-                <p id="user_name">Pedro Romano</p>
-                <p id="user_category">Funcionário</p>
+                <a id="user_name" href="/user">${user.getFirstAndLastName()}</a>
+                <p id="user_category">${user.getAccount()}</p>
             </div>
             <div class="perfil-main-col">
                 <div class="perfil-row">
