@@ -17,7 +17,7 @@
 <body>
     <%@ include file="sidenav-login.jsp" %>
     <div class="main">
-        <div class="white_box">
+        <div class="white_box box-align-left">
             <img class="logo_small" src="/imagens/noun_centro_hospitalar_logo.svg" alt="Logo do centro hospitalar">
             <div class="main-col">
                 
