@@ -8,7 +8,7 @@
 
 <body>
 <div class="container">
-    <div class="components/sidenav">
+    <div class="sidenav">
         <!-- menu da esquerda -->
         <img src="imagens\noun_centro_hospitalar_logo.svg" alt="logo" class="logo" />
 

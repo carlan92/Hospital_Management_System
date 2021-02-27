@@ -13,43 +13,56 @@
     <div class="main">
         <div class="white_box box-align-left">
 
-            <div class="perfil-row">
-                <img class="logo_small" src="/imagens/noun_centro_hospitalar_logo.svg" alt="Logo do centro hospitalar">
-                <div class="user_photo">
-                    <img src="/uploaded_images/001.jpg"/>
-                </div>
-            </div>
-
-            <div class="user-type">
-                <p id="user_name">${user.getName()} (${user.getUsername()})</p>
-                <p id="user_category">${user.getAccount()}</p>
-            </div>
             <div class="perfil-main-col">
                 <div class="perfil-row">
-                    <div class="cell-row">Sexo</div>
-                    <div class="cell-row">${user.getSex()}</div>
-                </div>
-                <div class="perfil-row">
-                    <div class="cell-row">Data de nascimento</div>
-                    <div class="cell-row"><fmt:formatDate pattern="dd/MM/yyyy" value="${user.getBirthday()}"/></div>
-                </div>
-
-
-
-                <div class="perfil-row">
-                    <div class="cell-row">
-                        <form action="/change_data" method="get">
-                            <button class="btn-blue btn-w65">Alterar Registo</button>
-                        </form>
+                    <div class="perfil-row">
+                        <img src="imagens/draw_text_field.svg" alt="fill form" class="img-fill-form" />
                     </div>
-                    <div class="cell-row">
-                        <form action="/userToMain" method="get">
-                            <button class="btn-green btn-w65">Página Principal</button>
-                        </form>
+
+                    <div class="perfil-row">
+                        <h3 class="registo">Página de testes</h3>
                     </div>
                 </div>
             </div>
-        </>
+
+            <div class="perfil-main-col">
+                <div class="perfil-row">
+                    <div class="cell-row">
+                        <a href="make-appointment" class="btn btn-green">Marcar Consulta</a>
+                    </div>
+
+                    <div class="cell-row">
+                        <a href="add-speciality" class="btn btn-blue">Criar Especialidade</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="perfil-main-col">
+                <div class="perfil-row">
+                    <div class="cell-row">
+                        <a href="doctor-inicio" class="btn btn-green">Página médico</a>
+                    </div>
+
+                    <div class="cell-row">
+                        <a href="faturaForm" class="btn btn-blue">Fatura</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="perfil-main-col">
+                <div class="perfil-row">
+                    <div class="cell-row">
+                        <a href="historicoPagamentos" class="btn btn-green">Histórico de Pagamentos</a>
+                    </div>
+
+                    <div class="cell-row">
+                        <a href="faturaForm" class="btn btn-blue">Fatura</a>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
     </div>
 
 </body>
