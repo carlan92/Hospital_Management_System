@@ -84,6 +84,7 @@ public class RegistrationController {
                                     @RequestParam String documentType,
                                     @RequestParam Long documentNumber,
                                     @RequestParam Long nif,
+                                    @RequestParam String username,
                                     @RequestParam String email) {
 
         boolean isFormValid = true;
@@ -194,6 +195,7 @@ public class RegistrationController {
             mpError.put("returnDocumentNumber", documentNumber);
             mpError.put("returnNif", nif);
             mpError.put("returnPatientNumber", patientNumber);
+            mpError.put("returnUsername", username);
             mpError.put("returnEmail", email);
             mpError.put("returnPassword", password);
 
