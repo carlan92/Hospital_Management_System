@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Centro Hospitalar UPskill</title>
+
+    <link rel="stylesheet" href="bootstrap.min.4.5.3.css" />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+
+</head>
+
+<body>
+    <div class="sidenav">
+        <!-- menu da esquerda -->
+
+        <img src="imagens\noun_centro_hospitalar_logo.svg" alt="logo" class="logo" />
+
+        <div class="welcome_box">
+            <p id="welcome">Olá de novo,</p>
+            <a id="user_name" href="/user">${user.getFirstAndLastName()}</a>
+            <p id="user_category">${user.getAccount()}</p>
+        </div>
+
+        <div class="panel-scroll">
+            <div class="sidenav_row">
+                <a href="/main" class="botao_acessos">
+                    <img src="imagens/noun_home.svg" /> Início
+                </a>
+                <button type="button" class="">
+                    <img src="imagens/noun_utentes.svg" /> Utentes
+                </button>
+                <button type="button" class="">
+                    <img src="imagens/noun_doctor.svg" /> Médicos
+                </button>
+                <button type="button" class="">
+                    <img src="imagens/noun_heart rate.svg" /> Consultas
+                </button>
+            </div>
+
+            <div class="sidenav_row">
+                <p id="acessos_rapidos">Acessos Rápidos</p>
+                <button type="button" formaction="main/" formmethod="get" class="botao_acessos">
+                    <img src="imagens/noun_information.svg" /> Informações gerais
+                </button>
+                <button type="button" class="botao_acessos">
+                    <img src="imagens/noun_calendar.svg" /> Calendário de vagas
+                </button>
+                <button type="button" class="botao_acessos">
+                    <img src="imagens/noun_phone.svg" /> Contactos
+                </button>
+            </div>
+        </div>
+
+        <div class="sidenav_row log_out_box">
+            <img src="imagens/noun_upskill.png" alt="" id="upskill_logo" />
+            <hr />
+            <form method="get" action="/logout">
+                <button type="submit">
+                    <img src="imagens/noun_logout.svg" /> Terminar Sessão
+                </button>
+            </form>
+        </div>
+    </div>
+
+
+
+    <div class="main">
+        <!--menu da direita-->
+        <div class="white_box box-align-left">
+            <div class="perfil-main-col">
+                <div class="perfil-row">
+                    <div class="perfil-row">
+                        <img src="imagens/draw_medical_research.svg" alt="fill form" class="img-fill-form" />
+                    </div>
+
+                    <div class="perfil-row">
+                        <h3 class="registo">Marcar Consulta</h3>
+                    </div>
+                </div>
+            </div>
+
+
+            <form class="registration-form" action="/make-appointment" method="post">
+                <div class="perfil-main-col">
+
+                    <div class="perfil-row">
+                        <div class="cell-row cell-morada">
+                            <label for="especialidade_id">Especialidade</label>
+                            <select id="especialidade_id" class="form-input" name="name_speciality" required>
+                                <option value="" disabled selected>Escolha a especialidade pretendida</option>
+                                <option value="1">Dentista</option>
+                                <option value="2">Dermatologia</option>
+                                <option value="3">Geral</option>
+                            </select>
+                            <p class="msg-error">${errorMsgSpeciality}</p>
+                        </div>
+                    </div>
+
+                    <div class="perfil-row">
+                        <div class="cell-row cell-morada">
+                            <label for="medico_id">Médico</label>
+                            <select id="medico_id" class="form-input" name="name_medico" required>
+                                <option value="" disabled selected>Escolha o médico pretendido</option>
+                                <option value="1">João Pestana</option>
+                                <option value="2">Catarina Nogueira</option>
+                                <option value="3">Marco Teixeira</option>
+                            </select>
+                            <p class="msg-error">${errorMsgDoctor}</p>
+                        </div>
+                    </div>
+
+                    <div class="perfil-row">
+                        <div class="cell-row cell-morada">
+                            <label for="date_id">Data</label>
+                            <input id="date_id" type="date" class="form-input" name="date" required value="" />
+                            <p class="msg-error">${errorMsgDate}</p>
+                        </div>
+                    </div>
+
+                    <div class="perfil-row">
+                        <div class="cell-row cell-morada">
+                            <label for="hora_id">Hora</label>
+                            <select id="hora_id" type="text" class="form-input" name="hora" required />
+                            <option value="" disabled selected>Escolha a hora pretendida</option>
+                            <option value="1">09:30</option>
+                            <option value="2">10:30</option>
+                            <option value="3">11:00</option>
+                            </select>
+                            <p class="msg-error">${errorMsgHora}</p>
+                        </div>
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-green">Marcar Consulta</button>
+            </form>
+
+
+
+
+
+
+        </div>
+
+    </div>
+
+</body>
+
+</html>

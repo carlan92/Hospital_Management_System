@@ -832,6 +832,7 @@ button:focus {
 
 .btn-blue:hover,
 .btn-green:hover {
+  color: white;
   opacity: 0.9;
   cursor: pointer;
   transition: all 0.2s ease-out;
