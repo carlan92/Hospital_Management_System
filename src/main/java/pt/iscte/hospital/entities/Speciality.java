@@ -20,9 +20,8 @@ public class Speciality {
     public Speciality() {
     }
 
-    public Speciality(Long specialityId, List<Doctor> doctors) {
-        this.specialityId = specialityId;
-        this.doctors = doctors;
+    public Speciality(String name) {
+        this.name = name;
     }
 
     // Methods
