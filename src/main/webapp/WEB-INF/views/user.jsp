@@ -3,19 +3,12 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>Centro Hospitalar UPskill</title>
-
-    <link rel="stylesheet" href="bootstrap.min.4.5.3.css"/>
-    <link rel="stylesheet" href="style.css">
+	<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+	<%@ include file="components/head.jsp" %>
 </head>
 
 <body>
-<%@ include file="sidenav-main.jsp" %>
+<%@ include file="components/sidenav-main.jsp" %>
 
     <div class="main">
         <div class="white_box box-align-left">
