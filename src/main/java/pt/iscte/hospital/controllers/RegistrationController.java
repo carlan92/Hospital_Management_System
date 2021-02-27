@@ -1,6 +1,8 @@
 package pt.iscte.hospital.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.lang.Nullable;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,6 +18,7 @@ import pt.iscte.hospital.services.RegistrationService;
 import pt.iscte.hospital.services.UserService;
 
 import java.io.IOException;
+import java.util.Date;
 
 
 @Controller
@@ -64,7 +67,24 @@ public class RegistrationController {
     @PostMapping(value = "/registrationToLogin")
     public String returnToLoginPage(@ModelAttribute Patient user,
                                     @RequestParam("file") MultipartFile file,
-                                    ModelMap mpError, @RequestParam String password, @RequestParam String confirmarPassword2) {
+                                    ModelMap mpError,
+                                    @RequestParam String name,
+                                    @RequestParam String password,
+                                    @RequestParam String confirmarPassword2,
+                                    @RequestParam String sex,
+                                    @RequestParam String nationality,
+                                    @RequestParam @Nullable String address,
+                                    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
+                                    @RequestParam Date birthday,
+                                    @RequestParam @Nullable String postCode,
+                                    @RequestParam String city,
+                                    @RequestParam String account,
+                                    @RequestParam Long phone,
+                                    @RequestParam @Nullable Long patientNumber,
+                                    @RequestParam String documentType,
+                                    @RequestParam Long documentNumber,
+                                    @RequestParam Long nif,
+                                    @RequestParam String email) {
 
         boolean isFormValid = true;
 
@@ -132,12 +152,13 @@ public class RegistrationController {
             mpError.put("errorMsgBirthday", errorMsgBirthday);
             isFormValid = false;
         }
-        if(!registrationService.validNationality(user)) {
+        if (!registrationService.validNationality(user)) {
             mpError.put("errorMsgNationality", errorMsgNationality);
-            isFormValid= false;
+            isFormValid = false;
         }
-        if(!registrationService.validAddress(user)){
+        if (!registrationService.validAddress(user)) {
             mpError.put("errorMsgAddress", errorMsgAddress);
+            isFormValid = false;
         }
 
 
@@ -159,6 +180,22 @@ public class RegistrationController {
             }
         }
         if (!isFormValid) {
+
+            mpError.put("returnName",name);
+            mpError.put("returnSex",sex);  //todo por a dar
+            mpError.put("returnBirthday", birthday);  //todo por a dar
+            mpError.put("returnAddress", address);
+            mpError.put("returnPostCode", postCode);
+            mpError.put("returnCity", city);
+            mpError.put("returnAccount", account);  //todo por a dar
+            mpError.put("returnNationality", nationality);  //todo por a dar
+            mpError.put("returnPhone", phone);
+            mpError.put("returnDocumentType", documentType);  //todo por a dar
+            mpError.put("returnDocumentNumber", documentNumber);
+            mpError.put("returnNif", nif);
+            mpError.put("returnPatientNumber", patientNumber);
+            mpError.put("returnEmail", email);
+            mpError.put("returnPassword", password);
 
             return "registration";
         }
