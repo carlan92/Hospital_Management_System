@@ -10,7 +10,7 @@ import java.util.Date;
 public class Slot {
     // Attributes
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long slotId;
 
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
