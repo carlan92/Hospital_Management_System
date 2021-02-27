@@ -7,7 +7,7 @@ import java.util.List;
 public class Speciality {
     // Attributes
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)     // https://www.baeldung.com/hibernate-identifiers
     private Long specialityId;
 
     private String name;
