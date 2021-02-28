@@ -14,7 +14,7 @@
 				</div>
 				<div class="col user_info">
 					<p id="welcome">Bem-vindo</p>
-					<a id="user_name" href="/user">${user.getFirstAndLastName()}</a>
+					<p id="user_name">${user.getFirstAndLastName()}</p>
 					<p id="user_category">${user.getAccount()}</p>
 				</div>
 			</div>
