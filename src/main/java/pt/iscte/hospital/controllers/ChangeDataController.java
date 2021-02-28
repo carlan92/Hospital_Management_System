@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import pt.iscte.hospital.entities.Login;
 import pt.iscte.hospital.entities.Patient;
+import pt.iscte.hospital.services.RegistrationService;
 import pt.iscte.hospital.services.UserService;
 
 import java.util.Date;
@@ -18,6 +19,21 @@ import java.util.Date;
 public class ChangeDataController {
     @Autowired
     UserService userService;
+    @Autowired
+    RegistrationService registrationService;
+
+    private static final String errorMsgName = "Nome inválido";
+    private static final String errorMsgSex = "Escolha uma opção válida";
+    private static final String errorMsgBirthday = "Data inválida";
+    private static final String errorMsgAddress = "Endereço inválido";
+    private static final String errorMsgPostCode = "Código postal inválido";
+    private static final String errorMsgCity = "Nome de cidade inválida";
+    private static final String errorMsgNationality = "Escolha uma opção válida";
+    private static final String errorMsgDocumentType = "Escolha uma opção válida";
+    private static final String errorMsgDocumentNumber = "Número de documento inválido";
+    private static final String errorMsgNif = "Número de NIF inválido";
+    private static final String errorMsgPatientNumber = "Número de utente inválido";
+    private static final String errorMsgPhone = "Número de telemóvel inválido";
 
     @GetMapping(value = "/change_data")
     public String goToChangeData(ModelMap modelMap) {
@@ -27,68 +43,104 @@ public class ChangeDataController {
 
     @PostMapping(value = "/change_data")
     public String returnToUserPage(ModelMap modelMap,
-                                    @RequestParam String name,
-                                    @RequestParam String sex,
-                                    @DateTimeFormat (iso = DateTimeFormat.ISO.DATE)
-                                    @RequestParam Date birthday,
-                                    @RequestParam @Nullable String address,
-                                    @RequestParam @Nullable String postCode,
-                                    @RequestParam String city,
-                                    @RequestParam String nationality,
-                                    @RequestParam Long phone,
-                                    @RequestParam String documentType,
-                                    @RequestParam Long documentNumber,
-                                    @RequestParam Long nif,
-                                    @RequestParam @Nullable Long patientNumber) {
+                                   @RequestParam String name,
+                                   @RequestParam String sex,
+                                   @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
+                                   @RequestParam Date birthday,
+                                   @RequestParam @Nullable String address,
+                                   @RequestParam @Nullable String postCode,
+                                   @RequestParam String city,
+                                   @RequestParam String nationality,
+                                   @RequestParam Long phone,
+                                   @RequestParam String documentType,
+                                   @RequestParam Long documentNumber,
+                                   @RequestParam Long nif,
+                                   @RequestParam @Nullable Long patientNumber) {
 
+        // Update user info
+        boolean isFormValid = true;
+        Patient user = new Patient();
 
-        //Date date = new Date(user.getBirthday().getTime());
+        user.setName(name);
+        user.setSex(sex);
+        user.setBirthday(birthday);
+        user.setAddress(address);
+        user.setPostCode(postCode);
+        user.setCity(city);
+        user.setNationality(nationality);
+        user.setPhone(phone);
+        user.setDocumentType(documentType);
+        user.setDocumentNumber(documentNumber);
+        user.setNif(nif);
+        user.setPatientNumber(patientNumber);
 
-        if (isDataValid()) {
-            // Update user info
-            Patient user = Login.getConnectedUser();
-            user.setName(name);
-            user.setSex(sex);
-            user.setBirthday(birthday);
-            user.setAddress(address);
-            user.setPostCode(postCode);
-            user.setCity(city);
-            user.setNationality(nationality);
-            user.setPhone(phone);
-            user.setDocumentType(documentType);
-            user.setDocumentNumber(documentNumber);
-            user.setNif(nif);
-            user.setPatientNumber(patientNumber);
-
-            userService.addUser(user);
-
-            return "redirect:/user";
-
-        } else {
-            // case error in info validation
-            modelMap.put("errorMessage", "Dados inválidos");
-
-            modelMap.put("name", name);
-            modelMap.put("sex", sex);
-            modelMap.put("birthday", birthday);
-            modelMap.put("address", address);
-            modelMap.put("postalCode", postCode);
-            modelMap.put("city", city);
-            modelMap.put("nationality", nationality);
-            modelMap.put("phone", phone);
-            modelMap.put("documentType", documentType);
-            modelMap.put("documentNumber", documentNumber);
-            modelMap.put("nif", nif);
-            modelMap.put("patientNumber", patientNumber);
-
-            return "change_data";
+        if (!registrationService.validName(user)) {
+            modelMap.put("errorMsgName", errorMsgName);
+            isFormValid = false;
+        }
+        if (!registrationService.validPhone(user)) {
+            modelMap.put("errorMsgPhone", errorMsgPhone);
+            isFormValid = false;
+        }
+        if (!registrationService.validPostCode(user)) {
+            modelMap.put("errorMsgPostCode", errorMsgPostCode);
+            isFormValid = false;
+        }
+        if (!registrationService.validSex(user)) {
+            modelMap.put("errorMsgSex", errorMsgSex);
+            isFormValid = false;
+        }
+        if (!registrationService.validDocumentType(user)) {
+            modelMap.put("errorMsgDocumentType", errorMsgDocumentType);
+            isFormValid = false;
+        }
+        if (!registrationService.validDocumentNumber(user)) {
+            modelMap.put("errorMsgDocumentNumber", errorMsgDocumentNumber);
+            isFormValid = false;
+        }
+        if (!registrationService.validPatientNumber(user)) {
+            modelMap.put("errorMsgPatientNumber", errorMsgPatientNumber);
+            isFormValid = false;
+        }
+        if (!registrationService.validNif(user)) {
+            modelMap.put("errorMsgNif", errorMsgNif);
+            isFormValid = false;
+        }
+        if (!registrationService.validCity(user)) {
+            modelMap.put("errorMsgCity", errorMsgCity);
+            isFormValid = false;
+        }
+        if (!registrationService.validBirthday(user)) {
+            modelMap.put("errorMsgBirthday", errorMsgBirthday);
+            isFormValid = false;
+        }
+        if (!registrationService.validNationality(user)) {
+            modelMap.put("errorMsgNationality", errorMsgNationality);
+            isFormValid = false;
+        }
+        if (!registrationService.validAddress(user)) {
+            modelMap.put("errorMsgAddress", errorMsgAddress);
+            isFormValid = false;
         }
 
-    }
 
-    private static boolean isDataValid(){
-        // TODO add logic
-        return true;
+        if (!isFormValid) {
+            // case error in info validation
+            modelMap.put("user", user);
+            return "change_data";
+        }
+        user.setUserId(Login.getConnectedUser().getUserId());
+        user.setEmail(Login.getConnectedUser().getEmail());
+        user.setUsername(Login.getConnectedUser().getUsername());
+        user.setPhotoURL(Login.getConnectedUser().getPhotoURL());
+        user.setPassword(Login.getConnectedUser().getPassword());
+        user.setAccount(Login.getConnectedUser().getAccount());
+
+        userService.addUser(user);
+        Login.setConnectedUser(user);
+
+        return "redirect:/user";
+
     }
 
 }
