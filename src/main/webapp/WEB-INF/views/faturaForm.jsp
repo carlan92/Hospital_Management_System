@@ -7,7 +7,7 @@
 </head>
 
 <body>
-  <div class="container">
+
     <div class="sidenav">
       <!-- menu da esquerda -->
       <img src="imagens\noun_centro_hospitalar_logo.svg" alt="logo" class="logo" />
@@ -58,8 +58,8 @@
 
     <div class="main">
       <!--Form da direita-->
-      <div class="main">
-        <div class="white_box">
+
+        <div class="white_box box-align-left">
 
             <img src="imagens\noun_centro_hospitalar_logo.svg" alt="logo" class="logo_small" />
             <h3 class="registo">
@@ -226,12 +226,12 @@
                    
                 <div class="margin-form">
                 <button type="submit" class="btn btn-blue" value="criarConta">Criar Fatura</button>
-                </div>
+
                 
             </form>
 
         </div>
-    </div>
+
 </body>
 
 </html>
