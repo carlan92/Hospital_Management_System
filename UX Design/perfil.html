@@ -17,7 +17,7 @@
         <img src="imagens\noun_centro_hospitalar_logo.svg" alt="logo" class="logo" />
 
         <div class="welcome_box">
-            <p id="bem-vindo"> Bem-vindo</p>            
+            <p id="bem-vindo"> Bem-vindo</p>
         </div>
 
         <form method="get" action="/homeToLogin">
@@ -42,19 +42,33 @@
         <div class="sidenav_row log_out_box2">
             <img src="imagens/noun_upskill.png" alt="" id="upskill_logo2" />
             <hr />
-            
+
         </div>
 
     </div>
 
     <div class="main">
-        <div class="white_box vista_perfil">
+        <div class="white_box box-align-left">
 
-            <img class="logo_small" src="/imagens/noun_centro_hospitalar_logo.svg" alt="Logo do centro hospitalar">
-            <div class="user-type">
-                <a id="user_name" href="/user">${user.getFirstAndLastName()}</a>
-                <p id="user_category">${user.getAccount()}</p>
+            <div class="perfil-main-col">
+                <div class="perfil-row">
+                    <div class="cell-row cell-align-center">
+                        <div class="user-type">
+                            <p id="user_name">${user.getName()}</p>
+                            <p id="user_category">${user.getAccount()}</p>
+                        </div>
+                    </div>
+
+                    <div class="cell-row">
+                        <div class="user_photo">
+                            <img src="imagens/doctor_photo.png" alt="foto do utilizador" />
+                        </div>
+                    </div>
+                </div>
             </div>
+
+
+
             <div class="perfil-main-col">
                 <div class="perfil-row">
                     <div class="cell-row">Sexo</div>

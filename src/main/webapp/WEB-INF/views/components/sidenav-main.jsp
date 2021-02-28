@@ -10,7 +10,7 @@
 		<div class="welcome_box">
 			<div class="perfil-row">
 				<div class="col-4 user_photo">
-					<img src="imagens/draw_avatar.svg" alt="user_photography" />
+					<img src="/uploaded_images/${user.getPhotoURL()}" alt="user_photography" />
 				</div>
 				<div class="col user_info">
 					<p id="welcome">Bem-vindo</p>

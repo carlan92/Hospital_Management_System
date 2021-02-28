@@ -13,17 +13,27 @@
     <div class="main">
         <div class="white_box box-align-left">
 
-            <div class="perfil-row">
-                <img class="logo_small" src="/imagens/noun_centro_hospitalar_logo.svg" alt="Logo do centro hospitalar">
-                <div class="user_photo">
-                    <img src="/uploaded_images/001.jpg"/>
+
+
+            <div class="perfil-main-col">
+                <div class="perfil-row">
+                <div class="cell-row cell-align-center">
+                    <div class="user-type">
+                        <p id="user_name">${user.getName()}</p>
+                        <p id="user_category">${user.getAccount()}</p>
+                    </div>
+                </div>
+
+                <div class="cell-row">
+                    <div class="user_photo">
+                        <img src="/uploaded_images/${user.getPhotoURL()}" alt="foto do utilizador" />
+                    </div>
                 </div>
             </div>
 
-            <div class="user-type">
-                <p id="user_name">${user.getName()} (${user.getUsername()})</p>
-                <p id="user_category">${user.getAccount()}</p>
-            </div>
+
+
+
             <div class="perfil-main-col">
                 <div class="perfil-row">
                     <div class="cell-row">Sexo</div>

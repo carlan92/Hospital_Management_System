@@ -647,6 +647,10 @@ h3 {
   font: normal normal normal 15px/18px "Lato";
 }
 
+.cell-align-center {
+  margin: auto;
+}
+
 .cell-morada {
   width: 95%;
 }
