@@ -92,214 +92,96 @@
         <div class="white_box2 box-align-left">
 
             <div class="perfil-row">
-                <img src="imagens/undraw_checking_boxes_2ibd.svg" alt="patientsPage" class="img-fill-form" />
-                <h3 class="utente_title">Consultas</h3>
+                <img src="imagens/draw_checking.svg" alt="patientsPage" class="img-fill-form" />
+                <h3 class="consultas_title">Consultas</h3>
             </div>
 
-            <div class="search-row">
-                <div class=search_appt>
+            <div class="row">
+                <div class=search_options>
 
-                    <form class="form">
-                        <input class="form" type="search" placeholder="Nome do utente"
-                            aria-label="Search">
-                        <button class="btn-" type="submit">Pesquisar</button>
+                    <form>
+                        <div class="middle-row">
+                            <div class="search-container">
+                                <input id="dataDeNascimento_id" type="date" class="form-input sm" placeholder="Location" name="dataDeNascimento" required>
+                                <input type="text" class="form-input sm" placeholder="Nome Utente">
+                                <select id="speciality_id" class="form-input sm" name="speciality">
+                                    <option value="" disabled selected>Pesquisar por Especialidade</option>
+                                    <option value="1">Cardiologia</option>
+                                    <option value="2">Osteopatia</option>
+                                </select>
+                                <button class="btn-search2" type="submit">Pesquisar</button>
+
+                            </div>
+                        </div>
                     </form>
-                    <div class="form">
-                        <input class="form" type="search" placeholder="Nome do utente"
-                            aria-label="Search">
-                        <button class="btn-" type="submit">Pesquisar</button>
-                    </div>
 
-                    <div class="form">
-                        <input class="form" type="search" placeholder="Nome do utente"
-                            aria-label="Search">
-                        <button class="btn-" type="submit">Pesquisar</button>
-                    </div>
                 </div>
             </div>
 
 
             <div class="row">
 
-                <div class="card patient_data">
-                    <div class="user_photo w-50">
-                        <img src="imagens/remove_ronaldo.png" alt="John">
-                    </div>
-                    <h1 class="patient_name">Cristiano Ronaldo</h1>
-                    <i class="fas fa-birthday-cake ">
-                        <span class="patient_birthday">12/12/1979</span></i>
-                    <i class="fas fa-phone-square">
-                        <span class="patient_age">912345678</span></i>
-                    <span class="spec_title">Especialidades em consulta:</span>
-                    <ul class="spec_list">
-                        <li>
-                            Cardiologia
-                        </li>
-                        <li>
-                            Osteopatia
-                        </li>
-                    </ul>
-                    <p><button type="button" class="btn-blue btn-w80"> Consultar Perfil
-                        </button></p>
-                </div>
+            <section class="content-area middle-row">
+                    <table class="table">
+                        
+                        <thead>
+                            <tr>
+                                <th>Nome</th>
+                                <th>Data</th>
+                                <th>Especialidade</th>
+                                <th>+ detalhes</th>
+                            </tr>
+                        </thead>
+                        <tbody>
 
-                <div class="card patient_data">
-                    <div class="user_photo w-50">
-                        <img src="imagens/remove_ronaldo.png" alt="John">
-                    </div>
-                    <h1 class="patient_name">Cristiano Ronaldo</h1>
-                    <i class="fas fa-birthday-cake ">
-                        <span class="patient_birthday">12/12/1979</span></i>
-                    <i class="fas fa-phone-square">
-                        <span class="patient_age">912345678</span></i>
-                    <span class="spec_title">Especialidades em consulta:</span>
-                    <ul class="spec_list">
-                        <li>
-                            Cardiologia
-                        </li>
-                        <li>
-                            Osteopatia
-                        </li>
-                    </ul>
-                    <p><button type="button" class="btn-blue btn-w80"> Consultar Perfil
-                        </button></p>
-                </div>
+                            <tr>
+                                <td>Alice</td>
+                                <td>20/12/2020</td>
+                                <td>Cardiologia</td>
+                                <td> <a href="#">Clicar aqui</a> </td>
+                            </tr>
 
-                <div class="card patient_data">
-                    <div class="user_photo w-50">
-                        <img src="imagens/remove_ronaldo.png" alt="John">
-                    </div>
-                    <h1 class="patient_name">Cristiano Ronaldo</h1>
-                    <i class="fas fa-birthday-cake ">
-                        <span class="patient_birthday">12/12/1979</span></i>
-                    <i class="fas fa-phone-square">
-                        <span class="patient_age">912345678</span></i>
-                    <span class="spec_title">Especialidades em consulta:</span>
-                    <ul class="spec_list">
-                        <li>
-                            Cardiologia
-                        </li>
-                        <li>
-                            Osteopatia
-                        </li>
-                    </ul>
-                    <p><button type="button" class="btn-blue btn-w80"> Consultar Perfil
-                        </button></p>
-                </div>
+                            <tr>
+                                <td>Alice</td>
+                                <td>20/12/2020</td>
+                                <td>Cardiologia</td>
+                                <td> <a href="#">Clicar aqui</a> </td>
+                            </tr>
 
-                <div class="card patient_data">
-                    <div class="user_photo w-50">
-                        <img src="imagens/remove_ronaldo.png" alt="John">
-                    </div>
-                    <h1 class="patient_name">Cristiano Ronaldo</h1>
-                    <i class="fas fa-birthday-cake ">
-                        <span class="patient_birthday">12/12/1979</span></i>
-                    <i class="fas fa-phone-square">
-                        <span class="patient_age">912345678</span></i>
-                    <span class="spec_title">Especialidades em consulta:</span>
-                    <ul class="spec_list">
-                        <li>
-                            Cardiologia
-                        </li>
-                        <li>
-                            Osteopatia
-                        </li>
-                    </ul>
-                    <p><button type="button" class="btn-blue btn-w80"> Consultar Perfil
-                        </button></p>
-                </div>
+                            <tr>
+                                <td>Alice</td>
+                                <td>20/12/2020</td>
+                                <td>Cardiologia</td>
+                                <td> <a href="#">Clicar aqui</a> </td>
+                            </tr>
 
-                <div class="card patient_data">
-                    <div class="user_photo w-50">
-                        <img src="imagens/remove_ronaldo.png" alt="John">
-                    </div>
-                    <h1 class="patient_name">Cristiano Ronaldo</h1>
-                    <i class="fas fa-birthday-cake ">
-                        <span class="patient_birthday">12/12/1979</span></i>
-                    <i class="fas fa-phone-square">
-                        <span class="patient_age">912345678</span></i>
-                    <span class="spec_title">Especialidades em consulta:</span>
-                    <ul class="spec_list">
-                        <li>
-                            Cardiologia
-                        </li>
-                        <li>
-                            Osteopatia
-                        </li>
-                    </ul>
-                    <p><button type="button" class="btn-blue btn-w80"> Consultar Perfil
-                        </button></p>
-                </div>
-
-                <div class="card patient_data">
-                    <div class="user_photo w-50">
-                        <img src="imagens/remove_ronaldo.png" alt="John">
-                    </div>
-                    <h1 class="patient_name">Cristiano Ronaldo</h1>
-                    <i class="fas fa-birthday-cake ">
-                        <span class="patient_birthday">12/12/1979</span></i>
-                    <i class="fas fa-phone-square">
-                        <span class="patient_age">912345678</span></i>
-                    <span class="spec_title">Especialidades em consulta:</span>
-                    <ul class="spec_list">
-                        <li>
-                            Cardiologia
-                        </li>
-                        <li>
-                            Osteopatia
-                        </li>
-                    </ul>
-                    <p><button type="button" class="btn-blue btn-w80"> Consultar Perfil
-                        </button></p>
-                </div>
-
-                <div class="card patient_data">
-                    <div class="user_photo w-50">
-                        <img src="imagens/remove_ronaldo.png" alt="John">
-                    </div>
-                    <h1 class="patient_name">Cristiano Ronaldo</h1>
-                    <i class="fas fa-birthday-cake ">
-                        <span class="patient_birthday">12/12/1979</span></i>
-                    <i class="fas fa-phone-square">
-                        <span class="patient_age">912345678</span></i>
-                    <span class="spec_title">Especialidades em consulta:</span>
-                    <ul class="spec_list">
-                        <li>
-                            Cardiologia
-                        </li>
-                        <li>
-                            Osteopatia
-                        </li>
-                    </ul>
-                    <p><button type="button" class="btn-blue btn-w80"> Consultar Perfil
-                        </button></p>
-                </div>
-
-                <div class="card patient_data">
-                    <div class="user_photo w-50">
-                        <img src="imagens/remove_ronaldo.png" alt="John">
-                    </div>
-                    <h1 class="patient_name">Cristiano Ronaldo</h1>
-                    <i class="fas fa-birthday-cake ">
-                        <span class="patient_birthday">12/12/1979</span></i>
-                    <i class="fas fa-phone-square">
-                        <span class="patient_age">912345678</span></i>
-                    <span class="spec_title">Especialidades em consulta:</span>
-                    <ul class="spec_list">
-                        <li>
-                            Cardiologia
-                        </li>
-                        <li>
-                            Osteopatia
-                        </li>
-                    </ul>
-                    <p><button type="button" class="btn-blue btn-w80"> Consultar Perfil
-                        </button></p>
-                </div>
+                            <tr>
+                                <td>Alice</td>
+                                <td>20/12/2020</td>
+                                <td>Cardiologia</td>
+                                <td> <a href="#">Clicar aqui</a> </td>
+                            </tr>
+                        
+            
+                        </tbody>
+                    </table>
+                
+            </section>
+                
+                
+                
+              
+               
+                   
+                
+                
+                
+               
 
 
 
             </div>
+
         </div>
 
     </div>
