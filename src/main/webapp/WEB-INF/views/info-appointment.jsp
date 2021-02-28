@@ -67,7 +67,7 @@
 
             <form action="/action_page.php">
                 <h3>Notas:</h3>
-                <textarea name="message" rows="10" cols="53"></textarea>
+                <textarea name="message" class="perfil-row" rows=10 ></textarea>
             </form>
 
             <div class="perfil-main-col">
