@@ -1198,6 +1198,18 @@ select option:disabled {
   width: 100%;
 }
 
+/*Registo Consulta*/
+
+.status {
+  margin: 15px;
+}
+
+.info_appt{
+  color: #000000;
+
+}
+
+
 @media screen and (max-height: 450px) {
   .sidenav {
     padding-top: 15px;
