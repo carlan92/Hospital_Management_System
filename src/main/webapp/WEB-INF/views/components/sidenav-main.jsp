@@ -3,7 +3,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 
 	<div class="sidenav">
-		<!-- menu da esquerda RECEPCIONISTA-->l
+		<!-- menu da esquerda RECEPCIONISTA-->
 
 		<img src="imagens/noun_centro_hospitalar_logo.svg" alt="logo" class="logo" />
 
@@ -14,7 +14,7 @@
 				</div>
 				<div class="col user_info">
 					<p id="welcome">Bem-vindo</p>
-					<a id="user_name" href="/user">${user.getFirstAndLastName()}</a>
+					<p id="user_name">${user.getFirstAndLastName()}</p>
 					<p id="user_category">${user.getAccount()}</p>
 				</div>
 			</div>

@@ -2,7 +2,9 @@ package pt.iscte.hospital.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import pt.iscte.hospital.entities.Nationality;
 import pt.iscte.hospital.entities.User;
+import pt.iscte.hospital.repositories.NationalityRepository;
 import pt.iscte.hospital.repositories.PatientRepository;
 
 import java.text.SimpleDateFormat;
@@ -11,6 +13,8 @@ import java.text.SimpleDateFormat;
 public class RegistrationServiceImpl implements RegistrationService {
     @Autowired
     PatientRepository patientRepository;
+    @Autowired
+    NationalityRepository nationalityRepository;
 
 
     public boolean validName(User user) {
@@ -159,13 +163,22 @@ public class RegistrationServiceImpl implements RegistrationService {
         return false;
     }
     public boolean validAddress(User user){
-        //todo
+        String[] palavras = user.getName().split(" ");
+        for (int i = 0; i < palavras.length; i++) {
+            if (!palavras[i].matches("[A-Za-zÀ-ÿ'/-]{1,}")) {
+                return false;
+            }
+        }
         return true;
     }
 
     public boolean validNationality(User user){
-        //todo
-        return true;
+        Nationality userNationality = nationalityRepository.findByName(user.getNationality());
+        if (userNationality != null) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
 }
