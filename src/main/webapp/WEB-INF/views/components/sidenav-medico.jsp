@@ -9,7 +9,7 @@
     <div class="welcome_box">
         <div class="perfil-row">
             <div class="col-4 user_photo">
-                <img src="imagens/doctor_photo.png" alt="user_photography" />
+                <img src="imagens/imagem-test.png" alt="user_photography" />
             </div>
             <div class="col user_info">
                 <p id="welcome">Bem-vindo</p>
