@@ -9,7 +9,7 @@ import java.util.Date;
 public class Invoice {
     // Attributes
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long invoiceId;
 
     @OneToOne

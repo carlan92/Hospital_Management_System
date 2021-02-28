@@ -10,10 +10,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import pt.iscte.hospital.entities.Login;
 import pt.iscte.hospital.entities.Patient;
-import pt.iscte.hospital.entities.User;
 import pt.iscte.hospital.services.UserService;
 
-import java.text.SimpleDateFormat;
 import java.util.Date;
 
 @Controller

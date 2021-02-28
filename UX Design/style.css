@@ -77,10 +77,12 @@ h1 {
   top: 0;
   bottom: 0;
   left: 0;
+
   display: flex;
   flex-direction: column;
   box-sizing: border-box;
   box-shadow: 5px 0px 20px #00000029;
+
   width: 25vw;
   min-height: 100vh;
   z-index: 2;
@@ -196,7 +198,7 @@ h1 {
 
 .log_out_box {
   position: relative;
-  bottom: 0;
+
   width: 100%;
 }
 
@@ -408,7 +410,8 @@ h1 {
   margin: 10px auto;
   padding: 30px;
   box-shadow: 5px 0px 20px #00000029;
-  background: transparent linear-gradient(90deg, #ffffffb9 0%, #ffffff7e 100%) 0% 0% no-repeat padding-box;
+  background: transparent linear-gradient(90deg, #ffffffb9 0%, #ffffff7e 100%)
+    0% 0% no-repeat padding-box;
   width: 650px;
   min-height: 600px;
 }
@@ -480,7 +483,6 @@ option {
 }
 
 /*registo*/
-
 .box-align-left {
   margin: 0px;
 }
@@ -538,7 +540,6 @@ option {
 
 .log_out_box2 {
   position: relative;
-  bottom: 0;
   width: 100%;
 }
 
@@ -563,7 +564,8 @@ option {
   box-sizing: border-box;
   height: 100%;
   border-radius: 10px;
-  background: transparent linear-gradient(90deg, #ffffffb9 0%, #ffffff7e 100%) 0% 0% no-repeat padding-box;
+  background: transparent linear-gradient(90deg, #ffffffb9 0%, #ffffff7e 100%)
+    0% 0% no-repeat padding-box;
   box-shadow: 7px 7px 20px 7px grey;
 }
 
@@ -594,7 +596,8 @@ option {
   padding: 25px 30px;
 }
 
-.card-body2 h2, h3 {
+.card-body2 h2,
+h3 {
   color: #000000;
   margin: 10px;
   font: normal normal bold 27px/30px "Lato";
@@ -625,7 +628,6 @@ option {
 }
 
 /*Perfil*/
-
 .perfil-main-col {
   box-sizing: border-box;
   margin: auto;
@@ -652,8 +654,8 @@ option {
 }
 
 /*Terms & Conditions*/
-
-.terms p, .terms li {
+.terms p,
+.terms li {
   text-align: justify !important;
   font-size: 17px !important;
 }
@@ -671,7 +673,6 @@ option {
 }
 
 /*Payment History*/
-
 .payment_history {
   font-size: 30px;
   text-align: center;
@@ -684,7 +685,8 @@ option {
   margin: auto !important;
   padding: 30px !important;
   box-shadow: 5px 0px 20px #00000029 !important;
-  background: transparent linear-gradient(90deg, #ffffffb9 0%, #ffffff7e 100%) 0% 0% no-repeat padding-box !important;
+  background: transparent linear-gradient(90deg, #ffffffb9 0%, #ffffff7e 100%)
+    0% 0% no-repeat padding-box !important;
   width: 650px !important;
   min-height: 600px !important;
 }
@@ -747,7 +749,6 @@ hr.payment_dash {
 }
 
 /* Recover Password */
-
 .input1 {
   margin-top: 5px;
   margin-bottom: 5px;
@@ -775,9 +776,7 @@ hr.payment_dash {
 }
 
 /* Forms */
-
 /*Buttons*/
-
 .btn-button {
   background-color: transparent;
   padding: 15px 20px;
@@ -838,7 +837,9 @@ button:focus {
   outline: none;
 }
 
-.btn-blue:hover, .btn-green:hover {
+.btn-blue:hover,
+.btn-green:hover {
+  color: white;
   opacity: 0.9;
   cursor: pointer;
   transition: all 0.2s ease-out;
@@ -848,8 +849,7 @@ select option:disabled {
   color: lightgrey;
 }
 
-/*Menu inicio: Medico*/
-
+/*Menu inicio: Medico */
 .user_photo {
   padding: 0px;
   display: block;
@@ -999,7 +999,7 @@ select option:disabled {
   margin: 0px;
 }
 
-/* butoes por rever*/
+/* botoes por rever*/
 
 .btn-w100 {
   width: 100%;

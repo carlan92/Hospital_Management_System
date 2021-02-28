@@ -10,7 +10,7 @@ import java.util.Date;
 public class Appointment {
     // Attributes
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "appointment_id")
     private Long appointmentId;
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
@@ -21,7 +21,7 @@ public class Appointment {
     private String notes;
 
     @ManyToOne
-    @JoinColumn(name="patient_id")
+    @JoinColumn(name = "patient_id")
     private Patient patient;
 
     @OneToOne(mappedBy = "appointment")

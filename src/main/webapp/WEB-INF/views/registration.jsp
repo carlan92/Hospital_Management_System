@@ -2,19 +2,12 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-        <title>Centro Hospitalar UPskill</title>
-
-        <link rel="stylesheet" href="bootstrap.min.4.5.3.css"/>
-        <link rel="stylesheet" href="style.css" />
+	<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+	<%@ include file="components/head.jsp" %>
 </head>
 
 <body>
-    <%@ include file="sidenav-login.jsp" %>
+    <%@ include file="components/sidenav-login.jsp" %>
 
         <div class="main">
             <div class="white_box box-align-left">
@@ -40,8 +33,8 @@
                         <div class="perfil-row">
                             <div class="cell-row cell-morada">
                                 <label for="nome_id">Nome Completo *</label>
-                                <input id="nome_id" type="text" class="form-input" name="name" required
-                                    placeholder="O seu nome completo" value="" />
+                                <input id="nome_id" type="text" class="form-input" value="${returnName}" name="name" required
+                                    placeholder="O seu nome completo" />
                                 <p class="msg-error">${errorMsgName}</p>
                             </div>
                         </div>
@@ -59,7 +52,7 @@
                             
                             <div class="cell-row">
                                 <label for="dataDeNascimento_id">Data de Nascimento *</label>
-                                <input id="dataDeNascimento_id" type="date" class="form-input" name="birthday" required>
+                                <input id="dataDeNascimento_id" type="date" class="form-input" value="${returnBirthdaye}" name="birthday" required>
                                 <p class="msg-error">${errorMsgBirthday}</p>
                             </div>
                         </div>
@@ -67,7 +60,7 @@
                         <div class="perfil-row">
                             <div class="cell-row cell-morada">
                                 <label for="morada_id">Morada</label>
-                                <input id="morada_id" type="text" class="form-input" name="address"
+                                <input id="morada_id" type="text" class="form-input" value="${returnAddress}" name="address"
                                     placeholder="A sua morada" />
                                 <p class="msg-error">${errorMsgAddress}</p>
                             </div>
@@ -77,13 +70,13 @@
                             <div class="cell-row">
                                 <label for="codigoPostal_id">Código Postal</label>
                                 <input id="codigoPostal_id" type="text" pattern="[0-9]{4}[-][0-9]{3}" class="form-input"
-                                    name="postCode" placeholder="O seu código postal" />
+                                    value="${returnPostCode}" name="postCode" placeholder="O seu código postal" />
                                 <p class="msg-error">${errorMsgPostCode}</p>
                             </div>
 
                             <div class="cell-row">
                                 <label for="localidade_id">Localidade *</label>
-                                <input id="localidade_id" type="text" class="form-input" name="city" required
+                                <input id="localidade_id" type="text" class="form-input" value="${returnCity}" name="city" required
                                     placeholder="A sua localidade" />
                                 <p class="msg-error">${errorMsgCity}</p>
                             </div>
@@ -320,7 +313,7 @@
                             </div>
                             <div class="cell-row">
                                 <label for="nrDocumento_id">Nº do Documento *</label>
-                                <input id="nrDocumento_id" type="text" class="form-input" pattern="[0-9]{8}" name="documentNumber" required
+                                <input id="nrDocumento_id" type="text" class="form-input" pattern="[0-9]{8}" value="${returnDocumentNumber}"name="documentNumber" required
                                     placeholder="Nº do documento selecionado" />
                                 <p class="msg-error">${errorMsgDocumentNumber}</p>
                             </div>
@@ -329,13 +322,13 @@
                         <div class="perfil-row">
                             <div class="cell-row">
                                 <label for="nif_id">NIF *</label>
-                                <input id="nif_id" type="text" pattern="[0-9]{9}" class="form-input" name="nif" required
+                                <input id="nif_id" type="text" pattern="[0-9]{9}" class="form-input" value="${returnNif}"name="nif" required
                                     placeholder="NIF" />
                                 <p class="msg-error">${errorMsgNif}</p>
                             </div>
                             <div class="cell-row">
                                 <label for="nrUtente_id">Nº de Utente</label>
-                                <input id="nrUtente_id" type="text" pattern="[0-9]{9}" class="form-input" name="patientNumber"
+                                <input id="nrUtente_id" type="text" pattern="[0-9]{9}" class="form-input" value="${returnPatientNumber}" name="patientNumber"
                                     placeholder="Nº de Utente" />
                                 <p class="msg-error">${errorMsgPatientNumber}</p>
                             </div>
@@ -346,12 +339,12 @@
                                 <label for="telemovel_id">Telemóvel *</label>
                                 <input id="telemovel_id" type="text"
                                     pattern="^9[1236][0-9]{7}$|^2[3-9][1-9][0-9]{6}$|^2[12][0-9]{7}$" class="form-input"
-                                    name="phone" required placeholder="O seu número de telemóvel" />
+                                    value="${returnPhone}" name="phone" required placeholder="O seu número de telemóvel" />
                                 <p class="msg-error">${errorMsgPhone}</p>
                             </div>
                             <div class="cell-row">
                                 <label for="e-mail_id">E-mail *</label>
-                                <input id="e-mail_id" type="email" class="form-input" name="email" required
+                                <input id="e-mail_id" type="email" class="form-input" value="${returnEmail}" name="email" required
                                     placeholder="O seu e-mail" />
                                 <p class="msg-error">${errorMsgEmail}</p>
                             </div>
@@ -361,7 +354,7 @@
                             <div class="cell-row">
                                 <label for="username_id">Username *</label>
                                 <input id="username_id" type="text" class="form-input" name="username" required
-                                    placeholder="Introduza o username" value="" />
+                                    placeholder="Introduza o username" value="${returnUsername}" />
                                 <p class="msg-error">${errorMsgUsername}</p>
                             </div>
                             <div class="cell-row">
@@ -375,7 +368,7 @@
                             <div class="cell-row">
                                 <label for="password_id">Palavra-Passe *</label>
                                 <input id="password_id" type="password" class="form-input" minlength="1" maxlength="15"
-                                    name="password" required placeholder="Palavra-passe" />
+                                    value="${returnPassword}" name="password" required placeholder="Palavra-passe" />
                                 <p class="msg-error">${errorMsgPassword}</p>
                             </div>
                             <div class="cell-row">
