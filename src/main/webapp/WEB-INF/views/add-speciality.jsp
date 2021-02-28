@@ -32,7 +32,7 @@
                             <label for="especialidade_id">Especialidade</label>
                             <input id="especialidade_id" type="text" class="form-input" name="name_speciality" required
                                 placeholder="Nome da Especialidade" value="" />
-                            <p class="msg-error">${errorMsgName}</p>
+                            <p class="msg-error">${errorMsgSpeciality}</p>
                         </div>
                     </div>
                 </div>

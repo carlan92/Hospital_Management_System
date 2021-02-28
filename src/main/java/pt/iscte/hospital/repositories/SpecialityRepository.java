@@ -6,4 +6,6 @@ import pt.iscte.hospital.entities.Speciality;
 
 @Repository
 public interface SpecialityRepository  extends JpaRepository<Speciality,Long> {
+
+    public Speciality findByName(String name);
 }
