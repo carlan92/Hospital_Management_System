@@ -28,9 +28,9 @@
 				<a href="/main" class="botao_acessos">
 					<img src="imagens/noun_home.svg" /> Início
 				</a>
-				<button type="button" class="">
+				<a href="/lista-utentes" class="botao_acessos">
 					<img src="imagens/noun_utentes.svg" /> Utentes
-				</button>
+				</a>
 				<button type="button" class="">
 					<img src="imagens/noun_doctor.svg" /> Médicos
 				</button>

@@ -9,7 +9,7 @@
     <div class="welcome_box">
         <div class="perfil-row">
             <div class="col-4 user_photo">
-                <img src="static/imagens/draw_doctor.svg" alt="user_photography"/>
+                <img src="imagens/draw_doctor.svg" alt="user_photography"/>
             </div>
             <div class="col user_info">
                 <p id="welcome">Bem-vindo</p>
@@ -25,12 +25,12 @@
 
     <div class="panel-scroll">
         <div class="sidenav_row">
-            <button type="button" class="">
+            <a href="/doctor-inicio" class="botao_acessos">
                 <img src="imagens/noun_home.svg"/> Início
-            </button>
-            <button type="button" class="">
-                <img src="imagens/noun_utentes.svg"/> Utentes
-            </button>
+            </a>
+            <a href="/lista-utentes" class="botao_acessos">
+                <img src="imagens/noun_utentes.svg" /> Utentes
+            </a>
 
             <button type="button" class="">
                 <img src="imagens/noun_heart rate.svg"/> Consultas

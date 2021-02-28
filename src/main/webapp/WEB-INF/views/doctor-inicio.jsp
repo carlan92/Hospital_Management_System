@@ -122,14 +122,16 @@
 
                     <div class="col-9">
                         <div class="perfil-row">
-                            <div class="col-4 user_photo2">
-                                <img src="imagens/draw_doctor.svg" alt="fotografia utente" />
+                            <div class="col-4 user_photo">
+                                <img src="imagens/draw_doctor.svg" alt="user_photography"/>
                             </div>
                             <div class="col user_info">
-                                <span id="next_patient_name">Alice Antunes</span>
-                                <p id="patient_age">Idade: 70 anos</p>
-                                <span id="first_appt_ask">Primeira Consulta: SIM </span>
-                                <p id="first_appt_ask">Estado da Consulta: CONFIRMADA </p>
+                                <span class="patient_name">Alice Antunes</span>
+                                <br/>
+                                <span class="patient_age">70 anos</span>
+                                <br/>
+                                <span class="first_appt_ask">Primeira Consulta: SIM </span>
+                                <p class="first_appt_ask">Estado da Consulta: CONFIRMADA </p>
                             </div>
                         </div>
 
