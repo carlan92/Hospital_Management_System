@@ -44,7 +44,7 @@
                     </div>
 
                     <div class="cell-row">
-                        <a href="add-patient" class="btn btn-blue">Adicionar Utente</a>
+                        <a href="doctor-consultas.jsp" class="btn btn-blue">Médico-consultas</a>
                     </div>
                 </div>
             </div>
