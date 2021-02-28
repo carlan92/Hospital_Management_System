@@ -22,6 +22,11 @@ public class ReceptionistController {
         return ("add-speciality");
     }
 
+    @GetMapping(value = "/add-patient")
+    public String addPatientPage(){
+        return ("add-patient");
+    }
+
     @PostMapping(value = "/add-speciality")
     public String addSpecialityService(@RequestParam String name_speciality){
         // TODO lógica de adicionar especialidade...

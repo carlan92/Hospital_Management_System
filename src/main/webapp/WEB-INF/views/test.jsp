@@ -40,6 +40,18 @@
             <div class="perfil-main-col">
                 <div class="perfil-row">
                     <div class="cell-row">
+                        <a href="add-patient" class="btn btn-green">Adicionar Utente</a>
+                    </div>
+
+                    <div class="cell-row">
+                        <a href="add-patient" class="btn btn-blue">Adicionar Utente</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="perfil-main-col">
+                <div class="perfil-row">
+                    <div class="cell-row">
                         <a href="doctor-inicio" class="btn btn-green">Médico-Início</a>
                     </div>
 
