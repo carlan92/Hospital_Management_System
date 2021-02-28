@@ -8,7 +8,7 @@
 </head>
 
 <body>
-<%@ include file="components/sidenav-medico.jsp" %>
+<%@ include file="components/sidenav-main.jsp" %>
 
 
 <div class="main">
@@ -18,7 +18,7 @@
 
         <div class="perfil-row">
 
-            <img src="imagens/draw_patient.svg" alt="doctorsPage" class="img-fill-form" />
+            <img src="imagens/draw_patient.svg" alt="doctorsPage" class="img-fill-form"/>
             <h3 class="utente_title">Lista de Médicos</h3>
             <div class=search_patient>
                 <form class="form-inline">
@@ -39,16 +39,12 @@
 
         <div class="row">
 
-            <div class="card patient_data">
+            <div class="card_list_doctor patient_data">
                 <div class="user_photo w-50">
                     <img src="imagens/draw_avatar.svg" alt="avatar">
                 </div>
                 <h1 class="patient_name">Miguel Pereira</h1>
-                <i class="fas fa-birthday-cake ">
-                    <span class="patient_birthday">02/10/1956</span></i>
-                <i class="fas fa-phone-square">
-                    <span class="patient_age">912333444</span></i>
-                <span class="spec_title">Especialidades:</span>
+                <p class="spec_title">Especialidades:</p>
                 <ul class="spec_list">
                     <li>
                         Cardiologia
@@ -57,20 +53,18 @@
                         Osteopatia
                     </li>
                 </ul>
-                <p><button type="button" class="btn-blue btn-w80"> Consultar Perfil
-                </button></p>
+                <p>
+                    <button type="button" class="btn-blue btn-w80"> Consultar Perfil
+                    </button>
+                </p>
             </div>
 
-            <div class="card patient_data">
+            <div class="card_list_doctor patient_data">
                 <div class="user_photo w-50">
                     <img src="imagens/draw_avatar.svg" alt="avatar">
                 </div>
                 <h1 class="patient_name">Miguel Pereira</h1>
-                <i class="fas fa-birthday-cake ">
-                    <span class="patient_birthday">02/10/1956</span></i>
-                <i class="fas fa-phone-square">
-                    <span class="patient_age">912333444</span></i>
-                <span class="spec_title">Especialidades:</span>
+                <p class="spec_title">Especialidades:</p>
                 <ul class="spec_list">
                     <li>
                         Cardiologia
@@ -79,20 +73,18 @@
                         Osteopatia
                     </li>
                 </ul>
-                <p><button type="button" class="btn-blue btn-w80"> Consultar Perfil
-                </button></p>
+                <p>
+                    <button type="button" class="btn-blue btn-w80"> Consultar Perfil
+                    </button>
+                </p>
             </div>
 
-            <div class="card patient_data">
+            <div class="card_list_doctor patient_data">
                 <div class="user_photo w-50">
                     <img src="imagens/draw_avatar.svg" alt="avatar">
                 </div>
                 <h1 class="patient_name">Miguel Pereira</h1>
-                <i class="fas fa-birthday-cake ">
-                    <span class="patient_birthday">02/10/1956</span></i>
-                <i class="fas fa-phone-square">
-                    <span class="patient_age">912333444</span></i>
-                <span class="spec_title">Especialidades:</span>
+                <p class="spec_title">Especialidades:</p>
                 <ul class="spec_list">
                     <li>
                         Cardiologia
@@ -101,20 +93,18 @@
                         Osteopatia
                     </li>
                 </ul>
-                <p><button type="button" class="btn-blue btn-w80"> Consultar Perfil
-                </button></p>
+                <p>
+                    <button type="button" class="btn-blue btn-w80"> Consultar Perfil
+                    </button>
+                </p>
             </div>
 
-            <div class="card patient_data">
+            <div class="card_list_doctor patient_data">
                 <div class="user_photo w-50">
                     <img src="imagens/draw_avatar.svg" alt="avatar">
                 </div>
                 <h1 class="patient_name">Miguel Pereira</h1>
-                <i class="fas fa-birthday-cake ">
-                    <span class="patient_birthday">02/10/1956</span></i>
-                <i class="fas fa-phone-square">
-                    <span class="patient_age">912333444</span></i>
-                <span class="spec_title">Especialidades:</span>
+                <p class="spec_title">Especialidades:</p>
                 <ul class="spec_list">
                     <li>
                         Cardiologia
@@ -123,20 +113,18 @@
                         Osteopatia
                     </li>
                 </ul>
-                <p><button type="button" class="btn-blue btn-w80"> Consultar Perfil
-                </button></p>
+                <p>
+                    <button type="button" class="btn-blue btn-w80"> Consultar Perfil
+                    </button>
+                </p>
             </div>
 
-            <div class="card patient_data">
+            <div class="card_list_doctor patient_data">
                 <div class="user_photo w-50">
                     <img src="imagens/draw_avatar.svg" alt="avatar">
                 </div>
                 <h1 class="patient_name">Miguel Pereira</h1>
-                <i class="fas fa-birthday-cake ">
-                    <span class="patient_birthday">02/10/1956</span></i>
-                <i class="fas fa-phone-square">
-                    <span class="patient_age">912333444</span></i>
-                <span class="spec_title">Especialidades:</span>
+                <p class="spec_title">Especialidades:</p>
                 <ul class="spec_list">
                     <li>
                         Cardiologia
@@ -145,20 +133,18 @@
                         Osteopatia
                     </li>
                 </ul>
-                <p><button type="button" class="btn-blue btn-w80"> Consultar Perfil
-                </button></p>
+                <p>
+                    <button type="button" class="btn-blue btn-w80"> Consultar Perfil
+                    </button>
+                </p>
             </div>
 
-            <div class="card patient_data">
+            <div class="card_list_doctor patient_data">
                 <div class="user_photo w-50">
                     <img src="imagens/draw_avatar.svg" alt="avatar">
                 </div>
                 <h1 class="patient_name">Miguel Pereira</h1>
-                <i class="fas fa-birthday-cake ">
-                    <span class="patient_birthday">02/10/1956</span></i>
-                <i class="fas fa-phone-square">
-                    <span class="patient_age">912333444</span></i>
-                <span class="spec_title">Especialidades:</span>
+                <p class="spec_title">Especialidades:</p>
                 <ul class="spec_list">
                     <li>
                         Cardiologia
@@ -167,20 +153,18 @@
                         Osteopatia
                     </li>
                 </ul>
-                <p><button type="button" class="btn-blue btn-w80"> Consultar Perfil
-                </button></p>
+                <p>
+                    <button type="button" class="btn-blue btn-w80"> Consultar Perfil
+                    </button>
+                </p>
             </div>
 
-            <div class="card patient_data">
+            <div class="card_list_doctor patient_data">
                 <div class="user_photo w-50">
                     <img src="imagens/draw_avatar.svg" alt="avatar">
                 </div>
                 <h1 class="patient_name">Miguel Pereira</h1>
-                <i class="fas fa-birthday-cake ">
-                    <span class="patient_birthday">02/10/1956</span></i>
-                <i class="fas fa-phone-square">
-                    <span class="patient_age">912333444</span></i>
-                <span class="spec_title">Especialidades:</span>
+                <p class="spec_title">Especialidades:</p>
                 <ul class="spec_list">
                     <li>
                         Cardiologia
@@ -189,20 +173,18 @@
                         Osteopatia
                     </li>
                 </ul>
-                <p><button type="button" class="btn-blue btn-w80"> Consultar Perfil
-                </button></p>
+                <p>
+                    <button type="button" class="btn-blue btn-w80"> Consultar Perfil
+                    </button>
+                </p>
             </div>
 
-            <div class="card patient_data">
+            <div class="card_list_doctor patient_data">
                 <div class="user_photo w-50">
                     <img src="imagens/draw_avatar.svg" alt="avatar">
                 </div>
                 <h1 class="patient_name">Miguel Pereira</h1>
-                <i class="fas fa-birthday-cake ">
-                    <span class="patient_birthday">02/10/1956</span></i>
-                <i class="fas fa-phone-square">
-                    <span class="patient_age">912333444</span></i>
-                <span class="spec_title">Especialidades:</span>
+                <p class="spec_title">Especialidades:</p>
                 <ul class="spec_list">
                     <li>
                         Cardiologia
@@ -211,11 +193,11 @@
                         Osteopatia
                     </li>
                 </ul>
-                <p><button type="button" class="btn-blue btn-w80"> Consultar Perfil
-                </button></p>
+                <p>
+                    <button type="button" class="btn-blue btn-w80"> Consultar Perfil
+                    </button>
+                </p>
             </div>
-
-
 
 
         </div>
