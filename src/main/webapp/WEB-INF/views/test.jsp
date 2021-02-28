@@ -67,6 +67,10 @@
                         <a href="lista-medicos" class="btn btn-green">Recepcionista- Lista de Médicos</a>
                     </div>
 
+                    <div class="cell-row">
+                        <a href="info-appointment" class="btn btn-blue">Médico- Registo Info Consulta</a>
+                    </div>
+
                 </div>
             </div>
 

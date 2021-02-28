@@ -35,4 +35,9 @@ public class TestController {
     public String showListaMedicos(ModelMap modelMap) {
         return "lista-medicos";
     }
+
+    @GetMapping(value = "/info-appointment")
+    public String showInfoConsulta(ModelMap modelMap) {
+        return "info-appointment";
+    }
 }
