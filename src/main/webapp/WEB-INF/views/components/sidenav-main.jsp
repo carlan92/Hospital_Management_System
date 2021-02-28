@@ -3,14 +3,24 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 
 	<div class="sidenav">
-		<!-- menu da esquerda RECEPCIONISTA-->
-		
-		<img src="imagens\noun_centro_hospitalar_logo.svg" alt="logo" class="logo" />
-		
+		<!-- menu da esquerda RECEPCIONISTA-->l
+
+		<img src="imagens/noun_centro_hospitalar_logo.svg" alt="logo" class="logo" />
+
 		<div class="welcome_box">
-			<p id="welcome">Olá de novo,</p>
-			<a id="user_name" href="/user">${user.getFirstAndLastName()}</a>
-			<p id="user_category">${user.getAccount()}</p>
+			<div class="perfil-row">
+				<div class="col-4 user_photo">
+					<img src="imagens/imagem-test.png" alt="user_photography" />
+				</div>
+				<div class="col user_info">
+					<p id="welcome">Bem-vindo</p>
+					<a id="user_name" href="/user">${user.getFirstAndLastName()}</a>
+					<p id="user_category">${user.getAccount()}</p>
+				</div>
+			</div>
+			<div>
+				<a type="button" href="/user" class="btn-green btn-w70"> Ver Perfil </a>
+			</div>
 		</div>
 
 		<div class="panel-scroll">
@@ -18,9 +28,9 @@
 				<a href="/main" class="botao_acessos">
 					<img src="imagens/noun_home.svg" /> Início
 				</a>
-				<button type="button" class="">
+				<a href="/lista-utentes" class="botao_acessos">
 					<img src="imagens/noun_utentes.svg" /> Utentes
-				</button>
+				</a>
 				<button type="button" class="">
 					<img src="imagens/noun_doctor.svg" /> Médicos
 				</button>

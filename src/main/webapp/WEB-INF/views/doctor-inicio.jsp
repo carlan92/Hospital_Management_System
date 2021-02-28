@@ -123,7 +123,7 @@
                     <div class="col-9">
                         <div class="perfil-row">
                             <div class="col-4 user_photo2">
-                                <img src="imagens/next_patient_photo.png" alt="" />
+                                <img src="static/imagens/imagem-test.png" alt="fotografia utente" />
                             </div>
                             <div class="col user_info">
                                 <span id="next_patient_name">Alice Antunes</span>

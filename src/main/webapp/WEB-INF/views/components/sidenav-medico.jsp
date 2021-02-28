@@ -4,7 +4,7 @@
 
 <div class="sidenav">
     <!-- menu da esquerda MEDICO-->
-    <img src="imagens\noun_centro_hospitalar_logo.svg" alt="logo" class="logo" />
+    <img src="imagens/noun_centro_hospitalar_logo.svg" alt="logo" class="logo" />
 
     <div class="welcome_box">
         <div class="perfil-row">
@@ -13,22 +13,25 @@
             </div>
             <div class="col user_info">
                 <p id="welcome">Bem-vindo</p>
-                <p id="user_name">Dr. Miguel Pereira</p>
-                <p id="user_category">Médico</p>
+                <a id="user_name" href="/user">${user.getFirstAndLastName()}</a>
+                <p id="user_category">${user.getAccount()}</p>
             </div>
         </div>
         <div>
-            <button type="button" class="btn-green btn-w70"> Ver Perfil </button>
+            <a type="button" href="/user" class="btn-green btn-w70"> Ver Perfil </a>
         </div>
     </div>
+
+
+
     <div class="panel-scroll">
     <div class="sidenav_row">
-        <button type="button" class="">
+        <a type="button" href="/doctor-inicio" class="">
             <img src="imagens/noun_home.svg" /> Início
-        </button>
-        <button type="button" class="">
-            <img src="imagens/noun_utentes.svg" /> Utentes
-        </button>
+        </a>
+        <a type="button" href="/lista-utentes" class="">
+        <img src="imagens/noun_utentes.svg" /> Utentes
+        </a>
 
         <button type="button" class="">
             <img src="imagens/noun_heart rate.svg" /> Consultas

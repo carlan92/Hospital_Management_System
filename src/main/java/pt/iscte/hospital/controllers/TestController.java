@@ -23,6 +23,6 @@ public class TestController {
 
     @GetMapping(value = "/doctor-utentes")
     public String showDoctorUtentes(ModelMap modelMap) {
-        return "doctor-utentes";
+        return "lista-utentes";
     }
 }

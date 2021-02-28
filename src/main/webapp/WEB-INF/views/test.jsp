@@ -44,7 +44,7 @@
                     </div>
 
                     <div class="cell-row">
-                        <a href="doctor-utentes" class="btn btn-blue">Médico-utentes</a>
+                        <a href="lista-utentes" class="btn btn-blue">Médico-utentes</a>
                     </div>
                 </div>
             </div>
