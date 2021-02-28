@@ -77,12 +77,10 @@ h1 {
   top: 0;
   bottom: 0;
   left: 0;
-
   display: flex;
   flex-direction: column;
   box-sizing: border-box;
   box-shadow: 5px 0px 20px #00000029;
-
   width: 25vw;
   min-height: 100vh;
   z-index: 2;
@@ -287,6 +285,7 @@ h1 {
   height: 100%;
   width: 100%;
   background-color: transparent;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   margin-top: 0px;
 }
 
@@ -408,8 +407,7 @@ h1 {
   margin: 10px auto;
   padding: 30px 50px;
   box-shadow: 5px 0px 20px #00000029;
-  background: transparent linear-gradient(90deg, #ffffffb9 0%, #ffffff7e 100%)
-  0% 0% no-repeat padding-box;
+  background: transparent linear-gradient(90deg, #ffffffb9 0%, #ffffff7e 100%) 0% 0% no-repeat padding-box;
   width: 650px;
   min-height: 600px;
 }
@@ -481,6 +479,7 @@ option {
 }
 
 /*registo*/
+
 .box-align-left {
   margin: 0px;
 }
@@ -562,8 +561,7 @@ option {
   box-sizing: border-box;
   height: 100%;
   border-radius: 10px;
-  background: transparent linear-gradient(90deg, #ffffffb9 0%, #ffffff7e 100%)
-  0% 0% no-repeat padding-box;
+  background: transparent linear-gradient(90deg, #ffffffb9 0%, #ffffff7e 100%) 0% 0% no-repeat padding-box;
   box-shadow: 7px 7px 20px 7px grey;
 }
 
@@ -594,8 +592,7 @@ option {
   padding: 25px 30px;
 }
 
-.card-body2 h2,
-h3 {
+.card-body2 h2, h3 {
   color: #000000;
   margin: 10px;
   font: normal normal bold 27px/30px "Lato";
@@ -626,6 +623,7 @@ h3 {
 }
 
 /*Perfil*/
+
 .perfil-main-col {
   box-sizing: border-box;
   margin: auto;
@@ -656,8 +654,8 @@ h3 {
 }
 
 /*Terms & Conditions*/
-.terms p,
-.terms li {
+
+.terms p, .terms li {
   text-align: justify !important;
   font-size: 17px !important;
 }
@@ -675,6 +673,7 @@ h3 {
 }
 
 /*Payment History*/
+
 .payment_history {
   font-size: 30px;
   text-align: center;
@@ -687,8 +686,7 @@ h3 {
   margin: auto !important;
   padding: 30px !important;
   box-shadow: 5px 0px 20px #00000029 !important;
-  background: transparent linear-gradient(90deg, #ffffffb9 0%, #ffffff7e 100%)
-  0% 0% no-repeat padding-box !important;
+  background: transparent linear-gradient(90deg, #ffffffb9 0%, #ffffff7e 100%) 0% 0% no-repeat padding-box !important;
   width: 650px !important;
   min-height: 600px !important;
 }
@@ -751,6 +749,7 @@ hr.payment_dash {
 }
 
 /* Recover Password */
+
 .input1 {
   margin-top: 5px;
   margin-bottom: 5px;
@@ -778,7 +777,9 @@ hr.payment_dash {
 }
 
 /* Forms */
+
 /*Buttons*/
+
 .btn-button {
   background-color: transparent;
   padding: 15px 20px;
@@ -839,8 +840,7 @@ button:focus {
   outline: none;
 }
 
-.btn-blue:hover,
-.btn-green:hover {
+.btn-blue:hover, .btn-green:hover {
   color: white;
   opacity: 0.9;
   cursor: pointer;
@@ -852,6 +852,7 @@ select option:disabled {
 }
 
 /*Menu inicio: Medico (falta carla rever) */
+
 .user_photo {
   padding: 0px;
   display: block;
@@ -1092,10 +1093,21 @@ select option:disabled {
   margin-top: 10px;
 }
 
-.card {
+.card_list_patient {
+  background-color: transparent;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   max-width: 250px;
   text-align: center;
+  margin: auto;
+  margin-top: 10px;
+}
+
+.card_list_doctor {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  max-width: 250px;
+  width: 25%;
+  padding: 15px;
+  padding-bottom: 0;
   margin: auto;
   margin-top: 10px;
 }
@@ -1120,6 +1132,7 @@ select option:disabled {
   font-size: 15px;
   color: #303030;
   margin-top: 5px;
+  margin-bottom: 5px;
 }
 
 .spec_list {
@@ -1181,128 +1194,8 @@ select option:disabled {
   padding-left: 10px;
 }
 
-.content-area{
+.content-area {
   width: 100%;
-
-}
-
-/* Menu Informações Gerais */
-
-.maininfo {
-  position: relative;
-  box-sizing: border-box;
-  margin-left: 25vw;
-  min-height: 100vh;
-  z-index: 1;
-  overflow-x: hidden;
-  color: #7e7e7e;
-  padding: 50px 0px 50px 20px;
-  background-color: transparent;
-}
-
-
-.maininfo::before {
-  /*https://css-tricks.com/snippets/css/transparent-background-images/*/
-  content: "";
-  background-image: url("imagens/noun_backgroung.png");
-  background-repeat: no-repeat;
-  background-size: cover;
-  position: absolute;
-  top: 0px;
-  right: 0px;
-  bottom: 0px;
-  left: 0px;
-  opacity: 0.7;
-  z-index: -1;
-}
-
-.igtitlefont{
-  font-size: 35px;
-  margin-left: 30px;
-  color:rgba(0, 0, 0, 0.8);
-  font-weight: bold;
-}
-
-.divinfo{
-  margin-top: 20px;
-}
-
-.titleinfo{
-  margin-bottom: -1px;
-  color:#2c363e;
-  font-weight: bold;
-  margin-left: 2px;
-
-}
-
-/*https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_image_overlay_fade*/
-
-.containerinfo{
-  position: relative;
-  width: 100%;
-}
-
-.imginfo{
-  max-width: 100%;
-  height: auto;
-  border:whitesmoke;
-  border-radius: 10px;
-  display: block;
-}
-
-.overlaytextinfo{
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  height: 100%;
-  width: 100%;
-  opacity: 0;
-  transition: .5s ease;
-  background-color: #008CBA;
-}
-
-.containerinfo:hover .overlaytextinfo {
-  opacity: 1;
-  border-radius: 10px;
-}
-
-.textinfo{
-
-  color: white;
-  font-size: 20px;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  -webkit-transform: translate(-50%, -50%);
-  -ms-transform: translate(-50%, -50%);
-  transform: translate(-50%, -50%);
-  text-align: center;
-}
-
-/*https://www.w3schools.com/howto/howto_css_image_text_blocks.asp*/
-
-.textinfo-block {
-  position: absolute;
-  bottom: 5px;
-  right: 20px;
-  background-color: rgba(0, 0, 0, 0.5);
-  opacity: 1;
-  border-radius: 10px;
-  color: white;
-  padding-left: 20px;
-  padding-right: 20px;
-
-}
-
-/*Invoice*/
-
-.invoiceimg{
-  text-align: right;
-  margin: 20px;
-  max-height: 85px;
-  
 }
 
 @media screen and (max-height: 450px) {
