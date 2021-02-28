@@ -2,78 +2,13 @@
 <html lang="en">
 
 <head>
-	<meta charset="UTF-8" />
-	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-	<title>Centro Hospitalar UPskill</title>
-
-	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
-		integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
-		crossorigin="anonymous"></script>
-	<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"
-		integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx"
-		crossorigin="anonymous"></script>
-
-
-	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
-		integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous" />
-	<script src="https://kit.fontawesome.com/6afe83edf7.js" crossorigin="anonymous"></script>
-
-	<link rel="stylesheet" href="style.css" />
-	<link rel="icon" href="favicon.ico" type="image/x-icon">
-
+	<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+    <%@ include file="components/head.jsp" %>
 </head>
 
 <body>
 
-	<div class="sidenav">
-		<!-- menu da esquerda -->
-		<img src="imagens\noun_centro_hospitalar_logo.svg" alt="logo" class="logo" />
-		<div class="welcome_box">
-			<p id="welcome">Olá de novo,</p>
-			<a id="user_name" href="/user">${user.getFirstAndLastName()}</a>
-			<p id="user_category">${user.getAccount()}</p>
-		</div>
-		<div class="sidenav_row">
-			<button type="button" class="">
-				<img src="imagens/noun_home.svg" /> Início
-			</button>
-			<button type="button" class="">
-				<img src="imagens/noun_utentes.svg" /> Utentes
-			</button>
-			<button type="button" class="">
-				<img src="imagens/noun_doctor.svg" /> Médicos
-			</button>
-			<button type="button" class="">
-				<img src="imagens/noun_heart rate.svg" /> Consultas
-			</button>
-		</div>
-
-		<div class="sidenav_row">
-			<p id="acessos_rapidos">Acessos Rápidos</p>
-			<button type="button" class="botao_acessos">
-				<img src="imagens/noun_information.svg" /> Informações gerais
-			</button>
-			<button type="button" class="botao_acessos">
-				<img src="imagens/noun_calendar.svg" /> Calendário de vagas
-			</button>
-			<button type="button" class="botao_acessos">
-				<img src="imagens/noun_phone.svg" /> Contactos
-			</button>
-		</div>
-
-		<div class="sidenav_row log_out_box">
-			<img src="imagens/noun_upskill.png" alt="" id="upskill_logo" />
-			<hr />
-			<button type="button" class="">
-				<img src="imagens/noun_logout.svg" /> Terminar Sessão
-			</button>
-		</div>
-	</div>
-
-
-
+	<%@ include file="components/sidenav-main.jsp" %>
 
 	<div class="main">
 		<!--Form da direita-->
