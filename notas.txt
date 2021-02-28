@@ -25,6 +25,8 @@ Questões para o cliente:
 
 -cc com numero ou com tudo?
 
+-nif, numero de utente, cc uniques??
+
 --------------------
 Tarefas:
 
