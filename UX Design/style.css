@@ -113,8 +113,6 @@ h1 {
   overflow-x: hidden;
   color: #7e7e7e;
   padding: 50px 0px 50px 50px;
-  width: 75%;
-  /*se nao colocar isso se em algumas paginas existir pouco conteudo ele reduz o tamanho*/
 }
 
 .main::before {
@@ -198,7 +196,7 @@ h1 {
 
 .log_out_box {
   position: relative;
-
+  bottom:0;
   width: 100%;
 }
 
@@ -540,6 +538,7 @@ option {
 
 .log_out_box2 {
   position: relative;
+  bottom:0;
   width: 100%;
 }
 
