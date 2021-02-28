@@ -10,7 +10,7 @@
 		<div class="welcome_box">
 			<div class="perfil-row">
 				<div class="col-4 user_photo">
-					<img src="imagens/imagem-test.png" alt="user_photography" />
+					<img src="imagens/draw_doctor.svg" alt="user_photography" />
 				</div>
 				<div class="col user_info">
 					<p id="welcome">Bem-vindo</p>
@@ -28,9 +28,9 @@
 				<a href="/main" class="botao_acessos">
 					<img src="imagens/noun_home.svg" /> Início
 				</a>
-				<a href="/lista-utentes" class="botao_acessos">
+				<button type="button" class="">
 					<img src="imagens/noun_utentes.svg" /> Utentes
-				</a>
+				</button>
 				<button type="button" class="">
 					<img src="imagens/noun_doctor.svg" /> Médicos
 				</button>

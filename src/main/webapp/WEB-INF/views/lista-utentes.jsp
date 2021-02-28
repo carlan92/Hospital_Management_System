@@ -41,7 +41,7 @@
 
             <div class="card patient_data">
                 <div class="user_photo w-50">
-                    <img src="imagens/remove_ronaldo.png" alt="John">
+                    <img src="static/imagens/draw_doctor.svg" alt="John">
                 </div>
                 <h1 class="patient_name">Cristiano Ronaldo</h1>
                 <i class="fas fa-birthday-cake ">
@@ -65,7 +65,7 @@
 
             <div class="card patient_data">
                 <div class="user_photo w-50">
-                    <img src="imagens/remove_ronaldo.png" alt="John">
+                    <img src="static/imagens/draw_doctor.svg" alt="John">
                 </div>
                 <h1 class="patient_name">Cristiano Ronaldo</h1>
                 <i class="fas fa-birthday-cake ">

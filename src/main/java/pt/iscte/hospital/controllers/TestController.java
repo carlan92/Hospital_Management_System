@@ -21,7 +21,7 @@ public class TestController {
         return "historicoPagamentos";
     }
 
-    @GetMapping(value = "/doctor-utentes")
+    @GetMapping(value = "/lista-utentes")
     public String showDoctorUtentes(ModelMap modelMap) {
         return "lista-utentes";
     }
