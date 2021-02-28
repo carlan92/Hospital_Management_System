@@ -7,7 +7,6 @@
 </head>
 
 <body>
-<div class="container">
     <%@ include file="components/sidenav-medico.jsp" %>
 
 
@@ -123,7 +122,7 @@
                     <div class="col-9">
                         <div class="perfil-row">
                             <div class="col-4 user_photo">
-                                <img src="imagens/draw_doctor.svg" alt="user_photography"/>
+                                <img src="imagens/draw_avatar.svg" alt="user_photography"/>
                             </div>
                             <div class="col user_info">
                                 <span class="patient_name">Alice Antunes</span>
@@ -175,7 +174,5 @@
             </div>
         </div>
     </div>
-</div>
-</div>
 </body>
 </html>

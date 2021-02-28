@@ -7,7 +7,7 @@
 </head>
 
 <body>
-<div class="container">
+
     <%@ include file="components/sidenav-medico.jsp" %>
 
 
@@ -96,13 +96,7 @@
 
 
             </div>
-
         </div>
-
     </div>
-
-
-</div>
-</div>
 </body>
 </html>

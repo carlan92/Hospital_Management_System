@@ -846,7 +846,7 @@ select option:disabled {
   color: lightgrey;
 }
 
-/*Menu inicio: Medico */
+/*Menu inicio: Medico (falta carla rever) */
 .user_photo {
   padding: 0px;
   display: block;
@@ -996,7 +996,7 @@ select option:disabled {
   margin: 0px;
 }
 
-/* botoes por rever*/
+/* botoes por carla rever*/
 
 .btn-w100 {
   width: 100%;
@@ -1046,7 +1046,7 @@ select option:disabled {
   color: #676e74;
 }
 
-/*Menu Utentes: Medico*/
+/*Menu Utentes: Medico (falta carla rever)*/
 
 .white_box2 {
   margin: 10px auto;
@@ -1129,7 +1129,55 @@ select option:disabled {
   width: 80%;
 }
 
-/****/
+/*Menu Consultas: Medico (falta rever)*/
+
+.consultas_title {
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
+.wrapper {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.search_options {
+  width: 100%;
+  margin-left: 25px;
+  border-radius: 0.25rem;
+}
+
+.search-container * {
+  display: inline;
+  margin-bottom: auto;
+  vertical-align: middle;
+}
+
+.btn-search2 {
+  padding: 6px;
+  background-color: #98c33e;
+  color: white;
+  font-size: 15px;
+  border: transparent;
+  border-radius: 0.25rem;
+  text-align: center;
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.sm {
+  margin: 0 4px 0 0;
+  border: 1px solid #666;
+  border-radius: 5px;
+  height: 40px;
+  width: 30%;
+  padding: 0;
+  padding-left: 10px;
+}
+
+.content-area{
+  width: 100%;
+
+}
 
 @media screen and (max-height: 450px) {
   .sidenav {
