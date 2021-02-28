@@ -113,6 +113,8 @@ h1 {
   overflow-x: hidden;
   color: #7e7e7e;
   padding: 50px 0px 50px 50px;
+  width: 75%;
+  /*se nao colocar isso se em algumas paginas existir pouco conteudo ele reduz o tamanho*/
 }
 
 .main::before {
@@ -196,7 +198,7 @@ h1 {
 
 .log_out_box {
   position: relative;
-  bottom: 0;
+
   width: 100%;
 }
 
@@ -246,8 +248,7 @@ h1 {
 
 .main .middle-row {
   box-sizing: border-box;
-  background: transparent linear-gradient(90deg, #ffffffb9 0%, #ffffff7e 100%)
-  0% 0% no-repeat padding-box;
+  background: transparent linear-gradient(90deg, #ffffffb9 0%, #ffffff7e 100%) 0% 0% no-repeat padding-box;
   border-radius: 6px;
   z-index: 1;
   /*to be checked*/
@@ -438,6 +439,12 @@ h1 {
   width: 100%;
 }
 
+.form-control {
+  text-align: left;
+  font: normal normal bold 15px/18px Lato;
+  color: #707070;
+}
+
 .form-input {
   position: relative;
   box-sizing: border-box;
@@ -533,7 +540,6 @@ option {
 
 .log_out_box2 {
   position: relative;
-  bottom: 0;
   width: 100%;
 }
 
@@ -844,7 +850,6 @@ select option:disabled {
 }
 
 /*Menu inicio: Medico */
-
 .user_photo {
   padding: 0px;
   display: block;
@@ -852,8 +857,7 @@ select option:disabled {
 }
 
 .user_photo img {
-  height: 90px;
-  width: 90px;
+  width: 80%;
   border-radius: 50%;
 }
 
@@ -969,6 +973,7 @@ select option:disabled {
 
 .data_appt {
   margin-left: 30px;
+  font: normal normal normal "Lato";
 }
 
 .appt_options {
@@ -976,32 +981,25 @@ select option:disabled {
   display: block;
 }
 
-.user_photo2 img {
-  height: 120px;
-  width: 120px;
-  border-radius: 50%;
-  border-style: double;
+.patient_name {
+  font-size: 20px;
+  letter-spacing: 1.5px;
+  color: #000000;
 }
 
-#patient_age {
-  font: normal normal normal "Lato";
+.patient_age, .patient_birthday {
   font-size: 15px;
-  color: #707070;
-  margin: 0px;
+  letter-spacing: 1.5px;
+  color: #303030;
 }
 
-#first_appt_ask {
-  font: normal normal normal "Lato";
+.first_appt_ask {
   font-size: 15px;
   color: #000000;
   margin: 0px;
 }
 
-#next_patient_name {
-  font: normal normal normal "Lato";
-  font-size: 25px;
-  color: black;
-}
+/* botoes por rever*/
 
 .btn-w100 {
   width: 100%;
@@ -1050,6 +1048,91 @@ select option:disabled {
   text-align: center;
   color: #676e74;
 }
+
+/*Menu Utentes: Medico*/
+
+.white_box2 {
+  margin: 10px auto;
+  padding: 30px;
+  box-shadow: 5px 0px 20px #00000029;
+  background: transparent linear-gradient(90deg, #ffffffb9 0%, #ffffff7e 100%) 0% 0% no-repeat padding-box;
+  width: 100%;
+}
+
+.utente_title {
+  margin: auto;
+}
+
+.search_patient {
+  margin: left;
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
+.btn-search {
+  background-color: #98c33e;
+  color: white;
+  border: transparent;
+  border-radius: 0.25rem;
+  text-align: center;
+  box-sizing: border-box;
+  font: normal normal bold 15px/18px "Lato";
+  letter-spacing: 0.61px;
+  display: inline-block;
+  vertical-align: middle;
+  padding: 10px;
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.choose_spec {
+  margin-top: 10px;
+}
+
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  max-width: 250px;
+  text-align: center;
+  margin: auto;
+  margin-top: 10px;
+}
+
+.w-50 {
+  width: 50%;
+  margin-bottom: 10px;
+  margin-top: 10px;
+}
+
+.patient_data * {
+  text-align: center;
+  font: normal normal normal "Lato";
+}
+
+.fa-birthday-cake, .fa-phone-square {
+  margin: 4px;
+  color: #31ade0
+}
+
+.spec_title {
+  font-size: 15px;
+  color: #303030;
+  margin-top: 5px;
+}
+
+.spec_list {
+  list-style: none;
+  padding: 0;
+}
+
+.spec_list li {
+  font-size: 15px;
+  color: #303030
+}
+
+.btn-w80 {
+  width: 80%;
+}
+
+/****/
 
 @media screen and (max-height: 450px) {
   .sidenav {
