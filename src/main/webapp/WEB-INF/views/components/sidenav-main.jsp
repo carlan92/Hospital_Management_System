@@ -31,9 +31,9 @@
 				<a href="/lista-utentes" class="botao_acessos">
 					<img src="imagens/noun_utentes.svg" /> Utentes
 				</a>
-				<button type="button" class="">
+				<a href="/lista-medicos" class="botao_acessos">
 					<img src="imagens/noun_doctor.svg" /> Médicos
-				</button>
+				</a>
 				<a href="/doctor-consultas" class="botao_acessos">
 					<img src="imagens/noun_heart rate.svg"/> Consultas
 				</a>

@@ -22,12 +22,17 @@ public class TestController {
     }
 
     @GetMapping(value = "/lista-utentes")
-    public String showDoctorUtentes(ModelMap modelMap) {
+    public String showListaUtentes(ModelMap modelMap) {
         return "lista-utentes";
     }
 
     @GetMapping(value = "/doctor-consultas")
     public String showDoctorConsultas(ModelMap modelMap) {
         return "doctor-consultas";
+    }
+
+    @GetMapping(value = "/lista-medicos")
+    public String showListaMedicos(ModelMap modelMap) {
+        return "lista-medicos";
     }
 }

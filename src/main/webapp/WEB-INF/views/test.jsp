@@ -64,6 +64,15 @@
             <div class="perfil-main-col">
                 <div class="perfil-row">
                     <div class="cell-row">
+                        <a href="lista-medicos" class="btn btn-green">Recepcionista- Lista de Médicos</a>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="perfil-main-col">
+                <div class="perfil-row">
+                    <div class="cell-row">
                         <a href="historicoPagamentos" class="btn btn-green">Histórico de Pagamentos</a>
                     </div>
 
