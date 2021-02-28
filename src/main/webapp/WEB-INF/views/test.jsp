@@ -40,11 +40,11 @@
             <div class="perfil-main-col">
                 <div class="perfil-row">
                     <div class="cell-row">
-                        <a href="doctor-inicio" class="btn btn-green">Página médico</a>
+                        <a href="doctor-inicio" class="btn btn-green">Médico-Início</a>
                     </div>
 
                     <div class="cell-row">
-                        <a href="faturaForm" class="btn btn-blue">Fatura</a>
+                        <a href="doctor-utentes" class="btn btn-blue">Médico-utentes</a>
                     </div>
                 </div>
             </div>
