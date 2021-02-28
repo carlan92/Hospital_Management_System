@@ -25,6 +25,7 @@
                         <label for="nome_id">Nome Completo *</label>
                         <input id="nome_id" type="text" class="form-input" name="name" required
                                placeholder="O seu nome completo" value="${user.getName()}"/>
+                        <p class="msg-error">${errorMsgName}</p>
                     </div>
 
 
@@ -38,11 +39,13 @@
                             <option value="Masculino">Masculino</option>
                             <option value="Feminino">Feminino</option>
                         </select>
+                        <p class="msg-error">${errorMsgSex}</p>
                     </div>
                     <div class="cell-row">
                         <label for="dataDeNascimento_id">Data de Nascimento *</label>
                         <input id="dataDeNascimento_id" type="date" class="form-input" name="birthday"
                                required value="${user.getBirthday()}">
+                        <p class="msg-error">${errorMsgBirthday}</p>
                     </div>
                 </div>
 
@@ -51,6 +54,7 @@
                         <label for="morada_id">Morada</label>
                         <input id="morada_id" type="text" class="form-input" name="address"
                                placeholder="A sua morada" value="${user.getAddress()}"/>
+                        <p class="msg-error">${errorMsgAddress}</p>
                     </div>
                 </div>
 
@@ -59,12 +63,14 @@
                         <label for="codigoPostal_id">Código Postal</label>
                         <input id="codigoPostal_id" type="text" pattern="\d{4}([ -]\d{3})?" class="form-input" name="postCode"
                                placeholder="O seu código postal" value="${user.getPostCode()}"/>
+                         <p class="msg-error">${errorMsgPostCode}</p>
                     </div>
 
                     <div class="cell-row">
                         <label for="localidade_id">Localidade *</label>
                         <input id="localidade_id" type="text" class="form-input" name="city" required
                                placeholder="A sua localidade" value="${user.getCity()}"/>
+                        <p class="msg-error">${errorMsgCity}</p>
                     </div>
                 </div>
 
@@ -272,12 +278,14 @@
                             <option value="Zambiana">Zambiana</option>
                             <option value="Zimbabueana">Zimbabueana</option>
                         </select>
+                        <p class="msg-error">${errorMsgNationality}</p>
                     </div>
 
                     <div class="cell-row">
                         <label for="telemovel_id">Telemóvel *</label>
                         <input id="telemovel_id" type="text" pattern="^9[1236][0-9]{7}$|^2[3-9][1-9][0-9]{6}$|^2[12][0-9]{7}$"class="form-input" name="phone" required
                                placeholder="O seu número de telemóvel" value="${user.getPhone()}"/>
+                         <p class="msg-error">${errorMsgPhone}</p>
                         </div>
                 </div>
 
@@ -290,11 +298,13 @@
                             <option value="Cartão de Cidadão">Cartão de Cidadão</option>
                             <option value="Passaporte">Passaporte</option>
                         </select>
+                        <p class="msg-error">${errorMsgDocumentType}</p>
                     </div>
                     <div class="cell-row">
                         <label for="nrDocumento_id">Nº do Documento *</label>
                         <input id="nrDocumento_id" type="text" class="form-input" name="documentNumber" required
                                placeholder="Nº do documento selecionado" value="${user.getDocumentNumber()}"/>
+                        <p class="msg-error">${errorMsgDocumentNumber}</p>
                     </div>
                 </div>
 
@@ -302,11 +312,13 @@
                     <div class="cell-row">
                         <label for="nif_id">NIF *</label>
                         <input id="nif_id" type="text" class="form-input" name="nif" required placeholder="NIF" value="${user.getNif()}"/>
+                         <p class="msg-error">${errorMsgNif}</p>
                     </div>
                     <div class="cell-row">
                         <label for="nrUtente_id">Nº de Utente</label>
                         <input id="nrUtente_id" type="text" class="form-input" name="patientNumber"
                                placeholder="Nº de Utente" value="${user.getPatientNumber()}"/>
+                        <p class="msg-error">${errorMsgPatientNumber}</p>
                     </div>
                 </div>
                 <div class="perfil-row">
@@ -318,7 +330,7 @@
                     <div class="cell-row cell-morada">
                         <button type="submit" class="btn btn-blue">Alterar Dados</button>
                     </div>
-                     <span style="color: red">${errorMessage}</span>
+
                 </div>
 
             </div>
