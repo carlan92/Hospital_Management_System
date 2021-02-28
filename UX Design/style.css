@@ -286,6 +286,7 @@ h1 {
   height: 100%;
   width: 100%;
   background-color: transparent;
+  margin-top: 0px;
 }
 
 .card_box * {
