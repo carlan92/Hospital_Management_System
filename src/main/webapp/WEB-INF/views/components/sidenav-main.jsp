@@ -3,7 +3,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 
 	<div class="sidenav">
-		<!-- menu da esquerda -->
+		<!-- menu da esquerda RECEPCIONISTA-->
 		
 		<img src="imagens\noun_centro_hospitalar_logo.svg" alt="logo" class="logo" />
 		

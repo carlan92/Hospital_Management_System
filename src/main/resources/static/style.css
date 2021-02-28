@@ -196,7 +196,6 @@ h1 {
 
 .log_out_box {
   position: relative;
-  bottom:0;
   width: 100%;
 }
 
@@ -538,7 +537,6 @@ option {
 
 .log_out_box2 {
   position: relative;
-  bottom:0;
   width: 100%;
 }
 
