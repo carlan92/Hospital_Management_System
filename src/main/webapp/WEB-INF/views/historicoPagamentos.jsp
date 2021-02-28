@@ -7,7 +7,7 @@
 </head>
 
 <body>
-  <div class="container">
+
     <div class="sidenav">
       <!-- menu da esquerda -->
       <img src="imagens\noun_centro_hospitalar_logo.svg" alt="logo" class="logo" />
@@ -114,7 +114,7 @@
         </div>
         <hr class= "payment_dash"></hr>
   </div>
-  </div>
+
 </body>
 
 </html>
