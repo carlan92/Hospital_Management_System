@@ -1184,6 +1184,115 @@ select option:disabled {
   
 }
 
+/* Menu Informações Gerais */
+
+.maininfo {
+  position: relative;
+  box-sizing: border-box;
+  margin-left: 25vw;
+  min-height: 100vh;
+  z-index: 1;
+  overflow-x: hidden;
+  color: #7e7e7e;
+  padding: 50px 0px 50px 20px;
+  background-color: transparent;
+}
+
+.maininfo::before {
+  /*https://css-tricks.com/snippets/css/transparent-background-images/*/
+  content: "";
+  background-image: url("imagens/noun_backgroung.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  bottom: 0px;
+  left: 0px;
+  opacity: 0.7;
+  z-index: -1;
+}
+
+.igtitlefont{
+  font-size: 35px;
+  margin-left: 30px;
+  color:rgba(0, 0, 0, 0.8);
+  font-weight: bold;
+}
+
+.divinfo{
+  margin-top: 20px;
+}
+
+.titleinfo{
+  margin-bottom: -1px;
+  color:#2c363e;
+  font-weight: bold;
+  margin-left: 2px;
+
+}
+
+/*https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_image_overlay_fade*/
+
+.containerinfo{
+  position: relative;
+  width: 100%;
+}
+
+.imginfo{
+  max-width: 100%;
+  height: auto;
+  border:whitesmoke;
+  border-radius: 10px;
+  display: block;
+}
+
+.overlaytextinfo{
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  width: 100%;
+  opacity: 0;
+  transition: .5s ease;
+  background-color: #008CBA;
+}
+
+.containerinfo:hover .overlaytextinfo {
+  opacity: 1;
+  border-radius: 10px;
+}
+
+.textinfo{
+
+  color: white;
+  font-size: 20px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+/*https://www.w3schools.com/howto/howto_css_image_text_blocks.asp*/
+
+.textinfo-block {
+  position: absolute;
+  bottom: 5px;
+  right: 20px;
+  background-color: rgba(0, 0, 0, 0.5);
+  opacity: 1;
+  border-radius: 10px;
+  color: white;
+  padding-left: 20px;
+  padding-right: 20px;
+
+}
+
 @media screen and (max-height: 450px) {
   .sidenav {
     padding-top: 15px;
