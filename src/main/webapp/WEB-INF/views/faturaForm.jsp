@@ -15,7 +15,7 @@
 
 		<div class="white_box box-align-left">
 			<div class="invoiceimg">
-			<img src="imagens\invoice_img.png" alt="logo" class="invoiceimg"/>
+			<img src="imagens\draw_invoice.png" alt="logo" class="invoiceimg"/>
 			</div>
 			<h3 class="registo">
 				Formulário Fatura
