@@ -77,12 +77,10 @@ h1 {
   top: 0;
   bottom: 0;
   left: 0;
-
   display: flex;
   flex-direction: column;
   box-sizing: border-box;
   box-shadow: 5px 0px 20px #00000029;
-
   width: 25vw;
   min-height: 100vh;
   z-index: 2;
@@ -113,6 +111,8 @@ h1 {
   overflow-x: hidden;
   color: #7e7e7e;
   padding: 50px 0px 50px 50px;
+  width: 75%;
+  /*se nao colocar isso se em algumas paginas existir pouco conteudo ele reduz o tamanho*/
 }
 
 .main::before {
@@ -196,7 +196,7 @@ h1 {
 
 .log_out_box {
   position: relative;
-
+  bottom: 0;
   width: 100%;
 }
 
@@ -246,8 +246,7 @@ h1 {
 
 .main .middle-row {
   box-sizing: border-box;
-  background: transparent linear-gradient(90deg, #ffffffb9 0%, #ffffff7e 100%)
-    0% 0% no-repeat padding-box;
+  background: transparent linear-gradient(90deg, #ffffffb9 0%, #ffffff7e 100%) 0% 0% no-repeat padding-box;
   border-radius: 6px;
   z-index: 1;
   /*to be checked*/
@@ -409,8 +408,7 @@ h1 {
   margin: 10px auto;
   padding: 30px;
   box-shadow: 5px 0px 20px #00000029;
-  background: transparent linear-gradient(90deg, #ffffffb9 0%, #ffffff7e 100%)
-    0% 0% no-repeat padding-box;
+  background: transparent linear-gradient(90deg, #ffffffb9 0%, #ffffff7e 100%) 0% 0% no-repeat padding-box;
   width: 650px;
   min-height: 600px;
 }
@@ -436,6 +434,12 @@ h1 {
   position: relative;
   margin: 25px auto;
   width: 100%;
+}
+
+.form-control {
+  text-align: left;
+  font: normal normal bold 15px/18px Lato;
+  color: #707070;
 }
 
 .form-input {
@@ -476,6 +480,7 @@ option {
 }
 
 /*registo*/
+
 .box-align-left {
   margin: 0px;
 }
@@ -533,6 +538,7 @@ option {
 
 .log_out_box2 {
   position: relative;
+  bottom: 0;
   width: 100%;
 }
 
@@ -557,8 +563,7 @@ option {
   box-sizing: border-box;
   height: 100%;
   border-radius: 10px;
-  background: transparent linear-gradient(90deg, #ffffffb9 0%, #ffffff7e 100%)
-    0% 0% no-repeat padding-box;
+  background: transparent linear-gradient(90deg, #ffffffb9 0%, #ffffff7e 100%) 0% 0% no-repeat padding-box;
   box-shadow: 7px 7px 20px 7px grey;
 }
 
@@ -589,8 +594,7 @@ option {
   padding: 25px 30px;
 }
 
-.card-body2 h2,
-h3 {
+.card-body2 h2, h3 {
   color: #000000;
   margin: 10px;
   font: normal normal bold 27px/30px "Lato";
@@ -621,6 +625,7 @@ h3 {
 }
 
 /*Perfil*/
+
 .perfil-main-col {
   box-sizing: border-box;
   margin: auto;
@@ -647,8 +652,8 @@ h3 {
 }
 
 /*Terms & Conditions*/
-.terms p,
-.terms li {
+
+.terms p, .terms li {
   text-align: justify !important;
   font-size: 17px !important;
 }
@@ -666,6 +671,7 @@ h3 {
 }
 
 /*Payment History*/
+
 .payment_history {
   font-size: 30px;
   text-align: center;
@@ -678,8 +684,7 @@ h3 {
   margin: auto !important;
   padding: 30px !important;
   box-shadow: 5px 0px 20px #00000029 !important;
-  background: transparent linear-gradient(90deg, #ffffffb9 0%, #ffffff7e 100%)
-    0% 0% no-repeat padding-box !important;
+  background: transparent linear-gradient(90deg, #ffffffb9 0%, #ffffff7e 100%) 0% 0% no-repeat padding-box !important;
   width: 650px !important;
   min-height: 600px !important;
 }
@@ -742,6 +747,7 @@ hr.payment_dash {
 }
 
 /* Recover Password */
+
 .input1 {
   margin-top: 5px;
   margin-bottom: 5px;
@@ -769,7 +775,9 @@ hr.payment_dash {
 }
 
 /* Forms */
+
 /*Buttons*/
+
 .btn-button {
   background-color: transparent;
   padding: 15px 20px;
@@ -830,8 +838,7 @@ button:focus {
   outline: none;
 }
 
-.btn-blue:hover,
-.btn-green:hover {
+.btn-blue:hover, .btn-green:hover {
   opacity: 0.9;
   cursor: pointer;
   transition: all 0.2s ease-out;
@@ -841,7 +848,7 @@ select option:disabled {
   color: lightgrey;
 }
 
-/*Menu inicio: Medico */
+/*Menu inicio: Medico*/
 
 .user_photo {
   padding: 0px;
@@ -850,8 +857,7 @@ select option:disabled {
 }
 
 .user_photo img {
-  height: 90px;
-  width: 90px;
+  width: 80%;
   border-radius: 50%;
 }
 
@@ -967,6 +973,7 @@ select option:disabled {
 
 .data_appt {
   margin-left: 30px;
+  font: normal normal normal "Lato";
 }
 
 .appt_options {
@@ -974,32 +981,25 @@ select option:disabled {
   display: block;
 }
 
-.user_photo2 img {
-  height: 120px;
-  width: 120px;
-  border-radius: 50%;
-  border-style: double;
+.patient_name {
+  font-size: 20px;
+  letter-spacing: 1.5px;
+  color: #000000;
 }
 
-#patient_age {
-  font: normal normal normal "Lato";
+.patient_age, .patient_birthday {
   font-size: 15px;
-  color: #707070;
-  margin: 0px;
+  letter-spacing: 1.5px;
+  color: #303030;
 }
 
-#first_appt_ask {
-  font: normal normal normal "Lato";
+.first_appt_ask {
   font-size: 15px;
   color: #000000;
   margin: 0px;
 }
 
-#next_patient_name {
-  font: normal normal normal "Lato";
-  font-size: 25px;
-  color: black;
-}
+/* butoes por rever*/
 
 .btn-w100 {
   width: 100%;
@@ -1048,6 +1048,91 @@ select option:disabled {
   text-align: center;
   color: #676e74;
 }
+
+/*Menu Utentes: Medico*/
+
+.white_box2 {
+  margin: 10px auto;
+  padding: 30px;
+  box-shadow: 5px 0px 20px #00000029;
+  background: transparent linear-gradient(90deg, #ffffffb9 0%, #ffffff7e 100%) 0% 0% no-repeat padding-box;
+  width: 100%;
+}
+
+.utente_title {
+  margin: auto;
+}
+
+.search_patient {
+  margin: left;
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
+.btn-search {
+  background-color: #98c33e;
+  color: white;
+  border: transparent;
+  border-radius: 0.25rem;
+  text-align: center;
+  box-sizing: border-box;
+  font: normal normal bold 15px/18px "Lato";
+  letter-spacing: 0.61px;
+  display: inline-block;
+  vertical-align: middle;
+  padding: 10px;
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.choose_spec {
+  margin-top: 10px;
+}
+
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  max-width: 250px;
+  text-align: center;
+  margin: auto;
+  margin-top: 10px;
+}
+
+.w-50 {
+  width: 50%;
+  margin-bottom: 10px;
+  margin-top: 10px;
+}
+
+.patient_data * {
+  text-align: center;
+  font: normal normal normal "Lato";
+}
+
+.fa-birthday-cake, .fa-phone-square {
+  margin: 4px;
+  color: #31ade0
+}
+
+.spec_title {
+  font-size: 15px;
+  color: #303030;
+  margin-top: 5px;
+}
+
+.spec_list {
+  list-style: none;
+  padding: 0;
+}
+
+.spec_list li {
+  font-size: 15px;
+  color: #303030
+}
+
+.btn-w80 {
+  width: 80%;
+}
+
+/****/
 
 @media screen and (max-height: 450px) {
   .sidenav {
