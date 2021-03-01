@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -38,17 +39,19 @@
 
 
         <div class="row">
+        <!-- For -->
+        <c:forEach var="patient" items="${patients}">
 
 
             <div class="card_list_patient patient_data">
                 <div class="user_photo w-50">
-                    <img src="imagens/draw_avatar.svg" alt="John">
+                    <img src="uploaded_images/${patient.getPhotoURL()}" alt="Foto de ${patient.getFirstAndLastName()}">
                 </div>
-                <h1 class="patient_name">Cristiano Ronaldo</h1>
+                <h1 class="patient_name">${patient.getFirstAndLastName()}</h1>
                 <i class="fas fa-birthday-cake ">
-                    <span class="patient_birthday">12/12/1979</span></i>
+                    <span class="patient_birthday">${patient.getBirthdayStr()}</span></i>
                 <i class="fas fa-phone-square">
-                    <span class="patient_age">912345678</span></i>
+                    <span class="patient_age">${patient.getPhone()}</span></i>
                 <p class="spec_title">Especialidades em consulta:</p>
                 <ul class="spec_list">
                     <li>
@@ -62,162 +65,7 @@
                 </button></p>
             </div>
 
-            <div class="card_list_patient patient_data">
-                <div class="user_photo w-50">
-                    <img src="imagens/draw_avatar.svg" alt="John">
-                </div>
-                <h1 class="patient_name">Cristiano Ronaldo</h1>
-                <i class="fas fa-birthday-cake ">
-                    <span class="patient_birthday">12/12/1979</span></i>
-                <i class="fas fa-phone-square">
-                    <span class="patient_age">912345678</span></i>
-                <p class="spec_title">Especialidades em consulta:</p>
-                <ul class="spec_list">
-                    <li>
-                        Cardiologia
-                    </li>
-                    <li>
-                        Osteopatia
-                    </li>
-                </ul>
-                <p><button type="button" class="btn-blue btn-w80"> Consultar Perfil
-                </button></p>
-            </div>
-
-            <div class="card_list_patient patient_data">
-                <div class="user_photo w-50">
-                    <img src="imagens/draw_avatar.svg" alt="John">
-                </div>
-                <h1 class="patient_name">Cristiano Ronaldo</h1>
-                <i class="fas fa-birthday-cake ">
-                    <span class="patient_birthday">12/12/1979</span></i>
-                <i class="fas fa-phone-square">
-                    <span class="patient_age">912345678</span></i>
-                <p class="spec_title">Especialidades em consulta:</p>
-                <ul class="spec_list">
-                    <li>
-                        Cardiologia
-                    </li>
-                    <li>
-                        Osteopatia
-                    </li>
-                </ul>
-                <p><button type="button" class="btn-blue btn-w80"> Consultar Perfil
-                </button></p>
-            </div>
-
-            <div class="card_list_patient patient_data">
-                <div class="user_photo w-50">
-                    <img src="imagens/draw_avatar.svg" alt="John">
-                </div>
-                <h1 class="patient_name">Cristiano Ronaldo</h1>
-                <i class="fas fa-birthday-cake ">
-                    <span class="patient_birthday">12/12/1979</span></i>
-                <i class="fas fa-phone-square">
-                    <span class="patient_age">912345678</span></i>
-                <p class="spec_title">Especialidades em consulta:</p>
-                <ul class="spec_list">
-                    <li>
-                        Cardiologia
-                    </li>
-                    <li>
-                        Osteopatia
-                    </li>
-                </ul>
-                <p><button type="button" class="btn-blue btn-w80"> Consultar Perfil
-                </button></p>
-            </div>
-
-            <div class="card_list_patient patient_data">
-                <div class="user_photo w-50">
-                    <img src="imagens/draw_avatar.svg" alt="John">
-                </div>
-                <h1 class="patient_name">Cristiano Ronaldo</h1>
-                <i class="fas fa-birthday-cake ">
-                    <span class="patient_birthday">12/12/1979</span></i>
-                <i class="fas fa-phone-square">
-                    <span class="patient_age">912345678</span></i>
-                <p class="spec_title">Especialidades em consulta:</p>
-                <ul class="spec_list">
-                    <li>
-                        Cardiologia
-                    </li>
-                    <li>
-                        Osteopatia
-                    </li>
-                </ul>
-                <p><button type="button" class="btn-blue btn-w80"> Consultar Perfil
-                </button></p>
-            </div>
-
-            <div class="card_list_patient patient_data">
-                <div class="user_photo w-50">
-                    <img src="imagens/draw_avatar.svg" alt="John">
-                </div>
-                <h1 class="patient_name">Cristiano Ronaldo</h1>
-                <i class="fas fa-birthday-cake ">
-                    <span class="patient_birthday">12/12/1979</span></i>
-                <i class="fas fa-phone-square">
-                    <span class="patient_age">912345678</span></i>
-                <p class="spec_title">Especialidades em consulta:</p>
-                <ul class="spec_list">
-                    <li>
-                        Cardiologia
-                    </li>
-                    <li>
-                        Osteopatia
-                    </li>
-                </ul>
-                <p><button type="button" class="btn-blue btn-w80"> Consultar Perfil
-                </button></p>
-            </div>
-
-            <div class="card_list_patient patient_data">
-                <div class="user_photo w-50">
-                    <img src="imagens/draw_avatar.svg" alt="John">
-                </div>
-                <h1 class="patient_name">Cristiano Ronaldo</h1>
-                <i class="fas fa-birthday-cake ">
-                    <span class="patient_birthday">12/12/1979</span></i>
-                <i class="fas fa-phone-square">
-                    <span class="patient_age">912345678</span></i>
-                <p class="spec_title">Especialidades em consulta:</p>
-                <ul class="spec_list">
-                    <li>
-                        Cardiologia
-                    </li>
-                    <li>
-                        Osteopatia
-                    </li>
-                </ul>
-                <p><button type="button" class="btn-blue btn-w80"> Consultar Perfil
-                </button></p>
-            </div>
-
-            <div class="card_list_patient patient_data">
-                <div class="user_photo w-50">
-                    <img src="imagens/draw_avatar.svg" alt="John">
-                </div>
-                <h1 class="patient_name">Cristiano Ronaldo</h1>
-                <i class="fas fa-birthday-cake ">
-                    <span class="patient_birthday">12/12/1979</span></i>
-                <i class="fas fa-phone-square">
-                    <span class="patient_age">912345678</span></i>
-                <p class="spec_title">Especialidades em consulta:</p>
-                <ul class="spec_list">
-                    <li>
-                        Cardiologia
-                    </li>
-                    <li>
-                        Osteopatia
-                    </li>
-                </ul>
-                <p><button type="button" class="btn-blue btn-w80"> Consultar Perfil
-                </button></p>
-            </div>
-
-
-
+        </c:forEach>
 
 
 

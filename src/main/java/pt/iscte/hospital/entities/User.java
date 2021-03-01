@@ -3,6 +3,8 @@ package pt.iscte.hospital.entities;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 @MappedSuperclass                   // https://vladmihalcea.com/the-best-way-to-use-entity-inheritance-with-jpa-and-hibernate/
@@ -103,6 +105,11 @@ public abstract class User {
 
     public Date getBirthday() {
         return birthday;
+    }
+
+    public String getBirthdayStr(){
+        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        return dateFormat.format(birthday);
     }
 
     public void setBirthday(Date birthday) {

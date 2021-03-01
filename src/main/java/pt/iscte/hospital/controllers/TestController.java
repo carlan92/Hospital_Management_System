@@ -1,11 +1,20 @@
 package pt.iscte.hospital.controllers;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
+import pt.iscte.hospital.entities.Patient;
+import pt.iscte.hospital.repositories.PatientRepository;
+
+import java.util.List;
 
 @Controller
 public class TestController {
+    @Autowired
+    PatientRepository patientRepository;
+
+
     @GetMapping(value = "/test")
     public String pageTest() {
         return "test";
@@ -23,6 +32,8 @@ public class TestController {
 
     @GetMapping(value = "/lista-utentes")
     public String showListaUtentes(ModelMap modelMap) {
+        List<Patient> patients = patientRepository.findAll();
+        modelMap.put("patients", patients);
         return "lista-utentes";
     }
 
