@@ -35,7 +35,7 @@ public class SpecialityServiceImpl implements SpecialityService {
 
     @Override
     public boolean validLength(Speciality newSpeciality){
-        return (newSpeciality.getName().length() < 4);      // verificar se nome pequeno (evitar nomes curtos)
+        return (newSpeciality.getName().length() > 3);      // verificar se nome pequeno (evitar nomes curtos)
     }
 
 }

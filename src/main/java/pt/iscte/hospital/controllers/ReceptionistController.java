@@ -34,6 +34,7 @@ public class ReceptionistController {
     NationalityRepository nationalityRepository;
 
     private static final String errorMsgSpeciality = "Já existe essa especialidade";
+    private static final String errorMsgLenght="Nome de especialidade demasiado curto";
     private static final String errorMsgName = "Nome inválido";
     private static final String errorMsgSex = "Escolha uma opção válida";
     private static final String errorMsgBirthday = "Data inválida";
@@ -73,12 +74,13 @@ public class ReceptionistController {
     public String addSpecialityService(@RequestParam String name_speciality, ModelMap mpError){
 
         Speciality speciality = new Speciality(name_speciality);
+
         if(!specialityService.validSpeciality(speciality)){
             mpError.put("errorMsgSpeciality", errorMsgSpeciality);
             return "add-speciality";
         }
         if(!specialityService.validLength(speciality)){
-            mpError.put("errorMsgSpeciality", errorMsgSpeciality); // <------
+            mpError.put("errorMsgSpeciality", errorMsgLenght);
             return "add-speciality";
         }
 
