@@ -1125,7 +1125,7 @@ select option:disabled {
 
 .fa-birthday-cake, .fa-phone-square {
   margin: 4px;
-  color: #31ade0
+  color: #31ade0;
 }
 
 .spec_title {
@@ -1204,11 +1204,42 @@ select option:disabled {
   margin: 15px;
 }
 
-.info_appt{
+.info_appt {
   color: #000000;
-  
 }
 
+/*Utentes:Inicio*/
+
+.clock2 {
+  font-size: 40px;
+  color: #31ade0;
+}
+
+.margin-row {
+  margin-top: 40px;
+}
+
+.appt_title {
+  color: #000000;
+}
+
+.make_appt_img1 {
+  width: 50%;
+  margin: 10px;
+}
+
+.align-bottom * {
+  margin-top: auto;
+}
+
+.make_appt_img2 {
+  width: 49%;
+  margin: 10px;
+}
+
+.make_appt_img3 {
+  width: 43%;
+}
 
 @media screen and (max-height: 450px) {
   .sidenav {
