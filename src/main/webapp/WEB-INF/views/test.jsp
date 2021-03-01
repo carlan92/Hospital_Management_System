@@ -86,6 +86,18 @@
                 </div>
             </div>
 
+            <div class="perfil-main-col">
+                <div class="perfil-row">
+                    <div class="cell-row">
+                        <a href="patient-inicio" class="btn btn-green">Utente: Início</a>
+                    </div>
+
+                    <div class="cell-row">
+                        <a href="" class="btn btn-blue">vazio</a>
+                    </div>
+                </div>
+            </div>
+
 
         </div>
     </div>
