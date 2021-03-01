@@ -51,12 +51,12 @@
                 <h1 class="patient_name">${doctor.getFirstAndLastName()}</h1>
                 <p class="spec_title">Especialidades:</p>
                 <ul class="spec_list">
-                    <li>
-                        Cardiologia
-                    </li>
-                    <li>
-                        Osteopatia
-                    </li>
+                    <!-- For -->
+                    <c:forEach var="speciality" items="${doctor.getSpecialities()}">
+                        <li>
+                            ${speciality.getName()}
+                        </li>
+                    </c:forEach>
                 </ul>
                 <p>
                     <button type="button" class="btn-blue btn-w80"> Consultar Perfil
@@ -65,145 +65,7 @@
             </div>
         </c:forEach>
 
-            <div class="card_list_doctor patient_data">
-                <div class="user_photo w-50">
-                    <img src="imagens/draw_avatar.svg" alt="avatar">
-                </div>
-                <h1 class="patient_name">Miguel Pereira</h1>
-                <p class="spec_title">Especialidades:</p>
-                <ul class="spec_list">
-                    <li>
-                        Cardiologia
-                    </li>
-                    <li>
-                        Osteopatia
-                    </li>
-                </ul>
-                <p>
-                    <button type="button" class="btn-blue btn-w80"> Consultar Perfil
-                    </button>
-                </p>
-            </div>
 
-            <div class="card_list_doctor patient_data">
-                <div class="user_photo w-50">
-                    <img src="imagens/draw_avatar.svg" alt="avatar">
-                </div>
-                <h1 class="patient_name">Miguel Pereira</h1>
-                <p class="spec_title">Especialidades:</p>
-                <ul class="spec_list">
-                    <li>
-                        Cardiologia
-                    </li>
-                    <li>
-                        Osteopatia
-                    </li>
-                </ul>
-                <p>
-                    <button type="button" class="btn-blue btn-w80"> Consultar Perfil
-                    </button>
-                </p>
-            </div>
-
-            <div class="card_list_doctor patient_data">
-                <div class="user_photo w-50">
-                    <img src="imagens/draw_avatar.svg" alt="avatar">
-                </div>
-                <h1 class="patient_name">Miguel Pereira</h1>
-                <p class="spec_title">Especialidades:</p>
-                <ul class="spec_list">
-                    <li>
-                        Cardiologia
-                    </li>
-                    <li>
-                        Osteopatia
-                    </li>
-                </ul>
-                <p>
-                    <button type="button" class="btn-blue btn-w80"> Consultar Perfil
-                    </button>
-                </p>
-            </div>
-
-            <div class="card_list_doctor patient_data">
-                <div class="user_photo w-50">
-                    <img src="imagens/draw_avatar.svg" alt="avatar">
-                </div>
-                <h1 class="patient_name">Miguel Pereira</h1>
-                <p class="spec_title">Especialidades:</p>
-                <ul class="spec_list">
-                    <li>
-                        Cardiologia
-                    </li>
-                    <li>
-                        Osteopatia
-                    </li>
-                </ul>
-                <p>
-                    <button type="button" class="btn-blue btn-w80"> Consultar Perfil
-                    </button>
-                </p>
-            </div>
-
-            <div class="card_list_doctor patient_data">
-                <div class="user_photo w-50">
-                    <img src="imagens/draw_avatar.svg" alt="avatar">
-                </div>
-                <h1 class="patient_name">Miguel Pereira</h1>
-                <p class="spec_title">Especialidades:</p>
-                <ul class="spec_list">
-                    <li>
-                        Cardiologia
-                    </li>
-                    <li>
-                        Osteopatia
-                    </li>
-                </ul>
-                <p>
-                    <button type="button" class="btn-blue btn-w80"> Consultar Perfil
-                    </button>
-                </p>
-            </div>
-
-            <div class="card_list_doctor patient_data">
-                <div class="user_photo w-50">
-                    <img src="imagens/draw_avatar.svg" alt="avatar">
-                </div>
-                <h1 class="patient_name">Miguel Pereira</h1>
-                <p class="spec_title">Especialidades:</p>
-                <ul class="spec_list">
-                    <li>
-                        Cardiologia
-                    </li>
-                    <li>
-                        Osteopatia
-                    </li>
-                </ul>
-                <p>
-                    <button type="button" class="btn-blue btn-w80"> Consultar Perfil
-                    </button>
-                </p>
-            </div>
-
-            <div class="card_list_doctor patient_data">
-                <div class="user_photo w-50">
-                    <img src="imagens/draw_avatar.svg" alt="avatar">
-                </div>
-                <h1 class="patient_name">Miguel Pereira</h1>
-                <p class="spec_title">Especialidades:</p>
-                <ul class="spec_list">
-                    <li>
-                        Cardiologia
-                    </li>
-                    <li>
-                        Osteopatia
-                    </li>
-                </ul>
-                <p>
-                    <button type="button" class="btn-blue btn-w80"> Consultar Perfil
-                    </button>
-                </p>
-            </div>
 
 
         </div>

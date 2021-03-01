@@ -49,6 +49,10 @@ public class Doctor extends Employee {
         this.licenseNumber = licenseNumber;
     }
 
+    public Set<Speciality> getSpecialities() {
+        return specialities;
+    }
+
     @Override
     public String toString() {
         return "Doctor{" +
