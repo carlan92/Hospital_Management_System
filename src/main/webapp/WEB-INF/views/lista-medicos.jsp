@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -38,6 +39,8 @@
 
 
         <div class="row">
+        <!-- For -->
+        <c:forEach var="doctor" items="${doctors}">
 
             <div class="card_list_doctor patient_data">
                 <div class="user_photo w-50">
@@ -58,6 +61,7 @@
                     </button>
                 </p>
             </div>
+        </c:forEach>
 
             <div class="card_list_doctor patient_data">
                 <div class="user_photo w-50">

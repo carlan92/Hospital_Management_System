@@ -4,7 +4,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
+import pt.iscte.hospital.entities.Doctor;
 import pt.iscte.hospital.entities.Patient;
+import pt.iscte.hospital.repositories.DoctorRepository;
 import pt.iscte.hospital.repositories.PatientRepository;
 
 import java.util.List;
@@ -13,6 +15,9 @@ import java.util.List;
 public class TestController {
     @Autowired
     PatientRepository patientRepository;
+
+    @Autowired
+    DoctorRepository doctorRepository;
 
 
     @GetMapping(value = "/test")
@@ -44,6 +49,8 @@ public class TestController {
 
     @GetMapping(value = "/lista-medicos")
     public String showListaMedicos(ModelMap modelMap) {
+        List<Doctor> doctors = doctorRepository.findAll();
+        modelMap.put("doctors", doctors);
         return "lista-medicos";
     }
 
