@@ -6,6 +6,8 @@ import pt.iscte.hospital.entities.Nationality;
 import pt.iscte.hospital.entities.Speciality;
 import pt.iscte.hospital.repositories.SpecialityRepository;
 
+import java.util.Locale;
+
 @Service
 public class SpecialityServiceImpl implements SpecialityService {
     @Autowired
@@ -16,12 +18,24 @@ public class SpecialityServiceImpl implements SpecialityService {
         specialityRepository.save(speciality);
     }
 
-    public boolean validSpeciality(Speciality speciality){
-        Speciality speciality1 = specialityRepository.findByName(speciality.getName());
-        if (speciality1 != null) {
-            return false;
+    @Override
+    public boolean validSpeciality(Speciality newSpeciality) {
+        Speciality specialityDB = specialityRepository.findByName(newSpeciality.getName());
+
+        if (specialityDB != null) {
+            if (newSpeciality.getName().equalsIgnoreCase(specialityDB.getName())) {
+                return false;   // existe uma especialidade com o mesmo nome
+            } else {
+                return true;    // não foi encontrada especialidade com o mesmo nome
+            }
         } else {
             return true;
         }
     }
+
+    @Override
+    public boolean validLength(Speciality newSpeciality){
+        return (newSpeciality.getName().length() < 4);      // verificar se nome pequeno (evitar nomes curtos)
+    }
+
 }

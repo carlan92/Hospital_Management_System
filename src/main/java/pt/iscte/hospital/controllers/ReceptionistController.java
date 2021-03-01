@@ -74,9 +74,14 @@ public class ReceptionistController {
 
         Speciality speciality = new Speciality(name_speciality);
         if(!specialityService.validSpeciality(speciality)){
-            mpError.put("errorMsgSpeciality",errorMsgSpeciality);
+            mpError.put("errorMsgSpeciality", errorMsgSpeciality);
             return "add-speciality";
         }
+        if(!specialityService.validLength(speciality)){
+            mpError.put("errorMsgSpeciality", errorMsgSpeciality); // <------
+            return "add-speciality";
+        }
+
         specialityService.addSpeciality(speciality);
 
         return ("redirect:/main");

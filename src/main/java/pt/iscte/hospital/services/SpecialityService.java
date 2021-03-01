@@ -5,5 +5,7 @@ import pt.iscte.hospital.entities.Speciality;
 public interface SpecialityService {
     void addSpeciality(Speciality speciality);
 
-    public boolean validSpeciality(Speciality speciality);
+    boolean validSpeciality(Speciality speciality);
+
+    boolean validLength(Speciality newSpeciality);
 }
