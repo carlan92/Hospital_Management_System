@@ -10,15 +10,18 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
+import pt.iscte.hospital.entities.Nationality;
 import pt.iscte.hospital.entities.Patient;
 import pt.iscte.hospital.exceptions.ImageSizeException;
 import pt.iscte.hospital.exceptions.ImageTypeException;
+import pt.iscte.hospital.repositories.NationalityRepository;
 import pt.iscte.hospital.services.ImageUploadService;
 import pt.iscte.hospital.services.RegistrationService;
 import pt.iscte.hospital.services.UserService;
 
 import java.io.IOException;
 import java.util.Date;
+import java.util.List;
 
 
 @Controller
@@ -30,6 +33,8 @@ public class RegistrationController {
     ImageUploadService imageUploadService;
     @Autowired
     RegistrationService registrationService;
+    @Autowired
+    NationalityRepository nationalityRepository;
 
     private static final String errorMsgName = "Nome inválido";
     private static final String errorMsgSex = "Escolha uma opção válida";
@@ -59,6 +64,9 @@ public class RegistrationController {
     // Methods
     @GetMapping(value = "/registration")
     public String showRegistrationPage(ModelMap modelMap) {
+        List<Nationality> nationalities = nationalityRepository.findAll();
+
+        modelMap.put("nationalities", nationalities);
         modelMap.put("user", new Patient());
 
         return "registration";
@@ -171,13 +179,13 @@ public class RegistrationController {
                 user.setPhotoURL(photoURL);
             } catch (IOException e) {
                 mpError.put("errorMsgPhotoUpload", errorMsgPhotoUpload);
-                return "registration";
+                isFormValid = false;
             } catch (ImageTypeException e) {
                 mpError.put("errorMsgPhotoUpload", errorMsgImageType);
-                return "registration";
+                isFormValid = false;
             } catch (ImageSizeException e) {
                 mpError.put("errorMsgPhotoUpload", String.format(errorMsgImageSize, imageUploadService.getImageMaxSize()));
-                return "registration";
+                isFormValid = false;
             }
         }
         if (!isFormValid) {

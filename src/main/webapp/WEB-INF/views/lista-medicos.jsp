@@ -31,7 +31,7 @@
                     <select id="speciality_id" class="form-control" name="speciality">
                         <option value="" disabled selected>Pesquisar por Especialidade</option>
                         <!-- For -->
-                            <c:forEach var="speciality" items="${specialities}">
+                        <c:forEach var="speciality" items="${specialities}">
                             <option value="${speciality}.getName()">${speciality.getName()}</option>
                         </c:forEach>
                     </select>

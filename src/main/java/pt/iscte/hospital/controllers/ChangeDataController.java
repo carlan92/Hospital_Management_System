@@ -8,19 +8,31 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 import pt.iscte.hospital.entities.Login;
+import pt.iscte.hospital.entities.Nationality;
 import pt.iscte.hospital.entities.Patient;
+import pt.iscte.hospital.exceptions.ImageSizeException;
+import pt.iscte.hospital.exceptions.ImageTypeException;
+import pt.iscte.hospital.repositories.NationalityRepository;
+import pt.iscte.hospital.services.ImageUploadService;
 import pt.iscte.hospital.services.RegistrationService;
 import pt.iscte.hospital.services.UserService;
 
+import java.io.IOException;
 import java.util.Date;
+import java.util.List;
 
 @Controller
 public class ChangeDataController {
     @Autowired
     UserService userService;
     @Autowired
+    ImageUploadService imageUploadService;
+    @Autowired
     RegistrationService registrationService;
+    @Autowired
+    NationalityRepository nationalityRepository;
 
     private static final String errorMsgName = "Nome inválido";
     private static final String errorMsgSex = "Escolha uma opção válida";
@@ -35,14 +47,22 @@ public class ChangeDataController {
     private static final String errorMsgPatientNumber = "Número de utente inválido";
     private static final String errorMsgPhone = "Número de telemóvel inválido";
 
+    private static final String errorMsgPhotoUpload = "Erro ao fazer upload da imagem";
+    private static final String errorMsgImageType = "Formato da imagem inválido. Usar jpg ou png.";
+    private static final String errorMsgImageSize = "Tamanho máximo permitido para a foto é de %d MB"; // %d placehoder for an integer or long number
+
     @GetMapping(value = "/change_data")
     public String goToChangeData(ModelMap modelMap) {
+        List<Nationality> nationalities = nationalityRepository.findAll();
+
+        modelMap.put("nationalities", nationalities);
         modelMap.put("user", Login.getConnectedUser());
         return "change_data";
     }
 
     @PostMapping(value = "/change_data")
     public String returnToUserPage(ModelMap modelMap,
+                                   @RequestParam("file") MultipartFile file,
                                    @RequestParam String name,
                                    @RequestParam String sex,
                                    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
@@ -121,6 +141,24 @@ public class ChangeDataController {
         if (!registrationService.validAddress(user)) {
             modelMap.put("errorMsgAddress", errorMsgAddress);
             isFormValid = false;
+        }
+
+        if (file != null && !file.isEmpty() && !file.getContentType().equals("application/octet-stream")) {
+            try {
+                System.out.println(file.getName());
+                System.out.println(file.getContentType());
+                String photoURL = imageUploadService.uploadImage(file, user.getUsername());
+                user.setPhotoURL(photoURL);
+            } catch (IOException e) {
+                modelMap.put("errorMsgPhotoUpload", errorMsgPhotoUpload);
+                isFormValid = false;
+            } catch (ImageTypeException e) {
+                modelMap.put("errorMsgPhotoUpload", errorMsgImageType);
+                isFormValid = false;
+            } catch (ImageSizeException e) {
+                modelMap.put("errorMsgPhotoUpload", String.format(errorMsgImageSize, imageUploadService.getImageMaxSize()));
+                isFormValid = false;
+            }
         }
 
 
