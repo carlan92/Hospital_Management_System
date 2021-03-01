@@ -30,8 +30,10 @@
                 <div class="choose_spec">
                     <select id="speciality_id" class="form-control" name="speciality">
                         <option value="" disabled selected>Pesquisar por Especialidade</option>
-                        <option value="1">Cardiologia</option>
-                        <option value="2">Osteopatia</option>
+                        <!-- For -->
+                            <c:forEach var="speciality" items="${specialities}">
+                            <option value="${speciality}.getName()">${speciality.getName()}</option>
+                        </c:forEach>
                     </select>
                 </div>
             </div>

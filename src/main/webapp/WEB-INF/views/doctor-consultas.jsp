@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -32,8 +33,10 @@
                                 <input type="text" class="form-input sm" placeholder="Nome Utente">
                                 <select id="speciality_id" class="form-input sm" name="speciality">
                                     <option value="" disabled selected>Pesquisar por Especialidade</option>
-                                    <option value="1">Cardiologia</option>
-                                    <option value="2">Osteopatia</option>
+                                    <!-- For -->
+                                    <c:forEach var="speciality" items="${specialities}">
+                                        <option value="${speciality}.getName()">${speciality.getName()}</option>
+                                    </c:forEach>
                                 </select>
                                 <button class="btn-search2" type="submit">Pesquisar</button>
 

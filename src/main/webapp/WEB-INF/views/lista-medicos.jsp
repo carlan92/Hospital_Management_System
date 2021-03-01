@@ -30,8 +30,10 @@
                 <div class="choose_spec">
                     <select id="speciality_id" class="form-control" name="speciality">
                         <option value="" disabled selected>Pesquisar por Especialidade</option>
-                        <option value="1">Cardiologia</option>
-                        <option value="2">Osteopatia</option>
+                        <!-- For -->
+                            <c:forEach var="speciality" items="${specialities}">
+                            <option value="${speciality}.getName()">${speciality.getName()}</option>
+                        </c:forEach>
                     </select>
                 </div>
             </div>
@@ -44,9 +46,9 @@
 
             <div class="card_list_doctor patient_data">
                 <div class="user_photo w-50">
-                    <img src="imagens/draw_avatar.svg" alt="avatar">
+                    <img src="uploaded_images/${doctor.getPhotoURL()}" alt="avatar">
                 </div>
-                <h1 class="patient_name">Miguel Pereira</h1>
+                <h1 class="patient_name">${doctor.getFirstAndLastName()}</h1>
                 <p class="spec_title">Especialidades:</p>
                 <ul class="spec_list">
                     <li>

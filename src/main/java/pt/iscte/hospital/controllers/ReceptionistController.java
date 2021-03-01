@@ -10,13 +10,16 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
+import pt.iscte.hospital.entities.Nationality;
 import pt.iscte.hospital.entities.Patient;
 import pt.iscte.hospital.entities.Speciality;
+import pt.iscte.hospital.repositories.NationalityRepository;
 import pt.iscte.hospital.services.RegistrationService;
 import pt.iscte.hospital.services.SpecialityService;
 import pt.iscte.hospital.services.UserService;
 
 import java.util.Date;
+import java.util.List;
 
 @Controller
 public class ReceptionistController {
@@ -27,6 +30,8 @@ public class ReceptionistController {
     RegistrationService registrationService;
     @Autowired
     UserService userService;
+    @Autowired
+    NationalityRepository nationalityRepository;
 
     private static final String errorMsgSpeciality = "Já existe essa especialidade";
     private static final String errorMsgName = "Nome inválido";
@@ -52,12 +57,15 @@ public class ReceptionistController {
 
     // Methods
     @GetMapping(value = "/add-speciality")
-    public String addSpecialityPage(){
+    public String addSpecialityPage(ModelMap modelMap){
+
         return ("add-speciality");
     }
 
     @GetMapping(value = "/add-patient")
-    public String addPatientPage(){
+    public String addPatientPage(ModelMap modelMap){
+        List<Nationality> nationalities = nationalityRepository.findAll();
+        modelMap.put("nationalities", nationalities);
         return ("add-patient");
     }
 
