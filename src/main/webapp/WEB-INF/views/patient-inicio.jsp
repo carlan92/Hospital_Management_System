@@ -13,7 +13,7 @@
     <div class="row first_row">
 
         <div class="col-4">
-            <img src="imagens/draw_patient_inicio.svg" alt="" class="icon1" />
+            <img src="imagens/draw_patient_inicio.svg" alt="" class="icon1"/>
         </div>
 
         <div class="col-8 display_time">
@@ -32,54 +32,69 @@
     </div>
 
 
-
     <div class="row middle-row margin-row">
-        <div class="card_box">
-            <div class="card">
-                <div class="card-body align-bottom" >
-                    <img src="imagens/draw-health2.svg" class="make_appt_img1" alt="..." />
-                    <h4 class="appt_title">Marcação de Consultas</h4>
-                    <p class="linha_2">
-                        Faça aqui a marcação da sua próxima consulta
-                    </p>
-                    <a href="#" class="btn-green btn-w70">Marcar</a>
-                </div>
-                <div class="horizontal-border"></div>
-            </div>
-        </div>
-
 
         <div class="card_box">
-            <div class="card ">
-                <div class="card-body align-bottom">
-                    <img src="imagens/draw_check-next.svg" class="make_appt_img2" alt="..." />
-                    <h4 class="appt_title">Próximas Consultas</h4>
-                    <p class="linha_2">
-                        Consulte aqui as suas próximas consultas
-                    </p>
-                    <a href="#" class="btn-green btn-w70">Consultar</a>
+            <div class="card mw-270">
+                <div class="card-body ">
+                    <div class="patient_img">
+                        <img src="imagens/draw-health2.svg" class="make_appt_img" alt="..."/>
+                    </div>
+                    <div class="patient_title">
+                        <h4 class="appt_title">Marcação de Consultas</h4>
+                        <p class="linha_2">
+                            Faça aqui a marcação da sua próxima consulta
+                        </p>
+                    </div>
+                    <div class="btn-patient">
+                        <a href="#" class="btn-green btn-w70">Marcar</a>
+                    </div>
                 </div>
                 <div class="horizontal-border"></div>
             </div>
         </div>
 
         <div class="card_box">
-            <div class="card ">
-                <div class="card-body align-bottom">
-                    <img src="imagens/draw_past-appt.svg" class="make_appt_img3" alt="..." />
-                    <h4 class="appt_title">Histórico de Consultas</h4>
-                    <p class="linha_2">
-                        Consulte aqui as suas anteriores consultas
-                    </p>
-                    <a href="#" class="btn-green btn-w70">Histórico</a>
+            <div class="card mw-270">
+                <div class="card-body ">
+                    <div class="patient_img">
+                        <img src="imagens/draw_check-next.svg" class="make_appt_img" alt="..."/>
+                    </div>
+                    <div class="patient_title">
+                        <h4 class="appt_title">Próximas Consultas</h4>
+                        <p class="linha_2">
+                            Consulte aqui as suas próximas consultas
+                        </p>
+                    </div>
+                    <div class="btn-patient">
+                        <a href="#" class="btn-green btn-w70">Consultar</a>
+                    </div>
                 </div>
                 <div class="horizontal-border"></div>
             </div>
         </div>
 
-
-
+        <div class="card_box">
+            <div class="card mw-270">
+                <div class="card-body ">
+                    <div class="patient_img">
+                        <img src="imagens/draw_past-appt.svg" class="make_appt_img" alt="..."/>
+                    </div>
+                    <div class="patient_title">
+                        <h4 class="appt_title">Histórico de Consultas</h4>
+                        <p class="linha_2">
+                            Consulte aqui o seu histórico de consultas
+                        </p>
+                    </div>
+                    <div class="btn-patient">
+                        <a href="#" class="btn-green btn-w70">Histórico</a>
+                    </div>
+                </div>
+                <div class="horizontal-border"></div>
+            </div>
+        </div>
     </div>
+
 
     <div class="row last-row">
 
@@ -87,13 +102,13 @@
 
             <div class="carousel-inner">
                 <div class="carousel-item active">
-                    <img src="imagens/noun_news2.png" class="d-block w-100" alt="..." />
+                    <img src="imagens/noun_news2.png" class="d-block w-100" alt="..."/>
                 </div>
                 <div class="carousel-item">
-                    <img src="imagens/noun_newssns.png" class="d-block w-100" alt="..." />
+                    <img src="imagens/noun_newssns.png" class="d-block w-100" alt="..."/>
                 </div>
                 <div class="carousel-item">
-                    <img src="'imagens/noun_news2.png'" class="d-block w-100" alt="..." />
+                    <img src="'imagens/noun_news2.png'" class="d-block w-100" alt="..."/>
                 </div>
             </div>
 
@@ -108,11 +123,7 @@
             </button>
 
         </div>
-
     </div>
 </div>
-</div>
-
 </body>
-
 </html>
