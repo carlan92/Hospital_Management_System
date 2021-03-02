@@ -6,24 +6,22 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import pt.iscte.hospital.entities.*;
-import pt.iscte.hospital.repositories.DoctorRepository;
-import pt.iscte.hospital.repositories.PatientRepository;
-import pt.iscte.hospital.repositories.SpecialityRepository;
 import pt.iscte.hospital.services.DoctorService;
+import pt.iscte.hospital.services.PatientService;
+import pt.iscte.hospital.services.SpecialityService;
 
 import java.util.List;
 
 @Controller
 public class TestController {
     @Autowired
-    PatientRepository patientRepository;
+    PatientService patientService;
 
     @Autowired
-    DoctorRepository doctorRepository;
-
+    DoctorService doctorService;
 
     @Autowired
-    SpecialityRepository specialityRepository;
+    SpecialityService specialityService;
 
     @GetMapping(value = "/test")
     public String pageTest(ModelMap modelMap) {
@@ -51,8 +49,8 @@ public class TestController {
 
     @GetMapping(value = "/lista-utentes")
     public String showListaUtentes(ModelMap modelMap) {
-        List<Speciality> specialities = specialityRepository.findAll(Sort.by(Sort.Direction.ASC, "name"));  // TODO trocar por serviços
-        List<Patient> patients = patientRepository.findAll(Sort.by(Sort.Direction.ASC, "name"));            // TODO trocar por serviços
+        List<Speciality> specialities = specialityService.findAll(Sort.by(Sort.Direction.ASC, "name"));
+        List<Patient> patients = patientService.findAll(Sort.by(Sort.Direction.ASC, "name"));
         User userLogged = Login.getConnectedUser();
 
         modelMap.put("specialities", specialities);
@@ -63,7 +61,7 @@ public class TestController {
 
     @GetMapping(value = "/doctor-consultas")
     public String showDoctorConsultas(ModelMap modelMap) {
-        List<Speciality> specialities = specialityRepository.findAll(Sort.by(Sort.Direction.ASC, "name"));
+        List<Speciality> specialities = specialityService.findAll(Sort.by(Sort.Direction.ASC, "name"));
         User userLogged = Login.getConnectedUser();
 
         modelMap.put("specialities", specialities);
@@ -73,8 +71,8 @@ public class TestController {
 
     @GetMapping(value = "/lista-medicos")
     public String showListaMedicos(ModelMap modelMap) {
-        List<Speciality> specialities = specialityRepository.findAll(Sort.by(Sort.Direction.ASC, "name"));
-        List<Doctor> doctors = doctorRepository.findAll(Sort.by(Sort.Direction.ASC, "name"));
+        List<Speciality> specialities = specialityService.findAll(Sort.by(Sort.Direction.ASC, "name"));
+        List<Doctor> doctors = doctorService.findAll(Sort.by(Sort.Direction.ASC, "name"));
         User userLogged = Login.getConnectedUser();
 
         modelMap.put("specialities", specialities);

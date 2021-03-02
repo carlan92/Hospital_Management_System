@@ -1,11 +1,13 @@
 package pt.iscte.hospital.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import pt.iscte.hospital.entities.Nationality;
 import pt.iscte.hospital.entities.Speciality;
 import pt.iscte.hospital.repositories.SpecialityRepository;
 
+import java.util.List;
 import java.util.Locale;
 
 @Service
@@ -38,4 +40,8 @@ public class SpecialityServiceImpl implements SpecialityService {
         return (newSpeciality.getName().length() > 3);      // verificar se nome pequeno (evitar nomes curtos)
     }
 
+    @Override
+    public List<Speciality> findAll(Sort sort) {
+        return specialityRepository.findAll(sort);
+    }
 }

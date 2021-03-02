@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import pt.iscte.hospital.entities.Login;
 import pt.iscte.hospital.services.LoginService;
-import pt.iscte.hospital.repositories.PatientRepository;
+import pt.iscte.hospital.services.PatientService;
 
 @Controller
 public class LoginController {
@@ -16,7 +16,7 @@ public class LoginController {
     @Autowired
     private LoginService loginService;
     @Autowired
-    private PatientRepository patientRepository;
+    private PatientService patientService;
 
     @GetMapping(value = "/login")
     public String showLoginPage(){
@@ -27,10 +27,10 @@ public class LoginController {
     }
 
     @PostMapping(value = {"/login","/main"})
-    public String validateLogin(ModelMap map, @RequestParam String user_email, @RequestParam String password) {
-        if (loginService.validateLogin(user_email, password)) {
+    public String validateLogin(ModelMap map, @RequestParam String username, @RequestParam String password) {
+        if (loginService.validateLogin(username, password)) {
             //true
-            Login.setConnectedUser(patientRepository.findByUsername(user_email));
+            Login.setConnectedUser(patientService.findByUsername(username));
             return "redirect:/main";
         } else {
             //Invalid Credentials

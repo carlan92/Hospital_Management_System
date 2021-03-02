@@ -16,13 +16,12 @@ import pt.iscte.hospital.entities.Patient;
 import pt.iscte.hospital.entities.User;
 import pt.iscte.hospital.exceptions.ImageSizeException;
 import pt.iscte.hospital.exceptions.ImageTypeException;
-import pt.iscte.hospital.repositories.NationalityRepository;
 import pt.iscte.hospital.services.ImageUploadService;
+import pt.iscte.hospital.services.NationalityService;
 import pt.iscte.hospital.services.RegistrationService;
 import pt.iscte.hospital.services.UserService;
 
 import java.io.IOException;
-import java.util.Date;
 import java.util.List;
 
 @Controller
@@ -34,7 +33,7 @@ public class ChangeDataController {
     @Autowired
     RegistrationService registrationService;
     @Autowired
-    NationalityRepository nationalityRepository;
+    NationalityService nationalityService;
 
     private static final String errorMsgName = "Nome inválido";
     private static final String errorMsgSex = "Escolha uma opção válida";
@@ -55,7 +54,7 @@ public class ChangeDataController {
 
     @GetMapping(value = "/change_data")
     public String goToChangeData(ModelMap modelMap) {
-        List<Nationality> nationalities = nationalityRepository.findAll();
+        List<Nationality> nationalities = nationalityService.findAll();
 
         modelMap.put("nationalities", nationalities);
         modelMap.put("user_logged", Login.getConnectedUser());
@@ -142,7 +141,7 @@ public class ChangeDataController {
 
         if (!isFormValid) {
             // case error in info validation
-            List<Nationality> nationalities = nationalityRepository.findAll();
+            List<Nationality> nationalities = nationalityService.findAll();
 
             modelMap.put("nationalities", nationalities);
 
