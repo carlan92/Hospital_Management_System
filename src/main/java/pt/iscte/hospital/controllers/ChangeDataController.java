@@ -63,6 +63,7 @@ public class ChangeDataController {
         return "change_data";
     }
 
+
     @PostMapping(value = "/change_data")
     public String returnToUserPage(@ModelAttribute Patient user,
                                    ModelMap modelMap,
@@ -144,6 +145,8 @@ public class ChangeDataController {
             List<Nationality> nationalities = nationalityRepository.findAll();
 
             modelMap.put("nationalities", nationalities);
+
+            modelMap.put("user_logged", Login.getConnectedUser());
             modelMap.put("user", user);
             return "change_data";
         }
