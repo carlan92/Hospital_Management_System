@@ -13,7 +13,7 @@
     <div class="row first_row">
 
         <div class="col-4">
-            <img src="imagens/draw_patient_inicio.svg" alt="" class="icon1" />
+            <img src="imagens/draw_patient_inicio.svg" alt="" class="icon1"/>
         </div>
 
         <div class="col-8 display_time">
@@ -32,13 +32,12 @@
     </div>
 
 
-
     <div class="row middle-row margin-row">
         <div class="card_box">
             <div class="card mw-270">
                 <div class="card-body ">
                     <div class="patient_img">
-                        <img src="imagens/draw-health2.svg" class="make_appt_img" alt="..." />
+                        <img src="imagens/draw-health2.svg" class="make_appt_img" alt="..."/>
                     </div>
                     <div class="patient_title">
                         <h4 class="appt_title">Marcação de Consultas</h4>
@@ -60,7 +59,7 @@
             <div class="card mw-270">
                 <div class="card-body ">
                     <div class="patient_img">
-                        <img src="imagens/draw_check-next.svg" class="make_appt_img" alt="..." />
+                        <img src="imagens/draw_check-next.svg" class="make_appt_img" alt="..."/>
                     </div>
                     <div class="patient_title">
                         <h4 class="appt_title">Próximas Consultas</h4>
@@ -82,7 +81,7 @@
             <div class="card mw-270">
                 <div class="card-body ">
                     <div class="patient_img">
-                        <img src="imagens/draw_past-appt.svg" class="make_appt_img" alt="..." />
+                        <img src="imagens/draw_past-appt.svg" class="make_appt_img" alt="..."/>
                     </div>
                     <div class="patient_title">
                         <h4 class="appt_title">Histórico de Consultas</h4>
@@ -98,39 +97,39 @@
 
             </div>
 
+
         </div>
-    </div>
 
-    <div class="row last-row">
+        <div class="row last-row">
 
-        <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+            <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
 
-            <div class="carousel-inner">
-                <div class="carousel-item active">
-                    <img src="imagens/noun_news2.png" class="d-block w-100" alt="..." />
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <img src="imagens/noun_news2.png" class="d-block w-100" alt="..."/>
+                    </div>
+                    <div class="carousel-item">
+                        <img src="imagens/noun_newssns.png" class="d-block w-100" alt="..."/>
+                    </div>
+                    <div class="carousel-item">
+                        <img src="'imagens/noun_news2.png'" class="d-block w-100" alt="..."/>
+                    </div>
                 </div>
-                <div class="carousel-item">
-                    <img src="imagens/noun_newssns.png" class="d-block w-100" alt="..." />
-                </div>
-                <div class="carousel-item">
-                    <img src="'imagens/noun_news2.png'" class="d-block w-100" alt="..." />
-                </div>
+
+                <button class="carousel-control-prev seta" type="button" data-bs-target="#carouselExampleControls"
+                        data-bs-slide="prev">
+                    <i class="fas fa-less-than simbolo_seta"></i>
+                </button>
+
+                <button class="carousel-control-next seta" type="button" data-bs-target="#carouselExampleControls"
+                        data-bs-slide="next">
+                    <i class="fas fa-greater-than simbolo_seta"></i>
+                </button>
+
             </div>
 
-            <button class="carousel-control-prev seta" type="button" data-bs-target="#carouselExampleControls"
-                    data-bs-slide="prev">
-                <i class="fas fa-less-than simbolo_seta"></i>
-            </button>
-
-            <button class="carousel-control-next seta" type="button" data-bs-target="#carouselExampleControls"
-                    data-bs-slide="next">
-                <i class="fas fa-greater-than simbolo_seta"></i>
-            </button>
-
         </div>
-
     </div>
-</div>
 </div>
 
 </body>
