@@ -145,7 +145,7 @@ public class ChangeDataController {
 
         if (file != null && !file.isEmpty() && !file.getContentType().equals("application/octet-stream")) {
             try {
-                String photoURL = imageUploadService.uploadImage(file, user.getUsername());
+                String photoURL = imageUploadService.uploadImage(file, Login.getConnectedUser().getUsername());
                 user.setPhotoURL(photoURL);
             } catch (IOException e) {
                 modelMap.put("errorMsgPhotoUpload", errorMsgPhotoUpload);
@@ -170,7 +170,6 @@ public class ChangeDataController {
         user.setUserId(Login.getConnectedUser().getUserId());
         user.setEmail(Login.getConnectedUser().getEmail());
         user.setUsername(Login.getConnectedUser().getUsername());
-        user.setPhotoURL(Login.getConnectedUser().getPhotoURL());
         user.setPassword(Login.getConnectedUser().getPassword());
         user.setAccount(Login.getConnectedUser().getAccount());
 
