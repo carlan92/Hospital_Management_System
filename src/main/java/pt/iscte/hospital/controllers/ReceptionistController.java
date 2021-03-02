@@ -95,7 +95,7 @@ public class ReceptionistController {
                              ModelMap mpError,
                              @RequestParam String confirmarPassword2){
 
-        List<Nationality> nationalities = nationalityRepository.findAll();
+        List<Nationality> nationalities = nationalityService.findAll();
         mpError.put("nationalities", nationalities);
 
         boolean isFormValid = true;
