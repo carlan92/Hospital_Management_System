@@ -25,7 +25,7 @@
             </div>
         </div>
 
-        <form class="registry-form" action="/change_data" method="post">
+        <form class="registry-form" action="/change_data" method="post" enctype="multipart/form-data">
 
             <div class="perfil-main-col">
 
