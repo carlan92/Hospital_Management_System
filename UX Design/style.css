@@ -1219,26 +1219,23 @@ select option:disabled {
   margin-top: 40px;
 }
 
+.margin-row .card_box {
+  display: inline;
+  margin-right: auto;
+}
+
 .appt_title {
   color: #000000;
 }
 
-.make_appt_img1 {
-  width: 50%;
-  margin: 10px;
+.make_appt_img {
+  width: 100px;
+  height: 100px;
 }
 
-.align-bottom * {
-  margin-top: auto;
-}
-
-.make_appt_img2 {
-  width: 49%;
-  margin: 10px;
-}
-
-.make_appt_img3 {
-  width: 43%;
+.mw-270 {
+  min-width: 262px;
+  min-height: 388px;
 }
 
 /* Menu Informações Gerais */
@@ -1255,7 +1252,6 @@ select option:disabled {
   background-color: transparent;
 }
 
-
 .maininfo::before {
   /*https://css-tricks.com/snippets/css/transparent-background-images/*/
   content: "";
@@ -1271,41 +1267,40 @@ select option:disabled {
   z-index: -1;
 }
 
-.igtitlefont{
+.igtitlefont {
   font-size: 35px;
   margin-left: 30px;
-  color:rgba(0, 0, 0, 0.8);
+  color: rgba(0, 0, 0, 0.8);
   font-weight: bold;
 }
 
-.divinfo{
+.divinfo {
   margin-top: 20px;
 }
 
-.titleinfo{
+.titleinfo {
   margin-bottom: -1px;
-  color:#2c363e;
+  color: #2c363e;
   font-weight: bold;
   margin-left: 2px;
-
 }
 
 /*https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_image_overlay_fade*/
 
-.containerinfo{
+.containerinfo {
   position: relative;
   width: 100%;
 }
 
-.imginfo{
+.imginfo {
   max-width: 100%;
   height: auto;
-  border:whitesmoke;
+  border: whitesmoke;
   border-radius: 10px;
   display: block;
 }
 
-.overlaytextinfo{
+.overlaytextinfo {
   position: absolute;
   top: 0;
   bottom: 0;
@@ -1323,8 +1318,7 @@ select option:disabled {
   border-radius: 10px;
 }
 
-.textinfo{
-
+.textinfo {
   color: white;
   font-size: 20px;
   position: absolute;
@@ -1348,16 +1342,15 @@ select option:disabled {
   color: white;
   padding-left: 20px;
   padding-right: 20px;
-
 }
 
 /*Invoice*/
 
-.invoiceimg{
+.invoiceimg {
   text-align: right;
   margin: 20px;
   max-height: 85px;
-  }
+}
 
 @media screen and (max-height: 450px) {
   .sidenav {

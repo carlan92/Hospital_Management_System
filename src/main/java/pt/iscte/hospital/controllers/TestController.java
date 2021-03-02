@@ -42,8 +42,8 @@ public class TestController {
 
     @GetMapping(value = "/lista-utentes")
     public String showListaUtentes(ModelMap modelMap) {
-        List<Speciality> specialities = specialityRepository.findAll(Sort.by(Sort.Direction.ASC, "name"));
-        List<Patient> patients = patientRepository.findAll(Sort.by(Sort.Direction.ASC, "name"));
+        List<Speciality> specialities = specialityRepository.findAll(Sort.by(Sort.Direction.ASC, "name"));  // TODO trocar por serviços
+        List<Patient> patients = patientRepository.findAll(Sort.by(Sort.Direction.ASC, "name"));            // TODO trocar por serviços
 
         modelMap.put("specialities", specialities);
         modelMap.put("patients", patients);
