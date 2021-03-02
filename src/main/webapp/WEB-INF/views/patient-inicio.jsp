@@ -33,6 +33,7 @@
 
 
     <div class="row middle-row margin-row">
+
         <div class="card_box">
             <div class="card mw-270">
                 <div class="card-body ">
@@ -50,9 +51,7 @@
                     </div>
                 </div>
                 <div class="horizontal-border"></div>
-
             </div>
-
         </div>
 
         <div class="card_box">
@@ -72,9 +71,7 @@
                     </div>
                 </div>
                 <div class="horizontal-border"></div>
-
             </div>
-
         </div>
 
         <div class="card_box">
@@ -94,44 +91,39 @@
                     </div>
                 </div>
                 <div class="horizontal-border"></div>
-
             </div>
-
-
         </div>
+    </div>
 
-        <div class="row last-row">
 
-            <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+    <div class="row last-row">
 
-                <div class="carousel-inner">
-                    <div class="carousel-item active">
-                        <img src="imagens/noun_news2.png" class="d-block w-100" alt="..."/>
-                    </div>
-                    <div class="carousel-item">
-                        <img src="imagens/noun_newssns.png" class="d-block w-100" alt="..."/>
-                    </div>
-                    <div class="carousel-item">
-                        <img src="'imagens/noun_news2.png'" class="d-block w-100" alt="..."/>
-                    </div>
+        <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img src="imagens/noun_news2.png" class="d-block w-100" alt="..."/>
                 </div>
-
-                <button class="carousel-control-prev seta" type="button" data-bs-target="#carouselExampleControls"
-                        data-bs-slide="prev">
-                    <i class="fas fa-less-than simbolo_seta"></i>
-                </button>
-
-                <button class="carousel-control-next seta" type="button" data-bs-target="#carouselExampleControls"
-                        data-bs-slide="next">
-                    <i class="fas fa-greater-than simbolo_seta"></i>
-                </button>
-
+                <div class="carousel-item">
+                    <img src="imagens/noun_newssns.png" class="d-block w-100" alt="..."/>
+                </div>
+                <div class="carousel-item">
+                    <img src="'imagens/noun_news2.png'" class="d-block w-100" alt="..."/>
+                </div>
             </div>
+
+            <button class="carousel-control-prev seta" type="button" data-bs-target="#carouselExampleControls"
+                    data-bs-slide="prev">
+                <i class="fas fa-less-than simbolo_seta"></i>
+            </button>
+
+            <button class="carousel-control-next seta" type="button" data-bs-target="#carouselExampleControls"
+                    data-bs-slide="next">
+                <i class="fas fa-greater-than simbolo_seta"></i>
+            </button>
 
         </div>
     </div>
 </div>
-
 </body>
-
 </html>
