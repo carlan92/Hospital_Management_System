@@ -1352,6 +1352,10 @@ select option:disabled {
   max-height: 85px;
 }
 
+.answer{
+  margin-top: 10px;
+}
+
 @media screen and (max-height: 450px) {
   .sidenav {
     padding-top: 15px;
