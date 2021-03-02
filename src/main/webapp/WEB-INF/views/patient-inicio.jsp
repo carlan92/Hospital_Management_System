@@ -50,8 +50,9 @@
                         <a href="#" class="btn-green btn-w70">Marcar</a>
                     </div>
                 </div>
+                <div class="horizontal-border"></div>
+
             </div>
-            <div class="horizontal-border"></div>
 
         </div>
 
@@ -71,8 +72,9 @@
                         <a href="#" class="btn-green btn-w70">Consultar</a>
                     </div>
                 </div>
+                <div class="horizontal-border"></div>
+
             </div>
-            <div class="horizontal-border"></div>
 
         </div>
 
@@ -92,8 +94,9 @@
                         <a href="#" class="btn-green btn-w70">Histórico</a>
                     </div>
                 </div>
+                <div class="horizontal-border"></div>
+
             </div>
-            <div class="horizontal-border"></div>
 
         </div>
     </div>
