@@ -95,6 +95,10 @@ public class RegistrationController {
                                     @RequestParam String username,
                                     @RequestParam String email) {
 
+        List<Nationality> nationalities = nationalityRepository.findAll();
+
+        mpError.put("nationalities", nationalities);
+
         boolean isFormValid = true;
 
         if (!registrationService.validName(user)) {
