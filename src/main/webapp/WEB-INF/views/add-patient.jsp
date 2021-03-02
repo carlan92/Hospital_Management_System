@@ -35,7 +35,7 @@
                             <div class="perfil-row">
                                 <div class="cell-row cell-morada">
                                     <label for="nome_id">Nome Completo *</label>
-                                    <input id="nome_id" type="text" class="form-input" value="${returnName}" name="name"
+                                    <input id="nome_id" type="text" class="form-input" value="${user.getName()}" name="name"
                                         required placeholder="O seu nome completo" />
                                     <p class="msg-error">${errorMsgName}</p>
                                 </div>
@@ -43,27 +43,37 @@
 
                             <div class="perfil-row">
                                 <div class="cell-row">
-                                    <label for="sexo_id">Sexo *</label>
-                                    <select id="sexo_id" class="form-input" name="sex" required>
-                                        <option value="" disabled selected>Escolha uma Opção</option>
-                                        <option value="Masculino">Masculino</option>
-                                        <option value="Feminino">Feminino</option>
-                                    </select>
-                                    <p class="msg-error">${errorMsgSex}</p>
-                                </div>
+                                                                    <label for="sexo_id">Sexo *</label>
+                                                                    <select id="sexo_id" class="form-input" name="sex" required value="${user.getSex()}">
+                                                                        <option value="" disabled
+                                                                            <c:if test="${empty user.getSex()}"> selected</c:if>>
+                                                                            Escolha uma Opção
+                                                                        </option>
+                                                                        <option value="Masculino"
+                                                                            <c:if test="${user.getSex().equals('Masculino')}"> selected</c:if>>
+                                                                            Masculino
+                                                                        </option>
+
+                                                                        <option value="Feminino"
+                                                                            <c:if test="${user.getSex().equals('Feminino')}"> selected</c:if>>
+                                                                            Feminino
+                                                                        </option>
+                                                                    </select>
+                                                                    <p class="msg-error">${errorMsgSex}</p>
+                                                                </div>
 
                                 <div class="cell-row">
-                                    <label for="dataDeNascimento_id">Data de Nascimento *</label>
-                                    <input id="dataDeNascimento_id" type="date" class="form-input"
-                                        value="${returnBirthdaye}" name="birthday" required>
-                                    <p class="msg-error">${errorMsgBirthday}</p>
-                                </div>
+                                                                    <label for="dataDeNascimento_id">Data de Nascimento *</label>
+                                                                    <input id="dataDeNascimento_id" type="date" class="form-input"
+                                                                        value="${user.getBirthdayStr()}" name="birthday" required>
+                                                                    <p class="msg-error">${errorMsgBirthday}</p>
+                                                                </div>
                             </div>
 
                             <div class="perfil-row">
                                 <div class="cell-row cell-morada">
                                     <label for="morada_id">Morada</label>
-                                    <input id="morada_id" type="text" class="form-input" value="${returnAddress}"
+                                    <input id="morada_id" type="text" class="form-input" value="${user.getAddress()}"
                                         name="address" placeholder="A sua morada" />
                                     <p class="msg-error">${errorMsgAddress}</p>
                                 </div>
@@ -73,57 +83,82 @@
                                 <div class="cell-row">
                                     <label for="codigoPostal_id">Código Postal</label>
                                     <input id="codigoPostal_id" type="text" pattern="[0-9]{4}[-][0-9]{3}"
-                                        class="form-input" value="${returnPostCode}" name="postCode"
+                                        class="form-input" value="${user.getPostCode()}" name="postCode"
                                         placeholder="O seu código postal" />
                                     <p class="msg-error">${errorMsgPostCode}</p>
                                 </div>
 
                                 <div class="cell-row">
                                     <label for="localidade_id">Localidade *</label>
-                                    <input id="localidade_id" type="text" class="form-input" value="${returnCity}"
+                                    <input id="localidade_id" type="text" class="form-input" value="${user.getCity()}"
                                         name="city" required placeholder="A sua localidade" />
                                     <p class="msg-error">${errorMsgCity}</p>
                                 </div>
                             </div>
 
                             <div class="perfil-row">
-                                <div class="cell-row">
-                                    <label for="conta_id">Tipo de Utilizador *</label>
-                                    <select id="conta_id" class="form-input" name="account" required>
-                                        <option value="" disabled selected>Escolha uma Opção</option>
-                                        <option value="Utente">Utente</option>
-                                    </select>
-                                    <p class="msg-error">${errorMsgAccount}</p>
-                                </div>
+                                 <div class="cell-row">
+                                                                    <label for="conta_id">Tipo de Utilizador *</label>
+                                                                    <select id="conta_id" class="form-input" name="account" required>
+                                                                        <option value="Utente">Utente</option>
+                                                                    </select>
+                                                                    <p class="msg-error">${errorMsgAccount}</p>
+                                                                </div>
 
                                 <div class="cell-row">
-                                    <label for="nacionalidade_id">Nacionalidade *</label>
-                                    <select id="nacionalidade_id" class="form-input" name="nationality" required>
-                                        <option value="nacionalidade" disabled selected>A sua nacionalidade</option>
-                                        <!-- For -->
-                                        <c:forEach var="nationality" items="${nationalities}">
-                                            <option value="${nationality.getName()}">${nationality.getName()}</option>
-                                        </c:forEach>
-                                    </select>
-                                    <p class="msg-error">${errorMsgNationality}</p>
-                                </div>
+                                                                    <label for="nacionalidade_id">Nacionalidade *</label>
+                                                                    <select id="nacionalidade_id" class="form-input" name="nationality" required>
+                                                                        <option value="nacionalidade" disabled
+                                                                            <c:if test="${empty nationality}"> selected</c:if>>
+                                                                            A sua nacionalidade
+                                                                        </option>
+                                                                        <option value="Portuguesa"
+                                                                            <c:if test="${user.getNationality().equals('Portuguesa')}"> selected</c:if>>
+                                                                            Portuguesa
+                                                                        </option>
+
+                                                                        <!-- For -->
+                                                                        <c:forEach var="nationality" items="${nationalities}">
+                                                                            <c:if test="${!nationality.getName().equals('Portuguesa')}">
+                                                                                <option value="${nationality.getName()}"
+                                                                                    <c:if test="${user.getNationality().equals(nationality.getName())}"> selected</c:if>>
+                                                                                    ${nationality.getName()}
+                                                                                </option>
+                                                                            </c:if>
+                                                                        </c:forEach>
+
+                                                                    </select>
+                                                                    <p class="msg-error">${errorMsgNationality}</p>
+                                                                </div>
                             </div>
 
                             <div class="perfil-row">
                                 <div class="cell-row">
-                                    <label for="documento_id">Documento de Identificação *</label>
-                                    <select id="documento_id" class="form-input" name="documentType" required>
-                                        <option value="escolha uma opção" disabled selected>Escolha uma Opção</option>
-                                        <option value="Bilhete de Identidade">Bilhete de Identidade</option>
-                                        <option value="Cartão de Cidadão">Cartão de Cidadão</option>
-                                        <option value="Passaporte">Passaporte</option>
-                                        <p class="msg-error">${errorMsgDocumentType}</p>
-                                    </select>
-                                </div>
+                                                                    <label for="documento_id">Documento de Identificação *</label>
+                                                                    <select id="documento_id" class="form-input" name="documentType" required>
+                                                                        <option value="escolha uma opção" disabled
+                                                                            <c:if test="${empty user.getDocumentType()}"> selected</c:if>>
+                                                                            Escolha uma Opção
+                                                                        </option>
+                                                                        <option value="Bilhete de Identidade"
+                                                                            <c:if test="${user.getSex().equals('Bilhete de Identidade')}"> selected</c:if>>
+                                                                            Bilhete de Identidade
+                                                                        </option>
+                                                                        <option value="Cartão de Cidadão"
+                                                                            <c:if test="${user.getSex().equals('Cartão de Cidadão')}"> selected</c:if>>
+                                                                            Cartão de Cidadão
+                                                                        </option>
+                                                                        <option value="Passaporte"
+                                                                            <c:if test="${user.getSex().equals('Passaporte')}"> selected</c:if>>
+                                                                            Passaporte
+                                                                        </option>
+                                                                        <p class="msg-error">${errorMsgDocumentType}</p>
+                                                                    </select>
+                                                                </div>
                                 <div class="cell-row">
                                     <label for="nrDocumento_id">Nº do Documento *</label>
                                     <input id="nrDocumento_id" type="text" class="form-input" pattern="[0-9]{8}"
-                                        value="${returnDocumentNumber}" name="documentNumber" required
+                                        value="${user.getDocumentNumber()}" name="documentNumber" required
                                         placeholder="Nº do documento selecionado" />
                                     <p class="msg-error">${errorMsgDocumentNumber}</p>
                                 </div>
@@ -133,13 +168,13 @@
                                 <div class="cell-row">
                                     <label for="nif_id">NIF *</label>
                                     <input id="nif_id" type="text" pattern="[0-9]{9}" class="form-input"
-                                        value="${returnNif}" name="nif" required placeholder="NIF" />
+                                        value="${user.getNif()}" name="nif" required placeholder="NIF" />
                                     <p class="msg-error">${errorMsgNif}</p>
                                 </div>
                                 <div class="cell-row">
                                     <label for="nrUtente_id">Nº de Utente</label>
                                     <input id="nrUtente_id" type="text" pattern="[0-9]{9}" class="form-input"
-                                        value="${returnPatientNumber}" name="patientNumber"
+                                        value="${user.getPatientNumber()}" name="patientNumber"
                                         placeholder="Nº de Utente" />
                                     <p class="msg-error">${errorMsgPatientNumber}</p>
                                 </div>
@@ -150,13 +185,13 @@
                                     <label for="telemovel_id">Telemóvel *</label>
                                     <input id="telemovel_id" type="text"
                                         pattern="^9[1236][0-9]{7}$|^2[3-9][1-9][0-9]{6}$|^2[12][0-9]{7}$"
-                                        class="form-input" value="${returnPhone}" name="phone" required
+                                        class="form-input" value="${user.getPhone()}" name="phone" required
                                         placeholder="O seu número de telemóvel" />
                                     <p class="msg-error">${errorMsgPhone}</p>
                                 </div>
                                 <div class="cell-row">
                                     <label for="e-mail_id">E-mail *</label>
-                                    <input id="e-mail_id" type="email" class="form-input" value="${returnEmail}"
+                                    <input id="e-mail_id" type="email" class="form-input" value="${user.getEmail()}"
                                         name="email" required placeholder="O seu e-mail" />
                                     <p class="msg-error">${errorMsgEmail}</p>
                                 </div>
@@ -165,7 +200,7 @@
                                 <div class="cell-row cell-morada">
                                     <label for="username_id">Username *</label>
                                     <input id="username_id" type="text" class="form-input" name="username" required
-                                        placeholder="Introduza o username" value="${returnUsername}" />
+                                        placeholder="Introduza o username" value="${user.getUsername()}" />
                                     <p class="msg-error">${errorMsgUsername}</p>
                                 </div>
 
@@ -175,7 +210,7 @@
                                 <div class="cell-row">
                                     <label for="password_id">Palavra-Passe *</label>
                                     <input id="password_id" type="password" class="form-input" minlength="1"
-                                        maxlength="15" value="${returnPassword}" name="password" required
+                                        maxlength="15" value="${user.getPassword()}" name="password" required
                                         placeholder="Palavra-passe" />
                                     <p class="msg-error">${errorMsgPassword}</p>
                                 </div>
@@ -197,15 +232,14 @@
 
                                 <p class="nota">Assinatura do Utente:</p>
                             </div>
-
-
                         </div>
+
                         <div class="perfil-row">
                             <div class="cell-row">
-                                <button type="submit" class="btn btn-blue">Imprimir</button>
+                                <button type="submit" class="btn btn-blue" onclick="javascript: form.action='/imprimir';">Imprimir</button>
                             </div>
                              <div class="cell-row">
-                                <button type="submit" class="btn btn-blue">Adicionar Utente</button>
+                                <button type="submit" class="btn btn-blue" onclick="javascript: form.action='/add-patient';">Adicionar Utente</button>
                              </div>
                         </div>
                     </form>

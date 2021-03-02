@@ -93,24 +93,11 @@ public class ReceptionistController {
     @PostMapping(value = "/add-patient")
     public String addPatient(@ModelAttribute Patient user,
                              ModelMap mpError,
-                             @RequestParam String name,
-                             @RequestParam String password,
-                             @RequestParam String confirmarPassword2,
-                             @RequestParam String sex,
-                             @RequestParam String nationality,
-                             @RequestParam @Nullable String address,
-                             @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
-                                 @RequestParam Date birthday,
-                             @RequestParam @Nullable String postCode,
-                             @RequestParam String city,
-                             @RequestParam String account,
-                             @RequestParam Long phone,
-                             @RequestParam @Nullable Long patientNumber,
-                             @RequestParam String documentType,
-                             @RequestParam Long documentNumber,
-                             @RequestParam Long nif,
-                             @RequestParam String username,
-                             @RequestParam String email){
+                             @RequestParam String confirmarPassword2){
+
+        List<Nationality> nationalities = nationalityRepository.findAll();
+        mpError.put("nationalities", nationalities);
+
         boolean isFormValid = true;
 
         if (!registrationService.validName(user)) {
@@ -121,7 +108,7 @@ public class ReceptionistController {
             mpError.put("errorMsgPassword", errorMsgPassword);
             isFormValid = false;
         }
-        if (!password.equals(confirmarPassword2)) {
+        if (!user.getPassword().equals(confirmarPassword2)) {
             mpError.put("errorMsgPassword2", errorMsgPassword2);
             isFormValid = false;
         }
@@ -185,25 +172,16 @@ public class ReceptionistController {
             mpError.put("errorMsgAddress", errorMsgAddress);
             isFormValid = false;
         }
+        //add default image.
+        if(user.getSex().equals("Masculino")){
+            user.setPhotoURL("user-male.jpg");
+        } else{
+            user.setPhotoURL("user-female.jpg");
+        }
 
         if (!isFormValid) {
 
-            mpError.put("returnName",name);
-            mpError.put("returnSex",sex);
-            mpError.put("returnBirthday", birthday);
-            mpError.put("returnAddress", address);
-            mpError.put("returnPostCode", postCode);
-            mpError.put("returnCity", city);
-            mpError.put("returnAccount", account);
-            mpError.put("returnNationality", nationality);
-            mpError.put("returnPhone", phone);
-            mpError.put("returnDocumentType", documentType);
-            mpError.put("returnDocumentNumber", documentNumber);
-            mpError.put("returnNif", nif);
-            mpError.put("returnPatientNumber", patientNumber);
-            mpError.put("returnUsername", username);
-            mpError.put("returnEmail", email);
-            mpError.put("returnPassword", password);
+            mpError.put("user", user);
 
             return "add-patient";
         }
@@ -211,5 +189,12 @@ public class ReceptionistController {
         userService.addUser(user);
 
         return "redirect:/main";
+    }
+
+    @PostMapping (value ="/imprimir")
+    public String doImprimir(@ModelAttribute Patient user, ModelMap modelMap){
+
+        modelMap.put("user", user);
+        return ("add-patient");
     }
 }

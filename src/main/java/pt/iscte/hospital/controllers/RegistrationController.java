@@ -182,8 +182,9 @@ public class RegistrationController {
         }
 
         if (!isFormValid) {
+
             mpError.put("user", user);
-            //mpError.put("returnNationality", nationality);  //todo por a dar
+
             return "registration";
         }
 
