@@ -10,8 +10,10 @@ import pt.iscte.hospital.entities.User;
 public class MainController {
     @GetMapping(value = "/main")
     public String showMainPage(ModelMap modelMap){
-        User user = Login.getConnectedUser();
-        modelMap.put("user", user);
+        User userLogged = Login.getConnectedUser();
+
+        modelMap.put("user_logged", userLogged);
+
         if(!Login.isConnected()){
             return "redirect:/";
         }
@@ -20,6 +22,9 @@ public class MainController {
 
     @GetMapping(value = "/doctor-inicio")
     public String showDoctorInicio(ModelMap modelMap){
+        User userLogged = Login.getConnectedUser();
+
+        modelMap.put("user_logged", userLogged);
         return "doctor-inicio";
     }
 

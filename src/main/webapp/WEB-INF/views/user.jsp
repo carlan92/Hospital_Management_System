@@ -19,14 +19,14 @@
                 <div class="perfil-row">
                 <div class="cell-row cell-align-center">
                     <div class="user-type">
-                        <p id="user_name">${user.getFirstAndLastName()}</p>
-                        <p id="user_category">${user.getAccount()}</p>
+                        <p id="user_name">${user_logged.getFirstAndLastName()}</p>
+                        <p id="user_category">${user_logged.getAccount()}</p>
                     </div>
                 </div>
 
                 <div class="cell-row">
                     <div class="user_photo">
-                        <img src="/uploaded_images/${user.getPhotoURL()}" alt="foto do utilizador" />
+                        <img src="/uploaded_images/${user_logged.getPhotoURL()}" alt="foto do utilizador" />
                     </div>
                 </div>
             </div>
@@ -37,56 +37,56 @@
             <div class="perfil-main-col">
                 <div class="perfil-row">
                      <div class="cell-row">Nome Completo</div>
-                     <div class="cell-row">${user.getName()}</div>
+                     <div class="cell-row">${user_logged.getName()}</div>
                 </div>
                 <div class="perfil-row">
                     <div class="cell-row">Sexo</div>
-                    <div class="cell-row">${user.getSex()}</div>
+                    <div class="cell-row">${user_logged.getSex()}</div>
                 </div>
                 <div class="perfil-row">
                     <div class="cell-row">Data de nascimento</div>
-                    <div class="cell-row"><fmt:formatDate pattern="dd/MM/yyyy" value="${user.getBirthday()}"/></div>
+                    <div class="cell-row"><fmt:formatDate pattern="dd/MM/yyyy" value="${user_logged.getBirthday()}"/></div>
                 </div>
 
                 <div class="perfil-row">
                     <div class="cell-row">Morada</div>
-                    <div class="cell-row">${user.getAddress()}</div>
+                    <div class="cell-row">${user_logged.getAddress()}</div>
                 </div>
                 <div class="perfil-row">
                     <div class="cell-row">Código Postal</div>
-                    <div class="cell-row">${user.getPostCode()}</div>
+                    <div class="cell-row">${user_logged.getPostCode()}</div>
                 </div>
                 <div class="perfil-row">
                     <div class="cell-row">Localidade</div>
-                    <div class="cell-row">${user.getCity()}</div>
+                    <div class="cell-row">${user_logged.getCity()}</div>
                 </div>
                 <div class="perfil-row">
                     <div class="cell-row">Nacionalidade</div>
-                    <div class="cell-row">${user.getNationality()}</div>
+                    <div class="cell-row">${user_logged.getNationality()}</div>
                 </div>
                 <div class="perfil-row">
                     <div class="cell-row">Documento de identificação</div>
-                    <div class="cell-row">${user.getDocumentType()}</div>
+                    <div class="cell-row">${user_logged.getDocumentType()}</div>
                 </div>
                 <div class="perfil-row">
                     <div class="cell-row">Nº do documento</div>
-                    <div class="cell-row">${user.getDocumentNumber()}</div>
+                    <div class="cell-row">${user_logged.getDocumentNumber()}</div>
                 </div>
                 <div class="perfil-row">
                     <div class="cell-row">NIF</div>
-                    <div class="cell-row">${user.getNif()}</div>
+                    <div class="cell-row">${user_logged.getNif()}</div>
                 </div>
                 <div class="perfil-row">
                     <div class="cell-row">Nº de Utente</div>
-                    <div class="cell-row"> ${user.getPatientNumber()}</div>
+                    <div class="cell-row"> ${user_logged.getPatientNumber()}</div>
                 </div>
                 <div class="perfil-row">
                     <div class="cell-row">Telemóvel</div>
-                    <div class="cell-row">${user.getPhone()}</div>
+                    <div class="cell-row">${user_logged.getPhone()}</div>
                 </div>
                 <div class="perfil-row">
                     <div class="cell-row">E-mail</div>
-                    <div class="cell-row">${user.getEmail()}</div>
+                    <div class="cell-row">${user_logged.getEmail()}</div>
                 </div>
                 <div class="perfil-row">
                     <div class="cell-row">

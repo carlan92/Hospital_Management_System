@@ -53,7 +53,7 @@
                             
                             <div class="cell-row">
                                 <label for="dataDeNascimento_id">Data de Nascimento *</label>
-                                <input id="dataDeNascimento_id" type="date" class="form-input" value="${returnBirthdaye}" name="birthday" required>
+                                <input id="dataDeNascimento_id" type="date" class="form-input" value="${returnBirthday}" name="birthday" required>
                                 <p class="msg-error">${errorMsgBirthday}</p>
                             </div>
                         </div>

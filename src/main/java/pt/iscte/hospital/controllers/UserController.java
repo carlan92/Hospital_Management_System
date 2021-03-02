@@ -10,8 +10,8 @@ import pt.iscte.hospital.entities.User;
 public class UserController {
     @GetMapping(value = "/user")
     public String showUserPage(ModelMap modelMap){
-        User user = Login.getConnectedUser();
-        modelMap.put("user", user);
+        User userLogged = Login.getConnectedUser();
+        modelMap.put("user_logged", userLogged);
         return "user";
     }
     @GetMapping(value="/userToMain")

@@ -10,12 +10,12 @@
 		<div class="welcome_box">
 			<div class="perfil-row">
 				<div class="col-4 user_photo">
-					<img src="/uploaded_images/${user.getPhotoURL()}" alt="user_photography" />
+					<img src="/uploaded_images/${user_logged.getPhotoURL()}" alt="user_photography" />
 				</div>
 				<div class="col user_info">
 					<p id="welcome">Bem-vindo</p>
-					<p id="user_name">${user.getFirstAndLastName()}</p>
-					<p id="user_category">${user.getAccount()}</p>
+					<p id="user_name">${user_logged.getFirstAndLastName()}</p>
+					<p id="user_category">${user_logged.getAccount()}</p>
 				</div>
 			</div>
 			<div>

@@ -95,7 +95,6 @@
                     <div class="cell-row">
                         <label for="nacionalidade_id">Nacionalidade *</label>
                         <select id="nacionalidade_id" class="form-input" name="nationality" required value="${user.getNationality()}">
-                            <option value="${user.getNationality()}">${user.getNationality()}</option>
 
                             <!-- For -->
                             <c:forEach var="nationality" items="${nationalities}">
@@ -121,10 +120,20 @@
                     <div class="cell-row">
                         <label for="documento_id">Documento de Identificação *</label>
                         <select id="documento_id" class="form-input" name="documentType" required value="${user.getDocumentType()}">
-                            <option value="${user.getDocumentType()}">${user.getDocumentType()}</option>
-                            <option value="Bilhete de Identidade">Bilhete de Identidade</option>
-                            <option value="Cartão de Cidadão">Cartão de Cidadão</option>
-                            <option value="Passaporte">Passaporte</option>
+
+                        <option value="Bilhete de Identidade"
+                            <c:if test="${user.getDocumentType().equals('Bilhete de Identidade')}"> selected</c:if>>
+                            Bilhete de Identidade
+                        </option>
+                        <option value="Cartão de Cidadão"
+                            <c:if test="${user.getDocumentType().equals('Cartão de Cidadão')}"> selected</c:if>>
+                            Cartão de Cidadão
+                        </option>
+                        <option value="Passaporte"
+                            <c:if test="${user.getDocumentType().equals('Passaporte')}"> selected</c:if>>
+                            Passaporte
+                        </option>
+
                         </select>
                         <p class="msg-error">${errorMsgDocumentType}</p>
                     </div>

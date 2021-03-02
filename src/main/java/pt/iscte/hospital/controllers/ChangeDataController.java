@@ -6,12 +6,14 @@ import org.springframework.lang.Nullable;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import pt.iscte.hospital.entities.Login;
 import pt.iscte.hospital.entities.Nationality;
 import pt.iscte.hospital.entities.Patient;
+import pt.iscte.hospital.entities.User;
 import pt.iscte.hospital.exceptions.ImageSizeException;
 import pt.iscte.hospital.exceptions.ImageTypeException;
 import pt.iscte.hospital.repositories.NationalityRepository;
@@ -56,43 +58,18 @@ public class ChangeDataController {
         List<Nationality> nationalities = nationalityRepository.findAll();
 
         modelMap.put("nationalities", nationalities);
+        modelMap.put("user_logged", Login.getConnectedUser());
         modelMap.put("user", Login.getConnectedUser());
         return "change_data";
     }
 
     @PostMapping(value = "/change_data")
-    public String returnToUserPage(ModelMap modelMap,
-                                   @RequestParam("file") MultipartFile file,
-                                   @RequestParam String name,
-                                   @RequestParam String sex,
-                                   @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
-                                   @RequestParam Date birthday,
-                                   @RequestParam @Nullable String address,
-                                   @RequestParam @Nullable String postCode,
-                                   @RequestParam String city,
-                                   @RequestParam String nationality,
-                                   @RequestParam Long phone,
-                                   @RequestParam String documentType,
-                                   @RequestParam Long documentNumber,
-                                   @RequestParam Long nif,
-                                   @RequestParam @Nullable Long patientNumber) {
+    public String returnToUserPage(@ModelAttribute Patient user,
+                                   ModelMap modelMap,
+                                   @RequestParam("file") MultipartFile file) {
 
         // Update user info
         boolean isFormValid = true;
-        Patient user = new Patient();
-
-        user.setName(name);
-        user.setSex(sex);
-        user.setBirthday(birthday);
-        user.setAddress(address);
-        user.setPostCode(postCode);
-        user.setCity(city);
-        user.setNationality(nationality);
-        user.setPhone(phone);
-        user.setDocumentType(documentType);
-        user.setDocumentNumber(documentNumber);
-        user.setNif(nif);
-        user.setPatientNumber(patientNumber);
 
         if (!registrationService.validName(user)) {
             modelMap.put("errorMsgName", errorMsgName);
@@ -164,6 +141,9 @@ public class ChangeDataController {
 
         if (!isFormValid) {
             // case error in info validation
+            List<Nationality> nationalities = nationalityRepository.findAll();
+
+            modelMap.put("nationalities", nationalities);
             modelMap.put("user", user);
             return "change_data";
         }

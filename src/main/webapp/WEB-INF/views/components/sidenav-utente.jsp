@@ -9,12 +9,12 @@
     <div class="welcome_box">
         <div class="perfil-row">
             <div class="col-4 user_photo">
-                <img src="imagens/draw_avatar.svg" alt="user_photography"/>
+                <img src="/uploaded_images/${user_logged.getPhotoURL()}" alt="user_photography"/>
             </div>
             <div class="col user_info">
                 <p id="welcome">Bem-vindo</p>
-                <a id="user_name" href="/user">${user.getFirstAndLastName()}</a>
-                <p id="user_category">${user.getAccount()}</p>
+                <a id="user_name" href="/user">${user_logged.getFirstAndLastName()}</a>
+                <p id="user_category">${user_logged.getAccount()}</p>
             </div>
         </div>
         <div>

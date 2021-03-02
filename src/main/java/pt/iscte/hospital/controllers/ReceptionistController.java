@@ -9,10 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.multipart.MultipartFile;
-import pt.iscte.hospital.entities.Nationality;
-import pt.iscte.hospital.entities.Patient;
-import pt.iscte.hospital.entities.Speciality;
+import pt.iscte.hospital.entities.*;
 import pt.iscte.hospital.repositories.NationalityRepository;
 import pt.iscte.hospital.services.RegistrationService;
 import pt.iscte.hospital.services.SpecialityService;
@@ -59,14 +56,19 @@ public class ReceptionistController {
     // Methods
     @GetMapping(value = "/add-speciality")
     public String addSpecialityPage(ModelMap modelMap){
+        User userLogged = Login.getConnectedUser();
 
+        modelMap.put("user_logged", userLogged);
         return ("add-speciality");
     }
 
     @GetMapping(value = "/add-patient")
     public String addPatientPage(ModelMap modelMap){
         List<Nationality> nationalities = nationalityRepository.findAll();
+        User userLogged = Login.getConnectedUser();
+
         modelMap.put("nationalities", nationalities);
+        modelMap.put("user_logged", userLogged);
         return ("add-patient");
     }
 
