@@ -187,6 +187,12 @@ public class RegistrationController {
                 mpError.put("errorMsgPhotoUpload", String.format(errorMsgImageSize, imageUploadService.getImageMaxSize()));
                 isFormValid = false;
             }
+        }else{
+            if(user.getSex().equals("Masculino")){
+                user.setPhotoURL("user-male.jpg");
+            } else{
+                user.setPhotoURL("user-female.jpg");
+            }
         }
         if (!isFormValid) {
 
