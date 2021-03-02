@@ -15,7 +15,7 @@
                 
                 <form class="login-form" action="/login" method="post">
                     <div class="input-row">
-                        <input class="form-input" type="text" name="user_email" id="user_email_id" placeholder="Username">
+                        <input class="form-input" type="text" name="username" id="username_id" placeholder="Username">
                     </div>
 
                     <div class="input-row">

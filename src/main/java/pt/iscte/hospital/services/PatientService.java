@@ -6,7 +6,7 @@ import pt.iscte.hospital.entities.Patient;
 import java.util.List;
 
 public interface PatientService {
-    Patient findByUsername(String username);
-
     List<Patient> findAll(Sort sort);
+
+    Patient findByUsername(String username);
 }

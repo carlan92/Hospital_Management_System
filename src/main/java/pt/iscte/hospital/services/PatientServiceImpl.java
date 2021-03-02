@@ -14,12 +14,12 @@ public class PatientServiceImpl implements PatientService{
     PatientRepository patientRepository;
 
     @Override
-    public Patient findByUsername(String username) {
-        return patientRepository.findByUsername(username);
+    public List<Patient> findAll(Sort sort) {
+        return patientRepository.findAll(sort);
     }
 
     @Override
-    public List<Patient> findAll(Sort sort) {
-        return patientRepository.findAll(sort);
+    public Patient findByUsername(String username) {
+        return patientRepository.findByUsername(username);
     }
 }
