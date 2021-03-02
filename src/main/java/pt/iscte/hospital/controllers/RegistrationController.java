@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
+import pt.iscte.hospital.entities.Login;
 import pt.iscte.hospital.entities.Nationality;
 import pt.iscte.hospital.entities.Patient;
 import pt.iscte.hospital.exceptions.ImageSizeException;
@@ -76,24 +77,7 @@ public class RegistrationController {
     public String returnToLoginPage(@ModelAttribute Patient user,
                                     @RequestParam("file") MultipartFile file,
                                     ModelMap mpError,
-                                    @RequestParam String name,
-                                    @RequestParam String password,
-                                    @RequestParam String confirmarPassword2,
-                                    @RequestParam String sex,
-                                    @RequestParam String nationality,
-                                    @RequestParam @Nullable String address,
-                                    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
-                                    @RequestParam Date birthday,
-                                    @RequestParam @Nullable String postCode,
-                                    @RequestParam String city,
-                                    @RequestParam String account,
-                                    @RequestParam Long phone,
-                                    @RequestParam @Nullable Long patientNumber,
-                                    @RequestParam String documentType,
-                                    @RequestParam Long documentNumber,
-                                    @RequestParam Long nif,
-                                    @RequestParam String username,
-                                    @RequestParam String email) {
+                                    @RequestParam String confirmarPassword2) {
 
         List<Nationality> nationalities = nationalityRepository.findAll();
 
@@ -109,7 +93,7 @@ public class RegistrationController {
             mpError.put("errorMsgPassword", errorMsgPassword);
             isFormValid = false;
         }
-        if (!password.equals(confirmarPassword2)) {
+        if (!user.getPassword().equals(confirmarPassword2)) {
             mpError.put("errorMsgPassword2", errorMsgPassword2);
             isFormValid = false;
         }
@@ -177,8 +161,6 @@ public class RegistrationController {
 
         if (file != null && !file.isEmpty() && !file.getContentType().equals("application/octet-stream")) {
             try {
-                System.out.println(file.getName());
-                System.out.println(file.getContentType());
                 String photoURL = imageUploadService.uploadImage(file, user.getUsername());
                 user.setPhotoURL(photoURL);
             } catch (IOException e) {
@@ -198,27 +180,13 @@ public class RegistrationController {
                 user.setPhotoURL("user-female.jpg");
             }
         }
+
         if (!isFormValid) {
-
-            mpError.put("returnName",name);
-            mpError.put("returnSex",sex);  //todo por a dar
-            mpError.put("returnBirthday", birthday);  //todo por a dar
-            mpError.put("returnAddress", address);
-            mpError.put("returnPostCode", postCode);
-            mpError.put("returnCity", city);
-            mpError.put("returnAccount", account);  //todo por a dar
-            mpError.put("returnNationality", nationality);  //todo por a dar
-            mpError.put("returnPhone", phone);
-            mpError.put("returnDocumentType", documentType);  //todo por a dar
-            mpError.put("returnDocumentNumber", documentNumber);
-            mpError.put("returnNif", nif);
-            mpError.put("returnPatientNumber", patientNumber);
-            mpError.put("returnUsername", username);
-            mpError.put("returnEmail", email);
-            mpError.put("returnPassword", password);
-
+            mpError.put("user", user);
+            //mpError.put("returnNationality", nationality);  //todo por a dar
             return "registration";
         }
+
         // Add user to database
         userService.addUser(user);
 

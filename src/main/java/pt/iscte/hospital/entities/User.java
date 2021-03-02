@@ -7,8 +7,9 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-@MappedSuperclass                   // https://vladmihalcea.com/the-best-way-to-use-entity-inheritance-with-jpa-and-hibernate/
-                                    // https://www.baeldung.com/hibernate-inheritance
+@MappedSuperclass
+// https://vladmihalcea.com/the-best-way-to-use-entity-inheritance-with-jpa-and-hibernate/
+// https://www.baeldung.com/hibernate-inheritance
 public abstract class User {
     // Attributes
     @Id
@@ -107,7 +108,10 @@ public abstract class User {
         return birthday;
     }
 
-    public String getBirthdayStr(){
+    public String getBirthdayStr() {
+        if (birthday == null) {
+            return "";
+        }
         DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
         return dateFormat.format(birthday);
     }
