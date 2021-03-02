@@ -19,7 +19,7 @@
                 <div class="perfil-row">
                 <div class="cell-row cell-align-center">
                     <div class="user-type">
-                        <p id="user_name">${user.getName()}</p>
+                        <p id="user_name">${user.getFirstAndLastName()}</p>
                         <p id="user_category">${user.getAccount()}</p>
                     </div>
                 </div>
@@ -35,6 +35,10 @@
 
 
             <div class="perfil-main-col">
+                <div class="perfil-row">
+                     <div class="cell-row">Nome Completo</div>
+                     <div class="cell-row">${user.getName()}</div>
+                </div>
                 <div class="perfil-row">
                     <div class="cell-row">Sexo</div>
                     <div class="cell-row">${user.getSex()}</div>
