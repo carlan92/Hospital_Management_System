@@ -25,7 +25,7 @@
             </div>
         </div>
 
-        <form class="registry-form" action="/change_data" method="post">
+        <form class="registry-form" action="/change_data" method="post" enctype="multipart/form-data">
 
             <div class="perfil-main-col">
 
@@ -59,7 +59,7 @@
                     <div class="cell-row">
                         <label for="dataDeNascimento_id">Data de Nascimento *</label>
                         <input id="dataDeNascimento_id" type="date" class="form-input" name="birthday"
-                               required value="${user.getBirthday()}">
+                               required value="${user.getBirthdayStr()}">
                         <p class="msg-error">${errorMsgBirthday}</p>
                     </div>
                 </div>
