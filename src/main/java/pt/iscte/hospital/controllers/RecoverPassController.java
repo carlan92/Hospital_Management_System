@@ -7,7 +7,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import pt.iscte.hospital.entities.Patient;
-import pt.iscte.hospital.entities.User;
 import pt.iscte.hospital.services.LoginService;
 import pt.iscte.hospital.services.UserService;
 

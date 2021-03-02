@@ -17,6 +17,7 @@ import pt.iscte.hospital.exceptions.ImageSizeException;
 import pt.iscte.hospital.exceptions.ImageTypeException;
 import pt.iscte.hospital.repositories.NationalityRepository;
 import pt.iscte.hospital.services.ImageUploadService;
+import pt.iscte.hospital.services.NationalityService;
 import pt.iscte.hospital.services.RegistrationService;
 import pt.iscte.hospital.services.UserService;
 
@@ -35,7 +36,7 @@ public class RegistrationController {
     @Autowired
     RegistrationService registrationService;
     @Autowired
-    NationalityRepository nationalityRepository;
+    NationalityService nationalityService;
 
     private static final String errorMsgName = "Nome inválido";
     private static final String errorMsgSex = "Escolha uma opção válida";
@@ -65,7 +66,7 @@ public class RegistrationController {
     // Methods
     @GetMapping(value = "/registration")
     public String showRegistrationPage(ModelMap modelMap) {
-        List<Nationality> nationalities = nationalityRepository.findAll();
+        List<Nationality> nationalities = nationalityService.findAll();
 
         modelMap.put("nationalities", nationalities);
         modelMap.put("user", new Patient());
@@ -79,7 +80,7 @@ public class RegistrationController {
                                     ModelMap mpError,
                                     @RequestParam String confirmarPassword2) {
 
-        List<Nationality> nationalities = nationalityRepository.findAll();
+        List<Nationality> nationalities = nationalityService.findAll();
 
         mpError.put("nationalities", nationalities);
 
@@ -183,7 +184,6 @@ public class RegistrationController {
 
         if (!isFormValid) {
             mpError.put("user", user);
-            //mpError.put("returnNationality", nationality);  //todo por a dar
             return "registration";
         }
 

@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import pt.iscte.hospital.entities.*;
-import pt.iscte.hospital.repositories.NationalityRepository;
+import pt.iscte.hospital.services.NationalityService;
 import pt.iscte.hospital.services.RegistrationService;
 import pt.iscte.hospital.services.SpecialityService;
 import pt.iscte.hospital.services.UserService;
@@ -28,7 +28,7 @@ public class ReceptionistController {
     @Autowired
     UserService userService;
     @Autowired
-    NationalityRepository nationalityRepository;
+    NationalityService nationalityService;
 
     private static final String errorMsgSpeciality = "Já existe essa especialidade";
     private static final String errorMsgLenght="Nome de especialidade demasiado curto";
@@ -64,7 +64,7 @@ public class ReceptionistController {
 
     @GetMapping(value = "/add-patient")
     public String addPatientPage(ModelMap modelMap){
-        List<Nationality> nationalities = nationalityRepository.findAll();
+        List<Nationality> nationalities = nationalityService.findAll();
         User userLogged = Login.getConnectedUser();
 
         modelMap.put("nationalities", nationalities);
