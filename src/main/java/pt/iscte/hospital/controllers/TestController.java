@@ -2,10 +2,14 @@ package pt.iscte.hospital.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import pt.iscte.hospital.entities.*;
+import pt.iscte.hospital.security.IAuthenticationFacade;
 import pt.iscte.hospital.services.DoctorService;
 import pt.iscte.hospital.services.PatientService;
 import pt.iscte.hospital.services.SpecialityService;
@@ -23,8 +27,14 @@ public class TestController {
     @Autowired
     SpecialityService specialityService;
 
+    @Autowired
+    private IAuthenticationFacade authenticationFacade;
+
     @GetMapping(value = "/test")
     public String pageTest(ModelMap modelMap) {
+
+
+        System.out.println("User : " + authenticationFacade.getAuthentication().getName());
         User userLogged = Login.getConnectedUser();
 
         modelMap.put("user_logged", userLogged);
