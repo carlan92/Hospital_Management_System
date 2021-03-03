@@ -1,8 +1,6 @@
 package pt.iscte.hospital.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.format.annotation.DateTimeFormat;
-import org.springframework.lang.Nullable;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,7 +13,6 @@ import pt.iscte.hospital.services.RegistrationService;
 import pt.iscte.hospital.services.SpecialityService;
 import pt.iscte.hospital.services.UserService;
 
-import java.util.Date;
 import java.util.List;
 
 @Controller

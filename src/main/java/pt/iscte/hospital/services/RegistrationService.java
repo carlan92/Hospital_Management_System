@@ -37,10 +37,10 @@ public interface RegistrationService {
 
     boolean validAddress(User user);
 
-    public boolean validDocumentNumberUnique(User user);
+    boolean validDocumentNumberUnique(User user);
 
-    public boolean validNifUnique (User user);
+    boolean validNifUnique (User user);
 
-    public boolean validPatientNumberUnique(User user);
+    boolean validPatientNumberUnique(User user);
 }
 

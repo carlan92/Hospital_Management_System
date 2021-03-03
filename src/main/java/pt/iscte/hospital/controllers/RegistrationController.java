@@ -128,9 +128,9 @@ public class RegistrationController {
             mpError.put("errorMsgDocumentNumber", errorMsgDocumentNumber);
             isFormValid = false;
         }
-        if(!registrationService.validDocumentNumberUnique(user)){
+        if (!registrationService.validDocumentNumberUnique(user)) {
             mpError.put("errorMsgDocumentNumber", errorMsgDocumentNumber2);
-            isFormValid =false;
+            isFormValid = false;
         }
         if (!registrationService.validPatientNumber(user)) {
             mpError.put("errorMsgPatientNumber", errorMsgPatientNumber);
@@ -170,9 +170,7 @@ public class RegistrationController {
         }
 
 
-        if (file != null && !file.isEmpty() && !file.getContentType().
-
-                equals("application/octet-stream")) {
+        if (file != null && !file.isEmpty() && !file.getContentType().equals("application/octet-stream")) {
             try {
                 String photoURL = imageUploadService.uploadImage(file, user.getUsername());
                 user.setPhotoURL(photoURL);
