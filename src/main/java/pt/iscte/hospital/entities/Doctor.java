@@ -6,38 +6,38 @@ import java.util.List;
 import java.util.Set;
 
 @Entity
-@DiscriminatorValue("Doctor")
+@PrimaryKeyJoinColumn(name = "doctor_id")
 public class Doctor extends Employee {
     // Attributes
     private Long licenseNumber;
 
-    @ManyToMany     //https://www.baeldung.com/jpa-many-to-many
-    @JoinTable(
-            name = "doctor_has_speciality",
-            joinColumns = @JoinColumn(name = "user_id"),
-            inverseJoinColumns = @JoinColumn(name = "speciality_id"))
-    private Set<Speciality> specialities;
+    @ManyToOne
+    @JoinColumn(name="speciality_id", nullable=false)
+    private Speciality speciality;
 
     @OneToMany(mappedBy="doctor")
     private Set<Slot> slots;
 
+
     // Constructors
     public Doctor() {
+        super.setAccount("Médico");
     }
 
     public Doctor(Long userId,
                   String name, String username,
                   String sex, Date birthday,
                   String address, String postCode,
-                  String city, String account,
+                  String city,
                   String nationality, String documentType,
                   Long documentNumber, Long nif,
                   Long patientNumber, Long phone,
-                  String email, String password, String photoURL, Long licenseNumber, Set<Speciality> specialities) {
-        super(userId, name, username, sex, birthday, address, postCode, city, account, nationality, documentType,
+                  String email, String password, String photoURL, Long licenseNumber, Speciality speciality) {
+        super(userId, name, username, sex, birthday, address, postCode, city, nationality, documentType,
                 documentNumber, nif, patientNumber, phone, email, password, photoURL);
+        super.setAccount("Médico");
         this.licenseNumber = licenseNumber;
-        this.specialities = specialities;
+        this.speciality = speciality;
     }
 
     // Methods
@@ -49,15 +49,17 @@ public class Doctor extends Employee {
         this.licenseNumber = licenseNumber;
     }
 
-    public Set<Speciality> getSpecialities() {
-        return specialities;
+    public Speciality getSpecialities() {
+        return speciality;
     }
 
     @Override
     public String toString() {
         return "Doctor{" +
-                ", licenseNumber=" + licenseNumber +
                 super.toString() +
+                ", licenseNumber=" + licenseNumber +
+                ", speciality=" + speciality +
+                ", slots=" + slots +
                 '}';
     }
 }

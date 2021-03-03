@@ -7,18 +7,17 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-@MappedSuperclass
-// https://vladmihalcea.com/the-best-way-to-use-entity-inheritance-with-jpa-and-hibernate/
-// https://www.baeldung.com/hibernate-inheritance
+@Entity
+@Inheritance(strategy = InheritanceType.JOINED)
 public abstract class User {
     // Attributes
     @Id
-    @GeneratedValue
+    @GeneratedValue  (strategy = GenerationType.IDENTITY)
     private Long userId;
     private String name;
     private String username;
     private String sex;
-    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date birthday;
     private String address;
     private String postCode;
@@ -39,7 +38,7 @@ public abstract class User {
     }
 
     public User(Long userId, String name, String username, String sex, Date birthday, String address,
-                String postCode, String city, String account, String nationality, String documentType,
+                String postCode, String city, String nationality, String documentType,
                 Long documentNumber, Long nif, Long patientNumber, Long phone,
                 String email, String password, String photoURL) {
         this.userId = userId;
