@@ -14,9 +14,6 @@ public class MainController {
 
         modelMap.put("user_logged", userLogged);
 
-        if(!Login.isConnected()){
-            return "redirect:/";
-        }
         return "main";
     }
 
