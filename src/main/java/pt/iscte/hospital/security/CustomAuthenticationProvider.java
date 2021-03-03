@@ -6,12 +6,10 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 import pt.iscte.hospital.services.UserService;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Component
@@ -29,23 +27,19 @@ public class CustomAuthenticationProvider implements AuthenticationProvider {
         String username = authentication.getName();
         String password = authentication.getCredentials().toString();
 
-        if (userService.validateUser(username, password)) {   // TODO userservice
+        if (userService.validateUser(username, password)) {
 
             // use the credentials
             // and authenticate against the third-party system
 
-            // TODO lista de roles
-            List<GrantedAuthority> roles = new ArrayList<>();
-            String account= userService.findAccountByUsername(username);
-            System.out.println("Conta do tipo"+account); //todo para teste eliminar depois
-
-            roles.add(new SimpleGrantedAuthority("ROLE_PATIENT"));
+            List<GrantedAuthority> roles = userService.getAuthorities(username);
 
             return new UsernamePasswordAuthenticationToken(
                     username, password, roles);//SimpleGrantedAuthority "ROLE_"
         } else {
             return null;
         }
+
     }
 
     @Override

@@ -1,7 +1,13 @@
 package pt.iscte.hospital.entities;
 
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import pt.iscte.hospital.security.Roles;
+
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -50,6 +56,13 @@ public class Doctor extends Employee {
 
     public Speciality getSpecialities() {
         return speciality;
+    }
+
+    @Override
+    public List<GrantedAuthority> getAuthorities(){
+        List<GrantedAuthority> roles=new ArrayList<>();
+        roles.add(new SimpleGrantedAuthority(Roles.ROLE_DOCTOR.name()));
+        return roles;
     }
 
     @Override

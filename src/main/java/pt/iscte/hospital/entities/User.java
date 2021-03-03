@@ -1,11 +1,13 @@
 package pt.iscte.hospital.entities;
 
 import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.security.core.GrantedAuthority;
 
 import javax.persistence.*;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
@@ -222,6 +224,8 @@ public abstract class User {
     public void setPhotoURL(String photoURL) {
         this.photoURL = photoURL;
     }
+
+    public abstract List<GrantedAuthority> getAuthorities();
 
     @Override
     public String toString() {

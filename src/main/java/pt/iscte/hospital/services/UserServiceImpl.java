@@ -1,10 +1,13 @@
 package pt.iscte.hospital.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.GrantedAuthority;
 import org.springframework.stereotype.Service;
 import pt.iscte.hospital.entities.*;
 import pt.iscte.hospital.repositories.UserRepository;
 import pt.iscte.hospital.security.IAuthenticationFacade;
+
+import java.util.List;
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -26,7 +29,6 @@ public class UserServiceImpl implements UserService {
     @Override
     public User currentUser() {
         String username = authenticationFacade.getAuthentication().getName();
-        // procurar na base de dados
         User user = userRepository.findByUsername(username);
 
 
@@ -57,8 +59,11 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public String findAccountByUsername(String username) {
-        return userRepository.findAccountByUsername(username);
+    public List<GrantedAuthority> getAuthorities(String username) {
+        User user = userRepository.findByUsername(username);
+
+        return user.getAuthorities();
     }
+
 }
 
