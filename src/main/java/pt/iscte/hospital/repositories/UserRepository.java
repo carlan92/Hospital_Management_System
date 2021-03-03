@@ -8,4 +8,5 @@ import pt.iscte.hospital.entities.User;
 public interface UserRepository extends JpaRepository<User,Long> {
     User findByUsername(String username);
     String findAccountByUsername(String username);
+    User findByEmail(String email);
 }

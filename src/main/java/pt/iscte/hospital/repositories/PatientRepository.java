@@ -6,8 +6,8 @@ import pt.iscte.hospital.entities.Patient;
 
 @Repository
 public interface PatientRepository extends JpaRepository <Patient,Long>{
-    public Patient findByName(String name);
-    public Patient findByEmail(String email);
-    public Patient findByUsername(String username);
+    Patient findByName(String name);
+    Patient findByEmail(String email);
+    Patient findByUsername(String username);
 
 }
