@@ -6,7 +6,7 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import pt.iscte.hospital.entities.Patient;
+import pt.iscte.hospital.entities.User;
 import pt.iscte.hospital.services.LoginService;
 import pt.iscte.hospital.services.UserService;
 
@@ -32,7 +32,7 @@ public class RecoverPassController {
                                     @RequestParam String password1, @RequestParam String password2) {
         if (loginService.validateUserNIF(username, user_nif)) {
             if (password1.equals(password2)) {
-                Patient user = userService.findUser(username);
+                User user = userService.findUser(username);
                 user.setPassword(password1);
                 userService.addUser(user);
                 return "redirect:/login";

@@ -35,7 +35,9 @@ public class CustomAuthenticationProvider implements AuthenticationProvider {
             // and authenticate against the third-party system
 
             // TODO lista de roles
-            List<GrantedAuthority> roles = new ArrayList<GrantedAuthority>();
+            List<GrantedAuthority> roles = new ArrayList<>();
+            String account= userService.findAccountByUsername(username);
+            System.out.println("Conta do tipo"+account); //todo para teste eliminar depois
 
             roles.add(new SimpleGrantedAuthority("ROLE_PATIENT"));
 
