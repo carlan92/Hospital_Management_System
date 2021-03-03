@@ -13,6 +13,7 @@ import pt.iscte.hospital.security.IAuthenticationFacade;
 import pt.iscte.hospital.services.DoctorService;
 import pt.iscte.hospital.services.PatientService;
 import pt.iscte.hospital.services.SpecialityService;
+import pt.iscte.hospital.services.UserService;
 
 import java.util.List;
 
@@ -28,14 +29,17 @@ public class TestController {
     SpecialityService specialityService;
 
     @Autowired
-    private IAuthenticationFacade authenticationFacade;
+    IAuthenticationFacade authenticationFacade;
+
+    @Autowired
+    UserService userService;
 
     @GetMapping(value = "/test")
     public String pageTest(ModelMap modelMap) {
 
 
         System.out.println("User : " + authenticationFacade.getAuthentication().getName());
-        User userLogged = Login.getConnectedUser();
+        User userLogged = userService.currentUser();
 
         modelMap.put("user_logged", userLogged);
         return "test";

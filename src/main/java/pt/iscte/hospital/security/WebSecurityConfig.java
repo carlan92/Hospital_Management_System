@@ -45,6 +45,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/login*", "/", "/recoverPass", "/recoverToLogin", "/registration").permitAll()
                 .antMatchers("/registrationToLogin", "/temp", "/test").permitAll()
                 .antMatchers("/*.css", "/fonts/**", "/imagens/**", "*.html" , "*.ico").permitAll()
+                .antMatchers("/uploaded_images/**").hasRole("PATIENT")
                 .anyRequest().authenticated()
                 .and().formLogin()
                 .loginPage("/login")

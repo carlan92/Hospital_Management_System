@@ -8,4 +8,5 @@ public interface UserService {
     boolean validateUser(String username, String password);
     public void addUser(Patient user);
     public Patient findUser(String username);
+    public User currentUser();
 }
