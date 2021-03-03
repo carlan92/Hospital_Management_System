@@ -10,7 +10,7 @@ import java.util.List;
 @Service
 public class NationalityServiceImpl implements NationalityService {
     @Autowired
-    NationalityRepository nationalityRepository;
+    private NationalityRepository nationalityRepository;
 
     @Override
     public List<Nationality> findAll() {

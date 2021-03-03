@@ -11,7 +11,7 @@ import java.util.List;
 @Service
 public class PatientServiceImpl implements PatientService{
     @Autowired
-    PatientRepository patientRepository;
+    private PatientRepository patientRepository;
 
     @Override
     public Patient findByUsername(String username) {

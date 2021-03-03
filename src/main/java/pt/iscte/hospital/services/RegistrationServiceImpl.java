@@ -12,9 +12,9 @@ import java.text.SimpleDateFormat;
 @Service
 public class RegistrationServiceImpl implements RegistrationService {
     @Autowired
-    PatientRepository patientRepository;
+    private PatientRepository patientRepository;
     @Autowired
-    NationalityRepository nationalityRepository;
+    private NationalityRepository nationalityRepository;
 
 
     public boolean validName(User user) {

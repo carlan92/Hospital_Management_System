@@ -1,8 +1,6 @@
 package pt.iscte.hospital.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.format.annotation.DateTimeFormat;
-import org.springframework.lang.Nullable;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -13,7 +11,6 @@ import org.springframework.web.multipart.MultipartFile;
 import pt.iscte.hospital.entities.Login;
 import pt.iscte.hospital.entities.Nationality;
 import pt.iscte.hospital.entities.Patient;
-import pt.iscte.hospital.entities.User;
 import pt.iscte.hospital.exceptions.ImageSizeException;
 import pt.iscte.hospital.exceptions.ImageTypeException;
 import pt.iscte.hospital.services.ImageUploadService;
@@ -27,13 +24,13 @@ import java.util.List;
 @Controller
 public class ChangeDataController {
     @Autowired
-    UserService userService;
+    private UserService userService;
     @Autowired
-    ImageUploadService imageUploadService;
+    private ImageUploadService imageUploadService;
     @Autowired
-    RegistrationService registrationService;
+    private RegistrationService registrationService;
     @Autowired
-    NationalityService nationalityService;
+    private NationalityService nationalityService;
 
     private static final String errorMsgName = "Nome inválido";
     private static final String errorMsgSex = "Escolha uma opção válida";

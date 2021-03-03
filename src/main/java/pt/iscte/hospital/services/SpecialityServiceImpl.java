@@ -3,17 +3,15 @@ package pt.iscte.hospital.services;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
-import pt.iscte.hospital.entities.Nationality;
 import pt.iscte.hospital.entities.Speciality;
 import pt.iscte.hospital.repositories.SpecialityRepository;
 
 import java.util.List;
-import java.util.Locale;
 
 @Service
 public class SpecialityServiceImpl implements SpecialityService {
     @Autowired
-    SpecialityRepository specialityRepository;
+    private SpecialityRepository specialityRepository;
 
     @Override
     public void addSpeciality(Speciality speciality) {

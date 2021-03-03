@@ -16,7 +16,7 @@ public class UserServiceImpl implements UserService {
     private IAuthenticationFacade authenticationFacade;
 
     @Autowired
-    UserRepository userRepository;
+    private UserRepository userRepository;
 
     public boolean validateUser(Patient user) {
         if (user == null) {

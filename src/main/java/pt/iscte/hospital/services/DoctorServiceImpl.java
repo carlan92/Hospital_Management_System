@@ -4,7 +4,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import pt.iscte.hospital.entities.Doctor;
-import pt.iscte.hospital.entities.Patient;
 import pt.iscte.hospital.repositories.DoctorRepository;
 
 import java.util.List;
@@ -12,7 +11,7 @@ import java.util.List;
 @Service
 public class DoctorServiceImpl implements DoctorService {
     @Autowired
-    DoctorRepository doctorRepository;
+    private DoctorRepository doctorRepository;
 
     @Override
     public void chamarUtente(Doctor doctor) {

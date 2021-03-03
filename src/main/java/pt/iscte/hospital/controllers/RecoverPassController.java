@@ -14,9 +14,9 @@ import pt.iscte.hospital.services.UserService;
 @Controller
 public class RecoverPassController {
     @Autowired
-    UserService userService;
+    private UserService userService;
     @Autowired
-    LoginService loginService;
+    private LoginService loginService;
 
     @GetMapping(value = "/recoverPass")
     public String showRecoverPassPage(ModelMap modelMap) {
