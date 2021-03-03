@@ -73,7 +73,7 @@
                                 <div class="cell-row cell-morada">
                                     <label for="morada_id">Morada</label>
                                     <input id="morada_id" type="text" class="form-input" value="${user.getAddress()}"
-                                        name="user.getAddress()" placeholder="A sua morada" />
+                                        name="address" placeholder="A sua morada" />
                                     <p class="msg-error">${errorMsgAddress}</p>
                                 </div>
                             </div>
