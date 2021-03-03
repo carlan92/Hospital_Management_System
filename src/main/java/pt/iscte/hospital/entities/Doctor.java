@@ -11,12 +11,9 @@ public class Doctor extends Employee {
     // Attributes
     private Long licenseNumber;
 
-    @ManyToMany     //https://www.baeldung.com/jpa-many-to-many
-    @JoinTable(
-            name = "doctor_has_speciality",
-            joinColumns = @JoinColumn(name = "user_id"),
-            inverseJoinColumns = @JoinColumn(name = "speciality_id"))
-    private Set<Speciality> specialities;
+    @ManyToOne
+    @JoinColumn(name="speciality_id", nullable=false)    //https://www.baeldung.com/jpa-many-to-many
+    private Speciality speciality;
 
     @OneToMany(mappedBy="doctor")
     private Set<Slot> slots;
@@ -33,11 +30,11 @@ public class Doctor extends Employee {
                   String nationality, String documentType,
                   Long documentNumber, Long nif,
                   Long patientNumber, Long phone,
-                  String email, String password, String photoURL, Long licenseNumber, Set<Speciality> specialities) {
+                  String email, String password, String photoURL, Long licenseNumber, Speciality speciality) {
         super(userId, name, username, sex, birthday, address, postCode, city, account, nationality, documentType,
                 documentNumber, nif, patientNumber, phone, email, password, photoURL);
         this.licenseNumber = licenseNumber;
-        this.specialities = specialities;
+        this.speciality = speciality;
     }
 
     // Methods
@@ -49,8 +46,8 @@ public class Doctor extends Employee {
         this.licenseNumber = licenseNumber;
     }
 
-    public Set<Speciality> getSpecialities() {
-        return specialities;
+    public Speciality getSpecialities() {
+        return speciality;
     }
 
     @Override

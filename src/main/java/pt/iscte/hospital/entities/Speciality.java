@@ -12,7 +12,7 @@ public class Speciality {
 
     private String name;
 
-    @ManyToMany(mappedBy = "specialities")
+    @OneToMany(mappedBy="speciality")
     private List<Doctor> doctors;
 
 
