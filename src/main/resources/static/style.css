@@ -1352,6 +1352,24 @@ select option:disabled {
   max-height: 85px;
 }
 
+/*Contacts*/
+
+.contactbox{
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+
+.contactbox1{
+  font-size: x-large;
+  font-weight: bold;
+}
+
+.contactbox2{
+  margin-top: 30px;
+  position: relative;  
+ }
+
+
 @media screen and (max-height: 450px) {
   .sidenav {
     padding-top: 15px;
