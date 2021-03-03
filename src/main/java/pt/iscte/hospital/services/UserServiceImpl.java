@@ -20,12 +20,25 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    public boolean validateUser(String username, String password) {
+        System.out.println("Verificar pass: " + password); // TODO verificar se a pass está encriptada
+        User userLogged = patientRepository.findByUsername(username);
+        if (userLogged != null){
+            //ver password
+            if (userLogged.getPassword().equals(password)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    @Override
     public void addUser(Patient user) {
         patientRepository.save(user);
     }
 
     @Override
-    public Patient findUser(String username){
+    public Patient findUser(String username) {
         return patientRepository.findByUsername(username);
     }
 }

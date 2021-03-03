@@ -5,6 +5,7 @@ import pt.iscte.hospital.entities.User;
 
 public interface UserService {
     public boolean validateUser(Patient user);
+    boolean validateUser(String username, String password);
     public void addUser(Patient user);
     public Patient findUser(String username);
 }

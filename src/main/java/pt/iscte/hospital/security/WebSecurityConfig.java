@@ -1,5 +1,6 @@
-package pt.iscte.hospital.configuration;
+package pt.iscte.hospital.security;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -15,16 +16,14 @@ import org.springframework.security.web.authentication.www.BasicAuthenticationEn
 @Configuration
 @EnableWebSecurity
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
+    @Autowired
+    private CustomAuthenticationProvider authProvider;
+
 
     @Override
     protected void configure(final AuthenticationManagerBuilder auth) throws Exception {
         // authentication manager (see below)
-        auth.inMemoryAuthentication()
-                .withUser("user1").password(passwordEncoder().encode("user1")).roles("USER")
-                .and()
-                .withUser("user2").password(passwordEncoder().encode("user2")).roles("USER")
-                .and()
-                .withUser("admin").password(passwordEncoder().encode("admin")).roles("ADMIN");
+        auth.authenticationProvider(authProvider);
     }
 
     @Override
@@ -33,20 +32,29 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         http
                 .csrf().disable()
                 .authorizeRequests()
-                .antMatchers("/admin/**").hasRole("ADMIN")
-                .antMatchers("/anonymous*").anonymous()
-                .antMatchers("/login*").permitAll()
-                .antMatchers("/*.css", "/fonts/**", "/imagens/**").permitAll()
+                .antMatchers("/change_data/**", "/make-appointment", "/historicoPagamentos").hasRole("PATIENT")
+                .antMatchers("/patient-inicio").hasRole("PATIENT")
+                .antMatchers("/change_data/**").hasRole("PATIENT")
+                .antMatchers("/change_data/**").hasRole("PATIENT")
+                .antMatchers("/admin/**").hasRole("EMPLOYEE")
+                .antMatchers("/admin/**", "/add-speciality", "/add-patient", "/faturaForm", "/historicoPagamentos", "/lista-utentes").hasRole("RECEPTIONIST")
+                .antMatchers("/doctor-consultas", "/lista-medicos").hasRole("RECEPTIONIST")
+                .antMatchers("/doctor-inicio", "/lista-utentes", "/doctor-consultas", "/info-appointment").hasRole("DOCTOR")
+                .antMatchers("/admin/**").hasRole("UNIT_RESPONSIBLE")
+                .antMatchers("/user**", "/main", "/userToMain").hasAnyRole("PATIENT", "EMPLOYEE", "RECEPTIONIST", "DOCTOR", "UNIT_RESPONSIBLE")
+                .antMatchers("/login*", "/", "/recoverPass", "/recoverToLogin", "/registration").permitAll()
+                .antMatchers("/registrationToLogin", "/temp", "/test").permitAll()
+                .antMatchers("/*.css", "/fonts/**", "/imagens/**", "*.html" , "*.ico").permitAll()
                 .anyRequest().authenticated()
                 .and().formLogin()
                 .loginPage("/login")
-                .loginProcessingUrl("/perform_login")
+                .loginProcessingUrl("/login")
                 .defaultSuccessUrl("/main", true)
                 .failureUrl("/login.html?error=true")
                 .failureHandler(new AuthenticationEntryPointFailureHandler(new BasicAuthenticationEntryPoint()))
                 .and()
                 .logout()
-                .logoutUrl("/perform_logout")
+                .logoutUrl("/logout")
                 .deleteCookies("JSESSIONID")
                 .logoutSuccessHandler(new HttpStatusReturningLogoutSuccessHandler());
         // ...
