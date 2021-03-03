@@ -54,8 +54,8 @@ public class ChangeDataController {
         List<Nationality> nationalities = nationalityService.findAll();
 
         modelMap.put("nationalities", nationalities);
-        modelMap.put("user_logged", Login.getConnectedUser());
-        modelMap.put("user", Login.getConnectedUser());
+        modelMap.put("user_logged", userService.currentUser());
+        modelMap.put("user", userService.currentUser());
         return "change_data";
     }
 
@@ -119,7 +119,7 @@ public class ChangeDataController {
 
         if (file != null && !file.isEmpty() && !file.getContentType().equals("application/octet-stream")) {
             try {
-                String photoURL = imageUploadService.uploadImage(file, Login.getConnectedUser().getUsername());
+                String photoURL = imageUploadService.uploadImage(file, userService.currentUser().getUsername());
                 user.setPhotoURL(photoURL);
             } catch (IOException e) {
                 modelMap.put("errorMsgPhotoUpload", errorMsgPhotoUpload);
@@ -132,7 +132,7 @@ public class ChangeDataController {
                 isFormValid = false;
             }
         } else {
-            user.setPhotoURL(Login.getConnectedUser().getPhotoURL());
+            user.setPhotoURL(userService.currentUser().getPhotoURL());
         }
 
 
@@ -142,15 +142,15 @@ public class ChangeDataController {
 
             modelMap.put("nationalities", nationalities);
 
-            modelMap.put("user_logged", Login.getConnectedUser());
+            modelMap.put("user_logged", userService.currentUser());
             modelMap.put("user", user);
             return "change_data";
         }
-        user.setUserId(Login.getConnectedUser().getUserId());
-        user.setEmail(Login.getConnectedUser().getEmail());
-        user.setUsername(Login.getConnectedUser().getUsername());
-        user.setPassword(Login.getConnectedUser().getPassword());
-        user.setAccount(Login.getConnectedUser().getAccount());
+        user.setUserId(userService.currentUser().getUserId());
+        user.setEmail(userService.currentUser().getEmail());
+        user.setUsername(userService.currentUser().getUsername());
+        user.setPassword(userService.currentUser().getPassword());
+        user.setAccount(userService.currentUser().getAccount());
 
         userService.addUser(user);
         Login.setConnectedUser(user);

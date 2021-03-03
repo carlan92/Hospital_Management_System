@@ -56,7 +56,7 @@ public class ReceptionistController {
     // Methods
     @GetMapping(value = "/add-speciality")
     public String addSpecialityPage(ModelMap modelMap){
-        User userLogged = Login.getConnectedUser();
+        User userLogged = userService.currentUser();
 
         modelMap.put("user_logged", userLogged);
         return ("add-speciality");
@@ -65,7 +65,7 @@ public class ReceptionistController {
     @GetMapping(value = "/add-patient")
     public String addPatientPage(ModelMap modelMap){
         List<Nationality> nationalities = nationalityService.findAll();
-        User userLogged = Login.getConnectedUser();
+        User userLogged = userService.currentUser();
 
         modelMap.put("nationalities", nationalities);
         modelMap.put("user_logged", userLogged);

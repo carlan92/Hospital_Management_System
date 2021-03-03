@@ -44,7 +44,7 @@ public class TestController {
 
     @GetMapping(value = "/faturaForm")
     public String pageFaturaForm(ModelMap modelMap) {
-        User userLogged = Login.getConnectedUser();
+        User userLogged = userService.currentUser();
 
         modelMap.put("user_logged", userLogged);
         return "faturaForm";
@@ -52,7 +52,7 @@ public class TestController {
 
     @GetMapping(value = "/historicoPagamentos")
     public String page(ModelMap modelMap) {
-        User userLogged = Login.getConnectedUser();
+        User userLogged = userService.currentUser();
 
         modelMap.put("user_logged", userLogged);
         return "historicoPagamentos";
@@ -62,7 +62,7 @@ public class TestController {
     public String showListaUtentes(ModelMap modelMap) {
         List<Speciality> specialities = specialityService.findAll(Sort.by(Sort.Direction.ASC, "name"));
         List<Patient> patients = patientService.findAll(Sort.by(Sort.Direction.ASC, "name"));
-        User userLogged = Login.getConnectedUser();
+        User userLogged = userService.currentUser();
 
         modelMap.put("specialities", specialities);
         modelMap.put("patients", patients);
@@ -73,7 +73,7 @@ public class TestController {
     @GetMapping(value = "/doctor-consultas")
     public String showDoctorConsultas(ModelMap modelMap) {
         List<Speciality> specialities = specialityService.findAll(Sort.by(Sort.Direction.ASC, "name"));
-        User userLogged = Login.getConnectedUser();
+        User userLogged = userService.currentUser();
 
         modelMap.put("specialities", specialities);
         modelMap.put("user_logged", userLogged);
@@ -84,7 +84,7 @@ public class TestController {
     public String showListaMedicos(ModelMap modelMap) {
         List<Speciality> specialities = specialityService.findAll(Sort.by(Sort.Direction.ASC, "name"));
         List<Doctor> doctors = doctorService.findAll(Sort.by(Sort.Direction.ASC, "name"));
-        User userLogged = Login.getConnectedUser();
+        User userLogged = userService.currentUser();
 
         modelMap.put("specialities", specialities);
         modelMap.put("doctors", doctors);
@@ -94,7 +94,7 @@ public class TestController {
 
     @GetMapping(value = "/info-appointment")
     public String showInfoConsulta(ModelMap modelMap) {
-        User userLogged = Login.getConnectedUser();
+        User userLogged = userService.currentUser();
 
         modelMap.put("user_logged", userLogged);
         return "info-appointment";
@@ -102,7 +102,7 @@ public class TestController {
 
     @GetMapping(value = "/patient-inicio")
     public String showPatientInicio(ModelMap modelMap) {
-        User userLogged = Login.getConnectedUser();
+        User userLogged = userService.currentUser();
 
         modelMap.put("user_logged", userLogged);
         return "patient-inicio";
