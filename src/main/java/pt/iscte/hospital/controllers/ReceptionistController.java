@@ -42,8 +42,11 @@ public class ReceptionistController {
     private static final String errorMsgNationality = "Escolha uma opção válida";
     private static final String errorMsgDocumentType = "Escolha uma opção válida";
     private static final String errorMsgDocumentNumber = "Número de documento inválido";
-    private static final String errorMsgNif = "Número de NIF inválido";
+    private static final String errorMsgDocumentNumber2 = "Numero de documento já existe";
+    private static final String errorMsgNif = "NIF inválido";
+    private static final String errorMsgNif2 = "NIF já existe";
     private static final String errorMsgPatientNumber = "Número de utente inválido";
+    private static final String errorMsgPatientNumber2 = "Numero de utente já existe";
     private static final String errorMsgPhone = "Número de telemóvel inválido";
     private static final String errorMsgEmail = "Este endereço já se encontra em utilização";
     private static final String errorMsgEmail2 = "Email inválido";
@@ -144,12 +147,24 @@ public class ReceptionistController {
             mpError.put("errorMsgDocumentNumber", errorMsgDocumentNumber);
             isFormValid = false;
         }
+        if(!registrationService.validDocumentNumberUnique(user)){
+            mpError.put("errorMsgDocumentNumber", errorMsgDocumentNumber2);
+            isFormValid =false;
+        }
         if (!registrationService.validPatientNumber(user)) {
             mpError.put("errorMsgPatientNumber", errorMsgPatientNumber);
             isFormValid = false;
         }
+        if (!registrationService.validPatientNumberUnique(user)) {
+            mpError.put("errorMsgPatientNumber", errorMsgPatientNumber2);
+            isFormValid = false;
+        }
         if (!registrationService.validNif(user)) {
             mpError.put("errorMsgNif", errorMsgNif);
+            isFormValid = false;
+        }
+        if (!registrationService.validNifUnique(user)) {
+            mpError.put("errorMsgNif", errorMsgNif2);
             isFormValid = false;
         }
         if (!registrationService.validCity(user)) {

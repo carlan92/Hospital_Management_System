@@ -43,8 +43,11 @@ public class ChangeDataController {
     private static final String errorMsgCity = "Nome de cidade inválida";
     private static final String errorMsgNationality = "Escolha uma opção válida";
     private static final String errorMsgDocumentType = "Escolha uma opção válida";
+    private static final String errorMsgDocumentNumber2 = "Numero de documento já existe";
     private static final String errorMsgDocumentNumber = "Número de documento inválido";
-    private static final String errorMsgNif = "Número de NIF inválido";
+    private static final String errorMsgNif = "NIF inválido";
+    private static final String errorMsgNif2 = "NIF já existe";
+    private static final String errorMsgPatientNumber2 = "Numero de utente já existe";
     private static final String errorMsgPatientNumber = "Número de utente inválido";
     private static final String errorMsgPhone = "Número de telemóvel inválido";
 
@@ -95,13 +98,32 @@ public class ChangeDataController {
             modelMap.put("errorMsgDocumentNumber", errorMsgDocumentNumber);
             isFormValid = false;
         }
+        if (!user.getDocumentNumber().equals(Login.getConnectedUser().getDocumentNumber())) {
+            if (!registrationService.validDocumentNumberUnique(user)) {
+                modelMap.put("errorMsgDocumentNumber", errorMsgDocumentNumber2);
+                isFormValid = false;
+            }
+        }
         if (!registrationService.validPatientNumber(user)) {
             modelMap.put("errorMsgPatientNumber", errorMsgPatientNumber);
             isFormValid = false;
         }
+        if (user.getPatientNumber()!=Login.getConnectedUser().getPatientNumber()&&user.getPatientNumber()!=null) {
+            if (!registrationService.validPatientNumberUnique(user)) {
+                modelMap.put("errorMsgPatientNumber", errorMsgPatientNumber2);
+                isFormValid = false;
+            }
+        }
         if (!registrationService.validNif(user)) {
             modelMap.put("errorMsgNif", errorMsgNif);
             isFormValid = false;
+        }
+        if (!user.getNif().equals(Login.getConnectedUser().getNif())) {
+            if (!registrationService.validNifUnique(user)) {
+                modelMap.put("errorMsgNif", errorMsgNif2);
+                isFormValid = false;
+            }
+
         }
         if (!registrationService.validCity(user)) {
             modelMap.put("errorMsgCity", errorMsgCity);

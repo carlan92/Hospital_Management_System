@@ -180,6 +180,30 @@ public class RegistrationServiceImpl implements RegistrationService {
             return false;
         }
     }
+    public boolean validNifUnique(User user){
+        User nifUnique = patientRepository.findByNif(user.getNif());
+        if (nifUnique != null) {
+            return false;
+        } else {
+            return true;
+        }
+    }
+    public boolean validPatientNumberUnique(User user){
+        User patientNumberUnique = patientRepository.findByPatientNumber(user.getPatientNumber());
+        if (patientNumberUnique != null) {
+            return false;
+        } else {
+            return true;
+        }
+    }
+    public boolean validDocumentNumberUnique(User user){
+        User documentNumberUnique = patientRepository.findByDocumentNumber(user.getDocumentNumber());
+        if (documentNumberUnique != null) {
+            return false;
+        } else {
+            return true;
+        }
+    }
 
 }
 

@@ -43,8 +43,11 @@ public class RegistrationController {
     private static final String errorMsgNationality = "Escolha uma opção válida";
     private static final String errorMsgDocumentType = "Escolha uma opção válida";
     private static final String errorMsgDocumentNumber = "Número de documento inválido";
-    private static final String errorMsgNif = "Número de NIF inválido";
+    private static final String errorMsgDocumentNumber2 = "Numero de documento já existe";
+    private static final String errorMsgNif = "NIF inválido";
+    private static final String errorMsgNif2 = "NIF já existe";
     private static final String errorMsgPatientNumber = "Número de utente inválido";
+    private static final String errorMsgPatientNumber2 = "Numero de utente já existe";
     private static final String errorMsgPhone = "Número de telemóvel inválido";
     private static final String errorMsgEmail = "Este endereço já se encontra em utilização";
     private static final String errorMsgEmail2 = "Email inválido";
@@ -125,12 +128,24 @@ public class RegistrationController {
             mpError.put("errorMsgDocumentNumber", errorMsgDocumentNumber);
             isFormValid = false;
         }
+        if(!registrationService.validDocumentNumberUnique(user)){
+            mpError.put("errorMsgDocumentNumber", errorMsgDocumentNumber2);
+            isFormValid =false;
+        }
         if (!registrationService.validPatientNumber(user)) {
             mpError.put("errorMsgPatientNumber", errorMsgPatientNumber);
             isFormValid = false;
         }
+        if (!registrationService.validPatientNumberUnique(user)) {
+            mpError.put("errorMsgPatientNumber", errorMsgPatientNumber2);
+            isFormValid = false;
+        }
         if (!registrationService.validNif(user)) {
             mpError.put("errorMsgNif", errorMsgNif);
+            isFormValid = false;
+        }
+        if (!registrationService.validNifUnique(user)) {
+            mpError.put("errorMsgNif", errorMsgNif2);
             isFormValid = false;
         }
         if (!registrationService.validCity(user)) {
@@ -155,7 +170,9 @@ public class RegistrationController {
         }
 
 
-        if (file != null && !file.isEmpty() && !file.getContentType().equals("application/octet-stream")) {
+        if (file != null && !file.isEmpty() && !file.getContentType().
+
+                equals("application/octet-stream")) {
             try {
                 String photoURL = imageUploadService.uploadImage(file, user.getUsername());
                 user.setPhotoURL(photoURL);
@@ -169,10 +186,10 @@ public class RegistrationController {
                 mpError.put("errorMsgPhotoUpload", String.format(errorMsgImageSize, imageUploadService.getImageMaxSize()));
                 isFormValid = false;
             }
-        }else{
-            if(user.getSex().equals("Masculino")){
+        } else {
+            if (user.getSex().equals("Masculino")) {
                 user.setPhotoURL("user-male.jpg");
-            } else{
+            } else {
                 user.setPhotoURL("user-female.jpg");
             }
         }
@@ -188,13 +205,13 @@ public class RegistrationController {
         userService.addUser(user);
 
         return "redirect:/login";
- }
+    }
 
     // Para testes apenas!
     @GetMapping(value = "/temp")
     public String showRegistrationPagetmp(ModelMap modelMap) {
         // TODO para testes
-           modelMap.put("user", new Patient());
+        modelMap.put("user", new Patient());
         modelMap.put("sidenav", "sidenavtemp");
 
         return "registration-temp";
