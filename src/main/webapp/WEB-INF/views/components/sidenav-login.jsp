@@ -32,8 +32,8 @@
             </div>
         </div>
 
-        <div class="sidenav_row log_out_box2">
-            <img src="imagens/noun_upskill.png" alt="" id="upskill_logo2" />
+        <div class="sidenav_row log_out_box semlogin">
+            <img src="imagens/noun_upskill.png" alt="" id="upskill_logo" />
             <hr />
         </div>
 

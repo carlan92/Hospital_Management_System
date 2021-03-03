@@ -193,7 +193,15 @@ h1 {
 }
 
 .log_out_box {
-  position: relative;
+  display: block;
+  margin-top: auto;
+  width: 100%;
+}
+
+.semlogin {
+  display: block;
+  margin-top: auto;
+  margin-bottom: 40px;
   width: 100%;
 }
 
@@ -533,22 +541,6 @@ option {
 
 .sidenav .botao_acessos:focus {
   outline: none;
-}
-
-.log_out_box2 {
-  position: relative;
-  width: 100%;
-}
-
-.log_out_box2 hr {
-  border: 1px solid #dcdcdc;
-  margin: 7px 0px 50px 0px;
-}
-
-.log_out_box2 #upskill_logo2 {
-  width: 98px;
-  height: 33px;
-  margin: 0px 0px 0px 20px;
 }
 
 .main .middle-row2 {
@@ -1352,23 +1344,30 @@ select option:disabled {
   max-height: 85px;
 }
 
+.answer {
+  margin-top: 10px;
+}
+
 /*Contacts*/
 
-.contactbox{
+.contactbox {
   flex-direction: column;
   justify-content: space-evenly;
 }
 
-.contactbox1{
+.contactbox1 {
   font-size: x-large;
   font-weight: bold;
 }
 
-.contactbox2{
-  margin-top: 30px;
-  position: relative;  
- }
+.contactbox1 select {
+  padding: 20px;
+}
 
+.contactbox2 {
+  margin-top: 30px;
+  position: relative;
+}
 
 @media screen and (max-height: 450px) {
   .sidenav {
