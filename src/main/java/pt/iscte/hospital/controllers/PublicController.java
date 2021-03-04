@@ -27,10 +27,11 @@ public class PublicController {
     }
 
     @GetMapping(value = {"/public/main", "/"})
-    public String showMainPage() {
+    public String showMainPage(ModelMap modelMap) {
         User user = userService.currentUser();
         String mainPage = userService.getUserMainPage(user);
-        return "redirect:" + mainPage;
+        modelMap.put("user_logged", user);
+        return mainPage;
     }
 
     @GetMapping(value = "/public/general-information")
