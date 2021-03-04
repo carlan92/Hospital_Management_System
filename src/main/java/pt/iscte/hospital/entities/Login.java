@@ -2,7 +2,7 @@ package pt.iscte.hospital.entities;
 
 public class Login {
 
-    private static Patient connectedUser = null;
+    /*private static Patient connectedUser = null;
 
     // Methods
     public static void logout() {
@@ -15,12 +15,13 @@ public class Login {
 
     public static void setConnectedUser(Patient connectedUser) {
         Login.connectedUser = connectedUser;
-    }
+    }*/
 
-    public static boolean isConnected() {
+/*    public static boolean isConnected() {
         if (connectedUser == null) {
             return false;
         }
         return true;
     }
+    */
 }
