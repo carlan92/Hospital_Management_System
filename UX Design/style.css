@@ -1081,8 +1081,32 @@ select option:disabled {
   transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
 
+.btn-search:hover {
+  opacity: 0.8;
+  cursor: pointer;
+  border: none;
+}
+
+.btn-add {
+  padding: 10px;
+  font: normal normal bold 15px/18px "Lato";
+  width: 100%;
+}
+
+.btn-add:hover {
+  background-color: #98c33e;
+  opacity: 0.8;
+  cursor: pointer;
+  border: none;
+}
+
 .choose_spec {
   margin-top: 10px;
+}
+
+.add-pat {
+  margin-bottom: 10px;
+  margin-top: 10px;;
 }
 
 .card_list_patient {
@@ -1122,22 +1146,21 @@ select option:disabled {
 
 .spec_title {
   font-size: 15px;
-  color: #303030;
+  text-decoration: underline;
+  font-weight: bolder;
+  color: #444444;
   margin-top: 5px;
   margin-bottom: 5px;
 }
 
-.spec_list {
-  list-style: none;
-  padding: 0;
+.spec_name {
+  font-size: 15px;
+  color: #000000
 }
 
-.spec_list li {
-  font-size: 15px;
-  color: #303030
-}
 
 .btn-w80 {
+  margin: 5px;
   width: 80%;
 }
 
