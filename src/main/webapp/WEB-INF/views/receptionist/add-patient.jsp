@@ -16,7 +16,7 @@
             <div class="perfil-main-col">
                 <div class="perfil-row">
                     <div class="perfil-row">
-                        <img src="imagens/draw_add_user.svg" alt="fill form" class="img-fill-form" />
+                        <img src="/imagens/draw_add_user.svg" alt="fill form" class="img-fill-form" />
                     </div>
 
                     <div class="perfil-row">

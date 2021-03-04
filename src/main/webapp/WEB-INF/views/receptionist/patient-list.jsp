@@ -9,7 +9,7 @@
 </head>
 
 <body>
-<%@ include file="../components/sidenav-medico.jsp" %>
+<%@ include file="../components/sidenav-main.jsp" %>
 
 
 <div class="main">
@@ -19,7 +19,7 @@
 
         <div class="perfil-row">
 
-            <img src="imagens/draw_patient.svg" alt="patientsPage" class="img-fill-form"/>
+            <img src="/imagens/draw_patient.svg" alt="patientsPage" class="img-fill-form"/>
             <h3 class="utente_title">Lista de Utentes</h3>
             <div class=search_patient>
                 <div class="add-pat">
@@ -41,7 +41,7 @@
 
                 <div class="card_list_patient patient_data">
                     <div class="user_photo w-50">
-                        <img src="uploaded_images/${patient.getPhotoURL()}"
+                        <img src="/uploaded_images/${patient.getPhotoURL()}"
                              alt="Foto de ${patient.getFirstAndLastName()}">
                     </div>
                     <h1 class="patient_name">${patient.getFirstAndLastName()}</h1>

@@ -19,7 +19,7 @@
 
         <div class="perfil-row">
 
-            <img src="imagens/draw_patient.svg" alt="doctorsPage" class="img-fill-form"/>
+            <img src="/imagens/draw_patient.svg" alt="doctorsPage" class="img-fill-form"/>
             <h3 class="utente_title">Lista de Médicos</h3>
             <div class=search_patient>
                 <form class="form-inline">
@@ -32,7 +32,7 @@
                         <option value="" disabled selected>Especialidade</option>
                         <!-- For -->
                         <c:forEach var="speciality" items="${specialities}">
-                            <option value="${speciality}.getName()">${speciality.getName()}</option>
+                            <option value="${speciality.getName()}">${speciality.getName()}</option>
                         </c:forEach>
                     </select>
                 </div>
@@ -46,12 +46,11 @@
 
                 <div class="card_list_doctor patient_data">
                     <div class="user_photo w-50">
-                        <img src="uploaded_images/${doctor.getPhotoURL()}" alt="avatar">
+                        <img src="/uploaded_images/${doctor.getPhotoURL()}" alt="avatar">
                     </div>
                     <h1 class="patient_name">${doctor.getFirstAndLastName()}</h1>
-                    <p class="spec_title">Especialidades:</p>
-                    <!-- CORRIGI JA NAO É LISTA É APENAS 1 ESPECIALIDADE -->
-                    <p class="spec_name">${doctor.getSpecialities()} </p>
+                    <p class="spec_title">Especialidade:</p>
+                    <p class="spec_name">${doctor.getSpeciality().getName()} </p>
                     <p>
                         <button type="button" class="btn-blue btn-w80"> Consultar Perfil
                         </button>

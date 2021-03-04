@@ -54,7 +54,7 @@ public class Doctor extends Employee {
         this.licenseNumber = licenseNumber;
     }
 
-    public Speciality getSpecialities() {
+    public Speciality getSpeciality() {
         return speciality;
     }
 

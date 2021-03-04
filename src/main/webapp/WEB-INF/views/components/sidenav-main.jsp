@@ -35,29 +35,29 @@
 
 		<div class="panel-scroll">
 			<div class="sidenav_row">
-				<a href="/main" class="botao_acessos">
+				<a href="/receptionist/main" class="botao_acessos">
 					<img src="/imagens/noun_home.svg" /> Início
 				</a>
-				<a href="/lista_utentes_recep" class="botao_acessos">
+				<a href="/receptionist/patient-list" class="botao_acessos">
 					<img src="/imagens/noun_utentes.svg" /> Utentes
 				</a>
-				<a href="/lista_medicos_recep" class="botao_acessos">
+				<a href="/receptionist/doctor-list" class="botao_acessos">
 					<img src="/imagens/noun_doctor.svg" /> Médicos
 				</a>
-				<a href="/consultas_recep" class="botao_acessos">
+				<a href="/receptionist/appointment-list" class="botao_acessos">
 					<img src="/imagens/noun_heart rate.svg"/> Consultas
 				</a>
 			</div>
 
 			<div class="sidenav_row">
 				<p id="acessos_rapidos">Acessos Rápidos</p>
-				<a type="button" href="general-information  " class="botao_acessos">
+				<a type="button" href="public/general-information" class="botao_acessos">
 					<img src="/imagens/noun_information.svg" /> Informações gerais
 				</a>
 				<button type="button" class="botao_acessos">
 					<img src="/imagens/noun_calendar.svg" /> Calendário de vagas
 				</button>
-				<a type="button" href="contacts" class="botao_acessos">
+				<a type="button" href="public/contacts" class="botao_acessos">
 					<img src="/imagens/noun_phone.svg" /> Contactos
 				</a>
 			</div>
