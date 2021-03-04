@@ -67,7 +67,7 @@
                         </p>
                     </div>
                     <div class="btn-patient">
-                        <a href="consultas_patient" class="btn-green btn-w70">Consultar</a>
+                        <a href="appointment-list" class="btn-green btn-w70">Consultar</a>
                     </div>
                 </div>
                 <div class="horizontal-border"></div>
@@ -87,7 +87,7 @@
                         </p>
                     </div>
                     <div class="btn-patient">
-                        <a href="consultas_patient" class="btn-green btn-w70">Histórico</a>
+                        <a href="appointment-list" class="btn-green btn-w70">Histórico</a>
                     </div>
                 </div>
                 <div class="horizontal-border"></div>

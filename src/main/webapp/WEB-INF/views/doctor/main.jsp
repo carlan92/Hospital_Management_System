@@ -101,7 +101,7 @@
         <div class="wait_middle middle">
             <div class="data_appt">
                 <span class="text_next_appt">Lista de pacientes em espera para consulta</span>
-                <a type="button" href="lista_espera_doctor" class="btn-blue btn-w74">Lista de espera</a>
+                <a type="button" href="/doctor/waiting-list" class="btn-blue btn-w74">Lista de espera</a>
             </div>
         </div>
     </div>

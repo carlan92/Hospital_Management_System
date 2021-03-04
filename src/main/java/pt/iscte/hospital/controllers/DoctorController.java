@@ -24,7 +24,7 @@ private UserService userService;
 @Autowired
 private PatientService patientService;
 
-    @GetMapping(value = "/doctor/main")
+    @GetMapping(value = {"/doctor/main", "/doctor"})
     public String showDoctorMain(ModelMap modelMap){
         User userLogged = userService.currentUser();
 

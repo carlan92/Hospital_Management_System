@@ -51,7 +51,7 @@
 
 			<div class="sidenav_row">
 				<p id="acessos_rapidos">Acessos Rápidos</p>
-				<a type="button" href="general-information" class="botao_acessos">
+				<a type="button" href="general-information  " class="botao_acessos">
 					<img src="/imagens/noun_information.svg" /> Informações gerais
 				</a>
 				<button type="button" class="botao_acessos">
