@@ -12,7 +12,7 @@
             <p id="bem-vindo"> Bem-vindo</p>
         </div>
 
-        <form method="get" action="/login">
+        <form method="get" action="/public/login">
             <div class="but-login">
                 <button type="submit" class="btn-green btn-login"> Login </button>
             </div>
