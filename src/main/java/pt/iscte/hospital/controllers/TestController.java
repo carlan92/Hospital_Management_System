@@ -71,11 +71,22 @@ public class TestController {
     }
 
     @PostMapping(value = "/search-doctors")
-    public String searchDoctors(@RequestParam("speciality") String speciality, ModelMap modelMap){
+    public String searchDoctors(@RequestParam(name = "name") String name,
+                                @RequestParam(required = false, name = "speciality") String speciality,
+                                ModelMap modelMap) {
+        List<Doctor> doctors;
+        if (speciality == null) {
+            speciality = "";
+            doctors = doctorService.findAllByNameContainingIgnoreCase(name);
+        } else {
+            doctors = doctorService.findAllByNameContainingIgnoreCaseAndSpeciality(name, speciality);
+        }
+
         List<Speciality> specialities = specialityService.findAll(Sort.by(Sort.Direction.ASC, "name"));
-        List<Doctor> doctors = doctorService.findAllBySpeciality(speciality);
         User userLogged = userService.currentUser();
 
+        modelMap.put("search_name", name);
+        modelMap.put("speciality_name", speciality);
         modelMap.put("specialities", specialities);
         modelMap.put("doctors", doctors);
         modelMap.put("user_logged", userLogged);

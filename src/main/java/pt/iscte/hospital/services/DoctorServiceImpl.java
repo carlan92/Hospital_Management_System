@@ -65,4 +65,15 @@ public class DoctorServiceImpl implements DoctorService {
         Speciality speciality = specialityRepository.findByName(specialityName);
         return doctorRepository.findAllBySpeciality(speciality);
     }
+
+    @Override
+    public List<Doctor> findAllByNameContainingIgnoreCase(String name) {
+        return doctorRepository.findAllByNameContainingIgnoreCase(name);
+    }
+
+    @Override
+    public List<Doctor> findAllByNameContainingIgnoreCaseAndSpeciality(String name, String specialityName) {
+        Speciality speciality = specialityRepository.findByName(specialityName);
+        return doctorRepository.findAllByNameContainingIgnoreCaseAndSpeciality(name, speciality);
+    }
 }

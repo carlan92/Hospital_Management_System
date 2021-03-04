@@ -5,9 +5,13 @@ import org.springframework.stereotype.Repository;
 import pt.iscte.hospital.entities.Doctor;
 import pt.iscte.hospital.entities.Speciality;
 
+import javax.print.Doc;
 import java.util.List;
 
 @Repository
 public interface DoctorRepository extends JpaRepository<Doctor,Long> {
     List<Doctor> findAllBySpeciality(Speciality speciality);
+    List<Doctor> findAllByNameContainingIgnoreCase(String name);
+    List<Doctor> findAllByNameContainingIgnoreCaseAndSpeciality(String name, Speciality speciality);
+
 }

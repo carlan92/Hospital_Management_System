@@ -16,5 +16,7 @@ public interface DoctorService {
     void desmarcarConsulta();
     List<Doctor> findAll(Sort sort);
     List<Doctor> findAllBySpeciality(String specialityName);
+    List<Doctor> findAllByNameContainingIgnoreCase(String name);
+    List<Doctor> findAllByNameContainingIgnoreCaseAndSpeciality(String name, String specialityName);
 
 }

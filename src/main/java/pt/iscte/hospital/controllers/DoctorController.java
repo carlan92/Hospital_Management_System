@@ -5,7 +5,6 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
-import pt.iscte.hospital.entities.Login;
 import pt.iscte.hospital.entities.Patient;
 import pt.iscte.hospital.entities.Speciality;
 import pt.iscte.hospital.entities.User;

@@ -25,12 +25,12 @@
                 <form action="/search-doctors" method="post" class="form-inline">
             <div class=search_patient>
 
-                    <input class="form-control mr-sm-2" type="search" placeholder="Nome do médico"
+                    <input class="form-control mr-sm-2" value="${search_name}" name="name" type="search" placeholder="Nome do médico"
                            aria-label="Search">
                     <button class="btn-search" type="submit">Pesquisar</button>
 
                 <div class="choose_spec">
-                    <select id="speciality_id" class="form-control" name="speciality">
+                    <select id="speciality_id" class="form-control" value="${search_speciality}" name="speciality">
                         <option value="" disabled selected>Especialidade</option>
                         <!-- For -->
                         <c:forEach var="speciality" items="${specialities}">
