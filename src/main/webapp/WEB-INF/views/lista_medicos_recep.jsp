@@ -23,7 +23,7 @@
             <h3 class="utente_title">Lista de Médicos</h3>
             <div class="search_patient search_doc">
                 <div class="add-pat">
-                    <button class="btn btn-outline-secondary btn-add" type="submit">Adicionar novo médico</button>
+                    <a class="btn btn-outline-secondary btn-add" href="add-doctor" type="submit">Adicionar novo médico</a>
                 </div>
 
                 <form class="form-inline">
@@ -42,8 +42,8 @@
                 </div>
 
                 <div class="add-pat">
-                    <button class="btn btn-outline-secondary btn-add" type="submit">Adicionar nova especialidade
-                    </button>
+                    <a class="btn btn-outline-secondary btn-add" href="add-speciality" type="submit">Adicionar nova especialidade
+                    </a>
                 </div>
             </div>
         </div>

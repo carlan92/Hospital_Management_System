@@ -20,15 +20,15 @@
 
             <div class="sidenav_row">
                 <p id="acessos_rapidos">Acessos Rápidos</p>
-                <button type="button" class="botao_acessos">
+                <a type="button" href="informacoesGerais" class="botao_acessos">
                     <img src="imagens/noun_information.svg" /> Informações gerais
-                </button>
+                </a>
                 <button type="button" class="botao_acessos">
                     <img src="imagens/noun_calendar.svg" /> Calendário de vagas
                 </button>
-                <button type="button" class="botao_acessos">
+                <a type="button" href="contactos" class="botao_acessos">
                     <img src="imagens/noun_phone.svg" /> Contactos
-                </button>
+                </a>
             </div>
         </div>
 

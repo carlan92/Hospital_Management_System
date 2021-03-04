@@ -101,7 +101,7 @@
         <div class="wait_middle middle">
             <div class="data_appt">
                 <span class="text_next_appt">Lista de pacientes em espera para consulta</span>
-                <button type="button" class="btn-blue btn-w74">Lista de espera</button>
+                <a type="button" href="lista_espera_doctor" class="btn-blue btn-w74">Lista de espera</a>
             </div>
         </div>
     </div>
@@ -152,10 +152,10 @@
         <div class="col-4 appt_options">
             <div>
                 <div class="but-cancel_appt">
-                    <button type="button" class="btn-green btn-w75"> Registo Consulta</button>
+                    <a type="button" href="info-appointment" class="btn-green btn-w75"> Registo da consulta</a>
                 </div>
                 <div class="but-end_appt">
-                    <button type="button" class="btn-green btn-w75"> Terminar Consulta</button>
+                    <button type="button" class="btn-green btn-w75"> Terminar consulta</button>
                 </div>
             </div>
         </div>
@@ -211,16 +211,16 @@
         <div class="col-4 appt_options">
             <div>
                 <div class="but-begin_appt">
-                    <button type="button" class="btn-green btn-w75"> Iniciar Consulta</button>
+                    <button type="button" class="btn-green btn-w75"> Iniciar consulta</button>
                 </div>
                 <div class="but-change_appt">
                     <button type="button" class="btn-green btn-w75"> Alterar data</button>
                 </div>
                 <div class="but-cancel_appt">
-                    <button type="button" class="btn-green btn-w75"> Cancelar Consulta</button>
+                    <button type="button" class="btn-green btn-w75"> Cancelar consulta</button>
                 </div>
                 <div class="but-end_appt">
-                    <button type="button" class="btn-green btn-w75"> Marcar Falta de presença</button>
+                    <button type="button" class="btn-green btn-w75"> Registar falta de comparência</button>
                 </div>
             </div>
         </div>

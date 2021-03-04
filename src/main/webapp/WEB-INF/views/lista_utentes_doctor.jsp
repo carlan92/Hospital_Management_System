@@ -36,7 +36,6 @@
             <!-- For -->
             <c:forEach var="patient" items="${patients}">
 
-
                 <div class="card_list_patient patient_data">
                     <div class="user_photo w-50">
                         <img src="uploaded_images/${patient.getPhotoURL()}"

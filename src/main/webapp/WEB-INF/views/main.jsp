@@ -40,7 +40,7 @@
                     <p class="linha_2">
                         <span id=num_atrasados>2</span> utentes estão atrasados
                     </p>
-                    <a href="#" class="btn btn-button">VER LISTA DE ESPERA</a>
+                    <a href="lista_espera_recep" class="btn btn-button">VER LISTA DE ESPERA</a>
                 </div>
                 <div class="horizontal-border"></div>
             </div>

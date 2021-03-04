@@ -28,28 +28,28 @@
 				<a href="/main" class="botao_acessos">
 					<img src="imagens/noun_home.svg" /> Início
 				</a>
-				<a href="/lista-utentes" class="botao_acessos">
+				<a href="/lista_utentes_recep" class="botao_acessos">
 					<img src="imagens/noun_utentes.svg" /> Utentes
 				</a>
-				<a href="/lista-medicos" class="botao_acessos">
+				<a href="/lista_medicos_recep" class="botao_acessos">
 					<img src="imagens/noun_doctor.svg" /> Médicos
 				</a>
-				<a href="/doctor-consultas" class="botao_acessos">
+				<a href="/consultas_recep" class="botao_acessos">
 					<img src="imagens/noun_heart rate.svg"/> Consultas
 				</a>
 			</div>
 
 			<div class="sidenav_row">
 				<p id="acessos_rapidos">Acessos Rápidos</p>
-				<button type="button" formaction="main/" formmethod="get" class="botao_acessos">
+				<a type="button" href="informacoesGerais" class="botao_acessos">
 					<img src="imagens/noun_information.svg" /> Informações gerais
-				</button>
+				</a>
 				<button type="button" class="botao_acessos">
 					<img src="imagens/noun_calendar.svg" /> Calendário de vagas
 				</button>
-				<button type="button" class="botao_acessos">
+				<a type="button" href="contactos" class="botao_acessos">
 					<img src="imagens/noun_phone.svg" /> Contactos
-				</button>
+				</a>
 			</div>
 		</div>
 
