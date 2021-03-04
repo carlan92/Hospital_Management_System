@@ -27,9 +27,10 @@ public class PublicController {
     }
 
     @GetMapping(value = {"/public/main", "/"})
-    public String showMainPage() {//TODO
-        System.out.println(userService.currentUser());
-        return "public/main";
+    public String showMainPage() {
+        User user = userService.currentUser();
+        String mainPage = userService.getUserMainPage(user);
+        return "redirect:" + mainPage;
     }
 
     @GetMapping(value = "/public/general-information")

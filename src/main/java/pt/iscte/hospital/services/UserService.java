@@ -2,6 +2,7 @@ package pt.iscte.hospital.services;
 
 import org.springframework.security.core.GrantedAuthority;
 import pt.iscte.hospital.entities.User;
+import pt.iscte.hospital.security.Role;
 
 import java.util.List;
 
@@ -19,4 +20,8 @@ public interface UserService {
     User currentUser();
 
     List<GrantedAuthority> getAuthorities(String username);
+
+    Role getUserRole(User user);
+
+    String getUserMainPage(User user);
 }
