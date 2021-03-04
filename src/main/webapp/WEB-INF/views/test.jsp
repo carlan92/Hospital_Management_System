@@ -26,55 +26,96 @@
             </div>
 
             <div class="perfil-main-col">
+                <h4> Utente: </h4>
                 <div class="perfil-row">
                     <div class="cell-row">
-                        <a href="make-appointment" class="btn btn-green">Marcar Consulta</a>
+                        <a href="patient-inicio" class="btn btn-green">Início</a>
                     </div>
 
                     <div class="cell-row">
-                        <a href="add-speciality" class="btn btn-blue">Criar Especialidade</a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="perfil-main-col">
-                <div class="perfil-row">
-                    <div class="cell-row">
-                        <a href="add-patient" class="btn btn-green">Adicionar Utente</a>
+                        <a href="lista_medicos_doctor_patient" class="btn btn-blue">Médicos</a>
                     </div>
 
                     <div class="cell-row">
-                        <a href="doctor-consultas" class="btn btn-blue">Médico-consultas</a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="perfil-main-col">
-                <div class="perfil-row">
-                    <div class="cell-row">
-                        <a href="doctor-inicio" class="btn btn-green">Médico-Início</a>
+                        <a href="consultas_patient" class="btn btn-green">Consultas</a>
                     </div>
 
                     <div class="cell-row">
-                        <a href="lista-utentes" class="btn btn-blue">Médico-utentes</a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="perfil-main-col">
-                <div class="perfil-row">
-                    <div class="cell-row">
-                        <a href="lista-medicos" class="btn btn-green">Recepcionista- Lista de Médicos</a>
+                        <a href="make-appointment" class="btn btn-blue">Marcar Consulta</a>
                     </div>
 
-                    <div class="cell-row">
-                        <a href="info-appointment" class="btn btn-blue">Médico- Registo Info Consulta</a>
-                    </div>
 
                 </div>
             </div>
 
             <div class="perfil-main-col">
+                <h4> Recepcionista: </h4>
+                <div class="perfil-row">
+
+                    <div class="cell-row">
+                        <a href="main" class="btn btn-blue">Inicio</a>
+                    </div>
+
+                    <div class="cell-row">
+                        <a href="lista_utentes_recep" class="btn btn-green">Utentes</a>
+                    </div>
+
+                    <div class="cell-row">
+                        <a href="lista_medicos_recep" class="btn btn-blue">Médicos</a>
+                    </div>
+
+                    <div class="cell-row">
+                        <a href="consultas_recep" class="btn btn-green">Consultas</a>
+                    </div>
+
+                    <div class="cell-row">
+                        <a href="add-patient" class="btn btn-blue">Adicionar Utente</a>
+                    </div>
+
+                    <div class="cell-row">
+                        <a href="add-speciality" class="btn btn-green">Criar Especialidade</a>
+                    </div>
+
+                    <div class="cell-row">
+                        <a href="lista_espera_recep" class="btn btn-blue">Lista Espera</a>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="perfil-main-col">
+                <h4> Médico: </h4>
+                <div class="perfil-row">
+
+                    <div class="cell-row">
+                        <a href="doctor-inicio" class="btn btn-green">Inicio</a>
+                    </div>
+
+                    <div class="cell-row">
+                        <a href="lista_utentes_doctor" class="btn btn-blue">Utentes</a>
+                    </div>
+
+                    <div class="cell-row">
+                        <a href="lista_medicos_doctor_patient" class="btn btn-green">Médicos</a>
+                    </div>
+
+                    <div class="cell-row">
+                        <a href="consultas_doctor" class="btn btn-blue">Consultas</a>
+                    </div>
+
+                    <div class="cell-row">
+                        <a href="info-appointment" class="btn btn-green">Registo Consulta</a>
+                    </div>
+
+                    <div class="cell-row">
+                        <a href="lista_espera_doctor" class="btn btn-blue">Lista Espera</a>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="perfil-main-col">
+                    <h4> Geral: </h4>
                 <div class="perfil-row">
                     <div class="cell-row">
                         <a href="historicoPagamentos" class="btn btn-green">Histórico de Pagamentos</a>
@@ -86,17 +127,9 @@
                 </div>
             </div>
 
-            <div class="perfil-main-col">
-                <div class="perfil-row">
-                    <div class="cell-row">
-                        <a href="patient-inicio" class="btn btn-green">Utente: Início</a>
-                    </div>
 
-                    <div class="cell-row">
-                        <a href="" class="btn btn-blue">vazio</a>
-                    </div>
-                </div>
-            </div>
+
+
 
 
         </div>
