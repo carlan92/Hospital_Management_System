@@ -969,8 +969,12 @@ select option:disabled {
 }
 
 .data_appt {
-  margin-left: 30px;
   font: normal normal normal "Lato";
+  text-align: center;
+}
+
+.middle {
+  margin: auto;
 }
 
 .appt_options {
@@ -1004,7 +1008,8 @@ select option:disabled {
 }
 
 .btn-w85 {
-  width: 85%;
+  width: 100%;
+  margin-right: auto;
   margin-top: 10px;
 }
 
@@ -1106,7 +1111,8 @@ select option:disabled {
 
 .add-pat {
   margin-bottom: 10px;
-  margin-top: 10px;;
+  margin-top: 10px;
+  ;
 }
 
 .card_list_patient {
@@ -1157,7 +1163,6 @@ select option:disabled {
   font-size: 15px;
   color: #000000
 }
-
 
 .btn-w80 {
   margin: 5px;
