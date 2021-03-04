@@ -15,7 +15,7 @@
     <div class="white_box2 box-align-left">
 
         <div class="perfil-row">
-            <img src="imagens/draw_checking.svg" alt="patientsPage" class="img-fill-form" />
+            <img src="imagens/waiting.svg" alt="patientsPage" class="img-fill-form" />
             <h3 class="consultas_title">Lista de espera para consulta </h3>
         </div>
 
