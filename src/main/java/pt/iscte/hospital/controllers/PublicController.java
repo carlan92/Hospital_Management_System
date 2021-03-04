@@ -26,10 +26,11 @@ public class PublicController {
         return "public/contacts";
     }
 
-    @GetMapping(value = "/public/main")
-    public String showMainPage() {//TODO
-
-        return "public/main";
+    @GetMapping(value = {"/public/main", "/"})
+    public String showMainPage() {
+        User user = userService.currentUser();
+        String mainPage = userService.getUserMainPage(user);
+        return "redirect:" + mainPage;
     }
 
     @GetMapping(value = "/public/general-information")
@@ -58,12 +59,6 @@ public class PublicController {
             return "public/login";
         }
     }
-
-    /*@GetMapping(value = "/logout")
-    public String logout() {
-        Login.logout();
-        return "redirect:/public/main"; // redirects to home page
-    }*/
 
     @GetMapping(value = "/public/recover-password")
     public String showRecoverPasswordPage(ModelMap modelMap) {

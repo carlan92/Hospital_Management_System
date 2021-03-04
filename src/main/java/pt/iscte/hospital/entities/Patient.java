@@ -2,7 +2,7 @@ package pt.iscte.hospital.entities;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
-import pt.iscte.hospital.security.Roles;
+import pt.iscte.hospital.security.Role;
 
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
@@ -43,7 +43,7 @@ public class Patient extends User {
     @Override
     public List<GrantedAuthority> getAuthorities(){
         List<GrantedAuthority> roles=new ArrayList<>();
-        roles.add(new SimpleGrantedAuthority(Roles.ROLE_PATIENT.name()));
+        roles.add(new SimpleGrantedAuthority(Role.ROLE_PATIENT.name()));
         return roles;
     }
 

@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 import pt.iscte.hospital.entities.*;
 import pt.iscte.hospital.repositories.UserRepository;
 import pt.iscte.hospital.security.IAuthenticationFacade;
+import pt.iscte.hospital.security.Role;
 
 import java.util.List;
 
@@ -70,5 +71,19 @@ public class UserServiceImpl implements UserService {
         return userRepository.findByUsername(username);
     }
 
+    @Override
+    public Role getUserRole(User user) {
+        Role role = Enum.valueOf(Role.class, user.getAuthorities().get(0).getAuthority());
+        return role;
+    }
+
+    @Override
+    public String getUserMainPage(User user) {
+        if (user == null) {
+            return "public/main";
+        }
+        Role role = getUserRole(user);
+        return role.getMainPage();
+    }
 }
 

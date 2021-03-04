@@ -2,7 +2,7 @@ package pt.iscte.hospital.entities;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
-import pt.iscte.hospital.security.Roles;
+import pt.iscte.hospital.security.Role;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -44,7 +44,7 @@ public class Receptionist extends Employee {
     @Override
     public List<GrantedAuthority> getAuthorities(){
         List<GrantedAuthority> roles=new ArrayList<>();
-        roles.add(new SimpleGrantedAuthority(Roles.ROLE_RECEPTIONIST.name()));
+        roles.add(new SimpleGrantedAuthority(Role.ROLE_RECEPTIONIST.name()));
         return roles;
     }
 }
