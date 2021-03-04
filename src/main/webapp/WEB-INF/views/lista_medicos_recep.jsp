@@ -21,7 +21,11 @@
 
             <img src="imagens/draw_patient.svg" alt="doctorsPage" class="img-fill-form"/>
             <h3 class="utente_title">Lista de Médicos</h3>
-            <div class=search_patient>
+            <div class="search_patient search_doc">
+                <div class="add-pat">
+                    <button class="btn btn-outline-secondary btn-add" type="submit">Adicionar novo médico</button>
+                </div>
+
                 <form class="form-inline">
                     <input class="form-control mr-sm-2" type="search" placeholder="Nome do médico"
                            aria-label="Search">
@@ -36,36 +40,33 @@
                         </c:forEach>
                     </select>
                 </div>
+
+                <div class="add-pat">
+                    <button class="btn btn-outline-secondary btn-add" type="submit">Adicionar nova especialidade
+                    </button>
+                </div>
             </div>
         </div>
 
 
         <div class="row">
-        <!-- For -->
-        <c:forEach var="doctor" items="${doctors}">
+            <!-- For -->
+            <c:forEach var="doctor" items="${doctors}">
 
-            <div class="card_list_doctor patient_data">
-                <div class="user_photo w-50">
-                    <img src="uploaded_images/${doctor.getPhotoURL()}" alt="avatar">
+                <div class="card_list_doctor patient_data">
+                    <div class="user_photo w-50">
+                        <img src="uploaded_images/${doctor.getPhotoURL()}" alt="avatar">
+                    </div>
+                    <h1 class="patient_name">${doctor.getFirstAndLastName()}</h1>
+                    <p class="spec_title">Especialidade:</p>
+                    <!-- CORRIGI JA NAO É LISTA É APENAS 1 ESPECIALIDADE -->
+                    <p class="spec_name">${doctor.getSpecialities()} </p>
+                    <p>
+                        <button type="button" class="btn-blue btn-w80"> Consultar Perfil
+                        </button>
+                    </p>
                 </div>
-                <h1 class="patient_name">${doctor.getFirstAndLastName()}</h1>
-                <p class="spec_title">Especialidades:</p>
-                <ul class="spec_list">
-                    <!-- For -->
-                    <c:forEach var="speciality" items="${doctor.getSpecialities()}">
-                        <li>
-                            ${speciality.getName()}
-                        </li>
-                    </c:forEach>
-                </ul>
-                <p>
-                    <button type="button" class="btn-blue btn-w80"> Consultar Perfil
-                    </button>
-                </p>
-            </div>
-        </c:forEach>
-
-
+            </c:forEach>
 
 
         </div>
