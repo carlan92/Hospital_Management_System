@@ -13,8 +13,8 @@ public class HomeController {
         }
         return "home";
     }
-    @GetMapping(value="/homeToLogin")
+    /*@GetMapping(value="/homeToLogin")
     public String getLoginPage(){
         return "redirect:/login";
-    }
+    }*/
 }

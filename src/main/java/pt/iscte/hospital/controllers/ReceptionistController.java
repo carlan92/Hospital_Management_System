@@ -22,13 +22,13 @@ import java.util.List;
 public class ReceptionistController {
     // Attributes
     @Autowired
-    SpecialityService specialityService;
+    private SpecialityService specialityService;
     @Autowired
-    RegistrationService registrationService;
+    private RegistrationService registrationService;
     @Autowired
-    UserService userService;
+    private UserService userService;
     @Autowired
-    NationalityService nationalityService;
+    private NationalityService nationalityService;
 
     private static final String errorMsgSpeciality = "Já existe essa especialidade";
     private static final String errorMsgLenght="Nome de especialidade demasiado curto";
@@ -59,7 +59,7 @@ public class ReceptionistController {
     // Methods
     @GetMapping(value = "/add-speciality")
     public String addSpecialityPage(ModelMap modelMap){
-        User userLogged = Login.getConnectedUser();
+        User userLogged = userService.currentUser();
 
         modelMap.put("user_logged", userLogged);
         return ("add-speciality");
@@ -68,7 +68,7 @@ public class ReceptionistController {
     @GetMapping(value = "/add-patient")
     public String addPatientPage(ModelMap modelMap){
         List<Nationality> nationalities = nationalityService.findAll();
-        User userLogged = Login.getConnectedUser();
+        User userLogged = userService.currentUser();
 
         modelMap.put("nationalities", nationalities);
         modelMap.put("user_logged", userLogged);

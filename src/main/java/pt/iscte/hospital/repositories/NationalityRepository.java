@@ -6,5 +6,5 @@ import pt.iscte.hospital.entities.Nationality;
 
 @Repository
 public interface NationalityRepository extends JpaRepository<Nationality,Long> {
-    public Nationality findByName(String name);
+    Nationality findByName(String name);
 }

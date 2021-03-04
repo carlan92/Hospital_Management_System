@@ -5,16 +5,16 @@ import org.springframework.stereotype.Service;
 import pt.iscte.hospital.entities.Nationality;
 import pt.iscte.hospital.entities.User;
 import pt.iscte.hospital.repositories.NationalityRepository;
-import pt.iscte.hospital.repositories.PatientRepository;
+import pt.iscte.hospital.repositories.UserRepository;
 
 import java.text.SimpleDateFormat;
 
 @Service
 public class RegistrationServiceImpl implements RegistrationService {
     @Autowired
-    PatientRepository patientRepository;
+    private UserRepository userRepository;
     @Autowired
-    NationalityRepository nationalityRepository;
+    private NationalityRepository nationalityRepository;
 
 
     public boolean validName(User user) {
@@ -62,7 +62,7 @@ public class RegistrationServiceImpl implements RegistrationService {
     }
 
     public boolean validEmail(User user) {
-        User userUnique = patientRepository.findByEmail(user.getEmail());
+        User userUnique = userRepository.findByEmail(user.getEmail());
         if (userUnique != null) {
             return false;
         } else {
@@ -71,7 +71,7 @@ public class RegistrationServiceImpl implements RegistrationService {
     }
 
     public boolean validUsername(User user) {
-        User userUnique = patientRepository.findByUsername(user.getUsername());
+        User userUnique = userRepository.findByUsername(user.getUsername());
         if (userUnique != null) {
             return false;
         } else {

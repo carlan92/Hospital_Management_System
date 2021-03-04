@@ -23,7 +23,7 @@
                     </div>
 
                     <div class="input-row">
-                        <button type="submit" class="btn-green">Entrar</button>
+                        <button type="submit" name="submit" class="btn-green">Entrar</button>
                     </div>
                 </form>
                 <span style="color: red">${errorMessage}</span>

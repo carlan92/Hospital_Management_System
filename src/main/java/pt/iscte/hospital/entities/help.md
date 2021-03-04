@@ -1,0 +1,9 @@
+https://www.baeldung.com/hibernate-identifiers
+<br>
+https://vladmihalcea.com/the-best-way-to-use-entity-inheritance-with-jpa-and-hibernate/
+<br>
+https://www.baeldung.com/hibernate-inheritance
+<br>
+https://www.baeldung.com/hibernate-one-to-many
+<br>
+https://www.baeldung.com/jpa-many-to-many

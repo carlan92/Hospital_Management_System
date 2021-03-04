@@ -25,13 +25,13 @@ import java.util.List;
 public class RegistrationController {
     // Attributes
     @Autowired
-    UserService userService;
+    private UserService userService;
     @Autowired
-    ImageUploadService imageUploadService;
+    private ImageUploadService imageUploadService;
     @Autowired
-    RegistrationService registrationService;
+    private RegistrationService registrationService;
     @Autowired
-    NationalityService nationalityService;
+    private NationalityService nationalityService;
 
     private static final String errorMsgName = "Nome inválido";
     private static final String errorMsgSex = "Escolha uma opção válida";

@@ -16,14 +16,15 @@ public class Invoice {
     @JoinColumn(name = "appointment_id")
     private Appointment appointment;
 
-    @OneToOne
-    @JoinColumn(name = "receptionist_id")
+    @ManyToOne
+    @JoinColumn(name="receptionist_id")
     private Receptionist receptionist;
 
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
     private Date date;
     private Double value;
     private Boolean isPaid;
+
 
     // Constructors
     public Invoice() {
@@ -53,12 +54,8 @@ public class Invoice {
         this.appointment = appointment;
     }
 
-    /*public Long getReceptionist() {
+    public Receptionist getReceptionist() {
         return receptionist;
-    }*/
-
-    public void setReceptionist(Long receptionistId) {
-        this.receptionist = receptionist;
     }
 
     public Date getDate() {

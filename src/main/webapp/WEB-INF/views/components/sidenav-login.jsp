@@ -2,21 +2,21 @@
 
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 
-    <div class="sidenav">
-        <!-- menu da esquerda SEM LOGIN -->
+<div class="sidenav">
+    <!-- menu da esquerda SEM LOGIN -->
 
-        <img src="imagens\noun_centro_hospitalar_logo.svg" alt="logo" class="logo" />
+    <img src="imagens\noun_centro_hospitalar_logo.svg" alt="logo" class="logo" />
 
-        <div class="panel-scroll">
-            <div class="welcome_box">
-                <p id="bem-vindo"> Bem-vindo</p>
+    <div class="panel-scroll">
+        <div class="welcome_box">
+            <p id="bem-vindo"> Bem-vindo</p>
+        </div>
+
+        <form method="get" action="/login">
+            <div class="but-login">
+                <button type="submit" class="btn-green btn-login"> Login </button>
             </div>
-
-            <form method="get" action="/homeToLogin">
-                <div class="but-login">
-                    <button type="submit" class="btn-green btn-login"> Login </button>
-                </div>
-            </form>
+        </form>
 
             <div class="sidenav_row">
                 <p id="acessos_rapidos">Acessos Rápidos</p>
@@ -37,4 +37,4 @@
             <hr />
         </div>
 
-    </div>
+</div>

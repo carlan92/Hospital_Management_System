@@ -32,5 +32,5 @@ public interface ImageUploadService {
      * @return for imageType="image/jpeg" return ".jpg".<br>
      * for imageType="image/png" return ".png".</br>
      */
-    public String getFileExtension(String imageType);
+    String getFileExtension(String imageType);
 }

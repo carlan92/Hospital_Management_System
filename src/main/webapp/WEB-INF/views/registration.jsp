@@ -202,7 +202,7 @@
                         </div>
                         <div class="cell-row">
                             <label for="foto_perfil_id">Foto de perfil</label>
-                            <input type="file" name="file" accept="image/jpeg, image/png" />
+                            <input id="foto_perfil_id" type="file" name="file" accept="image/jpeg, image/png" />
                             <p class="msg-error">${errorMsgPhotoUpload}</p>
                         </div>
                     </div>

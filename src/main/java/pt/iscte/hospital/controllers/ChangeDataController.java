@@ -1,8 +1,6 @@
 package pt.iscte.hospital.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.format.annotation.DateTimeFormat;
-import org.springframework.lang.Nullable;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -13,7 +11,6 @@ import org.springframework.web.multipart.MultipartFile;
 import pt.iscte.hospital.entities.Login;
 import pt.iscte.hospital.entities.Nationality;
 import pt.iscte.hospital.entities.Patient;
-import pt.iscte.hospital.entities.User;
 import pt.iscte.hospital.exceptions.ImageSizeException;
 import pt.iscte.hospital.exceptions.ImageTypeException;
 import pt.iscte.hospital.services.ImageUploadService;
@@ -27,13 +24,13 @@ import java.util.List;
 @Controller
 public class ChangeDataController {
     @Autowired
-    UserService userService;
+    private UserService userService;
     @Autowired
-    ImageUploadService imageUploadService;
+    private ImageUploadService imageUploadService;
     @Autowired
-    RegistrationService registrationService;
+    private RegistrationService registrationService;
     @Autowired
-    NationalityService nationalityService;
+    private NationalityService nationalityService;
 
     private static final String errorMsgName = "Nome inválido";
     private static final String errorMsgSex = "Escolha uma opção válida";
@@ -60,8 +57,8 @@ public class ChangeDataController {
         List<Nationality> nationalities = nationalityService.findAll();
 
         modelMap.put("nationalities", nationalities);
-        modelMap.put("user_logged", Login.getConnectedUser());
-        modelMap.put("user", Login.getConnectedUser());
+        modelMap.put("user_logged", userService.currentUser());
+        modelMap.put("user", userService.currentUser());
         return "change_data";
     }
 
@@ -144,7 +141,7 @@ public class ChangeDataController {
 
         if (file != null && !file.isEmpty() && !file.getContentType().equals("application/octet-stream")) {
             try {
-                String photoURL = imageUploadService.uploadImage(file, Login.getConnectedUser().getUsername());
+                String photoURL = imageUploadService.uploadImage(file, userService.currentUser().getUsername());
                 user.setPhotoURL(photoURL);
             } catch (IOException e) {
                 modelMap.put("errorMsgPhotoUpload", errorMsgPhotoUpload);
@@ -157,7 +154,7 @@ public class ChangeDataController {
                 isFormValid = false;
             }
         } else {
-            user.setPhotoURL(Login.getConnectedUser().getPhotoURL());
+            user.setPhotoURL(userService.currentUser().getPhotoURL());
         }
 
 
@@ -167,15 +164,15 @@ public class ChangeDataController {
 
             modelMap.put("nationalities", nationalities);
 
-            modelMap.put("user_logged", Login.getConnectedUser());
+            modelMap.put("user_logged", userService.currentUser());
             modelMap.put("user", user);
             return "change_data";
         }
-        user.setUserId(Login.getConnectedUser().getUserId());
-        user.setEmail(Login.getConnectedUser().getEmail());
-        user.setUsername(Login.getConnectedUser().getUsername());
-        user.setPassword(Login.getConnectedUser().getPassword());
-        user.setAccount(Login.getConnectedUser().getAccount());
+        user.setUserId(userService.currentUser().getUserId());
+        user.setEmail(userService.currentUser().getEmail());
+        user.setUsername(userService.currentUser().getUsername());
+        user.setPassword(userService.currentUser().getPassword());
+        user.setAccount(userService.currentUser().getAccount());
 
         userService.addUser(user);
         Login.setConnectedUser(user);

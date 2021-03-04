@@ -1,17 +1,24 @@
 package pt.iscte.hospital.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.GrantedAuthority;
 import org.springframework.stereotype.Service;
-import pt.iscte.hospital.entities.Patient;
-import pt.iscte.hospital.entities.User;
-import pt.iscte.hospital.repositories.PatientRepository;
+import pt.iscte.hospital.entities.*;
+import pt.iscte.hospital.repositories.UserRepository;
+import pt.iscte.hospital.security.IAuthenticationFacade;
+
+import java.util.List;
 
 @Service
 public class UserServiceImpl implements UserService {
-    @Autowired
-    private PatientRepository patientRepository;
 
-    public boolean validateUser(Patient user) {
+    @Autowired
+    private IAuthenticationFacade authenticationFacade;
+
+    @Autowired
+    private UserRepository userRepository;
+
+    public boolean validateUser(User user) {
         if (user == null) {
             return false;
         } else {
@@ -20,12 +27,43 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void addUser(Patient user) {
-        patientRepository.save(user);
+    public User currentUser() {
+        String username = authenticationFacade.getAuthentication().getName();
+        User user = userRepository.findByUsername(username);
+
+
+        return user;
     }
 
     @Override
-    public Patient findUser(String username){
-        return patientRepository.findByUsername(username);
+    public boolean validateUser(String username, String password) {
+        System.out.println("Verificar pass: " + password); // TODO verificar se a pass está encriptada
+        User userLogged = userRepository.findByUsername(username);
+        if (userLogged != null) {
+            //ver password
+            if (userLogged.getPassword().equals(password)) {
+                return true;
+            }
+        }
+        return false;
     }
+
+    @Override
+    public void addUser(User user) {
+        userRepository.save(user);
+    }
+
+    @Override
+    public User findUser(String username) {
+        return userRepository.findByUsername(username);
+    }
+
+    @Override
+    public List<GrantedAuthority> getAuthorities(String username) {
+        User user = userRepository.findByUsername(username);
+
+        return user.getAuthorities();
+    }
+
 }
+

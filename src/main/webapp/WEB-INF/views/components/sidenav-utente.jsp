@@ -4,16 +4,23 @@
 
 <div class="sidenav">
     <!-- menu da esquerda MEDICO-->
-    <img src="imagens/noun_centro_hospitalar_logo.svg" alt="logo" class="logo"/>
+    <img src="imagens/noun_centro_hospitalar_logo.svg" alt="logo" class="logo" />
 
     <div class="welcome_box">
         <div class="perfil-row">
             <div class="col-4 user_photo">
-                <img src="/uploaded_images/${user_logged.getPhotoURL()}" alt="user_photography"/>
+                <img src="/uploaded_images/${user_logged.getPhotoURL()}" alt="user_photography" />
             </div>
             <div class="col user_info">
-                <p id="welcome">Bem-vindo</p>
-                <a id="user_name" href="/user">${user_logged.getFirstAndLastName()}</a>
+                <p id="welcome">
+                    <c:if test="${user_logged.getSex().equals('Masculino')}">
+                        Bem-vindo
+                    </c:if>
+                    <c:if test="${user_logged.getSex().equals('Feminino')}">
+                        Bem-vinda
+                    </c:if>
+                </p>
+                <p id="user_name">${user_logged.getFirstAndLastName()}</p>
                 <p id="user_category">${user_logged.getAccount()}</p>
             </div>
         </div>

@@ -1,10 +1,20 @@
 package pt.iscte.hospital.services;
 
-import pt.iscte.hospital.entities.Patient;
+import org.springframework.security.core.GrantedAuthority;
 import pt.iscte.hospital.entities.User;
 
+import java.util.List;
+
 public interface UserService {
-    public boolean validateUser(Patient user);
-    public void addUser(Patient user);
-    public Patient findUser(String username);
+    boolean validateUser(User user);
+
+    boolean validateUser(String username, String password);
+
+    void addUser(User user);
+
+    User findUser(String username);
+
+    User currentUser();
+
+    List<GrantedAuthority> getAuthorities(String username);
 }
