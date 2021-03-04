@@ -51,10 +51,12 @@
     </div>
 
     <div class="sidenav_row log_out_box">
-        <img src="imagens/noun_upskill.png" alt="" id="upskill_logo"/>
-        <hr/>
-        <button type="button" class="">
-            <img src="imagens/noun_logout.svg"/> Terminar Sessão
-        </button>
+        <img src="imagens/noun_upskill.png" alt="" id="upskill_logo" />
+        <hr />
+        <form method="get" action="/logout">
+            <button type="submit">
+                <img src="imagens/noun_logout.svg" /> Terminar Sessão
+            </button>
+        </form>
     </div>
 </div>
