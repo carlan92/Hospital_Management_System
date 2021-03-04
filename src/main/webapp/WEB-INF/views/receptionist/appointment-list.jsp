@@ -34,7 +34,7 @@
                                 <option value="" disabled selected>Especialidade</option>
                                 <!-- For -->
                                 <c:forEach var="speciality" items="${specialities}">
-                                    <option value="${speciality}.getName()">${speciality.getName()}</option>
+                                    <option value="${speciality.getName()}">${speciality.getName()}</option>
                                 </c:forEach>
                             </select>
 

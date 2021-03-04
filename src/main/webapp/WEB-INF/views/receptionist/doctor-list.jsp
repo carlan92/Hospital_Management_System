@@ -23,7 +23,7 @@
             <h3 class="utente_title">Lista de Médicos</h3>
             <div class="search_patient search_doc">
                 <div class="add-pat">
-                    <a class="btn btn-outline-secondary btn-add" href="add-doctor" type="submit">Adicionar novo médico</a>
+                    <a class="btn btn-outline-secondary btn-add" href="receptionist/add-doctor" type="submit">Adicionar novo médico</a>
                 </div>
 
                 <form class="form-inline">
@@ -36,13 +36,13 @@
                         <option value="" disabled selected>Pesquisar por Especialidade</option>
                         <!-- For -->
                         <c:forEach var="speciality" items="${specialities}">
-                            <option value="${speciality}.getName()">${speciality.getName()}</option>
+                            <option value="${speciality.getName()}">${speciality.getName()}</option>
                         </c:forEach>
                     </select>
                 </div>
 
                 <div class="add-pat">
-                    <a class="btn btn-outline-secondary btn-add" href="add-speciality" type="submit">Adicionar nova especialidade
+                    <a class="btn btn-outline-secondary btn-add" href="receptionist/add-speciality" type="submit">Adicionar nova especialidade
                     </a>
                 </div>
             </div>

@@ -152,7 +152,7 @@
         <div class="col-4 appt_options">
             <div>
                 <div class="but-cancel_appt">
-                    <a type="button" href="info-appointment" class="btn-green btn-w75"> Registo da consulta</a>
+                    <a type="button" href="patient/appointment-notes" class="btn-green btn-w75"> Registo da consulta</a>
                 </div>
                 <div class="but-end_appt">
                     <button type="button" class="btn-green btn-w75"> Terminar consulta</button>
