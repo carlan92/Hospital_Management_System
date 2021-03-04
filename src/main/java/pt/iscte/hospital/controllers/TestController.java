@@ -47,6 +47,22 @@ public class TestController {
         return "historicoPagamentos";
     }
 
+    @GetMapping(value = "/informacoesGerais")
+    public String ShowGeralInfo(ModelMap modelMap) {
+        User userLogged = Login.getConnectedUser();
+
+        modelMap.put("user_logged", userLogged);
+        return "informacoesGerais";
+    }
+
+    @GetMapping(value = "/contactos")
+    public String ShowContacts(ModelMap modelMap) {
+        User userLogged = Login.getConnectedUser();
+
+        modelMap.put("user_logged", userLogged);
+        return "contactos";
+    }
+
     @GetMapping(value = "/lista_utentes_recep")
     public String showListaUtentestoRecep(ModelMap modelMap) {
         List<Patient> patients = patientService.findAll(Sort.by(Sort.Direction.ASC, "name"));
