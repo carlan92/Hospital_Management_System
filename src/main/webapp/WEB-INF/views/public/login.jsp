@@ -13,7 +13,7 @@
             <img class="logo_small" src="/imagens/noun_centro_hospitalar_logo.svg" alt="Logo do centro hospitalar">
             <div class="main-col">
                 
-                <form class="login-form" action="/login" method="post">
+                <form class="login-form" action="/public/login" method="post">
                     <div class="input-row">
                         <input class="form-input" type="text" name="username" id="username_id" placeholder="Username">
                     </div>
