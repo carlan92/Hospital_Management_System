@@ -108,7 +108,7 @@
                                 <div class="cell-row">
                                     <label for="nacionalidade_id">Nacionalidade *</label>
                                     <select id="nacionalidade_id" class="form-input" name="nationality" required>
-                                        <option value="nacionalidade" disabled <c:if test="${empty nationality}">
+                                        <option value="" disabled <c:if test="${empty nationality}">
                                             selected</c:if>>
                                             A sua nacionalidade
                                         </option>
@@ -138,19 +138,19 @@
                                 <div class="cell-row">
                                     <label for="documento_id">Documento de Identificação *</label>
                                     <select id="documento_id" class="form-input" name="documentType" required>
-                                        <option value="escolha uma opção" disabled <c:if
+                                        <option value="" disabled <c:if
                                             test="${empty user.getDocumentType()}"> selected</c:if>>
                                             Escolha uma Opção
                                         </option>
                                         <option value="Bilhete de Identidade" <c:if
-                                            test="${user.getSex().equals('Bilhete de Identidade')}"> selected</c:if>>
+                                            test="${user.getDocumentType().equals('Bilhete de Identidade')}"> selected</c:if>>
                                             Bilhete de Identidade
                                         </option>
                                         <option value="Cartão de Cidadão" <c:if
-                                            test="${user.getSex().equals('Cartão de Cidadão')}"> selected</c:if>>
+                                            test="${user.getDocumentType().equals('Cartão de Cidadão')}"> selected</c:if>>
                                             Cartão de Cidadão
                                         </option>
-                                        <option value="Passaporte" <c:if test="${user.getSex().equals('Passaporte')}">
+                                        <option value="Passaporte" <c:if test="${user.getDocumentType().equals('Passaporte')}">
                                             selected</c:if>>
                                             Passaporte
                                         </option>
