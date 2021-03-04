@@ -11,6 +11,7 @@ import org.springframework.web.multipart.MultipartFile;
 import pt.iscte.hospital.entities.Login;
 import pt.iscte.hospital.entities.Nationality;
 import pt.iscte.hospital.entities.Patient;
+import pt.iscte.hospital.entities.User;
 import pt.iscte.hospital.exceptions.ImageSizeException;
 import pt.iscte.hospital.exceptions.ImageTypeException;
 import pt.iscte.hospital.services.ImageUploadService;
@@ -70,6 +71,7 @@ public class ChangeDataController {
 
         // Update user info
         boolean isFormValid = true;
+        User connectedUser = userService.currentUser();
 
         if (!registrationService.validName(user)) {
             modelMap.put("errorMsgName", errorMsgName);
@@ -95,7 +97,7 @@ public class ChangeDataController {
             modelMap.put("errorMsgDocumentNumber", errorMsgDocumentNumber);
             isFormValid = false;
         }
-        if (!user.getDocumentNumber().equals(Login.getConnectedUser().getDocumentNumber())) {
+        if (!user.getDocumentNumber().equals(connectedUser.getDocumentNumber())) {
             if (!registrationService.validDocumentNumberUnique(user)) {
                 modelMap.put("errorMsgDocumentNumber", errorMsgDocumentNumber2);
                 isFormValid = false;
@@ -105,7 +107,7 @@ public class ChangeDataController {
             modelMap.put("errorMsgPatientNumber", errorMsgPatientNumber);
             isFormValid = false;
         }
-        if (user.getPatientNumber()!=Login.getConnectedUser().getPatientNumber()&&user.getPatientNumber()!=null) {
+        if (user.getPatientNumber() != connectedUser.getPatientNumber() && user.getPatientNumber() != null) {
             if (!registrationService.validPatientNumberUnique(user)) {
                 modelMap.put("errorMsgPatientNumber", errorMsgPatientNumber2);
                 isFormValid = false;
@@ -115,7 +117,7 @@ public class ChangeDataController {
             modelMap.put("errorMsgNif", errorMsgNif);
             isFormValid = false;
         }
-        if (!user.getNif().equals(Login.getConnectedUser().getNif())) {
+        if (!user.getNif().equals(connectedUser.getNif())) {
             if (!registrationService.validNifUnique(user)) {
                 modelMap.put("errorMsgNif", errorMsgNif2);
                 isFormValid = false;
@@ -175,10 +177,8 @@ public class ChangeDataController {
         user.setAccount(userService.currentUser().getAccount());
 
         userService.addUser(user);
-        Login.setConnectedUser(user);
 
         return "redirect:/user";
-
     }
 
 }
