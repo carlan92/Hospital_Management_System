@@ -136,9 +136,11 @@ public class RegistrationController {
             mpError.put("errorMsgPatientNumber", errorMsgPatientNumber);
             isFormValid = false;
         }
-        if (!registrationService.validPatientNumberUnique(user)) {
-            mpError.put("errorMsgPatientNumber", errorMsgPatientNumber2);
-            isFormValid = false;
+        if (user.getPatientNumber()!=null) {
+            if (!registrationService.validPatientNumberUnique(user)) {
+                mpError.put("errorMsgPatientNumber", errorMsgPatientNumber2);
+                isFormValid = false;
+            }
         }
         if (!registrationService.validNif(user)) {
             mpError.put("errorMsgNif", errorMsgNif);
@@ -196,7 +198,7 @@ public class RegistrationController {
 
             mpError.put("user", user);
 
-            return "/public/registration";
+            return "public/registration";
         }
 
         // Add user to database

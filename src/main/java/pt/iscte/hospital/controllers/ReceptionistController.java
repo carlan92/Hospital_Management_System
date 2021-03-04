@@ -207,9 +207,11 @@ public class ReceptionistController {
             mpError.put("errorMsgPatientNumber", errorMsgPatientNumber);
             isFormValid = false;
         }
-        if (!registrationService.validPatientNumberUnique(user)) {
-            mpError.put("errorMsgPatientNumber", errorMsgPatientNumber2);
-            isFormValid = false;
+        if (user.getPatientNumber()!=null) {
+            if (!registrationService.validPatientNumberUnique(user)) {
+                mpError.put("errorMsgPatientNumber", errorMsgPatientNumber2);
+                isFormValid = false;
+            }
         }
         if (!registrationService.validNif(user)) {
             mpError.put("errorMsgNif", errorMsgNif);

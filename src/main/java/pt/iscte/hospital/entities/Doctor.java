@@ -7,6 +7,7 @@ import pt.iscte.hospital.security.Roles;
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -16,10 +17,10 @@ public class Doctor extends Employee {
     private Long licenseNumber;
 
     @ManyToOne
-    @JoinColumn(name="speciality_id", nullable=false)
+    @JoinColumn(name = "speciality_id", nullable = false)
     private Speciality speciality;
 
-    @OneToMany(mappedBy="doctor")
+    @OneToMany(mappedBy = "doctor")
     private Set<Slot> slots;
 
 
@@ -58,8 +59,8 @@ public class Doctor extends Employee {
     }
 
     @Override
-    public List<GrantedAuthority> getAuthorities(){
-        List<GrantedAuthority> roles=new ArrayList<>();
+    public List<GrantedAuthority> getAuthorities() {
+        List<GrantedAuthority> roles = new ArrayList<>();
         roles.add(new SimpleGrantedAuthority(Roles.ROLE_DOCTOR.name()));
         return roles;
     }
