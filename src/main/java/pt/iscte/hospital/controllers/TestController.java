@@ -16,8 +16,6 @@ import java.util.List;
 
 @Controller
 public class TestController {
-    @Autowired
-    private PatientService patientService;
 
     @Autowired
     private DoctorService doctorService;
@@ -58,17 +56,6 @@ public class TestController {
         return "historicoPagamentos";
     }
 
-
-
-
-
-
-
-
-
-
-
-
     @GetMapping(value = "/lista_medicos_doctor_patient")
     public String showListaMedicostoDoctorandPatient(ModelMap modelMap) {
         List<Speciality> specialities = specialityService.findAll(Sort.by(Sort.Direction.ASC, "name"));
@@ -80,19 +67,6 @@ public class TestController {
         modelMap.put("user_logged", userLogged);
         return "lista_medicos_doctor_patient";
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 }

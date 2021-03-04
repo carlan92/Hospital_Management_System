@@ -15,7 +15,7 @@
     <div class="row first_row">
 
         <div class="col-4">
-            <img src="imagens/draw_doctor.svg" alt="" class="icon1"/>
+            <img src="/imagens/draw_doctor.svg" alt="doctor" class="icon1"/>
         </div>
 
         <div class="col-8 display_time">
@@ -101,7 +101,7 @@
         <div class="wait_middle middle">
             <div class="data_appt">
                 <span class="text_next_appt">Lista de pacientes em espera para consulta</span>
-                <a type="button" href="lista_espera_doctor" class="btn-blue btn-w74">Lista de espera</a>
+                <a type="button" href="/doctor/waiting-list" class="btn-blue btn-w74">Lista de espera</a>
             </div>
         </div>
     </div>
@@ -129,7 +129,7 @@
                 <div class="col-7">
                     <div class="perfil-row">
                         <div class="col user_photo">
-                            <img src="imagens/draw_avatar.svg" alt=""/>
+                            <img src="/imagens/draw_avatar.svg" alt="utente"/>
                         </div>
                         <div class="col user_info">
                             <span class="patient_name">Alice Antunes</span>
@@ -188,7 +188,7 @@
                 <div class="col-7">
                     <div class="perfil-row">
                         <div class="col user_photo">
-                            <img src="imagens/draw_avatar.svg" alt=""/>
+                            <img src="/imagens/draw_avatar.svg" alt="utente"/>
                         </div>
                         <div class="col user_info">
                             <span class="patient_name">Beatriz Ângela</span>

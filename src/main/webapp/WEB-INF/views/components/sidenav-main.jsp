@@ -6,7 +6,7 @@
 <div class="sidenav">
 	<!-- menu da esquerda RECEPCIONISTA-->
 
-	<img src="imagens/noun_centro_hospitalar_logo.svg" alt="logo" class="logo" />
+	<img src="/imagens/noun_centro_hospitalar_logo.svg" alt="logo" class="logo" />
 
 	<div class="welcome_box">
 		<div class="perfil-row">
@@ -36,39 +36,39 @@
 		<div class="panel-scroll">
 			<div class="sidenav_row">
 				<a href="/main" class="botao_acessos">
-					<img src="imagens/noun_home.svg" /> Início
+					<img src="/imagens/noun_home.svg" /> Início
 				</a>
 				<a href="/lista_utentes_recep" class="botao_acessos">
-					<img src="imagens/noun_utentes.svg" /> Utentes
+					<img src="/imagens/noun_utentes.svg" /> Utentes
 				</a>
 				<a href="/lista_medicos_recep" class="botao_acessos">
-					<img src="imagens/noun_doctor.svg" /> Médicos
+					<img src="/imagens/noun_doctor.svg" /> Médicos
 				</a>
 				<a href="/consultas_recep" class="botao_acessos">
-					<img src="imagens/noun_heart rate.svg"/> Consultas
+					<img src="/imagens/noun_heart rate.svg"/> Consultas
 				</a>
 			</div>
 
 			<div class="sidenav_row">
 				<p id="acessos_rapidos">Acessos Rápidos</p>
-				<a type="button" href="informacoesGerais" class="botao_acessos">
-					<img src="imagens/noun_information.svg" /> Informações gerais
+				<a type="button" href="general-information  " class="botao_acessos">
+					<img src="/imagens/noun_information.svg" /> Informações gerais
 				</a>
 				<button type="button" class="botao_acessos">
-					<img src="imagens/noun_calendar.svg" /> Calendário de vagas
+					<img src="/imagens/noun_calendar.svg" /> Calendário de vagas
 				</button>
-				<a type="button" href="contactos" class="botao_acessos">
-					<img src="imagens/noun_phone.svg" /> Contactos
+				<a type="button" href="contacts" class="botao_acessos">
+					<img src="/imagens/noun_phone.svg" /> Contactos
 				</a>
 			</div>
 		</div>
 
 	<div class="sidenav_row log_out_box">
-		<img src="imagens/noun_upskill.png" alt="" id="upskill_logo" />
+		<img src="/imagens/noun_upskill.png" alt="" id="upskill_logo" />
 		<hr />
 		<form method="get" action="/logout">
 			<button type="submit">
-				<img src="imagens/noun_logout.svg" /> Terminar Sessão
+				<img src="/imagens/noun_logout.svg" /> Terminar Sessão
 			</button>
 		</form>
 	</div>

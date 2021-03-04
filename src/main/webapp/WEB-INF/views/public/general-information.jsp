@@ -16,7 +16,7 @@
       <div class= "divinfo">
         <a href="">
         <div class="containerinfo">
-          <img class= "imginfo" src="imagens/info_covid.png" alt="..."/>
+          <img class= "imginfo" src="/imagens/info_covid.png" alt="..."/>
           <div class="textinfo-block">
             <p>Novas informações sobre a Sars-CoV-2</p>
           </div>
@@ -30,7 +30,7 @@
       <div class= "divinfo">
         <a href="">
         <div class="containerinfo">
-          <img class= "imginfo" src="imagens/info_vacinacao.png" alt="..."/>
+          <img class= "imginfo" src="/imagens/info_vacinacao.png" alt="..."/>
           <div class="textinfo-block">
             <p>O que acontece no nosso corpo quando somos vacinados?</p>
           </div>
@@ -44,7 +44,7 @@
       <div class= "divinfo">
        <a href="m"> 
         <div class="containerinfo">
-          <img class= "imginfo" src="imagens/info_teleconsulta.png" alt="..."/>
+          <img class= "imginfo" src="/imagens/info_teleconsulta.png" alt="..."/>
           <div class="textinfo-block">
             <p>Mais informações sobre Teleconsultas</p>
           </div>
@@ -58,7 +58,7 @@
       <div class= "divinfo">
         <a href=""> 
         <div class="containerinfo">
-          <img class= "imginfo" src="imagens/info_epilepsia.png" alt="..."/>
+          <img class= "imginfo" src="/imagens/info_epilepsia.png" alt="..."/>
           <div class="textinfo-block">
             <p>Epilepsia. O que é?</p>
           </div>

@@ -26,7 +26,7 @@ public class PatientController {
     // Constructor
 
     // Methods
-    @GetMapping(value = "/patient/main")
+    @GetMapping(value = {"/patient/main", "/patient"})
     public String showPatientMain(ModelMap modelMap) {
         User userLogged = userService.currentUser();
 

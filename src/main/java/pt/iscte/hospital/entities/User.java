@@ -51,7 +51,6 @@ public abstract class User {
         this.address = address;
         this.postCode = postCode;
         this.city = city;
-        this.account = account;
         this.nationality = nationality;
         this.documentType = documentType;
         this.documentNumber = documentNumber;

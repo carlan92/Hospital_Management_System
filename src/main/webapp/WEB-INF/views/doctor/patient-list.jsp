@@ -19,7 +19,7 @@
 
         <div class="perfil-row">
 
-            <img src="imagens/draw_patient.svg" alt="patientsPage" class="img-fill-form"/>
+            <img src="/imagens/draw_patient.svg" alt="patientsPage" class="img-fill-form"/>
             <h3 class="utente_title">Lista de Utentes</h3>
             <div class=search_patient>
                 <form class="form-inline">

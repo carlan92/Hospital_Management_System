@@ -13,7 +13,7 @@
     <div class="row first_row">
 
         <div class="col-4">
-            <img src="imagens/draw_patient_inicio.svg" alt="" class="icon1"/>
+            <img src="/imagens/draw_patient_inicio.svg" alt="" class="icon1"/>
         </div>
 
         <div class="col-8 display_time">
@@ -38,7 +38,7 @@
             <div class="card mw-270">
                 <div class="card-body ">
                     <div class="patient_img">
-                        <img src="imagens/draw-health2.svg" class="make_appt_img" alt="..."/>
+                        <img src="/imagens/draw-health2.svg" class="make_appt_img" alt="..."/>
                     </div>
                     <div class="patient_title">
                         <h4 class="appt_title">Marcação de Consultas</h4>
@@ -58,7 +58,7 @@
             <div class="card mw-270">
                 <div class="card-body ">
                     <div class="patient_img">
-                        <img src="imagens/draw_check-next.svg" class="make_appt_img" alt="..."/>
+                        <img src="/imagens/draw_check-next.svg" class="make_appt_img" alt="..."/>
                     </div>
                     <div class="patient_title">
                         <h4 class="appt_title">Próximas Consultas</h4>
@@ -67,7 +67,7 @@
                         </p>
                     </div>
                     <div class="btn-patient">
-                        <a href="consultas_patient" class="btn-green btn-w70">Consultar</a>
+                        <a href="appointment-list" class="btn-green btn-w70">Consultar</a>
                     </div>
                 </div>
                 <div class="horizontal-border"></div>
@@ -78,7 +78,7 @@
             <div class="card mw-270">
                 <div class="card-body ">
                     <div class="patient_img">
-                        <img src="imagens/draw_past-appt.svg" class="make_appt_img" alt="..."/>
+                        <img src="/imagens/draw_past-appt.svg" class="make_appt_img" alt="..."/>
                     </div>
                     <div class="patient_title">
                         <h4 class="appt_title">Histórico de Consultas</h4>
@@ -87,7 +87,7 @@
                         </p>
                     </div>
                     <div class="btn-patient">
-                        <a href="consultas_patient" class="btn-green btn-w70">Histórico</a>
+                        <a href="appointment-list" class="btn-green btn-w70">Histórico</a>
                     </div>
                 </div>
                 <div class="horizontal-border"></div>
@@ -102,28 +102,28 @@
 
             <div class="carousel-inner">
                 <div class="carousel-item active">
-                    <img src="imagens/pub_1.png" class="d-block w-100" alt="First slide"/>
+                    <img src="/imagens/pub_1.png" class="d-block w-100" alt="First slide"/>
                 </div>
                 <div class="carousel-item">
-                    <img src="imagens/pub_2.png" class="d-block w-100" alt="Second slide"/>
+                    <img src="/imagens/pub_2.png" class="d-block w-100" alt="Second slide"/>
                 </div>
                 <div class="carousel-item">
-                    <img src="imagens/pub_3.png" class="d-block w-100" alt="Third slide"/>
+                    <img src="/imagens/pub_3.png" class="d-block w-100" alt="Third slide"/>
                 </div>
                 <div class="carousel-item ">
-                    <img src="imagens/pub_4.png" class="d-block w-100" alt="Fourth slide"/>
+                    <img src="/imagens/pub_4.png" class="d-block w-100" alt="Fourth slide"/>
                 </div>
                 <div class="carousel-item">
-                    <img src="imagens/pub_5.png" class="d-block w-100" alt="Fifth slide"/>
+                    <img src="/imagens/pub_5.png" class="d-block w-100" alt="Fifth slide"/>
                 </div>
                 <div class="carousel-item">
-                    <img src="imagens/pub_6.png" class="d-block w-100" alt="Sixth slide"/>
+                    <img src="/imagens/pub_6.png" class="d-block w-100" alt="Sixth slide"/>
                 </div>
                 <div class="carousel-item">
-                    <img src="imagens/pub_7.png" class="d-block w-100" alt="Seventh slide"/>
+                    <img src="/imagens/pub_7.png" class="d-block w-100" alt="Seventh slide"/>
                 </div>
                 <div class="carousel-item">
-                    <img src="imagens/pub_8.png" class="d-block w-100" alt="Eighth slide"/>
+                    <img src="/imagens/pub_8.png" class="d-block w-100" alt="Eighth slide"/>
                 </div>
             </div>
 
