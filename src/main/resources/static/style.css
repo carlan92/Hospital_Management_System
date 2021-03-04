@@ -1155,7 +1155,7 @@ select option:disabled {
 
 .search_options {
   width: 100%;
-  margin-left: 25px;
+  margin-left: 15px;
   border-radius: 0.25rem;
 }
 
@@ -1163,6 +1163,7 @@ select option:disabled {
   display: inline;
   margin-bottom: auto;
   vertical-align: middle;
+  margin-right: auto;
 }
 
 .btn-search2 {
@@ -1181,7 +1182,7 @@ select option:disabled {
   border: 1px solid #666;
   border-radius: 5px;
   height: 40px;
-  width: 28%;
+  width: 18%;
   padding: 0;
   padding-left: 10px;
 }
