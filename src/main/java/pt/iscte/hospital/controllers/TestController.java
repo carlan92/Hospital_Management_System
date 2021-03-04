@@ -5,6 +5,8 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import pt.iscte.hospital.entities.*;
 import pt.iscte.hospital.security.IAuthenticationFacade;
 import pt.iscte.hospital.services.DoctorService;
@@ -60,6 +62,18 @@ public class TestController {
     public String showListaMedicostoDoctorandPatient(ModelMap modelMap) {
         List<Speciality> specialities = specialityService.findAll(Sort.by(Sort.Direction.ASC, "name"));
         List<Doctor> doctors = doctorService.findAll(Sort.by(Sort.Direction.ASC, "name"));
+        User userLogged = userService.currentUser();
+
+        modelMap.put("specialities", specialities);
+        modelMap.put("doctors", doctors);
+        modelMap.put("user_logged", userLogged);
+        return "lista_medicos_doctor_patient";
+    }
+
+    @PostMapping(value = "/search-doctors")
+    public String searchDoctors(@RequestParam("speciality") String speciality, ModelMap modelMap){
+        List<Speciality> specialities = specialityService.findAll(Sort.by(Sort.Direction.ASC, "name"));
+        List<Doctor> doctors = doctorService.findAllBySpeciality(speciality);
         User userLogged = userService.currentUser();
 
         modelMap.put("specialities", specialities);

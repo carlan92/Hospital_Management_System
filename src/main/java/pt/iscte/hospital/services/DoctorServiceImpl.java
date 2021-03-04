@@ -4,7 +4,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import pt.iscte.hospital.entities.Doctor;
+import pt.iscte.hospital.entities.Speciality;
 import pt.iscte.hospital.repositories.DoctorRepository;
+import pt.iscte.hospital.repositories.SpecialityRepository;
 
 import java.util.List;
 
@@ -12,7 +14,10 @@ import java.util.List;
 public class DoctorServiceImpl implements DoctorService {
     @Autowired
     private DoctorRepository doctorRepository;
+    @Autowired
+    private SpecialityRepository specialityRepository;
 
+    //Methods
     @Override
     public void chamarUtente(Doctor doctor) {
         // Consultar a base de dados: por médico, por data, por checking
@@ -53,5 +58,11 @@ public class DoctorServiceImpl implements DoctorService {
     @Override
     public List<Doctor> findAll(Sort sort) {
         return doctorRepository.findAll(sort);
+    }
+
+    @Override
+    public List<Doctor> findAllBySpeciality(String specialityName){
+        Speciality speciality = specialityRepository.findByName(specialityName);
+        return doctorRepository.findAllBySpeciality(speciality);
     }
 }

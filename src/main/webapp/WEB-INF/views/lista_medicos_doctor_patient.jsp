@@ -21,12 +21,14 @@
 
             <img src="/imagens/draw_patient.svg" alt="doctorsPage" class="img-fill-form"/>
             <h3 class="utente_title">Lista de Médicos</h3>
+
+                <form action="/search-doctors" method="post" class="form-inline">
             <div class=search_patient>
-                <form class="form-inline">
+
                     <input class="form-control mr-sm-2" type="search" placeholder="Nome do médico"
                            aria-label="Search">
                     <button class="btn-search" type="submit">Pesquisar</button>
-                </form>
+
                 <div class="choose_spec">
                     <select id="speciality_id" class="form-control" name="speciality">
                         <option value="" disabled selected>Especialidade</option>
@@ -36,6 +38,7 @@
                         </c:forEach>
                     </select>
                 </div>
+                </form>
             </div>
         </div>
 
