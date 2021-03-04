@@ -32,6 +32,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         http
                 .csrf().disable()
                 .authorizeRequests()
+                .antMatchers("/").permitAll()
                 .antMatchers("/patient/**").hasRole("PATIENT")
                 .antMatchers("/employee/**").hasRole("EMPLOYEE")
                 .antMatchers("/receptionist/**").hasRole("RECEPTIONIST")
@@ -42,15 +43,21 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/*.css", "/fonts/**", "/imagens/**", "*.html" , "*.ico").permitAll()
                 .antMatchers("/uploaded_images/**").hasAnyRole("PATIENT", "EMPLOYEE", "RECEPTIONIST", "DOCTOR", "UNIT_RESPONSIBLE")
                 .anyRequest().authenticated()
-                .and().formLogin()
+
+                // Login
+                .and()
+                .formLogin()
                 .loginPage("/public/login")
                 .loginProcessingUrl("/public/login")
                 .defaultSuccessUrl("/main", true)
                 .failureUrl("/login.html?error=true")
                 .failureHandler(new AuthenticationEntryPointFailureHandler(new BasicAuthenticationEntryPoint()))
+
+                // Logout
                 .and()
                 .logout()
                 .logoutUrl("/logout")       // Este método faz logout do user
+                .logoutSuccessUrl("/")
                 .deleteCookies("JSESSIONID")
                 .logoutSuccessHandler(new HttpStatusReturningLogoutSuccessHandler());
         // ...

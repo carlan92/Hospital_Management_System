@@ -2,6 +2,7 @@ package pt.iscte.hospital.entities;
 
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.security.core.GrantedAuthority;
+import pt.iscte.hospital.security.Role;
 
 import javax.persistence.*;
 import java.text.DateFormat;

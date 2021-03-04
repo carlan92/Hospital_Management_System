@@ -1,7 +1,6 @@
 package pt.iscte.hospital.services;
 
 import org.springframework.security.core.GrantedAuthority;
-import pt.iscte.hospital.entities.Patient;
 import pt.iscte.hospital.entities.User;
 
 import java.util.List;
