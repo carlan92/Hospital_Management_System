@@ -62,14 +62,14 @@ public class RegistrationController {
 
 
     // Methods
-    @GetMapping(value = "/registration")
+    @GetMapping(value = "/public/registration")
     public String showRegistrationPage(ModelMap modelMap) {
         List<Nationality> nationalities = nationalityService.findAll();
 
         modelMap.put("nationalities", nationalities);
         modelMap.put("user", new Patient());
 
-        return "registration";
+        return "public/registration";
     }
 
     @PostMapping(value = "/registrationToLogin")
@@ -170,9 +170,7 @@ public class RegistrationController {
         }
 
 
-        if (file != null && !file.isEmpty() && !file.getContentType().
-
-                equals("application/octet-stream")) {
+        if (file != null && !file.isEmpty() && !file.getContentType().equals("application/octet-stream")) {
             try {
                 String photoURL = imageUploadService.uploadImage(file, user.getUsername());
                 user.setPhotoURL(photoURL);
@@ -204,38 +202,7 @@ public class RegistrationController {
         // Add user to database
         userService.addUser(user);
 
-        return "redirect:/login";
-    }
-
-    // Para testes apenas!
-    @GetMapping(value = "/temp")
-    public String showRegistrationPagetmp(ModelMap modelMap) {
-        // TODO para testes
-        modelMap.put("user", new Patient());
-        modelMap.put("sidenav", "sidenavtemp");
-
-        return "registration-temp";
-    }
-
-    @PostMapping(value = "/temp")
-    public String returnToLoginPagetmp(@RequestParam("file") MultipartFile file,
-                                       ModelMap mpError) {
-
-        try {
-            // TODO dar nome de username
-            imageUploadService.uploadImage(file, "user1");
-        } catch (IOException e) {
-            mpError.put("errorMsgPhotoUpload", errorMsgPhotoUpload);
-            return "registration-temp";
-        } catch (ImageTypeException e) {
-            mpError.put("errorMsgPhotoUpload", errorMsgImageType);
-            return "registration-temp";
-        } catch (ImageSizeException e) {
-            mpError.put("errorMsgPhotoUpload", String.format(errorMsgImageSize, imageUploadService.getImageMaxSize()));
-            return "registration-temp";
-        }
-
-        return "redirect:/login";
+        return "redirect:/public/login";
     }
 
 }

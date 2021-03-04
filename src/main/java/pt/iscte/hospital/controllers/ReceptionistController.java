@@ -1,6 +1,7 @@
 package pt.iscte.hospital.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.lang.Nullable;
 import org.springframework.stereotype.Controller;
@@ -10,10 +11,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import pt.iscte.hospital.entities.*;
-import pt.iscte.hospital.services.NationalityService;
-import pt.iscte.hospital.services.RegistrationService;
-import pt.iscte.hospital.services.SpecialityService;
-import pt.iscte.hospital.services.UserService;
+import pt.iscte.hospital.services.*;
 
 import java.util.Date;
 import java.util.List;
@@ -28,7 +26,12 @@ public class ReceptionistController {
     @Autowired
     private UserService userService;
     @Autowired
+    private PatientService patientService;
+    @Autowired
+    private DoctorService doctorService;
+    @Autowired
     private NationalityService nationalityService;
+
 
     private static final String errorMsgSpeciality = "Já existe essa especialidade";
     private static final String errorMsgLenght="Nome de especialidade demasiado curto";
@@ -57,51 +60,93 @@ public class ReceptionistController {
     // Constructor
 
     // Methods
-    @GetMapping(value = "/add-speciality")
+    @GetMapping(value = "/receptionist/main")
+    public String showReceptionistMain(ModelMap modelMap){
+        User userLogged = userService.currentUser();
+
+        modelMap.put("user_logged", userLogged);
+        return "receptionist/main";
+    }
+
+    @GetMapping(value = "/receptionist/patient-list")
+    public String showPatientList(ModelMap modelMap) {
+        List<Patient> patients = patientService.findAll(Sort.by(Sort.Direction.ASC, "name"));
+        User userLogged = userService.currentUser();
+
+        modelMap.put("patients", patients);
+        modelMap.put("user_logged", userLogged);
+        return "receptionist/patient-list";
+    }
+
+    @GetMapping(value = "/receptionist/doctor-list")
+    public String showDoctorList(ModelMap modelMap) {
+        List<Speciality> specialities = specialityService.findAll(Sort.by(Sort.Direction.ASC, "name"));
+        List<Doctor> doctors = doctorService.findAll(Sort.by(Sort.Direction.ASC, "name"));
+        User userLogged = userService.currentUser();
+
+        modelMap.put("specialities", specialities);
+        modelMap.put("doctors", doctors);
+        modelMap.put("user_logged", userLogged);
+        return "receptionist/doctor-list";
+    }
+
+    @GetMapping(value = "/receptionist/appointment-list")
+    public String showAppointmentList(ModelMap modelMap) {
+        List<Speciality> specialities = specialityService.findAll(Sort.by(Sort.Direction.ASC, "name"));
+        User userLogged = userService.currentUser();
+
+        modelMap.put("specialities", specialities);
+        modelMap.put("user_logged", userLogged);
+        return "receptionist/appointment-list";
+    }
+
+    @GetMapping(value = "/receptionist/waiting-list")
+    public String showWaitingList(ModelMap modelMap) {
+        User userLogged = userService.currentUser();
+
+        modelMap.put("user_logged", userLogged);
+        return "receptionist/waiting-list";
+    }
+
+
+    @GetMapping(value = "/receptionist/add-speciality")
     public String addSpecialityPage(ModelMap modelMap){
         User userLogged = userService.currentUser();
 
         modelMap.put("user_logged", userLogged);
-        return ("add-speciality");
+        return ("receptionist/add-speciality");
     }
 
-    @GetMapping(value = "/add-patient")
-    public String addPatientPage(ModelMap modelMap){
-        List<Nationality> nationalities = nationalityService.findAll();
-        User userLogged = userService.currentUser();
-
-        modelMap.put("nationalities", nationalities);
-        modelMap.put("user_logged", userLogged);
-        return ("add-patient");
-    }
-
-    @GetMapping(value = "/add-doctor")
-    public String addDoctorPage(ModelMap modelMap){
-        User userLogged = Login.getConnectedUser();
-
-        modelMap.put("user_logged", userLogged);
-        return ("add-doctor");
-    }
-
-    @PostMapping(value = "/add-speciality")
+    @PostMapping(value = "/receptionist/add-speciality")
     public String addSpecialityService(@RequestParam String name_speciality, ModelMap mpError){
 
         Speciality speciality = new Speciality(name_speciality);
 
         if(!specialityService.validSpeciality(speciality)){
             mpError.put("errorMsgSpeciality", errorMsgSpeciality);
-            return "add-speciality";
+            return "receptionist/add-speciality";
         }
         if(!specialityService.validLength(speciality)){
             mpError.put("errorMsgSpeciality", errorMsgLenght);
-            return "add-speciality";
+            return "receptionist/add-speciality";
         }
 
         specialityService.addSpeciality(speciality);
 
-        return ("redirect:/main");
+        return ("redirect:/receptionist/main");
     }
-    @PostMapping(value = "/add-patient")
+
+    @GetMapping(value = "/receptionist/add-patient")
+    public String addPatientPage(ModelMap modelMap){
+        List<Nationality> nationalities = nationalityService.findAll();
+        User userLogged = userService.currentUser();
+
+        modelMap.put("nationalities", nationalities);
+        modelMap.put("user_logged", userLogged);
+        return ("receptionist/add-patient");
+    }
+
+    @PostMapping(value = "/receptionist/add-patient")
     public String addPatient(@ModelAttribute Patient user,
                              ModelMap mpError,
                              @RequestParam String confirmarPassword2){
@@ -206,18 +251,27 @@ public class ReceptionistController {
 
             mpError.put("user", user);
 
-            return "add-patient";
+            return "receptionist/add-patient";
         }
         // Add user to database
         userService.addUser(user);
 
-        return "redirect:/main";
+        return "redirect:/receptionist/main";
     }
 
-    @PostMapping (value ="/imprimir")
+    @GetMapping(value = "/receptionist/add-doctor")
+    public String addDoctorPage(ModelMap modelMap){
+        User userLogged = userService.currentUser();
+
+        modelMap.put("user_logged", userLogged);
+        return ("receptionist/add-doctor");
+    }
+
+
+    @PostMapping (value ="/receptionist/imprimir")
     public String doImprimir(@ModelAttribute Patient user, ModelMap modelMap){
 
         modelMap.put("user", user);
-        return ("add-patient");
+        return ("receptionist/add-patient");
     }
 }

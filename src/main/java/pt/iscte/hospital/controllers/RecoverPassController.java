@@ -18,13 +18,7 @@ public class RecoverPassController {
     @Autowired
     private LoginService loginService;
 
-    @GetMapping(value = "/recoverPass")
-    public String showRecoverPassPage(ModelMap modelMap) {
-        modelMap.put("username", "");
-        modelMap.put("user_nif", "");
 
-        return "recoverPass";
-    }
 
 
     @PostMapping(value = "/recoverToLogin")
