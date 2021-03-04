@@ -4,11 +4,11 @@
 
 <head>
     <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-    <%@ include file="components/head.jsp" %>
+    <%@ include file="../components/head.jsp" %>
 </head>
 
 <body>
-    <%@ include file="components/sidenav-main.jsp" %>
+    <%@ include file="../components/sidenav-main.jsp" %>
 
     <div class="main">
         <!--menu da direita-->

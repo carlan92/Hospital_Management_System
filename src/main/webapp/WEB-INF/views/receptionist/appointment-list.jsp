@@ -4,12 +4,12 @@
 
 <head>
     <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-    <%@ include file="components/head.jsp" %>
+    <%@ include file="../components/head.jsp" %>
 </head>
 
 <body>
 
-<%@ include file="components/sidenav-medico.jsp" %>
+<%@ include file="../components/sidenav-medico.jsp" %>
 
 
 <div class="main">
@@ -28,8 +28,17 @@
                 <form>
                     <div class="middle-row">
                         <div class="search-container">
-                            <input id="data_id" type="date" class="form-input sm" placeholder="Data" name="data">
+                            <<input id="data_id" type="date" class="form-input sm" placeholder="Data" name="data">
                             <input type="text" class="form-input sm" placeholder="Nome do Utente">
+                            <select id="speciality_id" class="form-input sm" name="speciality">
+                                <option value="" disabled selected>Especialidade</option>
+                                <!-- For -->
+                                <c:forEach var="speciality" items="${specialities}">
+                                    <option value="${speciality}.getName()">${speciality.getName()}</option>
+                                </c:forEach>
+                            </select>
+
+                            <input type="text" class="form-input sm" placeholder="Nome do Médico">
 
                             <button class="btn-search2" type="submit">Pesquisar</button>
 
@@ -51,6 +60,8 @@
                         <th>Data</th>
                         <th>Hora</th>
                         <th>Utente</th>
+                        <th>Especialidade</th>
+                        <th>Médico</th>
                         <th>+ detalhes</th>
                     </tr>
                     </thead>
@@ -60,6 +71,8 @@
                         <td>16/12/2020</td>
                         <td>10:00</td>
                         <td>Alice Costa</td>
+                        <td>Cardiologia</td>
+                        <td> Dr. Alberto</td>
                         <td><a href="#">Clicar aqui</a></td>
                     </tr>
 
@@ -67,6 +80,8 @@
                         <td>21/12/2020</td>
                         <td>10:15</td>
                         <td>Alberto Marques</td>
+                        <td>Cardiologia</td>
+                        <td> Dr. Alberto</td>
                         <td><a href="#">Clicar aqui</a></td>
                     </tr>
 
@@ -74,13 +89,17 @@
                         <td>20/01/2021</td>
                         <td>12:00</td>
                         <td>Ana Martins</td>
+                        <td>Cardiologia</td>
+                        <td> Dr. Alberto</td>
                         <td><a href="#">Clicar aqui</a></td>
                     </tr>
 
                     <tr>
                         <td>20/02/2021</td>
-                        <td>12:00</td>
+                        <td>16:00</td>
                         <td>Alice Costa</td>
+                        <td>Cardiologia</td>
+                        <td> Dr. Alberto</td>
                         <td><a href="#">Clicar aqui</a></td>
                     </tr>
 
