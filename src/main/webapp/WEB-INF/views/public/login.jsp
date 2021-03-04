@@ -28,11 +28,11 @@
                 </form>
                 <span style="color: red">${errorMessage}</span>
                 <div>
-                    <a class="login-a" href="/registration">Efectuar registo </a>
+                    <a class="login-a" href="/public/registration">Efectuar registo </a>
                 </div>
 
                 <div>
-                    <a class="login-a" href="/recoverPass">Recuperar palavra-passe</a>
+                    <a class="login-a" href="/public/recover-password">Recuperar palavra-passe</a>
                 </div>
             </div>
         </div>

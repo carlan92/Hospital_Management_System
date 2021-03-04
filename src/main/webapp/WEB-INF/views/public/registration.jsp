@@ -26,7 +26,7 @@
             </div>
 
 
-            <form class="registration-form" action="/registrationToLogin" method="post" enctype="multipart/form-data">
+            <form class="registration-form" action="/public/register-user" method="post" enctype="multipart/form-data">
 
                 <div class="perfil-main-col">
 
@@ -226,7 +226,7 @@
                         <div class="cell-row cell-morada">
                             <input id="termos_id" type="checkbox" name="termos" required />
                             <label for="termos_id"> Declaro que aceito os
-                                <a href="termsandconditions.html" target="_blank" class="link">termos e
+                                <a href="/termsandconditions.html" target="_blank" class="link">termos e
                                     condições</a> *</label>
                             <p class="nota">* campos de preenchimento obrigatório</p>
                         </div>

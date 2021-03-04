@@ -11,7 +11,7 @@
         <img class="logo_small" src="/imagens/noun_centro_hospitalar_logo.svg" alt="Logo do centro hospitalar">
         <div class="main-col">
 
-            <form class="recoverPass-form" action="/recoverToLogin" method="post">
+            <form class="recoverPass-form" action="/public/recover-password" method="post">
                 <div class="input-row">
                     <input class="form-input input1" type="text" name="username" id="user_name_id"
                            required placeholder="*Introduza o seu username" value="${username}">

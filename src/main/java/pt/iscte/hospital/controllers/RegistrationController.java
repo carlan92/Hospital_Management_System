@@ -72,8 +72,8 @@ public class RegistrationController {
         return "public/registration";
     }
 
-    @PostMapping(value = "/registrationToLogin")
-    public String returnToLoginPage(@ModelAttribute Patient user,
+    @PostMapping(value = "/public/register-user")
+    public String registerUser(@ModelAttribute Patient user,
                                     @RequestParam("file") MultipartFile file,
                                     ModelMap mpError,
                                     @RequestParam String confirmarPassword2) {
