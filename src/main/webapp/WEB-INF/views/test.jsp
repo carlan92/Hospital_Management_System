@@ -73,6 +73,10 @@
                     </div>
 
                     <div class="cell-row">
+                        <a href="add-doctor" class="btn btn-blue">Adicionar Médico</a>
+                    </div>
+
+                    <div class="cell-row">
                         <a href="add-speciality" class="btn btn-green">Criar Especialidade</a>
                     </div>
 

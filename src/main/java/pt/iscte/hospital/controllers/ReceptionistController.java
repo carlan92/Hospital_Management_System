@@ -75,6 +75,14 @@ public class ReceptionistController {
         return ("add-patient");
     }
 
+    @GetMapping(value = "/add-doctor")
+    public String addDoctorPage(ModelMap modelMap){
+        User userLogged = Login.getConnectedUser();
+
+        modelMap.put("user_logged", userLogged);
+        return ("add-doctor");
+    }
+
     @PostMapping(value = "/add-speciality")
     public String addSpecialityService(@RequestParam String name_speciality, ModelMap mpError){
 
