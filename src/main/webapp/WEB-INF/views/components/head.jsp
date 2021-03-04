@@ -15,6 +15,6 @@
 
 <script src="https://kit.fontawesome.com/6afe83edf7.js" crossorigin="anonymous"></script>
 
-<link rel="stylesheet" href="bootstrap.min.4.5.3.css"/>
-<link rel="stylesheet" href="style.css" />
-<link rel="icon" href="favicon.ico" type="image/x-icon">
+<link rel="stylesheet" href="/bootstrap.min.4.5.3.css"/>
+<link rel="stylesheet" href="/style.css" />
+<link rel="icon" href="/favicon.ico" type="image/x-icon">

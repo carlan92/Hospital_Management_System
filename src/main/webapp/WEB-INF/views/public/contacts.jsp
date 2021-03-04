@@ -13,7 +13,7 @@
       <!--menu da direita-->
       <div class="row first_row">
         <div class="col-4">
-          <img src="imagens/noun_contact.svg" alt="" class="icon1" />
+          <img src="/imagens/noun_contact.svg" alt="" class="icon1" />
         </div>
         <div class="col-8 intro">
           <h1>Contactos</h1>
