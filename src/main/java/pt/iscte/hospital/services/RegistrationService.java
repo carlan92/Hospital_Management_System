@@ -36,5 +36,11 @@ public interface RegistrationService {
     boolean validNationality(User user);
 
     boolean validAddress(User user);
+
+    public boolean validDocumentNumberUnique(User user);
+
+    public boolean validNifUnique (User user);
+
+    public boolean validPatientNumberUnique(User user);
 }
 

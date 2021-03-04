@@ -181,7 +181,7 @@ public class RegistrationServiceImpl implements RegistrationService {
         }
     }
     public boolean validNifUnique(User user){
-        User nifUnique = patientRepository.findByNif(user.getNif());
+        User nifUnique = userRepository.findByNif(user.getNif());
         if (nifUnique != null) {
             return false;
         } else {
@@ -189,7 +189,7 @@ public class RegistrationServiceImpl implements RegistrationService {
         }
     }
     public boolean validPatientNumberUnique(User user){
-        User patientNumberUnique = patientRepository.findByPatientNumber(user.getPatientNumber());
+        User patientNumberUnique = userRepository.findByPatientNumber(user.getPatientNumber());
         if (patientNumberUnique != null) {
             return false;
         } else {
@@ -197,7 +197,7 @@ public class RegistrationServiceImpl implements RegistrationService {
         }
     }
     public boolean validDocumentNumberUnique(User user){
-        User documentNumberUnique = patientRepository.findByDocumentNumber(user.getDocumentNumber());
+        User documentNumberUnique = userRepository.findByDocumentNumber(user.getDocumentNumber());
         if (documentNumberUnique != null) {
             return false;
         } else {
