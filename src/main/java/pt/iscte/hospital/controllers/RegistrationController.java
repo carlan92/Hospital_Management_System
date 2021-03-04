@@ -196,7 +196,7 @@ public class RegistrationController {
 
             mpError.put("user", user);
 
-            return "registration";
+            return "/public/registration";
         }
 
         // Add user to database

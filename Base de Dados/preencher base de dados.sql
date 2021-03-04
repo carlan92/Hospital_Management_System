@@ -969,3 +969,39 @@ VALUES (188),
 (384),
 (385);
 
+INSERT INTO user(user_id, username, password, name, sex, birthday, address, post_code, city, account, nationality, document_type, document_number, nif, patient_number, phone, email, photourl)
+VALUES (386,'rec001', 'pswrec001', 'Santiago Assunção Vieira', 'Masculino', '1989-06-14', 'Rua da Alfândega', '2614-241', 'Amadora', 'Recepcionista', 'Portuguesa', 'Bilhete de Identidade', '76127900', '213459174', '630516313', '912802112', 'rec001@hospital.upskill.com', 'rec001.jpg'),
+(387,'rec002', 'pswrec002', 'José Pires Antunes', 'Masculino', '1955-07-08', 'Rua de São Julião', '2900-411', 'Setúbal', 'Recepcionista', 'Portuguesa', 'Bilhete de Identidade', '41324617', '848321758', '586932508', '966229913', 'rec002@hospital.upskill.com', 'rec002.jpg'),
+(388,'rec003', 'pswrec003', 'Catarina Sofia Cunha Gomes', 'Feminino', '1954-09-14', 'Rua do Sacramento à Lapa', '2654-228', 'Amadora', 'Recepcionista', 'Portuguesa', 'Bilhete de Identidade', '47409942', '858039431', '349866136', '934738939', 'rec003@hospital.upskill.com', 'rec003.jpg'),
+(389,'rec004', 'pswrec004', 'Duarte José Miranda Oliveira', 'Masculino', '1969-06-27', 'Rua da Madalena', '1449-634', 'Lisboa', 'Recepcionista', 'Portuguesa', 'Bilhete de Identidade', '76178103', '427188848', '995257896', '918829948', 'rec004@hospital.upskill.com', 'rec004.jpg'),
+(390,'rec005', 'pswrec005', 'Santiago Matilde Figueiredo Figueiredo', 'Masculino', '1984-09-05', 'Rua do Guarda-Mor', '1549-731', 'Lisboa', 'Recepcionista', 'Portuguesa', 'Bilhete de Identidade', '62507076', '634350831', '684226986', '931373585', 'rec005@hospital.upskill.com', 'rec005.jpg'),
+(391,'rec006', 'pswrec006', 'Duarte Luís Castro Antunes', 'Masculino', '1988-06-14', 'Rua da Prata', '2654-578', 'Amadora', 'Recepcionista', 'Portuguesa', 'Bilhete de Identidade', '91496657', '489716842', '539816581', '963125267', 'rec006@hospital.upskill.com', 'rec006.jpg'),
+(392,'rec007', 'pswrec007', 'Tiago Rodrigo Cunha Ramos', 'Masculino', '1969-12-29', 'Calçada do Moinho de Vento', '1349-564', 'Lisboa', 'Recepcionista', 'Portuguesa', 'Bilhete de Identidade', '63387806', '829988758', '815702121', '914945528', 'rec007@hospital.upskill.com', 'rec007.jpg'),
+(393,'rec008', 'pswrec008', 'Gabriel João Torres Ferreira', 'Masculino', '1986-12-15', 'Travessa de São João da Praça', '2745-266', 'Queluz', 'Recepcionista', 'Portuguesa', 'Bilhete de Identidade', '93447178', '267136156', '608205890', '911291253', 'rec008@hospital.upskill.com', 'rec008.jpg'),
+(394,'rec009', 'pswrec009', 'Tiago Inês Pereira Henriques', 'Masculino', '1968-11-22', 'Rua do Arsenal', '2750-876', 'Cascais', 'Recepcionista', 'Portuguesa', 'Bilhete de Identidade', '37567118', '587506877', '884609656', '966490826', 'rec009@hospital.upskill.com', 'rec009.jpg'),
+(395,'rec010', 'pswrec010', 'Marco Inês Reis Araújo', 'Masculino', '1990-06-28', 'Rua da Prata', '2829-427', 'Caparica', 'Recepcionista', 'Portuguesa', 'Bilhete de Identidade', '50227653', '692666346', '144598948', '939877634', 'rec010@hospital.upskill.com', 'rec010.jpg');
+
+INSERT INTO receptionist(receptionist_id)
+VALUES (386),
+(387),
+(388),
+(389),
+(390),
+(391),
+(392),
+(393),
+(394),
+(395);
+
+INSERT INTO employee(employee_id)
+VALUES (386),
+(387),
+(388),
+(389),
+(390),
+(391),
+(392),
+(393),
+(394),
+(395);
+
