@@ -275,4 +275,12 @@ public class ReceptionistController {
         modelMap.put("user", user);
         return ("receptionist/add-patient");
     }
+
+    @GetMapping(value = "/receptionist/invoice-form")
+    public String showInvoiceForm(ModelMap modelMap) {
+        User userLogged = userService.currentUser();
+
+        modelMap.put("user_logged", userLogged);
+        return "receptionist/invoice-form";
+    }
 }

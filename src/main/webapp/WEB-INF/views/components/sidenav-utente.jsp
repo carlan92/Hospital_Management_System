@@ -26,7 +26,7 @@
                     </div>
                 </div>
                 <div>
-                    <a type="button" href="/user" class="btn-green btn-w70"> Ver Perfil </a>
+                    <a type="button" href="/user/user-profile"" class="btn-green btn-w70"> Ver Perfil </a>
                 </div>
             </div>
 
@@ -36,7 +36,7 @@
                     <a href="/patient/main" class="botao_acessos">
                         <img src="/imagens/noun_home.svg" /> Início
                     </a>
-                    <a href="/lista_medicos_doctor_patient" class="botao_acessos">
+                    <a href="/doctor-patient/doctor-list" class="botao_acessos">
                         <img src="/imagens/noun_doctor.svg" /> Médicos
                     </a>
                     <a href="/patient/appointment-list" class="botao_acessos">

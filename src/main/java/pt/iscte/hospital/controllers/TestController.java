@@ -42,24 +42,16 @@ public class TestController {
         return "test";
     }
 
-    @GetMapping(value = "/faturaForm")
-    public String pageFaturaForm(ModelMap modelMap) {
-        User userLogged = userService.currentUser();
-
-        modelMap.put("user_logged", userLogged);
-        return "faturaForm";
-    }
-
-    @GetMapping(value = "/historicoPagamentos")
+    @GetMapping(value = "/patient-receptionist/payments-history")
     public String page(ModelMap modelMap) {
         User userLogged = userService.currentUser();
 
         modelMap.put("user_logged", userLogged);
-        return "historicoPagamentos";
+        return "patient-receptionist/payments-history";
     }
 
-    @GetMapping(value = "/lista_medicos_doctor_patient")
-    public String showListaMedicostoDoctorandPatient(ModelMap modelMap) {
+    @GetMapping(value = "/doctor-patient/doctor-list")
+    public String showDoctorList(ModelMap modelMap) {
         List<Speciality> specialities = specialityService.findAll(Sort.by(Sort.Direction.ASC, "name"));
         List<Doctor> doctors = doctorService.findAll(Sort.by(Sort.Direction.ASC, "name"));
         User userLogged = userService.currentUser();
@@ -67,7 +59,7 @@ public class TestController {
         modelMap.put("specialities", specialities);
         modelMap.put("doctors", doctors);
         modelMap.put("user_logged", userLogged);
-        return "lista_medicos_doctor_patient";
+        return "doctor-patient/doctor-list";
     }
 
     @PostMapping(value = "/search-doctors")
@@ -90,7 +82,7 @@ public class TestController {
         modelMap.put("specialities", specialities);
         modelMap.put("doctors", doctors);
         modelMap.put("user_logged", userLogged);
-        return "lista_medicos_doctor_patient";
+        return "doctor-patient/doctor-list";
     }
 
 

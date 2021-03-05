@@ -1,22 +1,21 @@
-<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-	<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-	<%@ include file="components/head.jsp" %>
+    <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+    <%@ include file="../components/head.jsp" %>
 </head>
 
 <body>
-<%@ include file="components/sidenav-main.jsp" %>
+<%@ include file="../components/sidenav-main.jsp" %>
 
-    <div class="main">
-        <div class="white_box box-align-left">
+<div class="main">
+    <div class="white_box box-align-left">
 
 
-
-            <div class="perfil-main-col">
-                <div class="perfil-row">
+        <div class="perfil-main-col">
+            <div class="perfil-row">
                 <div class="cell-row cell-align-center">
                     <div class="user-type">
                         <p id="user_name">${user_logged.getFirstAndLastName()}</p>
@@ -26,18 +25,16 @@
 
                 <div class="cell-row">
                     <div class="user_photo">
-                        <img src="/uploaded_images/${user_logged.getPhotoURL()}" alt="foto do utilizador" />
+                        <img src="/uploaded_images/${user_logged.getPhotoURL()}" alt="foto do utilizador"/>
                     </div>
                 </div>
             </div>
 
 
-
-
             <div class="perfil-main-col">
                 <div class="perfil-row">
-                     <div class="cell-row">Nome Completo</div>
-                     <div class="cell-row">${user_logged.getName()}</div>
+                    <div class="cell-row">Nome Completo</div>
+                    <div class="cell-row">${user_logged.getName()}</div>
                 </div>
                 <div class="perfil-row">
                     <div class="cell-row">Sexo</div>
@@ -45,7 +42,8 @@
                 </div>
                 <div class="perfil-row">
                     <div class="cell-row">Data de nascimento</div>
-                    <div class="cell-row"><fmt:formatDate pattern="dd/MM/yyyy" value="${user_logged.getBirthday()}"/></div>
+                    <div class="cell-row"><fmt:formatDate pattern="dd/MM/yyyy"
+                                                          value="${user_logged.getBirthday()}"/></div>
                 </div>
 
                 <div class="perfil-row">
@@ -90,7 +88,7 @@
                 </div>
                 <div class="perfil-row">
                     <div class="cell-row">
-                        <form action="/change_data" method="get">
+                        <form action="/user/change-profile-data" method="get">
                             <button class="btn-blue btn-w65">Alterar Registo</button>
                         </form>
                     </div>
@@ -101,9 +99,8 @@
                     </div>
                 </div>
             </div>
-        </>
+        </div>
     </div>
-
+</div>
 </body>
-
 </html>

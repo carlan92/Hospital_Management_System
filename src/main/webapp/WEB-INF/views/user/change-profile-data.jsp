@@ -4,11 +4,11 @@
 
 <head>
     <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-    <%@ include file="components/head.jsp" %>
+    <%@ include file="../components/head.jsp" %>
 </head>
 
 <body>
-    <%@ include file="components/sidenav-main.jsp" %>
+    <%@ include file="../components/sidenav-main.jsp" %>
 
     <div class="main">
         <div class="white_box box-align-left">
@@ -25,7 +25,7 @@
                 </div>
             </div>
 
-            <form class="registry-form" action="/change_data" method="post" enctype="multipart/form-data">
+            <form class="registry-form" action="/user/change-profile-data" method="post" enctype="multipart/form-data">
 
                 <div class="perfil-main-col">
 

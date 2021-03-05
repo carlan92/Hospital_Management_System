@@ -29,7 +29,7 @@
 			</div>
 		</div>
 		<div>
-			<a type="button" href="/user" class="btn-green btn-w70"> Ver Perfil </a>
+			<a type="button" href="/user/user-profile" class="btn-green btn-w70"> Ver Perfil </a>
 		</div>
 	</div>
 
