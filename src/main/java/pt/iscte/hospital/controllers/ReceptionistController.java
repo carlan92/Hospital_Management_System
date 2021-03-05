@@ -89,7 +89,7 @@ public class ReceptionistController {
         return "receptionist/doctor-list";
     }
 
-    @PostMapping(value = "/receptionist-search-doctors")     //TODO actualizar a lista de especialidades apos pesquisa
+    @PostMapping(value = "/receptionist-search-doctors")
     public String searchDoctors(@RequestParam(name = "name") String name,
                                 @RequestParam(required = false, name = "speciality") String speciality,
                                 ModelMap modelMap) {

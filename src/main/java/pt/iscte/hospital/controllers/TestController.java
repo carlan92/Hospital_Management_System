@@ -70,7 +70,7 @@ public class TestController {
         return "lista_medicos_doctor_patient";
     }
 
-    @PostMapping(value = "/search-doctors")     //TODO actualizar a lista de especialidades apos pesquisa
+    @PostMapping(value = "/search-doctors")
     public String searchDoctors(@RequestParam(name = "name") String name,
                                 @RequestParam(required = false, name = "speciality") String speciality,
                                 ModelMap modelMap) {
