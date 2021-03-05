@@ -26,52 +26,50 @@
             </div>
         </a>
     </div>
-</div>
 
 
-<div class="divinfo">
-    <a href="">
-        <div class="containerinfo">
-            <img class="imginfo" src="/imagens/info_vacinacao.png" alt="..."/>
-            <div class="textinfo-block">
-                <p>O que acontece no nosso corpo quando somos vacinados?</p>
+    <div class="divinfo">
+        <a href="">
+            <div class="containerinfo">
+                <img class="imginfo" src="/imagens/info_vacinacao.png" alt="..."/>
+                <div class="textinfo-block">
+                    <p>O que acontece no nosso corpo quando somos vacinados?</p>
+                </div>
+                <div class="overlaytextinfo">
+                    <div class="textinfo">Ver Mais</div>
+                </div>
             </div>
-            <div class="overlaytextinfo">
-                <div class="textinfo">Ver Mais</div>
-            </div>
-        </div>
-    </a>
-</div>
+        </a>
+    </div>
 
-<div class="divinfo">
-    <a href="m">
-        <div class="containerinfo">
-            <img class="imginfo" src="/imagens/info_teleconsulta.png" alt="..."/>
-            <div class="textinfo-block">
-                <p>Mais informações sobre Teleconsultas</p>
+    <div class="divinfo">
+        <a href="m">
+            <div class="containerinfo">
+                <img class="imginfo" src="/imagens/info_teleconsulta.png" alt="..."/>
+                <div class="textinfo-block">
+                    <p>Mais informações sobre Teleconsultas</p>
+                </div>
+                <div class="overlaytextinfo">
+                    <div class="textinfo">Ver Mais</div>
+                </div>
             </div>
-            <div class="overlaytextinfo">
-                <div class="textinfo">Ver Mais</div>
-            </div>
-        </div>
-    </a>
-</div>
+        </a>
+    </div>
 
-<div class="divinfo">
-    <a href="">
-        <div class="containerinfo">
-            <img class="imginfo" src="/imagens/info_epilepsia.png" alt="..."/>
-            <div class="textinfo-block">
-                <p>Epilepsia. O que é?</p>
+    <div class="divinfo">
+        <a href="">
+            <div class="containerinfo">
+                <img class="imginfo" src="/imagens/info_epilepsia.png" alt="..."/>
+                <div class="textinfo-block">
+                    <p>Epilepsia. O que é?</p>
+                </div>
+                <div class="overlaytextinfo">
+                    <div class="textinfo">Ver Mais</div>
+                </div>
             </div>
-            <div class="overlaytextinfo">
-                <div class="textinfo">Ver Mais</div>
-            </div>
-        </div>
-    </a>
-</div>
+        </a>
+    </div>
 
-</div>
 </div>
 
 
