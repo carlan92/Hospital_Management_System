@@ -26,7 +26,7 @@
                 <button type="button" class="botao_acessos">
                     <img src="/imagens/noun_calendar.svg" /> Calendário de vagas
                 </button>
-                <a type="button" href="contacts" class="botao_acessos">
+                <a type="button" href="/public/contacts" class="botao_acessos">
                     <img src="/imagens/noun_phone.svg" /> Contactos
                 </a>
             </div>
