@@ -196,7 +196,7 @@ public class UserController {
 
     @GetMapping(value="/userToMain")
     public String showMainPage(){
-        return "redirect:/main";
+        return "redirect:/";
     } //todo
 
 }

@@ -86,6 +86,18 @@
                     <div class="cell-row">E-mail</div>
                     <div class="cell-row">${user_logged.getEmail()}</div>
                 </div>
+
+                <div class="perfil-row"><c:if test="${user_logged.getAccount().equals('Médico')}">
+                    <div class="cell-row">Nº Cédula Profissional</div>
+                    <div class="cell-row">${user_logged.getLicenseNumber()}</c:if>
+                    </div>
+                </div>
+                <div class="perfil-row"><c:if test="${user_logged.getAccount().equals('Médico')}">
+                    <div class="cell-row">Especialidade</div>
+                    <div class="cell-row">${user_logged.getSpeciality().getName()}</c:if>
+                    </div>
+                </div>
+
                 <div class="perfil-row">
                     <div class="cell-row">
                         <form action="/user/change-profile-data" method="get">

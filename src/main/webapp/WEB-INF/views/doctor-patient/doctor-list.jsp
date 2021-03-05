@@ -11,7 +11,12 @@
 <body>
 
 
-<%@ include file="../components/sidenav-main.jsp" %>
+<c:if test="${user_logged.getAccount().equals('Médico')}">
+    <%@ include file="../components/sidenav-medico.jsp" %>
+</c:if>
+<c:if test="${user_logged.getAccount().equals('Utente')}">
+    <%@ include file="../components/sidenav-utente.jsp" %>
+</c:if>
 
 <div class="main">
     <!--menu da direita-->
