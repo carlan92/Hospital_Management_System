@@ -4,15 +4,11 @@
 <head>
     <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
         <%@ include file="../components/head.jsp" %>
-        <script type="text/javascript">
-        function populate_doctor(speciality_id, doctor_id){
-            var speciality_element = document.getElementById(speciality_id);
-            var speciality_doctor = document.getElementById(doctor_id);
-
-            speciality_doctor.innerHTML = "";
-            
-        }
-        </script>
+            <script type="text/javascript">
+                function updateForm() {
+                    document.appointmentForm.submit();
+                }
+            </script>
 </head>
 
 <body>
@@ -33,13 +29,14 @@
                 </div>
 
 
-                <form class="registration-form" action="/patient/make-appointment" method="post">
+                <form class="registration-form" action="/patient/make-appointment" name="appointmentForm" method="post">
                     <div class="perfil-main-col">
 
                         <div class="perfil-row">
-                            <div class="cell-row">
+                            <div class="cell-row cell-morada">
                                 <label for="especialidade_id">Especialidade</label>
-                                <select id="especialidade_id" class="form-input" name="name_speciality" onchange="populate_doctor('especialidade_id', 'medico_id')">
+                                <select id="especialidade_id" class="form-input" name="specialityName" required
+                                    onchange="updateForm()">
                                     <option value="" disabled <c:if test="${empty search_speciality}">
                                         selected
                                         </c:if>>
@@ -55,12 +52,10 @@
                                         </option>
                                     </c:forEach>
                                 </select>
-                                
+
                                 <p class="msg-error">${errorMsgSpeciality}</p>
                             </div>
-                            <div class="cell-row">
-                                <button type="submit" class="btn btn-blue" formaction="/patient/make-appointment/update-doctor">Actualizar</button>
-                            </div>
+
 
 
                         </div>
@@ -68,16 +63,21 @@
                         <div class="perfil-row">
                             <div class="cell-row cell-morada">
                                 <label for="medico_id">Médico</label>
-                                <select id="medico_id" class="form-input" name="name_medico">
-                                    <option value="" disabled selected>Escolha o médico pretendido</option>
-                                    <option value="1">João Pestana</option>
-                                    <option value="2">Catarina Nogueira</option>
-                                    <option value="3">Marco Teixeira</option>
+                                <select id="medico_id" class="form-input" name="doctorName" onchange="updateForm()">
+                                    <option value="" disabled <c:if test="${empty search_doctor}">
+                                        selected
+                                        </c:if>>
+                                        Escolha o médico pretendido
+                                    </option>
 
-                               
-
-
-
+                                    <c:forEach var="doctor" items="${doctors}">
+                                        <option value="${doctor.getName()}" <c:if
+                                            test="${search_doctor.equals(doctor.getName())}">
+                                            selected
+                                            </c:if>>
+                                            ${doctor.getFirstAndLastName()}
+                                        </option>
+                                    </c:forEach>
 
                                 </select>
                                 <p class="msg-error">${errorMsgDoctor}</p>

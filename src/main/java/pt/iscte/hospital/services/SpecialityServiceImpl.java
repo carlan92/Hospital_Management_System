@@ -39,6 +39,11 @@ public class SpecialityServiceImpl implements SpecialityService {
     }
 
     @Override
+    public Speciality findByName(String name){
+        return specialityRepository.findByName(name);
+    }
+
+    @Override
     public List<Speciality> findAll(Sort sort) {
         return specialityRepository.findAll(sort);
     }

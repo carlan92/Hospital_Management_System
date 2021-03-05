@@ -12,5 +12,7 @@ public interface SpecialityService {
 
     boolean validLength(Speciality newSpeciality);
 
+    Speciality findByName(String name);
+
     List<Speciality> findAll(Sort sort);
 }

@@ -6,12 +6,17 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
+import pt.iscte.hospital.entities.Doctor;
 import pt.iscte.hospital.entities.Login;
 import pt.iscte.hospital.entities.Speciality;
 import pt.iscte.hospital.entities.User;
+import pt.iscte.hospital.services.DoctorService;
 import pt.iscte.hospital.services.SpecialityService;
 import pt.iscte.hospital.services.UserService;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -20,6 +25,8 @@ public class PatientController {
     private SpecialityService specialityService;
     @Autowired
     private UserService userService;
+    @Autowired
+    private DoctorService doctorService;
 
     // Attributes
 
@@ -56,27 +63,35 @@ public class PatientController {
 
 
     @PostMapping(value = "/patient/make-appointment")
-    public String makeAppointmentService() {
+    public String makeAppointmentService(ModelMap modelMap,
+                                         @RequestParam String specialityName,
+                                         @RequestParam(required = false, name = "doctorName") String doctorName) {
+        // Se campos vazios
+        if (doctorName == null || doctorName.isEmpty()) {
+            doctorName = "";
+        }
+
         // TODO lógica
         // envio de dados para a página
         // alterar a página para receber dados
-        return ("redirect:/patient/main");
+
+        List<Speciality> specialities = specialityService.findAll(Sort.by(Sort.Direction.ASC, "name"));
+        Speciality speciality = specialityService.findByName(specialityName);
+        List<Doctor> doctors = doctorService.findAllBySpecialityOrderByNameAsc(speciality) ;
+        User userLogged = userService.currentUser();
+
+        modelMap.put("specialities", specialities);
+        modelMap.put("doctors", doctors);
+        modelMap.put("search_speciality", specialityName);
+        modelMap.put("search_doctor", doctorName);
+        modelMap.put("user_logged", userLogged);
+
+
+
+
+        return ("patient/make-appointment");
     }
 
-    @PostMapping(value = "/patient/make-appointment/test1")
-    public String makeAppointmentUpdateDoctor() {
-        // TODO lógica
-        // envio de dados para a página
-        // alterar a página para receber dados
-        return ("redirect:/patient/main");
-    }
 
-    @PostMapping(value = "/patient/make-appointment/test2")
-    public String makeAppointmentUpdateCalendar() {
-        // TODO lógica
-        // envio de dados para a página
-        // alterar a página para receber dados
-        return ("redirect:/patient/main");
-    }
 
 }
