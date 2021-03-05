@@ -38,7 +38,7 @@
 
                 <div class="card_list_patient patient_data">
                     <div class="user_photo w-50">
-                        <img src="uploaded_images/${patient.getPhotoURL()}"
+                        <img src="/uploaded_images/${patient.getPhotoURL()}"
                              alt="Foto de ${patient.getFirstAndLastName()}">
                     </div>
                     <h1 class="patient_name">${patient.getFirstAndLastName()}</h1>
