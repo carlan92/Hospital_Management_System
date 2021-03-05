@@ -94,7 +94,7 @@ public class DoctorServiceImpl implements DoctorService {
     private List<Doctor> filterByFirstAndLastName(String name, List<Doctor> doctors) {
         List<Doctor> result = new ArrayList<>();
         for (Doctor doctor : doctors) {
-            if (doctor.getFirstAndLastName().toLowerCase().contains(name)) {
+            if (doctor.getFirstAndLastName().toLowerCase().contains(name.toLowerCase())) {
                 result.add(doctor);
             }
         }
