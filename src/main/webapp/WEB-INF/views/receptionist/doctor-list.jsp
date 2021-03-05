@@ -36,10 +36,10 @@
 
                                 <div class="choose_spec">
                                     <select id="speciality_id" class="form-control" name="speciality">
-                                        <option value="" disabled <c:if test="${empty search_speciality}">
+                                        <option value="" <c:if test="${empty search_speciality}">
                                             selected
                                             </c:if>>
-                                            Especialidade
+                                            Especialidade (Todas)
                                         </option>
                                         <!-- For -->
                                         <c:forEach var="speciality" items="${specialities}">

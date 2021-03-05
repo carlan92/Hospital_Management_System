@@ -75,11 +75,11 @@ public class TestController {
                                 @RequestParam(required = false, name = "speciality") String speciality,
                                 ModelMap modelMap) {
         List<Doctor> doctors;
-        if (speciality == null) {
+        if (speciality == null || speciality.isEmpty()) {
             speciality = "";
-            doctors = doctorService.findAllByNameContainingIgnoreCase(name);
+            doctors = doctorService.findAllByFirstAndLastName(name);
         } else {
-            doctors = doctorService.findAllByNameContainingIgnoreCaseAndSpeciality(name, speciality);
+            doctors = doctorService.findAllByFirstAndLastNameAndSpeciality(name, speciality);
         }
 
         List<Speciality> specialities = specialityService.findAll(Sort.by(Sort.Direction.ASC, "name"));

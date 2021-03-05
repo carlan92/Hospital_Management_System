@@ -94,11 +94,11 @@ public class ReceptionistController {
                                 @RequestParam(required = false, name = "speciality") String speciality,
                                 ModelMap modelMap) {
         List<Doctor> doctors;
-        if (speciality == null) {
+        if (speciality == null || speciality.isEmpty()) {
             speciality = "";
-            doctors = doctorService.findAllByNameContainingIgnoreCase(name);
+            doctors = doctorService.findAllByFirstAndLastName(name);
         } else {
-            doctors = doctorService.findAllByNameContainingIgnoreCaseAndSpeciality(name, speciality);
+            doctors = doctorService.findAllByFirstAndLastNameAndSpeciality(name, speciality);
         }
 
         List<Speciality> specialities = specialityService.findAll(Sort.by(Sort.Direction.ASC, "name"));
@@ -109,7 +109,7 @@ public class ReceptionistController {
         modelMap.put("specialities", specialities);
         modelMap.put("doctors", doctors);
         modelMap.put("user_logged", userLogged);
-        return "lista_medicos_doctor_patient";
+        return "receptionist/doctor-list";
     }
 
     @GetMapping(value = "/receptionist/appointment-list")

@@ -18,5 +18,7 @@ public interface DoctorService {
     List<Doctor> findAllBySpeciality(String specialityName);
     List<Doctor> findAllByNameContainingIgnoreCase(String name);
     List<Doctor> findAllByNameContainingIgnoreCaseAndSpeciality(String name, String specialityName);
+    List<Doctor> findAllByFirstAndLastName(String name);
+    List<Doctor> findAllByFirstAndLastNameAndSpeciality(String name, String specialityName);
 
 }
