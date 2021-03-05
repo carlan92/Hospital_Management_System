@@ -46,7 +46,10 @@ public class PatientController {
 
     @GetMapping(value = "/patient/make-appointment")
     public String showMakeAppointment(ModelMap modelMap) {
+        List<Speciality> specialities = specialityService.findAll(Sort.by(Sort.Direction.ASC, "name"));
         User userLogged = userService.currentUser();
+
+        modelMap.put("specialities", specialities);
         modelMap.put("user_logged", userLogged);
         return "patient/make-appointment";
     }
@@ -54,6 +57,22 @@ public class PatientController {
 
     @PostMapping(value = "/patient/make-appointment")
     public String makeAppointmentService() {
+        // TODO lógica
+        // envio de dados para a página
+        // alterar a página para receber dados
+        return ("redirect:/patient/main");
+    }
+
+    @PostMapping(value = "/patient/make-appointment/test1")
+    public String makeAppointmentUpdateDoctor() {
+        // TODO lógica
+        // envio de dados para a página
+        // alterar a página para receber dados
+        return ("redirect:/patient/main");
+    }
+
+    @PostMapping(value = "/patient/make-appointment/test2")
+    public String makeAppointmentUpdateCalendar() {
         // TODO lógica
         // envio de dados para a página
         // alterar a página para receber dados

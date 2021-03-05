@@ -57,6 +57,11 @@ public class DoctorServiceImpl implements DoctorService {
     }
 
     @Override
+    public Doctor findByUserId(Long doctorId) {
+        return doctorRepository.findByUserId(doctorId);
+    }
+
+    @Override
     public List<Doctor> findAll(Sort sort) {
         return doctorRepository.findAll(sort);
     }
@@ -65,6 +70,11 @@ public class DoctorServiceImpl implements DoctorService {
     public List<Doctor> findAllBySpeciality(String specialityName) {
         Speciality speciality = specialityRepository.findByName(specialityName);
         return doctorRepository.findAllBySpeciality(speciality);
+    }
+
+    @Override
+    public List<Doctor> findAllBySpecialityOrderByNameAsc(Speciality speciality) {
+        return doctorRepository.findAllBySpecialityOrderByNameAsc(speciality);
     }
 
     @Override

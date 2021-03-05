@@ -30,7 +30,8 @@ public class Doctor extends Employee {
     }
 
     public Doctor(Long userId,
-                  String name, String username,
+                  String name,
+                  String username,
                   String sex, Date birthday,
                   String address, String postCode,
                   String city,

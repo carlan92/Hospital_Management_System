@@ -14,8 +14,10 @@ public interface DoctorService {
     void removerFalta();
     void verListaDeEspera();
     void desmarcarConsulta();
+    Doctor findByUserId(Long doctorId);
     List<Doctor> findAll(Sort sort);
     List<Doctor> findAllBySpeciality(String specialityName);
+    List<Doctor> findAllBySpecialityOrderByNameAsc(Speciality speciality);
     List<Doctor> findAllByNameContainingIgnoreCase(String name);
     List<Doctor> findAllByNameContainingIgnoreCaseAndSpeciality(String name, String specialityName);
     List<Doctor> findAllByFirstAndLastName(String name);
