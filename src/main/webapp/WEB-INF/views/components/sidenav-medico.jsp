@@ -64,7 +64,7 @@
             <div class="sidenav_row log_out_box">
                 <img src="/imagens/noun_upskill.png" alt="" id="upskill_logo" />
                 <hr />
-                <form method="get" action="/logout">
+                <form method="post" action="/logout">
                     <button type="submit">
                         <img src="/imagens/noun_logout.svg" /> Terminar Sessão
                     </button>
