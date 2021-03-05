@@ -8,6 +8,7 @@ import pt.iscte.hospital.entities.Speciality;
 import pt.iscte.hospital.repositories.DoctorRepository;
 import pt.iscte.hospital.repositories.SpecialityRepository;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -61,7 +62,7 @@ public class DoctorServiceImpl implements DoctorService {
     }
 
     @Override
-    public List<Doctor> findAllBySpeciality(String specialityName){
+    public List<Doctor> findAllBySpeciality(String specialityName) {
         Speciality speciality = specialityRepository.findByName(specialityName);
         return doctorRepository.findAllBySpeciality(speciality);
     }
@@ -76,4 +77,28 @@ public class DoctorServiceImpl implements DoctorService {
         Speciality speciality = specialityRepository.findByName(specialityName);
         return doctorRepository.findAllByNameContainingIgnoreCaseAndSpeciality(name, speciality);
     }
+
+    @Override
+    public List<Doctor> findAllByFirstAndLastName(String name) {
+        List<Doctor> doctors = doctorRepository.findAllByNameContainingIgnoreCase(name);
+        return filterByFirstAndLastName(name, doctors);
+    }
+
+    @Override
+    public List<Doctor> findAllByFirstAndLastNameAndSpeciality(String name, String specialityName) {
+        Speciality speciality = specialityRepository.findByName(specialityName);
+        List<Doctor> doctors = doctorRepository.findAllByNameContainingIgnoreCaseAndSpeciality(name, speciality);
+        return filterByFirstAndLastName(name, doctors);
+    }
+
+    private List<Doctor> filterByFirstAndLastName(String name, List<Doctor> doctors) {
+        List<Doctor> result = new ArrayList<>();
+        for (Doctor doctor : doctors) {
+            if (doctor.getFirstAndLastName().toLowerCase().contains(name)) {
+                result.add(doctor);
+            }
+        }
+        return result;
+    }
+
 }

@@ -10,7 +10,6 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.AuthenticationEntryPointFailureHandler;
-import org.springframework.security.web.authentication.logout.HttpStatusReturningLogoutSuccessHandler;
 import org.springframework.security.web.authentication.www.BasicAuthenticationEntryPoint;
 
 @Configuration
@@ -58,10 +57,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 // Logout
                 .and()
                 .logout()
-                .logoutUrl("/logout")     // Este método faz logout do user
-                .logoutSuccessUrl("/")
-                .deleteCookies("JSESSIONID")
-                .logoutSuccessHandler(new HttpStatusReturningLogoutSuccessHandler());
+                .logoutUrl("/logout")       // Este método faz logout do user
+                .logoutSuccessUrl("/public/main")
+                .deleteCookies("JSESSIONID");
         // ...
     }
 
