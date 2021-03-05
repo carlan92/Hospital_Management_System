@@ -71,7 +71,7 @@ public class DoctorServiceImpl implements DoctorService {
         return doctorRepository.findAllByNameContainingIgnoreCase(name);
     }
 
-    @Override
+    @Override   //TODO pesquisar só por primeiro e ultimo nome
     public List<Doctor> findAllByNameContainingIgnoreCaseAndSpeciality(String name, String specialityName) {
         Speciality speciality = specialityRepository.findByName(specialityName);
         return doctorRepository.findAllByNameContainingIgnoreCaseAndSpeciality(name, speciality);

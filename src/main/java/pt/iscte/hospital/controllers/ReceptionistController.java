@@ -89,6 +89,29 @@ public class ReceptionistController {
         return "receptionist/doctor-list";
     }
 
+    @PostMapping(value = "/receptionist-search-doctors")     //TODO actualizar a lista de especialidades apos pesquisa
+    public String searchDoctors(@RequestParam(name = "name") String name,
+                                @RequestParam(required = false, name = "speciality") String speciality,
+                                ModelMap modelMap) {
+        List<Doctor> doctors;
+        if (speciality == null) {
+            speciality = "";
+            doctors = doctorService.findAllByNameContainingIgnoreCase(name);
+        } else {
+            doctors = doctorService.findAllByNameContainingIgnoreCaseAndSpeciality(name, speciality);
+        }
+
+        List<Speciality> specialities = specialityService.findAll(Sort.by(Sort.Direction.ASC, "name"));
+        User userLogged = userService.currentUser();
+
+        modelMap.put("search_name", name);
+        modelMap.put("search_speciality", speciality);
+        modelMap.put("specialities", specialities);
+        modelMap.put("doctors", doctors);
+        modelMap.put("user_logged", userLogged);
+        return "lista_medicos_doctor_patient";
+    }
+
     @GetMapping(value = "/receptionist/appointment-list")
     public String showAppointmentList(ModelMap modelMap) {
         List<Speciality> specialities = specialityService.findAll(Sort.by(Sort.Direction.ASC, "name"));
