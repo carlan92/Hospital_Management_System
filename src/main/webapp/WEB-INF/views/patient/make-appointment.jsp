@@ -12,7 +12,7 @@
 </head>
 
 <body>
-    <%@ include file="../components/sidenav-main.jsp" %>
+    <%@ include file="../components/sidenav-utente.jsp" %>
         <div class="main">
             <!--menu da direita-->
             <div class="white_box box-align-left">
