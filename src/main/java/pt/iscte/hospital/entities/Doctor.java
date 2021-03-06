@@ -59,6 +59,10 @@ public class Doctor extends Employee {
         return speciality;
     }
 
+    public void setSpeciality(Speciality speciality) {
+        this.speciality = speciality;
+    }
+
     @Override
     public List<GrantedAuthority> getAuthorities() {
         List<GrantedAuthority> roles = new ArrayList<>();

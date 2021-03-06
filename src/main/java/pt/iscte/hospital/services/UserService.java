@@ -24,4 +24,6 @@ public interface UserService {
     Role getUserRole(User user);
 
     String getUserMainPage(User user);
+
+    boolean validateUserNIF(String username, Long user_nif);
 }

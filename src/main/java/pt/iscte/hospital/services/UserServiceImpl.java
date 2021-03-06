@@ -85,5 +85,17 @@ public class UserServiceImpl implements UserService {
         Role role = getUserRole(user);
         return role.getMainPage();
     }
+
+    @Override
+    public boolean validateUserNIF(String username, Long user_nif) {
+        User user = userRepository.findByUsername(username);
+        if (user != null) {
+            if (username.equals(user.getUsername()) && user_nif.equals(user.getNif())) {
+                return true;
+            }
+        }
+        return false;
+    }
 }
+
 

@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -26,7 +27,10 @@
                         <button type="submit" name="submit" class="btn-green">Entrar</button>
                     </div>
                 </form>
-                <span style="color: red">${errorMessage}</span>
+                <c:if test="${param.error != null}">
+                	<span style="color: red">Username/Palavra-passe inválidos</span>
+                </c:if>
+
                 <div>
                     <a class="login-a" href="/public/registration">Efectuar registo </a>
                 </div>
