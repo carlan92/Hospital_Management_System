@@ -1393,6 +1393,91 @@ select option:disabled {
   padding: 20px;
 }
 
+/*Calendar*/
+
+.middle-me {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.calendar {
+  box-shadow: 3px 3px 9px rgba(0, 0, 0, 0.3);
+  border-radius: .8rem;
+  overflow: hidden;
+}
+
+.calendar .day {
+  padding: 2rem;
+  background-color: #050542;
+  color: #d4d4b5;
+}
+
+.full-day {
+  font-size: 2rem;
+  text-align: center;
+}
+
+.day-week {
+  font-size: 1rem;
+  font-weight: 600;
+  text-align: center;
+  letter-spacing: 1.2px;
+}
+
+.grid-days {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  grid-gap: .5rem;
+  padding: 1rem 1rem;
+}
+
+.day-cel {
+  text-align: center;
+}
+
+.day-cel.header {
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+.aday {
+  height: 40px;
+  position: relative;
+  float: left;
+  display: inline-block;
+  width: 40px;
+}
+
+.botao~label {
+  border-radius: 5px;
+  display: inline-block;
+  padding: 0;
+  margin: 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: white;
+  text-align: center;
+  line-height: 28px;
+  cursor: pointer;
+  color: #888;
+}
+
+.botao:checked~label {
+  border: solid 3px #56d5e6;
+  color: #707070;
+  background-color: rgb(115, 218, 102);
+}
+
+.month-before, .month-after {
+  font-size: 18px;
+  margin: 10px;
+}
+
 .contactbox2 {
   margin-top: 30px;
   position: relative;
