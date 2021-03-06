@@ -1,15 +1,4 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-html, body {
-    font-family: sans-serif;
-}
-
 .middle-me {
-    height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -22,13 +11,13 @@ html, body {
 }
 
 .calendar .day {
-    padding: 2rem;
+    padding: 30px;
     background-color: #050542;
     color: #d4d4b5;
 }
 
 .full-day {
-    font-size: 2rem;
+    font-size: 30px;
     text-align: center;
 }
 
@@ -42,8 +31,9 @@ html, body {
 .grid-days {
     display: grid;
     grid-template-columns: repeat(7, 1fr);
-    grid-gap: .5rem;
-    padding: 1rem 1rem;
+    grid-gap: 1px;
+    padding: 5px 20px;
+    background-color: white;
 }
 
 .day-cel {
@@ -56,11 +46,11 @@ html, body {
 }
 
 .aday {
-    height: 40px;
+    height: 35px;
+    width: 35px;
     position: relative;
     float: left;
     display: inline-block;
-    width: 40px;
 }
 
 .botao~label {
@@ -81,40 +71,11 @@ html, body {
 }
 
 .botao:checked~label {
-    border: solid 3px #56d5e6;
+    border: solid 3px #31ade0;
     color: #707070;
-    background-color: rgb(115, 218, 102);
 }
 
 .month-before, .month-after {
     font-size: 18px;
     margin: 10px;
 }
-
-/*input[type='radio']:after {
-    width: 15px;
-    height: 15px;
-    border-radius: 15px;
-    top: -2px;
-    left: -1px;
-    position: relative;
-    background-color: #d1d3d1;
-    content: '';
-    display: inline-block;
-    visibility: visible;
-    border: 2px solid white;
-}
-
-input[type='radio']:checked:after {
-    width: 15px;
-    height: 15px;
-    border-radius: 15px;
-    top: -2px;
-    left: -1px;
-    position: relative;
-    background-color: #ffbd43;
-    content: '';
-    display: inline-block;
-    visibility: visible;
-    border: 2px solid white;
-}*/

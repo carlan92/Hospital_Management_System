@@ -9,6 +9,7 @@
                     document.appointmentForm.submit();
                 }
             </script>
+            <link rel="stylesheet" href="/stylecalendar.css" />
 </head>
 
 <body>
@@ -85,15 +86,72 @@
                         </div>
 
                         <div class="perfil-row">
-                            <div class="cell-row cell-morada">
-                                <label for="date_id">Data</label>
-                                <input id="date_id" type="date" class="form-input" name="date" value="" />
+                            <div class="cell-row">
+
+                                <div class="middle-me">
+                                    <div class="calendar">
+                                        <div class="day">
+                                            <div class="full-day">
+                                                <i class="fas fa-less-than month-before"></i> Março <i
+                                                    class="fas fa-greater-than month-after"></i>
+                                            </div>
+                                            <div class="day-week">
+                                                2021
+                                            </div>
+                                        </div>
+
+
+                                        <div class="grid-days">
+                                            <div class="day-cel header">S</div>
+                                            <div class="day-cel header">T</div>
+                                            <div class="day-cel header">Q</div>
+                                            <div class="day-cel header">Q</div>
+                                            <div class="day-cel header">S</div>
+                                            <div class="day-cel header">S</div>
+                                            <div class="day-cel header">D</div>
+
+
+
+
+                                            <!-- For -->
+                                            <c:forEach var="day" items="${calendarDays}">
+                                                <div class="day-cel aday">
+                                                    <input type="radio" class="botao" name="options"
+                                                        id="day_${day.getDayId()}" disabled="">
+                                                    <label for="day_${day.getDayId()}"
+                                                        class="">${day.getDayNumber()}</label>
+                                                </div>
+
+                                            </c:forEach>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                        </div>
+
+
+                                    </div>
+                                </div>
+
+
+
                                 <p class="msg-error">${errorMsgDate}</p>
                             </div>
-                        </div>
 
-                        <div class="perfil-row">
-                            <div class="cell-row cell-morada">
+                            <div class="cell-row">
                                 <label for="hora_id">Hora</label>
                                 <select id="hora_id" type="text" class="form-input" name="hora">
                                     <option value="" disabled selected>Escolha a hora pretendida</option>
@@ -102,24 +160,12 @@
                                     <option value="3">11:00</option>
                                 </select>
                                 <p class="msg-error">${errorMsgHora}</p>
+                                <br />
+                                <button type="submit" class="btn btn-green">Marcar Consulta</button>
                             </div>
                         </div>
                     </div>
-                    <div class="perfil-row">
-                        <div class="cell-row">
-                            <button type="submit" class="btn btn-green">Marcar Consulta</button>
-                        </div>
-                        <div class="cell-row">
-                            <button type="submit" class="btn btn-blue" formaction="/patient">Actualizar</button>
-                        </div>
-                    </div>
                 </form>
-
-
-
-
-
-
             </div>
 
         </div>

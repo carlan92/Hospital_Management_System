@@ -12,6 +12,8 @@ import pt.iscte.hospital.entities.Doctor;
 import pt.iscte.hospital.entities.Login;
 import pt.iscte.hospital.entities.Speciality;
 import pt.iscte.hospital.entities.User;
+import pt.iscte.hospital.objects.utils.Calendar;
+import pt.iscte.hospital.objects.utils.Day;
 import pt.iscte.hospital.services.DoctorService;
 import pt.iscte.hospital.services.SpecialityService;
 import pt.iscte.hospital.services.UserService;
@@ -21,6 +23,7 @@ import java.util.List;
 
 @Controller
 public class PatientController {
+    // Attributes
     @Autowired
     private SpecialityService specialityService;
     @Autowired
@@ -28,7 +31,6 @@ public class PatientController {
     @Autowired
     private DoctorService doctorService;
 
-    // Attributes
 
     // Constructor
 
@@ -54,9 +56,11 @@ public class PatientController {
     @GetMapping(value = "/patient/make-appointment")
     public String showMakeAppointment(ModelMap modelMap) {
         List<Speciality> specialities = specialityService.findAll(Sort.by(Sort.Direction.ASC, "name"));
+        List<Day> calendar = Calendar.calendarList();
         User userLogged = userService.currentUser();
 
         modelMap.put("specialities", specialities);
+        modelMap.put("calendarDays", calendar);
         modelMap.put("user_logged", userLogged);
         return "patient/make-appointment";
     }
