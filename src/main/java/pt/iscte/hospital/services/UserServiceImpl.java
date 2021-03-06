@@ -85,5 +85,17 @@ public class UserServiceImpl implements UserService {
         Role role = getUserRole(user);
         return role.getMainPage();
     }
+
+    @Override
+    public boolean validateUserMail(String username, String email) {
+        User user = userRepository.findByUsername(username);
+        if (user != null) {
+            if (username.equals(user.getUsername()) && email.equals(user.getEmail())) {
+                return true;
+            }
+        }
+        return false;
+    }
 }
+
 

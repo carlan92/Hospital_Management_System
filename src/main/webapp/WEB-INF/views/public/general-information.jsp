@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -8,7 +9,20 @@
 
 <body>
 
-<%@ include file="../components/sidenav-main.jsp" %>
+    <c:choose>
+        <c:when test="${user_logged.getAccount().equals('Utente')}">
+            <%@ include file="../components/sidenav-utente.jsp" %>
+        </c:when>
+        <c:when test="${user_logged.getAccount().equals('Recepcionista')}">
+            <%@ include file="../components/sidenav-receptionist.jsp" %>
+        </c:when>
+        <c:when test="${user_logged.getAccount().equals('Médico')}">
+            <%@ include file="../components/sidenav-medico.jsp" %>
+        </c:when>
+        <c:otherwise>
+            <%@ include file="../components/sidenav-login.jsp" %>
+        </c:otherwise>
+    </c:choose>
 
 <div class="maininfo">
     <!--menu da direita-->

@@ -7,7 +7,7 @@
 </head>
 
 <body>
-<%@ include file="../components/sidenav-main.jsp" %>
+<%@ include file="../components/sidenav-receptionist.jsp" %>
 
 <div class="main">
     <!--menu da direita-->

@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
-import pt.iscte.hospital.entities.Login;
 import pt.iscte.hospital.entities.Nationality;
 import pt.iscte.hospital.entities.Patient;
 import pt.iscte.hospital.entities.User;
@@ -184,7 +183,7 @@ public class UserController {
         return "redirect:/user/user-profile";
     }
 
-
+    //change data form
     @GetMapping(value = "/user/user-profile")
     public String showUserProfile(ModelMap modelMap){
         User userLogged = userService.currentUser();
@@ -192,11 +191,9 @@ public class UserController {
         modelMap.put("user_logged", userLogged);
         return "user/user-profile";
     }
-
-
     @GetMapping(value="/userToMain")
     public String showMainPage(){
         return "redirect:/";
-    } //todo
+    }
 
 }

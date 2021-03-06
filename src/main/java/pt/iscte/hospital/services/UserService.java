@@ -24,4 +24,6 @@ public interface UserService {
     Role getUserRole(User user);
 
     String getUserMainPage(User user);
+
+    boolean validateUserMail(String username, String email);
 }

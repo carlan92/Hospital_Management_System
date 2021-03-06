@@ -8,7 +8,20 @@
 </head>
 
 <body>
-<%@ include file="../components/sidenav-main.jsp" %>
+    <c:choose>
+        <c:when test="${user_logged.getAccount().equals('Utente')}">
+            <%@ include file="../components/sidenav-utente.jsp" %>
+        </c:when>
+        <c:when test="${user_logged.getAccount().equals('Recepcionista')}">
+            <%@ include file="../components/sidenav-receptionist.jsp" %>
+        </c:when>
+        <c:when test="${user_logged.getAccount().equals('Médico')}">
+            <%@ include file="../components/sidenav-medico.jsp" %>
+        </c:when>
+        <c:otherwise>
+            <%@ include file="../components/sidenav-login.jsp" %>
+        </c:otherwise>
+    </c:choose>
 
 <div class="main">
     <div class="white_box box-align-left">
@@ -16,7 +29,7 @@
         <div class="perfil-main-col">
             <div class="perfil-row">
                 <div class="perfil-row">
-                    <img src="imagens\fill_form.svg" alt="fill form" class="img-fill-form"/>
+                    <img src="/imagens/fill_form.svg" alt="fill form" class="img-fill-form"/>
                 </div>
 
                 <div class="perfil-row">

@@ -9,7 +9,7 @@
 </head>
 
 <body>
-<%@ include file="../components/sidenav-main.jsp" %>
+<%@ include file="../components/sidenav-receptionist.jsp" %>
 
 
 <div class="main">
@@ -23,7 +23,7 @@
             <h3 class="utente_title">Lista de Utentes</h3>
             <div class=search_patient>
                 <div class="add-pat">
-                    <a class="btn btn-outline-secondary btn-add" href="receptionist/add-patient" type="submit">Adicionar novo utente</a>
+                    <a class="btn btn-outline-secondary btn-add" href="/receptionist/add-patient" type="submit">Adicionar novo utente</a>
                 </div>
                 <form class="form-inline">
                     <input class="form-control mr-sm-2" type="search" placeholder="Nome do utente"
