@@ -49,7 +49,7 @@ public class PublicController {
     @GetMapping(value = "/public/recover-password")
     public String showRecoverPasswordPage(ModelMap modelMap) {
         modelMap.put("username", "");
-        modelMap.put("user_nif", "");
+        modelMap.put("email", "");
 
         return "public/recover-password";
     }
@@ -57,10 +57,10 @@ public class PublicController {
     @PostMapping(value = "/public/recover-password")
     public String recoverPassword(ModelMap modelMap,
                                   @RequestParam String username,
-                                  @RequestParam Long user_nif,
+                                  @RequestParam String email,
                                   @RequestParam String password1,
                                   @RequestParam String password2) {
-        if (userService.validateUserNIF(username, user_nif)) {
+        if (userService.validateUserMail(username, email)) {
             if (password1.equals(password2)) {
                 User user = userService.findUser(username);
                 user.setPassword(password1);
@@ -70,10 +70,10 @@ public class PublicController {
                 modelMap.put("errorMessage", "Palavras-passe não coincidem");
             }
         } else {
-            modelMap.put("errorMessage", "Username/NIF inválido");
+            modelMap.put("errorMessage", "Username/Email inválido");
         }
         modelMap.put("username", username);
-        modelMap.put("user_nif", user_nif);
+        modelMap.put("email", email);
         return "public/recover-password";
     }
 

@@ -25,5 +25,5 @@ public interface UserService {
 
     String getUserMainPage(User user);
 
-    boolean validateUserNIF(String username, Long user_nif);
+    boolean validateUserMail(String username, String email);
 }

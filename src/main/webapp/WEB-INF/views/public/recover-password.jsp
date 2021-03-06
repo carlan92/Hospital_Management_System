@@ -15,8 +15,8 @@
                 <div class="input-row">
                     <input class="form-input input1" type="text" name="username" id="user_name_id"
                            required placeholder="*Introduza o seu username" value="${username}">
-                    <input class="form-input input1" type="text" name="user_nif" id="user_nif_id"
-                           required placeholder="*Introduza o seu NIF" value="${user_nif}">
+                    <input class="form-input input1" type="text" name="email" id="email_id"
+                           required placeholder="*Introduza o seu email" value="${email}">
                 </div>
 
                 <div class="input-row">

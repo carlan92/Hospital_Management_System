@@ -87,10 +87,10 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public boolean validateUserNIF(String username, Long user_nif) {
+    public boolean validateUserMail(String username, String email) {
         User user = userRepository.findByUsername(username);
         if (user != null) {
-            if (username.equals(user.getUsername()) && user_nif.equals(user.getNif())) {
+            if (username.equals(user.getUsername()) && email.equals(user.getEmail())) {
                 return true;
             }
         }
