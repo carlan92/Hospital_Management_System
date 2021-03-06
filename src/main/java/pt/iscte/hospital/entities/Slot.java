@@ -4,6 +4,8 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import java.sql.Time;
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.Date;
 
 @Entity
@@ -14,9 +16,9 @@ public class Slot {
     private Long slotId;
 
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
-    private Date date;
-    private Time timeBegin;
-    private Time timeEnd;
+    private LocalDate date;
+    private LocalTime timeBegin;
+    private LocalTime timeEnd;
 
     @OneToOne(mappedBy = "slot")
     private Appointment appointment;
@@ -29,7 +31,7 @@ public class Slot {
     public Slot() {
     }
 
-    public Slot(Long slotId, Long doctorId, Date date, Time timeBegin, Time timeEnd) {
+    public Slot(Long slotId, Long doctorId, LocalDate date, LocalTime timeBegin, LocalTime timeEnd) {
         this.slotId = slotId;
         this.date = date;
         this.timeBegin = timeBegin;
@@ -45,27 +47,27 @@ public class Slot {
         this.slotId = slotId;
     }
 
-    public Date getDate() {
+    public LocalDate getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(LocalDate date) {
         this.date = date;
     }
 
-    public Time getTimeBegin() {
+    public LocalTime getTimeBegin() {
         return timeBegin;
     }
 
-    public void setTimeBegin(Time timeBegin) {
+    public void setTimeBegin(LocalTime timeBegin) {
         this.timeBegin = timeBegin;
     }
 
-    public Time getTimeEnd() {
+    public LocalTime getTimeEnd() {
         return timeEnd;
     }
 
-    public void setTimeEnd(Time timeEnd) {
+    public void setTimeEnd(LocalTime timeEnd) {
         this.timeEnd = timeEnd;
     }
 
