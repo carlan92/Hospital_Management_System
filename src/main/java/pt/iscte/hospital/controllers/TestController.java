@@ -64,7 +64,7 @@ public class TestController {
         List<TimeInterval> timeIntervalList = new ArrayList<>();
         List<DayOfWeek> weekDaysList = new ArrayList<>();
         int year = 2021;
-        int month = 11;
+        int month = 03;
 
         timeIntervalList.add(new TimeInterval(LocalTime.of(9,00),LocalTime.of(12,00) ));
         timeIntervalList.add(new TimeInterval(LocalTime.of(13,00),LocalTime.of(17,00) ));

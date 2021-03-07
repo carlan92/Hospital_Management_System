@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 import pt.iscte.hospital.entities.Doctor;
 import pt.iscte.hospital.entities.Slot;
 import pt.iscte.hospital.entities.Speciality;
+import pt.iscte.hospital.entities.User;
 import pt.iscte.hospital.objects.utils.TimeInterval;
 import pt.iscte.hospital.repositories.DoctorRepository;
 import pt.iscte.hospital.repositories.SlotRepository;
@@ -23,6 +24,11 @@ public class SlotServiceImpl implements SlotService {
 
     @Autowired
     private SlotRepository slotRepository;
+
+    @Override
+    public void addSlot(Slot slot) {
+        slotRepository.save(slot);
+    }
 
     @Override
     public List<Slot> findAllByDoctorAndDateOrderByTimeBeginAsc(Doctor doctor, Date date) {
@@ -72,6 +78,8 @@ public class SlotServiceImpl implements SlotService {
                             slot.setTimeBegin(slotTimeBegin);
                             slot.setTimeEnd(slotTimeEnd);
                             slot.setDoctor(doctor);
+
+                            addSlot(slot);
 
                             System.out.println(slot);
 

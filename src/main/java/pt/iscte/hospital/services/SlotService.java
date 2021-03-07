@@ -11,6 +11,7 @@ import java.util.Date;
 import java.util.List;
 
 public interface SlotService {
+    void addSlot(Slot slot);
     List<Slot> findAllByDoctorAndDateOrderByTimeBeginAsc(Doctor doctor, Date date);
     List<Slot> findAll(Sort sort);
     void generateSlots(int duration,
