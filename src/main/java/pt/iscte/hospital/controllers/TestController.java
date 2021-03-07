@@ -50,40 +50,9 @@ public class TestController {
         return "patient-receptionist/payments-history";
     }
 
-    @GetMapping(value = "/doctor-patient/doctor-list")
-    public String showDoctorList(ModelMap modelMap) {
-        List<Speciality> specialities = specialityService.findAll(Sort.by(Sort.Direction.ASC, "name"));
-        List<Doctor> doctors = doctorService.findAll(Sort.by(Sort.Direction.ASC, "name"));
-        User userLogged = userService.currentUser();
 
-        modelMap.put("specialities", specialities);
-        modelMap.put("doctors", doctors);
-        modelMap.put("user_logged", userLogged);
-        return "doctor-patient/doctor-list";
-    }
 
-    @PostMapping(value = "/search-doctors")
-    public String searchDoctors(@RequestParam(name = "name") String name,
-                                @RequestParam(required = false, name = "speciality") String speciality,
-                                ModelMap modelMap) {
-        List<Doctor> doctors;
-        if (speciality == null || speciality.isEmpty()) {
-            speciality = "";
-            doctors = doctorService.findAllByFirstAndLastName(name);
-        } else {
-            doctors = doctorService.findAllByFirstAndLastNameAndSpeciality(name, speciality);
-        }
 
-        List<Speciality> specialities = specialityService.findAll(Sort.by(Sort.Direction.ASC, "name"));
-        User userLogged = userService.currentUser();
-
-        modelMap.put("search_name", name);
-        modelMap.put("search_speciality", speciality);
-        modelMap.put("specialities", specialities);
-        modelMap.put("doctors", doctors);
-        modelMap.put("user_logged", userLogged);
-        return "doctor-patient/doctor-list";
-    }
 
 
 }
