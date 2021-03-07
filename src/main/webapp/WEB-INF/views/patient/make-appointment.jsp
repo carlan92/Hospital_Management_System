@@ -118,7 +118,7 @@
                                                 <div class="day-cel aday">
                                                     <input type="radio" class="botao" name="chosenDay" value="${day.getDayNumber()}"
                                                         id="day_${day.getDayId()}" onchange="updateForm()"
-                                                        <c:if test="${empty day.getDayNumber()}">
+                                                        <c:if test="${empty day.getDayNumber() || day.getDayNumber() < dayOfToday}">
                                                             disabled=""
                                                         </c:if>
                                                         <c:if test="${Integer.toString(day.getDayNumber()).equals(chosenDay)}">

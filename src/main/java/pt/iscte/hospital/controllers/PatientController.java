@@ -59,9 +59,11 @@ public class PatientController {
         List<Speciality> specialities = specialityService.findAll(Sort.by(Sort.Direction.ASC, "name"));
         List<Day> calendar = Calendar.calendarList();
         User userLogged = userService.currentUser();
+        int dayOfToday = LocalDate.now().getDayOfMonth();
 
         modelMap.put("specialities", specialities);
         modelMap.put("calendarDays", calendar);
+        modelMap.put("dayOfToday", dayOfToday);
         modelMap.put("user_logged", userLogged);
         return "patient/make-appointment";
     }
@@ -72,6 +74,7 @@ public class PatientController {
                                          @RequestParam(required = false, name = "specialityName") String specialityName,
                                          @RequestParam(required = false, name = "doctorName") String doctorName,
                                          @RequestParam(required = false, name = "chosenDay") String chosenDay) {
+        int dayOfToday = LocalDate.now().getDayOfMonth();
         // Se campos vazios
         System.out.println("dia: " + chosenDay);
         if (doctorName == null || doctorName.isEmpty()) {
@@ -81,7 +84,7 @@ public class PatientController {
             specialityName = "";
         }
         if (chosenDay == null) {
-            chosenDay = Integer.toString(LocalDate.now().getDayOfMonth());
+            chosenDay = Integer.toString(dayOfToday);
         }
 
         // TODO lógica
@@ -99,6 +102,7 @@ public class PatientController {
         modelMap.put("search_speciality", specialityName);
         modelMap.put("search_doctor", doctorName);
         modelMap.put("calendarDays", calendar);
+        modelMap.put("dayOfToday", dayOfToday);
         modelMap.put("chosenDay", chosenDay);
         modelMap.put("user_logged", userLogged);
 
