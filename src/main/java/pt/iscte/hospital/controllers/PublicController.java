@@ -7,12 +7,16 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import pt.iscte.hospital.entities.User;
+import pt.iscte.hospital.services.RegistrationService;
 import pt.iscte.hospital.services.UserService;
 
 @Controller
 public class PublicController {
     @Autowired
     private UserService userService;
+    @Autowired
+    private RegistrationService registrationService;
+
 
     @GetMapping(value = "/public/contacts")
     public String ShowContacts(ModelMap modelMap) {
@@ -63,7 +67,7 @@ public class PublicController {
         if (userService.validateUserMail(username, email)) {
             if (password1.equals(password2)) {
                 User user = userService.findUser(username);
-                user.setPassword(password1);
+                registrationService.changeEncryptPassword(user, password1);
                 userService.addUser(user);
                 return "redirect:/public/login";
             } else {

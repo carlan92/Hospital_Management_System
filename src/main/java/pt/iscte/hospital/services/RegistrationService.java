@@ -42,5 +42,9 @@ public interface RegistrationService {
     boolean validNifUnique (User user);
 
     boolean validPatientNumberUnique(User user);
+
+    void encryptPassword(User user);
+
+    void changeEncryptPassword(User user, String password);
 }
 
