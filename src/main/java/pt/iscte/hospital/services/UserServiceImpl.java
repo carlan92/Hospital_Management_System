@@ -2,6 +2,7 @@ package pt.iscte.hospital.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import pt.iscte.hospital.entities.*;
 import pt.iscte.hospital.repositories.UserRepository;
@@ -38,11 +39,12 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public boolean validateUser(String username, String password) {
+        BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
         System.out.println("Verificar pass: " + password); // TODO verificar se a pass está encriptada
         User userLogged = userRepository.findByUsername(username);
         if (userLogged != null) {
             //ver password
-            if (userLogged.getPassword().equals(password)) {
+            if (encoder.matches(password, userLogged.getPassword())) {
                 return true;
             }
         }

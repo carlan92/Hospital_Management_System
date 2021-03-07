@@ -32,7 +32,8 @@ public class ReceptionistController {
     private SpecialityValidationService specialityValidationService;
     @Autowired
     private UserValidationService userValidationService;
-
+    @Autowired
+    private RegistrationService registrationService;
 
     // Constructor
 
