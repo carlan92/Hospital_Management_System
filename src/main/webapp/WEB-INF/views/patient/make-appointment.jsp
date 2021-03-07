@@ -116,12 +116,14 @@
                                             <!-- For -->
                                             <c:forEach var="day" items="${calendarDays}">
                                                 <div class="day-cel aday">
-                                                    <input type="radio" class="botao" name="options"
-                                                        id="day_${day.getDayId()}" <c:if
-                                                        test="${empty day.getDayNumber()}">
-                                                    disabled=""
-
-                                                    </c:if>>
+                                                    <input type="radio" class="botao" name="chosenDay" value="${day.getDayNumber()}"
+                                                        id="day_${day.getDayId()}" onchange="updateForm()"
+                                                        <c:if test="${empty day.getDayNumber()}">
+                                                            disabled=""
+                                                        </c:if>
+                                                        <c:if test="${Integer.toString(day.getDayNumber()).equals(chosenDay)}">
+                                                            checked
+                                                        </c:if>>
                                                     <label for="day_${day.getDayId()}"
                                                         class="">${day.getDayNumber()}</label>
                                                 </div>

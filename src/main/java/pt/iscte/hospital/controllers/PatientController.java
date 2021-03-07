@@ -18,6 +18,7 @@ import pt.iscte.hospital.services.DoctorService;
 import pt.iscte.hospital.services.SpecialityService;
 import pt.iscte.hospital.services.UserService;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -68,11 +69,19 @@ public class PatientController {
 
     @PostMapping(value = "/patient/make-appointment")
     public String makeAppointmentService(ModelMap modelMap,
-                                         @RequestParam String specialityName,
-                                         @RequestParam(required = false, name = "doctorName") String doctorName) {
+                                         @RequestParam(required = false, name = "specialityName") String specialityName,
+                                         @RequestParam(required = false, name = "doctorName") String doctorName,
+                                         @RequestParam(required = false, name = "chosenDay") String chosenDay) {
         // Se campos vazios
+        System.out.println("dia: " + chosenDay);
         if (doctorName == null || doctorName.isEmpty()) {
             doctorName = "";
+        }
+        if (specialityName == null || specialityName.isEmpty()) {
+            specialityName = "";
+        }
+        if (chosenDay == null) {
+            chosenDay = Integer.toString(LocalDate.now().getDayOfMonth());
         }
 
         // TODO lógica
@@ -81,21 +90,21 @@ public class PatientController {
 
         List<Speciality> specialities = specialityService.findAll(Sort.by(Sort.Direction.ASC, "name"));
         Speciality speciality = specialityService.findByName(specialityName);
-        List<Doctor> doctors = doctorService.findAllBySpecialityOrderByNameAsc(speciality) ;
+        List<Doctor> doctors = doctorService.findAllBySpecialityOrderByNameAsc(speciality);
+        List<Day> calendar = Calendar.calendarList();
         User userLogged = userService.currentUser();
 
         modelMap.put("specialities", specialities);
         modelMap.put("doctors", doctors);
         modelMap.put("search_speciality", specialityName);
         modelMap.put("search_doctor", doctorName);
+        modelMap.put("calendarDays", calendar);
+        modelMap.put("chosenDay", chosenDay);
         modelMap.put("user_logged", userLogged);
-
-
 
 
         return ("patient/make-appointment");
     }
-
 
 
 }
