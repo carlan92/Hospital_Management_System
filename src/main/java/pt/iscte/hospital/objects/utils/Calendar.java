@@ -1,12 +1,13 @@
 package pt.iscte.hospital.objects.utils;
 
-import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
+
 public class Calendar {
+
+
     public static List<Day> calendarList() {
         int year = LocalDate.now().getYear();
         int month = LocalDate.now().getMonth().getValue();

@@ -117,7 +117,11 @@
                                             <c:forEach var="day" items="${calendarDays}">
                                                 <div class="day-cel aday">
                                                     <input type="radio" class="botao" name="options"
-                                                        id="day_${day.getDayId()}" disabled="">
+                                                        id="day_${day.getDayId()}" <c:if
+                                                        test="${empty day.getDayNumber()}">
+                                                    disabled=""
+
+                                                    </c:if>>
                                                     <label for="day_${day.getDayId()}"
                                                         class="">${day.getDayNumber()}</label>
                                                 </div>
