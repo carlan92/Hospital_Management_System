@@ -60,6 +60,25 @@
                 <div class="horizontal-border"></div>
             </div>
         </div>
+
+        <div class="card_box">
+            <div class="card">
+                <div class="card-body">
+                    <div class="add-pat">
+                        <a class="btn btn-outline-secondary btn-add" href="/receptionist/add-doctor"
+                           type="submit">Adicionar novo médico</a>
+                    </div>
+
+                    <div class="add-pat">
+                        <a class="btn btn-outline-secondary btn-add" href="/receptionist/add-speciality"
+                           type="submit">Adicionar nova especialidade
+                        </a>
+                    </div>
+                </div>
+                <div class="horizontal-border"></div>
+            </div>
+        </div>
+
     </div>
 
     <div class="row last-row">

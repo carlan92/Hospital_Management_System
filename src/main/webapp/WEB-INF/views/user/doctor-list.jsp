@@ -31,11 +31,6 @@
 
             <form action="/search-doctors" method="post" class="form-inline">
                 <div class="search_patient search_doc">
-                    <div class="add-pat">
-                        <a class="btn btn-outline-secondary btn-add" href="/receptionist/add-doctor"
-                           type="submit">Adicionar novo médico</a>
-                    </div>
-
 
                     <input class="form-control mr-sm-2" value="${search_name}" name="name" type="search"
                            placeholder="Nome do médico" aria-label="Search">
@@ -61,13 +56,6 @@
                     </div>
                 </div>
             </form>
-
-
-            <div class="add-pat">
-                <a class="btn btn-outline-secondary btn-add" href="/receptionist/add-speciality"
-                   type="submit">Adicionar nova especialidade
-                </a>
-            </div>
         </div>
     </div>
 
