@@ -7,15 +7,18 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 import pt.iscte.hospital.entities.*;
+import pt.iscte.hospital.objects.utils.TimeInterval;
 import pt.iscte.hospital.security.IAuthenticationFacade;
-import pt.iscte.hospital.services.DoctorService;
-import pt.iscte.hospital.services.PatientService;
-import pt.iscte.hospital.services.SpecialityService;
-import pt.iscte.hospital.services.UserService;
+import pt.iscte.hospital.services.*;
 
+import java.time.DayOfWeek;
+import java.time.LocalTime;
+import java.util.ArrayList;
 import java.util.List;
 
+@RestController
 @Controller
 public class TestController {
 
@@ -30,6 +33,10 @@ public class TestController {
 
     @Autowired
     private UserService userService;
+
+    @Autowired
+    private SlotService slotService;
+
 
     @GetMapping(value = "/test")
     public String pageTest(ModelMap modelMap) {
@@ -50,9 +57,24 @@ public class TestController {
         return "patient-receptionist/payments-history";
     }
 
+    @GetMapping(value = "/test/slot")
+    public void generateSlots() {
 
+        int duration = 20;
+        List<TimeInterval> timeIntervalList = new ArrayList<>();
+        List<DayOfWeek> weekDaysList = new ArrayList<>();
+        int year = 2021;
+        int month = 11;
 
+        timeIntervalList.add(new TimeInterval(LocalTime.of(9,00),LocalTime.of(12,00) ));
+        timeIntervalList.add(new TimeInterval(LocalTime.of(13,00),LocalTime.of(17,00) ));
 
+        weekDaysList.add(DayOfWeek.MONDAY);
+        weekDaysList.add(DayOfWeek.TUESDAY);
+        weekDaysList.add(DayOfWeek.WEDNESDAY);
+
+        slotService.generateSlots(duration, timeIntervalList, weekDaysList, year, month);
+    }
 
 
 }

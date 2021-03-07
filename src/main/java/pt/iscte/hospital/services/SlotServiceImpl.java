@@ -1,15 +1,18 @@
 package pt.iscte.hospital.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import pt.iscte.hospital.entities.Doctor;
 import pt.iscte.hospital.entities.Slot;
+import pt.iscte.hospital.entities.Speciality;
 import pt.iscte.hospital.objects.utils.TimeInterval;
 import pt.iscte.hospital.repositories.DoctorRepository;
 import pt.iscte.hospital.repositories.SlotRepository;
 
 import java.time.DayOfWeek;
 import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.Date;
 import java.util.List;
 
@@ -26,6 +29,12 @@ public class SlotServiceImpl implements SlotService {
         return slotRepository.findAllByDoctorAndDateOrderByTimeBeginAsc(doctor, date);
     }
 
+    @Override
+    public List<Slot> findAll(Sort sort) {
+        return slotRepository.findAll(sort);
+    }
+
+    @Override
     public void generateSlots(int duration,
                               List<TimeInterval> timeIntervalList,
                               List<DayOfWeek> weekDaysList,
@@ -47,17 +56,34 @@ public class SlotServiceImpl implements SlotService {
                 // for each doctor
                 for (Doctor doctor : doctors) {
                     System.out.println("\tdoctor:" + doctor.getFirstAndLastName());
-                    for (Object timeInterval : timeIntervalList) {
-                        // if inside the interval
-                        if(true){
+                    for (TimeInterval timeInterval : timeIntervalList) {
+                        LocalTime slotTimeBegin = timeInterval.getTimeBegin();
+                        LocalTime slotTimeEnd = slotTimeBegin.plusMinutes(duration);
+
+                        while ((slotTimeBegin.isAfter(timeInterval.getTimeBegin()) && slotTimeBegin.isBefore(timeInterval.getTimeEnd()))
+                                || slotTimeBegin.equals(timeInterval.getTimeBegin())
+                                || (slotTimeEnd.isAfter(timeInterval.getTimeBegin()) && slotTimeEnd.isBefore(timeInterval.getTimeEnd()))
+                                || slotTimeEnd.equals(timeInterval.getTimeEnd())) {
+                            // while inside the interval
+
                             // create slot
                             Slot slot = new Slot();
                             slot.setDate(slotDate);
+                            slot.setTimeBegin(slotTimeBegin);
+                            slot.setTimeEnd(slotTimeEnd);
+                            slot.setDoctor(doctor);
+
+                            System.out.println(slot);
+
+
+                            slotTimeBegin = slotTimeEnd;
+                            slotTimeEnd = slotTimeBegin.plusMinutes(duration);
+
                         }
                     }
                 }
             }
         }
-
     }
+
 }

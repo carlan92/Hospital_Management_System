@@ -71,6 +71,14 @@ public class Slot {
         this.timeEnd = timeEnd;
     }
 
+    public Doctor getDoctor() {
+        return doctor;
+    }
+
+    public void setDoctor(Doctor doctor) {
+        this.doctor = doctor;
+    }
+
     @Override
     public String toString() {
         return "Slot{" +
@@ -78,6 +86,7 @@ public class Slot {
                 ", date=" + date +
                 ", timeBegin=" + timeBegin +
                 ", timeEnd=" + timeEnd +
+                ", doctor= " + doctor.getFirstAndLastName() +
                 '}';
     }
 }
