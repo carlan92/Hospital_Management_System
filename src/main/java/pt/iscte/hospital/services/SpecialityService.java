@@ -8,10 +8,6 @@ import java.util.List;
 public interface SpecialityService {
     void addSpeciality(Speciality speciality);
 
-    boolean validSpeciality(Speciality speciality);
-
-    boolean validLength(Speciality newSpeciality);
-
     Speciality findByName(String name);
 
     List<Speciality> findAll(Sort sort);

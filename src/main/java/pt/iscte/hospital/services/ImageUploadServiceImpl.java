@@ -17,16 +17,6 @@ public class ImageUploadServiceImpl implements ImageUploadService {
 
     // Methods
     @Override
-    /**
-     * Saves the uploaded image.
-     *
-     * @param imageFile A MultipartFile object with an Image file.
-     * @param username A String with the username name. It will be used to name the image.
-     * @return String with the name of the file has it was saved.
-     * @throws IOException If it was not possible to save the image file
-     * @throws ImageSizeException On exceeded file size.
-     * @throws ImageTypeException On invalid image extension.
-     */
     public String uploadImage(MultipartFile imageFile, String username)
             throws IOException, ImageSizeException, ImageTypeException {
 
@@ -46,9 +36,6 @@ public class ImageUploadServiceImpl implements ImageUploadService {
         return fileName;
     }
 
-    /**
-     * @return Max image size that can be uploaded. Value in <b>MB</b>.
-     */
     @Override
     public long getImageMaxSize() {
         return IMAGE_MAX_SIZE / 1000000;

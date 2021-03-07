@@ -19,26 +19,6 @@ public class SpecialityServiceImpl implements SpecialityService {
     }
 
     @Override
-    public boolean validSpeciality(Speciality newSpeciality) {
-        Speciality specialityDB = specialityRepository.findByName(newSpeciality.getName());
-
-        if (specialityDB != null) {
-            if (newSpeciality.getName().equalsIgnoreCase(specialityDB.getName())) {
-                return false;   // existe uma especialidade com o mesmo nome
-            } else {
-                return true;    // não foi encontrada especialidade com o mesmo nome
-            }
-        } else {
-            return true;
-        }
-    }
-
-    @Override
-    public boolean validLength(Speciality newSpeciality){
-        return (newSpeciality.getName().length() > 3);      // verificar se nome pequeno (evitar nomes curtos)
-    }
-
-    @Override
     public Speciality findByName(String name){
         return specialityRepository.findByName(name);
     }
