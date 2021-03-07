@@ -14,7 +14,6 @@ public class Calendar {
         LocalDate date = LocalDate.of(year, month, 1);
 
         Integer[] calendar = new Integer[42];
-        System.out.println(month);
 
         int nrDays = date.lengthOfMonth();
         int weekDay = date.getDayOfWeek().getValue();

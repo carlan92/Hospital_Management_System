@@ -872,10 +872,11 @@ select option:disabled {
 }
 
 .btn-w40{
-  width: 40%;
+  width: 35%;
   display: block;
   margin: auto;
-  margin-top: 10px;
+  padding: 8px;
+  font-size: 15px;
 }
 
 .display_time {
