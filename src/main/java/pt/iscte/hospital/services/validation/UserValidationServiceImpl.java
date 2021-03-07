@@ -86,18 +86,23 @@ public class UserValidationServiceImpl implements UserValidationService {
 
     @Override
     public UserValidationService validPostCode() {
-        if (!user.getPostCode().matches("[0-9]{4}[-][0-9]{3}") || !user.getPostCode().matches("")) {
+        if (user.getPostCode().matches("[0-9]{4}[-][0-9]{3}") || user.getPostCode().matches("")) {
+        }else{
             isValid = false;
             errorModelMap.put("errorMsgPostCode", ErrorMessage.ERROR_MESSAGE_POST_CODE.getErrorMsg());
+            return this;
         }
         return this;
     }
 
     @Override
     public UserValidationService validSex() {
-        if (!user.getSex().matches("Feminino") || !user.getSex().matches("Masculino")) {
+        if (user.getSex().matches("Feminino") || user.getSex().matches("Masculino")) {
+
+        }else {
             isValid = false;
             errorModelMap.put("errorMsgSex", ErrorMessage.ERROR_MESSAGE_SEX.getErrorMsg());
+            return this;
         }
         return this;
     }

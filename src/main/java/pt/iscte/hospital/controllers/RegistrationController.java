@@ -76,9 +76,6 @@ public class RegistrationController {
                 .validAddress()
                 .validAccount();
 
-         if (user.getPatientNumber() != null) {
-             userValidationService.validPatientNumberUnique();
-        }
 
         if (file != null && !file.isEmpty() && !file.getContentType().equals("application/octet-stream")) {
             try {
