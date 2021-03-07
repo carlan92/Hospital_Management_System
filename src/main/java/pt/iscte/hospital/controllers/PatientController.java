@@ -20,6 +20,7 @@ import pt.iscte.hospital.services.SpecialityService;
 import pt.iscte.hospital.services.UserService;
 
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -32,6 +33,7 @@ public class PatientController {
     private UserService userService;
     @Autowired
     private DoctorService doctorService;
+    private static final DateTimeFormatter FORMATTER = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 
 
     // Constructor
@@ -61,13 +63,19 @@ public class PatientController {
         List<Speciality> specialities = specialityService.findAll(Sort.by(Sort.Direction.ASC, "name"));
         List<Day> calendar = Calendar.calendarList();
         User userLogged = userService.currentUser();
-        int dayOfToday = LocalDate.now().getDayOfMonth();
-        int year = LocalDate.now().getYear();
-        String strMonth = Month.searchMonth(LocalDate.now().getMonth().getValue());
 
+        LocalDate todayDate = LocalDate.now();
+        int dayOfToday = todayDate.getDayOfMonth();
+        int year = todayDate.getYear();
+        int monthOfTodayNr = todayDate.getMonth().getValue();
+        String strMonth = Month.searchMonth(monthOfTodayNr);
+        String nextMonth = todayDate.plusMonths(1).format(FORMATTER);
+        String previousMonth = todayDate.minusMonths(1).format(FORMATTER);
 
         modelMap.put("specialities", specialities);
         modelMap.put("calendarDays", calendar);
+        modelMap.put("nextMonth", nextMonth);
+        modelMap.put("previousMonth", previousMonth);
         modelMap.put("dayOfToday", dayOfToday);
         modelMap.put("year", year);
         modelMap.put("strMonth", strMonth);
@@ -82,6 +90,7 @@ public class PatientController {
                                          @RequestParam(required = false, name = "doctorName") String doctorName,
                                          @RequestParam(required = false, name = "chosenDay") String chosenDay,
                                          @RequestParam(required = false, name = "arrowMonth") String arrowMonth) {
+
         LocalDate todayDate = LocalDate.now();
         int dayOfToday = todayDate.getDayOfMonth();
         int year = todayDate.getYear();
@@ -89,7 +98,6 @@ public class PatientController {
 
 
         // Se campos vazios
-        System.out.println("dia: " + chosenDay);
         if (doctorName == null || doctorName.isEmpty()) {
             doctorName = "";
         }
@@ -101,11 +109,12 @@ public class PatientController {
         }
 
         if (arrowMonth != null) {
-            if (arrowMonth.equals("0")) {
+            LocalDate date = LocalDate.parse(arrowMonth, FORMATTER);
+            // verificar se mes anterior ao actual -> erro
+            // caso contrário somar +1mes ao proximo e -1 mes ao anterior !! cuidado com as passagens de ano
+            String nextMonth = date.plusMonths(1).format(FORMATTER);
+            String previousMonth = date.minusMonths(1).format(FORMATTER);
 
-            } else {
-
-            }
         }
 
         // TODO lógica

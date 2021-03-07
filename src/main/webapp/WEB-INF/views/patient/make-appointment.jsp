@@ -92,7 +92,7 @@
                                 <div class="day perfil-row">
 
                                     <div class="month">
-                                        <input type="radio" class="month-arrow" name="arrowMonth" value="0" id="arrow_PrevMonth" onchange="updateForm()">
+                                        <input type="radio" class="month-arrow" name="arrowMonth" value="${previousMonth}" id="arrow_PrevMonth" onchange="updateForm()">
                                         <label for="arrow_PrevMonth" class="">
                                             <i class="fas fa-less-than month-before"></i>
                                         </label>
@@ -101,7 +101,7 @@
                                     ${strMonth} ${year}
 
                                     <div class="month">
-                                        <input type="radio" class="month-arrow" name="arrowMonth" value="1" id="arrow_NextMonth" onchange="updateForm()">
+                                        <input type="radio" class="month-arrow" name="arrowMonth" value="${nextMonth}" id="arrow_NextMonth" onchange="updateForm()">
                                         <label for="arrow_NextMonth" class="">
                                             <i class="fas fa-greater-than month-after"></i>
                                         </label>
