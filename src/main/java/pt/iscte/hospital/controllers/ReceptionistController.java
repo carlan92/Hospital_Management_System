@@ -244,6 +244,7 @@ public class ReceptionistController {
             return "receptionist/add-patient";
         }
         // Add user to database
+        registrationService.encryptPassword(user);
         userService.addUser(user);
 
         return "redirect:/receptionist/main";

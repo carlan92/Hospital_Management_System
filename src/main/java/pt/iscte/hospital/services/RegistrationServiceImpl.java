@@ -1,6 +1,7 @@
 package pt.iscte.hospital.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import pt.iscte.hospital.entities.Nationality;
 import pt.iscte.hospital.entities.User;
@@ -204,6 +205,15 @@ public class RegistrationServiceImpl implements RegistrationService {
             return true;
         }
     }
+    public void encryptPassword(User user){
+        BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+        user.setPassword(encoder.encode(user.getPassword()));
+    }
+    public void changeEncryptPassword(User user, String password){
+        BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+        user.setPassword(encoder.encode(password));
+    }
+
 
 }
 
