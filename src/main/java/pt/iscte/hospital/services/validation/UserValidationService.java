@@ -57,4 +57,6 @@ public interface UserValidationService {
     boolean isValid();
 
     ModelMap getErrorModelMap();
+
+    UserValidationService clear();
 }

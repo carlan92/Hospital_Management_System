@@ -63,4 +63,12 @@ public class SpecialityValidationServiceImpl implements SpecialityValidationServ
     public ModelMap getErrorModelMap() {
         return errorModelMap;
     }
+
+    @Override
+    public SpecialityValidationService clear(){
+        errorModelMap = new ModelMap();
+        speciality = null;
+        isValid = true;
+        return this;
+    }
 }

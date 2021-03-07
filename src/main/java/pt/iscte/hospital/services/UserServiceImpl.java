@@ -21,11 +21,7 @@ public class UserServiceImpl implements UserService {
     private UserRepository userRepository;
 
     public boolean validateUser(User user) {
-        if (user == null) {
-            return false;
-        } else {
-            return true;
-        }
+        return user != null;
     }
 
     @Override

@@ -53,7 +53,7 @@ public class UserController {
         // Update user info
         User connectedUser = userService.currentUser();
 
-        userValidationService.setUser(user)
+        userValidationService.clear().setUser(user)
                 .validName()
                 .validPhone()
                 .validPostCode()

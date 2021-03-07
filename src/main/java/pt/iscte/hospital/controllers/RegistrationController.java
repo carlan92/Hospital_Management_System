@@ -54,7 +54,7 @@ public class RegistrationController {
 
         mpError.put("nationalities", nationalities);
 
-        userValidationService.setUser(user)
+        userValidationService.clear().setUser(user)
                 .validName()
                 .validPassword()
                 .samePassword(confirmarPassword2)

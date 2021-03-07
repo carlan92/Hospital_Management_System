@@ -9,7 +9,6 @@ import pt.iscte.hospital.repositories.NationalityRepository;
 import pt.iscte.hospital.repositories.UserRepository;
 import pt.iscte.hospital.services.ErrorMessage;
 import pt.iscte.hospital.services.ImageUploadService;
-import pt.iscte.hospital.services.validation.UserValidationService;
 
 import java.text.SimpleDateFormat;
 
@@ -325,5 +324,13 @@ public class UserValidationServiceImpl implements UserValidationService {
     @Override
     public ModelMap getErrorModelMap() {
         return errorModelMap;
+    }
+
+    @Override
+    public UserValidationService clear(){
+        user = null;
+        isValid = true;
+        errorModelMap = new ModelMap();
+        return this;
     }
 }

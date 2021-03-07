@@ -91,7 +91,7 @@ public class ReceptionistController {
         Speciality speciality = new Speciality(name_speciality);
 
         // Check if speciality is valid
-        specialityValidationService.setSpeciality(speciality)
+        specialityValidationService.clear().setSpeciality(speciality)
                 .validName()
                 .validLength();
 
@@ -123,7 +123,7 @@ public class ReceptionistController {
         List<Nationality> nationalities = nationalityService.findAll();
         mpError.put("nationalities", nationalities);
 
-        userValidationService.setUser(user)
+        userValidationService.clear().setUser(user)
                 .validName()
                 .validPassword()
                 .samePassword(confirmarPassword2)
