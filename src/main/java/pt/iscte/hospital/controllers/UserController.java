@@ -70,9 +70,10 @@ public class UserController {
         if (!user.getDocumentNumber().equals(connectedUser.getDocumentNumber())) {
             userValidationService.validDocumentNumberUnique();
         }
-
-        if (user.getPatientNumber() != connectedUser.getPatientNumber() && user.getPatientNumber() != null) {
-           userValidationService.validPatientNumberUnique();
+        if (user.getPatientNumber()!=null) {
+            if (!user.getPatientNumber().equals(connectedUser.getPatientNumber())) {
+                userValidationService.validPatientNumberUnique();
+            }
         }
 
         if (!user.getNif().equals(connectedUser.getNif())) {
