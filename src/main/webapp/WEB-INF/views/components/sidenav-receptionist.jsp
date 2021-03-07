@@ -41,7 +41,7 @@
 				<a href="/receptionist/patient-list" class="botao_acessos">
 					<img src="/imagens/noun_utentes.svg" /> Utentes
 				</a>
-				<a href="/receptionist/doctor-list" class="botao_acessos">
+				<a href="/user/doctor-list" class="botao_acessos">
 					<img src="/imagens/noun_doctor.svg" /> Médicos
 				</a>
 				<a href="/receptionist/appointment-list" class="botao_acessos">
