@@ -11,21 +11,16 @@
 }
 
 .calendar .day {
-    padding: 30px;
-    background-color: #050542;
-    color: #d4d4b5;
+    padding: 10px;
+    background-color: #31ade0;
+    color: white;
+    text-align: center;
+    display: inline-block;
+    margin: auto;
 }
 
-.full-day {
-    font-size: 2rem;
-    text-align: center;
-}
-
-.day-week {
-    font-size: 1rem;
-    font-weight: 600;
-    text-align: center;
-    letter-spacing: 1.2px;
+.month {
+    display: inline-block;
 }
 
 .grid-days {
@@ -43,6 +38,7 @@
 .day-cel.header {
     font-weight: 600;
     margin-bottom: 1rem;
+    color: black;
 }
 
 .aday {
@@ -51,6 +47,21 @@
     position: relative;
     float: left;
     display: inline-block;
+}
+
+.month-arrow {
+    display: inline-block;
+    position: absolute;
+    clip: rect(0, 0, 0, 0);
+    text-align: center;
+    background-color: white;
+}
+
+.month-arrow:checked~label {
+    color: rgb(87, 87, 87);
+    text-align: center;
+    font-size: 20px;
+    opacity: 0.7;
 }
 
 .botao~label {
@@ -76,6 +87,5 @@
 }
 
 .month-before, .month-after {
-    font-size: 18px;
     margin: 10px;
 }
