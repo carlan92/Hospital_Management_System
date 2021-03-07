@@ -14,6 +14,7 @@ import pt.iscte.hospital.entities.Speciality;
 import pt.iscte.hospital.entities.User;
 import pt.iscte.hospital.objects.utils.Calendar;
 import pt.iscte.hospital.objects.utils.Day;
+import pt.iscte.hospital.objects.utils.Month;
 import pt.iscte.hospital.services.DoctorService;
 import pt.iscte.hospital.services.SpecialityService;
 import pt.iscte.hospital.services.UserService;
@@ -61,10 +62,15 @@ public class PatientController {
         List<Day> calendar = Calendar.calendarList();
         User userLogged = userService.currentUser();
         int dayOfToday = LocalDate.now().getDayOfMonth();
+        int year = LocalDate.now().getYear();
+        String strMonth = Month.searchMonth(LocalDate.now().getMonth().getValue());
+
 
         modelMap.put("specialities", specialities);
         modelMap.put("calendarDays", calendar);
         modelMap.put("dayOfToday", dayOfToday);
+        modelMap.put("year", year);
+        modelMap.put("strMonth", strMonth);
         modelMap.put("user_logged", userLogged);
         return "patient/make-appointment";
     }
@@ -74,8 +80,14 @@ public class PatientController {
     public String makeAppointmentService(ModelMap modelMap,
                                          @RequestParam(required = false, name = "specialityName") String specialityName,
                                          @RequestParam(required = false, name = "doctorName") String doctorName,
-                                         @RequestParam(required = false, name = "chosenDay") String chosenDay) {
-        int dayOfToday = LocalDate.now().getDayOfMonth();
+                                         @RequestParam(required = false, name = "chosenDay") String chosenDay,
+                                         @RequestParam(required = false, name = "arrowMonth") String arrowMonth) {
+        LocalDate todayDate = LocalDate.now();
+        int dayOfToday = todayDate.getDayOfMonth();
+        int year = todayDate.getYear();
+        String strMonth = Month.searchMonth(todayDate.getMonth().getValue());
+
+
         // Se campos vazios
         System.out.println("dia: " + chosenDay);
         if (doctorName == null || doctorName.isEmpty()) {
@@ -86,6 +98,14 @@ public class PatientController {
         }
         if (chosenDay == null) {
             chosenDay = Integer.toString(dayOfToday);
+        }
+
+        if (arrowMonth != null) {
+            if (arrowMonth.equals("0")) {
+
+            } else {
+
+            }
         }
 
         // TODO lógica
@@ -104,6 +124,8 @@ public class PatientController {
         modelMap.put("search_doctor", doctorName);
         modelMap.put("calendarDays", calendar);
         modelMap.put("dayOfToday", dayOfToday);
+        modelMap.put("year", year);
+        modelMap.put("strMonth", strMonth);
         modelMap.put("chosenDay", chosenDay);
         modelMap.put("user_logged", userLogged);
 
