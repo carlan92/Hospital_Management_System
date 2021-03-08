@@ -7,17 +7,11 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import pt.iscte.hospital.entities.Doctor;
-import pt.iscte.hospital.entities.Slot;
-import pt.iscte.hospital.entities.Speciality;
-import pt.iscte.hospital.entities.User;
+import pt.iscte.hospital.entities.*;
 import pt.iscte.hospital.objects.utils.Calendar;
 import pt.iscte.hospital.objects.utils.Day;
 import pt.iscte.hospital.objects.utils.Month;
-import pt.iscte.hospital.services.DoctorService;
-import pt.iscte.hospital.services.SlotService;
-import pt.iscte.hospital.services.SpecialityService;
-import pt.iscte.hospital.services.UserService;
+import pt.iscte.hospital.services.*;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -28,9 +22,13 @@ import static pt.iscte.hospital.objects.utils.Calendar.FORMATTER;
 public class PatientController {
     // Attributes
     @Autowired
+    private AppointmentService appointmentService;
+    @Autowired
     private SpecialityService specialityService;
     @Autowired
     private UserService userService;
+    @Autowired
+    private PatientService patientService;
     @Autowired
     private DoctorService doctorService;
     @Autowired
@@ -176,15 +174,27 @@ public class PatientController {
 
 
         // Marcar consulta
-        if(slotId != null && !slotId.isEmpty()){
-            // TODO encontrar slot por id
-             // TODO Slot slot = slotService.findBySlotId(Long.parse(slotID))
+        if (slotId != null && !slotId.isEmpty()) {
+            // Encontrar slot por id
+            Slot slot = slotService.findBySlotId(Long.parseLong(slotId));
 
-            // TODO marcar slot como marcada
-                //slot.setAvailable(false);
-            // TODO adicionar consulta à base de dados
+            // Marcar slot como marcada/indisponível
+            slot.setAvailable(false);
+
+            // Actualizar slot na base de dados
+            slotService.saveSlot(slot);
+
+            // Adicionar consulta à base de dados
+            Appointment appointment = new Appointment();
+            Patient patient = patientService.findByUsername(userService.currentUser().getUsername());
+            appointment.setPatient(patient);
+            appointment.setSlot(slot);
+
+            appointmentService.saveAppointment(appointment);
+            System.out.println("Sucesso: consulta marcada - " + appointment + slot);
 
             // TODO Redireccionar à página de sucesso de marcação
+            return "redirect:/patient/main";
         }
 
 

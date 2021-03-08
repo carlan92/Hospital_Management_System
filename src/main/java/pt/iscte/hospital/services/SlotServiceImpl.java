@@ -23,8 +23,9 @@ public class SlotServiceImpl implements SlotService {
     @Autowired
     private SlotRepository slotRepository;
 
+    // Methods
     @Override
-    public void addSlot(Slot slot) {
+    public void saveSlot(Slot slot) {
         slotRepository.save(slot);
     }
 
@@ -36,6 +37,11 @@ public class SlotServiceImpl implements SlotService {
     @Override
     public List<Slot> findAll(Sort sort) {
         return slotRepository.findAll(sort);
+    }
+
+    @Override
+    public Slot findBySlotId(Long slotId){
+        return slotRepository.findBySlotId(slotId);
     }
 
     @Override
@@ -53,12 +59,13 @@ public class SlotServiceImpl implements SlotService {
         for (int day = 1; day <= nrDays; day++) {
             LocalDate slotDate = LocalDate.of(year, month, day);
             DayOfWeek dayOfWeek = slotDate.getDayOfWeek();
-
+            System.out.println(day);
 
             // if the week day is available
             if (weekDaysList.contains(dayOfWeek)) {
                 // for each doctor
                 for (Doctor doctor : doctors) {
+
                     for (TimeInterval timeInterval : timeIntervalList) {
                         LocalTime slotTimeBegin = timeInterval.getTimeBegin();
                         LocalTime slotTimeEnd = slotTimeBegin.plusMinutes(duration);
@@ -76,10 +83,7 @@ public class SlotServiceImpl implements SlotService {
                             slot.setTimeEnd(slotTimeEnd);
                             slot.setDoctor(doctor);
 
-                            addSlot(slot);
-
-                            System.out.println(slot);
-
+                            saveSlot(slot);
 
                             slotTimeBegin = slotTimeEnd;
                             slotTimeEnd = slotTimeBegin.plusMinutes(duration);
@@ -89,6 +93,7 @@ public class SlotServiceImpl implements SlotService {
                 }
             }
         }
+        System.out.println("Geração de Vagas concluída");
     }
 
 }

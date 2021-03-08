@@ -100,6 +100,10 @@ public class Appointment {
         this.invoice = invoice;
     }
 
+    public void setSlot(Slot slot) {
+        this.slot = slot;
+    }
+
     public String getNotes() {
         return notes;
     }
