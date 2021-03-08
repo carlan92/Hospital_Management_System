@@ -8,17 +8,18 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import pt.iscte.hospital.entities.Doctor;
+import pt.iscte.hospital.entities.Slot;
 import pt.iscte.hospital.entities.Speciality;
 import pt.iscte.hospital.entities.User;
 import pt.iscte.hospital.objects.utils.Calendar;
 import pt.iscte.hospital.objects.utils.Day;
 import pt.iscte.hospital.objects.utils.Month;
 import pt.iscte.hospital.services.DoctorService;
+import pt.iscte.hospital.services.SlotService;
 import pt.iscte.hospital.services.SpecialityService;
 import pt.iscte.hospital.services.UserService;
 
 import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 import static pt.iscte.hospital.objects.utils.Calendar.FORMATTER;
@@ -32,6 +33,8 @@ public class PatientController {
     private UserService userService;
     @Autowired
     private DoctorService doctorService;
+    @Autowired
+    private SlotService slotService;
 
 
     // Constructor
@@ -91,7 +94,8 @@ public class PatientController {
     @PostMapping(value = "/patient/make-appointment")
     public String makeAppointmentService(ModelMap modelMap,
                                          @RequestParam(required = false, name = "specialityName") String specialityName,
-                                         @RequestParam(required = false, name = "doctorName") String doctorName,
+                                         @RequestParam(required = false, name = "doctorId") String doctorId,
+                                         @RequestParam(required = false, name = "slotId") String slotId,
                                          @RequestParam(required = false, name = "chosenDay") String chosenDay,
                                          @RequestParam(required = false, name = "arrowMonth") String arrowMonth) {
 
@@ -134,7 +138,7 @@ public class PatientController {
         previousMonthDate = chosenDate.minusMonths(1).format(FORMATTER);
 
 
-        // TODO Fazer lógica das setas + Condição para limitar a selecção de dias de calendário, dias anteriores ao dia actual
+        // Lógica das setas + Condição para limitar a selecção de dias de calendário, dias anteriores ao dia actual
         if (chosenDate.getMonthValue() == todayDate.getMonthValue()) {
             previousArrowState = 0;
             nextArrowState = 1;
@@ -149,9 +153,13 @@ public class PatientController {
 
 
         // Se campos vazios
-        if (doctorName == null || doctorName.isEmpty()) {
-            doctorName = "";
+        Doctor doctor = null;
+        if (doctorId == null || doctorId.isEmpty()) {
+            doctorId = "";
+        } else {
+            doctor = doctorService.findByUserId(Long.parseLong(doctorId));
         }
+
         if (specialityName == null || specialityName.isEmpty()) {
             specialityName = "";
         }
@@ -164,13 +172,16 @@ public class PatientController {
         List<Speciality> specialities = specialityService.findAll(Sort.by(Sort.Direction.ASC, "name"));
         Speciality speciality = specialityService.findByName(specialityName);
         List<Doctor> doctors = doctorService.findAllBySpecialityOrderByNameAsc(speciality);
+        List<Slot> slots = slotService.findAllByDoctorAndDateOrderByTimeBeginAsc(doctor, chosenDate);
         List<Day> calendar = Calendar.calendarList(calYear, calMonth);
         User userLogged = userService.currentUser();
 
         modelMap.put("specialities", specialities);
         modelMap.put("doctors", doctors);
+        modelMap.put("slots", slots);
         modelMap.put("search_speciality", specialityName);
-        modelMap.put("search_doctor", doctorName);
+        modelMap.put("search_doctor", doctorId);
+        modelMap.put("search_slot", slotId);
         modelMap.put("calendarDays", calendar);
         modelMap.put("nextMonth", nextMonthDate);
         modelMap.put("previousMonth", previousMonthDate);

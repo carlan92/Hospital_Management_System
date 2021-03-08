@@ -63,7 +63,7 @@
                 <div class="perfil-row">
                     <div class="cell-row cell-morada">
                         <label for="medico_id">Médico</label>
-                        <select id="medico_id" class="form-input" name="doctorName" onchange="updateForm()">
+                        <select id="medico_id" class="form-input" name="doctorId" onchange="updateForm()">
                             <option value="" disabled <c:if test="${empty search_doctor}">
                                 selected
                             </c:if>>
@@ -71,8 +71,8 @@
                             </option>
 
                             <c:forEach var="doctor" items="${doctors}">
-                                <option value="${doctor.getName()}" <c:if
-                                        test="${search_doctor.equals(doctor.getName())}">
+                                <option value="${doctor.getUserId()}" <c:if
+                                        test="${search_doctor.equals(doctor.getUserId().toString())}">
                                     selected
                                 </c:if>>
                                         ${doctor.getFirstAndLastName()}
@@ -151,11 +151,11 @@
 
                     <div class="cell-row">
                         <label for="hora_id">Hora</label>
-                        <select id="hora_id" type="text" class="form-input" name="hora">
+                        <select id="hora_id" type="text" class="form-input" name="slotId">
                             <option value="" disabled selected>Escolha a hora pretendida</option>
-                            <option value="1">09:30</option>
-                            <option value="2">10:30</option>
-                            <option value="3">11:00</option>
+                                <c:forEach var="slot" items="${slots}">
+                                    <option value="${slot.getSlotId()}">${slot.getTimeBegin()}</option>
+                                </c:forEach>
                         </select>
                         <p class="msg-error">${errorMsgHora}</p>
                         <br/>

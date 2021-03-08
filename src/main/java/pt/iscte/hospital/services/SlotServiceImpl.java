@@ -29,7 +29,7 @@ public class SlotServiceImpl implements SlotService {
     }
 
     @Override
-    public List<Slot> findAllByDoctorAndDateOrderByTimeBeginAsc(Doctor doctor, Date date) {
+    public List<Slot> findAllByDoctorAndDateOrderByTimeBeginAsc(Doctor doctor, LocalDate date) {
         return slotRepository.findAllByDoctorAndDateOrderByTimeBeginAsc(doctor, date);
     }
 

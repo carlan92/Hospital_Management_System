@@ -5,10 +5,10 @@ import org.springframework.stereotype.Repository;
 import pt.iscte.hospital.entities.Doctor;
 import pt.iscte.hospital.entities.Slot;
 
-import java.util.Date;
+import java.time.LocalDate;
 import java.util.List;
 
 @Repository
 public interface SlotRepository extends JpaRepository<Slot, Long> {
-    List<Slot> findAllByDoctorAndDateOrderByTimeBeginAsc(Doctor doctor, Date date);
+    List<Slot> findAllByDoctorAndDateOrderByTimeBeginAsc(Doctor doctor, LocalDate date);
 }
