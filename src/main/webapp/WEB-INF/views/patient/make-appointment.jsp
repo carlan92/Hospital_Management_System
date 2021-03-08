@@ -130,12 +130,12 @@
                                     <c:forEach var="day" items="${calendarDays}">
                                         <div class="day-cel aday">
                                             <input type="radio" class="botao cal_${day.getColor()}" name="chosenDay"
-                                                   value="${day.getDate()}"
+                                                   value="${day.getDateStr()}"
                                                    id="day_${day.getDayId()}" onchange="updateForm()"
                                             <c:if test="${empty day.getDayNumber() || day.getDayNumber() < dayOfToday}">
                                                    disabled=""
                                             </c:if>
-                                            <c:if test="${day.getDate().equals(chosenDay)}">
+                                            <c:if test="${day.getDateStr().equals(chosenDay)}">
                                                    checked
                                             </c:if>>
                                             <label for="day_${day.getDayId()}"

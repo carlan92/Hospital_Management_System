@@ -5,16 +5,16 @@ import java.time.LocalDate;
 public class Day {
     private Integer dayId;
     private Integer dayNumber;
-    private String date;
-    private LocalDate date1;
+    private String dateStr;
+    private LocalDate date;
     private String color;
 
-    public Day(Integer dayId, Integer dayNumber, String date, LocalDate date1) {
+    public Day(Integer dayId, Integer dayNumber, String dateStr, LocalDate date) {
         this.dayId = dayId;
         this.dayNumber = dayNumber;
+        this.dateStr = dateStr;
         this.date = date;
-        this.date1 = date1;
-        this.color = "white";
+        this.color = CalendarColor.WHITE.getName();
     }
 
     public Integer getDayId() {
@@ -25,12 +25,12 @@ public class Day {
         return dayNumber;
     }
 
-    public String getDate() {
-        return date;
+    public String getDateStr() {
+        return dateStr;
     }
 
-    public LocalDate getDate1() {
-        return date1;
+    public LocalDate getDate() {
+        return date;
     }
 
     public String getColor() {

@@ -5,7 +5,7 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import pt.iscte.hospital.entities.Doctor;
 import pt.iscte.hospital.entities.Slot;
-import pt.iscte.hospital.objects.utils.Calendar;
+import pt.iscte.hospital.objects.utils.CalendarColor;
 import pt.iscte.hospital.objects.utils.Day;
 import pt.iscte.hospital.objects.utils.TimeInterval;
 import pt.iscte.hospital.repositories.DoctorRepository;
@@ -16,8 +16,6 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
-
-import static pt.iscte.hospital.objects.utils.Calendar.FORMATTER;
 
 @Service
 public class SlotServiceImpl implements SlotService {
@@ -117,28 +115,32 @@ public class SlotServiceImpl implements SlotService {
         System.out.println("Geração de Vagas concluída");
     }
 
+    /**
+     * Recebe uma lista de dias e devolve uma lista com cores atribuídas a cada dia de acordo com
+     * a disponibilidade do médico para o dia.
+     */
     @Override
     public List<Day> calendarColor(List<Day> calendar, Doctor doctor) {
 
-        ArrayList<Day> newCalendar = new ArrayList<>();
+        ArrayList<Day> calendarColor = new ArrayList<>();
 
         for (Day day : calendar) {
-            long totalSlots = countByDoctorAndDate(doctor, day.getDate1());
-            long availableSlots = countByDoctorAndIsAvailableAndDate(doctor, true, day.getDate1());
+            long totalSlots = countByDoctorAndDate(doctor, day.getDate());
+            long availableSlots = countByDoctorAndIsAvailableAndDate(doctor, true, day.getDate());
 
             double fraction = 1 - ((double) availableSlots) / totalSlots;
             if (totalSlots == 0) {
-                day.setColor("white");
-            } else if (fraction == 1) {
-                day.setColor("red");
-            } else if (fraction > 0.5) {
-                day.setColor("yellow");
+                day.setColor(CalendarColor.WHITE.getName());
+            } else if (fraction >= CalendarColor.RED.getMinFraction()) {
+                day.setColor(CalendarColor.RED.getName());
+            } else if (fraction > CalendarColor.YELLOW.getMinFraction()) {
+                day.setColor(CalendarColor.YELLOW.getName());
             } else {
-                day.setColor("green");
+                day.setColor(CalendarColor.GREEN.getName());
             }
-            newCalendar.add(day);
+            calendarColor.add(day);
         }
-        return newCalendar;
+        return calendarColor;
     }
 
 }
