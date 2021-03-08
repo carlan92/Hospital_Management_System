@@ -75,7 +75,7 @@ public class Doctor extends Employee {
         return "Doctor{" +
                 super.toString() +
                 ", licenseNumber=" + licenseNumber +
-                ", speciality=" + speciality +
+                ", speciality=" + speciality.getName() +
                 ", slots=" + slots +
                 '}';
     }
