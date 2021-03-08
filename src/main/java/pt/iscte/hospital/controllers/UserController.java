@@ -105,11 +105,11 @@ public class UserController {
             modelMap.put("user", user);
             return "user/change-profile-data";
         }
-        user.setUserId(userService.currentUser().getUserId());
-        user.setEmail(userService.currentUser().getEmail());
-        user.setUsername(userService.currentUser().getUsername());
-        user.setPassword(userService.currentUser().getPassword());
-        user.setAccount(userService.currentUser().getAccount());
+        user.setUserId(connectedUser.getUserId());
+        user.setEmail(connectedUser.getEmail());
+        user.setUsername(connectedUser.getUsername());
+        user.setPassword(connectedUser.getPassword());
+        user.setAccount(connectedUser.getAccount());
 
         userService.addUser(user);
 
