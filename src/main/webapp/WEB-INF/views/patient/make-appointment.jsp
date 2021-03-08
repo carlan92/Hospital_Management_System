@@ -92,7 +92,11 @@
                                 <div class="day perfil-row">
 
                                     <div class="month">
-                                        <input type="radio" class="month-arrow" name="arrowMonth" value="${previousMonth}" id="arrow_PrevMonth" onchange="updateForm()">
+                                        <input type="radio" class="month-arrow"
+                                         name="arrowMonth" value="${previousMonth}" id="arrow_PrevMonth"
+                                         onchange="updateForm()" <c:if test="${previousArrowState == 0}">
+                                                disabled=""
+                                        </c:if>>
                                         <label for="arrow_PrevMonth" class="">
                                             <i class="fas fa-less-than month-before"></i>
                                         </label>
@@ -101,7 +105,11 @@
                                     ${strMonth} ${year}
 
                                     <div class="month">
-                                        <input type="radio" class="month-arrow" name="arrowMonth" value="${nextMonth}" id="arrow_NextMonth" onchange="updateForm()">
+                                        <input type="radio" class="month-arrow"
+                                         name="arrowMonth" value="${nextMonth}" id="arrow_NextMonth"
+                                         onchange="updateForm()" <c:if test="${nextArrowState == 0}">
+                                                disabled=""
+                                        </c:if>>
                                         <label for="arrow_NextMonth" class="">
                                             <i class="fas fa-greater-than month-after"></i>
                                         </label>
@@ -122,12 +130,12 @@
                                     <c:forEach var="day" items="${calendarDays}">
                                         <div class="day-cel aday">
                                             <input type="radio" class="botao" name="chosenDay"
-                                                   value="${day.getDayNumber()}"
+                                                   value="${day.getDate()}"
                                                    id="day_${day.getDayId()}" onchange="updateForm()"
                                             <c:if test="${empty day.getDayNumber() || day.getDayNumber() < dayOfToday}">
                                                    disabled=""
                                             </c:if>
-                                            <c:if test="${Integer.toString(day.getDayNumber()).equals(chosenDay)}">
+                                            <c:if test="${day.getDate().equals(chosenDay)}">
                                                    checked
                                             </c:if>>
                                             <label for="day_${day.getDayId()}"
@@ -135,15 +143,9 @@
                                         </div>
 
                                     </c:forEach>
-
-
                                 </div>
-
-
                             </div>
                         </div>
-
-
                         <p class="msg-error">${errorMsgDate}</p>
                     </div>
 

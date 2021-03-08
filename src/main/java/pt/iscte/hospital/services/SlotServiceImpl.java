@@ -5,8 +5,6 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import pt.iscte.hospital.entities.Doctor;
 import pt.iscte.hospital.entities.Slot;
-import pt.iscte.hospital.entities.Speciality;
-import pt.iscte.hospital.entities.User;
 import pt.iscte.hospital.objects.utils.TimeInterval;
 import pt.iscte.hospital.repositories.DoctorRepository;
 import pt.iscte.hospital.repositories.SlotRepository;
@@ -55,13 +53,12 @@ public class SlotServiceImpl implements SlotService {
         for (int day = 1; day <= nrDays; day++) {
             LocalDate slotDate = LocalDate.of(year, month, day);
             DayOfWeek dayOfWeek = slotDate.getDayOfWeek();
-            System.out.println("day:" + day);
+
 
             // if the week day is available
-            if (weekDaysList.contains(dayOfWeek)) { // TODO
+            if (weekDaysList.contains(dayOfWeek)) {
                 // for each doctor
                 for (Doctor doctor : doctors) {
-                    System.out.println("\tdoctor:" + doctor.getFirstAndLastName());
                     for (TimeInterval timeInterval : timeIntervalList) {
                         LocalTime slotTimeBegin = timeInterval.getTimeBegin();
                         LocalTime slotTimeEnd = slotTimeBegin.plusMinutes(duration);

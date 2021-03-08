@@ -33,13 +33,15 @@ public class UserServiceImpl implements UserService {
         return user;
     }
 
+    /**
+     * Password crua é comparada com a password encriptada.
+     * Se existir match faz login.
+     */
     @Override
     public boolean validateUser(String username, String password) {
         BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
-        System.out.println("Verificar pass: " + password); // TODO verificar se a pass está encriptada
         User userLogged = userRepository.findByUsername(username);
         if (userLogged != null) {
-            //ver password
             if (encoder.matches(password, userLogged.getPassword())) {
                 return true;
             }

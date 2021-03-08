@@ -3,10 +3,9 @@ package pt.iscte.hospital.entities;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
-import java.sql.Time;
 import java.time.LocalDate;
 import java.time.LocalTime;
-import java.util.Date;
+
 
 @Entity
 public class Slot {
@@ -27,12 +26,15 @@ public class Slot {
     @JoinColumn(name="doctor_id")
     private Doctor doctor;
 
+    private boolean isAvailable = true;
+
     // Constructors
     public Slot() {
     }
 
-    public Slot(Long slotId, Long doctorId, LocalDate date, LocalTime timeBegin, LocalTime timeEnd) {
+    public Slot(Long slotId, Doctor doctor, LocalDate date, LocalTime timeBegin, LocalTime timeEnd) {
         this.slotId = slotId;
+        this.doctor = doctor;
         this.date = date;
         this.timeBegin = timeBegin;
         this.timeEnd = timeEnd;
@@ -77,6 +79,14 @@ public class Slot {
 
     public void setDoctor(Doctor doctor) {
         this.doctor = doctor;
+    }
+
+    public boolean isAvailable() {
+        return isAvailable;
+    }
+
+    public void setAvailable(boolean available) {
+        isAvailable = available;
     }
 
     @Override

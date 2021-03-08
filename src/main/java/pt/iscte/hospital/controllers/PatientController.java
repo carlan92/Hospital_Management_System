@@ -21,6 +21,8 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
 
+import static pt.iscte.hospital.objects.utils.Calendar.FORMATTER;
+
 @Controller
 public class PatientController {
     // Attributes
@@ -30,7 +32,6 @@ public class PatientController {
     private UserService userService;
     @Autowired
     private DoctorService doctorService;
-    private static final DateTimeFormatter FORMATTER = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 
 
     // Constructor
@@ -62,6 +63,7 @@ public class PatientController {
         User userLogged = userService.currentUser();
 
         LocalDate todayDate = LocalDate.now();
+        String chosenDay = todayDate.format(FORMATTER);
         int dayOfToday = todayDate.getDayOfMonth();
         int year = todayDate.getYear();
         int monthOfTodayNr = todayDate.getMonth().getValue();
@@ -75,9 +77,12 @@ public class PatientController {
         modelMap.put("calendarDays", calendar);
         modelMap.put("nextMonth", nextMonth);
         modelMap.put("previousMonth", previousMonth);
+        modelMap.put("previousArrowState", 0);
+        modelMap.put("nextArrowState", 1);
         modelMap.put("dayOfToday", dayOfToday);
         modelMap.put("year", year);
         modelMap.put("strMonth", strMonth);
+        modelMap.put("chosenDay", chosenDay);
         modelMap.put("user_logged", userLogged);
         return "patient/make-appointment";
     }
@@ -90,12 +95,58 @@ public class PatientController {
                                          @RequestParam(required = false, name = "chosenDay") String chosenDay,
                                          @RequestParam(required = false, name = "arrowMonth") String arrowMonth) {
 
+        // **********
         LocalDate todayDate = LocalDate.now();
-        int dayOfToday = todayDate.getDayOfMonth();
-        int year = todayDate.getYear();
-        String strMonth = Month.searchMonth(todayDate.getMonth().getValue());
-        LocalDate date = LocalDate.parse(arrowMonth, FORMATTER);
-        int calMonth = date.getMonth().getValue();
+        LocalDate chosenDate;
+        int dayOfToday;
+        int calYear;
+        int calMonth;
+        String strMonth;
+        String nextMonthDate;
+        String previousMonthDate;
+        int previousArrowState;
+        int nextArrowState;
+
+
+        // Foi selecionado um mês
+        if (arrowMonth != null) {
+            chosenDate = LocalDate.parse(arrowMonth, FORMATTER);
+            if (chosenDate.getMonthValue() != todayDate.getMonthValue()) {
+                chosenDay = chosenDate.withDayOfMonth(1).format(FORMATTER);
+            } else {
+                chosenDay = todayDate.format(FORMATTER);
+            }
+
+            // Foi selecionado um dia
+        } else if (chosenDay != null && arrowMonth == null) {
+            chosenDate = LocalDate.parse(chosenDay, FORMATTER);
+
+            // Não existe dia selecionado
+        } else {
+            chosenDate = todayDate;
+            chosenDay = todayDate.format(FORMATTER);
+        }
+
+        calYear = chosenDate.getYear();
+        calMonth = chosenDate.getMonthValue();
+        strMonth = Month.searchMonth(chosenDate.getMonthValue());
+        nextMonthDate = chosenDate.plusMonths(1).format(FORMATTER);
+        previousMonthDate = chosenDate.minusMonths(1).format(FORMATTER);
+
+
+        // TODO Fazer lógica das setas + Condição para limitar a selecção de dias de calendário, dias anteriores ao dia actual
+        if (chosenDate.getMonthValue() == todayDate.getMonthValue()) {
+            previousArrowState = 0;
+            nextArrowState = 1;
+            dayOfToday = todayDate.getDayOfMonth();
+        } else {
+            previousArrowState = 1;
+            nextArrowState = 0;     // colocar a 1 se não existir limitação para mostrar meses
+            dayOfToday = 0;
+        }
+
+        // **********
+
 
         // Se campos vazios
         if (doctorName == null || doctorName.isEmpty()) {
@@ -104,21 +155,7 @@ public class PatientController {
         if (specialityName == null || specialityName.isEmpty()) {
             specialityName = "";
         }
-        if (chosenDay == null) {
-            chosenDay = Integer.toString(dayOfToday);
-        }
 
-        if (arrowMonth != null) {
-            // verificar se mes anterior ao actual -> erro
-            // caso contrário somar +1mes ao proximo e -1 mes ao anterior !! cuidado com as passagens de ano
-
-            calMonth = date.getMonth().getValue();
-            strMonth = Month.searchMonth(calMonth);
-
-            String previousMonth = date.minusMonths(1).format(FORMATTER);
-            String nextMonth = date.plusMonths(1).format(FORMATTER);
-
-        }
 
         // TODO lógica
         // envio de dados para a página
@@ -127,7 +164,7 @@ public class PatientController {
         List<Speciality> specialities = specialityService.findAll(Sort.by(Sort.Direction.ASC, "name"));
         Speciality speciality = specialityService.findByName(specialityName);
         List<Doctor> doctors = doctorService.findAllBySpecialityOrderByNameAsc(speciality);
-        List<Day> calendar = Calendar.calendarList(year, calMonth);
+        List<Day> calendar = Calendar.calendarList(calYear, calMonth);
         User userLogged = userService.currentUser();
 
         modelMap.put("specialities", specialities);
@@ -135,10 +172,13 @@ public class PatientController {
         modelMap.put("search_speciality", specialityName);
         modelMap.put("search_doctor", doctorName);
         modelMap.put("calendarDays", calendar);
+        modelMap.put("nextMonth", nextMonthDate);
+        modelMap.put("previousMonth", previousMonthDate);
+        modelMap.put("previousArrowState", previousArrowState);
+        modelMap.put("nextArrowState", nextArrowState);
         modelMap.put("dayOfToday", dayOfToday);
-        modelMap.put("year", year);
+        modelMap.put("year", calYear);
         modelMap.put("strMonth", strMonth);
-        modelMap.put("arrowMonth", arrowMonth);
         modelMap.put("chosenDay", chosenDay);
         modelMap.put("user_logged", userLogged);
 
