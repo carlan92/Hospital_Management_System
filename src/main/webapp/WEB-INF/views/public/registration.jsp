@@ -231,8 +231,6 @@
                             <p class="nota">* campos de preenchimento obrigatório</p>
                         </div>
                     </div>
-
-
                 </div>
                 <button type="submit" class="btn btn-blue">Criar Conta</button>
             </form>

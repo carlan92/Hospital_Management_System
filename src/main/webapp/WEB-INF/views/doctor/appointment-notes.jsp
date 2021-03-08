@@ -73,7 +73,7 @@
             <div class="perfil-main-col">
                 <div class="perfil-row">
                     <div class="cell-row">
-                        <a href="patient/main" class="btn btn-green">Voltar atrás</a>
+                        <a href="/doctor/main" class="btn btn-green">Voltar atrás</a>
                     </div>
 
                     <div class="cell-row">

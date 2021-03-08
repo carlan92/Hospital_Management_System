@@ -8,9 +8,13 @@
 <%@ include file="../components/sidenav-login.jsp" %>
 <div class="main">
     <div class="white_box box-align-left">
-        <img class="logo_small" src="/imagens/noun_centro_hospitalar_logo.svg" alt="Logo do centro hospitalar">
-        <div class="main-col">
 
+        <div class="perfil-row">
+            <img src="/imagens/draw_forgotpassword.svg" class="img-fill-form" alt="Logo">
+            <h3 class="title_next_appt">Recuperar Palavra-passe</h3>
+        </div>
+
+        <div class="main-col">
             <form class="recoverPass-form" action="/public/recover-password" method="post">
                 <div class="input-row">
                     <input class="form-input input1" type="text" name="username" id="user_name_id"

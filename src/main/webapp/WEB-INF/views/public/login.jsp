@@ -11,9 +11,13 @@
     <%@ include file="../components/sidenav-login.jsp" %>
     <div class="main">
         <div class="white_box box-align-left">
-            <img class="logo_small" src="/imagens/noun_centro_hospitalar_logo.svg" alt="Logo do centro hospitalar">
+
+            <div class="perfil-row">
+                <img src="/imagens/draw_login.svg" class="img-fill-form" alt="Logo">
+                <h3 class="title_next_appt">Iniciar sessão</h3>
+            </div>
+
             <div class="main-col">
-                
                 <form class="login-form" action="/public/login" method="post">
                     <div class="input-row">
                         <input class="form-input" type="text" name="username" id="username_id" placeholder="Username">
