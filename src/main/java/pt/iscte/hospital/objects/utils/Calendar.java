@@ -25,10 +25,12 @@ public class Calendar {
 
         for (int i = 0; i < calendar.length; i++) {
             String strDate = "";
+            LocalDate ld = null;
             if (calendar[i] != null) {
-                strDate = LocalDate.of(year, month, calendar[i]).format(FORMATTER);
+                ld = LocalDate.of(year, month, calendar[i]);
+                strDate = ld.format(FORMATTER);
             }
-            calendarDays.add(new Day(i, calendar[i], strDate));
+            calendarDays.add(new Day(i, calendar[i], strDate,ld));
         }
 
         return calendarDays;

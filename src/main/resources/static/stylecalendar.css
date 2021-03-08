@@ -89,3 +89,18 @@
 .month-before, .month-after {
     margin: 10px;
 }
+
+.cal_red ~ label{
+    color: #9C0006;
+    background-color: #FFC7CE;
+}
+
+.cal_green ~ label{
+    color: #006100;
+    background-color: #C6EFCE;
+}
+
+.cal_yellow ~ label{
+    color: #9C5700;
+    background-color: #FFEB9C;
+}

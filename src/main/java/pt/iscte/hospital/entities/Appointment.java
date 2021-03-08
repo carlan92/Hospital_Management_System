@@ -31,6 +31,8 @@ public class Appointment {
     @JoinColumn(name = "slot_id")
     private Slot slot;
 
+    private int AppointmentStatus;
+
     // Constructors
     public Appointment() {
     }
@@ -110,6 +112,10 @@ public class Appointment {
 
     public void setNotes(String notes) {
         this.notes = notes;
+    }
+
+    public void setAppointmentStatus(int appointmentStatus) {
+        AppointmentStatus = appointmentStatus;
     }
 
     @Override

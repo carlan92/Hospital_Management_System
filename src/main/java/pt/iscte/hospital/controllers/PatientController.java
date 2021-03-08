@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import pt.iscte.hospital.entities.*;
+import pt.iscte.hospital.entities.states.AppointmentState;
 import pt.iscte.hospital.objects.utils.Calendar;
 import pt.iscte.hospital.objects.utils.Day;
 import pt.iscte.hospital.objects.utils.Month;
@@ -168,8 +169,11 @@ public class PatientController {
         List<Speciality> specialities = specialityService.findAll(Sort.by(Sort.Direction.ASC, "name"));
         Speciality speciality = specialityService.findByName(specialityName);
         List<Doctor> doctors = doctorService.findAllBySpecialityOrderByNameAsc(speciality);
-        List<Slot> slots = slotService.findAllByDoctorAndDateOrderByTimeBeginAsc(doctor, chosenDate); //Corrigir para devolver só as disponiveis
+        List<Slot> slots = slotService.findAllByDoctorAndIsAvailableAndDateOrderByTimeBeginAsc(doctor, true, chosenDate);
         List<Day> calendar = Calendar.calendarList(calYear, calMonth);
+        if (!doctorId.isEmpty()) {
+            calendar = slotService.calendarColor(calendar, doctor);
+        }
         User userLogged = userService.currentUser();
 
 
@@ -189,6 +193,7 @@ public class PatientController {
             Patient patient = patientService.findByUsername(userService.currentUser().getUsername());
             appointment.setPatient(patient);
             appointment.setSlot(slot);
+            appointment.setAppointmentStatus(AppointmentState.MARCADA.getStateNr());
 
             appointmentService.saveAppointment(appointment);
             System.out.println("Sucesso: consulta marcada - " + appointment + slot);

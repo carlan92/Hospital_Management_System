@@ -5,6 +5,8 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import pt.iscte.hospital.entities.Doctor;
 import pt.iscte.hospital.entities.Slot;
+import pt.iscte.hospital.objects.utils.Calendar;
+import pt.iscte.hospital.objects.utils.Day;
 import pt.iscte.hospital.objects.utils.TimeInterval;
 import pt.iscte.hospital.repositories.DoctorRepository;
 import pt.iscte.hospital.repositories.SlotRepository;
@@ -12,8 +14,10 @@ import pt.iscte.hospital.repositories.SlotRepository;
 import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.time.LocalTime;
-import java.util.Date;
+import java.util.ArrayList;
 import java.util.List;
+
+import static pt.iscte.hospital.objects.utils.Calendar.FORMATTER;
 
 @Service
 public class SlotServiceImpl implements SlotService {
@@ -35,13 +39,30 @@ public class SlotServiceImpl implements SlotService {
     }
 
     @Override
+    public List<Slot> findAllByDoctorAndIsAvailableAndDateOrderByTimeBeginAsc(Doctor doctor,
+                                                                              boolean isAvailable,
+                                                                              LocalDate date) {
+        return slotRepository.findAllByDoctorAndIsAvailableAndDateOrderByTimeBeginAsc(doctor, isAvailable, date);
+    }
+
+    @Override
     public List<Slot> findAll(Sort sort) {
         return slotRepository.findAll(sort);
     }
 
     @Override
-    public Slot findBySlotId(Long slotId){
+    public Slot findBySlotId(Long slotId) {
         return slotRepository.findBySlotId(slotId);
+    }
+
+    @Override
+    public Long countByDoctorAndDate(Doctor doctor, LocalDate date) {
+        return slotRepository.countByDoctorAndDate(doctor, date);
+    }
+
+    @Override
+    public Long countByDoctorAndIsAvailableAndDate(Doctor doctor, boolean isAvailable, LocalDate date) {
+        return slotRepository.countByDoctorAndIsAvailableAndDate(doctor, isAvailable, date);
     }
 
     @Override
@@ -94,6 +115,30 @@ public class SlotServiceImpl implements SlotService {
             }
         }
         System.out.println("Geração de Vagas concluída");
+    }
+
+    @Override
+    public List<Day> calendarColor(List<Day> calendar, Doctor doctor) {
+
+        ArrayList<Day> newCalendar = new ArrayList<>();
+
+        for (Day day : calendar) {
+            long totalSlots = countByDoctorAndDate(doctor, day.getDate1());
+            long availableSlots = countByDoctorAndIsAvailableAndDate(doctor, true, day.getDate1());
+
+            double fraction = 1 - ((double) availableSlots) / totalSlots;
+            if (totalSlots == 0) {
+                day.setColor("white");
+            } else if (fraction == 1) {
+                day.setColor("red");
+            } else if (fraction > 0.5) {
+                day.setColor("yellow");
+            } else {
+                day.setColor("green");
+            }
+            newCalendar.add(day);
+        }
+        return newCalendar;
     }
 
 }
