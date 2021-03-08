@@ -25,7 +25,7 @@
             </div>
 
 
-            <form class="registration-form" action="/add-speciality" method="post">
+            <form class="registration-form" action="/receptionist/add-speciality" method="post">
                 <div class="perfil-main-col">
                     <div class="perfil-row">
                         <div class="cell-row cell-morada">
