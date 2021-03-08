@@ -36,7 +36,7 @@
                     <a href="/doctor/main" class="botao_acessos">
                         <img src="/imagens/noun_home.svg" /> Início
                     </a>
-                    <a href="/doctor/patient-list" class="botao_acessos">
+                    <a href="/doctor-receptionist/patient-list" class="botao_acessos">
                         <img src="/imagens/noun_utentes.svg" /> Utentes
                     </a>
                     <a href="/user/doctor-list" class="botao_acessos">

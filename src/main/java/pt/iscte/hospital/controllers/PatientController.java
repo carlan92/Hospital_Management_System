@@ -204,8 +204,6 @@ public class PatientController {
         modelMap.put("strMonth", strMonth);
         modelMap.put("chosenDay", chosenDay);
         modelMap.put("user_logged", userLogged);
-
-
         return ("patient/make-appointment");
     }
 

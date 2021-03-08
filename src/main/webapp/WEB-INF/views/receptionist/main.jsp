@@ -74,6 +74,10 @@
                            type="submit">Adicionar nova especialidade
                         </a>
                     </div>
+
+                    <div class="add-pat">
+                        <a class="btn btn-outline-secondary btn-add" href="/receptionist/add-patient" type="submit">Adicionar novo utente</a>
+                    </div>
                 </div>
                 <div class="horizontal-border"></div>
             </div>

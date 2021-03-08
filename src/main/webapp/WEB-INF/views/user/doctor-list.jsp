@@ -57,31 +57,28 @@
                 </div>
             </form>
         </div>
-    </div>
 
 
-    <div class="row">
-        <!-- For -->
-        <c:forEach var="doctor" items="${doctors}">
+        <div class="row">
+            <!-- For -->
+            <c:forEach var="doctor" items="${doctors}">
 
-            <div class="card_list_doctor patient_data">
-                <div class="user_photo w-50">
-                    <img src="/uploaded_images/${doctor.getPhotoURL()}" alt="avatar">
+                <div class="card_list_doctor patient_data">
+                    <div class="user_photo w-50">
+                        <img src="/uploaded_images/${doctor.getPhotoURL()}" alt="avatar">
+                    </div>
+                    <h1 class="patient_name">${doctor.getFirstAndLastName()}</h1>
+                    <p class="spec_title">Especialidade:</p>
+                    <p class="spec_name">${doctor.getSpeciality().getName()} </p>
+                    <p>
+                        <button type="button" class="btn-blue btn-w80"> Consultar Perfil
+                        </button>
+                    </p>
                 </div>
-                <h1 class="patient_name">${doctor.getFirstAndLastName()}</h1>
-                <p class="spec_title">Especialidade:</p>
-                <p class="spec_name">${doctor.getSpeciality().getName()} </p>
-                <p>
-                    <button type="button" class="btn-blue btn-w80"> Consultar Perfil
-                    </button>
-                </p>
-            </div>
-        </c:forEach>
+            </c:forEach>
+        </div>
     </div>
-
 </div>
 
-</div>
 </body>
-
 </html>

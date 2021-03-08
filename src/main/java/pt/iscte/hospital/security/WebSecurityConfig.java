@@ -36,6 +36,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/receptionist/**").hasRole("RECEPTIONIST")
                 .antMatchers("/doctor/**").hasRole("DOCTOR")
                 .antMatchers("/unitresponsible/**").hasRole("UNIT_RESPONSIBLE")
+                .antMatchers("/doctor-receptionist/**").hasAnyRole("DOCTOR", "RECEPTIONIST")
                 .antMatchers("/patient-receptionist/**").hasAnyRole("PATIENT", "RECEPTIONIST")
                 .antMatchers("/user/**", "/main", "/userToMain").hasAnyRole("PATIENT", "EMPLOYEE", "RECEPTIONIST", "DOCTOR", "UNIT_RESPONSIBLE")
                 .antMatchers("/public/**").permitAll()
