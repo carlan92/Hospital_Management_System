@@ -164,17 +164,29 @@ public class PatientController {
             specialityName = "";
         }
 
-
-        // TODO lógica
         // envio de dados para a página
         // alterar a página para receber dados
 
         List<Speciality> specialities = specialityService.findAll(Sort.by(Sort.Direction.ASC, "name"));
         Speciality speciality = specialityService.findByName(specialityName);
         List<Doctor> doctors = doctorService.findAllBySpecialityOrderByNameAsc(speciality);
-        List<Slot> slots = slotService.findAllByDoctorAndDateOrderByTimeBeginAsc(doctor, chosenDate);
+        List<Slot> slots = slotService.findAllByDoctorAndDateOrderByTimeBeginAsc(doctor, chosenDate); //Corrigir para devolver só as disponiveis
         List<Day> calendar = Calendar.calendarList(calYear, calMonth);
         User userLogged = userService.currentUser();
+
+
+        // Marcar consulta
+        if(slotId != null && !slotId.isEmpty()){
+            // TODO encontrar slot por id
+             // TODO Slot slot = slotService.findBySlotId(Long.parse(slotID))
+
+            // TODO marcar slot como marcada
+                //slot.setAvailable(false);
+            // TODO adicionar consulta à base de dados
+
+            // TODO Redireccionar à página de sucesso de marcação
+        }
+
 
         modelMap.put("specialities", specialities);
         modelMap.put("doctors", doctors);
