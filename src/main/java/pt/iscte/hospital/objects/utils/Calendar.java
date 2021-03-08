@@ -8,9 +8,7 @@ import java.util.List;
 public class Calendar {
 
 
-    public static List<Day> calendarList() {
-        int year = LocalDate.now().getYear();
-        int month = LocalDate.now().getMonth().getValue();
+    public static List<Day> calendarList(int year, int month) {
         LocalDate date = LocalDate.of(year, month, 1);
 
         Integer[] calendar = new Integer[42];

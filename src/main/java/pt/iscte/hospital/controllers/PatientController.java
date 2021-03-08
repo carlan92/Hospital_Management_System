@@ -61,13 +61,15 @@ public class PatientController {
     @GetMapping(value = "/patient/make-appointment")
     public String showMakeAppointment(ModelMap modelMap) {
         List<Speciality> specialities = specialityService.findAll(Sort.by(Sort.Direction.ASC, "name"));
-        List<Day> calendar = Calendar.calendarList();
+
         User userLogged = userService.currentUser();
 
         LocalDate todayDate = LocalDate.now();
         int dayOfToday = todayDate.getDayOfMonth();
         int year = todayDate.getYear();
         int monthOfTodayNr = todayDate.getMonth().getValue();
+        List<Day> calendar = Calendar.calendarList(year, monthOfTodayNr);
+
         String strMonth = Month.searchMonth(monthOfTodayNr);
         String nextMonth = todayDate.plusMonths(1).format(FORMATTER);
         String previousMonth = todayDate.minusMonths(1).format(FORMATTER);
@@ -95,7 +97,8 @@ public class PatientController {
         int dayOfToday = todayDate.getDayOfMonth();
         int year = todayDate.getYear();
         String strMonth = Month.searchMonth(todayDate.getMonth().getValue());
-
+        LocalDate date = LocalDate.parse(arrowMonth, FORMATTER);
+        int calMonth = date.getMonth().getValue();
 
         // Se campos vazios
         if (doctorName == null || doctorName.isEmpty()) {
@@ -109,11 +112,14 @@ public class PatientController {
         }
 
         if (arrowMonth != null) {
-            LocalDate date = LocalDate.parse(arrowMonth, FORMATTER);
             // verificar se mes anterior ao actual -> erro
             // caso contrário somar +1mes ao proximo e -1 mes ao anterior !! cuidado com as passagens de ano
-            String nextMonth = date.plusMonths(1).format(FORMATTER);
+
+            calMonth = date.getMonth().getValue();
+            strMonth = Month.searchMonth(calMonth);
+
             String previousMonth = date.minusMonths(1).format(FORMATTER);
+            String nextMonth = date.plusMonths(1).format(FORMATTER);
 
         }
 
@@ -124,7 +130,7 @@ public class PatientController {
         List<Speciality> specialities = specialityService.findAll(Sort.by(Sort.Direction.ASC, "name"));
         Speciality speciality = specialityService.findByName(specialityName);
         List<Doctor> doctors = doctorService.findAllBySpecialityOrderByNameAsc(speciality);
-        List<Day> calendar = Calendar.calendarList();
+        List<Day> calendar = Calendar.calendarList(year, calMonth);
         User userLogged = userService.currentUser();
 
         modelMap.put("specialities", specialities);
@@ -135,6 +141,7 @@ public class PatientController {
         modelMap.put("dayOfToday", dayOfToday);
         modelMap.put("year", year);
         modelMap.put("strMonth", strMonth);
+        modelMap.put("arrowMonth", arrowMonth);
         modelMap.put("chosenDay", chosenDay);
         modelMap.put("user_logged", userLogged);
 
