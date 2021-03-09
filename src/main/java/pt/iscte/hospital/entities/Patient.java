@@ -46,5 +46,6 @@ public class Patient extends User {
         roles.add(new SimpleGrantedAuthority(Role.ROLE_PATIENT.name()));
         return roles;
     }
+
 }
 

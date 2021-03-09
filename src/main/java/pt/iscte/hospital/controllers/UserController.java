@@ -10,8 +10,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import pt.iscte.hospital.entities.*;
+import pt.iscte.hospital.entities.states.AppointmentState;
 import pt.iscte.hospital.exceptions.ImageSizeException;
 import pt.iscte.hospital.exceptions.ImageTypeException;
+import pt.iscte.hospital.repositories.AppointmentRepository;
 import pt.iscte.hospital.services.*;
 
 import pt.iscte.hospital.services.validation.UserValidationService;
@@ -21,6 +23,10 @@ import java.util.List;
 
 @Controller
 public class UserController {
+    @Autowired
+    private AppointmentService appointmentService;
+    @Autowired
+    private PatientService patientService;
     @Autowired
     private DoctorService doctorService;
     @Autowired
@@ -33,6 +39,9 @@ public class UserController {
     private NationalityService nationalityService;
     @Autowired
     private UserValidationService userValidationService;
+
+    @Autowired
+    AppointmentRepository appointmentRepository;
 
     @GetMapping(value = "/user/change-profile-data")
     public String showChangeProfileData(ModelMap modelMap) {
@@ -307,5 +316,20 @@ public class UserController {
         modelMap.put("user_logged", userLogged);
         return "user/appointment-details";
     }
+
+    @GetMapping(value = "/user/appointment-list")
+    public String showAppointmentList(ModelMap modelMap) {
+        List<Speciality> specialities = specialityService.findAll(Sort.by(Sort.Direction.ASC, "name"));
+        User userLogged = userService.currentUser();
+        Patient patient = patientService.findByUserId(userLogged.getUserId());
+        List<Appointment> appointments = appointmentRepository.findAllByPatientAndAppointmentStatus(patient, AppointmentState.MARCADA.getStateNr());
+        appointments.sort(null);
+
+        modelMap.put("specialities", specialities);
+        modelMap.put("appointments", appointments);
+        modelMap.put("user_logged", userLogged);
+        return "user/appointment-list";
+    }
+
 
 }

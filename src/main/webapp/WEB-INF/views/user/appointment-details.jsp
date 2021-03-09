@@ -62,7 +62,7 @@
             <div class="perfil-main-col">
                 <div class="perfil-row">
                     <div class="cell-row">
-                        <a href="doctor-inicio" class="btn btn-green">Cancelar Consulta</a>
+                        <a href="" class="btn btn-green">Cancelar Consulta</a>
                     </div>
 
                     <div class="cell-row">
