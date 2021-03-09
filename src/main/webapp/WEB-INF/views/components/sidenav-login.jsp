@@ -4,8 +4,9 @@
 
 <div class="sidenav">
     <!-- menu da esquerda SEM LOGIN -->
-
-    <img src="/imagens/noun_centro_hospitalar_logo.svg" alt="logo" class="logo" />
+    <a href="/">
+        <img src="/imagens/noun_centro_hospitalar_logo.svg" alt="logo" class="logo" />
+    </a>
 
     <div class="panel-scroll">
         <div class="welcome_box">
