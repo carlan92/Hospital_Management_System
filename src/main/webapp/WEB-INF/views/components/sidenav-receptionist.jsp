@@ -5,9 +5,9 @@
 
 <div class="sidenav">
 	<!-- menu da esquerda RECEPCIONISTA-->
-
-	<img src="/imagens/noun_centro_hospitalar_logo.svg" alt="logo" class="logo" />
-
+    <a href="/">
+	    <img src="/imagens/noun_centro_hospitalar_logo.svg" alt="logo" class="logo" />
+    </a>
 	<div class="welcome_box">
 		<div class="perfil-row">
 			<div class="col-4 user_photo">
