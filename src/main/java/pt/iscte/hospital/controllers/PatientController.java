@@ -12,12 +12,14 @@ import pt.iscte.hospital.entities.states.AppointmentState;
 import pt.iscte.hospital.objects.utils.Calendar;
 import pt.iscte.hospital.objects.utils.Day;
 import pt.iscte.hospital.objects.utils.Month;
-import pt.iscte.hospital.repositories.AppointmentRepository;
 import pt.iscte.hospital.services.*;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
+import static pt.iscte.hospital.entities.states.AppointmentState.*;
 import static pt.iscte.hospital.objects.utils.Calendar.FORMATTER;
 
 @Controller
@@ -36,8 +38,6 @@ public class PatientController {
     @Autowired
     private SlotService slotService;
 
-    @Autowired
-    AppointmentRepository appointmentRepository;
 
     // Constructor
 
@@ -50,19 +50,45 @@ public class PatientController {
         return "patient/main";
     }
 
-    @GetMapping(value = "/patient/appointment-list")
-    public String showAppointmentList(ModelMap modelMap) {
+    @GetMapping(value = {"/patient/appointment-list/present", "/patient/appointment-list"})
+    public String showAppointmentListPresent(ModelMap modelMap) {
+        List<AppointmentState> appointmentStates = Arrays.asList(MARCADA);
+
+        modelMap.addAllAttributes(appointmentListView(appointmentStates));
+        return "patient/appointment-list";
+    }
+
+    @GetMapping(value = "/patient/appointment-list/past")
+    public String showAppointmentListPast(ModelMap modelMap) {
+        List<AppointmentState> appointmentStates = Arrays.asList(
+                DESMARCADA_PELO_UTENTE,
+                DESMARCADA_PELO_MEDICO,
+                REALIZADA,
+                NAO_REALIZADA);
+
+        modelMap.addAllAttributes(appointmentListView(appointmentStates));
+        return "patient/appointment-list";
+    }
+
+    private ModelMap appointmentListView(List<AppointmentState> appointmentStates) {
         List<Speciality> specialities = specialityService.findAll(Sort.by(Sort.Direction.ASC, "name"));
         User userLogged = userService.currentUser();
         Patient patient = patientService.findByUserId(userLogged.getUserId());
-        List<Appointment> appointments = appointmentRepository.findAllByPatientAndAppointmentStatus(patient, AppointmentState.MARCADA.getStateNr());
+        List<Appointment> appointments = new ArrayList<>();
+
+        for (AppointmentState appointmentState : appointmentStates) {
+            appointments.addAll(appointmentService.findAllByPatientAndAppointmentStatus(patient, appointmentState.getStateNr()));
+        }
+
         appointments.sort(null);
 
+        ModelMap modelMap = new ModelMap();
         modelMap.put("specialities", specialities);
         modelMap.put("appointments", appointments);
         modelMap.put("user_logged", userLogged);
-        return "patient/appointment-list";
+        return modelMap;
     }
+
 
     @GetMapping(value = "/patient/make-appointment")
     public String showMakeAppointment(ModelMap modelMap) {
@@ -193,7 +219,7 @@ public class PatientController {
             Patient patient = patientService.findByUsername(userService.currentUser().getUsername());
             appointment.setPatient(patient);
             appointment.setSlot(slot);
-            appointment.setAppointmentStatus(AppointmentState.MARCADA.getStateNr());
+            appointment.setAppointmentStatus(MARCADA.getStateNr());
 
             appointmentService.saveAppointment(appointment);
             System.out.println("Sucesso: consulta marcada - " + appointment + slot);
