@@ -317,7 +317,7 @@ public class UserController {
         return "user/appointment-details";
     }
 
-    @GetMapping(value = "/user/appointment-list")
+    /*@GetMapping(value = "/user/appointment-list")
     public String showAppointmentList(ModelMap modelMap) {
         List<Speciality> specialities = specialityService.findAll(Sort.by(Sort.Direction.ASC, "name"));
         User userLogged = userService.currentUser();
@@ -330,6 +330,6 @@ public class UserController {
         modelMap.put("user_logged", userLogged);
         return "user/appointment-list";
     }
-
+*/
 
 }

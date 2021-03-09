@@ -32,7 +32,7 @@
 
         <div class="row">
             <div class=search_options>
-                <form>
+                <form action="${userTypeURL}" method="post">
                     <div class="middle-row">
                         <div class="search-container">
 

@@ -48,17 +48,6 @@ public class ReceptionistController {
     }
 
 
-
-    @GetMapping(value = "/receptionist/appointment-list")
-    public String showAppointmentList(ModelMap modelMap) {
-        List<Speciality> specialities = specialityService.findAll(Sort.by(Sort.Direction.ASC, "name"));
-        User userLogged = userService.currentUser();
-
-        modelMap.put("specialities", specialities);
-        modelMap.put("user_logged", userLogged);
-        return "receptionist/appointment-list";
-    }
-
     @GetMapping(value = "/receptionist/waiting-list")
     public String showWaitingList(ModelMap modelMap) {
         User userLogged = userService.currentUser();

@@ -5,6 +5,7 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import pt.iscte.hospital.entities.*;
@@ -48,45 +49,6 @@ public class PatientController {
 
         modelMap.put("user_logged", userLogged);
         return "patient/main";
-    }
-
-    @GetMapping(value = {"/patient/appointment-list/present", "/patient/appointment-list"})
-    public String showAppointmentListPresent(ModelMap modelMap) {
-        List<AppointmentState> appointmentStates = Arrays.asList(MARCADA);
-
-        modelMap.addAllAttributes(appointmentListView(appointmentStates));
-        return "patient/appointment-list";
-    }
-
-    @GetMapping(value = "/patient/appointment-list/past")
-    public String showAppointmentListPast(ModelMap modelMap) {
-        List<AppointmentState> appointmentStates = Arrays.asList(
-                DESMARCADA_PELO_UTENTE,
-                DESMARCADA_PELO_MEDICO,
-                REALIZADA,
-                NAO_REALIZADA);
-
-        modelMap.addAllAttributes(appointmentListView(appointmentStates));
-        return "patient/appointment-list";
-    }
-
-    private ModelMap appointmentListView(List<AppointmentState> appointmentStates) {
-        List<Speciality> specialities = specialityService.findAll(Sort.by(Sort.Direction.ASC, "name"));
-        User userLogged = userService.currentUser();
-        Patient patient = patientService.findByUserId(userLogged.getUserId());
-        List<Appointment> appointments = new ArrayList<>();
-
-        for (AppointmentState appointmentState : appointmentStates) {
-            appointments.addAll(appointmentService.findAllByPatientAndAppointmentStatus(patient, appointmentState.getStateNr()));
-        }
-
-        appointments.sort(null);
-
-        ModelMap modelMap = new ModelMap();
-        modelMap.put("specialities", specialities);
-        modelMap.put("appointments", appointments);
-        modelMap.put("user_logged", userLogged);
-        return modelMap;
     }
 
 

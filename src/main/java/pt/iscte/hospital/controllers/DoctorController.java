@@ -35,16 +35,6 @@ public class DoctorController {
     }
 
 
-    @GetMapping(value = "/doctor/appointment-list")
-    public String showAppointmentList(ModelMap modelMap) {
-        List<Speciality> specialities = specialityService.findAll(Sort.by(Sort.Direction.ASC, "name"));
-        User userLogged = userService.currentUser();
-
-        modelMap.put("specialities", specialities);
-        modelMap.put("user_logged", userLogged);
-        return "doctor/appointment-list";
-    }
-
     @GetMapping(value = "/doctor/waiting-list")
     public String showWaitingList(ModelMap modelMap) {
         User userLogged = userService.currentUser();
