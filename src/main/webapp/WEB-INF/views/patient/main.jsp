@@ -67,7 +67,7 @@
                         </p>
                     </div>
                     <div class="btn-patient">
-                        <a href="/patient/appointment-list" class="btn-green btn-w70">Consultar</a>
+                        <a href="/patient/appointment-list/current" class="btn-green btn-w70">Consultar</a>
                     </div>
                 </div>
                 <div class="horizontal-border"></div>
