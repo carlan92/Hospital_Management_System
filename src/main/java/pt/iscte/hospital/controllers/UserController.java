@@ -296,4 +296,16 @@ public class UserController {
         return "user/doctor-list";
     }
 
+    @GetMapping(value = "/user/appointment-details")
+    public String showAppointmentDetails(ModelMap modelMap) {
+        List<Speciality> specialities = specialityService.findAll(Sort.by(Sort.Direction.ASC, "name"));
+        List<Doctor> doctors = doctorService.findAll(Sort.by(Sort.Direction.ASC, "name"));
+        User userLogged = userService.currentUser();
+
+        modelMap.put("specialities", specialities);
+        modelMap.put("doctors", doctors);
+        modelMap.put("user_logged", userLogged);
+        return "user/appointment-details";
+    }
+
 }

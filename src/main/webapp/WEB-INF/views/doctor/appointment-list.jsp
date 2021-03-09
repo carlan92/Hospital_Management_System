@@ -60,7 +60,7 @@
                         <td>16/12/2020</td>
                         <td>10:00</td>
                         <td>Alice Costa</td>
-                        <td><a href="#">Clicar aqui</a></td>
+                        <td><a href="/user/appointment-details">Clicar aqui</a></td>
                     </tr>
 
                     <tr>

@@ -73,7 +73,7 @@
                         <td>Alice Costa</td>
                         <td>Cardiologia</td>
                         <td> Dr. Alberto</td>
-                        <td><a href="#">Clicar aqui</a></td>
+                        <td><a href="/user/appointment-details">Clicar aqui</a></td>
                     </tr>
 
                     <tr>

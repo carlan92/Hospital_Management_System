@@ -73,7 +73,7 @@
                                         <td>${appointment.getSlot().getTimeBegin()}</td>
                                         <td>${appointment.getSlot().getDoctor().getSpeciality().getName()}</td>
                                         <td>${appointment.getSlot().getDoctor().getTitleAndName()}</td>
-                                        <td><a href="#">Clicar aqui</a></td>
+                                        <td><a href="/user/appointment-details">Clicar aqui</a></td>
                                     </tr>
 
                                     </c:forEach>
