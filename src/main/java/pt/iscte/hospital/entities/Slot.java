@@ -9,7 +9,7 @@ import java.time.LocalTime;
 
 
 @Entity
-public class Slot {
+public class Slot implements Comparable<Slot> {
     // Attributes
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -24,7 +24,7 @@ public class Slot {
     private Appointment appointment;
 
     @ManyToOne
-    @JoinColumn(name="doctor_id")
+    @JoinColumn(name = "doctor_id")
     private Doctor doctor;
 
     private boolean isAvailable = true;
@@ -103,5 +103,23 @@ public class Slot {
                 ", timeEnd=" + timeEnd +
                 ", doctor= " + doctor.getFirstAndLastName() +
                 '}';
+    }
+
+    @Override
+    public int compareTo(Slot o) {
+        if (this.date.isBefore(o.date)) {
+            return -1;
+        } else if (this.date.isAfter(o.date)) {
+            return 1;
+        } else {
+            // Same date
+            if (this.timeBegin.isBefore(o.timeBegin)) {
+                return -1;
+            } else if (this.timeBegin.isAfter(o.timeBegin)) {
+                return 1;
+            } else {
+                return 0;
+            }
+        }
     }
 }

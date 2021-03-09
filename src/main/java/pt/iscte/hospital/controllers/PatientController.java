@@ -55,8 +55,8 @@ public class PatientController {
         List<Speciality> specialities = specialityService.findAll(Sort.by(Sort.Direction.ASC, "name"));
         User userLogged = userService.currentUser();
         Patient patient = patientService.findByUserId(userLogged.getUserId());
-
-        List<Appointment> appointments = appointmentRepository.findAllByAppointmentStatus(AppointmentState.MARCADA.getStateNr());
+        List<Appointment> appointments = appointmentRepository.findAllByPatientAndAppointmentStatus(patient, AppointmentState.MARCADA.getStateNr());
+        appointments.sort(null);
 
         modelMap.put("specialities", specialities);
         modelMap.put("appointments", appointments);

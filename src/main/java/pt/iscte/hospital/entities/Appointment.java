@@ -7,7 +7,7 @@ import java.sql.Time;
 import java.util.Date;
 
 @Entity
-public class Appointment {
+public class Appointment implements Comparable<Appointment>{
     // Attributes
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -135,5 +135,10 @@ public class Appointment {
                 ", hourEnd=" + timeEnd +
                 ", notes='" + notes + '\'' +
                 '}';
+    }
+
+    @Override
+    public int compareTo(Appointment o) {
+        return this.getSlot().compareTo(o.getSlot());
     }
 }

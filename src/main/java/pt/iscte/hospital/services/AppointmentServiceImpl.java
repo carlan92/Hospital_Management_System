@@ -18,5 +18,15 @@ public class AppointmentServiceImpl implements AppointmentService {
         appointmentRepository.save(appointment);
     }
 
+    @Override
+    public List<Appointment> findAllByAppointmentStatus(Integer appointmentStatus){
+        return appointmentRepository.findAllByAppointmentStatus(appointmentStatus);
+    }
+
+    @Override
+    public List<Appointment> findAllByPatientAndAppointmentStatus(Patient patient, Integer appointmentStatus){
+        return appointmentRepository.findAllByPatientAndAppointmentStatus(patient, appointmentStatus);
+    }
+
 
 }
