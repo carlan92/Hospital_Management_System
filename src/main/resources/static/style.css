@@ -1406,6 +1406,14 @@ select option:disabled {
   position: relative;
 }
 
+/*Consultas + detalhes*/
+.cell-back, .btn-back {
+  width: 100%;
+  display: block;
+  margin-left: auto;
+  margin-top: 10px;
+}
+
 @media screen and (max-height: 450px) {
   .sidenav {
     padding-top: 15px;

@@ -41,21 +41,44 @@
                 <div class="cell-row">Hora:</div>
                 <div class="cell-row">11:00</div>
             </div>
-            <div class="perfil-row">
-                <div class="cell-row">Especialidade:</div>
-                <div class="cell-row">Cardiologia</div>
-            </div>
-            <div class="perfil-row">
-                <div class="cell-row">Médico:</div>
-                <div class="cell-row">André Nogueira</div>
-            </div>
+            <c:if test="${user_logged.getAccount().equals('Médico') ||  user_logged.getAccount().equals('Recepcionista')}">
+                <div class="perfil-row">
+                    <div class="cell-row">Utente:</div>
+                    <div class="cell-row">Carolina Santos</div>
+                </div>
+            </c:if>
+            <c:if test="${user_logged.getAccount().equals('Utente') ||  user_logged.getAccount().equals('Recepcionista')}">
+                <div class="perfil-row">
+                    <div class="cell-row">Especialidade:</div>
+                    <div class="cell-row">Cardiologia</div>
+                </div>
+                <div class="perfil-row">
+                    <div class="cell-row">Médico:</div>
+                    <div class="cell-row">André Nogueira</div>
+                </div>
+            </c:if>
 
+            <c:if test="${user_logged.getAccount().equals('Utente') ||  user_logged.getAccount().equals('Recepcionista')}">
+            <div class="perfil-row">
+                <div class="cell-row">Pagamento:</div>
+                <div class="cell-row">
+                    <a class="cell-row">Ver Fatura</a>
+                </div>
+            </div>
+            </c:if>
 
             <div class="info_appt">
                 <div class="perfil-row">
                     <p class="cell-row status">Estado da Consulta: MARCADA </p>
                 </div>
 
+                <c:if test="${user_logged.getAccount().equals('Médico')}">
+                    <form action="/action_page.php">
+                        <h3>Notas:</h3>
+                        <p class="text-black-50"> Dores nas costas, possível lesão devido a má postura a trabalhar ao
+                            computador</p>
+                    </form>
+                </c:if>
             </div>
 
 
@@ -64,10 +87,11 @@
                     <div class="cell-row">
                         <a href="" class="btn btn-green">Cancelar Consulta</a>
                     </div>
-
-                    <div class="cell-row">
-                        <a href="" class="btn btn-blue">Reagendar Consulta</a>
-                    </div>
+                    <c:if test="${user_logged.getAccount().equals('Utente') ||  user_logged.getAccount().equals('Recepcionista')}">
+                        <div class="cell-row">
+                            <a href="" class="btn btn-blue">Reagendar Consulta</a>
+                        </div>
+                    </c:if>
                 </div>
                 <div class="perfil-row">
                     <div class="cell-back">
