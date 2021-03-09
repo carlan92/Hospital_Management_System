@@ -25,7 +25,7 @@
         <div class="perfil-main-col">
             <div class="perfil-row">
                 <div class="perfil-row">
-                    <img src="imagens/draw_information_appt.svg" alt="fill form" class="img-fill-form"/>
+                    <img src="/imagens/draw_information_appt.svg" alt="fill form" class="img-fill-form"/>
                     <h3 class="title_next_appt">Consulta</h3>
                 </div>
             </div>
