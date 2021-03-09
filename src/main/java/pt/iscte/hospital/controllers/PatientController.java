@@ -35,7 +35,6 @@ public class PatientController {
     @Autowired
     private SlotService slotService;
 
-
     // Constructor
 
     // Methods
@@ -56,7 +55,6 @@ public class PatientController {
         modelMap.put("user_logged", userLogged);
         return "patient/appointment-list";
     }
-
 
     @GetMapping(value = "/patient/make-appointment")
     public String showMakeAppointment(ModelMap modelMap) {
@@ -97,7 +95,6 @@ public class PatientController {
                                          @RequestParam(required = false, name = "slotId") String slotId,
                                          @RequestParam(required = false, name = "chosenDay") String chosenDay,
                                          @RequestParam(required = false, name = "arrowMonth") String arrowMonth) {
-
         // **********
         LocalDate todayDate = LocalDate.now();
         LocalDate chosenDate;
@@ -110,7 +107,6 @@ public class PatientController {
         int previousArrowState;
         int nextArrowState;
 
-
         // Foi selecionado um mês
         if (arrowMonth != null) {
             chosenDate = LocalDate.parse(arrowMonth, FORMATTER);
@@ -119,7 +115,6 @@ public class PatientController {
             } else {
                 chosenDay = todayDate.format(FORMATTER);
             }
-
             // Foi selecionado um dia
         } else if (chosenDay != null && arrowMonth == null) {
             chosenDate = LocalDate.parse(chosenDay, FORMATTER);
@@ -136,7 +131,6 @@ public class PatientController {
         nextMonthDate = chosenDate.plusMonths(1).format(FORMATTER);
         previousMonthDate = chosenDate.minusMonths(1).format(FORMATTER);
 
-
         // Lógica das setas + Condição para limitar a selecção de dias de calendário, dias anteriores ao dia actual
         if (chosenDate.getMonthValue() == todayDate.getMonthValue()) {
             previousArrowState = 0;
@@ -149,7 +143,6 @@ public class PatientController {
         }
 
         // **********
-
 
         // Se campos vazios
         Doctor doctor = null;
@@ -176,7 +169,6 @@ public class PatientController {
         }
         User userLogged = userService.currentUser();
 
-
         // Marcar consulta
         if (slotId != null && !slotId.isEmpty()) {
             // Encontrar slot por id
@@ -202,7 +194,6 @@ public class PatientController {
             return "redirect:/patient/main";
         }
 
-
         modelMap.put("specialities", specialities);
         modelMap.put("doctors", doctors);
         modelMap.put("slots", slots);
@@ -221,6 +212,4 @@ public class PatientController {
         modelMap.put("user_logged", userLogged);
         return ("patient/make-appointment");
     }
-
-
 }

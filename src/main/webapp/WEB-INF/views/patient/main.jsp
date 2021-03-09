@@ -98,10 +98,10 @@
 
     <div class="row last-row">
 
-        <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+        <div id="carouselExampleInterval" class="carousel slide" data-ride="carousel">
 
             <div class="carousel-inner">
-                <div class="carousel-item active">
+                <div class="carousel-item active" data-interval="10000">
                     <img src="/imagens/pub_1.png" class="d-block w-100" alt="First slide"/>
                 </div>
                 <div class="carousel-item">
@@ -127,13 +127,11 @@
                 </div>
             </div>
 
-            <a class="carousel-control-prev seta" href="#carouselExampleControls" role="button"
-               data-slide="prev">
+            <a class="carousel-control-prev seta" href="#carouselExampleInterval" role="button" data-slide="prev">
                 <i class="fas fa-less-than simbolo_seta"></i>
             </a>
 
-            <a class="carousel-control-next seta" href="#carouselExampleControls" role="button"
-               data-slide="next">
+            <a class="carousel-control-next seta" href="#carouselExampleInterval" role="button" data-slide="next">
                 <i class="fas fa-greater-than simbolo_seta"></i>
             </a>
 
@@ -141,8 +139,9 @@
     </div>
 </div>
 
+<script>
+    $('.carousel').carousel();
 
-<script> $('.carousel').carousel()
 </script>
 </body>
 
