@@ -1,6 +1,7 @@
 package pt.iscte.hospital.entities;
 
 import org.springframework.format.annotation.DateTimeFormat;
+import pt.iscte.hospital.objects.utils.Calendar;
 
 import javax.persistence.*;
 import java.time.LocalDate;
@@ -51,6 +52,10 @@ public class Slot {
 
     public LocalDate getDate() {
         return date;
+    }
+
+    public String getDateStr() {
+        return date.format(Calendar.FORMATTER);
     }
 
     public void setDate(LocalDate date) {

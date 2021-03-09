@@ -31,7 +31,7 @@ public class Appointment {
     @JoinColumn(name = "slot_id")
     private Slot slot;
 
-    private int AppointmentStatus;
+    private int appointmentStatus;
 
     // Constructors
     public Appointment() {
@@ -102,6 +102,10 @@ public class Appointment {
         this.invoice = invoice;
     }
 
+    public Slot getSlot() {
+        return slot;
+    }
+
     public void setSlot(Slot slot) {
         this.slot = slot;
     }
@@ -114,8 +118,12 @@ public class Appointment {
         this.notes = notes;
     }
 
+    public int getAppointmentStatus() {
+        return appointmentStatus;
+    }
+
     public void setAppointmentStatus(int appointmentStatus) {
-        AppointmentStatus = appointmentStatus;
+        this.appointmentStatus = appointmentStatus;
     }
 
     @Override

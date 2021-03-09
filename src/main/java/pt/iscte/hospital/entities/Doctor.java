@@ -70,6 +70,16 @@ public class Doctor extends Employee {
         return roles;
     }
 
+    public String getTitleAndName() {
+        String titleAndName = "";
+        if (getSex().equals("Masculino")) {
+            titleAndName += "Dr. " + getFirstAndLastName();
+        } else {
+            titleAndName += "Dra. " + getFirstAndLastName();
+        }
+        return titleAndName;
+    }
+
     @Override
     public String toString() {
         return "Doctor{" +

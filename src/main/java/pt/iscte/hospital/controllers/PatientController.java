@@ -12,6 +12,7 @@ import pt.iscte.hospital.entities.states.AppointmentState;
 import pt.iscte.hospital.objects.utils.Calendar;
 import pt.iscte.hospital.objects.utils.Day;
 import pt.iscte.hospital.objects.utils.Month;
+import pt.iscte.hospital.repositories.AppointmentRepository;
 import pt.iscte.hospital.services.*;
 
 import java.time.LocalDate;
@@ -35,6 +36,9 @@ public class PatientController {
     @Autowired
     private SlotService slotService;
 
+    @Autowired
+    AppointmentRepository appointmentRepository;
+
     // Constructor
 
     // Methods
@@ -50,8 +54,12 @@ public class PatientController {
     public String showAppointmentList(ModelMap modelMap) {
         List<Speciality> specialities = specialityService.findAll(Sort.by(Sort.Direction.ASC, "name"));
         User userLogged = userService.currentUser();
+        Patient patient = patientService.findByUserId(userLogged.getUserId());
+
+        List<Appointment> appointments = appointmentRepository.findAllByAppointmentStatus(AppointmentState.MARCADA.getStateNr());
 
         modelMap.put("specialities", specialities);
+        modelMap.put("appointments", appointments);
         modelMap.put("user_logged", userLogged);
         return "patient/appointment-list";
     }

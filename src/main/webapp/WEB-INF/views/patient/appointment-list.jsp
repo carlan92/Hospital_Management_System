@@ -66,37 +66,17 @@
                                 </thead>
                                 <tbody>
 
+                                    <!-- For -->
+                                    <c:forEach var="appointment" items="${appointments}">
                                     <tr>
-                                        <td>16/12/2020</td>
-                                        <td>10:00</td>
-                                        <td>Cardiologia</td>
-                                        <td> Dr. Alberto</td>
+                                        <td>${appointment.getSlot().getDateStr()}</td>
+                                        <td>${appointment.getSlot().getTimeBegin()}</td>
+                                        <td>${appointment.getSlot().getDoctor().getSpeciality().getName()}</td>
+                                        <td>${appointment.getSlot().getDoctor().getTitleAndName()}</td>
                                         <td><a href="#">Clicar aqui</a></td>
                                     </tr>
 
-                                    <tr>
-                                        <td>21/12/2020</td>
-                                        <td>10:15</td>
-                                        <td>Cardiologia</td>
-                                        <td> Dr. Joaquim</td>
-                                        <td><a href="#">Clicar aqui</a></td>
-                                    </tr>
-
-                                    <tr>
-                                        <td>20/01/2021</td>
-                                        <td>12:00</td>
-                                        <td>Cardiologia</td>
-                                        <td> Dr. Alberto</td>
-                                        <td><a href="#">Clicar aqui</a></td>
-                                    </tr>
-
-                                    <tr>
-                                        <td>20/02/2021</td>
-                                        <td>10:00</td>
-                                        <td>Cardiologia</td>
-                                        <td> Dra. Alba</td>
-                                        <td><a href="#">Clicar aqui</a></td>
-                                    </tr>
+                                    </c:forEach>
 
                                 </tbody>
                             </table>
