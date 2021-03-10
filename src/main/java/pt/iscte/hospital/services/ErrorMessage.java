@@ -23,6 +23,7 @@ public enum ErrorMessage {
     ERROR_MESSAGE_EMAIL2("Email inválido"),
     ERROR_MESSAGE_USERNAME("Username já existe"),
     ERROR_MESSAGE_ACCOUNT("Tipo de conta inválida"),
+    ERROR_MESSAGE_LICENSE_NUMBER("Numéro de cédula profissional inválido"),
 
     // Photo Image validation message error
     PHOTO_UPLOAD("Erro ao fazer upload da imagem"),

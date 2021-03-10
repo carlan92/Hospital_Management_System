@@ -221,7 +221,7 @@
                                         <option value="Utente" <c:if test="${user.getAccount().equals('Utente')}">
                                             selected</c:if>>Utente
                                         </option>
-                                        <option value="Médico" onchange="updateForm(this.value)" <c:if
+                                        <option value="Médico" <c:if
                                             test="${user.getAccount().equals('Médico')}"> selected</c:if>>Médico
                                         </option>
                                         <option value="Recepcionista" <c:if
@@ -245,7 +245,7 @@
                                 <div class="cell-row">
                                     <label for="especialidade_id">Especialidade </label>
                                     <select id="especialidade_id" class="form-input" name="specialityName">
-                                        <option value="" disabled <c:if test="${empty search_speciality}">
+                                        <option value="" disabled <c:if test="${empty speciality}">
                                             selected
                                             </c:if>>
                                             Especialidade
@@ -253,7 +253,7 @@
                                         <!-- For -->
                                         <c:forEach var="speciality" items="${specialities}">
                                             <option value="${speciality.getName()}" <c:if
-                                                test="${doctor.getSpeciality().equals(speciality.getName())}">
+                                                test="${doctor.getSpeciality().getName().equals(speciality.getName())}">
                                                 selected
                                                 </c:if>>
                                                 ${speciality.getName()}
@@ -282,17 +282,17 @@
                             <div>
                                 <p class="nota">Autorização de recolha e tratamento de dados. </p>
                                 <p class="nota">O Centro Hospital UPskill é a entidade responsável pela recolha e
-                                    tratamento dos dados pessoais dos Utentes. </p>
+                                    tratamento dos dados pessoais dos Utilizadores. </p>
 
                                 <p class="nota">Os dados pessoais recolhidos serão conservados de forma a permitir a sua
                                     identificação apenas durante o período necessário para a prossecução das finalidades
                                     de recolha ou do tratamento posterior, findo o qual os mesmos serão eliminados. </p>
 
-                                <p class="nota">O Utente assume que os dados recolhidos foram inseridos pelo respetivo
+                                <p class="nota">O Utilizador assume que os dados recolhidos foram inseridos pelo respetivo
                                     titular e que a sua inserção foi autorizada pelo mesmo, sendo os mesmos verdadeiros
                                     e exatos.</p>
 
-                                <p class="nota">Assinatura do Utente:</p>
+                                <p class="nota">Assinatura do Utilizador:</p>
                             </div>
                         </div>
 

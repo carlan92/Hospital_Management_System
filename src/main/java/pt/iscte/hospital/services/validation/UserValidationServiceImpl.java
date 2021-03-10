@@ -3,6 +3,7 @@ package pt.iscte.hospital.services.validation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.ModelMap;
+import pt.iscte.hospital.entities.Doctor;
 import pt.iscte.hospital.entities.Nationality;
 import pt.iscte.hospital.entities.User;
 import pt.iscte.hospital.repositories.NationalityRepository;
@@ -86,7 +87,7 @@ public class UserValidationServiceImpl implements UserValidationService {
     @Override
     public UserValidationService validPostCode() {
         if (user.getPostCode().matches("[0-9]{4}[-][0-9]{3}") || user.getPostCode().matches("")) {
-        }else{
+        } else {
             isValid = false;
             errorModelMap.put("errorMsgPostCode", ErrorMessage.ERROR_MESSAGE_POST_CODE.getErrorMsg());
             return this;
@@ -98,7 +99,7 @@ public class UserValidationServiceImpl implements UserValidationService {
     public UserValidationService validSex() {
         if (user.getSex().matches("Feminino") || user.getSex().matches("Masculino")) {
 
-        }else {
+        } else {
             isValid = false;
             errorModelMap.put("errorMsgSex", ErrorMessage.ERROR_MESSAGE_SEX.getErrorMsg());
             return this;
@@ -184,7 +185,7 @@ public class UserValidationServiceImpl implements UserValidationService {
     @Override
     public UserValidationService validNif() {
         String nif = String.valueOf(user.getNif());
-        if (nif.matches("[0-9]{9}") || nif.matches("")) {
+        if (nif.matches("[0-9]{9}")) {
             return this;
         }
         isValid = false;
@@ -215,7 +216,7 @@ public class UserValidationServiceImpl implements UserValidationService {
 
     @Override
     public UserValidationService validAccount() {
-        if (user.getAccount().matches("Utente") || user.getAccount().matches("Médico")|| user.getAccount().matches("Recepcionista")) {
+        if (user.getAccount().matches("Utente") || user.getAccount().matches("Médico") || user.getAccount().matches("Recepcionista")) {
             return this;
         } else {
             isValid = false;
@@ -275,7 +276,7 @@ public class UserValidationServiceImpl implements UserValidationService {
 
     @Override
     public UserValidationService validPatientNumberUnique() {
-        if(user.getPatientNumber()==null){
+        if (user.getPatientNumber() == null) {
             return this;
         }
         User patientNumberUnique = userRepository.findByPatientNumber(user.getPatientNumber());
@@ -296,6 +297,17 @@ public class UserValidationServiceImpl implements UserValidationService {
             return this;
         }
         return this;
+    }
+
+    @Override
+    public UserValidationService validLicenseNumber() {
+            String licenseNumber = String.valueOf(((Doctor)user).getLicenseNumber());
+            if (licenseNumber.matches("[0-9]{16}")|| licenseNumber.matches("")) {
+                return this;
+            }
+            isValid = false;
+            errorModelMap.put("errorMsgLicenseNumber", ErrorMessage.ERROR_MESSAGE_LICENSE_NUMBER.getErrorMsg());
+            return this;
     }
 
     @Override
@@ -330,7 +342,7 @@ public class UserValidationServiceImpl implements UserValidationService {
     }
 
     @Override
-    public UserValidationService clear(){
+    public UserValidationService clear() {
         user = null;
         isValid = true;
         errorModelMap = new ModelMap();

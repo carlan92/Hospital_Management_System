@@ -54,6 +54,8 @@ public interface UserValidationService {
 
     UserValidationService notValidImageSize();
 
+    UserValidationService validLicenseNumber();
+
     boolean isValid();
 
     ModelMap getErrorModelMap();
