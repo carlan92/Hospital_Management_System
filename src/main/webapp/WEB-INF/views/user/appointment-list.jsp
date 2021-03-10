@@ -36,21 +36,21 @@
                     <div class="middle-row">
                         <div class="search-container">
 
-                            <input id="data_id" type="date" class="form-input sm" placeholder="Data" name="data">
+                            <input id="data_id" type="date" class="form-input sm" placeholder="Data" name="date">
 
                             <c:if test="${user_logged.getAccount().equals('Médico') ||  user_logged.getAccount().equals('Recepcionista')}">
-                                <input type="text" class="form-input sm" placeholder="Nome do Utente">
+                                <input type="text" class="form-input sm" placeholder="Nome do Utente" name="patientName">
                             </c:if>
 
                             <c:if test="${user_logged.getAccount().equals('Utente') ||  user_logged.getAccount().equals('Recepcionista')}">
-                                <select id="speciality_id" class="form-input sm" name="speciality">
+                                <select id="speciality_id" class="form-input sm" name="specialityName">
                                     <option value="" disabled selected>Especialidade</option>
                                     <!-- For -->
                                     <c:forEach var="speciality" items="${specialities}">
                                         <option value="${speciality.getName()}">${speciality.getName()}</option>
                                     </c:forEach>
                                 </select>
-                                <input type="text" class="form-input sm" placeholder="Nome do Médico">
+                                <input type="text" class="form-input sm" placeholder="Nome do Médico" name="doctorName">
                             </c:if>
 
                             <button class="btn-search2" type="submit">Pesquisar</button>
@@ -89,7 +89,7 @@
                             <td>${appointment.getSlot().getTimeBegin()}</td>
                             <c:if test="${user_logged.getAccount().equals('Médico') ||
                         user_logged.getAccount().equals('Recepcionista')}">
-                                <td>${appointment.getSlot().getPatient().getName()}</td>
+                                <td>${appointment.getPatient().getName()}</td>
                             </c:if>
                             <c:if test="${user_logged.getAccount().equals('Utente') ||
                         user_logged.getAccount().equals('Recepcionista')}">
