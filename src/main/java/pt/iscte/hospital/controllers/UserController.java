@@ -308,11 +308,12 @@ public class UserController {
     @GetMapping(value = "/user/appointment-details")
     public String showAppointmentDetails(ModelMap modelMap) {
         List<Speciality> specialities = specialityService.findAll(Sort.by(Sort.Direction.ASC, "name"));
-        List<Doctor> doctors = doctorService.findAll(Sort.by(Sort.Direction.ASC, "name"));
         User userLogged = userService.currentUser();
+        Patient patient = patientService.findByUserId(userLogged.getUserId());
+        List<Appointment> appointments = appointmentRepository.findAllByPatientAndAppointmentStatus(patient, AppointmentState.MARCADA.getStateNr());
 
         modelMap.put("specialities", specialities);
-        modelMap.put("doctors", doctors);
+        modelMap.put("appointments", appointments);
         modelMap.put("user_logged", userLogged);
         return "user/appointment-details";
     }

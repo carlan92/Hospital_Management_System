@@ -31,32 +31,34 @@
             </div>
         </div>
 
-
+        <!-- For -->
+        <c:forEach var="appointment" items="${appointments}">
         <div class="perfil-main-col">
             <div class="perfil-row">
                 <div class="cell-row">Data:</div>
-                <div class="cell-row">20-04-2021</div>
+                <div class="cell-row">${appointment.getSlot().getDateStr()}</div>
             </div>
             <div class="perfil-row">
                 <div class="cell-row">Hora:</div>
-                <div class="cell-row">11:00</div>
+                <div class="cell-row">${appointment.getSlot().getTimeBegin()}</div>
             </div>
             <c:if test="${user_logged.getAccount().equals('Médico') ||  user_logged.getAccount().equals('Recepcionista')}">
                 <div class="perfil-row">
                     <div class="cell-row">Utente:</div>
-                    <div class="cell-row">Carolina Santos</div>
+                    <div class="cell-row">${appointment.getSlot().getPatient().getName()}</div>
                 </div>
             </c:if>
             <c:if test="${user_logged.getAccount().equals('Utente') ||  user_logged.getAccount().equals('Recepcionista')}">
                 <div class="perfil-row">
                     <div class="cell-row">Especialidade:</div>
-                    <div class="cell-row">Cardiologia</div>
+                    <div class="cell-row">${appointment.getSlot().getDoctor().getSpeciality().getName()}</div>
                 </div>
                 <div class="perfil-row">
                     <div class="cell-row">Médico:</div>
-                    <div class="cell-row">André Nogueira</div>
+                    <div class="cell-row">${appointment.getSlot().getDoctor().getTitleAndName()}</div>
                 </div>
             </c:if>
+
 
             <c:if test="${user_logged.getAccount().equals('Utente') ||  user_logged.getAccount().equals('Recepcionista')}">
             <div class="perfil-row">
@@ -80,6 +82,7 @@
                     </form>
                 </c:if>
             </div>
+            </c:forEach>
 
 
             <div class="perfil-main-col">
