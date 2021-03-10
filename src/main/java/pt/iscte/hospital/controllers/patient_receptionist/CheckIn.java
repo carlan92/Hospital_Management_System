@@ -7,6 +7,7 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import pt.iscte.hospital.entities.Appointment;
 import pt.iscte.hospital.entities.Speciality;
 import pt.iscte.hospital.entities.User;
@@ -97,6 +98,7 @@ public class CheckIn {
         return USER_TYPE_URL;
     }
 
+    // TODO fazer lógica de pesquisa
     @PostMapping(value = "/receptionist/checkin")
     public String pageCheckInByReceptionistSearch(ModelMap modelMap) {
         User userLogged = userService.currentUser();
@@ -122,13 +124,25 @@ public class CheckIn {
     public String pageCheckInDoneByReceptionist(ModelMap modelMap,
                                                 @PathVariable("appointmentId") Long appointmentId) {
         // Fazer check in e salvar
-        Appointment appointmentCheckIn = appointmentService.findByAppointmentId(appointmentId);
-        appointmentCheckIn.setHasChecked(true);
-        appointmentService.saveAppointment(appointmentCheckIn);
+        saveCheckIn(appointmentId);
 
         return String.format(REDIRECT_URL, RECEPTIONIST_TYPE_URL);
     }
 
+    @PostMapping(value = "/receptionist/checkinbyAppointmentId")
+    public String pageCheckInByAppointmentByReceptionist(ModelMap modelMap,
+                                                         @RequestParam Long appointmentId) {
+        // Fazer check in e salvar
+        saveCheckIn(appointmentId);
+
+        return String.format(REDIRECT_URL, RECEPTIONIST_TYPE_URL);
+    }
+
+    private void saveCheckIn(Long appointmentId){
+        Appointment appointmentCheckIn = appointmentService.findByAppointmentId(appointmentId);
+        appointmentCheckIn.setHasChecked(true);
+        appointmentService.saveAppointment(appointmentCheckIn);
+    }
 
     private ModelMap checkInView(List<Appointment> appointments,
                                  User userLogged,

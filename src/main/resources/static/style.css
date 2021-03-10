@@ -65,6 +65,12 @@ h1 {
   margin: 2px auto;
 }
 
+.msg-success {
+  color: #98c33e;
+  font-size: 12px;
+  margin: 2px auto;
+}
+
 .container {
   display: flex;
   min-width: 100%;

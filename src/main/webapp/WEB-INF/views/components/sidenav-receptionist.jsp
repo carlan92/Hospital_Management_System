@@ -48,7 +48,7 @@
 					<img src="/imagens/noun_heart_rate.svg"/> Consultas
 				</a>
 				<a href="/receptionist/checkin" class="botao_acessos">
-                    <img src="/imagens/draw_cal_checkmark.svg rate.svg"/> Check in
+                    <img src="/imagens/draw_cal_checkmark.svg"/> Check in
                 </a>
 			</div>
 

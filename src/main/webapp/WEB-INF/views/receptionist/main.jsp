@@ -55,8 +55,8 @@
                         Introduza o numero de consulta
                     </p>
                     <form action="/receptionist/checkinbyAppointmentId" method="post">
-                    <input type="text" id="num_consulta" placeholder="Nº de Consulta">
-                    <button type="submit" class="btn btn-button btn-2">EFETUAR CHECKIN > </a>
+                        <input type="text" id="num_consulta" placeholder="Nº de Consulta" name="appointmentId">
+                        <button type="submit" class="btn btn-button btn-2">EFETUAR CHECKIN > </a>
                     <form>
                 </div>
                 <div class="horizontal-border"></div>
