@@ -39,14 +39,7 @@ public interface AppointmentRepository extends JpaRepository<Appointment, Long> 
                                                                                              String patientName,
                                                                                              Long userId);
 
-    List<Appointment> findAllBySlotDateAndPatientNameContainingIgnoreCaseAndSlotDoctorSpecialityNameContainingIgnoreCase(LocalDate date,
-                                                                                                                            String patientName,
-                                                                                                                            String specialityName);
-
     // Receptionist Filters
-    List<Appointment> findAllBySlotDoctorNameContainingIgnoreCaseAndSlotDoctorSpecialityNameContainingIgnoreCase(String doctorName,
-                                                                                                                 String specialityName);
-
     List<Appointment> findAllBySlotDateAndSlotDoctorNameContainingIgnoreCaseAndPatientNameContainingIgnoreCaseAndSlotDoctorSpecialityNameContainingIgnoreCase(LocalDate date,
                                                                                                                                                               String doctorName,
                                                                                                                                                               String patientName,
