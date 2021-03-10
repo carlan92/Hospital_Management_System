@@ -14,9 +14,16 @@ public class AppointmentServiceImpl implements AppointmentService {
     @Autowired
     AppointmentRepository appointmentRepository;
 
+
+    // Methods
     @Override
     public void saveAppointment(Appointment appointment) {
         appointmentRepository.save(appointment);
+    }
+
+    @Override
+    public Appointment findByAppointmentId(Long appointmentId) {
+        return appointmentRepository.findByAppointmentId(appointmentId);
     }
 
     @Override
@@ -53,14 +60,30 @@ public class AppointmentServiceImpl implements AppointmentService {
                 specialityName);
     }
 
-    public List<Appointment> findAllByPatientUserIdBySlotDateAndAppointmentStatusAndHasChecked(Long userId,
-                                                                                  LocalDate date,
-                                                                                  Integer appointmentStatus,
-                                                                                  boolean hasChecked){
+    @Override
+    public List<Appointment> findAllByPatientUserIdAndSlotDateAndAppointmentStatusAndHasChecked(Long userId,
+                                                                                                LocalDate date,
+                                                                                                Integer appointmentStatus,
+                                                                                                boolean hasChecked) {
         return appointmentRepository.findAllByPatientUserIdAndSlotDateAndAppointmentStatusAndHasChecked(userId,
                 date,
                 appointmentStatus,
                 hasChecked);
+    }
+
+    @Override
+    public List<Appointment> findAllByPatientUserIdAndSlotDateAndAppointmentStatus(Long userId,
+                                                                                   LocalDate date,
+                                                                                   Integer appointmentStatus) {
+        return appointmentRepository.findAllByPatientUserIdAndSlotDateAndAppointmentStatus(userId,
+                date,
+                appointmentStatus);
+    }
+
+    @Override
+    public List<Appointment> findAllBySlotDateAndAppointmentStatus(LocalDate date,
+                                                                   Integer appointmentStatus) {
+        return appointmentRepository.findAllBySlotDateAndAppointmentStatus(date, appointmentStatus);
     }
 
     @Override

@@ -10,6 +10,8 @@ import java.util.List;
 
 @Repository
 public interface AppointmentRepository extends JpaRepository<Appointment, Long> {
+    Appointment findByAppointmentId(Long appointmentId);
+
     List<Appointment> findAllByAppointmentStatus(Integer appointmentStatus);
 
     // Patient Filters
@@ -31,6 +33,11 @@ public interface AppointmentRepository extends JpaRepository<Appointment, Long> 
                                                                      LocalDate date,
                                                                      Integer appointmentStatus,
                                                                      boolean hasCheckedIn);
+
+    List<Appointment> findAllByPatientUserIdAndSlotDateAndAppointmentStatus(Long userId,
+                                                                           LocalDate date,
+                                                                           Integer appointmentStatus);
+    List<Appointment> findAllBySlotDateAndAppointmentStatus(LocalDate date, Integer appointmentStatus);
 
     List<Appointment> findAll();
 

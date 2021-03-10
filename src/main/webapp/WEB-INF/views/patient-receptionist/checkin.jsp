@@ -33,11 +33,9 @@
                             <div class="middle-row">
                                 <div class="search-container">
 
-                                    <input id="data_id" type="date" class="form-input sm" placeholder="Data"
-                                        name="date">
 
                                     <c:if
-                                        test="${user_logged.getAccount().equals('Médico') ||  user_logged.getAccount().equals('Recepcionista')}">
+                                        test="${user_logged.getAccount().equals('Recepcionista')}">
                                         <input type="text" class="form-input sm" placeholder="Nome do Utente"
                                             name="patientName">
                                     </c:if>
@@ -72,7 +70,7 @@
                                 <tr>
                                     <th>Data</th>
                                     <th>Hora</th>
-                                    <c:if test="user_logged.getAccount().equals('Recepcionista')}">
+                                    <c:if test="${user_logged.getAccount().equals('Recepcionista')}">
                                         <th>Utente</th>
                                     </c:if>
                                     <th>Especialidade</th>
@@ -87,7 +85,7 @@
                                     <tr>
                                         <td>${appointment.getSlot().getDateStr()}</td>
                                         <td>${appointment.getSlot().getTimeBegin()}</td>
-                                        <c:if test="user_logged.getAccount().equals('Recepcionista')}">
+                                        <c:if test="${user_logged.getAccount().equals('Recepcionista')}">
                                             <td>${appointment.getPatient().getName()}</td>
                                         </c:if>
 
@@ -95,7 +93,16 @@
                                         <td>${appointment.getSlot().getDoctor().getTitleAndName()}</td>
 
 
-                                        <td><a href="/patient-receptionist/checkin">Check in</a></td>
+                                        <td>
+                                            <c:choose>
+                                                <c:when test="${!appointment.getHasChecked()}">
+                                                    <a href=${String.format(checkInLink, appointment.getAppointmentId())}>Check in</a>
+                                                </c:when>
+                                                <c:otherwise>
+                                                    Feito
+                                                </c:otherwise>
+                                            </c:choose>
+                                        </td>
                                     </tr>
                                 </c:forEach>
 

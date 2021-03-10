@@ -8,6 +8,9 @@ import java.util.List;
 
 public interface AppointmentService {
     void saveAppointment(Appointment appointment);
+
+    Appointment findByAppointmentId(Long appointmentId);
+
     List<Appointment> findAllByAppointmentStatus(Integer appointmentStatus);
 
     // Patient Filters
@@ -25,10 +28,17 @@ public interface AppointmentService {
                                                                                                                                                      String doctorName,
                                                                                                                                                      String specialityName);
 
-    List<Appointment> findAllByPatientUserIdBySlotDateAndAppointmentStatusAndHasChecked(Long userId,
-                                                                           LocalDate date,
-                                                                           Integer appointmentStatus,
-                                                                           boolean hasChecked);
+    List<Appointment> findAllByPatientUserIdAndSlotDateAndAppointmentStatusAndHasChecked(Long userId,
+                                                                                         LocalDate date,
+                                                                                         Integer appointmentStatus,
+                                                                                         boolean hasChecked);
+
+    List<Appointment> findAllByPatientUserIdAndSlotDateAndAppointmentStatus(Long userId,
+                                                                            LocalDate date,
+                                                                            Integer appointmentStatus);
+
+    List<Appointment> findAllBySlotDateAndAppointmentStatus(LocalDate date,
+                                                            Integer appointmentStatus);
 
     List<Appointment> findAll();
 

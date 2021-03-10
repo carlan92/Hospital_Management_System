@@ -62,7 +62,7 @@ public class ReceptionistController {
         User userLogged = userService.currentUser();
 
         modelMap.put("user_logged", userLogged);
-        return ("receptionist/add-speciality");
+        return "receptionist/add-speciality";
     }
 
     @PostMapping(value = "/receptionist/add-speciality")
@@ -95,7 +95,7 @@ public class ReceptionistController {
         modelMap.put("specialities", specialities);
 
         modelMap.put("user_logged", userLogged);
-        return ("receptionist/add-user");
+        return "receptionist/add-user";
     }
 
     @PostMapping(value = "/receptionist/add-user")
@@ -175,7 +175,7 @@ public class ReceptionistController {
         } else if (receptionist.getAccount().equals("Recepcionista")) {
             modelMap.put("user", receptionist);
         }
-        return ("receptionist/add-user");
+        return "receptionist/add-user";
     }
 
     @GetMapping(value = "/receptionist/invoice-form")
