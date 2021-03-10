@@ -32,6 +32,16 @@ public class DoctorReceptionistController {
         return "doctor-receptionist/patient-list";
     }
 
+    @GetMapping(value = "/doctor-receptionist/patient-profile")
+    public String showPatientProfile(ModelMap modelMap) {
+        List<Patient> patients = patientService.findAll(Sort.by(Sort.Direction.ASC, "name"));
+        User userLogged = userService.currentUser();
+
+        modelMap.put("patients", patients);
+        modelMap.put("user_logged", userLogged);
+        return "doctor-receptionist/patient-profile";
+    }
+
     @PostMapping(value = "/search-patients")
     public String searchDoctors(@RequestParam(name = "name") String name,
                                 ModelMap modelMap) {

@@ -51,7 +51,7 @@
                     <i class="fas fa-phone-square">
                         <span class="patient_age">${patient.getPhone()}</span>
                     </i>
-                    <button type="button" class="btn-blue btn-w80"> Consultar Perfil</button>
+                    <a type="button"  href="/doctor-receptionist/patient-profile" class="btn-blue btn-w80"> Consultar Perfil</a>
                 </div>
 
             </c:forEach>
