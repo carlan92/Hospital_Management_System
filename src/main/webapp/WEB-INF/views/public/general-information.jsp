@@ -28,7 +28,7 @@
     <!--menu da direita-->
     <p class="igtitlefont">Informações Gerais</p>
     <div class="divinfo">
-        <a href="">
+        <a href="https://covid19.min-saude.pt/">
             <div class="containerinfo">
                 <img class="imginfo" src="/imagens/info_covid.png" alt="..."/>
                 <div class="textinfo-block">
@@ -43,7 +43,7 @@
 
 
     <div class="divinfo">
-        <a href="">
+        <a href="https://www.natgeo.pt/ciencia/2021/01/o-que-aprendemos-sobre-a-resposta-do-sistema-imunitario-a-covid-19">
             <div class="containerinfo">
                 <img class="imginfo" src="/imagens/info_vacinacao.png" alt="..."/>
                 <div class="textinfo-block">
@@ -57,7 +57,7 @@
     </div>
 
     <div class="divinfo">
-        <a href="m">
+        <a href="https://www.sns24.gov.pt/servico/aceder-a-teleconsulta/">
             <div class="containerinfo">
                 <img class="imginfo" src="/imagens/info_teleconsulta.png" alt="..."/>
                 <div class="textinfo-block">
@@ -71,7 +71,7 @@
     </div>
 
     <div class="divinfo">
-        <a href="">
+        <a href="https://hff.min-saude.pt/epilepsia-o-que-e-causas-e-tratamento/">
             <div class="containerinfo">
                 <img class="imginfo" src="/imagens/info_epilepsia.png" alt="..."/>
                 <div class="textinfo-block">
