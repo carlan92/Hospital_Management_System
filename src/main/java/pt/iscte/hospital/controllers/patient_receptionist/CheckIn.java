@@ -26,7 +26,7 @@ public class CheckIn {
     private static final String USER_TYPE_URL = "patient-receptionist/checkin";
     private static final String PATIENT_CHECK_IN_LINK = "/patient/checkin/%s";
     private static final String RECEPTIONIST_CHECK_IN_LINK = "/receptionist/checkin/%s";
-    private static final String REDIRECT_URL = "redirect:/%s";
+    private static final String REDIRECT_URL = "redirect:%s";
 
     @Autowired
     UserService userService;
@@ -45,6 +45,7 @@ public class CheckIn {
                 userId,
                 date,
                 MARCADA.getStateNr());
+        appointments.sort(null);
 
         modelMap.addAllAttributes(checkInView(
                 appointments,
@@ -62,34 +63,42 @@ public class CheckIn {
                                            @PathVariable("appointmentId") Long appointmentId) {
         User userLogged = userService.currentUser();
         Long userId = userLogged.getUserId();
-        LocalDate date = LocalDate.now();
 
         // Fazer check in e salvar
         Appointment appointmentCheckIn = appointmentService.findByAppointmentId(appointmentId);
-        if (appointmentCheckIn.getPatient().getUserId() == userId) {
+        if (appointmentCheckIn.getPatient().getUserId().equals(userId)) {
             appointmentCheckIn.setHasChecked(true);
             appointmentService.saveAppointment(appointmentCheckIn);
         }
 
-        List<Appointment> appointments = appointmentService.findAllByPatientUserIdAndSlotDateAndAppointmentStatus(
-                userId,
+        return String.format(REDIRECT_URL, PATIENT_TYPE_URL);
+    }
+
+    // Receptionist
+    @GetMapping(value = "/receptionist/checkin")
+    public String pageCheckInByReceptionist(ModelMap modelMap) {
+        User userLogged = userService.currentUser();
+        Long userId = userLogged.getUserId();
+        LocalDate date = LocalDate.now();
+
+        List<Appointment> appointments = appointmentService.findAllBySlotDateAndAppointmentStatus(
                 date,
                 MARCADA.getStateNr());
-
+        appointments.sort(null);
 
         modelMap.addAllAttributes(checkInView(
                 appointments,
                 userLogged,
-                PATIENT_TYPE_URL,
-                PATIENT_CHECK_IN_LINK,
+                RECEPTIONIST_TYPE_URL,
+                RECEPTIONIST_CHECK_IN_LINK,
                 null,
                 null,
                 null));
         return USER_TYPE_URL;
     }
 
-    @GetMapping(value = "/receptionist/checkin")
-    public String pageCheckInByReceptionist(ModelMap modelMap) {
+    @PostMapping(value = "/receptionist/checkin")
+    public String pageCheckInByReceptionistSearch(ModelMap modelMap) {
         User userLogged = userService.currentUser();
         Long userId = userLogged.getUserId();
         LocalDate date = LocalDate.now();
@@ -112,29 +121,12 @@ public class CheckIn {
     @GetMapping(value = "/receptionist/checkin/{appointmentId}")
     public String pageCheckInDoneByReceptionist(ModelMap modelMap,
                                                 @PathVariable("appointmentId") Long appointmentId) {
-        User userLogged = userService.currentUser();
-        Long userId = userLogged.getUserId();
-        LocalDate date = LocalDate.now();
-
         // Fazer check in e salvar
         Appointment appointmentCheckIn = appointmentService.findByAppointmentId(appointmentId);
         appointmentCheckIn.setHasChecked(true);
         appointmentService.saveAppointment(appointmentCheckIn);
 
-        List<Appointment> appointments = appointmentService.findAllBySlotDateAndAppointmentStatus(
-                date,
-                MARCADA.getStateNr());
-
-
-        modelMap.addAllAttributes(checkInView(
-                appointments,
-                userLogged,
-                RECEPTIONIST_TYPE_URL,
-                RECEPTIONIST_CHECK_IN_LINK,
-                null,
-                null,
-                null));
-        return USER_TYPE_URL;
+        return String.format(REDIRECT_URL, RECEPTIONIST_TYPE_URL);
     }
 
 

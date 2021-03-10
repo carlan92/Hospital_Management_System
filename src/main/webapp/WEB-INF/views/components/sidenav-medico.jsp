@@ -44,7 +44,7 @@
                         <img src="/imagens/noun_utentes.svg" /> Médicos
                     </a>
                     <a href="/doctor/appointment-list" class="botao_acessos">
-                        <img src="/imagens/noun_heart rate.svg" /> Consultas
+                        <img src="/imagens/noun_heart_rate.svg" /> Consultas
                     </a>
                 </div>
 

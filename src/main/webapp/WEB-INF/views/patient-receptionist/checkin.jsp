@@ -24,24 +24,22 @@
 
                 <div class="perfil-row">
                     <img src="/imagens/draw_checking.svg" alt="patientsPage" class="img-fill-form" />
-                    <h3 class="consultas_title">Consultas</h3>
+                    <h3 class="consultas_title">Check in</h3>
                 </div>
 
                 <div class="row">
+                <c:if test="user_logged.getAccount().equals('Recepcionista')}">
                     <div class=search_options>
                         <form action="${userTypeURL}" method="post">
                             <div class="middle-row">
                                 <div class="search-container">
 
 
-                                    <c:if
-                                        test="${user_logged.getAccount().equals('Recepcionista')}">
+
                                         <input type="text" class="form-input sm" placeholder="Nome do Utente"
                                             name="patientName">
-                                    </c:if>
 
-                                    <c:if
-                                        test="${user_logged.getAccount().equals('Utente') ||  user_logged.getAccount().equals('Recepcionista')}">
+
                                         <select id="speciality_id" class="form-input sm" name="specialityName">
                                             <option value="" disabled selected>Especialidade</option>
                                             <!-- For -->
@@ -51,13 +49,14 @@
                                         </select>
                                         <input type="text" class="form-input sm" placeholder="Nome do Médico"
                                             name="doctorName">
-                                    </c:if>
+
 
                                     <button class="btn-search2" type="submit">Pesquisar</button>
                                 </div>
                             </div>
                         </form>
                     </div>
+                    </c:if>
                 </div>
 
 

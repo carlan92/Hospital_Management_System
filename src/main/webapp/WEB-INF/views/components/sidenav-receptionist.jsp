@@ -45,8 +45,11 @@
 					<img src="/imagens/noun_doctor.svg" /> Médicos
 				</a>
 				<a href="/receptionist/appointment-list" class="botao_acessos">
-					<img src="/imagens/noun_heart rate.svg"/> Consultas
+					<img src="/imagens/noun_heart_rate.svg"/> Consultas
 				</a>
+				<a href="/receptionist/checkin" class="botao_acessos">
+                    <img src="/imagens/draw_cal_checkmark.svg rate.svg"/> Check in
+                </a>
 			</div>
 
 			<div class="sidenav_row">
