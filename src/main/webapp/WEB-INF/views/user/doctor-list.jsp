@@ -69,11 +69,10 @@
                     </div>
                     <h1 class="patient_name">${doctor.getFirstAndLastName()}</h1>
                     <p class="spec_title">Especialidade:</p>
-                    <p class="spec_name">${doctor.getSpeciality().getName()} </p>
-                    <p>
-                        <button type="button" class="btn-blue btn-w80"> Consultar Perfil
-                        </button>
-                    </p>
+                    <h6 class="spec_name">${doctor.getSpeciality().getName()} </h6>
+                    <h6 class="spec_title">Nº Cédula Profissional:</h6>
+                    <p class="spec_name">${doctor.getLicenseNumber()} </p>
+
                 </div>
             </c:forEach>
         </div>
