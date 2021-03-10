@@ -214,8 +214,8 @@ public class UserValidationServiceImpl implements UserValidationService {
     }
 
     @Override
-    public UserValidationService validAccount() { // TODO ?
-        if (user.getAccount().matches("Utente") || user.getAccount().matches("Funcionário")) {
+    public UserValidationService validAccount() {
+        if (user.getAccount().matches("Utente") || user.getAccount().matches("Médico")|| user.getAccount().matches("Recepcionista")) {
             return this;
         } else {
             isValid = false;
@@ -275,6 +275,9 @@ public class UserValidationServiceImpl implements UserValidationService {
 
     @Override
     public UserValidationService validPatientNumberUnique() {
+        if(user.getPatientNumber()==null){
+            return this;
+        }
         User patientNumberUnique = userRepository.findByPatientNumber(user.getPatientNumber());
         if (patientNumberUnique != null) {
             isValid = false;

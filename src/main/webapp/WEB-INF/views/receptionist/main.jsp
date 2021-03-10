@@ -64,10 +64,6 @@
         <div class="card_box">
             <div class="card">
                 <div class="card-body">
-                    <div class="add-pat">
-                        <a class="btn btn-outline-secondary btn-add" href="/receptionist/add-doctor"
-                           type="submit">Adicionar novo médico</a>
-                    </div>
 
                     <div class="add-pat">
                         <a class="btn btn-outline-secondary btn-add" href="/receptionist/add-speciality"
@@ -76,8 +72,8 @@
                     </div>
 
                     <div class="add-pat">
-                        <a class="btn btn-outline-secondary btn-add" href="/receptionist/add-patient" type="submit">Adicionar
-                            novo utente</a>
+                        <a class="btn btn-outline-secondary btn-add" href="/receptionist/add-user" type="submit">Adicionar
+                            novo utilizador</a>
                     </div>
                 </div>
                 <div class="horizontal-border"></div>

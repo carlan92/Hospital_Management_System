@@ -85,24 +85,108 @@ public class ReceptionistController {
         return ("redirect:/receptionist/main");
     }
 
-    @GetMapping(value = "/receptionist/add-patient")
-    public String addPatientPage(ModelMap modelMap) {
+    @GetMapping(value = "/receptionist/add-user")
+    public String addUserPage(ModelMap modelMap) {
         List<Nationality> nationalities = nationalityService.findAll();
+        List<Speciality> specialities = specialityService.findAll(Sort.by(Sort.Direction.ASC, "name"));
         User userLogged = userService.currentUser();
 
         modelMap.put("nationalities", nationalities);
+        modelMap.put("specialities", specialities);
+
         modelMap.put("user_logged", userLogged);
-        return ("receptionist/add-patient");
+        return ("receptionist/add-user");
     }
 
-    @PostMapping(value = "/receptionist/add-patient")
-    public String addPatient(@ModelAttribute Patient user,
-                             ModelMap mpError,
-                             @RequestParam String confirmarPassword2) {
+    @PostMapping(value = "/receptionist/add-user")
+    public String addUser(@ModelAttribute Doctor doctor,
+                          @ModelAttribute Patient patient,
+                          @ModelAttribute Receptionist receptionist,
+                          ModelMap mpError,
+                          @RequestParam String confirmarPassword2,
+                          @RequestParam(required = false, name = "specialityName") String specialityName) {
+
 
         List<Nationality> nationalities = nationalityService.findAll();
+        List<Speciality> specialities = specialityService.findAll(Sort.by(Sort.Direction.ASC, "name"));
         mpError.put("nationalities", nationalities);
+        mpError.put("specialities", specialities);
 
+        //add doctor account
+        if (doctor.getAccount().equals("Médico")) {
+            valitationAddAccount(doctor, confirmarPassword2);
+            if (!userValidationService.isValid()) {
+                mpError.addAllAttributes(userValidationService.getErrorModelMap());
+                mpError.put("user", doctor);
+
+                return "receptionist/add-user";
+            }
+            // Add user to database
+            registrationService.encryptPassword(doctor);
+            Speciality speciality = specialityService.findByName(specialityName);
+            doctor.setSpeciality(speciality);
+            userService.addUser(doctor);
+        }
+        //add patient account
+        if (patient.getAccount().equals("Utente")) {
+            valitationAddAccount(patient, confirmarPassword2);
+            if (!userValidationService.isValid()) {
+                mpError.addAllAttributes(userValidationService.getErrorModelMap());
+                mpError.put("user", patient);
+
+                return "receptionist/add-user";
+            }
+            // Add user to database
+            registrationService.encryptPassword(patient);
+            userService.addUser(patient);
+        }
+        //add recepcionist account
+        if (receptionist.getAccount().equals("Recepcionista")) {
+            valitationAddAccount(receptionist, confirmarPassword2);
+            if (!userValidationService.isValid()) {
+                mpError.addAllAttributes(userValidationService.getErrorModelMap());
+                mpError.put("user", receptionist);
+
+                return "receptionist/add-user";
+            }
+            // Add user to database
+            registrationService.encryptPassword(receptionist);
+            userService.addUser(receptionist);
+        }
+
+        return "redirect:/receptionist/main";
+    }
+
+
+    @PostMapping(value = "/receptionist/imprimir")
+    public String doImprimir(@ModelAttribute Doctor user, @ModelAttribute Patient patient, @ModelAttribute Receptionist receptionist, ModelMap modelMap) {
+
+        List<Nationality> nationalities = nationalityService.findAll();
+        List<Speciality> specialities = specialityService.findAll(Sort.by(Sort.Direction.ASC, "name"));
+        User userLogged = userService.currentUser();
+        modelMap.put("nationalities", nationalities);
+        modelMap.put("specialities", specialities);
+
+        modelMap.put("user_logged", userLogged);
+        if (user.getAccount().equals("Médico")) {
+            modelMap.put("user", user);
+        } else if (patient.getAccount().equals("Utente")) {
+            modelMap.put("user", patient);
+        } else if (receptionist.getAccount().equals("Recepcionista")) {
+            modelMap.put("user", receptionist);
+        }
+        return ("receptionist/add-user");
+    }
+
+    @GetMapping(value = "/receptionist/invoice-form")
+    public String showInvoiceForm(ModelMap modelMap) {
+        User userLogged = userService.currentUser();
+
+        modelMap.put("user_logged", userLogged);
+        return "receptionist/invoice-form";
+    }
+
+    public void valitationAddAccount(User user, String confirmarPassword2) {
         userValidationService.clear().setUser(user)
                 .validName()
                 .validPassword()
@@ -132,41 +216,5 @@ public class ReceptionistController {
         } else {
             user.setPhotoURL("user-female.jpg");
         }
-
-        if (!userValidationService.isValid()) {
-            mpError.addAllAttributes(userValidationService.getErrorModelMap());
-            mpError.put("user", user);
-
-            return "receptionist/add-patient";
-        }
-        // Add user to database
-        registrationService.encryptPassword(user);
-        userService.addUser(user);
-
-        return "redirect:/receptionist/main";
-    }
-
-    @GetMapping(value = "/receptionist/add-doctor")
-    public String addDoctorPage(ModelMap modelMap) {
-        User userLogged = userService.currentUser();
-
-        modelMap.put("user_logged", userLogged);
-        return ("receptionist/add-doctor");
-    }
-
-
-    @PostMapping(value = "/receptionist/imprimir")
-    public String doImprimir(@ModelAttribute Patient user, ModelMap modelMap) {
-
-        modelMap.put("user", user);
-        return ("receptionist/add-patient");
-    }
-
-    @GetMapping(value = "/receptionist/invoice-form")
-    public String showInvoiceForm(ModelMap modelMap) {
-        User userLogged = userService.currentUser();
-
-        modelMap.put("user_logged", userLogged);
-        return "receptionist/invoice-form";
     }
 }

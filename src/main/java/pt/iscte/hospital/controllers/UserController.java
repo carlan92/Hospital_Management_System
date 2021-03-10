@@ -46,10 +46,10 @@ public class UserController {
     @GetMapping(value = "/user/change-profile-data")
     public String showChangeProfileData(ModelMap modelMap) {
         List<Nationality> nationalities = nationalityService.findAll();
-        List<Speciality> specialities=specialityService.findAll(Sort.by(Sort.Direction.ASC,"name"));
+        List<Speciality> specialities = specialityService.findAll(Sort.by(Sort.Direction.ASC, "name"));
 
         modelMap.put("nationalities", nationalities);
-        modelMap.put("specialities",specialities);
+        modelMap.put("specialities", specialities);
 
         modelMap.put("user_logged", userService.currentUser());
         modelMap.put("user", userService.currentUser());
@@ -59,55 +59,16 @@ public class UserController {
 
     @PostMapping(value = "/user/change-profile-data")
     public String changeDataPage(@ModelAttribute Patient patient,
-                                   @ModelAttribute Doctor doctor,
-                                   @ModelAttribute Receptionist receptionist,
-                                   ModelMap modelMap,
-                                   @RequestParam("file") MultipartFile file) {
+                                 @ModelAttribute Doctor doctor,
+                                 @ModelAttribute Receptionist receptionist,
+                                 ModelMap modelMap,
+                                 @RequestParam("file") MultipartFile file) {
 
         // Update user info
+        //utente
         User connectedUser = userService.currentUser();
         if (userService.currentUser().getAccount().equals("Utente")) {
-            userValidationService.clear().setUser(patient)
-                    .validName()
-                    .validPhone()
-                    .validPostCode()
-                    .validSex()
-                    .validDocumentType()
-                    .validDocumentNumber()
-                    .validPatientNumber()
-                    .validNif()
-                    .validCity()
-                    .validBirthday()
-                    .validNationality()
-                    .validAddress();
-
-            if (!patient.getDocumentNumber().equals(connectedUser.getDocumentNumber())) {
-                userValidationService.validDocumentNumberUnique();
-            }
-            if (patient.getPatientNumber() != null) {
-                if (!patient.getPatientNumber().equals(connectedUser.getPatientNumber())) {
-                    userValidationService.validPatientNumberUnique();
-                }
-            }
-
-            if (!patient.getNif().equals(connectedUser.getNif())) {
-                userValidationService.validNifUnique();
-            }
-
-            if (file != null && !file.isEmpty() && !file.getContentType().equals("application/octet-stream")) {
-                try {
-                    String photoURL = imageUploadService.uploadImage(file, userService.currentUser().getUsername());
-                    patient.setPhotoURL(photoURL);
-                } catch (IOException e) {
-                    userValidationService.notValidPhotoUpload();
-                } catch (ImageTypeException e) {
-                    userValidationService.notValidImageType();
-                } catch (ImageSizeException e) {
-                    userValidationService.notValidImageSize();
-                }
-            } else {
-                patient.setPhotoURL(userService.currentUser().getPhotoURL());
-            }
+            validation(patient, file);
 
             if (!userValidationService.isValid()) {
                 // case error in info validation
@@ -126,48 +87,10 @@ public class UserController {
             patient.setAccount(connectedUser.getAccount());
 
             userService.addUser(patient);
+
+            //médico
         } else if (userService.currentUser().getAccount().equals("Médico")) {
-            userValidationService.clear().setUser(doctor)
-                    .validName()
-                    .validPhone()
-                    .validPostCode()
-                    .validSex()
-                    .validDocumentType()
-                    .validDocumentNumber()
-                    .validPatientNumber()
-                    .validNif()
-                    .validCity()
-                    .validBirthday()
-                    .validNationality()
-                    .validAddress();
-
-            if (!doctor.getDocumentNumber().equals(connectedUser.getDocumentNumber())) {
-                userValidationService.validDocumentNumberUnique();
-            }
-            if (doctor.getPatientNumber() != null) {
-                if (!doctor.getPatientNumber().equals(connectedUser.getPatientNumber())) {
-                    userValidationService.validPatientNumberUnique();
-                }
-            }
-
-            if (!doctor.getNif().equals(connectedUser.getNif())) {
-                userValidationService.validNifUnique();
-            }
-
-            if (file != null && !file.isEmpty() && !file.getContentType().equals("application/octet-stream")) {
-                try {
-                    String photoURL = imageUploadService.uploadImage(file, userService.currentUser().getUsername());
-                    doctor.setPhotoURL(photoURL);
-                } catch (IOException e) {
-                    userValidationService.notValidPhotoUpload();
-                } catch (ImageTypeException e) {
-                    userValidationService.notValidImageType();
-                } catch (ImageSizeException e) {
-                    userValidationService.notValidImageSize();
-                }
-            } else {
-                doctor.setPhotoURL(userService.currentUser().getPhotoURL());
-            }
+            validation(doctor, file);
 
             if (!userValidationService.isValid()) {
                 // case error in info validation
@@ -184,53 +107,14 @@ public class UserController {
             doctor.setUsername(connectedUser.getUsername());
             doctor.setPassword(connectedUser.getPassword());
             doctor.setAccount(connectedUser.getAccount());
-            Speciality speciality = specialityService.findByName(((Doctor)connectedUser).getSpeciality().getName());
+            Speciality speciality = specialityService.findByName(((Doctor) connectedUser).getSpeciality().getName());
             doctor.setSpeciality(speciality);
 
             userService.addUser(doctor);
 
+            //recepcionista
         } else if (userService.currentUser().getAccount().equals("Recepcionista")) {
-            userValidationService.clear().setUser(receptionist)
-                    .validName()
-                    .validPhone()
-                    .validPostCode()
-                    .validSex()
-                    .validDocumentType()
-                    .validDocumentNumber()
-                    .validPatientNumber()
-                    .validNif()
-                    .validCity()
-                    .validBirthday()
-                    .validNationality()
-                    .validAddress();
-
-            if (!receptionist.getDocumentNumber().equals(connectedUser.getDocumentNumber())) {
-                userValidationService.validDocumentNumberUnique();
-            }
-            if (receptionist.getPatientNumber() != null) {
-                if (!receptionist.getPatientNumber().equals(connectedUser.getPatientNumber())) {
-                    userValidationService.validPatientNumberUnique();
-                }
-            }
-
-            if (!receptionist.getNif().equals(connectedUser.getNif())) {
-                userValidationService.validNifUnique();
-            }
-
-            if (file != null && !file.isEmpty() && !file.getContentType().equals("application/octet-stream")) {
-                try {
-                    String photoURL = imageUploadService.uploadImage(file, userService.currentUser().getUsername());
-                    receptionist.setPhotoURL(photoURL);
-                } catch (IOException e) {
-                    userValidationService.notValidPhotoUpload();
-                } catch (ImageTypeException e) {
-                    userValidationService.notValidImageType();
-                } catch (ImageSizeException e) {
-                    userValidationService.notValidImageSize();
-                }
-            } else {
-                receptionist.setPhotoURL(userService.currentUser().getPhotoURL());
-            }
+            validation(receptionist, file);
 
             if (!userValidationService.isValid()) {
                 // case error in info validation
@@ -250,8 +134,6 @@ public class UserController {
 
             userService.addUser(receptionist);
         }
-
-
         return "redirect:/user/user-profile";
     }
 
@@ -318,5 +200,49 @@ public class UserController {
         return "user/appointment-details";
     }
 
+    public void validation(User user, MultipartFile file) {
+        User connectedUser = userService.currentUser();
+        userValidationService.clear().setUser(user)
+                .validName()
+                .validPhone()
+                .validPostCode()
+                .validSex()
+                .validDocumentType()
+                .validDocumentNumber()
+                .validPatientNumber()
+                .validNif()
+                .validCity()
+                .validBirthday()
+                .validNationality()
+                .validAddress();
 
+        if (!user.getDocumentNumber().equals(connectedUser.getDocumentNumber())) {
+            userValidationService.validDocumentNumberUnique();
+        }
+        if (user.getPatientNumber() != null) {
+            if (!user.getPatientNumber().equals(connectedUser.getPatientNumber())) {
+                userValidationService.validPatientNumberUnique();
+            }
+        }
+
+        if (!user.getNif().equals(connectedUser.getNif())) {
+            userValidationService.validNifUnique();
+        }
+
+        if (file != null && !file.isEmpty() && !file.getContentType().equals("application/octet-stream")) {
+            try {
+                String photoURL = imageUploadService.uploadImage(file, userService.currentUser().getUsername());
+                user.setPhotoURL(photoURL);
+            } catch (IOException e) {
+                userValidationService.notValidPhotoUpload();
+            } catch (ImageTypeException e) {
+                userValidationService.notValidImageType();
+            } catch (ImageSizeException e) {
+                userValidationService.notValidImageSize();
+            }
+        } else {
+            user.setPhotoURL(userService.currentUser().getPhotoURL());
+        }
+
+    }
 }

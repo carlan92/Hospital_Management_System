@@ -1406,6 +1406,10 @@ select option:disabled {
   position: relative;
 }
 
+.hidden {
+display: none;
+}
+
 /*Consultas + detalhes*/
 .cell-back, .btn-back {
   width: 100%;

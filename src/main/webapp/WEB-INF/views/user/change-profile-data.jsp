@@ -187,7 +187,7 @@
                     </div>
 
                     <div class="perfil-row">
-                        <div class="cell-row">
+                        <div class="cell-row cell-morada">
                             <c:if test="${user.getAccount().equals('Médico')}">
                                 <label for="nrCedulaProfissional_id">Nº Cédula Profissional *</label>
                                 <input id="nrCedulaProfissional_id" type="text" required class="form-input"

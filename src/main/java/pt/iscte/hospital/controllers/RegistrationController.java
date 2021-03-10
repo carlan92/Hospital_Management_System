@@ -68,6 +68,7 @@ public class RegistrationController {
                 .validDocumentNumber()
                 .validDocumentNumberUnique()
                 .validPatientNumber()
+                .validPatientNumberUnique()
                 .validNif()
                 .validNifUnique()
                 .validCity()

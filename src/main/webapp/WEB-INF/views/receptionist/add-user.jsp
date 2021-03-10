@@ -5,6 +5,17 @@
 <head>
     <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
     <%@ include file="../components/head.jsp" %>
+    <script type="text/javascript">
+        function updateForm(tipoAccount) {
+            //document.appointmentForm.submit();
+            console.log(tipoAccount);
+            if (tipoAccount === "Médico") {
+                document.getElementById("med").classList.remove("hidden");
+            } else if (!document.getElementById("med").classList.contains("hidden")) {
+                document.getElementById("med").classList.add("hidden");
+            }
+        }
+    </script>
 </head>
 
 <body>
@@ -20,7 +31,7 @@
                     </div>
 
                     <div class="perfil-row">
-                        <h3 class="registo">Adicionar Utente</h3>
+                        <h3 class="registo">Adicionar Utilizador</h3>
                     </div>
                 </div>
             </div>
@@ -36,7 +47,7 @@
                                 <div class="cell-row cell-morada">
                                     <label for="nome_id">Nome Completo *</label>
                                     <input id="nome_id" type="text" class="form-input" value="${user.getName()}"
-                                        name="name" required placeholder="O seu nome completo" />
+                                        name="name" required placeholder="Nome completo" />
                                     <p class="msg-error">${errorMsgName}</p>
                                 </div>
                             </div>
@@ -74,7 +85,7 @@
                                 <div class="cell-row cell-morada">
                                     <label for="morada_id">Morada</label>
                                     <input id="morada_id" type="text" class="form-input" value="${user.getAddress()}"
-                                        name="address" placeholder="A sua morada" />
+                                        name="address" placeholder="Morada" />
                                     <p class="msg-error">${errorMsgAddress}</p>
                                 </div>
                             </div>
@@ -84,33 +95,26 @@
                                     <label for="codigoPostal_id">Código Postal</label>
                                     <input id="codigoPostal_id" type="text" pattern="[0-9]{4}[-][0-9]{3}"
                                         class="form-input" value="${user.getPostCode()}" name="postCode"
-                                        placeholder="O seu código postal" />
+                                        placeholder="Código postal" />
                                     <p class="msg-error">${errorMsgPostCode}</p>
                                 </div>
 
                                 <div class="cell-row">
                                     <label for="localidade_id">Localidade *</label>
                                     <input id="localidade_id" type="text" class="form-input" value="${user.getCity()}"
-                                        name="city" required placeholder="A sua localidade" />
+                                        name="city" required placeholder="Localidade" />
                                     <p class="msg-error">${errorMsgCity}</p>
                                 </div>
                             </div>
 
                             <div class="perfil-row">
-                                <div class="cell-row">
-                                    <label for="conta_id">Tipo de Utilizador *</label>
-                                    <select id="conta_id" class="form-input" name="account" required>
-                                        <option value="Utente">Utente</option>
-                                    </select>
-                                    <p class="msg-error">${errorMsgAccount}</p>
-                                </div>
 
                                 <div class="cell-row">
                                     <label for="nacionalidade_id">Nacionalidade *</label>
                                     <select id="nacionalidade_id" class="form-input" name="nationality" required>
                                         <option value="" disabled <c:if test="${empty nationality}">
                                             selected</c:if>>
-                                            A sua nacionalidade
+                                            Nacionalidade
                                         </option>
                                         <option value="Portuguesa" <c:if
                                             test="${user.getNationality().equals('Portuguesa')}"> selected</c:if>>
@@ -132,25 +136,36 @@
                                     </select>
                                     <p class="msg-error">${errorMsgNationality}</p>
                                 </div>
+                                <div class="cell-row">
+                                    <label for="telemovel_id">Telemóvel *</label>
+                                    <input id="telemovel_id" type="text"
+                                        pattern="^9[1236][0-9]{7}$|^2[3-9][1-9][0-9]{6}$|^2[12][0-9]{7}$"
+                                        class="form-input" value="${user.getPhone()}" name="phone" required
+                                        placeholder="Número de telemóvel" />
+                                    <p class="msg-error">${errorMsgPhone}</p>
+                                </div>
                             </div>
 
                             <div class="perfil-row">
                                 <div class="cell-row">
                                     <label for="documento_id">Documento de Identificação *</label>
                                     <select id="documento_id" class="form-input" name="documentType" required>
-                                        <option value="" disabled <c:if
-                                            test="${empty user.getDocumentType()}"> selected</c:if>>
+                                        <option value="" disabled <c:if test="${empty user.getDocumentType()}"> selected
+                                            </c:if>>
                                             Escolha uma Opção
                                         </option>
                                         <option value="Bilhete de Identidade" <c:if
-                                            test="${user.getDocumentType().equals('Bilhete de Identidade')}"> selected</c:if>>
+                                            test="${user.getDocumentType().equals('Bilhete de Identidade')}"> selected
+                                            </c:if>>
                                             Bilhete de Identidade
                                         </option>
                                         <option value="Cartão de Cidadão" <c:if
-                                            test="${user.getDocumentType().equals('Cartão de Cidadão')}"> selected</c:if>>
+                                            test="${user.getDocumentType().equals('Cartão de Cidadão')}"> selected
+                                            </c:if>>
                                             Cartão de Cidadão
                                         </option>
-                                        <option value="Passaporte" <c:if test="${user.getDocumentType().equals('Passaporte')}">
+                                        <option value="Passaporte" <c:if
+                                            test="${user.getDocumentType().equals('Passaporte')}">
                                             selected</c:if>>
                                             Passaporte
                                         </option>
@@ -183,29 +198,69 @@
                             </div>
 
                             <div class="perfil-row">
-                                <div class="cell-row">
-                                    <label for="telemovel_id">Telemóvel *</label>
-                                    <input id="telemovel_id" type="text"
-                                        pattern="^9[1236][0-9]{7}$|^2[3-9][1-9][0-9]{6}$|^2[12][0-9]{7}$"
-                                        class="form-input" value="${user.getPhone()}" name="phone" required
-                                        placeholder="O seu número de telemóvel" />
-                                    <p class="msg-error">${errorMsgPhone}</p>
-                                </div>
-                                <div class="cell-row">
+                                <div class="cell-row cell-morada">
                                     <label for="e-mail_id">E-mail *</label>
                                     <input id="e-mail_id" type="email" class="form-input" value="${user.getEmail()}"
-                                        name="email" required placeholder="O seu e-mail" />
+                                        name="email" required placeholder="E-mail" />
                                     <p class="msg-error">${errorMsgEmail}</p>
                                 </div>
                             </div>
                             <div class="perfil-row">
-                                <div class="cell-row cell-morada">
+                                <div class="cell-row">
                                     <label for="username_id">Username *</label>
                                     <input id="username_id" type="text" class="form-input" name="username" required
-                                        placeholder="Introduza o username" value="${user.getUsername()}" />
+                                        placeholder="Username" value="${user.getUsername()}" />
                                     <p class="msg-error">${errorMsgUsername}</p>
                                 </div>
+                                <div class="cell-row">
+                                    <label for="conta_id">Tipo de Utilizador *</label>
+                                    <select id="conta_id" class="form-input" onchange="updateForm(this.value)"
+                                        name="account" required>
+                                        <option value="" disabled <c:if test="${empty user.getAccount()}"> selected
+                                            </c:if>>Escolha uma Opção</option>
+                                        <option value="Utente" <c:if test="${user.getAccount().equals('Utente')}">
+                                            selected</c:if>>Utente
+                                        </option>
+                                        <option value="Médico" onchange="updateForm(this.value)" <c:if
+                                            test="${user.getAccount().equals('Médico')}"> selected</c:if>>Médico
+                                        </option>
+                                        <option value="Recepcionista" <c:if
+                                            test="${user.getAccount().equals('Recepcionista')}"> selected</c:if>
+                                            >Recepcionista</option>
+                                    </select>
+                                    <p class="msg-error">${errorMsgAccount}</p>
+                                </div>
 
+                            </div>
+
+                            <div class="perfil-row hidden" id="med">
+                                <div class="cell-row">
+                                    <label for="nrCedulaProfissional_id">Nº Cédula Profissional </label>
+                                    <input id="nrCedulaProfissional_id" type="text" class="form-input"
+                                        name="licenseNumber" placeholder="Nº Cédula Profissional"
+                                        value="${doctor.getLicenseNumber()}" />
+                                    <p class="msg-error">${errorMsgLicenseNumber}</p>
+                                </div>
+
+                                <div class="cell-row">
+                                    <label for="especialidade_id">Especialidade </label>
+                                    <select id="especialidade_id" class="form-input" name="specialityName">
+                                        <option value="" disabled <c:if test="${empty search_speciality}">
+                                            selected
+                                            </c:if>>
+                                            Especialidade
+                                        </option>
+                                        <!-- For -->
+                                        <c:forEach var="speciality" items="${specialities}">
+                                            <option value="${speciality.getName()}" <c:if
+                                                test="${doctor.getSpeciality().equals(speciality.getName())}">
+                                                selected
+                                                </c:if>>
+                                                ${speciality.getName()}
+                                            </option>
+                                        </c:forEach>
+                                    </select>
+                                </div>
                             </div>
 
                             <div class="perfil-row">
@@ -244,17 +299,17 @@
                         <div class="perfil-row">
                             <div class="cell-row">
                                 <button type="submit" class="btn btn-blue"
-                                    onclick="javascript: form.action='/imprimir';">Imprimir</button>
+                                    onclick="javascript: form.action='/receptionist/imprimir';">Imprimir</button>
                             </div>
                             <div class="cell-row">
                                 <button type="submit" class="btn btn-blue"
-                                    onclick="javascript: form.action='/add-patient';">Adicionar Utente</button>
+                                    onclick="javascript: form.action='/receptionist/add-user';">Adicionar
+                                    Utilizador</button>
                             </div>
                         </div>
                     </form>
                 </div>
             </div>
-
         </div>
     </div>
 
