@@ -1,4 +1,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -20,8 +22,6 @@
     <!--menu da direita Página Lista de todos os utentes existentes para o Recepcionista-->
 
     <div class="white_box box-align-left">
-        <!-- For -->
-        <c:forEach var="patient" items="${patients}">
             <div class="perfil-main-col">
                 <div class="perfil-row">
                     <div class="cell-row cell-align-center">
@@ -107,7 +107,6 @@
                     </div>
                 </div>
             </div>
-        </c:forEach>
     </div>
 </div>
 </body>

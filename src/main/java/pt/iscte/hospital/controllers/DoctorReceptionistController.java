@@ -5,6 +5,7 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import pt.iscte.hospital.entities.Patient;
@@ -32,13 +33,13 @@ public class DoctorReceptionistController {
         return "doctor-receptionist/patient-list";
     }
 
-    @GetMapping(value = "/doctor-receptionist/patient-profile")
-    public String showPatientProfile(ModelMap modelMap) {
-        List<Patient> patients = patientService.findAll(Sort.by(Sort.Direction.ASC, "name"));
+    @GetMapping(value = "/doctor-receptionist/patient-profile/{patientId}")
+    public String showPatientProfile(ModelMap modelMap, @PathVariable(value = "patientId") Long patientId) {
+        Patient patient = patientService.findByUserId(patientId);
         User userLogged = userService.currentUser();
 
-        modelMap.put("patients", patients);
         modelMap.put("user_logged", userLogged);
+        modelMap.put("patient", patient);
         return "doctor-receptionist/patient-profile";
     }
 
