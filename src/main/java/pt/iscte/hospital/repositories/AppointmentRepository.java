@@ -27,6 +27,11 @@ public interface AppointmentRepository extends JpaRepository<Appointment, Long> 
                                                                                                                                                      String doctorName,
                                                                                                                                                      String specialityName);
 
+    List<Appointment> findAllByPatientUserIdAndSlotDateAndAppointmentStatusAndHasChecked(Long userId,
+                                                                     LocalDate date,
+                                                                     Integer appointmentStatus,
+                                                                     boolean hasCheckedIn);
+
     List<Appointment> findAll();
 
     // Doctor Filters

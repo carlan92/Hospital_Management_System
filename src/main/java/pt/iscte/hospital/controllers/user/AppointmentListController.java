@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import pt.iscte.hospital.entities.*;
 import pt.iscte.hospital.entities.states.AppointmentState;
-import pt.iscte.hospital.repositories.AppointmentRepository;
 import pt.iscte.hospital.services.*;
 
 import java.time.LocalDate;
@@ -41,9 +40,6 @@ public class AppointmentListController {
     private DoctorService doctorService;
     @Autowired
     private SlotService slotService;
-
-    @Autowired
-    private AppointmentRepository appointmentRepository;
 
 
     // Constructor
@@ -105,7 +101,7 @@ public class AppointmentListController {
 
         Long userId = userLogged.getUserId();
 
-        List<Appointment> appointments = new ArrayList<>(appointmentRepository.findAllBySlotDoctorUserId(userId));
+        List<Appointment> appointments = new ArrayList<>(appointmentService.findAllBySlotDoctorUserId(userId));
         appointments.sort(null);
 
         modelMap.addAllAttributes(appointmentListView(
@@ -123,7 +119,7 @@ public class AppointmentListController {
     public String showAppointmentListReceptionist(ModelMap modelMap) {
         User userLogged = userService.currentUser();
 
-        List<Appointment> appointments = new ArrayList<>(appointmentRepository.findAll());
+        List<Appointment> appointments = new ArrayList<>(appointmentService.findAll());
         appointments.sort(null);
 
         modelMap.addAllAttributes(appointmentListView(
@@ -154,12 +150,12 @@ public class AppointmentListController {
 
         for (AppointmentState appointmentState : appointmentStates) {
             if (date == null) {
-                appointments.addAll(appointmentRepository.findAllByPatientUserIdAndAppointmentStatusAndSlotDoctorNameContainingIgnoreCaseAndSlotDoctorSpecialityNameContainingIgnoreCase(userLogged.getUserId(),
+                appointments.addAll(appointmentService.findAllByPatientUserIdAndAppointmentStatusAndSlotDoctorNameContainingIgnoreCaseAndSlotDoctorSpecialityNameContainingIgnoreCase(userLogged.getUserId(),
                         appointmentState.getStateNr(),
                         doctorName,
                         specialityName));
             } else {
-                appointments.addAll(appointmentRepository.findAllByPatientUserIdAndAppointmentStatusAndSlotDateAndSlotDoctorNameContainingIgnoreCaseAndSlotDoctorSpecialityNameContainingIgnoreCase(userLogged.getUserId(),
+                appointments.addAll(appointmentService.findAllByPatientUserIdAndAppointmentStatusAndSlotDateAndSlotDoctorNameContainingIgnoreCaseAndSlotDoctorSpecialityNameContainingIgnoreCase(userLogged.getUserId(),
                         appointmentState.getStateNr(),
                         date,
                         doctorName,
@@ -197,12 +193,12 @@ public class AppointmentListController {
 
         for (AppointmentState appointmentState : appointmentStates) {
             if (date == null) {
-                appointments.addAll(appointmentRepository.findAllByPatientUserIdAndAppointmentStatusAndSlotDoctorNameContainingIgnoreCaseAndSlotDoctorSpecialityNameContainingIgnoreCase(userLogged.getUserId(),
+                appointments.addAll(appointmentService.findAllByPatientUserIdAndAppointmentStatusAndSlotDoctorNameContainingIgnoreCaseAndSlotDoctorSpecialityNameContainingIgnoreCase(userLogged.getUserId(),
                         appointmentState.getStateNr(),
                         doctorName,
                         specialityName));
             } else {
-                appointments.addAll(appointmentRepository.findAllByPatientUserIdAndAppointmentStatusAndSlotDateAndSlotDoctorNameContainingIgnoreCaseAndSlotDoctorSpecialityNameContainingIgnoreCase(userLogged.getUserId(),
+                appointments.addAll(appointmentService.findAllByPatientUserIdAndAppointmentStatusAndSlotDateAndSlotDoctorNameContainingIgnoreCaseAndSlotDoctorSpecialityNameContainingIgnoreCase(userLogged.getUserId(),
                         appointmentState.getStateNr(),
                         date,
                         doctorName,
@@ -237,10 +233,10 @@ public class AppointmentListController {
 
         List<Appointment> appointments;
         if (date == null) {
-            appointments = appointmentRepository.findAllByPatientNameContainingIgnoreCaseAndSlotDoctorUserId(patientName,
+            appointments = appointmentService.findAllByPatientNameContainingIgnoreCaseAndSlotDoctorUserId(patientName,
                     userId);
         } else {
-            appointments = appointmentRepository.findAllBySlotDateAndPatientNameContainingIgnoreCaseAndSlotDoctorUserId(date,
+            appointments = appointmentService.findAllBySlotDateAndPatientNameContainingIgnoreCaseAndSlotDoctorUserId(date,
                     patientName,
                     userId);
         }
@@ -272,11 +268,11 @@ public class AppointmentListController {
 
         List<Appointment> appointments;
         if (date == null) {
-            appointments = appointmentRepository.findAllBySlotDoctorNameContainingIgnoreCaseAndPatientNameContainingIgnoreCaseAndSlotDoctorSpecialityNameContainingIgnoreCase(doctorName,
+            appointments = appointmentService.findAllBySlotDoctorNameContainingIgnoreCaseAndPatientNameContainingIgnoreCaseAndSlotDoctorSpecialityNameContainingIgnoreCase(doctorName,
                     patientName,
                     specialityName);
         } else {
-            appointments = appointmentRepository.findAllBySlotDateAndSlotDoctorNameContainingIgnoreCaseAndPatientNameContainingIgnoreCaseAndSlotDoctorSpecialityNameContainingIgnoreCase(date,
+            appointments = appointmentService.findAllBySlotDateAndSlotDoctorNameContainingIgnoreCaseAndPatientNameContainingIgnoreCaseAndSlotDoctorSpecialityNameContainingIgnoreCase(date,
                     doctorName,
                     patientName,
                     specialityName);

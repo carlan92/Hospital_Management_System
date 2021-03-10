@@ -25,6 +25,11 @@ public interface AppointmentService {
                                                                                                                                                      String doctorName,
                                                                                                                                                      String specialityName);
 
+    List<Appointment> findAllByPatientUserIdBySlotDateAndAppointmentStatusAndHasChecked(Long userId,
+                                                                           LocalDate date,
+                                                                           Integer appointmentStatus,
+                                                                           boolean hasChecked);
+
     List<Appointment> findAll();
 
     // Doctor Filters

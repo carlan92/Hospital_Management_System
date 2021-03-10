@@ -17,7 +17,7 @@ public class Appointment implements Comparable<Appointment>{
     private Date date;
     private Time timeBegin;
     private Time timeEnd;
-    private Boolean hasCheckedIn = false;
+    private Boolean hasChecked = false;
     private String notes;
 
     @ManyToOne
@@ -86,12 +86,12 @@ public class Appointment implements Comparable<Appointment>{
         this.timeEnd = timeEnd;
     }
 
-    public Boolean getHasCheckedIn() {
-        return hasCheckedIn;
+    public Boolean getHasChecked() {
+        return hasChecked;
     }
 
-    public void setHasCheckedIn(Boolean hasCheckedIn) {
-        this.hasCheckedIn = hasCheckedIn;
+    public void setHasChecked(Boolean hasChecked) {
+        this.hasChecked = hasChecked;
     }
 
     public Invoice getInvoice() {

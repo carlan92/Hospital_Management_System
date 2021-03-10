@@ -53,6 +53,16 @@ public class AppointmentServiceImpl implements AppointmentService {
                 specialityName);
     }
 
+    public List<Appointment> findAllByPatientUserIdBySlotDateAndAppointmentStatusAndHasChecked(Long userId,
+                                                                                  LocalDate date,
+                                                                                  Integer appointmentStatus,
+                                                                                  boolean hasChecked){
+        return appointmentRepository.findAllByPatientUserIdAndSlotDateAndAppointmentStatusAndHasChecked(userId,
+                date,
+                appointmentStatus,
+                hasChecked);
+    }
+
     @Override
     public List<Appointment> findAll() {
         return appointmentRepository.findAll();
