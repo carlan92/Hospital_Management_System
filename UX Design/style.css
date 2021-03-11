@@ -1061,6 +1061,15 @@ select option:disabled {
   width: 100%;
 }
 
+.white_box3 {
+  margin: 10px auto;
+  padding: 30px 50px;
+  box-shadow: 5px 0px 20px #00000029;
+  background: transparent linear-gradient(90deg, #ffffffb9 0%, #ffffff7e 100%) 0% 0% no-repeat padding-box;
+  width: 750px;
+  min-height: 300px;
+}
+
 .utente_title {
   margin: auto;
 }
@@ -1399,6 +1408,7 @@ select option:disabled {
 }
 
 /*Consultas + detalhes*/
+
 .cell-back, .btn-back {
   width: 100%;
   display: block;
