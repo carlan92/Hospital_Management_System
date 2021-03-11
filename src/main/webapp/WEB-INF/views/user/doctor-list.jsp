@@ -67,7 +67,7 @@
                     <div class="user_photo w-50">
                         <img src="/uploaded_images/${doctor.getPhotoURL()}" alt="avatar">
                     </div>
-                    <h1 class="patient_name">${doctor.getFirstAndLastName()}</h1>
+                    <h1 class="patient_name">${doctor.getTitleAndName()}</h1>
                     <p class="spec_title">Especialidade:</p>
                     <h6 class="spec_name">${doctor.getSpeciality().getName()} </h6>
                     <h6 class="spec_title">Nº Cédula Profissional:</h6>

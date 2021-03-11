@@ -233,7 +233,7 @@
 
                             </div>
 
-                            <div class="perfil-row hidden" id="med">
+                            <div class="perfil-row <c:if test='${!medicalCondition}'>hidden</c:if>" id="med">
                                 <div class="cell-row">
                                     <label for="nrCedulaProfissional_id">Nº Cédula Profissional </label>
                                     <input id="nrCedulaProfissional_id" type="text" class="form-input"
@@ -253,7 +253,7 @@
                                         <!-- For -->
                                         <c:forEach var="speciality" items="${specialities}">
                                             <option value="${speciality.getName()}" <c:if
-                                                test="${doctor.getSpeciality().getName().equals(speciality.getName())}">
+                                                test="${specialityName.equals(speciality.getName())}">
                                                 selected
                                                 </c:if>>
                                                 ${speciality.getName()}
@@ -280,6 +280,7 @@
                                 </div>
                             </div>
                             <div>
+                            <p class="nota">* campos de preenchimento obrigatório</p>
                                 <p class="nota">Autorização de recolha e tratamento de dados. </p>
                                 <p class="nota">O Centro Hospital UPskill é a entidade responsável pela recolha e
                                     tratamento dos dados pessoais dos Utilizadores. </p>

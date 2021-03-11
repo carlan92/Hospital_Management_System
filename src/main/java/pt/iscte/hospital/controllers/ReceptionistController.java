@@ -104,13 +104,23 @@ public class ReceptionistController {
                           @ModelAttribute Receptionist receptionist,
                           ModelMap mpError,
                           @RequestParam String confirmarPassword2,
+                          @RequestParam String account,
                           @RequestParam(required = false, name = "specialityName") String specialityName) {
 
-
+        User userLogged = userService.currentUser();
         List<Nationality> nationalities = nationalityService.findAll();
         List<Speciality> specialities = specialityService.findAll(Sort.by(Sort.Direction.ASC, "name"));
+        mpError.put("user_logged", userLogged);
         mpError.put("nationalities", nationalities);
         mpError.put("specialities", specialities);
+        mpError.put("specialityName",specialityName);
+        mpError.put("account",account);
+
+        if(account.equals("Médico")) {
+           mpError.put("medicalCondition", true);
+        } else{
+            mpError.put("medicalCondition", false);
+        }
 
         //add doctor account
         if (doctor.getAccount().equals("Médico")) {
@@ -161,13 +171,22 @@ public class ReceptionistController {
 
 
     @PostMapping(value = "/receptionist/imprimir")
-    public String doImprimir(@ModelAttribute Doctor user, @ModelAttribute Patient patient, @ModelAttribute Receptionist receptionist, ModelMap modelMap) {
+    public String doImprimir(@ModelAttribute Doctor user, @ModelAttribute Patient patient, @ModelAttribute Receptionist receptionist, @RequestParam String account, @RequestParam (required = false, name = "specialityName")String specialityName, ModelMap modelMap) {
 
         List<Nationality> nationalities = nationalityService.findAll();
         List<Speciality> specialities = specialityService.findAll(Sort.by(Sort.Direction.ASC, "name"));
         User userLogged = userService.currentUser();
+        modelMap.put("user_logged", userLogged);
         modelMap.put("nationalities", nationalities);
         modelMap.put("specialities", specialities);
+        modelMap.put("specialityName",specialityName);
+        modelMap.put("account",account);
+
+        if(account.equals("Médico")) {
+            modelMap.put("medicalCondition", true);
+        } else{
+            modelMap.put("medicalCondition", false);
+        }
 
         modelMap.put("user_logged", userLogged);
         if (user.getAccount().equals("Médico")) {
