@@ -80,7 +80,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public String getUserMainPage(User user) {
         if (user == null) {
-            return "public/main";
+            return "main";
         }
         Role role = getUserRole(user);
         return role.getMainPage();
