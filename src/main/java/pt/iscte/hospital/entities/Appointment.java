@@ -18,8 +18,8 @@ public class Appointment implements Comparable<Appointment> {
     private Long appointmentId;
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
     private LocalDate date;
-    private Time timeBegin;
-    private Time timeEnd;
+    private LocalTime timeBegin;
+    private LocalTime timeEnd;
     private LocalTime timeOfArrival;
     private Boolean hasChecked = false;
     private String notes;
@@ -41,7 +41,7 @@ public class Appointment implements Comparable<Appointment> {
     public Appointment() {
     }
 
-    public Appointment(LocalDate date, Time timeBegin, Time timeEnd, String notes) {
+    public Appointment(LocalDate date, LocalTime timeBegin, LocalTime timeEnd, String notes) {
         this.date = date;
         this.timeBegin = timeBegin;
         this.timeEnd = timeEnd;
@@ -74,19 +74,19 @@ public class Appointment implements Comparable<Appointment> {
         this.date = date;
     }
 
-    public Time getTimeBegin() {
+    public LocalTime getTimeBegin() {
         return timeBegin;
     }
 
-    public void setTimeBegin(Time timeBegin) {
+    public void setTimeBegin(LocalTime timeBegin) {
         this.timeBegin = timeBegin;
     }
 
-    public Time getTimeEnd() {
+    public LocalTime getTimeEnd() {
         return timeEnd;
     }
 
-    public void setTimeEnd(Time timeEnd) {
+    public void setTimeEnd(LocalTime timeEnd) {
         this.timeEnd = timeEnd;
     }
 

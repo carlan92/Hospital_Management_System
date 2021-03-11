@@ -3,12 +3,17 @@ package pt.iscte.hospital.services.user;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
+import pt.iscte.hospital.entities.Appointment;
 import pt.iscte.hospital.entities.Doctor;
 import pt.iscte.hospital.entities.Speciality;
+import pt.iscte.hospital.entities.states.AppointmentState;
+import pt.iscte.hospital.repositories.AppointmentRepository;
 import pt.iscte.hospital.repositories.user.DoctorRepository;
 import pt.iscte.hospital.repositories.SpecialityRepository;
 import pt.iscte.hospital.services.user.DoctorService;
 
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -18,33 +23,43 @@ public class DoctorServiceImpl implements DoctorService {
     private DoctorRepository doctorRepository;
     @Autowired
     private SpecialityRepository specialityRepository;
+    @Autowired
+    private AppointmentRepository appointmentRepository;
 
     //Methods
     @Override
     public void chamarUtente(Doctor doctor) {
         // Consultar a base de dados: por médico, por data, por checking
-        //
+        //TODO
 
     }
 
     @Override
-    public void comecarConsulta() {
-
+    public void startAppointment(Appointment appointment) {
+        appointment.setAppointmentStatus(AppointmentState.EM_CURSO.getStateNr());
+        appointment.setDate(LocalDate.now());
+        appointment.setTimeBegin(LocalTime.now());
+        appointmentRepository.save(appointment);
     }
 
     @Override
-    public void terminarConsulta() {
-
+    public void endAppointment(Appointment appointment) {
+        appointment.setAppointmentStatus(AppointmentState.REALIZADA.getStateNr());
+        appointment.setTimeEnd(LocalTime.now());
+        appointmentRepository.save(appointment);
     }
 
     @Override
-    public void marcarFalta() {
-
+    public void marcarFalta(Appointment appointment) {
+        appointment.setAppointmentStatus(AppointmentState.NAO_REALIZADA.getStateNr());
+        appointmentRepository.save(appointment);
     }
 
     @Override
-    public void removerFalta() {
-
+    public void removerFalta(Appointment appointment) {
+        appointment.setAppointmentStatus(AppointmentState.EM_CURSO.getStateNr());
+        appointment.setTimeBegin(LocalTime.now());
+        appointmentRepository.save(appointment);
     }
 
     @Override
@@ -53,8 +68,9 @@ public class DoctorServiceImpl implements DoctorService {
     }
 
     @Override
-    public void desmarcarConsulta() {
-
+    public void desmarcarConsultaByDoctor(Appointment appointment) {
+        appointment.setAppointmentStatus(AppointmentState.DESMARCADA_PELO_MEDICO.getStateNr());
+        appointmentRepository.save(appointment);
     }
 
     @Override
