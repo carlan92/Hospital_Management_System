@@ -12,6 +12,9 @@ import pt.iscte.hospital.entities.*;
 import pt.iscte.hospital.entities.states.AppointmentState;
 import pt.iscte.hospital.entities.states.InvoiceState;
 import pt.iscte.hospital.services.*;
+import pt.iscte.hospital.services.user.DoctorService;
+import pt.iscte.hospital.services.user.PatientService;
+import pt.iscte.hospital.services.user.UserService;
 
 import java.time.LocalDate;
 import java.util.ArrayList;

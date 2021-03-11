@@ -13,7 +13,7 @@ import pt.iscte.hospital.entities.Speciality;
 import pt.iscte.hospital.entities.User;
 import pt.iscte.hospital.services.AppointmentService;
 import pt.iscte.hospital.services.SpecialityService;
-import pt.iscte.hospital.services.UserService;
+import pt.iscte.hospital.services.user.UserService;
 
 import java.time.LocalDate;
 import java.time.LocalTime;

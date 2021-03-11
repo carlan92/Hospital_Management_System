@@ -1,16 +1,16 @@
-package pt.iscte.hospital.services;
+package pt.iscte.hospital.services.user;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import pt.iscte.hospital.entities.Patient;
-import pt.iscte.hospital.repositories.PatientRepository;
+import pt.iscte.hospital.repositories.user.PatientRepository;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @Service
-public class PatientServiceImpl implements PatientService{
+public class PatientServiceImpl implements PatientService {
     @Autowired
     private PatientRepository patientRepository;
 

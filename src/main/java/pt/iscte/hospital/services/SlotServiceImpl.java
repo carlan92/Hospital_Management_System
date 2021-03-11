@@ -8,7 +8,7 @@ import pt.iscte.hospital.entities.Slot;
 import pt.iscte.hospital.objects.utils.CalendarColor;
 import pt.iscte.hospital.objects.utils.Day;
 import pt.iscte.hospital.objects.utils.TimeInterval;
-import pt.iscte.hospital.repositories.DoctorRepository;
+import pt.iscte.hospital.repositories.user.DoctorRepository;
 import pt.iscte.hospital.repositories.SlotRepository;
 
 import java.time.DayOfWeek;

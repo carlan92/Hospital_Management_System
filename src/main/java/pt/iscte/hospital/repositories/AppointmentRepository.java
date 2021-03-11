@@ -77,5 +77,12 @@ public interface AppointmentRepository extends JpaRepository<Appointment, Long> 
             String specialityName,
             String doctorName,
             String patientName);
+
+    // Gestão das consultas (Médico)
+    List<Appointment> findAllBySlotDoctorUserIdAndSlotDateAndHasCheckedOrderBySlotTimeBeginAsc(
+            Long userId,
+            LocalDate date,
+            boolean hasChecked);
+
 }
 

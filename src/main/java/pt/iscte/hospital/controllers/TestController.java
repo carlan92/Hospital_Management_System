@@ -1,17 +1,16 @@
 package pt.iscte.hospital.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import pt.iscte.hospital.entities.*;
 import pt.iscte.hospital.objects.utils.TimeInterval;
 import pt.iscte.hospital.security.IAuthenticationFacade;
 import pt.iscte.hospital.services.*;
+import pt.iscte.hospital.services.user.DoctorService;
+import pt.iscte.hospital.services.user.UserService;
 
 import java.time.DayOfWeek;
 import java.time.LocalTime;

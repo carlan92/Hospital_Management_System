@@ -13,6 +13,7 @@ import pt.iscte.hospital.entities.Patient;
 import pt.iscte.hospital.exceptions.ImageSizeException;
 import pt.iscte.hospital.exceptions.ImageTypeException;
 import pt.iscte.hospital.services.*;
+import pt.iscte.hospital.services.user.UserService;
 import pt.iscte.hospital.services.validation.UserValidationService;
 
 import java.io.IOException;

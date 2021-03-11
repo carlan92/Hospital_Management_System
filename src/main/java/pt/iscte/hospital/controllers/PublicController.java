@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import pt.iscte.hospital.entities.User;
 import pt.iscte.hospital.services.RegistrationService;
-import pt.iscte.hospital.services.UserService;
+import pt.iscte.hospital.services.user.UserService;
 
 @Controller
 public class PublicController {

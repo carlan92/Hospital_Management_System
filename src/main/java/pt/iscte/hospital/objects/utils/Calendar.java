@@ -8,7 +8,7 @@ import java.util.List;
 
 public class Calendar {
     public static final DateTimeFormatter FORMATTER = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-    public static final DateTimeFormatter TIME_FORMATTER = DateTimeFormatter.ofPattern("hh:mm");
+    public static final DateTimeFormatter TIME_FORMATTER = DateTimeFormatter.ofPattern("HH:mm");
 
     public static List<Day> calendarList(int year, int month) {
         LocalDate date = LocalDate.of(year, month, 1);

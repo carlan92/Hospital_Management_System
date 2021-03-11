@@ -9,7 +9,7 @@ import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
-import pt.iscte.hospital.services.UserService;
+import pt.iscte.hospital.services.user.UserService;
 
 import java.util.List;
 

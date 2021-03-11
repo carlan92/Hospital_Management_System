@@ -2,10 +2,11 @@ package pt.iscte.hospital.entities.states;
 
 public enum AppointmentState {
     MARCADA(1, "Marcada"),
-    DESMARCADA_PELO_UTENTE(2, "Desmarcada pelo Utente"),
-    DESMARCADA_PELO_MEDICO(3, "Desmarcada pelo Médico"),
-    REALIZADA(4, "Realizada"),
-    NAO_REALIZADA(5, "Não realizada");
+    EM_CURSO(2, "Consulta em curso"),
+    DESMARCADA_PELO_UTENTE(3, "Desmarcada pelo Utente"),
+    DESMARCADA_PELO_MEDICO(4, "Desmarcada pelo Médico"),
+    REALIZADA(5, "Realizada"),
+    NAO_REALIZADA(6, "Não realizada");
 
     // Attributes
     private int stateNr;

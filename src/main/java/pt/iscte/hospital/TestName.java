@@ -1,9 +1,5 @@
 package pt.iscte.hospital;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import pt.iscte.hospital.controllers.DoctorController;
-import pt.iscte.hospital.services.DoctorService;
-
 import java.time.DayOfWeek;
 import java.time.LocalDate;
 

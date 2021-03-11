@@ -1,12 +1,13 @@
-package pt.iscte.hospital.services;
+package pt.iscte.hospital.services.user;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import pt.iscte.hospital.entities.Doctor;
 import pt.iscte.hospital.entities.Speciality;
-import pt.iscte.hospital.repositories.DoctorRepository;
+import pt.iscte.hospital.repositories.user.DoctorRepository;
 import pt.iscte.hospital.repositories.SpecialityRepository;
+import pt.iscte.hospital.services.user.DoctorService;
 
 import java.util.ArrayList;
 import java.util.List;

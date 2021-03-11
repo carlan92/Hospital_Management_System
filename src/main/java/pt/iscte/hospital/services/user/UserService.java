@@ -1,4 +1,4 @@
-package pt.iscte.hospital.services;
+package pt.iscte.hospital.services.user;
 
 import org.springframework.security.core.GrantedAuthority;
 import pt.iscte.hospital.entities.User;

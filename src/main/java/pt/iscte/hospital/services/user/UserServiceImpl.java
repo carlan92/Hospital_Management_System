@@ -1,11 +1,11 @@
-package pt.iscte.hospital.services;
+package pt.iscte.hospital.services.user;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import pt.iscte.hospital.entities.*;
-import pt.iscte.hospital.repositories.UserRepository;
+import pt.iscte.hospital.repositories.user.UserRepository;
 import pt.iscte.hospital.security.IAuthenticationFacade;
 import pt.iscte.hospital.security.Role;
 

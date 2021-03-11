@@ -13,6 +13,9 @@ import pt.iscte.hospital.objects.utils.Calendar;
 import pt.iscte.hospital.objects.utils.Day;
 import pt.iscte.hospital.objects.utils.Month;
 import pt.iscte.hospital.services.*;
+import pt.iscte.hospital.services.user.DoctorService;
+import pt.iscte.hospital.services.user.PatientService;
+import pt.iscte.hospital.services.user.UserService;
 
 import java.time.LocalDate;
 import java.util.List;

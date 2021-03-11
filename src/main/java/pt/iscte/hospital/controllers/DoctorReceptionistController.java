@@ -10,8 +10,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import pt.iscte.hospital.entities.Patient;
 import pt.iscte.hospital.entities.User;
-import pt.iscte.hospital.services.PatientService;
-import pt.iscte.hospital.services.UserService;
+import pt.iscte.hospital.services.user.PatientService;
+import pt.iscte.hospital.services.user.UserService;
 
 import java.util.List;
 

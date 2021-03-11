@@ -10,6 +10,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import pt.iscte.hospital.entities.*;
 import pt.iscte.hospital.services.*;
+import pt.iscte.hospital.services.user.DoctorService;
+import pt.iscte.hospital.services.user.PatientService;
+import pt.iscte.hospital.services.user.UserService;
 import pt.iscte.hospital.services.validation.SpecialityValidationService;
 import pt.iscte.hospital.services.validation.UserValidationService;
 

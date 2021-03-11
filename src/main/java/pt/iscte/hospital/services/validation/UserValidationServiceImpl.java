@@ -8,8 +8,8 @@ import pt.iscte.hospital.entities.Nationality;
 import pt.iscte.hospital.entities.Speciality;
 import pt.iscte.hospital.entities.User;
 import pt.iscte.hospital.repositories.NationalityRepository;
+import pt.iscte.hospital.repositories.user.UserRepository;
 import pt.iscte.hospital.repositories.SpecialityRepository;
-import pt.iscte.hospital.repositories.UserRepository;
 import pt.iscte.hospital.services.ErrorMessage;
 import pt.iscte.hospital.services.ImageUploadService;
 

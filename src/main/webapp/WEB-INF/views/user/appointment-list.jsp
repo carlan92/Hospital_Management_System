@@ -56,8 +56,8 @@
                                 <select id="appointment-state_id" class="form-input sm" name="stateAppointment">
                                     <option value="" disabled selected>Estado da consulta</option>
                                     <!-- For -->
-                                    <c:forEach var="state" items="appointmentStates">
-                                        <option value="${state.getDescription()}"> ${state.getDescription()}</option>
+                                    <c:forEach var="state" items="${appointmentStates}">
+                                        <option value="${state.getStateNr()}"> ${state.getDescription()}</option>
                                     </c:forEach>
                                 </select>
                                 <select id="invoice-state_id" class="form-input sm" name="stateInvoice">
