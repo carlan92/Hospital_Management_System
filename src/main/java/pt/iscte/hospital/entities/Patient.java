@@ -9,6 +9,7 @@ import pt.iscte.hospital.security.Role;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 import javax.persistence.PrimaryKeyJoinColumn;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -33,7 +34,7 @@ public class Patient extends User {
                    String name,
                    String username,
                    String sex,
-                   Date birthday,
+                   LocalDate birthday,
                    String address,
                    String postCode,
                    String city,

@@ -7,6 +7,8 @@ import pt.iscte.hospital.security.Role;
 import javax.persistence.*;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.Period;
 import java.util.Date;
 import java.util.List;
 
@@ -15,13 +17,13 @@ import java.util.List;
 public abstract class User {
     // Attributes
     @Id
-    @GeneratedValue  (strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long userId;
     private String name;
     private String username;
     private String sex;
     @DateTimeFormat(pattern = "yyyy-MM-dd")
-    private Date birthday;
+    private LocalDate birthday;
     private String address;
     private String postCode;
     private String city;
@@ -40,7 +42,9 @@ public abstract class User {
     public User() {
     }
 
-    public User(Long userId, String name, String username, String sex, Date birthday, String address,
+    public User(Long userId,
+                String name,
+                String username, String sex, LocalDate birthday, String address,
                 String postCode, String city, String nationality, String documentType,
                 Long documentNumber, Long nif, Long patientNumber, Long phone,
                 String email, String password, String photoURL) {
@@ -105,8 +109,13 @@ public abstract class User {
         this.sex = sex;
     }
 
-    public Date getBirthday() {
+    public LocalDate getBirthday() {
         return birthday;
+    }
+
+    public int getAge(LocalDate currentDate) {
+        LocalDate todayDate = LocalDate.now();
+        return Period.between(birthday, todayDate).getYears();
     }
 
     public String getBirthdayStr() {
@@ -117,7 +126,7 @@ public abstract class User {
         return dateFormat.format(birthday);
     }
 
-    public void setBirthday(Date birthday) {
+    public void setBirthday(LocalDate birthday) {
         this.birthday = birthday;
     }
 

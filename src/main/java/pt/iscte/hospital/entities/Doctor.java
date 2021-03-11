@@ -7,6 +7,7 @@ import pt.iscte.hospital.entities.waiting.PatientWaitingAppointment;
 import pt.iscte.hospital.security.Role;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -40,7 +41,7 @@ public class Doctor extends Employee {
     public Doctor(Long userId,
                   String name,
                   String username,
-                  String sex, Date birthday,
+                  String sex, LocalDate birthday,
                   String address, String postCode,
                   String city,
                   String nationality, String documentType,
