@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import pt.iscte.hospital.entities.*;
 import pt.iscte.hospital.entities.states.AppointmentState;
+import pt.iscte.hospital.entities.states.InvoiceState;
 import pt.iscte.hospital.services.*;
 
 import java.time.LocalDate;
@@ -118,10 +119,14 @@ public class AppointmentListController {
     @GetMapping(value = {"/receptionist/appointment-list"})
     public String showAppointmentListReceptionist(ModelMap modelMap) {
         User userLogged = userService.currentUser();
+        List<AppointmentState> appointmentStates = Arrays.asList(AppointmentState.values());
+        List<InvoiceState> invoiceStates = Arrays.asList(InvoiceState.values());
 
         List<Appointment> appointments = new ArrayList<>(appointmentService.findAll());
         appointments.sort(null);
 
+        modelMap.put("appointmentStates", appointmentStates);
+        modelMap.put("invoiceStates", invoiceStates);
         modelMap.addAllAttributes(appointmentListView(
                 appointments,
                 userLogged,

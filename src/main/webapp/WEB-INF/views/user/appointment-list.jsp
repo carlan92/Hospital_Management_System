@@ -39,7 +39,8 @@
                             <input id="data_id" type="date" class="form-input sm" placeholder="Data" name="date">
 
                             <c:if test="${user_logged.getAccount().equals('Médico') ||  user_logged.getAccount().equals('Recepcionista')}">
-                                <input type="text" class="form-input sm" placeholder="Nome do Utente" name="patientName">
+                                <input type="text" class="form-input sm" placeholder="Nome do Utente"
+                                       name="patientName">
                             </c:if>
 
                             <c:if test="${user_logged.getAccount().equals('Utente') ||  user_logged.getAccount().equals('Recepcionista')}">
@@ -51,6 +52,23 @@
                                     </c:forEach>
                                 </select>
                                 <input type="text" class="form-input sm" placeholder="Nome do Médico" name="doctorName">
+                                </br>
+                                <select id="appointment-state_id" class="form-input sm" name="stateAppointment">
+                                    <option value="" disabled selected>Estado da consulta</option>
+                                    <!-- For -->
+                                    <c:forEach var="state" items="appointmentStates">
+                                        <option value="${state.getDescription()}"> ${state.getDescription()}</option>
+                                    </c:forEach>
+                                </select>
+                                <select id="invoice-state_id" class="form-input sm" name="stateInvoice">
+                                    <option value="" disabled selected>Estado da faturação</option>
+                                    <!-- For --> <%-- <c:forEach var="" items=""> </c:forEach> --%>
+                                    <option value=1> Não facturada</option>
+                                    <option value=2> Facturada</option>
+                                    <option value=3> A aguardar pagamento</option>
+                                    <option value=4> Paga</option>
+
+                                </select>
                             </c:if>
 
                             <button class="btn-search2" type="submit">Pesquisar</button>
@@ -67,7 +85,7 @@
                 <table class="table">
 
                     <thead>
-                    <tr>
+                    <tr class="appointment-table-title">
                         <th>Data</th>
                         <th>Hora</th>
                         <c:if test="${user_logged.getAccount().equals('Médico') ||  user_logged.getAccount().equals('Recepcionista')}">
@@ -84,7 +102,7 @@
 
                     <!-- For -->
                     <c:forEach var="appointment" items="${appointments}">
-                        <tr>
+                        <tr class="appointment-table-details">
                             <td>${appointment.getSlot().getDateStr()}</td>
                             <td>${appointment.getSlot().getTimeBegin()}</td>
                             <c:if test="${user_logged.getAccount().equals('Médico') ||
