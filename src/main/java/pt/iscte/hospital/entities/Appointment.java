@@ -1,6 +1,7 @@
 package pt.iscte.hospital.entities;
 
 import org.springframework.format.annotation.DateTimeFormat;
+import pt.iscte.hospital.entities.waiting.DoctorWaitingPatient;
 import pt.iscte.hospital.objects.utils.Calendar;
 
 import javax.persistence.*;
@@ -8,6 +9,7 @@ import java.sql.Time;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.Date;
+import java.util.Set;
 
 @Entity
 public class Appointment implements Comparable<Appointment> {
@@ -36,6 +38,9 @@ public class Appointment implements Comparable<Appointment> {
     private Slot slot;
 
     private int appointmentStatus;
+
+    @OneToMany(mappedBy = "appointment")
+    private Set<DoctorWaitingPatient> doctorWaitingPatients;
 
     // Constructors
     public Appointment() {

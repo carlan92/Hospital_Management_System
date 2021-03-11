@@ -24,10 +24,6 @@ public class Patient extends User {
     @OneToMany(mappedBy = "patient")
     private Set<PatientWaitingAppointment> patientWaitingAppointment;
 
-    @OneToMany(mappedBy = "patient")
-    private Set<DoctorWaitingPatient> doctorWaitingPatients;
-
-
     // Constructors
     public Patient() {
         super.setAccount("Utente");

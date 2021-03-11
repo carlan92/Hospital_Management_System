@@ -9,7 +9,7 @@ import javax.persistence.*;
 public class PatientWaitingAppointment {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    Long PatientWaitingAppointmentId;
+    private Long PatientWaitingAppointmentId;
 
     @ManyToOne
     @JoinColumn(name = "doctor_id")
