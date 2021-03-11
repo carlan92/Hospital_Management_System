@@ -28,11 +28,11 @@
                 </div>
 
                 <div class="row">
-                <c:if test="user_logged.getAccount().equals('Recepcionista')}">
-                    <div class=search_options>
-                        <form action="${userTypeURL}" method="post">
-                            <div class="middle-row">
-                                <div class="search-container">
+                    <c:if test="${user_logged.getAccount().equals('Recepcionista')}">
+                        <div class=search_options>
+                            <form action="${userTypeURL}" method="post">
+                                <div class="middle-row">
+                                    <div class="search-container">
 
 
 
@@ -51,17 +51,16 @@
                                             name="doctorName">
 
 
-                                    <button class="btn-search2" type="submit">Pesquisar</button>
+                                        <button class="btn-search2" type="submit">Pesquisar</button>
+                                    </div>
                                 </div>
-                            </div>
-                        </form>
-                    </div>
+                            </form>
+                        </div>
                     </c:if>
                 </div>
 
 
                 <div class="row">
-
                     <section class="content-area middle-row">
                         <table class="table">
 
@@ -95,10 +94,11 @@
                                         <td>
                                             <c:choose>
                                                 <c:when test="${!appointment.getHasChecked()}">
-                                                    <a href=${String.format(checkInLink, appointment.getAppointmentId())}>Check in</a>
+                                                    <a href=${String.format(checkInLink,
+                                                        appointment.getAppointmentId())}>Check in</a>
                                                 </c:when>
                                                 <c:otherwise>
-                                                    Feito
+                                                    Feito às ${appointment.getTimeOfArrivalStr()}
                                                 </c:otherwise>
                                             </c:choose>
                                         </td>

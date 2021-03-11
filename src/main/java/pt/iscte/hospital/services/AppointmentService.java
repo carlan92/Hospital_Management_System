@@ -17,16 +17,18 @@ public interface AppointmentService {
     List<Appointment> findAllByPatientAndAppointmentStatus(Patient patient,
                                                            Integer appointmentStatus);
 
-    List<Appointment> findAllByPatientUserIdAndAppointmentStatusAndSlotDateAndSlotDoctorNameContainingIgnoreCaseAndSlotDoctorSpecialityNameContainingIgnoreCase(Long userId,
-                                                                                                                                                                Integer appointmentStatus,
-                                                                                                                                                                LocalDate date,
-                                                                                                                                                                String doctorName,
-                                                                                                                                                                String specialityName);
+    List<Appointment> findAllByPatientUserIdAndAppointmentStatusAndSlotDateAndSlotDoctorNameContainingIgnoreCaseAndSlotDoctorSpecialityNameContainingIgnoreCase(
+            Long userId,
+            Integer appointmentStatus,
+            LocalDate date,
+            String doctorName,
+            String specialityName);
 
-    List<Appointment> findAllByPatientUserIdAndAppointmentStatusAndSlotDoctorNameContainingIgnoreCaseAndSlotDoctorSpecialityNameContainingIgnoreCase(Long userId,
-                                                                                                                                                     Integer appointmentStatus,
-                                                                                                                                                     String doctorName,
-                                                                                                                                                     String specialityName);
+    List<Appointment> findAllByPatientUserIdAndAppointmentStatusAndSlotDoctorNameContainingIgnoreCaseAndSlotDoctorSpecialityNameContainingIgnoreCase(
+            Long userId,
+            Integer appointmentStatus,
+            String doctorName,
+            String specialityName);
 
     List<Appointment> findAllByPatientUserIdAndSlotDateAndAppointmentStatusAndHasChecked(Long userId,
                                                                                          LocalDate date,
@@ -53,12 +55,21 @@ public interface AppointmentService {
                                                                                              Long userId);
 
     // Receptionist Filters
-    List<Appointment> findAllBySlotDateAndSlotDoctorNameContainingIgnoreCaseAndPatientNameContainingIgnoreCaseAndSlotDoctorSpecialityNameContainingIgnoreCase(LocalDate date,
-                                                                                                                                                              String doctorName,
-                                                                                                                                                              String patientName,
-                                                                                                                                                              String specialityName);
+    List<Appointment> findAllBySlotDateAndSlotDoctorNameContainingIgnoreCaseAndPatientNameContainingIgnoreCaseAndSlotDoctorSpecialityNameContainingIgnoreCase(
+            LocalDate date,
+            String doctorName,
+            String patientName,
+            String specialityName);
 
-    List<Appointment> findAllBySlotDoctorNameContainingIgnoreCaseAndPatientNameContainingIgnoreCaseAndSlotDoctorSpecialityNameContainingIgnoreCase(String doctorName,
-                                                                                                                                                   String patientName,
-                                                                                                                                                   String specialityName);
+    List<Appointment> findAllBySlotDoctorNameContainingIgnoreCaseAndPatientNameContainingIgnoreCaseAndSlotDoctorSpecialityNameContainingIgnoreCase(
+            String doctorName,
+            String patientName,
+            String specialityName);
+
+    List<Appointment> findAllBySlotDateAndAppointmentStatusAndSlotDoctorSpecialityNameContainingIgnoreCaseAndSlotDoctorNameContainingIgnoreCaseAndPatientNameContainingIgnoreCase(
+            LocalDate date,
+            Integer appointmentStatus,
+            String specialityName,
+            String doctorName,
+            String patientName);
 }

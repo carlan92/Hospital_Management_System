@@ -16,6 +16,7 @@ import pt.iscte.hospital.services.SpecialityService;
 import pt.iscte.hospital.services.UserService;
 
 import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.List;
 
 import static pt.iscte.hospital.entities.states.AppointmentState.MARCADA;
@@ -69,6 +70,7 @@ public class CheckIn {
         Appointment appointmentCheckIn = appointmentService.findByAppointmentId(appointmentId);
         if (appointmentCheckIn.getPatient().getUserId().equals(userId)) {
             appointmentCheckIn.setHasChecked(true);
+            appointmentCheckIn.setTimeOfArrival(LocalTime.now());
             appointmentService.saveAppointment(appointmentCheckIn);
         }
 
@@ -79,7 +81,6 @@ public class CheckIn {
     @GetMapping(value = "/receptionist/checkin")
     public String pageCheckInByReceptionist(ModelMap modelMap) {
         User userLogged = userService.currentUser();
-        Long userId = userLogged.getUserId();
         LocalDate date = LocalDate.now();
 
         List<Appointment> appointments = appointmentService.findAllBySlotDateAndAppointmentStatus(
@@ -98,25 +99,34 @@ public class CheckIn {
         return USER_TYPE_URL;
     }
 
-    // TODO fazer lógica de pesquisa
+
     @PostMapping(value = "/receptionist/checkin")
-    public String pageCheckInByReceptionistSearch(ModelMap modelMap) {
+    public String pageCheckInByReceptionistSearch(ModelMap modelMap,
+                                                  @RequestParam(required = false) String specialityName,
+                                                  String doctorName,
+                                                  String patientName) {
         User userLogged = userService.currentUser();
-        Long userId = userLogged.getUserId();
         LocalDate date = LocalDate.now();
 
-        List<Appointment> appointments = appointmentService.findAllBySlotDateAndAppointmentStatus(
+        if(specialityName == null){
+            specialityName = "";
+        }
+
+        List<Appointment> appointments = appointmentService.findAllBySlotDateAndAppointmentStatusAndSlotDoctorSpecialityNameContainingIgnoreCaseAndSlotDoctorNameContainingIgnoreCaseAndPatientNameContainingIgnoreCase(
                 date,
-                MARCADA.getStateNr());
+                MARCADA.getStateNr(),
+                specialityName,
+                doctorName,
+                patientName);
 
         modelMap.addAllAttributes(checkInView(
                 appointments,
                 userLogged,
                 RECEPTIONIST_TYPE_URL,
                 RECEPTIONIST_CHECK_IN_LINK,
-                null,
-                null,
-                null));
+                specialityName,
+                doctorName,
+                patientName));
         return USER_TYPE_URL;
     }
 
@@ -131,16 +141,19 @@ public class CheckIn {
 
     @PostMapping(value = "/receptionist/checkinbyAppointmentId")
     public String pageCheckInByAppointmentByReceptionist(ModelMap modelMap,
-                                                         @RequestParam Long appointmentId) {
+                                                         @RequestParam(required = false) Long appointmentId) {
         // Fazer check in e salvar
-        saveCheckIn(appointmentId);
+        if (appointmentId != null) {
+            saveCheckIn(appointmentId);
+        }
 
         return String.format(REDIRECT_URL, RECEPTIONIST_TYPE_URL);
     }
 
-    private void saveCheckIn(Long appointmentId){
+    private void saveCheckIn(Long appointmentId) {
         Appointment appointmentCheckIn = appointmentService.findByAppointmentId(appointmentId);
         appointmentCheckIn.setHasChecked(true);
+        appointmentCheckIn.setTimeOfArrival(LocalTime.now());
         appointmentService.saveAppointment(appointmentCheckIn);
     }
 

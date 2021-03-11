@@ -60,7 +60,7 @@ public class TestController {
     @GetMapping(value = "/test/slot")
     public void generateSlots() {
 
-        int duration = 20;
+        int duration = 60;
         List<TimeInterval> timeIntervalList = new ArrayList<>();
         List<DayOfWeek> weekDaysList = new ArrayList<>();
         int year = 2021;
@@ -69,9 +69,11 @@ public class TestController {
         timeIntervalList.add(new TimeInterval(LocalTime.of(9,00),LocalTime.of(12,00) ));
         timeIntervalList.add(new TimeInterval(LocalTime.of(13,00),LocalTime.of(17,00) ));
 
-        weekDaysList.add(DayOfWeek.MONDAY);
+        /*weekDaysList.add(DayOfWeek.MONDAY);
         weekDaysList.add(DayOfWeek.TUESDAY);
-        weekDaysList.add(DayOfWeek.WEDNESDAY);
+        weekDaysList.add(DayOfWeek.WEDNESDAY);*/
+        weekDaysList.add(DayOfWeek.THURSDAY);
+        weekDaysList.add(DayOfWeek.FRIDAY);
 
         slotService.generateSlots(duration, timeIntervalList, weekDaysList, year, month);
     }

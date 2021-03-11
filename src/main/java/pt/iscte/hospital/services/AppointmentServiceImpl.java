@@ -130,5 +130,20 @@ public class AppointmentServiceImpl implements AppointmentService {
                 specialityName);
     }
 
+    @Override
+    public List<Appointment> findAllBySlotDateAndAppointmentStatusAndSlotDoctorSpecialityNameContainingIgnoreCaseAndSlotDoctorNameContainingIgnoreCaseAndPatientNameContainingIgnoreCase(
+            LocalDate date,
+            Integer appointmentStatus,
+            String specialityName,
+            String doctorName,
+            String patientName) {
+        return appointmentRepository.findAllBySlotDateAndAppointmentStatusAndSlotDoctorSpecialityNameContainingIgnoreCaseAndSlotDoctorNameContainingIgnoreCaseAndPatientNameContainingIgnoreCase(
+                date,
+                appointmentStatus,
+                specialityName,
+                doctorName,
+                patientName);
+    }
+
 
 }

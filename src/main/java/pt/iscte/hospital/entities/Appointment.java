@@ -1,22 +1,26 @@
 package pt.iscte.hospital.entities;
 
 import org.springframework.format.annotation.DateTimeFormat;
+import pt.iscte.hospital.objects.utils.Calendar;
 
 import javax.persistence.*;
 import java.sql.Time;
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.Date;
 
 @Entity
-public class Appointment implements Comparable<Appointment>{
+public class Appointment implements Comparable<Appointment> {
     // Attributes
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "appointment_id")
     private Long appointmentId;
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
-    private Date date;
+    private LocalDate date;
     private Time timeBegin;
     private Time timeEnd;
+    private LocalTime timeOfArrival;
     private Boolean hasChecked = false;
     private String notes;
 
@@ -37,7 +41,7 @@ public class Appointment implements Comparable<Appointment>{
     public Appointment() {
     }
 
-    public Appointment(Date date, Time timeBegin, Time timeEnd, String notes) {
+    public Appointment(LocalDate date, Time timeBegin, Time timeEnd, String notes) {
         this.date = date;
         this.timeBegin = timeBegin;
         this.timeEnd = timeEnd;
@@ -62,11 +66,11 @@ public class Appointment implements Comparable<Appointment>{
         this.patient = patient;
     }
 
-    public Date getDate() {
+    public LocalDate getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(LocalDate date) {
         this.date = date;
     }
 
@@ -84,6 +88,21 @@ public class Appointment implements Comparable<Appointment>{
 
     public void setTimeEnd(Time timeEnd) {
         this.timeEnd = timeEnd;
+    }
+
+    public LocalTime getTimeOfArrival() {
+        return timeOfArrival;
+    }
+
+    public String getTimeOfArrivalStr() {
+        if (timeOfArrival == null) {
+            return "";
+        }
+        return timeOfArrival.format(Calendar.TIME_FORMATTER);
+    }
+
+    public void setTimeOfArrival(LocalTime timeOfArrival) {
+        this.timeOfArrival = timeOfArrival;
     }
 
     public Boolean getHasChecked() {
