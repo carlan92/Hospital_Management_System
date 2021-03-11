@@ -14,9 +14,8 @@
         <div class="perfil-main-col">
             <div class="perfil-row">
                 <div class="perfil-row">
-                    <!--Outra imagem de erro: /draw_error.svg  -->
-                    <img src="imagens/draw_sucess.svg" alt="fill form" class="img-fill-form" />
-                    <h3 class="title_next_appt">Marcação efectuada com sucesso</h3>
+                    <img src="${imageURL}" alt="fill form" class="img-fill-form" />
+                    <h3 class="title_next_appt">${message}</h3>
                 </div>
             </div>
         </div>
