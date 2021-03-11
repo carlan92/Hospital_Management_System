@@ -159,7 +159,7 @@
                         </select>
                         <p class="msg-error">${errorMsgHora}</p>
                         <br/>
-                        <button type="submit" class="btn btn-green">Marcar Consulta</button>
+                        <button type="submit" class="btn btn-green" formaction="/patient/make-appointment/save">Marcar Consulta</button>
                     </div>
                 </div>
             </div>

@@ -9,15 +9,12 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import pt.iscte.hospital.entities.*;
-import pt.iscte.hospital.entities.states.AppointmentState;
 import pt.iscte.hospital.objects.utils.Calendar;
 import pt.iscte.hospital.objects.utils.Day;
 import pt.iscte.hospital.objects.utils.Month;
 import pt.iscte.hospital.services.*;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 import static pt.iscte.hospital.entities.states.AppointmentState.*;
@@ -84,13 +81,14 @@ public class PatientController {
     }
 
 
-    @PostMapping(value = "/patient/make-appointment")
+    @PostMapping(value = {"/patient/make-appointment", "/patient/make-appointment/{saveOption}"})
     public String makeAppointmentService(ModelMap modelMap,
                                          @RequestParam(required = false, name = "specialityName") String specialityName,
                                          @RequestParam(required = false, name = "doctorId") String doctorId,
                                          @RequestParam(required = false, name = "slotId") String slotId,
                                          @RequestParam(required = false, name = "chosenDay") String chosenDay,
-                                         @RequestParam(required = false, name = "arrowMonth") String arrowMonth) {
+                                         @RequestParam(required = false, name = "arrowMonth") String arrowMonth,
+                                         @PathVariable(required = false, name = "saveOption") String saveOption) {
         // **********
         LocalDate todayDate = LocalDate.now();
         LocalDate chosenDate;
@@ -152,6 +150,10 @@ public class PatientController {
             specialityName = "";
         }
 
+        if(saveOption == null){
+            saveOption = "";
+        }
+
         // envio de dados para a página
         // alterar a página para receber dados
 
@@ -166,26 +168,8 @@ public class PatientController {
         User userLogged = userService.currentUser();
 
         // Marcar consulta
-        if (slotId != null && !slotId.isEmpty()) {
-            // Encontrar slot por id
-            Slot slot = slotService.findBySlotId(Long.parseLong(slotId));
-
-            // Marcar slot como marcada/indisponível
-            slot.setAvailable(false);
-
-            // Actualizar slot na base de dados
-            slotService.saveSlot(slot);
-
-            // Adicionar consulta à base de dados
-            Appointment appointment = new Appointment();
-            Patient patient = patientService.findByUsername(userService.currentUser().getUsername());
-            appointment.setPatient(patient);
-            appointment.setSlot(slot);
-            appointment.setAppointmentStatus(MARCADA.getStateNr());
-
-            appointmentService.saveAppointment(appointment);
-            System.out.println("Sucesso: consulta marcada - " + appointment + slot);
-
+        if (slotId != null && !slotId.isEmpty() && saveOption.equals("save")) {
+            saveAppointment(slotId);
             // TODO Redireccionar à página de sucesso de marcação
             return "redirect:/patient/main";
         }
@@ -207,5 +191,26 @@ public class PatientController {
         modelMap.put("chosenDay", chosenDay);
         modelMap.put("user_logged", userLogged);
         return ("patient/make-appointment");
+    }
+
+    private void saveAppointment(String slotId) {
+        // Encontrar slot por id
+        Slot slot = slotService.findBySlotId(Long.parseLong(slotId));
+
+        // Marcar slot como marcada/indisponível
+        slot.setAvailable(false);
+
+        // Actualizar slot na base de dados
+        slotService.saveSlot(slot);
+
+        // Adicionar consulta à base de dados
+        Appointment appointment = new Appointment();
+        Patient patient = patientService.findByUsername(userService.currentUser().getUsername());
+        appointment.setPatient(patient);
+        appointment.setSlot(slot);
+        appointment.setAppointmentStatus(MARCADA.getStateNr());
+
+        appointmentService.saveAppointment(appointment);
+        System.out.println("Sucesso: consulta marcada - " + appointment + slot);
     }
 }
