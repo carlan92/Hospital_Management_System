@@ -934,6 +934,11 @@ select option:disabled {
   color: #98c33e;
 }
 
+.clocktime{
+  font-size: 30px;
+  color: #31ade0;
+}
+
 .next_appt {
   margin: auto;
   display: block;

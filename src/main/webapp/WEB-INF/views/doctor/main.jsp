@@ -97,16 +97,6 @@
 
     </div>
 
-    <div class="row middle-row ">
-        <div class="wait_middle middle">
-            <div class="data_appt">
-                <span class="text_next_appt">Lista de pacientes em espera para consulta</span>
-                <a type="button" href="/doctor/waiting-list" class="btn-blue btn-w74">Lista de espera</a>
-            </div>
-        </div>
-    </div>
-
-
     <div class="row middle-row">
         <div class="col-7 data_appt">
             <div class="row">
@@ -120,8 +110,8 @@
             </div>
 
             <div class="row">
-                <div class="col-5 next_appt_time">
-                    <span class="time_box2">10:00</span>
+                <div class="col-5 next_appt_time time_box2">
+                    <span class="time_box2"> <i class="fas fa-clock clocktime"></i>10:00</span>
                 </div>
 
                 <div class="col-7">
@@ -162,7 +152,6 @@
     <!-- For -->
     <c:forEach var="appointment" items="${todayCheckedInAppointments}">
         <div class="row middle-row">
-
 
             <div class="col-7 data_appt">
                 <div class="row">
@@ -208,10 +197,10 @@
             <div class="col-4 appt_options">
                 <div>
                     <div class="but-begin_appt">
-                        <button type="button" class="btn-green btn-w75"> Iniciar consulta</button>
+                        <button type="button" class="btn-green btn-w75"> Chamar utente</button>
                     </div>
-                    <div class="but-change_appt">
-                        <button type="button" class="btn-green btn-w75"> Alterar data</button>
+                    <div class="but-begin_appt">
+                        <button type="button" class="btn-green btn-w75"> Iniciar consulta</button>
                     </div>
                     <div class="but-cancel_appt">
                         <button type="button" class="btn-green btn-w75"> Cancelar consulta</button>
