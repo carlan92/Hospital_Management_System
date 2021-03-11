@@ -94,6 +94,7 @@ public class UserController {
             //médico
         } else if (userService.currentUser().getAccount().equals("Médico")) {
             validation(doctor, file);
+            userValidationService.setUser(doctor).validLicenseNumber();
 
             if (!userValidationService.isValid()) {
                 // case error in info validation

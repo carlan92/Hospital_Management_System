@@ -14,6 +14,7 @@ import pt.iscte.hospital.services.ErrorMessage;
 import pt.iscte.hospital.services.ImageUploadService;
 
 import java.text.SimpleDateFormat;
+import java.util.List;
 
 @Service
 public class UserValidationServiceImpl implements UserValidationService {
@@ -269,7 +270,7 @@ public class UserValidationServiceImpl implements UserValidationService {
 
     @Override
     public UserValidationService validNifUnique() {
-        User nifUnique = userRepository.findByNif(user.getNif());
+        User nifUnique = userRepository.findByNifAndAccount(user.getNif(), user.getAccount());
         if (nifUnique != null) {
             isValid = false;
             errorModelMap.put("errorMsgNif", ErrorMessage.ERROR_MESSAGE_NIF2.getErrorMsg());
@@ -283,7 +284,7 @@ public class UserValidationServiceImpl implements UserValidationService {
         if (user.getPatientNumber() == null) {
             return this;
         }
-        User patientNumberUnique = userRepository.findByPatientNumber(user.getPatientNumber());
+        User patientNumberUnique = userRepository.findByPatientNumberAndAccount(user.getPatientNumber(), user.getAccount());
         if (patientNumberUnique != null) {
             isValid = false;
             errorModelMap.put("errorMsgPatientNumber", ErrorMessage.ERROR_MESSAGE_PATIENT_NUMBER2.getErrorMsg());
@@ -294,7 +295,7 @@ public class UserValidationServiceImpl implements UserValidationService {
 
     @Override
     public UserValidationService validDocumentNumberUnique() {
-        User documentNumberUnique = userRepository.findByDocumentNumber(user.getDocumentNumber());
+        User documentNumberUnique = userRepository.findByDocumentNumberAndAccount(user.getDocumentNumber(), user.getAccount());
         if (documentNumberUnique != null) {
             isValid = false;
             errorModelMap.put("errorMsgDocumentNumber", ErrorMessage.ERROR_MESSAGE_DOCUMENT_NUMBER2.getErrorMsg());
