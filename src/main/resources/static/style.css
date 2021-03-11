@@ -1065,7 +1065,7 @@ select option:disabled {
   color: #676e74;
 }
 
-/*Menu Utentes: Medico (falta carla rever)*/
+/*Menu Utentes: Medico*/
 
 .white_box2 {
   margin: 10px auto;
@@ -1080,7 +1080,6 @@ select option:disabled {
 }
 
 .search_patient {
-  margin: left;
   margin-top: auto;
   margin-bottom: auto;
 }
@@ -1224,11 +1223,11 @@ select option:disabled {
 }
 
 .sm {
-  margin: 0 4px 0 0;
+  margin: 4px 4px 0 0;
   border: 1px solid #666;
   border-radius: 5px;
   height: 40px;
-  width: 18%;
+  width: 20%;
   padding: 0;
   padding-left: 10px;
 }
@@ -1427,6 +1426,16 @@ display: none;
   margin-left: auto;
   margin-top: 10px;
 }
+.appointment-table-title *{
+  font-size: 21px ;
+}
+
+.appointment-table-details * {
+  font-size: 19px ;
+  padding: 5px;
+}
+
+
 
 @media screen and (max-height: 450px) {
   .sidenav {

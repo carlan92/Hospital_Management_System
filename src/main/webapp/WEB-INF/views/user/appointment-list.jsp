@@ -62,12 +62,10 @@
                                 </select>
                                 <select id="invoice-state_id" class="form-input sm" name="stateInvoice">
                                     <option value="" disabled selected>Estado da faturação</option>
-                                    <!-- For --> <%-- <c:forEach var="" items=""> </c:forEach> --%>
-                                    <option value=1> Não facturada</option>
-                                    <option value=2> Facturada</option>
-                                    <option value=3> A aguardar pagamento</option>
-                                    <option value=4> Paga</option>
-
+                                    <!-- For -->
+                                    <c:forEach var="state" items="${invoiceStates}">
+                                        <option value="${state.getStateNr()}"> ${state.getDescription()}</option>
+                                    </c:forEach>
                                 </select>
                             </c:if>
 
@@ -114,7 +112,7 @@
                                 <td>${appointment.getSlot().getDoctor().getSpeciality().getName()}</td>
                                 <td> ${appointment.getSlot().getDoctor().getTitleAndName()}</td>
                             </c:if>
-                            <td><a href="/user/appointment-details">Clicar aqui</a></td>
+                            <td><a href="/recepcionist/appointment-details">Clicar aqui</a></td>
                         </tr>
                     </c:forEach>
 

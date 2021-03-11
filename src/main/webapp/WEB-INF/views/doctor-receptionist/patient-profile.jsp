@@ -98,7 +98,7 @@
                 </div>
                 <div class="perfil-row">
                     <div class="cell-row">
-                        <button class="btn-blue btn-w65">Voltar atrás</button>
+                        <a href="/doctor-receptionist/patient-list " class="btn-blue btn-w65">Voltar atrás</a>
                     </div>
                     <div class="cell-row">
                         <form action="/userToMain" method="get">
