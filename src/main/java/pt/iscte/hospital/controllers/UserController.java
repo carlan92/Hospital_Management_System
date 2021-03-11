@@ -4,10 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import pt.iscte.hospital.entities.*;
 import pt.iscte.hospital.entities.states.AppointmentState;
@@ -191,16 +188,20 @@ public class UserController {
         return "user/doctor-list";
     }
 
-    @GetMapping(value = "/user/appointment-details")
-    public String showAppointmentDetails(ModelMap modelMap) {
+    @GetMapping(value = "/user/appointment-details/{appointmentId}")
+    public String showAppointmentDetails(ModelMap modelMap, @PathVariable(value = "appointmentId") Long appointmentId) {
         List<Speciality> specialities = specialityService.findAll(Sort.by(Sort.Direction.ASC, "name"));
         User userLogged = userService.currentUser();
-        Patient patient = patientService.findByUserId(userLogged.getUserId());
-        List<Appointment> appointments = appointmentRepository.findAllByPatientAndAppointmentStatus(patient, AppointmentState.MARCADA.getStateNr());
+        Appointment appointment = appointmentService.findByAppointmentId(appointmentId);
+        Patient patient = patientService.findByUserId(appointment.getPatient().getUserId());
+        //List<Appointment> appointments = appointmentRepository.findAllByPatientAndAppointmentStatus(patient, AppointmentState.MARCADA.getStateNr());
 
         modelMap.put("specialities", specialities);
-        modelMap.put("appointments", appointments);
+        //modelMap.put("appointments", appointments);
         modelMap.put("user_logged", userLogged);
+        modelMap.put("patient", patient);
+        modelMap.put("appointment", appointment);
+        modelMap.put("patientName", appointment.getPatient().getName());
         return "user/appointment-details";
     }
 

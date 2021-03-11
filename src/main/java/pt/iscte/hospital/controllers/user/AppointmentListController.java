@@ -73,6 +73,7 @@ public class AppointmentListController {
                 null,
                 null,
                 null,
+                "patient",
                 null));
         return USER_TYPE_URL;
     }
@@ -99,6 +100,7 @@ public class AppointmentListController {
                 null,
                 null,
                 null,
+                "patient",
                 null));
         return USER_TYPE_URL;
     }
@@ -119,6 +121,7 @@ public class AppointmentListController {
                 null,
                 null,
                 null,
+                "doctor",
                 null));
         return USER_TYPE_URL;
     }
@@ -141,25 +144,11 @@ public class AppointmentListController {
                 null,
                 null,
                 null,
+                "receptionist",
                 null));
         return USER_TYPE_URL;
     }
 
-    @GetMapping(value = "/recepcionist/appointment-details/{appointmentId}")
-    public String showAppointmentDetails(ModelMap modelMap, @PathVariable(value = "appointmentId") Long appointmentId) {
-        List<Speciality> specialities = specialityService.findAll(Sort.by(Sort.Direction.ASC, "name"));
-        User userLogged = userService.currentUser();
-        Patient patient = patientService.findByUserId(userLogged.getUserId());
-        Appointment appointment = appointmentService.findByAppointmentId(appointmentId);
-        List<Appointment> appointments = appointmentRepository.findAllByPatientAndAppointmentStatus(patient, AppointmentState.MARCADA.getStateNr());
-
-        modelMap.put("specialities", specialities);
-        modelMap.put("user_logged", userLogged);
-        modelMap.put("patient", patient);
-        modelMap.put("appointment", appointment);
-        modelMap.put("appointments", appointments);
-        return "user/appointment-details";
-    }
 
     //***************************
     //*************************
@@ -199,6 +188,7 @@ public class AppointmentListController {
                 date,
                 specialityName,
                 doctorName,
+                "patient",
                 null));
         return USER_TYPE_URL;
     }
@@ -242,6 +232,7 @@ public class AppointmentListController {
                 date,
                 specialityName,
                 doctorName,
+                "patient",
                 null));
         return USER_TYPE_URL;
     }
@@ -278,6 +269,7 @@ public class AppointmentListController {
                 date,
                 specialityName,
                 null,
+                "doctor",
                 patientName));
         return USER_TYPE_URL;
     }
@@ -315,6 +307,7 @@ public class AppointmentListController {
                 date,
                 specialityName,
                 doctorName,
+                "receptionist",
                 patientName));
         return USER_TYPE_URL;
     }
@@ -327,6 +320,7 @@ public class AppointmentListController {
                                          LocalDate date,
                                          String specialityName,
                                          String doctorName,
+                                         String userType,
                                          String patientName) {
         ModelMap modelMap = new ModelMap();
 
@@ -339,6 +333,7 @@ public class AppointmentListController {
         modelMap.put("date", date);
         modelMap.put("specialityName", specialityName);
         modelMap.put("doctorName", doctorName);
+        modelMap.put("userType", userType);
         modelMap.put("patientName", patientName);
         return modelMap;
     }

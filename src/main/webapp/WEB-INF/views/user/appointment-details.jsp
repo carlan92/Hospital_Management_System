@@ -43,7 +43,7 @@
             </div>
             <div class="perfil-row">
                 <div class="cell-row">Utente:</div>
-                <div class="cell-row">${appointment.getSlot().getPatient().getName()}</div>
+                <div class="cell-row">${appointment.getPatient().getName()}</div>
             </div>
             <div class="perfil-row">
                 <div class="cell-row">Especialidade:</div>

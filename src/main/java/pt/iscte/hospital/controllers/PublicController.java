@@ -31,7 +31,7 @@ public class PublicController {
         User user = userService.currentUser();
         String mainPage = userService.getUserMainPage(user);
         modelMap.put("user_logged", user);
-        return "redirect:" + mainPage;
+        return mainPage;
     }
 
     @GetMapping(value = "/public/general-information")
