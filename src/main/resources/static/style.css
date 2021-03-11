@@ -1136,6 +1136,8 @@ select option:disabled {
   text-align: center;
   margin: auto;
   margin-top: 10px;
+  min-width: 251px;
+  min-height: 300px;
 }
 
 .card_list_doctor {
@@ -1146,6 +1148,8 @@ select option:disabled {
   padding-bottom: 0;
   margin: auto;
   margin-top: 10px;
+  min-width: 270px;
+  min-height: 330px;
 }
 
 .w-50 {
