@@ -260,6 +260,7 @@
                                             </option>
                                         </c:forEach>
                                     </select>
+                                     <p class="msg-error">${errorMsgSpeciality}</p>
                                 </div>
                             </div>
 

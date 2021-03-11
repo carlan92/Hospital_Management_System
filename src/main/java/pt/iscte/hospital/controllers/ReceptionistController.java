@@ -125,8 +125,9 @@ public class ReceptionistController {
         //add doctor account
         if (doctor.getAccount().equals("Médico")) {
             valitationAddAccount(doctor, confirmarPassword2);
-
             userValidationService.setUser(doctor).validLicenseNumber();
+            userValidationService.setUser(doctor).validSpeciality(specialityName);
+
             if (!userValidationService.isValid()) {
                 mpError.addAllAttributes(userValidationService.getErrorModelMap());
                 mpError.put("user", doctor);

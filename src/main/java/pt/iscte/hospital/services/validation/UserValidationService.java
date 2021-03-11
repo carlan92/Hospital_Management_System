@@ -56,6 +56,8 @@ public interface UserValidationService {
 
     UserValidationService validLicenseNumber();
 
+    UserValidationService validSpeciality(String speciality);
+
     boolean isValid();
 
     ModelMap getErrorModelMap();

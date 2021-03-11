@@ -5,8 +5,10 @@ import org.springframework.stereotype.Service;
 import org.springframework.ui.ModelMap;
 import pt.iscte.hospital.entities.Doctor;
 import pt.iscte.hospital.entities.Nationality;
+import pt.iscte.hospital.entities.Speciality;
 import pt.iscte.hospital.entities.User;
 import pt.iscte.hospital.repositories.NationalityRepository;
+import pt.iscte.hospital.repositories.SpecialityRepository;
 import pt.iscte.hospital.repositories.UserRepository;
 import pt.iscte.hospital.services.ErrorMessage;
 import pt.iscte.hospital.services.ImageUploadService;
@@ -22,6 +24,8 @@ public class UserValidationServiceImpl implements UserValidationService {
     private NationalityRepository nationalityRepository;
     @Autowired
     private ImageUploadService imageUploadService;
+    @Autowired
+    private SpecialityRepository specialityRepository;
 
     private User user;
     private boolean isValid;
@@ -308,6 +312,16 @@ public class UserValidationServiceImpl implements UserValidationService {
             isValid = false;
             errorModelMap.put("errorMsgLicenseNumber", ErrorMessage.ERROR_MESSAGE_LICENSE_NUMBER.getErrorMsg());
             return this;
+    }
+    @Override
+    public UserValidationService validSpeciality(String speciality){
+        Speciality userSpeciality = specialityRepository.findByName(speciality);
+        if (userSpeciality != null) {
+            return this;
+        }
+        isValid = false;
+        errorModelMap.put("errorMsgSpeciality", ErrorMessage.ERROR_MESSAGE_SPECIALITY.getErrorMsg());
+        return this;
     }
 
     @Override
