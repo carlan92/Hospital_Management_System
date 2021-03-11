@@ -1,0 +1,23 @@
+package pt.iscte.hospital.entities.waiting;
+
+import pt.iscte.hospital.entities.Doctor;
+import pt.iscte.hospital.entities.Patient;
+
+import javax.persistence.*;
+
+@Entity
+public class PatientWaitingAppointment {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    Long PatientWaitingAppointmentId;
+
+    @ManyToOne
+    @JoinColumn(name = "doctor_id")
+    private Doctor doctor;
+
+    @ManyToOne
+    @JoinColumn(name = "patient_id")
+    private Patient patient;
+
+    public PatientWaitingAppointment(){}
+}
