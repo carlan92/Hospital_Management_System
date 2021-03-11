@@ -6,11 +6,13 @@ import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import pt.iscte.hospital.entities.*;
 import pt.iscte.hospital.entities.states.AppointmentState;
 import pt.iscte.hospital.entities.states.InvoiceState;
+import pt.iscte.hospital.repositories.AppointmentRepository;
 import pt.iscte.hospital.services.*;
 import pt.iscte.hospital.services.user.DoctorService;
 import pt.iscte.hospital.services.user.PatientService;
@@ -44,6 +46,8 @@ public class AppointmentListController {
     private DoctorService doctorService;
     @Autowired
     private SlotService slotService;
+    @Autowired
+    private AppointmentRepository appointmentRepository;
 
 
     // Constructor
@@ -139,6 +143,22 @@ public class AppointmentListController {
                 null,
                 null));
         return USER_TYPE_URL;
+    }
+
+    @GetMapping(value = "/recepcionist/appointment-details/{appointmentId}")
+    public String showAppointmentDetails(ModelMap modelMap, @PathVariable(value = "appointmentId") Long appointmentId) {
+        List<Speciality> specialities = specialityService.findAll(Sort.by(Sort.Direction.ASC, "name"));
+        User userLogged = userService.currentUser();
+        Patient patient = patientService.findByUserId(userLogged.getUserId());
+        Appointment appointment = appointmentService.findByAppointmentId(appointmentId);
+        List<Appointment> appointments = appointmentRepository.findAllByPatientAndAppointmentStatus(patient, AppointmentState.MARCADA.getStateNr());
+
+        modelMap.put("specialities", specialities);
+        modelMap.put("user_logged", userLogged);
+        modelMap.put("patient", patient);
+        modelMap.put("appointment", appointment);
+        modelMap.put("appointments", appointments);
+        return "user/appointment-details";
     }
 
     //***************************
