@@ -72,4 +72,16 @@ public interface AppointmentService {
             String specialityName,
             String doctorName,
             String patientName);
+
+    // Gestão das consultas (Médico)
+    List<Appointment> findAllBySlotDoctorUserIdAndSlotDateAndHasCheckedOrderBySlotTimeBeginAsc(
+            Long userId,
+            LocalDate date,
+            boolean hasChecked);
+
+    List<Appointment> findAllBySlotDoctorUserIdAndSlotDateAndAppointmentStatusOrderBySlotTimeBeginAsc(
+            Long userId,
+            LocalDate date,
+            int appointmentState
+    );
 }

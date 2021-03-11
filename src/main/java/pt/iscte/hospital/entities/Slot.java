@@ -1,12 +1,12 @@
 package pt.iscte.hospital.entities;
 
 import org.springframework.format.annotation.DateTimeFormat;
-import pt.iscte.hospital.objects.utils.Calendar;
 
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.time.LocalTime;
 
+import static pt.iscte.hospital.objects.utils.Calendar.*;
 
 @Entity
 public class Slot implements Comparable<Slot> {
@@ -55,7 +55,7 @@ public class Slot implements Comparable<Slot> {
     }
 
     public String getDateStr() {
-        return date.format(Calendar.FORMATTER);
+        return date.format(FORMATTER);
     }
 
     public void setDate(LocalDate date) {
@@ -66,12 +66,20 @@ public class Slot implements Comparable<Slot> {
         return timeBegin;
     }
 
+    public String getTimeBeginStr() {
+        return timeBegin.format(TIME_FORMATTER);
+    }
+
     public void setTimeBegin(LocalTime timeBegin) {
         this.timeBegin = timeBegin;
     }
 
     public LocalTime getTimeEnd() {
         return timeEnd;
+    }
+
+    public String getTimeEndStr() {
+        return timeEnd.format(TIME_FORMATTER);
     }
 
     public void setTimeEnd(LocalTime timeEnd) {

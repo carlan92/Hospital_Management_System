@@ -122,8 +122,6 @@
             <div class="row">
                 <div class="col-5 next_appt_time">
                     <span class="time_box2">10:00</span>
-                    <p class="date_box2">Sexta-feira</p>
-                    <p class="date_box2">26 Fevereiro 2021</p>
                 </div>
 
                 <div class="col-7">
@@ -137,7 +135,6 @@
                             <span class="patient_age">70 anos</span>
                             <br/>
                             <span class="first_appt_ask">Primeira Consulta: <span> Sim</span></span>
-                            <p class="first_appt_ask">Check-in: <span> Sim</span></p>
                         </div>
                     </div>
 
@@ -161,73 +158,75 @@
         </div>
     </div>
 
+    <!-- Próxima Consulta (begin) -->
+    <!-- For -->
+    <c:forEach var="appointment" items="${todayCheckedInAppointments}">
+        <div class="row middle-row">
 
-    <div class="row middle-row">
 
-        <div class="col-7 data_appt">
-            <div class="row">
+            <div class="col-7 data_appt">
+                <div class="row">
 
-                <div class="col-2 icon3">
-                    <i class="fas fa-stethoscope"></i>
+                    <div class="col-2 icon3">
+                        <i class="fas fa-stethoscope"></i>
+                    </div>
+
+                    <div class="col-8 title_next_appt">
+                        <span class="text_next_appt">Próxima consulta</span>
+                        <p class="text_next_appt2">Consulte a sua próxima consulta e paciente</p>
+                    </div>
                 </div>
 
-                <div class="col-8 title_next_appt">
-                    <span class="text_next_appt">Próxima consulta</span>
-                    <p class="text_next_appt2">Consulte a sua próxima consulta e paciente</p>
+                <div class="row">
+
+                    <div class="col-5 next_appt_time">
+                        <span class="time_box2">${appointment.getSlot().getTimeBeginStr()}</span>
+                    </div>
+
+                    <div class="col-7">
+                        <div class="perfil-row">
+                            <div class="col user_photo">
+                                <img src="/imagens/draw_avatar.svg" alt="utente"/>
+                            </div>
+                            <div class="col user_info">
+                                <span class="patient_name">${appointment.getPatient().getFirstAndLastName()}</span>
+                                <br/>
+                                <span class="patient_age">35 anos</span>
+                                <br/>
+                                <span class="first_appt_ask">Primeira Consulta: <span> Não</span></span>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <button type="button" class="btn-blue btn-w85"> Ver Perfil
+                            </button>
+                        </div>
+                    </div>
                 </div>
             </div>
 
-            <div class="row">
-
-                <div class="col-5 next_appt_time">
-                    <span class="time_box2">10:30</span>
-                    <p class="date_box2">Sexta-feira</p>
-                    <p class="date_box2">26 Fevereiro 2021</p>
-                </div>
-
-                <div class="col-7">
-                    <div class="perfil-row">
-                        <div class="col user_photo">
-                            <img src="/imagens/draw_avatar.svg" alt="utente"/>
-                        </div>
-                        <div class="col user_info">
-                            <span class="patient_name">Beatriz Ângela</span>
-                            <br/>
-                            <span class="patient_age">35 anos</span>
-                            <br/>
-                            <span class="first_appt_ask">Primeira Consulta: <span> Não</span></span>
-                            <p class="first_appt_ask">Check-in: <span> Não</span></p>
-                        </div>
+            <div class="col-4 appt_options">
+                <div>
+                    <div class="but-begin_appt">
+                        <button type="button" class="btn-green btn-w75"> Iniciar consulta</button>
                     </div>
-
-                    <div class="row">
-                        <button type="button" class="btn-blue btn-w85"> Ver Perfil
-                        </button>
+                    <div class="but-change_appt">
+                        <button type="button" class="btn-green btn-w75"> Alterar data</button>
+                    </div>
+                    <div class="but-cancel_appt">
+                        <button type="button" class="btn-green btn-w75"> Cancelar consulta</button>
+                    </div>
+                    <div class="but-end_appt">
+                        <button type="button" class="btn-green btn-w75"> Registar falta de comparência</button>
                     </div>
                 </div>
             </div>
         </div>
-
-        <div class="col-4 appt_options">
-            <div>
-                <div class="but-begin_appt">
-                    <button type="button" class="btn-green btn-w75"> Iniciar consulta</button>
-                </div>
-                <div class="but-change_appt">
-                    <button type="button" class="btn-green btn-w75"> Alterar data</button>
-                </div>
-                <div class="but-cancel_appt">
-                    <button type="button" class="btn-green btn-w75"> Cancelar consulta</button>
-                </div>
-                <div class="but-end_appt">
-                    <button type="button" class="btn-green btn-w75"> Registar falta de comparência</button>
-                </div>
-            </div>
-        </div>
-    </div>
+    </c:forEach>
+    <!-- Próxima Consulta (end) -->
 
 
 </div>
-</div>
+
 </body>
 </html>

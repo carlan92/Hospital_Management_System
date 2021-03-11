@@ -4,6 +4,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 import pt.iscte.hospital.entities.Appointment;
 import pt.iscte.hospital.entities.Patient;
+import pt.iscte.hospital.entities.states.AppointmentState;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -83,6 +84,12 @@ public interface AppointmentRepository extends JpaRepository<Appointment, Long> 
             Long userId,
             LocalDate date,
             boolean hasChecked);
+
+    List<Appointment> findAllBySlotDoctorUserIdAndSlotDateAndAppointmentStatusOrderBySlotTimeBeginAsc(
+            Long userId,
+            LocalDate date,
+            int appointmentState
+    );
 
 }
 
