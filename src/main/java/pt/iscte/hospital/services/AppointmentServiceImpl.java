@@ -147,13 +147,15 @@ public class AppointmentServiceImpl implements AppointmentService {
 
     // Gestão das consultas (Médico)
     @Override
-    public List<Appointment> findAllBySlotDoctorUserIdAndSlotDateAndHasCheckedOrderBySlotTimeBeginAsc(
+    public List<Appointment> findAllBySlotDoctorUserIdAndSlotDateAndAppointmentStatusAndHasCheckedOrderBySlotTimeBeginAsc(
             Long userId,
             LocalDate date,
+            int appointmentState,
             boolean hasChecked) {
-        return appointmentRepository.findAllBySlotDoctorUserIdAndSlotDateAndHasCheckedOrderBySlotTimeBeginAsc(
+        return appointmentRepository.findAllBySlotDoctorUserIdAndSlotDateAndAppointmentStatusAndHasCheckedOrderBySlotTimeBeginAsc(
                 userId,
                 date,
+                appointmentState,
                 hasChecked);
     }
 

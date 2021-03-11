@@ -97,6 +97,9 @@
 
     </div>
 
+    <!-- Consulta em curso (begin) -->
+    <!-- For -->
+    <c:forEach var="appointment" items="${todayOngoingAppointments}">
     <div class="row middle-row">
         <div class="col-7 data_appt">
             <div class="row">
@@ -120,7 +123,7 @@
                             <img src="/imagens/draw_avatar.svg" alt="utente"/>
                         </div>
                         <div class="col user_info">
-                            <span class="patient_name">Alice Antunes</span>
+                            <span class="patient_name">${appointment.getPatient().getFirstAndLastName()}</span>
                             <br/>
                             <span class="patient_age">70 anos</span>
                             <br/>
@@ -142,11 +145,13 @@
                     <a type="button" href="/doctor/appointment-notes" class="btn-green btn-w75"> Registo da consulta</a>
                 </div>
                 <div class="but-end_appt">
-                    <button type="button" class="btn-green btn-w75"> Terminar consulta</button>
+                    <button type="button" class="btn-green btn-w75">Terminar consulta</button>
                 </div>
             </div>
         </div>
     </div>
+    </c:forEach>
+    <!-- Consulta em curso (end) -->
 
     <!-- Próxima Consulta (begin) -->
     <!-- For -->
@@ -200,7 +205,7 @@
                         <button type="button" class="btn-green btn-w75"> Chamar utente</button>
                     </div>
                     <div class="but-begin_appt">
-                        <button type="button" class="btn-green btn-w75"> Iniciar consulta</button>
+                        <a type="button" href="/doctor/appointment/start/${appointment.getAppointmentId()}" type="button" class="btn-green btn-w75"> Iniciar consulta</a>
                     </div>
                     <div class="but-cancel_appt">
                         <button type="button" class="btn-green btn-w75"> Cancelar consulta</button>

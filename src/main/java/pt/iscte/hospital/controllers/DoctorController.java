@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import pt.iscte.hospital.entities.Appointment;
 import pt.iscte.hospital.entities.User;
 import pt.iscte.hospital.entities.states.AppointmentState;
+import pt.iscte.hospital.objects.utils.AlertMessageImage;
 import pt.iscte.hospital.services.AppointmentService;
 import pt.iscte.hospital.services.user.DoctorService;
 import pt.iscte.hospital.services.user.PatientService;
@@ -34,9 +35,10 @@ public class DoctorController {
     public String showDoctorMain(ModelMap modelMap) {
         LocalDate dateToday = LocalDate.now();
 
-        List<Appointment> todayCheckedInAppointments = appointmentService.findAllBySlotDoctorUserIdAndSlotDateAndHasCheckedOrderBySlotTimeBeginAsc(
+        List<Appointment> todayCheckedInAppointments = appointmentService.findAllBySlotDoctorUserIdAndSlotDateAndAppointmentStatusAndHasCheckedOrderBySlotTimeBeginAsc(
                 currentUser().getUserId(),
                 dateToday,
+                AppointmentState.MARCADA.getStateNr(),
                 true
         );
 
@@ -79,10 +81,13 @@ public class DoctorController {
         if (currentUser().getUserId().equals(appointmentDoctorId)) {
             doctorService.startAppointment(appointment);
         } else {
-            //TODO enviar para a página de insucesso.
+            // TODO image failure
+            modelMap.put("message", "Não foi possível iniciar a consulta. Pertence a outro médico");
+            modelMap.put("imageURL", AlertMessageImage.FAILURE.getImageURL());
+            return "components/alert-message";
         }
 
-        return "doctor/main";
+        return "redirect:/doctor/main";
     }
 
     @GetMapping(value = "/doctor/appointment/end/{appointmentId}")
