@@ -140,7 +140,7 @@
                 <div>
                     <div class="but-cancel_appt">
                         <a type="button" href="/doctor/appointment-notes" class="btn-green btn-w75">Registo da
-                            consulta</a>
+                            consulta!!!!</a>
                     </div>
                     <div class="but-end_appt">
                         <a href="/doctor/appointment/end/${appointment.getAppointmentId()}" class="btn-green btn-w75">Terminar consulta</a>
@@ -202,17 +202,17 @@
             <div class="col-4 appt_options">
                 <div>
                     <div class="but-begin_appt">
-                        <button type="button" class="btn-green btn-w75">Chamar utente</button>
+                        <button type="button" class="btn-green btn-w75">Chamar utente!!!</button>
                     </div>
                     <div class="but-begin_appt">
                         <a href="/doctor/appointment/start/${appointment.getAppointmentId()}" class="btn-green btn-w75">
                             Iniciar consulta</a>
                     </div>
                     <div class="but-cancel_appt">
-                        <button type="button" class="btn-green btn-w75"> Cancelar consulta</button>
+                        <button type="button" class="btn-green btn-w75"> Cancelar consulta!!!</button>
                     </div>
                     <div class="but-end_appt">
-                        <button type="button" class="btn-green btn-w75"> Registar falta de comparência</button>
+                        <button type="button" class="btn-green btn-w75"> Registar falta de comparência!!!</button>
                     </div>
                 </div>
             </div>

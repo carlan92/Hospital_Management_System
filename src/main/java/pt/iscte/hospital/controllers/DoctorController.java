@@ -156,10 +156,17 @@ public class DoctorController {
                 AppointmentState.MARCADA.getStateNr()
         );
 
-        long pacientes_confirmados = appointmentService.countBySlotDoctorUserIdAndSlotDateAndAppointmentStatusAndHasChecked(
+        long pacientes_confirmadosMarcado = appointmentService.countBySlotDoctorUserIdAndSlotDateAndAppointmentStatusAndHasChecked(
                 doctorId,
                 dateToday,
                 AppointmentState.MARCADA.getStateNr(),
+                true
+        );
+
+        long pacientes_confirmadosEmCurso = appointmentService.countBySlotDoctorUserIdAndSlotDateAndAppointmentStatusAndHasChecked(
+                doctorId,
+                dateToday,
+                AppointmentState.EM_CURSO.getStateNr(),
                 true
         );
 
@@ -168,6 +175,8 @@ public class DoctorController {
                 dateToday,
                 AppointmentState.REALIZADA.getStateNr()
         );
+
+        long pacientes_confirmados = pacientes_confirmadosMarcado + pacientes_confirmadosEmCurso;
 
         long pacientes_faltaram = appointmentService.countBySlotDoctorUserIdAndSlotDateAndAppointmentStatus(
                 doctorId,
