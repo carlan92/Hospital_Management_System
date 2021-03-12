@@ -67,7 +67,8 @@
 
             <div class="info_appt">
                 <div class="perfil-row">
-                    <p class="cell-row">Estado da Consulta: ${AppointmentState.searchState(appointment.getAppointmentStatus())} </p>
+                    <p class="cell-row">Estado da
+                        Consulta: ${appointmentDescription} </p>
                 </div>
 
                 <c:if test="${user_logged.getAccount().equals('Médico')}">
@@ -85,7 +86,8 @@
                 <div class="perfil-row">
                     <c:if test="${user_logged.getAccount().equals('Utente') ||  user_logged.getAccount().equals('Médico')}">
                         <div class="cell-row">
-                            <a href="/${userType}/appointment-details/${tempo}/${appointmentId}/cancel" class="btn btn-green">Cancelar Consulta</a>
+                            <a href="/${userType}/appointment-details/${tempo}/${appointmentId}/cancel"
+                               class="btn btn-green">Cancelar Consulta</a>
                         </div>
                     </c:if>
                     <c:if test="${user_logged.getAccount().equals('Utente')}">
@@ -96,7 +98,8 @@
                 </div>
                 <div class="perfil-row">
                     <div class="cell-back">
-                        <a href="/${userType}/appointment-list/${tempo}" class="btn btn-outline-dark btn-back">Voltar atrás</a>
+                        <a href="/${userType}/appointment-list/${tempo}" class="btn btn-outline-dark btn-back">Voltar
+                            atrás</a>
                     </div>
                 </div>
 

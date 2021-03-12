@@ -7,6 +7,7 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import pt.iscte.hospital.entities.*;
+import pt.iscte.hospital.entities.states.AppointmentState;
 import pt.iscte.hospital.exceptions.ImageSizeException;
 import pt.iscte.hospital.exceptions.ImageTypeException;
 import pt.iscte.hospital.repositories.AppointmentRepository;
@@ -191,47 +192,52 @@ public class UserController {
         modelMap.put("user_logged", userLogged);
         return "user/doctor-list";
     }
+
     //apresentar dados da consulta
     @GetMapping(value = "/{userType}/appointment-details/{tempo}/{appointmentId}")
     public String showAppointmentDetails(ModelMap modelMap, @PathVariable(value = "userType") String userType, @PathVariable(value = "tempo") String tempo, @PathVariable(value = "appointmentId") Long appointmentId) {
         List<Speciality> specialities = specialityService.findAll(Sort.by(Sort.Direction.ASC, "name"));
         User userLogged = userService.currentUser();
         Appointment appointment = appointmentService.findByAppointmentId(appointmentId);
+        String appointmentDescription = AppointmentState.searchState(appointment.getAppointmentStatus());
         Patient patient = patientService.findByUserId(appointment.getPatient().getUserId());
 
         modelMap.put("specialities", specialities);
         modelMap.put("user_logged", userLogged);
         modelMap.put("patient", patient);
         modelMap.put("appointment", appointment);
+        modelMap.put("appointmentDescription", appointmentDescription);
         modelMap.put("userType", userType);
         modelMap.put("tempo", tempo);
         return "user/appointment-details";
     }
+
     //cancelar consulta
     @GetMapping(value = "/{userType}/appointment-details/{tempo}/{appointmentId}/cancel")
-    public String showAppointmentDetailsAfterCancel(ModelMap modelMap, @PathVariable(value = "userType") String userType, @PathVariable(value = "tempo") String tempo, @PathVariable(value = "appointmentId") Long appointmentId) {
+    public String showAppointmentDetailsAfterCancel(ModelMap modelMap,
+                                                    @PathVariable(value = "userType") String userType,
+                                                    @PathVariable(value = "tempo") String tempo,
+                                                    @PathVariable(value = "appointmentId") Long appointmentId) {
+
         List<Speciality> specialities = specialityService.findAll(Sort.by(Sort.Direction.ASC, "name"));
         User userLogged = userService.currentUser();
         Appointment appointment = appointmentService.findByAppointmentId(appointmentId);
+
         Patient patient = patientService.findByUserId(appointment.getPatient().getUserId());
-        if(userType.equals("patient")) {
-            appointment.setAppointmentStatus(DESMARCADA_PELO_UTENTE.getStateNr());
-            appointmentService.saveAppointment(appointment);
-            Slot slot=new Slot(appointment.getSlot(),true);
-            slotService.saveSlot(slot);
-        }else if(userType.equals("doctor")){
-            appointment.setAppointmentStatus(DESMARCADA_PELO_MEDICO.getStateNr());
-            appointmentService.saveAppointment(appointment);
-            Slot slot=new Slot(appointment.getSlot(),true);
-            slotService.saveSlot(slot);
 
-
+        if (userType.equals("patient")) {
+            cancelAppointment(DESMARCADA_PELO_UTENTE.getStateNr(), appointment);
+        } else if (userType.equals("doctor")) {
+            cancelAppointment(DESMARCADA_PELO_MEDICO.getStateNr(), appointment);
         }
+
+        String appointmentDescription = AppointmentState.searchState(appointment.getAppointmentStatus());
 
         modelMap.put("specialities", specialities);
         modelMap.put("user_logged", userLogged);
         modelMap.put("patient", patient);
         modelMap.put("appointment", appointment);
+        modelMap.put("appointmentDescription", appointmentDescription);
         modelMap.put("userType", userType);
         modelMap.put("tempo", tempo);
         return "user/appointment-details";
@@ -282,4 +288,15 @@ public class UserController {
         }
 
     }
+
+    // Private Methods
+
+    private void cancelAppointment(int stateNr, Appointment appointment) {
+        appointment.setAppointmentStatus(stateNr);
+        appointmentService.saveAppointment(appointment);
+        Slot slot = new Slot(appointment.getSlot(), true);
+        slotService.saveSlot(slot);
+    }
+
+
 }
