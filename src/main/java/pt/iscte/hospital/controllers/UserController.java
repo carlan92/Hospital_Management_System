@@ -7,7 +7,6 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import pt.iscte.hospital.entities.*;
-import pt.iscte.hospital.entities.states.AppointmentState;
 import pt.iscte.hospital.exceptions.ImageSizeException;
 import pt.iscte.hospital.exceptions.ImageTypeException;
 import pt.iscte.hospital.repositories.AppointmentRepository;
@@ -188,20 +187,27 @@ public class UserController {
         return "user/doctor-list";
     }
 
-    @GetMapping(value = "/user/appointment-details/{appointmentId}")
-    public String showAppointmentDetails(ModelMap modelMap, @PathVariable(value = "appointmentId") Long appointmentId) {
+    @GetMapping(value = "/user/appointment-details/{tempo}/{appointmentId}")
+    public String showAppointmentDetails(ModelMap modelMap, String userType, @PathVariable(value = "tempo") String tempo, @PathVariable(value = "appointmentId") Long appointmentId) {
         List<Speciality> specialities = specialityService.findAll(Sort.by(Sort.Direction.ASC, "name"));
         User userLogged = userService.currentUser();
         Appointment appointment = appointmentService.findByAppointmentId(appointmentId);
         Patient patient = patientService.findByUserId(appointment.getPatient().getUserId());
-        //List<Appointment> appointments = appointmentRepository.findAllByPatientAndAppointmentStatus(patient, AppointmentState.MARCADA.getStateNr());
+
+        if(userLogged.getAccount().equals("Médico")){
+            userType="doctor";
+        } else if(userLogged.getAccount().equals("Recepcionista")){
+            userType="receptionist";
+        } else if(userLogged.getAccount().equals("Utente")){
+            userType="patient";
+        }
 
         modelMap.put("specialities", specialities);
-        //modelMap.put("appointments", appointments);
         modelMap.put("user_logged", userLogged);
         modelMap.put("patient", patient);
         modelMap.put("appointment", appointment);
-        modelMap.put("patientName", appointment.getPatient().getName());
+        modelMap.put("userType", userType);
+        modelMap.put("tempo", tempo);
         return "user/appointment-details";
     }
 

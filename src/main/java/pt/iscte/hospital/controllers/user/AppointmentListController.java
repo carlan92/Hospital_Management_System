@@ -6,7 +6,6 @@ import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import pt.iscte.hospital.entities.*;
@@ -29,8 +28,8 @@ import static pt.iscte.hospital.entities.states.AppointmentState.*;
 public class AppointmentListController {
     private static final String PATIENT_CURRENT_TYPE_URL = "/patient/appointment-list/current";
     private static final String PATIENT_PAST_TYPE_URL = "/patient/appointment-list/past";
-    private static final String DOCTOR_TYPE_URL = "/doctor/appointment-list";
-    private static final String RECEPTIONIST_TYPE_URL = "/receptionist/appointment-list";
+    private static final String DOCTOR_TYPE_URL = "/doctor/appointment-list/resume";
+    private static final String RECEPTIONIST_TYPE_URL = "/receptionist/appointment-list/resume";
     private static final String USER_TYPE_URL = "user/appointment-list";
 
     // Attributes
@@ -74,6 +73,7 @@ public class AppointmentListController {
                 null,
                 null,
                 "patient",
+                "current",
                 null));
         return USER_TYPE_URL;
     }
@@ -101,11 +101,12 @@ public class AppointmentListController {
                 null,
                 null,
                 "patient",
+                "past",
                 null));
         return USER_TYPE_URL;
     }
 
-    @GetMapping(value = {"/doctor/appointment-list"})
+    @GetMapping(value = {"/doctor/appointment-list/resume"})
     public String showAppointmentListDoctor(ModelMap modelMap) {
         User userLogged = userService.currentUser();
 
@@ -122,11 +123,12 @@ public class AppointmentListController {
                 null,
                 null,
                 "doctor",
+                "resume",
                 null));
         return USER_TYPE_URL;
     }
 
-    @GetMapping(value = {"/receptionist/appointment-list"})
+    @GetMapping(value = {"/receptionist/appointment-list/resume"})
     public String showAppointmentListReceptionist(ModelMap modelMap) {
         User userLogged = userService.currentUser();
         List<AppointmentState> appointmentStates = Arrays.asList(AppointmentState.values());
@@ -145,6 +147,7 @@ public class AppointmentListController {
                 null,
                 null,
                 "receptionist",
+                "resume",
                 null));
         return USER_TYPE_URL;
     }
@@ -189,6 +192,7 @@ public class AppointmentListController {
                 specialityName,
                 doctorName,
                 "patient",
+                "current",
                 null));
         return USER_TYPE_URL;
     }
@@ -233,11 +237,12 @@ public class AppointmentListController {
                 specialityName,
                 doctorName,
                 "patient",
+                "past",
                 null));
         return USER_TYPE_URL;
     }
 
-    @PostMapping(value = {"/doctor/appointment-list"})
+    @PostMapping(value = {"/doctor/appointment-list/resume"})
     public String showAppointmentListDoctorPost(ModelMap modelMap,
                                                 @RequestParam(required = false) @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate date,
                                                 @RequestParam(required = false) String specialityName,
@@ -270,11 +275,12 @@ public class AppointmentListController {
                 specialityName,
                 null,
                 "doctor",
+                "resume",
                 patientName));
         return USER_TYPE_URL;
     }
 
-    @PostMapping(value = {"/receptionist/appointment-list"})
+    @PostMapping(value = {"/receptionist/appointment-list/resume"})
     public String showAppointmentListReceptionistPost(ModelMap modelMap,
                                                       @RequestParam(required = false) @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate date,
                                                       @RequestParam(required = false) String specialityName,
@@ -308,6 +314,7 @@ public class AppointmentListController {
                 specialityName,
                 doctorName,
                 "receptionist",
+                "resume",
                 patientName));
         return USER_TYPE_URL;
     }
@@ -321,6 +328,7 @@ public class AppointmentListController {
                                          String specialityName,
                                          String doctorName,
                                          String userType,
+                                         String tempo,
                                          String patientName) {
         ModelMap modelMap = new ModelMap();
 
@@ -334,6 +342,7 @@ public class AppointmentListController {
         modelMap.put("specialityName", specialityName);
         modelMap.put("doctorName", doctorName);
         modelMap.put("userType", userType);
+        modelMap.put("tempo", tempo);
         modelMap.put("patientName", patientName);
         return modelMap;
     }

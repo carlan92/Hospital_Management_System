@@ -96,7 +96,7 @@
                 </div>
                 <div class="perfil-row">
                     <div class="cell-back">
-                        <a href="" class="btn btn-outline-dark btn-back">Voltar atrás</a>
+                        <a href="/${userType}/appointment-list/${tempo}" class="btn btn-outline-dark btn-back">Voltar atrás</a>
                     </div>
                 </div>
 

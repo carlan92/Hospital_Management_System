@@ -43,7 +43,7 @@
                     <a href="/user/doctor-list" class="botao_acessos">
                         <img src="/imagens/noun_utentes.svg" /> Médicos
                     </a>
-                    <a href="/doctor/appointment-list" class="botao_acessos">
+                    <a href="/doctor/appointment-list/resume" class="botao_acessos">
                         <img src="/imagens/noun_heart_rate.svg" /> Consultas
                     </a>
                 </div>

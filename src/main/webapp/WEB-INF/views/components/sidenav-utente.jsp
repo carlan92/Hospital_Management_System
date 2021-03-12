@@ -41,7 +41,7 @@
                         <img src="/imagens/noun_doctor.svg" /> Médicos
                     </a>
                     <a href="/patient/appointment-list/current" class="botao_acessos">
-                        <img src="/imagens/noun_heart_rate.svg" /> Consultas
+                        <img src="/imagens/noun_heart_rate.svg" /> Consultas Marcadas
                     </a>
                     <a href="/patient/checkin" class="botao_acessos">
                         <img src="/imagens/draw_cal_checkmark.svg"/> Check in
