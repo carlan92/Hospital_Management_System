@@ -33,12 +33,20 @@ public class Slot implements Comparable<Slot> {
     public Slot() {
     }
 
-    public Slot(Long slotId, Doctor doctor, LocalDate date, LocalTime timeBegin, LocalTime timeEnd) {
-        this.slotId = slotId;
+    public Slot(Doctor doctor, LocalDate date, LocalTime timeBegin, LocalTime timeEnd) {
         this.doctor = doctor;
         this.date = date;
         this.timeBegin = timeBegin;
         this.timeEnd = timeEnd;
+    }
+
+    // Construtor cópia
+    public Slot(Slot slot, boolean isAvailable) {
+        this.doctor = slot.getDoctor();
+        this.date = slot.getDate();
+        this.timeBegin = slot.getTimeBegin();
+        this.timeEnd = slot.getTimeEnd();
+        this.isAvailable = isAvailable;
     }
 
     // Methods
