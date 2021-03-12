@@ -303,7 +303,8 @@ public class UserController {
     private void cancelAppointment(int stateNr, Appointment appointment) {
         appointment.setAppointmentStatus(stateNr);
         appointmentService.saveAppointment(appointment);
-        Slot slot = new Slot(appointment.getSlot(), true);
+        Slot slot = appointment.getSlot();
+        slot.setAvailable(true);
         slotService.saveSlot(slot);
     }
 
