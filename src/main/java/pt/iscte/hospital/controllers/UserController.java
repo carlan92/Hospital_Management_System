@@ -20,6 +20,9 @@ import pt.iscte.hospital.services.validation.UserValidationService;
 import java.io.IOException;
 import java.util.List;
 
+import static pt.iscte.hospital.entities.states.AppointmentState.DESMARCADA_PELO_MEDICO;
+import static pt.iscte.hospital.entities.states.AppointmentState.DESMARCADA_PELO_UTENTE;
+
 @Controller
 public class UserController {
     @Autowired
@@ -38,6 +41,8 @@ public class UserController {
     private NationalityService nationalityService;
     @Autowired
     private UserValidationService userValidationService;
+    @Autowired
+    private SlotService slotService;
 
     @Autowired
     AppointmentRepository appointmentRepository;
@@ -186,7 +191,7 @@ public class UserController {
         modelMap.put("user_logged", userLogged);
         return "user/doctor-list";
     }
-
+    //apresentar dados da consulta
     @GetMapping(value = "/{userType}/appointment-details/{tempo}/{appointmentId}")
     public String showAppointmentDetails(ModelMap modelMap, @PathVariable(value = "userType") String userType, @PathVariable(value = "tempo") String tempo, @PathVariable(value = "appointmentId") Long appointmentId) {
         List<Speciality> specialities = specialityService.findAll(Sort.by(Sort.Direction.ASC, "name"));
@@ -194,7 +199,34 @@ public class UserController {
         Appointment appointment = appointmentService.findByAppointmentId(appointmentId);
         Patient patient = patientService.findByUserId(appointment.getPatient().getUserId());
 
+        modelMap.put("specialities", specialities);
+        modelMap.put("user_logged", userLogged);
+        modelMap.put("patient", patient);
+        modelMap.put("appointment", appointment);
+        modelMap.put("userType", userType);
+        modelMap.put("tempo", tempo);
+        return "user/appointment-details";
+    }
+    //cancelar consulta
+    @GetMapping(value = "/{userType}/appointment-details/{tempo}/{appointmentId}/cancel")
+    public String showAppointmentDetailsAfterCancel(ModelMap modelMap, @PathVariable(value = "userType") String userType, @PathVariable(value = "tempo") String tempo, @PathVariable(value = "appointmentId") Long appointmentId) {
+        List<Speciality> specialities = specialityService.findAll(Sort.by(Sort.Direction.ASC, "name"));
+        User userLogged = userService.currentUser();
+        Appointment appointment = appointmentService.findByAppointmentId(appointmentId);
+        Patient patient = patientService.findByUserId(appointment.getPatient().getUserId());
+        if(userType.equals("patient")) {
+            appointment.setAppointmentStatus(DESMARCADA_PELO_UTENTE.getStateNr());
+            appointmentService.saveAppointment(appointment);
+            Slot slot=new Slot(appointment.getSlot(),true);
+            slotService.saveSlot(slot);
+        }else if(userType.equals("doctor")){
+            appointment.setAppointmentStatus(DESMARCADA_PELO_MEDICO.getStateNr());
+            appointmentService.saveAppointment(appointment);
+            Slot slot=new Slot(appointment.getSlot(),true);
+            slotService.saveSlot(slot);
 
+
+        }
 
         modelMap.put("specialities", specialities);
         modelMap.put("user_logged", userLogged);

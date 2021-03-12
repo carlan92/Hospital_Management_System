@@ -26,4 +26,13 @@ public enum AppointmentState {
     public String getDescription() {
         return description;
     }
+    public static String searchState(int stateNr){
+        for (AppointmentState appointmentState:AppointmentState.values()) {
+            if(appointmentState.getStateNr()==stateNr){
+                return appointmentState.description;
+            }
+
+        }
+        return null;
+    }
 }
