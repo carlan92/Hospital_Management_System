@@ -181,4 +181,27 @@ public class AppointmentServiceImpl implements AppointmentService {
                 patientId,
                 appointmentState);
     }
+
+    // Contagens para a página main do doctor
+    public long countBySlotDoctorUserIdAndSlotDateAndAppointmentStatus(
+            long doctorId,
+            LocalDate date,
+            int appointmentState) {
+        return appointmentRepository.countBySlotDoctorUserIdAndSlotDateAndAppointmentStatus(
+                doctorId,
+                date,
+                appointmentState);
+    }
+
+    public long countBySlotDoctorUserIdAndSlotDateAndAppointmentStatusAndHasChecked(
+            long doctorId,
+            LocalDate date,
+            int appointmentState,
+            boolean hasChecked) {
+        return appointmentRepository.countBySlotDoctorUserIdAndSlotDateAndAppointmentStatusAndHasChecked(
+                doctorId,
+                date,
+                appointmentState,
+                hasChecked);
+    }
 }

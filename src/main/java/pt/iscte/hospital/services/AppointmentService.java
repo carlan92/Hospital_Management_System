@@ -92,4 +92,16 @@ public interface AppointmentService {
             Long patientId,
             int appointmentState
     );
+
+    // Contagens para a página main do doctor
+    long countBySlotDoctorUserIdAndSlotDateAndAppointmentStatus(
+            long doctorId,
+            LocalDate date,
+            int appointmentState);
+
+    long countBySlotDoctorUserIdAndSlotDateAndAppointmentStatusAndHasChecked(
+            long doctorId,
+            LocalDate date,
+            int appointmentState,
+            boolean hasChecked);
 }
