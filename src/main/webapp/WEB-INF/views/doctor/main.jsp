@@ -224,15 +224,31 @@
         let h = today.getHours();
         let m = today.getMinutes();
         m = checkTime(m);
+        h= checkTime(h);
         document.getElementById('hour').innerHTML = h + ":" + m;
         let t = setTimeout(startTime, 500);
     }
 
     function checkTime(i) {
-        if (i < 10) {
+        if (i === 0 || i < 10) {
             i = "0" + i;
         }
-        // add zero in front of numbers < 10
+        function startTime() {
+            let today = new Date();
+            let h = today.getHours();
+            let m = today.getMinutes();
+            m = checkTime(m);
+            h= checkTime(h);
+            document.getElementById('hour').innerHTML = h + ":" + m;
+            let t = setTimeout(startTime, 500);
+        }
+
+        function checkTime(i) {
+            if (i < 10) {
+                i = "0" + i;
+            }
+            return i;
+        }
         return i;
     }
 
