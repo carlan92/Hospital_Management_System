@@ -6,7 +6,7 @@
     <%@ include file="../components/head.jsp" %>
 </head>
 
-<body>
+<body onload="startTime() ; currentDate()">
 <%@ include file="../components/sidenav-utente.jsp" %>
 <div class="main">
     <!--menu da direita-->
@@ -18,14 +18,12 @@
 
         <div class="col-8 display_time">
             <div class="time_box">
-                    <span id="hour">
-                        <i class="fas fa-clock clock2"></i>
-                        10:00
+                <i class="fas fa-clock clock2"></i>
+                <span id="hour">
                     </span>
             </div>
             <div class="date_box">
                     <span id="date">
-                        Quarta-feira 25 Fevereiro 2021
                     </span>
             </div>
         </div>
@@ -140,7 +138,61 @@
 </div>
 
 <script>
+
     $('.carousel').carousel();
+
+    function startTime() {
+        let today = new Date();
+        let h = today.getHours();
+        let m = today.getMinutes();
+        m = checkTime(m);
+        document.getElementById('hour').innerHTML =
+            h + ":" + m;
+        let t = setTimeout(startTime, 500);
+    }
+
+    function checkTime(i) {
+        if (i < 10) {
+            i = "0" + i;
+        }
+        // add zero in front of numbers < 10
+        return i;
+    }
+
+    function currentDate() {
+        let todayDate = new Date();
+
+        let days = [
+            "Domingo",
+            "Segunda-feira",
+            "Terça-feira",
+            "Quarta-feira",
+            "Quinta-feira",
+            "Sexta-feira",
+            "Sábado"];
+
+        let months = [
+            "Janeiro",
+            "Fevereiro",
+            "Março",
+            "Abril",
+            "Maio",
+            "Junho",
+            "Julho",
+            "Agosto",
+            "Setembro",
+            "Outubro",
+            "Novembro",
+            "Dezembro"];
+
+        let currentYear = todayDate.getFullYear();
+        let currentDay = days[todayDate.getDay()];
+        let currentMonth = months[todayDate.getMonth()];
+        let currentData = todayDate.getDate();
+
+        document.getElementById('date').innerHTML = currentDay + " " + currentData + " de " + currentMonth + " " + currentYear;
+    }
+
 
 </script>
 </body>

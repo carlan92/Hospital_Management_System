@@ -6,29 +6,24 @@
     <%@ include file="../components/head.jsp" %>
 </head>
 
-<body>
+<body onload="startTime() ; currentDate()">
 <%@ include file="../components/sidenav-medico.jsp" %>
 
 
 <div class="main">
     <!--menu da direita-->
     <div class="row first_row">
-
         <div class="col-4">
             <img src="/imagens/draw_doctor.svg" alt="doctor" class="icon1"/>
         </div>
 
         <div class="col-8 display_time">
             <div class="time_box">
-                    <span id="hour">
-                        <i class="fas fa-clock"></i>
-                        10:00
-                    </span>
+                <i class="fas fa-clock"></i>
+                <span id="hour"> </span>
             </div>
             <div class="date_box">
-                    <span id="date">
-                        Quarta-feira 25 Fevereiro 2021
-                    </span>
+                <span id="date"> </span>
             </div>
         </div>
     </div>
@@ -222,5 +217,59 @@
 
 </div>
 
+<script>
+
+    function startTime() {
+        let today = new Date();
+        let h = today.getHours();
+        let m = today.getMinutes();
+        m = checkTime(m);
+        document.getElementById('hour').innerHTML = h + ":" + m;
+        let t = setTimeout(startTime, 500);
+    }
+
+    function checkTime(i) {
+        if (i < 10) {
+            i = "0" + i;
+        }
+        // add zero in front of numbers < 10
+        return i;
+    }
+
+    function currentDate() {
+        let todayDate = new Date();
+
+        let days = [
+            "Domingo",
+            "Segunda-feira",
+            "Terça-feira",
+            "Quarta-feira",
+            "Quinta-feira",
+            "Sexta-feira",
+            "Sábado"];
+
+        let months = [
+            "Janeiro",
+            "Fevereiro",
+            "Março",
+            "Abril",
+            "Maio",
+            "Junho",
+            "Julho",
+            "Agosto",
+            "Setembro",
+            "Outubro",
+            "Novembro",
+            "Dezembro"];
+
+        let currentYear = todayDate.getFullYear();
+        let currentDay = days[todayDate.getDay()];
+        let currentMonth = months[todayDate.getMonth()];
+        let currentData = todayDate.getDate();
+
+        document.getElementById('date').innerHTML = currentDay + " " + currentData + " de " + currentMonth + " " + currentYear;
+    }
+
+</script>
 </body>
 </html>
