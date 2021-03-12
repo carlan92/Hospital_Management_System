@@ -5,10 +5,12 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import pt.iscte.hospital.entities.*;
 import pt.iscte.hospital.entities.states.AppointmentState;
+import pt.iscte.hospital.entities.waiting.DoctorWaitingPatient;
 import pt.iscte.hospital.entities.waiting.PatientWaitingAppointment;
 import pt.iscte.hospital.repositories.AppointmentRepository;
 import pt.iscte.hospital.repositories.user.DoctorRepository;
 import pt.iscte.hospital.repositories.SpecialityRepository;
+import pt.iscte.hospital.repositories.waiting.DoctorWaitingPatientRepository;
 import pt.iscte.hospital.repositories.waiting.PatientWaitingAppointmentRepository;
 
 import java.time.LocalDate;
@@ -26,14 +28,22 @@ public class DoctorServiceImpl implements DoctorService {
     private AppointmentRepository appointmentRepository;
     @Autowired
     private PatientWaitingAppointmentRepository patientWaitingAppointmentRepository;
+    @Autowired
+    private DoctorWaitingPatientRepository doctorWaitingPatientRepository;
 
 
     //Methods
     @Override
-    public void chamarUtente(Doctor doctor) {
-        // Consultar a base de dados: por médico, por data, por checking
-        //TODO
+    public void chamarUtente(Appointment appointment) {
+        // Coloca ou actualiza chamada na base de dados
+        DoctorWaitingPatient doctorWaitingPatient = appointment.getDoctorWaitingPatient();
 
+        if (doctorWaitingPatient == null){
+            doctorWaitingPatient = new DoctorWaitingPatient(appointment);
+        }
+
+        doctorWaitingPatient.setTimeLatestCall(LocalTime.now());
+        doctorWaitingPatientRepository.save(doctorWaitingPatient);
     }
 
     @Override

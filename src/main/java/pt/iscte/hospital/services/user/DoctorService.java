@@ -8,7 +8,7 @@ import pt.iscte.hospital.entities.Speciality;
 import java.util.List;
 
 public interface DoctorService {
-    void chamarUtente(Doctor doctor);
+    void chamarUtente(Appointment appointment);
     void startAppointment(Appointment appointment);
     void endAppointment(Appointment appointment);
     void marcarFalta(Appointment appointment);

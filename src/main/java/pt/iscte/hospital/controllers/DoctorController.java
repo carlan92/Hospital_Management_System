@@ -126,7 +126,7 @@ public class DoctorController {
 
     @GetMapping(value = "/doctor/appointment/cancel/{appointmentId}")
     public String cancelAppointment(ModelMap modelMap,
-                                 @PathVariable Long appointmentId) {
+                                    @PathVariable Long appointmentId) {
         modelMap.put("user_logged", currentUser());
 
         Appointment appointment = appointmentService.findByAppointmentId(appointmentId);
@@ -147,7 +147,7 @@ public class DoctorController {
 
     @GetMapping(value = "/doctor/appointment/marcar-falta/{appointmentId}")
     public String marcarFaltaAppointment(ModelMap modelMap,
-                                    @PathVariable Long appointmentId) {
+                                         @PathVariable Long appointmentId) {
         modelMap.put("user_logged", currentUser());
 
         Appointment appointment = appointmentService.findByAppointmentId(appointmentId);
@@ -168,7 +168,7 @@ public class DoctorController {
 
     @GetMapping(value = "/doctor/appointment/remover-falta/{appointmentId}")
     public String desmarcarFaltaAppointment(ModelMap modelMap,
-                                         @PathVariable Long appointmentId) {
+                                            @PathVariable Long appointmentId) {
         modelMap.put("user_logged", currentUser());
 
         Appointment appointment = appointmentService.findByAppointmentId(appointmentId);
@@ -187,11 +187,30 @@ public class DoctorController {
         return "components/alert-message";
     }
 
+    @GetMapping(value = "/doctor/appointment/chamar-utente/{appointmentId}")
+    public String chamarUtente(ModelMap modelMap,
+                               @PathVariable Long appointmentId) {
+        modelMap.put("user_logged", currentUser());
 
+        Appointment appointment = appointmentService.findByAppointmentId(appointmentId);
+
+        Long appointmentDoctorId = appointment.getSlot().getDoctor().getUserId();
+
+        // Verifica se o user tem acesso à consulta
+        if (currentUser().getUserId().equals(appointmentDoctorId)) {
+            doctorService.chamarUtente(appointment);
+            modelMap.put("message", "Foi efectuada a chamada.");
+            modelMap.put("imageURL", AlertMessageImage.SUCCESS.getImageURL());
+        } else {
+            modelMap.put("message", "Não foi possível chamar o utente.");
+            modelMap.put("imageURL", AlertMessageImage.FAILURE.getImageURL());
+        }
+        return "components/alert-message";
+    }
 
 
     // Private Methods
-    private List<Appointment> todayCheckInAppointments(){
+    private List<Appointment> todayCheckInAppointments() {
         LocalDate dateToday = LocalDate.now();
         List<Appointment> todayCheckedInAppointments = new ArrayList<>();
 

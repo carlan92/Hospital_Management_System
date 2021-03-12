@@ -2,8 +2,6 @@ package pt.iscte.hospital.entities;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
-import pt.iscte.hospital.entities.waiting.DoctorWaitingPatient;
-import pt.iscte.hospital.entities.waiting.PatientWaitingAppointment;
 import pt.iscte.hospital.security.Role;
 
 import javax.persistence.Entity;
@@ -11,7 +9,6 @@ import javax.persistence.OneToMany;
 import javax.persistence.PrimaryKeyJoinColumn;
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import java.util.Set;
 
@@ -22,8 +19,6 @@ public class Patient extends User {
     @OneToMany(mappedBy="patient")
     private Set<Appointment> appointments;
 
-    @OneToMany(mappedBy = "patient")
-    private Set<PatientWaitingAppointment> patientWaitingAppointment;
 
     // Constructors
     public Patient() {

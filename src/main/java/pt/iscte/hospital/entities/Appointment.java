@@ -32,14 +32,15 @@ public class Appointment implements Comparable<Appointment> {
     @OneToOne(mappedBy = "appointment")
     private Invoice invoice;
 
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name = "slot_id")
     private Slot slot;
 
     private int appointmentStatus;
 
-    @OneToMany(mappedBy = "appointment")
-    private Set<DoctorWaitingPatient> doctorWaitingPatients;
+    @OneToOne(mappedBy = "appointment", cascade = CascadeType.ALL)
+    @PrimaryKeyJoinColumn
+    private DoctorWaitingPatient doctorWaitingPatient;
 
     // Constructors
     public Appointment() {
@@ -151,6 +152,10 @@ public class Appointment implements Comparable<Appointment> {
 
     public void setAppointmentStatus(int appointmentStatus) {
         this.appointmentStatus = appointmentStatus;
+    }
+
+    public DoctorWaitingPatient getDoctorWaitingPatient() {
+        return doctorWaitingPatient;
     }
 
     public boolean missedAppointment(){

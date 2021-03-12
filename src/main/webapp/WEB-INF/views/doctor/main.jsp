@@ -205,7 +205,7 @@
             <div class="col-4 appt_options">
                 <div>
                     <div class="but-begin_appt">
-                        <button type="button" class="btn-green btn-w75">Chamar utente!!!</button>
+                        <a href="/doctor/appointment/chamar-utente/${appointment.getAppointmentId()}" class="btn-green btn-w75">Chamar utente</a>
                     </div>
                     <div class="but-begin_appt">
                         <a href="/doctor/appointment/start/${appointment.getAppointmentId()}" class="btn-green btn-w75">

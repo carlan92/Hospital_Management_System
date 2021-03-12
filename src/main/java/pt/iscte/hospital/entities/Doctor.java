@@ -2,14 +2,12 @@ package pt.iscte.hospital.entities;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
-import pt.iscte.hospital.entities.waiting.DoctorWaitingPatient;
 import pt.iscte.hospital.entities.waiting.PatientWaitingAppointment;
 import pt.iscte.hospital.security.Role;
 
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import java.util.Set;
 
@@ -29,8 +27,6 @@ public class Doctor extends Employee {
     @OneToMany(mappedBy = "doctor")
     private Set<PatientWaitingAppointment> patientWaitingAppointment;
 
-    @OneToMany(mappedBy = "doctor")
-    private Set<DoctorWaitingPatient> doctorWaitingPatients;
 
 
     // Constructors

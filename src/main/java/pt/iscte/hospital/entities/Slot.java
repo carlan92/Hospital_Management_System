@@ -5,6 +5,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.Set;
 
 import static pt.iscte.hospital.objects.utils.Calendar.*;
 
@@ -20,8 +21,9 @@ public class Slot implements Comparable<Slot> {
     private LocalTime timeBegin;
     private LocalTime timeEnd;
 
-    @OneToOne(mappedBy = "slot")
-    private Appointment appointment;
+
+    @OneToMany(mappedBy = "slot")
+    private Set<Appointment> appointments;
 
     @ManyToOne
     @JoinColumn(name = "doctor_id")
