@@ -114,7 +114,7 @@ public abstract class User {
         return birthday;
     }
 
-    public int getAge(LocalDate currentDate) {
+    public int getAge() {
         LocalDate todayDate = LocalDate.now();
         return Period.between(birthday, todayDate).getYears();
     }

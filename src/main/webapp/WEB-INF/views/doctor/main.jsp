@@ -35,7 +35,7 @@
                 <div class="card2">
                     <div class="card-body2">
                         <h2>
-                            <span>14</span>
+                            <span>14!!!!</span>
                         </h2>
                         <h3>Pacientes agendados</h3>
                         <i class="far fa-calendar-alt "></i>
@@ -50,7 +50,7 @@
                 <div class="card2">
                     <div class="card-body2">
                         <h2>
-                            <span>1</span>
+                            <span>1!!!!!</span>
                         </h2>
                         <h3>Pacientes confirmados</h3>
                         <i class="fas fa-calendar-check "></i>
@@ -64,7 +64,7 @@
                 <div class="card2">
                     <div class="card-body2">
                         <h2>
-                            <span>0</span>
+                            <span>0!!!</span>
                         </h2>
                         <h3>Pacientes atendidos
                             <i class="fas fa-user-check "></i>
@@ -80,7 +80,7 @@
                 <div class="card2">
                     <div class="card-body2">
                         <h2>
-                            <span>0</span>
+                            <span>0!!!!</span>
                         </h2>
                         <h3>Pacientes que faltaram
                         </h3>
@@ -95,56 +95,57 @@
     <!-- Consulta em curso (begin) -->
     <!-- For -->
     <c:forEach var="appointment" items="${todayOngoingAppointments}">
-    <div class="row middle-row">
-        <div class="col-7 data_appt">
-            <div class="row">
-                <div class="col-2 icon3">
-                    <i class="fas fa-stethoscope"></i>
+        <div class="row middle-row">
+            <div class="col-7 data_appt">
+                <div class="row">
+                    <div class="col-2 icon3">
+                        <i class="fas fa-stethoscope"></i>
+                    </div>
+                    <div class="col-8 title_next_appt">
+                        <span class="text_next_appt">Consulta a decorrer</span>
+                        <p class="text_next_appt2">Ainda não tem consultas a decorrer ou apresentar info:</p>
+                    </div>
                 </div>
-                <div class="col-8 title_next_appt">
-                    <span class="text_next_appt">Consulta a decorrer</span>
-                    <p class="text_next_appt2">Ainda não tem consultas a decorrer ou apresentar info:</p>
+
+                <div class="row">
+                    <div class="col-5 next_appt_time time_box2">
+                        <span class="time_box2"><i
+                                class="fas fa-clock clocktime"></i>${appointment.getSlot().getTimeBeginStr()}</span>
+                    </div>
+
+                    <div class="col-7">
+                        <div class="perfil-row">
+                            <div class="col user_photo">
+                                <img src="/uploaded_images/${appointment.getPatient().getPhotoURL()}" alt="utente"/>
+                            </div>
+                            <div class="col user_info">
+                                <span class="patient_name">${appointment.getPatient().getFirstAndLastName()}</span>
+                                <br/>
+                                <span class="patient_age">${appointment.getPatient().getAge()} anos</span>
+                                <br/>
+                                <span class="first_appt_ask">Primeira Consulta: <span> Sim!!!</span></span>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <a href="/doctor-receptionist/patient-profile/${appointment.getPatient().getUserId()}" class="btn-blue btn-w85">Ver Perfil</a>
+                        </div>
+                    </div>
                 </div>
             </div>
 
-            <div class="row">
-                <div class="col-5 next_appt_time time_box2">
-                    <span class="time_box2"> <i class="fas fa-clock clocktime"></i>10:00</span>
-                </div>
-
-                <div class="col-7">
-                    <div class="perfil-row">
-                        <div class="col user_photo">
-                            <img src="/imagens/draw_avatar.svg" alt="utente"/>
-                        </div>
-                        <div class="col user_info">
-                            <span class="patient_name">${appointment.getPatient().getFirstAndLastName()}</span>
-                            <br/>
-                            <span class="patient_age">70 anos</span>
-                            <br/>
-                            <span class="first_appt_ask">Primeira Consulta: <span> Sim</span></span>
-                        </div>
+            <div class="col-4 appt_options">
+                <div>
+                    <div class="but-cancel_appt">
+                        <a type="button" href="/doctor/appointment-notes" class="btn-green btn-w75">Registo da
+                            consulta</a>
                     </div>
-
-                    <div class="row">
-                        <button type="button" class="btn-blue btn-w85"> Ver Perfil
-                        </button>
+                    <div class="but-end_appt">
+                        <button type="button" class="btn-green btn-w75">Terminar consulta</button>
                     </div>
                 </div>
             </div>
         </div>
-
-        <div class="col-4 appt_options">
-            <div>
-                <div class="but-cancel_appt">
-                    <a type="button" href="/doctor/appointment-notes" class="btn-green btn-w75"> Registo da consulta</a>
-                </div>
-                <div class="but-end_appt">
-                    <button type="button" class="btn-green btn-w75">Terminar consulta</button>
-                </div>
-            </div>
-        </div>
-    </div>
     </c:forEach>
     <!-- Consulta em curso (end) -->
 
@@ -175,20 +176,20 @@
                     <div class="col-7">
                         <div class="perfil-row">
                             <div class="col user_photo">
-                                <img src="/imagens/draw_avatar.svg" alt="utente"/>
+                                <img src="/uploaded_images/${appointment.getPatient().getPhotoURL()}" alt="utente"/>
                             </div>
                             <div class="col user_info">
                                 <span class="patient_name">${appointment.getPatient().getFirstAndLastName()}</span>
                                 <br/>
-                                <span class="patient_age">35 anos</span>
+                                <span class="patient_age">${appointment.getPatient().getAge()} anos</span>
                                 <br/>
-                                <span class="first_appt_ask">Primeira Consulta: <span> Não</span></span>
+                                <span class="first_appt_ask">Primeira Consulta: <span>Não!!!!</span></span>
                             </div>
                         </div>
 
                         <div class="row">
-                            <button type="button" class="btn-blue btn-w85"> Ver Perfil
-                            </button>
+                            <a href="/doctor-receptionist/patient-profile/${appointment.getPatient().getUserId()}"
+                               class="btn-blue btn-w85">Ver Perfil</a>
                         </div>
                     </div>
                 </div>
@@ -200,7 +201,8 @@
                         <button type="button" class="btn-green btn-w75"> Chamar utente</button>
                     </div>
                     <div class="but-begin_appt">
-                        <a type="button" href="/doctor/appointment/start/${appointment.getAppointmentId()}" type="button" class="btn-green btn-w75"> Iniciar consulta</a>
+                        <a href="/doctor/appointment/start/${appointment.getAppointmentId()}" class="btn-green btn-w75">
+                            Iniciar consulta</a>
                     </div>
                     <div class="but-cancel_appt">
                         <button type="button" class="btn-green btn-w75"> Cancelar consulta</button>
@@ -224,7 +226,7 @@
         let h = today.getHours();
         let m = today.getMinutes();
         m = checkTime(m);
-        h= checkTime(h);
+        h = checkTime(h);
         document.getElementById('hour').innerHTML = h + ":" + m;
         let t = setTimeout(startTime, 500);
     }
@@ -233,12 +235,13 @@
         if (i === 0 || i < 10) {
             i = "0" + i;
         }
+
         function startTime() {
             let today = new Date();
             let h = today.getHours();
             let m = today.getMinutes();
             m = checkTime(m);
-            h= checkTime(h);
+            h = checkTime(h);
             document.getElementById('hour').innerHTML = h + ":" + m;
             let t = setTimeout(startTime, 500);
         }
@@ -249,6 +252,7 @@
             }
             return i;
         }
+
         return i;
     }
 
