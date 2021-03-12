@@ -1,6 +1,7 @@
 package pt.iscte.hospital.entities;
 
 import org.springframework.format.annotation.DateTimeFormat;
+import pt.iscte.hospital.entities.states.AppointmentState;
 import pt.iscte.hospital.entities.waiting.DoctorWaitingPatient;
 import pt.iscte.hospital.objects.utils.Calendar;
 
@@ -150,6 +151,11 @@ public class Appointment implements Comparable<Appointment> {
 
     public void setAppointmentStatus(int appointmentStatus) {
         this.appointmentStatus = appointmentStatus;
+    }
+
+    public boolean missedAppointment(){
+        int missedAppointmentNr = AppointmentState.NAO_REALIZADA.getStateNr();
+        return appointmentStatus == missedAppointmentNr;
     }
 
     @Override

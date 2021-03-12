@@ -9,11 +9,13 @@ public class HospitalApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(HospitalApplication.class, args);
 
-		// Run thread de marcar slots
+		// TODO Run thread de marcar slots
 
-		// Run thread de gestão da lista de espera para marcação de consulta
+		// TODO Run thread de gestão da lista de espera para marcação de consulta
 
-		// Run thread de lista de espera (chamadas)
+		// TODO Run thread de lista de espera (chamadas)
+
+		// TODO Fechar todas as consultas que se encontrarem abertas ao final do dia (após 12? + tempo?)
 	}
 
 }

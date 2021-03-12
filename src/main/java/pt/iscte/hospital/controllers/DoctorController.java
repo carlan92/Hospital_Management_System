@@ -16,6 +16,7 @@ import pt.iscte.hospital.services.SpecialityService;
 import pt.iscte.hospital.services.user.UserService;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
@@ -39,12 +40,7 @@ public class DoctorController {
         // Informação do cabeçalho
 
         // Informação das consultas com check-in
-        List<Appointment> todayCheckedInAppointments = appointmentService.findAllBySlotDoctorUserIdAndSlotDateAndAppointmentStatusAndHasCheckedOrderBySlotTimeBeginAsc(
-                currentUser().getUserId(),
-                dateToday,
-                AppointmentState.MARCADA.getStateNr(),
-                true
-        );
+        List<Appointment> todayCheckedInAppointments = todayCheckInAppointments();
 
         HashMap<Long, String> isFirstAppointmentCheckedIntMap = isFirstAppointmentMap(
                 currentUser().getUserId(),
@@ -195,6 +191,29 @@ public class DoctorController {
 
 
     // Private Methods
+    private List<Appointment> todayCheckInAppointments(){
+        LocalDate dateToday = LocalDate.now();
+        List<Appointment> todayCheckedInAppointments = new ArrayList<>();
+
+        List<Appointment> todayCheckedInAppointmentsMarcada = appointmentService.findAllBySlotDoctorUserIdAndSlotDateAndAppointmentStatusAndHasCheckedOrderBySlotTimeBeginAsc(
+                currentUser().getUserId(),
+                dateToday,
+                AppointmentState.MARCADA.getStateNr(),
+                true
+        );
+        List<Appointment> todayCheckedInAppointmentsNaoRealizada = appointmentService.findAllBySlotDoctorUserIdAndSlotDateAndAppointmentStatusAndHasCheckedOrderBySlotTimeBeginAsc(
+                currentUser().getUserId(),
+                dateToday,
+                AppointmentState.NAO_REALIZADA.getStateNr(),
+                true
+        );
+        todayCheckedInAppointments.addAll(todayCheckedInAppointmentsMarcada);
+        todayCheckedInAppointments.addAll(todayCheckedInAppointmentsNaoRealizada);
+
+        return todayCheckedInAppointments;
+    }
+
+
     private HashMap<Long, String> isFirstAppointmentMap(Long doctorId, List<Appointment> appointments) {
         HashMap<Long, String> isFirstAppointmentMap = new HashMap<>();
 

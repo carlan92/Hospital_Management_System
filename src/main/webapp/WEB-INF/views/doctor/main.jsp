@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -130,7 +131,8 @@
                         </div>
 
                         <div class="row">
-                            <a href="/doctor-receptionist/patient-profile/${appointment.getPatient().getUserId()}" class="btn-blue btn-w85">Ver Perfil</a>
+                            <a href="/doctor-receptionist/patient-profile/${appointment.getPatient().getUserId()}"
+                               class="btn-blue btn-w85">Ver Perfil</a>
                         </div>
                     </div>
                 </div>
@@ -143,7 +145,8 @@
                             consulta!!!!</a>
                     </div>
                     <div class="but-end_appt">
-                        <a href="/doctor/appointment/end/${appointment.getAppointmentId()}" class="btn-green btn-w75">Terminar consulta</a>
+                        <a href="/doctor/appointment/end/${appointment.getAppointmentId()}" class="btn-green btn-w75">Terminar
+                            consulta</a>
                     </div>
                 </div>
             </div>
@@ -209,11 +212,18 @@
                             Iniciar consulta</a>
                     </div>
                     <div class="but-cancel_appt">
-                        <a href="/doctor/appointment/cancel/${appointment.getAppointmentId()}" class="btn-green btn-w75">Cancelar consulta</a>
+                        <a href="/doctor/appointment/cancel/${appointment.getAppointmentId()}"
+                           class="btn-green btn-w75">Cancelar consulta</a>
                     </div>
                     <div class="but-end_appt">
-                        <a href="/doctor/appointment/marcar-falta/${appointment.getAppointmentId()}" class="btn-green btn-w75">Registar falta de comparência</a>
-                        <a href="/doctor/appointment/remover-falta/${appointment.getAppointmentId()}" class="btn-green btn-w75">Remover falta de comparência</a>
+                        <c:if test="${!appointment.missedAppointment()}">
+                            <a href="/doctor/appointment/marcar-falta/${appointment.getAppointmentId()}"
+                               class="btn-green btn-w75">Registar falta de comparência</a>
+                        </c:if>
+                        <c:if test="${appointment.missedAppointment()}">
+                            <a href="/doctor/appointment/remover-falta/${appointment.getAppointmentId()}"
+                               class="btn-green btn-w75">Remover falta de comparência</a>
+                        </c:if>
                     </div>
                 </div>
             </div>
