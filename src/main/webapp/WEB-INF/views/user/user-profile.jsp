@@ -56,8 +56,7 @@
                 </div>
                 <div class="perfil-row">
                     <div class="cell-row">Data de nascimento</div>
-                    <div class="cell-row"><fmt:formatDate pattern="dd/MM/yyyy"
-                                                          value="${user_logged.getBirthday()}"/></div>
+                    <div class="cell-row">${user_logged.getBirthdayStr()}</div>
                 </div>
 
                 <div class="perfil-row">

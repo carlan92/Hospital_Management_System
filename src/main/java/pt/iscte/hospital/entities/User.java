@@ -2,6 +2,7 @@ package pt.iscte.hospital.entities;
 
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.security.core.GrantedAuthority;
+import pt.iscte.hospital.objects.utils.Calendar;
 import pt.iscte.hospital.security.Role;
 
 import javax.persistence.*;
@@ -122,8 +123,8 @@ public abstract class User {
         if (birthday == null) {
             return "";
         }
-        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-        return dateFormat.format(birthday);
+
+        return birthday.format(Calendar.FORMATTER);
     }
 
     public void setBirthday(LocalDate birthday) {

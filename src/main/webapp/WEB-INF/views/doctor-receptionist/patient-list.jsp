@@ -52,7 +52,9 @@
                         <span class="patient_age">${patient.getPhone()}</span>
                     </i>
 
-                    <a type="button"  href="/doctor-receptionist/patient-profile/${patient.getUserId()}" class="btn-blue btn-w80"> Consultar Perfil</a>
+                    <form method="get">
+                        <button type="submit" formaction="/doctor-receptionist/patient-profile/${patient.getUserId()}" class="btn-blue btn-w80"> Consultar Perfil</button>
+                    </form>
                 </div>
 
             </c:forEach>
