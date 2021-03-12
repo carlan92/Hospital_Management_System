@@ -4,7 +4,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 import pt.iscte.hospital.entities.Appointment;
 import pt.iscte.hospital.entities.Patient;
-import pt.iscte.hospital.entities.states.AppointmentState;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -92,5 +91,11 @@ public interface AppointmentRepository extends JpaRepository<Appointment, Long> 
             int appointmentState
     );
 
+    // Verificar número de consultas de um utente com um médico
+    long countBySlotDoctorUserIdAndPatientUserIdAndAppointmentStatus(
+            Long doctorId,
+            Long patientId,
+            int appointmentState
+    );
 }
 

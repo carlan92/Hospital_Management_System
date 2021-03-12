@@ -85,4 +85,11 @@ public interface AppointmentService {
             LocalDate date,
             int appointmentState
     );
+
+    // Verificar número de consultas de um utente com um médico
+    long countBySlotDoctorUserIdAndPatientUserIdAndAppointmentStatus(
+            Long doctorId,
+            Long patientId,
+            int appointmentState
+    );
 }

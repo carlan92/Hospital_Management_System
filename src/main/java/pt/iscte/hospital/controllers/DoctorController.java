@@ -16,6 +16,7 @@ import pt.iscte.hospital.services.SpecialityService;
 import pt.iscte.hospital.services.user.UserService;
 
 import java.time.LocalDate;
+import java.util.HashMap;
 import java.util.List;
 
 @Controller
@@ -35,6 +36,9 @@ public class DoctorController {
     public String showDoctorMain(ModelMap modelMap) {
         LocalDate dateToday = LocalDate.now();
 
+        // Informação do cabeçalho
+
+        // Informação das consultas com check-in
         List<Appointment> todayCheckedInAppointments = appointmentService.findAllBySlotDoctorUserIdAndSlotDateAndAppointmentStatusAndHasCheckedOrderBySlotTimeBeginAsc(
                 currentUser().getUserId(),
                 dateToday,
@@ -42,13 +46,25 @@ public class DoctorController {
                 true
         );
 
+        HashMap<Long, String> isFirstAppointmentCheckedIntMap = isFirstAppointmentMap(
+                currentUser().getUserId(),
+                todayCheckedInAppointments);
+
+
+        // Informação das consultas a decorrer
         List<Appointment> todayOngoingAppointments = appointmentService.findAllBySlotDoctorUserIdAndSlotDateAndAppointmentStatusOrderBySlotTimeBeginAsc(
                 currentUser().getUserId(),
                 dateToday,
                 AppointmentState.EM_CURSO.getStateNr()
         );
 
+        HashMap<Long, String> isFirstAppointmentOngoingMap = isFirstAppointmentMap(
+                currentUser().getUserId(),
+                todayOngoingAppointments);
+
         modelMap.put("todayCheckedInAppointments", todayCheckedInAppointments);
+        modelMap.put("isFirstAppointmentCheckedIntMap", isFirstAppointmentCheckedIntMap);
+        modelMap.put("isFirstAppointmentOngoingMap", isFirstAppointmentOngoingMap);
         modelMap.put("todayOngoingAppointments", todayOngoingAppointments);
         modelMap.put("user_logged", currentUser());
         return "doctor/main";
@@ -81,7 +97,6 @@ public class DoctorController {
         if (currentUser().getUserId().equals(appointmentDoctorId)) {
             doctorService.startAppointment(appointment);
         } else {
-            // TODO image failure
             modelMap.put("message", "Não foi possível iniciar a consulta. Pertence a outro médico");
             modelMap.put("imageURL", AlertMessageImage.FAILURE.getImageURL());
             return "components/alert-message";
@@ -92,7 +107,7 @@ public class DoctorController {
 
     @GetMapping(value = "/doctor/appointment/end/{appointmentId}")
     public String endAppointment(ModelMap modelMap,
-                                   @PathVariable Long appointmentId) {
+                                 @PathVariable Long appointmentId) {
         modelMap.put("user_logged", currentUser());
 
         Appointment appointment = appointmentService.findByAppointmentId(appointmentId);
@@ -102,12 +117,35 @@ public class DoctorController {
         // Verifica se o user tem acesso à consulta
         if (currentUser().getUserId().equals(appointmentDoctorId)) {
             doctorService.endAppointment(appointment);
+            modelMap.put("message", "Consulta terminada.");
+            modelMap.put("imageURL", AlertMessageImage.SUCCESS.getImageURL());
         } else {
-            //TODO enviar para a página de insucesso.
+            modelMap.put("message", "Não foi possível iniciar a consulta. Pertence a outro médico");
+            modelMap.put("imageURL", AlertMessageImage.FAILURE.getImageURL());
+        }
+        return "components/alert-message";
+    }
+
+    // Private Methods
+    private HashMap<Long, String> isFirstAppointmentMap(Long doctorId, List<Appointment> appointments){
+        HashMap<Long, String> isFirstAppointmentMap = new HashMap<>();
+
+        for (Appointment appointment : appointments) {
+            long patientId = appointment.getPatient().getUserId();
+            long count = appointmentService.countBySlotDoctorUserIdAndPatientUserIdAndAppointmentStatus(
+                    doctorId,
+                    patientId,
+                    AppointmentState.REALIZADA.getStateNr());
+            if (count > 0) {
+                isFirstAppointmentMap.put(patientId, "Não");
+            } else {
+                isFirstAppointmentMap.put(patientId, "Sim");
+            }
         }
 
-        return "doctor/main";
+        return isFirstAppointmentMap;
     }
+
 
     private User currentUser() {
         return userService.currentUser();

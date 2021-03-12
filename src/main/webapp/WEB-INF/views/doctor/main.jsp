@@ -123,7 +123,9 @@
                                 <br/>
                                 <span class="patient_age">${appointment.getPatient().getAge()} anos</span>
                                 <br/>
-                                <span class="first_appt_ask">Primeira Consulta: <span> Sim!!!</span></span>
+                                <span class="first_appt_ask">Primeira Consulta:
+                                    <span>${isFirstAppointmentOngoingMap.get(appointment.getPatient().getUserId())}</span>
+                                </span>
                             </div>
                         </div>
 
@@ -141,7 +143,7 @@
                             consulta</a>
                     </div>
                     <div class="but-end_appt">
-                        <button type="button" class="btn-green btn-w75">Terminar consulta</button>
+                        <a href="/doctor/appointment/end/${appointment.getAppointmentId()}" class="btn-green btn-w75">Terminar consulta</a>
                     </div>
                 </div>
             </div>
@@ -183,7 +185,9 @@
                                 <br/>
                                 <span class="patient_age">${appointment.getPatient().getAge()} anos</span>
                                 <br/>
-                                <span class="first_appt_ask">Primeira Consulta: <span>Não!!!!</span></span>
+                                <span class="first_appt_ask">Primeira Consulta:
+                                    <span>${isFirstAppointmentCheckedIntMap.get(appointment.getPatient().getUserId())}</span>
+                                </span>
                             </div>
                         </div>
 
@@ -198,7 +202,7 @@
             <div class="col-4 appt_options">
                 <div>
                     <div class="but-begin_appt">
-                        <button type="button" class="btn-green btn-w75"> Chamar utente</button>
+                        <button type="button" class="btn-green btn-w75">Chamar utente</button>
                     </div>
                     <div class="but-begin_appt">
                         <a href="/doctor/appointment/start/${appointment.getAppointmentId()}" class="btn-green btn-w75">

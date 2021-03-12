@@ -33,7 +33,7 @@
 
         <div class="perfil-row">
             <div class="cell-back">
-                <a href="/main" class="btn btn-outline-dark btn-back">Regressar à página inicial</a>
+                <a href="/" class="btn btn-outline-dark btn-back">Regressar à página inicial</a>
             </div>
         </div>
 
