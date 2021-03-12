@@ -35,7 +35,7 @@
                 <div class="card2">
                     <div class="card-body2">
                         <h2>
-                            <span>14!!!!</span>
+                            <span>${pacientes_agendados}</span>
                         </h2>
                         <h3>Pacientes agendados</h3>
                         <i class="far fa-calendar-alt "></i>
@@ -50,7 +50,7 @@
                 <div class="card2">
                     <div class="card-body2">
                         <h2>
-                            <span>1!!!!!</span>
+                            <span>${pacientes_confirmados}</span>
                         </h2>
                         <h3>Pacientes confirmados</h3>
                         <i class="fas fa-calendar-check "></i>
@@ -64,7 +64,7 @@
                 <div class="card2">
                     <div class="card-body2">
                         <h2>
-                            <span>0!!!</span>
+                            <span>${pacientes_atendidos}</span>
                         </h2>
                         <h3>Pacientes atendidos
                             <i class="fas fa-user-check "></i>
@@ -80,7 +80,7 @@
                 <div class="card2">
                     <div class="card-body2">
                         <h2>
-                            <span>0!!!!</span>
+                            <span>${pacientes_faltaram}</span>
                         </h2>
                         <h3>Pacientes que faltaram
                         </h3>

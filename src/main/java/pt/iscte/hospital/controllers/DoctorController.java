@@ -62,6 +62,8 @@ public class DoctorController {
                 currentUser().getUserId(),
                 todayOngoingAppointments);
 
+        modelMap.addAllAttributes(infoForTopMain(currentUser().getUserId(), dateToday));
+
         modelMap.put("todayCheckedInAppointments", todayCheckedInAppointments);
         modelMap.put("isFirstAppointmentCheckedIntMap", isFirstAppointmentCheckedIntMap);
         modelMap.put("isFirstAppointmentOngoingMap", isFirstAppointmentOngoingMap);
@@ -127,7 +129,7 @@ public class DoctorController {
     }
 
     // Private Methods
-    private HashMap<Long, String> isFirstAppointmentMap(Long doctorId, List<Appointment> appointments){
+    private HashMap<Long, String> isFirstAppointmentMap(Long doctorId, List<Appointment> appointments) {
         HashMap<Long, String> isFirstAppointmentMap = new HashMap<>();
 
         for (Appointment appointment : appointments) {
@@ -144,6 +146,39 @@ public class DoctorController {
         }
 
         return isFirstAppointmentMap;
+    }
+
+    private ModelMap infoForTopMain(long doctorId, LocalDate dateToday) {
+        ModelMap modelMap = new ModelMap();
+        long pacientes_agendados = appointmentService.countBySlotDoctorUserIdAndSlotDateAndAppointmentStatus(
+                doctorId,
+                dateToday,
+                AppointmentState.MARCADA.getStateNr()
+        );
+
+        long pacientes_confirmados = appointmentService.countBySlotDoctorUserIdAndSlotDateAndAppointmentStatusAndHasChecked(
+                doctorId,
+                dateToday,
+                AppointmentState.MARCADA.getStateNr(),
+                true
+        );
+
+        long pacientes_atendidos = appointmentService.countBySlotDoctorUserIdAndSlotDateAndAppointmentStatus(
+                doctorId,
+                dateToday,
+                AppointmentState.REALIZADA.getStateNr()
+        );
+
+        long pacientes_faltaram = appointmentService.countBySlotDoctorUserIdAndSlotDateAndAppointmentStatus(
+                doctorId,
+                dateToday,
+                AppointmentState.NAO_REALIZADA.getStateNr());
+
+        modelMap.put("pacientes_agendados", pacientes_agendados);
+        modelMap.put("pacientes_confirmados", pacientes_confirmados);
+        modelMap.put("pacientes_atendidos", pacientes_atendidos);
+        modelMap.put("pacientes_faltaram", pacientes_faltaram);
+        return modelMap;
     }
 
 
