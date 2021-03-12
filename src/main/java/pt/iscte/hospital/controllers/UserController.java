@@ -70,7 +70,7 @@ public class UserController {
                                  @RequestParam("file") MultipartFile file) {
 
         // Update user info
-        //utente
+        // utente
         User connectedUser = userService.currentUser();
         if (userService.currentUser().getAccount().equals("Utente")) {
             validation(patient, file);
@@ -143,7 +143,7 @@ public class UserController {
         return "redirect:/user/user-profile";
     }
 
-    //change data form
+    // change data form
     @GetMapping(value = "/user/user-profile")
     public String showUserProfile(ModelMap modelMap) {
         User userLogged = userService.currentUser();
@@ -193,7 +193,7 @@ public class UserController {
         return "user/doctor-list";
     }
 
-    //apresentar dados da consulta
+    // apresentar dados da consulta
     @GetMapping(value = "/{userType}/appointment-details/{tempo}/{appointmentId}")
     public String showAppointmentDetails(ModelMap modelMap, @PathVariable(value = "userType") String userType, @PathVariable(value = "tempo") String tempo, @PathVariable(value = "appointmentId") Long appointmentId) {
         List<Speciality> specialities = specialityService.findAll(Sort.by(Sort.Direction.ASC, "name"));
@@ -212,7 +212,7 @@ public class UserController {
         return "user/appointment-details";
     }
 
-    //cancelar consulta
+    // cancelar consulta
     @GetMapping(value = "/{userType}/appointment-details/{tempo}/{appointmentId}/cancel")
     public String showAppointmentDetailsAfterCancel(ModelMap modelMap,
                                                     @PathVariable(value = "userType") String userType,
@@ -243,7 +243,16 @@ public class UserController {
         return "user/appointment-details";
     }
 
-    public void validation(User user, MultipartFile file) {
+    @GetMapping(value = "/user/lista-chamada")
+    public String showListaChamada(ModelMap modelMap) {
+        modelMap.put("user_logged", userService.currentUser());
+
+        return "user/lista-chamada";
+    }
+
+
+    //
+    private void validation(User user, MultipartFile file) {
         User connectedUser = userService.currentUser();
         userValidationService.clear().setUser(user)
                 .validName()
