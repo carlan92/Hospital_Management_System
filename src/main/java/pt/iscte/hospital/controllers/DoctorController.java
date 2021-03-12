@@ -140,10 +140,52 @@ public class DoctorController {
         // Verifica se o user tem acesso à consulta
         if (currentUser().getUserId().equals(appointmentDoctorId)) {
             doctorService.desmarcarConsultaByDoctor(appointment);
-            modelMap.put("message", "Consulta terminada.");
+            modelMap.put("message", "Consulta desmarcada.");
             modelMap.put("imageURL", AlertMessageImage.SUCCESS.getImageURL());
         } else {
             modelMap.put("message", "Não foi possível cancelar a consulta. Pertence a outro médico");
+            modelMap.put("imageURL", AlertMessageImage.FAILURE.getImageURL());
+        }
+        return "components/alert-message";
+    }
+
+    @GetMapping(value = "/doctor/appointment/marcar-falta/{appointmentId}")
+    public String marcarFaltaAppointment(ModelMap modelMap,
+                                    @PathVariable Long appointmentId) {
+        modelMap.put("user_logged", currentUser());
+
+        Appointment appointment = appointmentService.findByAppointmentId(appointmentId);
+
+        Long appointmentDoctorId = appointment.getSlot().getDoctor().getUserId();
+
+        // Verifica se o user tem acesso à consulta
+        if (currentUser().getUserId().equals(appointmentDoctorId)) {
+            doctorService.marcarFalta(appointment);
+            modelMap.put("message", "Falta marcada ao utente.");
+            modelMap.put("imageURL", AlertMessageImage.SUCCESS.getImageURL());
+        } else {
+            modelMap.put("message", "Não foi possível marcar falta ao utente. Consulta pertence a outro médico");
+            modelMap.put("imageURL", AlertMessageImage.FAILURE.getImageURL());
+        }
+        return "components/alert-message";
+    }
+
+    @GetMapping(value = "/doctor/appointment/remover-falta/{appointmentId}")
+    public String desmarcarFaltaAppointment(ModelMap modelMap,
+                                         @PathVariable Long appointmentId) {
+        modelMap.put("user_logged", currentUser());
+
+        Appointment appointment = appointmentService.findByAppointmentId(appointmentId);
+
+        Long appointmentDoctorId = appointment.getSlot().getDoctor().getUserId();
+
+        // Verifica se o user tem acesso à consulta
+        if (currentUser().getUserId().equals(appointmentDoctorId)) {
+            doctorService.removerFalta(appointment);
+            modelMap.put("message", "Falta removida.");
+            modelMap.put("imageURL", AlertMessageImage.SUCCESS.getImageURL());
+        } else {
+            modelMap.put("message", "Não foi possível remover falta ao utente. Consulta pertence a outro médico");
             modelMap.put("imageURL", AlertMessageImage.FAILURE.getImageURL());
         }
         return "components/alert-message";

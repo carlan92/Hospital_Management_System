@@ -212,7 +212,8 @@
                         <a href="/doctor/appointment/cancel/${appointment.getAppointmentId()}" class="btn-green btn-w75">Cancelar consulta</a>
                     </div>
                     <div class="but-end_appt">
-                        <button type="button" class="btn-green btn-w75"> Registar falta de comparência!!!</button>
+                        <a href="/doctor/appointment/marcar-falta/${appointment.getAppointmentId()}" class="btn-green btn-w75">Registar falta de comparência</a>
+                        <a href="/doctor/appointment/remover-falta/${appointment.getAppointmentId()}" class="btn-green btn-w75">Remover falta de comparência</a>
                     </div>
                 </div>
             </div>
