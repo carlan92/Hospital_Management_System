@@ -30,6 +30,9 @@ public class PublicController {
     public String showMainPage(ModelMap modelMap) {
         User user = userService.currentUser();
         String mainPage = userService.getUserMainPage(user);
+        if(user != null){
+            return "redirect:" + mainPage;
+        }
         modelMap.put("user_logged", user);
         return mainPage;
     }
