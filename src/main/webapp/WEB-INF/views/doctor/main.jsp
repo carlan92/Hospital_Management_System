@@ -209,7 +209,7 @@
                             Iniciar consulta</a>
                     </div>
                     <div class="but-cancel_appt">
-                        <button type="button" class="btn-green btn-w75"> Cancelar consulta!!!</button>
+                        <a href="/doctor/appointment/cancel/${appointment.getAppointmentId()}" class="btn-green btn-w75">Cancelar consulta</a>
                     </div>
                     <div class="but-end_appt">
                         <button type="button" class="btn-green btn-w75"> Registar falta de comparência!!!</button>

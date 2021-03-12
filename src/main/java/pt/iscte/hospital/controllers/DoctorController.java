@@ -122,11 +122,35 @@ public class DoctorController {
             modelMap.put("message", "Consulta terminada.");
             modelMap.put("imageURL", AlertMessageImage.SUCCESS.getImageURL());
         } else {
-            modelMap.put("message", "Não foi possível iniciar a consulta. Pertence a outro médico");
+            modelMap.put("message", "Não foi possível terminar a consulta. Pertence a outro médico");
             modelMap.put("imageURL", AlertMessageImage.FAILURE.getImageURL());
         }
         return "components/alert-message";
     }
+
+    @GetMapping(value = "/doctor/appointment/cancel/{appointmentId}")
+    public String cancelAppointment(ModelMap modelMap,
+                                 @PathVariable Long appointmentId) {
+        modelMap.put("user_logged", currentUser());
+
+        Appointment appointment = appointmentService.findByAppointmentId(appointmentId);
+
+        Long appointmentDoctorId = appointment.getSlot().getDoctor().getUserId();
+
+        // Verifica se o user tem acesso à consulta
+        if (currentUser().getUserId().equals(appointmentDoctorId)) {
+            doctorService.desmarcarConsultaByDoctor(appointment);
+            modelMap.put("message", "Consulta terminada.");
+            modelMap.put("imageURL", AlertMessageImage.SUCCESS.getImageURL());
+        } else {
+            modelMap.put("message", "Não foi possível cancelar a consulta. Pertence a outro médico");
+            modelMap.put("imageURL", AlertMessageImage.FAILURE.getImageURL());
+        }
+        return "components/alert-message";
+    }
+
+
+
 
     // Private Methods
     private HashMap<Long, String> isFirstAppointmentMap(Long doctorId, List<Appointment> appointments) {
