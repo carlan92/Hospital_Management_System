@@ -65,6 +65,10 @@ public class Appointment implements Comparable<Appointment> {
         return patient;
     }
 
+    public Doctor getDoctor(){
+        return this.slot.getDoctor();
+    }
+
     public void setPatient(Patient patient) {
         this.patient = patient;
     }

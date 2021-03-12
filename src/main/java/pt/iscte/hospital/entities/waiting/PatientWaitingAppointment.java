@@ -20,4 +20,9 @@ public class PatientWaitingAppointment {
     private Patient patient;
 
     public PatientWaitingAppointment(){}
+
+    public PatientWaitingAppointment(Doctor doctor, Patient patient){
+        this.doctor = doctor;
+        this.patient = patient;
+    }
 }

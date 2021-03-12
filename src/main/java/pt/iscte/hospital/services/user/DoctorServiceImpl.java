@@ -3,14 +3,13 @@ package pt.iscte.hospital.services.user;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
-import pt.iscte.hospital.entities.Appointment;
-import pt.iscte.hospital.entities.Doctor;
-import pt.iscte.hospital.entities.Speciality;
+import pt.iscte.hospital.entities.*;
 import pt.iscte.hospital.entities.states.AppointmentState;
+import pt.iscte.hospital.entities.waiting.PatientWaitingAppointment;
 import pt.iscte.hospital.repositories.AppointmentRepository;
 import pt.iscte.hospital.repositories.user.DoctorRepository;
 import pt.iscte.hospital.repositories.SpecialityRepository;
-import pt.iscte.hospital.services.user.DoctorService;
+import pt.iscte.hospital.repositories.waiting.PatientWaitingAppointmentRepository;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
@@ -25,6 +24,9 @@ public class DoctorServiceImpl implements DoctorService {
     private SpecialityRepository specialityRepository;
     @Autowired
     private AppointmentRepository appointmentRepository;
+    @Autowired
+    private PatientWaitingAppointmentRepository patientWaitingAppointmentRepository;
+
 
     //Methods
     @Override
@@ -69,8 +71,14 @@ public class DoctorServiceImpl implements DoctorService {
 
     @Override
     public void desmarcarConsultaByDoctor(Appointment appointment) {
+        Doctor doctor = appointment.getDoctor();
+        Patient patient = appointment.getPatient();
         appointment.setAppointmentStatus(AppointmentState.DESMARCADA_PELO_MEDICO.getStateNr());
         appointmentRepository.save(appointment);
+
+        // Enviar utente para lista de espera de consulta
+        PatientWaitingAppointment patientWaitingAppointment = new PatientWaitingAppointment(doctor, patient);
+        patientWaitingAppointmentRepository.save(patientWaitingAppointment);
     }
 
     @Override
