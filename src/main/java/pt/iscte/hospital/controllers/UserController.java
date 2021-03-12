@@ -187,20 +187,14 @@ public class UserController {
         return "user/doctor-list";
     }
 
-    @GetMapping(value = "/user/appointment-details/{tempo}/{appointmentId}")
-    public String showAppointmentDetails(ModelMap modelMap, String userType, @PathVariable(value = "tempo") String tempo, @PathVariable(value = "appointmentId") Long appointmentId) {
+    @GetMapping(value = "/{userType}/appointment-details/{tempo}/{appointmentId}")
+    public String showAppointmentDetails(ModelMap modelMap, @PathVariable(value = "userType") String userType, @PathVariable(value = "tempo") String tempo, @PathVariable(value = "appointmentId") Long appointmentId) {
         List<Speciality> specialities = specialityService.findAll(Sort.by(Sort.Direction.ASC, "name"));
         User userLogged = userService.currentUser();
         Appointment appointment = appointmentService.findByAppointmentId(appointmentId);
         Patient patient = patientService.findByUserId(appointment.getPatient().getUserId());
 
-        if(userLogged.getAccount().equals("Médico")){
-            userType="doctor";
-        } else if(userLogged.getAccount().equals("Recepcionista")){
-            userType="receptionist";
-        } else if(userLogged.getAccount().equals("Utente")){
-            userType="patient";
-        }
+
 
         modelMap.put("specialities", specialities);
         modelMap.put("user_logged", userLogged);
