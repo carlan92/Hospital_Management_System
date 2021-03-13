@@ -12,8 +12,6 @@ import pt.iscte.hospital.entities.states.AppointmentState;
 import pt.iscte.hospital.objects.utils.AlertMessageImage;
 import pt.iscte.hospital.services.AppointmentService;
 import pt.iscte.hospital.services.user.DoctorService;
-import pt.iscte.hospital.services.user.PatientService;
-import pt.iscte.hospital.services.SpecialityService;
 import pt.iscte.hospital.services.user.UserService;
 
 import java.time.LocalDate;
@@ -28,11 +26,7 @@ public class DoctorController {
     @Autowired
     private DoctorService doctorService;
     @Autowired
-    private SpecialityService specialityService;
-    @Autowired
     private UserService userService;
-    @Autowired
-    private PatientService patientService;
 
     @GetMapping(value = {"/doctor/main", "/doctor"})
     public String showDoctorMain(ModelMap modelMap) {
@@ -76,22 +70,13 @@ public class DoctorController {
         return "doctor/waiting-list";
     }
 
+    // ############### Appointment Notes (begin) ###############
     @GetMapping(value = "/doctor/appointment/notes/{appointmentId}")
     public String showAppointmentNotes(ModelMap modelMap,
                                        @PathVariable Long appointmentId) {
-        Appointment appointment = appointmentService.findByAppointmentId(appointmentId);
 
-        long patientId = appointment.getPatient().getUserId();
-        long doctorId = currentUser().getUserId();
-        int appointmentStateNr = appointment.getAppointmentStatus();
+        modelMap.addAllAttributes(appointmentNotesPageMap(appointmentId));
 
-        String isFirstAppointmentStr = isFirstAppointmentStr(patientId,doctorId);
-        String appointmentState = AppointmentState.searchState(appointmentStateNr);
-
-        modelMap.put("user_logged", currentUser());
-        modelMap.put("appointment", appointment);
-        modelMap.put("isFirstAppointmentStr", isFirstAppointmentStr);
-        modelMap.put("appointmentState", appointmentState);
         return "doctor/appointment-notes";
     }
 
@@ -103,19 +88,11 @@ public class DoctorController {
         appointment.setNotes(message);
         appointmentService.saveAppointment(appointment);
 
-        long patientId = appointment.getPatient().getUserId();
-        long doctorId = currentUser().getUserId();
-        int appointmentStateNr = appointment.getAppointmentStatus();
+        modelMap.addAllAttributes(appointmentNotesPageMap(appointmentId));
 
-        String isFirstAppointmentStr = isFirstAppointmentStr(patientId,doctorId);
-        String appointmentState = AppointmentState.searchState(appointmentStateNr);
-
-        modelMap.put("user_logged", currentUser());
-        modelMap.put("appointment", appointment);
-        modelMap.put("isFirstAppointmentStr", isFirstAppointmentStr);
-        modelMap.put("appointmentState", appointmentState);
         return "doctor/appointment-notes";
     }
+    // ################ Appointment Notes (end) ################
 
     // Consulta
     @GetMapping(value = "/doctor/appointment/start/{appointmentId}")
@@ -343,7 +320,27 @@ public class DoctorController {
     }
 
 
+    // Private Methods
     private User currentUser() {
         return userService.currentUser();
+    }
+
+    private ModelMap appointmentNotesPageMap(long appointmentId){
+        ModelMap modelMap = new ModelMap();
+
+        Appointment appointment = appointmentService.findByAppointmentId(appointmentId);
+
+        long patientId = appointment.getPatient().getUserId();
+        long doctorId = currentUser().getUserId();
+        int appointmentStateNr = appointment.getAppointmentStatus();
+
+        String isFirstAppointmentStr = isFirstAppointmentStr(patientId,doctorId);
+        String appointmentState = AppointmentState.searchState(appointmentStateNr);
+
+        modelMap.put("user_logged", currentUser());
+        modelMap.put("appointment", appointment);
+        modelMap.put("isFirstAppointmentStr", isFirstAppointmentStr);
+        modelMap.put("appointmentState", appointmentState);
+        return modelMap;
     }
 }
