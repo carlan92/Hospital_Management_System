@@ -8,7 +8,6 @@ import pt.iscte.hospital.objects.utils.Calendar;
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.time.LocalTime;
-import java.util.Set;
 
 @Entity
 public class Appointment implements Comparable<Appointment> {
@@ -143,6 +142,10 @@ public class Appointment implements Comparable<Appointment> {
 
     public int getAppointmentStatus() {
         return appointmentStatus;
+    }
+
+    public String getAppointmentStatusStr(){
+        return AppointmentState.searchState(appointmentStatus);
     }
 
     public void setAppointmentStatus(int appointmentStatus) {
