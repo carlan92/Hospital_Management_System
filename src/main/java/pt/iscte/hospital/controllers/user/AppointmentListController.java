@@ -139,13 +139,21 @@ public class AppointmentListController {
     @GetMapping(value = {"/receptionist/appointment-list/resume"})
     public String showAppointmentListReceptionist(ModelMap modelMap) {
         User userLogged = userService.currentUser();
-        List<AppointmentState> appointmentStates = Arrays.asList(AppointmentState.values());
+        List<AppointmentState> appointmentStatesAll = Arrays.asList(AppointmentState.values());
         List<InvoiceState> invoiceStates = Arrays.asList(InvoiceState.values());
 
-        List<Appointment> appointments = new ArrayList<>(appointmentService.findAll());
+        List<Appointment> appointments = new ArrayList<>();
+        List<AppointmentState> appointmentStates = Arrays.asList(MARCADA,
+                EM_CURSO,
+                DESMARCADA_PELO_MEDICO,
+                REALIZADA,
+                NAO_REALIZADA);
+        for (AppointmentState appointmentState : appointmentStates) {
+            appointments.addAll(appointmentService.findAllByAppointmentStatus(appointmentState.getStateNr()));
+        }
         appointments.sort(null);
 
-        modelMap.put("appointmentStates", appointmentStates);
+        modelMap.put("appointmentStates", appointmentStatesAll);
         modelMap.put("invoiceStates", invoiceStates);
         modelMap.addAllAttributes(appointmentListView(
                 appointments,
@@ -256,6 +264,7 @@ public class AppointmentListController {
                                                 @RequestParam(required = false) String specialityName,
                                                 @RequestParam String patientName) {
         User userLogged = userService.currentUser();
+        List<AppointmentState> appointmentStatesAll = Arrays.asList(AppointmentState.values());
 
         if (specialityName == null) {
             specialityName = "";
@@ -274,6 +283,7 @@ public class AppointmentListController {
         }
 
         appointments.sort(null);
+        modelMap.put("appointmentStates", appointmentStatesAll);
 
         modelMap.addAllAttributes(appointmentListView(
                 appointments,
@@ -293,8 +303,11 @@ public class AppointmentListController {
                                                       @RequestParam(required = false) @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate date,
                                                       @RequestParam(required = false) String specialityName,
                                                       @RequestParam String patientName,
+                                                      @RequestParam (required = false) String stateAppointment,
                                                       @RequestParam String doctorName) {
         User userLogged = userService.currentUser();
+        List<AppointmentState> appointmentStatesAll = Arrays.asList(AppointmentState.values());
+        List<InvoiceState> invoiceStates = Arrays.asList(InvoiceState.values());
 
         if (specialityName == null) {
             specialityName = "";
@@ -312,7 +325,15 @@ public class AppointmentListController {
                     specialityName);
         }
 
+        for (AppointmentState appointmentState : appointmentStatesAll) {
+            appointments.addAll(appointmentService.findAllByAppointmentStatus(appointmentState.getStateNr()));
+        }
+
         appointments.sort(null);
+
+        modelMap.put("appointmentStates", appointmentStatesAll);
+        modelMap.put("invoiceStates", invoiceStates);
+        modelMap.put("stateAppointment", stateAppointment);
 
         modelMap.addAllAttributes(appointmentListView(
                 appointments,
