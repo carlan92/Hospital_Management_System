@@ -141,8 +141,8 @@
             <div class="col-4 appt_options">
                 <div>
                     <div class="but-cancel_appt">
-                        <a type="button" href="/doctor/appointment-notes" class="btn-green btn-w75">Registo da
-                            consulta!!!!</a>
+                        <a type="button" href="/doctor/appointment/notes/${appointment.getAppointmentId()}"
+                           class="btn-green btn-w75">Registo da consulta</a>
                     </div>
                     <div class="but-end_appt">
                         <a href="/doctor/appointment/end/${appointment.getAppointmentId()}" class="btn-green btn-w75">Terminar
@@ -205,7 +205,8 @@
             <div class="col-4 appt_options">
                 <div>
                     <div class="but-begin_appt">
-                        <a href="/doctor/appointment/chamar-utente/${appointment.getAppointmentId()}" class="btn-green btn-w75">Chamar utente</a>
+                        <a href="/doctor/appointment/chamar-utente/${appointment.getAppointmentId()}"
+                           class="btn-green btn-w75">Chamar utente</a>
                     </div>
                     <div class="but-begin_appt">
                         <a href="/doctor/appointment/start/${appointment.getAppointmentId()}" class="btn-green btn-w75">

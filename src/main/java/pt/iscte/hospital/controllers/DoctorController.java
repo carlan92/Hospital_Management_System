@@ -5,6 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import pt.iscte.hospital.entities.Appointment;
 import pt.iscte.hospital.entities.User;
 import pt.iscte.hospital.entities.states.AppointmentState;
@@ -75,9 +76,44 @@ public class DoctorController {
         return "doctor/waiting-list";
     }
 
-    @GetMapping(value = "/doctor/appointment-notes")
-    public String showAppointmentNotes(ModelMap modelMap) {
+    @GetMapping(value = "/doctor/appointment/notes/{appointmentId}")
+    public String showAppointmentNotes(ModelMap modelMap,
+                                       @PathVariable Long appointmentId) {
+        Appointment appointment = appointmentService.findByAppointmentId(appointmentId);
+
+        long patientId = appointment.getPatient().getUserId();
+        long doctorId = currentUser().getUserId();
+        int appointmentStateNr = appointment.getAppointmentStatus();
+
+        String isFirstAppointmentStr = isFirstAppointmentStr(patientId,doctorId);
+        String appointmentState = AppointmentState.searchState(appointmentStateNr);
+
         modelMap.put("user_logged", currentUser());
+        modelMap.put("appointment", appointment);
+        modelMap.put("isFirstAppointmentStr", isFirstAppointmentStr);
+        modelMap.put("appointmentState", appointmentState);
+        return "doctor/appointment-notes";
+    }
+
+    @PostMapping(value = "/doctor/appointment/notes/{appointmentId}")
+    public String saveAppointmentNotes(ModelMap modelMap,
+                                       @PathVariable Long appointmentId,
+                                       String message) {
+        Appointment appointment = appointmentService.findByAppointmentId(appointmentId);
+        appointment.setNotes(message);
+        appointmentService.saveAppointment(appointment);
+
+        long patientId = appointment.getPatient().getUserId();
+        long doctorId = currentUser().getUserId();
+        int appointmentStateNr = appointment.getAppointmentStatus();
+
+        String isFirstAppointmentStr = isFirstAppointmentStr(patientId,doctorId);
+        String appointmentState = AppointmentState.searchState(appointmentStateNr);
+
+        modelMap.put("user_logged", currentUser());
+        modelMap.put("appointment", appointment);
+        modelMap.put("isFirstAppointmentStr", isFirstAppointmentStr);
+        modelMap.put("appointmentState", appointmentState);
         return "doctor/appointment-notes";
     }
 
@@ -250,6 +286,18 @@ public class DoctorController {
         }
 
         return isFirstAppointmentMap;
+    }
+
+    private String isFirstAppointmentStr(long patientId, long doctorId) {
+        long count = appointmentService.countBySlotDoctorUserIdAndPatientUserIdAndAppointmentStatus(
+                doctorId,
+                patientId,
+                AppointmentState.REALIZADA.getStateNr());
+        if (count > 0) {
+            return "Não";
+        } else {
+            return "Sim";
+        }
     }
 
     private ModelMap infoForTopMain(long doctorId, LocalDate dateToday) {

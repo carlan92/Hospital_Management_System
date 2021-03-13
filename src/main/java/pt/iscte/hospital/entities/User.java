@@ -3,6 +3,7 @@ package pt.iscte.hospital.entities;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.security.core.GrantedAuthority;
 import pt.iscte.hospital.objects.utils.Calendar;
+import pt.iscte.hospital.objects.utils.HostpitalFormatter;
 import pt.iscte.hospital.security.Role;
 
 import javax.persistence.*;
@@ -205,6 +206,10 @@ public abstract class User {
 
     public Long getPhone() {
         return phone;
+    }
+
+    public String getPhoneStr() {
+        return HostpitalFormatter.formatValue(phone, HostpitalFormatter.PHONE);
     }
 
     public void setPhone(Long phone) {

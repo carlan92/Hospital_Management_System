@@ -32,55 +32,61 @@
         <div class="perfil-main-col">
             <div class="perfil-row">
                 <div class="cell-row">Nome do Utente</div>
-                <div class="cell-row">Ana Antunes Pereira</div>
+                <div class="cell-row">${appointment.getPatient().getName()}</div>
             </div>
             <div class="perfil-row">
                 <div class="cell-row">Data de nascimento</div>
-                <div class="cell-row">01/01/1990</div>
+                <div class="cell-row">${appointment.getPatient().getBirthdayStr()}</div>
             </div>
             <div class="perfil-row">
                 <div class="cell-row">Telemóvel</div>
-                <div class="cell-row">915 452 657</div>
+                <div class="cell-row">${appointment.getPatient().getPhoneStr()}</div>
             </div>
 
             <div class="info_appt">
                 <div class="perfil-row">
                     <div class="cell-row">Data da consulta</div>
-                    <div class="cell-row">20/02/2021</div>
+                    <div class="cell-row">${appointment.getSlot().getDateStr()}</div>
                 </div>
 
                 <div class="perfil-row">
                     <div class="cell-row">Hora da consulta</div>
-                    <div class="cell-row">10:00</div>
+                    <div class="cell-row">${appointment.getSlot().getTimeBeginStr()}</div>
                 </div>
 
                 <div class="perfil-row">
-                    <p class="cell-row status">Primeira Consulta: SIM </p>
+                    <div class="cell-row">Primeira Consulta:</div>
+                    <p class="cell-row status">${isFirstAppointmentStr}</p>
                 </div>
 
                 <div class="perfil-row">
-                    <p class="cell-row status">Estado da Consulta: CONFIRMADA </p>
+                    <div class="cell-row">Estado da Consulta:</div>
+                    <p class="cell-row status">${appointmentState}</p>
                 </div>
 
             </div>
 
 
-            <form action="/action_page.php">
+            <form action="/doctor/appointment/notes/${appointment.getAppointmentId()}" method="post">
                 <h3>Notas:</h3>
-                <textarea name="message" class="perfil-row" rows=10 ></textarea>
+                <textarea name="message" class="perfil-row" rows=10 >${appointment.getNotes()}</textarea>
+
+                <div class="perfil-main-col">
+                    <div class="perfil-row">
+                        <div class="cell-row">
+                            <a href="/doctor/main" class="btn btn-green">Voltar atrás</a>
+                        </div>
+
+                        <div class="cell-row">
+                            <button type="submit" class="btn btn-blue">Guardar</button>
+                        </div>
+                    </div>
+                </div>
+
+
             </form>
 
-            <div class="perfil-main-col">
-                <div class="perfil-row">
-                    <div class="cell-row">
-                        <a href="/doctor/main" class="btn btn-green">Voltar atrás</a>
-                    </div>
 
-                    <div class="cell-row">
-                        <a href="" class="btn btn-blue">Guardar</a>
-                    </div>
-                </div>
-            </div>
 
         </div>
 

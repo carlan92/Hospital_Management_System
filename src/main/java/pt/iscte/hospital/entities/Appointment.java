@@ -59,10 +59,6 @@ public class Appointment implements Comparable<Appointment> {
         return appointmentId;
     }
 
-    public void setAppointmentId(Long appointmentId) {
-        this.appointmentId = appointmentId;
-    }
-
     public Patient getPatient() {
         return patient;
     }
