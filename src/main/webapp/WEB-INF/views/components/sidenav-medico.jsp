@@ -46,6 +46,9 @@
                     <a href="/doctor/appointment-list/resume" class="botao_acessos">
                         <img src="/imagens/noun_heart_rate.svg" /> Consultas
                     </a>
+                    <a href="/user/lista-chamada" class="botao_acessos">
+                        <img src="/imagens/draw_cal_checkmark.svg"/> Lista de Chamada
+                    </a>
                 </div>
 
                 <div class="sidenav_row">

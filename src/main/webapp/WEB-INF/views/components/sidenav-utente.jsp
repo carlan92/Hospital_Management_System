@@ -46,6 +46,9 @@
                     <a href="/patient/checkin" class="botao_acessos">
                         <img src="/imagens/draw_cal_checkmark.svg"/> Check in
                     </a>
+                    <a href="/user/lista-chamada" class="botao_acessos">
+                        <img src="/imagens/draw_cal_checkmark.svg"/> Lista de Chamada
+                    </a>
                 </div>
 
                 <div class="sidenav_row">
