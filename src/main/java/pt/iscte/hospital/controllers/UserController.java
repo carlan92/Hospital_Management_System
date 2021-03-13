@@ -256,7 +256,7 @@ public class UserController {
         List<DoctorWaitingPatient> listaChamada = doctorWaitingPatientRepository.findAllByDate(todayDate);
 
         // Últimas 10 chamadas
-        int minLength = Math.min(9, listaChamada.size() - 1);
+        int minLength = Math.min(9, Math.max(listaChamada.size() - 1,0));
         Collections.sort(listaChamada, Collections.reverseOrder());
         listaChamada.subList(0,minLength);
 
