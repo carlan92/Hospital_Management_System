@@ -18,9 +18,7 @@ import pt.iscte.hospital.services.user.PatientService;
 import pt.iscte.hospital.services.user.UserService;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 
 import static pt.iscte.hospital.entities.states.AppointmentState.*;
 
@@ -303,7 +301,8 @@ public class AppointmentListController {
                                                       @RequestParam(required = false) @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate date,
                                                       @RequestParam(required = false) String specialityName,
                                                       @RequestParam String patientName,
-                                                      @RequestParam (required = false) String stateAppointment,
+                                                      @RequestParam(required = false) String stateAppointment,
+                                                      @RequestParam(required = false) String stateInvoice,
                                                       @RequestParam String doctorName) {
         User userLogged = userService.currentUser();
         List<AppointmentState> appointmentStatesAll = Arrays.asList(AppointmentState.values());
@@ -313,21 +312,29 @@ public class AppointmentListController {
             specialityName = "";
         }
 
-        List<Appointment> appointments;
-        if (date == null) {
-            appointments = appointmentService.findAllBySlotDoctorNameContainingIgnoreCaseAndPatientNameContainingIgnoreCaseAndSlotDoctorSpecialityNameContainingIgnoreCase(doctorName,
-                    patientName,
-                    specialityName);
+        Integer appointmentStateNr;
+        if (stateAppointment == null) {
+            appointmentStateNr = null;
         } else {
-            appointments = appointmentService.findAllBySlotDateAndSlotDoctorNameContainingIgnoreCaseAndPatientNameContainingIgnoreCaseAndSlotDoctorSpecialityNameContainingIgnoreCase(date,
-                    doctorName,
-                    patientName,
-                    specialityName);
+            appointmentStateNr = Integer.parseInt(stateAppointment);
         }
 
-        for (AppointmentState appointmentState : appointmentStatesAll) {
-            appointments.addAll(appointmentService.findAllByAppointmentStatus(appointmentState.getStateNr()));
+        Integer invoiceStateNr;
+        if (stateInvoice == null) {
+            invoiceStateNr = null;
+        } else {
+            invoiceStateNr = Integer.parseInt(stateInvoice);
         }
+
+        List<Appointment> appointmentListBeforeFilter = appointmentRepository.findAll();
+        List<Appointment> appointments = filterAppointments(
+                appointmentListBeforeFilter,
+                date,
+                patientName,
+                specialityName,
+                doctorName,
+                appointmentStateNr,
+                invoiceStateNr);
 
         appointments.sort(null);
 
@@ -349,6 +356,7 @@ public class AppointmentListController {
     }
     //***************************
 
+    // Private Methods
 
     private ModelMap appointmentListView(List<Appointment> appointments,
                                          User userLogged,
@@ -375,5 +383,97 @@ public class AppointmentListController {
         modelMap.put("patientName", patientName);
         return modelMap;
     }
+
+    private List<Appointment> filterAppointments(List<Appointment> appointmentList,
+                                                 LocalDate date,
+                                                 String patientName,
+                                                 String specialityName,
+                                                 String doctorName,
+                                                 Integer appointmentStateNr,
+                                                 Integer invoiceStateNr) {
+        List<Appointment> result = appointmentList;
+        // Filter by date
+        if (date != null) {
+            Set<Appointment> tempList = new HashSet<>();
+            for (Appointment appointment : result) {
+                if (appointment.getSlot().getDate().equals(date)) {
+                    tempList.add(appointment);
+                }
+            }
+            result.clear();
+            result.addAll(tempList);
+        }
+
+        // Filter by Patient Name
+        if (patientName != null && !patientName.isEmpty()) {
+            Set<Appointment> tempList = new HashSet<>();
+            String[] patientNamesSearch = patientName.split(" ");
+            for (String nameSearch : patientNamesSearch) {
+                for (Appointment appointment : result) {
+                    if (appointment.getPatient().getName().equalsIgnoreCase(nameSearch)) {
+                        tempList.add(appointment);
+                    }
+                }
+            }
+            result.clear();
+            result.addAll(tempList);
+        }
+
+        // Filter by Speciality
+        if (specialityName != null && !specialityName.isEmpty()) {
+            Set<Appointment> tempList = new HashSet<>();
+            for (Appointment appointment : result) {
+                if (appointment.getSlot()
+                        .getDoctor()
+                        .getSpeciality()
+                        .getName().equals(specialityName)) {
+                    tempList.add(appointment);
+                }
+            }
+            result.clear();
+            result.addAll(tempList);
+        }
+
+        // Doctor Name
+        if (doctorName != null && !doctorName.isEmpty()) {
+            Set<Appointment> tempList = new HashSet<>();
+            String[] doctorNamesSearch = doctorName.split(" ");
+            for (String nameSearch : doctorNamesSearch) {
+                for (Appointment appointment : result) {
+                    if (appointment.getSlot().getDoctor().getName().equalsIgnoreCase(nameSearch)) {
+                        tempList.add(appointment);
+                    }
+                }
+            }
+            result.clear();
+            result.addAll(tempList);
+        }
+
+        // Estado da consulta
+        if (appointmentStateNr != null) {
+            Set<Appointment> tempList = new HashSet<>();
+            for (Appointment appointment : result) {
+                if (appointment.getAppointmentStatus() == appointmentStateNr) {
+                    tempList.add(appointment);
+                }
+            }
+            result.clear();
+            result.addAll(tempList);
+        }
+
+        // Estado da facturação
+        if (invoiceStateNr != null) {
+            Set<Appointment> tempList = new HashSet<>();
+            for (Appointment appointment : result) {
+                if (appointment.getInvoice() != null && appointment.getInvoice().getInvoiceState() == invoiceStateNr) {
+                    tempList.add(appointment);
+                }
+            }
+            result.clear();
+            result.addAll(tempList);
+        }
+        return result;
+    }
+
 
 }

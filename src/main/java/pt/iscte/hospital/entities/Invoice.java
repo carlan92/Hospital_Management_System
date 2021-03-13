@@ -1,6 +1,7 @@
 package pt.iscte.hospital.entities;
 
 import org.springframework.format.annotation.DateTimeFormat;
+import pt.iscte.hospital.entities.states.InvoiceState;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -23,18 +24,20 @@ public class Invoice {
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
     private Date date;
     private Double value;
-    private Boolean isPaid;
+
+    private int invoiceState;
 
 
     // Constructors
     public Invoice() {
+        this.invoiceState = InvoiceState.NAO_FACTURADA.getStateNr();
     }
 
-    public Invoice(Long invoiceId, Date date, Double value, Boolean isPaid) {
+    public Invoice(Long invoiceId, Date date, Double value) {
         this.invoiceId = invoiceId;
         this.date = date;
         this.value = value;
-        this.isPaid = isPaid;
+        this.invoiceState = InvoiceState.NAO_FACTURADA.getStateNr();
     }
 
     // Methods
@@ -42,16 +45,9 @@ public class Invoice {
         return invoiceId;
     }
 
-    public void setInvoiceId(Long invoiceId) {
-        this.invoiceId = invoiceId;
-    }
 
-    /*public Long getAppointment() {
+    public Appointment getAppointment() {
         return appointment;
-    }*/
-
-    public void setAppointment(Long appointmentId) {
-        this.appointment = appointment;
     }
 
     public Receptionist getReceptionist() {
@@ -74,21 +70,23 @@ public class Invoice {
         this.value = value;
     }
 
-    public Boolean isPaid() {
-        return isPaid;
+    public int getInvoiceState() {
+        return invoiceState;
     }
 
-    public void setPaid(Boolean paid) {
-        isPaid = paid;
+    public void setInvoiceState(int invoiceState) {
+        this.invoiceState = invoiceState;
     }
 
     @Override
     public String toString() {
         return "Invoice{" +
                 "invoiceId=" + invoiceId +
+                ", appointment=" + appointment +
+                ", receptionist=" + receptionist +
                 ", date=" + date +
                 ", value=" + value +
-                ", isPaid=" + isPaid +
+                ", invoiceState=" + invoiceState +
                 '}';
     }
 }
