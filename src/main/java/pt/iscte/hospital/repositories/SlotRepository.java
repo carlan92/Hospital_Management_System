@@ -14,5 +14,7 @@ public interface SlotRepository extends JpaRepository<Slot, Long> {
     List<Slot> findAllByDoctorAndIsAvailableAndDateOrderByTimeBeginAsc(Doctor doctor, boolean isAvailable,LocalDate date);
     Long countByDoctorAndDate(Doctor doctor, LocalDate date);
     Long countByDoctorAndIsAvailableAndDate(Doctor doctor, boolean isAvailable,LocalDate date);
+    Long countByDoctorSpecialityNameAndDate(String specialityName, LocalDate date);
+    Long countByDoctorSpecialityNameAndIsAvailableAndDate(String specialityName, boolean isAvailable, LocalDate date);
     Slot findBySlotId(Long slotId);
 }

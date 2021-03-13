@@ -21,11 +21,16 @@ public interface SlotService {
     List<Slot> findAll(Sort sort);
     Long countByDoctorAndDate(Doctor doctor, LocalDate date);
     Long countByDoctorAndIsAvailableAndDate(Doctor doctor, boolean isAvailable,LocalDate date);
+    Long countByDoctorSpecialityNameAndDate(String specialityName, LocalDate date);
+    Long countByDoctorSpecialityNameAndIsAvailableAndDate(String specialityName, boolean isAvailable, LocalDate date);
     Slot findBySlotId(Long slotId);
+
     void generateSlots(int duration,
                        List<TimeInterval> timeIntervalList,
                        List<DayOfWeek> weekDaysList,
                        int year,
                        int month);
+
     List<Day> calendarColor(List<Day> calendar, Doctor doctor);
+    List<Day> calendarColor(List<Day> calendar, String specialityName);
 }

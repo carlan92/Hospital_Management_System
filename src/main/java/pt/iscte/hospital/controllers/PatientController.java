@@ -167,6 +167,8 @@ public class PatientController {
         List<Day> calendar = Calendar.calendarList(calYear, calMonth);
         if (!doctorId.isEmpty()) {
             calendar = slotService.calendarColor(calendar, doctor);
+        } else if(!specialityName.isEmpty()){
+            calendar = slotService.calendarColor(calendar, specialityName);
         }
         User userLogged = userService.currentUser();
 
