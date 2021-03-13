@@ -36,7 +36,7 @@ public class PatientServiceImpl implements PatientService {
 
     @Override
     public List<Patient> findAllByFirstAndLastName(String name) {
-        List<Patient> patients = patientRepository.findAllByNameContainingIgnoreCase(name);
+        List<Patient> patients = patientRepository.findAll();
         return filterByFirstAndLastName(name, patients);
     }
 

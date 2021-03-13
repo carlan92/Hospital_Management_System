@@ -54,6 +54,9 @@ public class AppointmentListController {
     @GetMapping(value = {"/patient/appointment-list/current"})
     public String showAppointmentListPatientCurrent(ModelMap modelMap) {
         User userLogged = userService.currentUser();
+        List<AppointmentState> appointmentStatesAll = Arrays.asList(AppointmentState.values());
+        List<InvoiceState> invoiceStates = Arrays.asList(InvoiceState.values());
+
         List<Appointment> appointments = new ArrayList<>();
         List<AppointmentState> appointmentStates = Arrays.asList(MARCADA);
 
@@ -62,6 +65,9 @@ public class AppointmentListController {
             appointments.addAll(appointmentService.findAllByPatientAndAppointmentStatus(patient, appointmentState.getStateNr()));
         }
         appointments.sort(null);
+
+        modelMap.put("appointmentStates", appointmentStatesAll);
+        modelMap.put("invoiceStates", invoiceStates);
 
         modelMap.addAllAttributes(appointmentListView(
                 appointments,
@@ -79,6 +85,10 @@ public class AppointmentListController {
     @GetMapping(value = {"/patient/appointment-list/past"})
     public String showAppointmentListPatientPast(ModelMap modelMap) {
         User userLogged = userService.currentUser();
+
+        List<AppointmentState> appointmentStatesAll = Arrays.asList(AppointmentState.values());
+        List<InvoiceState> invoiceStates = Arrays.asList(InvoiceState.values());
+
         List<Appointment> appointments = new ArrayList<>();
         List<AppointmentState> appointmentStates = Arrays.asList(DESMARCADA_PELO_UTENTE,
                 DESMARCADA_PELO_MEDICO,
@@ -91,6 +101,8 @@ public class AppointmentListController {
         }
         appointments.sort(null);
 
+        modelMap.put("appointmentStates", appointmentStatesAll);
+        modelMap.put("invoiceStates", invoiceStates);
         modelMap.addAllAttributes(appointmentListView(
                 appointments,
                 userLogged,
@@ -173,31 +185,47 @@ public class AppointmentListController {
     public String showAppointmentListPatientCurrentPost(ModelMap modelMap,
                                                         @RequestParam(required = false) @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate date,
                                                         @RequestParam(required = false) String specialityName,
+                                                        @RequestParam(required = false) String stateAppointment,
+                                                        @RequestParam(required = false) String stateInvoice,
                                                         @RequestParam String doctorName) {
         User userLogged = userService.currentUser();
-        List<Appointment> appointments = new ArrayList<>();
-        List<AppointmentState> appointmentStates = Arrays.asList(MARCADA);
+        List<AppointmentState> appointmentStatesAll = Arrays.asList(AppointmentState.values());
+        List<InvoiceState> invoiceStates = Arrays.asList(InvoiceState.values());
+
+        Long userId=userLogged.getUserId();
 
         if (specialityName == null) {
             specialityName = "";
         }
 
-        for (AppointmentState appointmentState : appointmentStates) {
-            if (date == null) {
-                appointments.addAll(appointmentService.findAllByPatientUserIdAndAppointmentStatusAndSlotDoctorNameContainingIgnoreCaseAndSlotDoctorSpecialityNameContainingIgnoreCase(userLogged.getUserId(),
-                        appointmentState.getStateNr(),
-                        doctorName,
-                        specialityName));
-            } else {
-                appointments.addAll(appointmentService.findAllByPatientUserIdAndAppointmentStatusAndSlotDateAndSlotDoctorNameContainingIgnoreCaseAndSlotDoctorSpecialityNameContainingIgnoreCase(userLogged.getUserId(),
-                        appointmentState.getStateNr(),
-                        date,
-                        doctorName,
-                        specialityName));
-            }
+        Integer appointmentStateNr;
+        if (stateAppointment == null) {
+            appointmentStateNr = null;
+        } else {
+            appointmentStateNr = Integer.parseInt(stateAppointment);
         }
+        Integer invoiceStateNr;
+        if (stateInvoice == null) {
+            invoiceStateNr = null;
+        } else {
+            invoiceStateNr = Integer.parseInt(stateInvoice);
+        }
+
+        List<Appointment> appointmentListBeforeFilter = appointmentRepository.findAllByPatientUserId(userId);
+        List<Appointment> appointments = filterAppointments(
+                appointmentListBeforeFilter,
+                date,
+                null,
+                specialityName,
+                null,
+                appointmentStateNr,
+                invoiceStateNr);
+
+
         appointments.sort(null);
 
+        modelMap.put("appointmentStates", appointmentStatesAll);
+        modelMap.put("invoiceStates", invoiceStates);
         modelMap.addAllAttributes(appointmentListView(
                 appointments,
                 userLogged,
@@ -215,34 +243,45 @@ public class AppointmentListController {
     public String showAppointmentListPatientPastPost(ModelMap modelMap,
                                                      @RequestParam(required = false) @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate date,
                                                      @RequestParam(required = false) String specialityName,
+                                                     @RequestParam(required = false) String stateAppointment,
+                                                     @RequestParam(required = false) String stateInvoice,
                                                      @RequestParam String doctorName) {
         User userLogged = userService.currentUser();
-        List<Appointment> appointments = new ArrayList<>();
-        List<AppointmentState> appointmentStates = Arrays.asList(DESMARCADA_PELO_UTENTE,
-                DESMARCADA_PELO_MEDICO,
-                REALIZADA,
-                NAO_REALIZADA);
+        List<AppointmentState> appointmentStatesAll = Arrays.asList(AppointmentState.values());
+        List<InvoiceState> invoiceStates = Arrays.asList(InvoiceState.values());
 
         if (specialityName == null) {
             specialityName = "";
         }
+        Long userId=userLogged.getUserId();
 
-        for (AppointmentState appointmentState : appointmentStates) {
-            if (date == null) {
-                appointments.addAll(appointmentService.findAllByPatientUserIdAndAppointmentStatusAndSlotDoctorNameContainingIgnoreCaseAndSlotDoctorSpecialityNameContainingIgnoreCase(userLogged.getUserId(),
-                        appointmentState.getStateNr(),
-                        doctorName,
-                        specialityName));
-            } else {
-                appointments.addAll(appointmentService.findAllByPatientUserIdAndAppointmentStatusAndSlotDateAndSlotDoctorNameContainingIgnoreCaseAndSlotDoctorSpecialityNameContainingIgnoreCase(userLogged.getUserId(),
-                        appointmentState.getStateNr(),
-                        date,
-                        doctorName,
-                        specialityName));
-            }
+        Integer appointmentStateNr;
+        if (stateAppointment == null) {
+            appointmentStateNr = null;
+        } else {
+            appointmentStateNr = Integer.parseInt(stateAppointment);
         }
+        Integer invoiceStateNr;
+        if (stateInvoice == null) {
+            invoiceStateNr = null;
+        } else {
+            invoiceStateNr = Integer.parseInt(stateInvoice);
+        }
+
+        List<Appointment> appointmentListBeforeFilter = appointmentRepository.findAllByPatientUserId(userId);
+        List<Appointment> appointments = filterAppointments(
+                appointmentListBeforeFilter,
+                date,
+                null,
+                specialityName,
+                null,
+                appointmentStateNr,
+                invoiceStateNr);
+
         appointments.sort(null);
 
+        modelMap.put("appointmentStates", appointmentStatesAll);
+        modelMap.put("invoiceStates", invoiceStates);
         modelMap.addAllAttributes(appointmentListView(
                 appointments,
                 userLogged,
@@ -260,6 +299,7 @@ public class AppointmentListController {
     public String showAppointmentListDoctorPost(ModelMap modelMap,
                                                 @RequestParam(required = false) @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate date,
                                                 @RequestParam(required = false) String specialityName,
+                                                @RequestParam(required = false) String stateAppointment,
                                                 @RequestParam String patientName) {
         User userLogged = userService.currentUser();
         List<AppointmentState> appointmentStatesAll = Arrays.asList(AppointmentState.values());
@@ -267,18 +307,24 @@ public class AppointmentListController {
         if (specialityName == null) {
             specialityName = "";
         }
+        Long userId=userLogged.getUserId();
 
-        Long userId = userLogged.getUserId();
-
-        List<Appointment> appointments;
-        if (date == null) {
-            appointments = appointmentService.findAllByPatientNameContainingIgnoreCaseAndSlotDoctorUserId(patientName,
-                    userId);
+        Integer appointmentStateNr;
+        if (stateAppointment == null) {
+            appointmentStateNr = null;
         } else {
-            appointments = appointmentService.findAllBySlotDateAndPatientNameContainingIgnoreCaseAndSlotDoctorUserId(date,
-                    patientName,
-                    userId);
+            appointmentStateNr = Integer.parseInt(stateAppointment);
         }
+
+        List<Appointment> appointmentListBeforeFilter = appointmentRepository.findAllBySlotDoctorUserId(userId);
+        List<Appointment> appointments = filterAppointments(
+                appointmentListBeforeFilter,
+                date,
+                patientName,
+                specialityName,
+                null,
+                appointmentStateNr,
+                null);
 
         appointments.sort(null);
         modelMap.put("appointmentStates", appointmentStatesAll);
@@ -410,7 +456,7 @@ public class AppointmentListController {
             String[] patientNamesSearch = patientName.split(" ");
             for (String nameSearch : patientNamesSearch) {
                 for (Appointment appointment : result) {
-                    if (appointment.getPatient().getName().equalsIgnoreCase(nameSearch)) {
+                    if (appointment.getPatient().getFirstAndLastName().toLowerCase().contains(nameSearch.toLowerCase())) {
                         tempList.add(appointment);
                     }
                 }
@@ -440,7 +486,7 @@ public class AppointmentListController {
             String[] doctorNamesSearch = doctorName.split(" ");
             for (String nameSearch : doctorNamesSearch) {
                 for (Appointment appointment : result) {
-                    if (appointment.getSlot().getDoctor().getName().equalsIgnoreCase(nameSearch)) {
+                    if (appointment.getSlot().getDoctor().getFirstAndLastName().toLowerCase().contains(nameSearch.toLowerCase())) {
                         tempList.add(appointment);
                     }
                 }

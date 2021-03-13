@@ -15,6 +15,9 @@ public interface AppointmentRepository extends JpaRepository<Appointment, Long> 
     List<Appointment> findAllByAppointmentStatus(Integer appointmentStatus);
 
     // Patient Filters
+    List<Appointment> findAllByPatientUserId(
+            Long userId);
+
     List<Appointment> findAllByPatientAndAppointmentStatus(
             Patient patient,
             Integer appointmentStatus);

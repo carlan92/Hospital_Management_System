@@ -125,7 +125,7 @@ public class DoctorServiceImpl implements DoctorService {
 
     @Override
     public List<Doctor> findAllByFirstAndLastName(String name) {
-        List<Doctor> doctors = doctorRepository.findAllByNameContainingIgnoreCase(name);
+        List<Doctor> doctors = doctorRepository.findAll();
         return filterByFirstAndLastName(name, doctors);
     }
 
