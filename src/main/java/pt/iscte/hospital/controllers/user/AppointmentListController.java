@@ -111,10 +111,18 @@ public class AppointmentListController {
         User userLogged = userService.currentUser();
 
         Long userId = userLogged.getUserId();
-
-        List<Appointment> appointments = new ArrayList<>(appointmentService.findAllBySlotDoctorUserId(userId));
+        List<Appointment> appointments = new ArrayList<>();
+        List<AppointmentState> appointmentStatesAll = Arrays.asList(AppointmentState.values());
+        List<AppointmentState> appointmentStates = Arrays.asList(MARCADA,
+                EM_CURSO,
+                DESMARCADA_PELO_MEDICO,
+                REALIZADA,
+                NAO_REALIZADA);
+        for (AppointmentState appointmentState : appointmentStates) {
+            appointments.addAll(appointmentService.findAllBySlotDoctorUserIdAndAppointmentStatus(userId, appointmentState.getStateNr()));
+        }
         appointments.sort(null);
-
+        modelMap.put("appointmentStates", appointmentStatesAll);
         modelMap.addAllAttributes(appointmentListView(
                 appointments,
                 userLogged,

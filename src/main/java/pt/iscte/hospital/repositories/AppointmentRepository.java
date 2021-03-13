@@ -3,6 +3,7 @@ package pt.iscte.hospital.repositories;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 import pt.iscte.hospital.entities.Appointment;
+import pt.iscte.hospital.entities.Doctor;
 import pt.iscte.hospital.entities.Patient;
 
 import java.time.LocalDate;
@@ -59,6 +60,10 @@ public interface AppointmentRepository extends JpaRepository<Appointment, Long> 
             String patientName,
             Long userId);
 
+    List<Appointment> findAllBySlotDoctorUserIdAndAppointmentStatus(
+            Long doctorId,
+            int appointmentStatus);
+
     // Receptionist Filters
     List<Appointment> findAllBySlotDateAndSlotDoctorNameContainingIgnoreCaseAndPatientNameContainingIgnoreCaseAndSlotDoctorSpecialityNameContainingIgnoreCase(
             LocalDate date,
@@ -77,6 +82,7 @@ public interface AppointmentRepository extends JpaRepository<Appointment, Long> 
             String specialityName,
             String doctorName,
             String patientName);
+
 
     // Gestão das consultas (Médico)
     List<Appointment> findAllBySlotDoctorUserIdAndSlotDateAndAppointmentStatusAndHasCheckedOrderBySlotTimeBeginAsc(

@@ -52,6 +52,7 @@
                                     </c:forEach>
                                 </select>
                                 <input type="text" class="form-input sm" placeholder="Nome do Médico" name="doctorName">
+                                </c:if>
                                 </br>
                                 <select id="appointment-state_id" class="form-input sm" name="stateAppointment">
                                     <option value="" disabled selected>Estado da consulta</option>
@@ -60,6 +61,7 @@
                                         <option value="${state.getStateNr()}"> ${state.getDescription()}</option>
                                     </c:forEach>
                                 </select>
+                                <c:if test="${user_logged.getAccount().equals('Utente') ||  user_logged.getAccount().equals('Recepcionista')}">
                                 <select id="invoice-state_id" class="form-input sm" name="stateInvoice">
                                     <option value="" disabled selected>Estado da faturação</option>
                                     <!-- For -->

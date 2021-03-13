@@ -1,6 +1,7 @@
 package pt.iscte.hospital.services;
 
 import pt.iscte.hospital.entities.Appointment;
+import pt.iscte.hospital.entities.Doctor;
 import pt.iscte.hospital.entities.Patient;
 
 import java.time.LocalDate;
@@ -53,7 +54,7 @@ public interface AppointmentService {
     List<Appointment> findAllBySlotDateAndPatientNameContainingIgnoreCaseAndSlotDoctorUserId(LocalDate date,
                                                                                              String patientName,
                                                                                              Long userId);
-
+    List<Appointment> findAllBySlotDoctorUserIdAndAppointmentStatus(Long doctorId, int appointmentStatus);
     // Receptionist Filters
     List<Appointment> findAllBySlotDateAndSlotDoctorNameContainingIgnoreCaseAndPatientNameContainingIgnoreCaseAndSlotDoctorSpecialityNameContainingIgnoreCase(
             LocalDate date,
