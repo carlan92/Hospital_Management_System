@@ -153,6 +153,7 @@ public class CheckIn {
     private void saveCheckIn(Long appointmentId) {
         Appointment appointmentCheckIn = appointmentService.findByAppointmentId(appointmentId);
         appointmentCheckIn.setHasChecked(true);
+        appointmentCheckIn.setDate(LocalDate.now());
         appointmentCheckIn.setTimeOfArrival(LocalTime.now());
         appointmentService.saveAppointment(appointmentCheckIn);
     }

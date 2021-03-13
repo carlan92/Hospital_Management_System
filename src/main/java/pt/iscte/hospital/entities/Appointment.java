@@ -38,8 +38,7 @@ public class Appointment implements Comparable<Appointment> {
 
     private int appointmentStatus;
 
-    @OneToOne(mappedBy = "appointment", cascade = CascadeType.ALL)
-    @PrimaryKeyJoinColumn
+    @OneToOne(mappedBy = "appointment")
     private DoctorWaitingPatient doctorWaitingPatient;
 
     // Constructors

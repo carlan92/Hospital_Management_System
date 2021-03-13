@@ -12,16 +12,15 @@ import java.time.LocalTime;
 public class DoctorWaitingPatient implements Comparable<DoctorWaitingPatient>{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
-    private Long id;
+    @Column(name = "doctor_waiting_patient_id")
+    private Long doctorWaitingPatientId;
 
     private LocalDate date;
     private LocalTime timeFirstCall;
     private LocalTime timeLatestCall;
 
-    @OneToOne
-    @MapsId
-    @JoinColumn(name = "appointment_id")
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "appointment_id", referencedColumnName = "appointment_id")
     private Appointment appointment;
 
     // Constructors
