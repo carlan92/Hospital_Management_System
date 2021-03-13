@@ -154,6 +154,10 @@ public class Appointment implements Comparable<Appointment> {
         return doctorWaitingPatient;
     }
 
+    public void setDoctorWaitingPatient(DoctorWaitingPatient doctorWaitingPatient) {
+        this.doctorWaitingPatient = doctorWaitingPatient;
+    }
+
     public boolean missedAppointment(){
         int missedAppointmentNr = AppointmentState.NAO_REALIZADA.getStateNr();
         return appointmentStatus == missedAppointmentNr;

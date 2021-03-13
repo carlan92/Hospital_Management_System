@@ -40,6 +40,8 @@ public class DoctorServiceImpl implements DoctorService {
 
         if (doctorWaitingPatient == null){
             doctorWaitingPatient = new DoctorWaitingPatient(appointment);
+            appointment.setDoctorWaitingPatient(doctorWaitingPatient);
+            appointmentRepository.save(appointment);
         }
 
         doctorWaitingPatient.setTimeLatestCall(LocalTime.now());
