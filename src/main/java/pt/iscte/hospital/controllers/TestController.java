@@ -71,8 +71,10 @@ public class TestController {
         /*weekDaysList.add(DayOfWeek.MONDAY);
         weekDaysList.add(DayOfWeek.TUESDAY);
         weekDaysList.add(DayOfWeek.WEDNESDAY);*/
-        weekDaysList.add(DayOfWeek.THURSDAY);
-        weekDaysList.add(DayOfWeek.FRIDAY);
+        /*weekDaysList.add(DayOfWeek.THURSDAY);
+        weekDaysList.add(DayOfWeek.FRIDAY);*/
+        weekDaysList.add(DayOfWeek.SATURDAY);
+        weekDaysList.add(DayOfWeek.SUNDAY);
 
         slotService.generateSlots(duration, timeIntervalList, weekDaysList, year, month);
     }

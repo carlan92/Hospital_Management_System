@@ -1,0 +1,19 @@
+package pt.iscte.hospital.services.waiting;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import pt.iscte.hospital.entities.waiting.DoctorWaitingPatient;
+import pt.iscte.hospital.repositories.waiting.DoctorWaitingPatientRepository;
+
+import java.time.LocalDate;
+import java.util.List;
+
+@Service
+public class DoctorWaitingPatientServiceImpl {
+    @Autowired
+    DoctorWaitingPatientRepository doctorWaitingPatientRepository;
+
+    public List<DoctorWaitingPatient> findAllByDate(LocalDate date){
+        return doctorWaitingPatientRepository.findAllByDate(date);
+    }
+}

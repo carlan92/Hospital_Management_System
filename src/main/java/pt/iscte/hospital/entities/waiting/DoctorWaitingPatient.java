@@ -1,6 +1,7 @@
 package pt.iscte.hospital.entities.waiting;
 
 import pt.iscte.hospital.entities.Appointment;
+import pt.iscte.hospital.objects.utils.Calendar;
 
 import javax.persistence.*;
 import java.time.LocalDate;
@@ -8,7 +9,7 @@ import java.time.LocalTime;
 
 @Entity
 @Table(name = "doctor_waiting_patient")
-public class DoctorWaitingPatient {
+public class DoctorWaitingPatient implements Comparable<DoctorWaitingPatient>{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
@@ -46,11 +47,33 @@ public class DoctorWaitingPatient {
         return timeLatestCall;
     }
 
+    public String getTimeLatestCallStr() {
+        return timeLatestCall.format(Calendar.TIME_FORMATTER);
+    }
+
     public void setTimeLatestCall(LocalTime timeLatestCall) {
         this.timeLatestCall = timeLatestCall;
     }
 
     public Appointment getAppointment() {
         return appointment;
+    }
+
+    @Override
+    public int compareTo(DoctorWaitingPatient o) {
+        if (this.date.isBefore(o.date)) {
+            return -1;
+        } else if (this.date.isAfter(o.date)) {
+            return 1;
+        } else {
+            // Same date
+            if (this.timeLatestCall.isBefore(o.timeLatestCall)) {
+                return -1;
+            } else if (this.timeLatestCall.isAfter(o.timeLatestCall)) {
+                return 1;
+            } else {
+                return 0;
+            }
+        }
     }
 }

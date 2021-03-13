@@ -43,12 +43,12 @@
 
                     <tbody>
                     <!-- For -->
-                    <c:forEach var="appointment" items="${appointments}">
+                    <c:forEach var="chamada" items="${listaChamada}">
                         <tr class="appointment-table-details">
-                            <td>${appointment.getSlot().getDateStr()}</td>
-                            <td>${appointment.getSlot().getTimeBegin()}</td>
-                            <td>${appointment.getSlot().getDoctor().getSpeciality().getName()}</td>
-                            <td>${appointment.getSlot().getDoctor().getTitleAndName()}</td>
+                            <td>${chamada.getTimeLatestCallStr()}</td>
+                            <td>${chamada.getAppointment().getPatient().getName()}</td>
+                            <td>${chamada.getAppointment().getSlot().getDoctor().getSpeciality().getName()}</td>
+                            <td>${chamada.getAppointment().getSlot().getDoctor().getTitleAndName()}</td>
                         </tr>
                     </c:forEach>
                     </tbody>

@@ -8,9 +8,11 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import pt.iscte.hospital.entities.*;
 import pt.iscte.hospital.entities.states.AppointmentState;
+import pt.iscte.hospital.entities.waiting.DoctorWaitingPatient;
 import pt.iscte.hospital.exceptions.ImageSizeException;
 import pt.iscte.hospital.exceptions.ImageTypeException;
 import pt.iscte.hospital.repositories.AppointmentRepository;
+import pt.iscte.hospital.repositories.waiting.DoctorWaitingPatientRepository;
 import pt.iscte.hospital.services.*;
 
 import pt.iscte.hospital.services.user.DoctorService;
@@ -19,6 +21,8 @@ import pt.iscte.hospital.services.user.UserService;
 import pt.iscte.hospital.services.validation.UserValidationService;
 
 import java.io.IOException;
+import java.time.LocalDate;
+import java.util.Collections;
 import java.util.List;
 
 import static pt.iscte.hospital.entities.states.AppointmentState.DESMARCADA_PELO_MEDICO;
@@ -44,6 +48,8 @@ public class UserController {
     private UserValidationService userValidationService;
     @Autowired
     private SlotService slotService;
+    @Autowired
+    private DoctorWaitingPatientRepository doctorWaitingPatientRepository;
 
     @Autowired
     AppointmentRepository appointmentRepository;
@@ -245,7 +251,17 @@ public class UserController {
 
     @GetMapping(value = "/user/lista-chamada")
     public String showListaChamada(ModelMap modelMap) {
+        // TODO top 10 e ordenar
+        LocalDate todayDate = LocalDate.now();
+        List<DoctorWaitingPatient> listaChamada = doctorWaitingPatientRepository.findAllByDate(todayDate);
+
+        // Últimas 10 chamadas
+        int minLength = Math.min(9, listaChamada.size() - 1);
+        Collections.sort(listaChamada, Collections.reverseOrder());
+        listaChamada.subList(0,minLength);
+
         modelMap.put("user_logged", userService.currentUser());
+        modelMap.put("listaChamada", listaChamada);
 
         return "user/lista-chamada";
     }
