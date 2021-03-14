@@ -16,9 +16,7 @@ public class HospitalApplication {
 
 		// TODO Run thread de gestão da lista de espera para marcação de consulta
 
-		// TODO Run thread de lista de espera (chamadas)
 
-		// TODO Fechar todas as consultas que se encontrarem abertas ao final do dia (após 12? + tempo?)
 	}
 
 }

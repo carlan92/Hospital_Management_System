@@ -1,7 +1,7 @@
 package pt.iscte.hospital.objects.utils;
 
 public enum AlertMessageImage {
-    // TODO alert message image
+    // Alert message image
     FAILURE("/imagens/draw_error.svg"),
     SUCCESS("/imagens/draw_success.svg");
 

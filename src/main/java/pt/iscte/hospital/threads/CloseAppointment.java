@@ -26,6 +26,7 @@ public class CloseAppointment {
     @Autowired
     AppointmentRepository appointmentRepository;
 
+    // Fechar todas as consultas que se encontrarem abertas ao fim de 24h
     @Scheduled(fixedRate = 60000)
     public void fecharConsultasAntigas() {
         changeAppointmentsState(MARCADA.getStateNr(), NAO_REALIZADA.getStateNr());
@@ -33,6 +34,7 @@ public class CloseAppointment {
         System.out.println("Limpeza do estado das consultas");
     }
 
+    // Run thread de lista de espera (chamadas), marcação de faltas
     @Scheduled(fixedRate = 60000)
     public void marcarAtrasos() {
         LocalDateTime todayDateTime = LocalDateTime.now();
