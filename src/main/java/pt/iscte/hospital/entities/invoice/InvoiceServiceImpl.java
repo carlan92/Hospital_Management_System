@@ -2,8 +2,6 @@ package pt.iscte.hospital.entities.invoice;
 
 import org.json.JSONObject;
 import org.springframework.http.*;
-import org.springframework.util.LinkedMultiValueMap;
-import org.springframework.util.MultiValueMap;
 import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.client.RestTemplate;
 
@@ -31,7 +29,15 @@ public class InvoiceServiceImpl implements InvoiceService {
         getInvoiceInfo("1e8de1e8-68fc-435f-9e87-c780de412ee1");
     }
 
-    public static void exp() {
+
+    // Criar factura
+    // /invoices/:company_nif/create
+    public static Invoice createInvoice(String name,
+                                        String email,
+                                        long nif,
+                                        LocalDate dueDate,
+                                        Double value,
+                                        List<InvoiceItem> invoiceItems) {
         DateFormat df = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm'Z'");
         df.setTimeZone(TimeZone.getTimeZone("UTC"));
 
@@ -44,20 +50,24 @@ public class InvoiceServiceImpl implements InvoiceService {
 
         // create body
         JSONObject invoiceRequest = new JSONObject();
-        invoiceRequest.put("name", "José Serro");
-        invoiceRequest.put("email", "email@exemplo.pt");
-        invoiceRequest.put("nif", "123456789");
-        invoiceRequest.put("duedate", df.format(new Date()));
-        invoiceRequest.put("value", "170");
+        invoiceRequest.put("name", name);
+        invoiceRequest.put("email", email);
+        invoiceRequest.put("nif", nif);
+        invoiceRequest.put("duedate", df.format(dueDate));
+        if (value != null) {
+            invoiceRequest.put("value", value);
+        } else {
+            invoiceRequest.put("items", invoiceItems);
+        }
 
         // request url
-        String requestUrl = "https://serro.pt/invoices/565486995/create";
+        String requestUrl =  BASE_URL + String.format(CREATE_URL, COMPANY_NIF);
 
         // request
         InvoiceResponse response = restTemplate.postForObject(requestUrl, new HttpEntity<>(invoiceRequest.toString(), headers), InvoiceResponse.class);
         if (response == null || response.getStatus().equals("error")) {
             //TODO fazer qualquer coisa com o erro
-            return;
+            return null;
         }
         System.out.println(response);
 
@@ -65,10 +75,8 @@ public class InvoiceServiceImpl implements InvoiceService {
         System.out.println(invoice);
         //TODO fazer qualquer coisa com o invoice
 
+        return invoice;
     }
-
-    // Criar factura
-    // /invoices/:company_nif/create
 
 
     // Vizualizar factura
@@ -122,7 +130,7 @@ public class InvoiceServiceImpl implements InvoiceService {
         InvoiceResponse response = null;
         try {
             response = restTemplate.postForObject(requestUrl, new HttpEntity<>(headers), InvoiceResponse.class);
-        } catch (HttpClientErrorException e){
+        } catch (HttpClientErrorException e) {
             System.out.println(e.getStatusCode().value());
             System.out.println(e.getMessage());
         }
