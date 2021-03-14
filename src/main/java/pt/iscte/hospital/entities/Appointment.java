@@ -1,6 +1,7 @@
 package pt.iscte.hospital.entities;
 
 import org.springframework.format.annotation.DateTimeFormat;
+import pt.iscte.hospital.entities.invoice.Invoice;
 import pt.iscte.hospital.entities.states.AppointmentState;
 import pt.iscte.hospital.entities.waiting.DoctorWaitingPatient;
 import pt.iscte.hospital.objects.utils.Calendar;

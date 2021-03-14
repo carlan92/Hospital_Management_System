@@ -7,3 +7,5 @@ https://www.baeldung.com/hibernate-inheritance
 https://www.baeldung.com/hibernate-one-to-many
 <br>
 https://www.baeldung.com/jpa-many-to-many
+<br>
+https://www.baeldung.com/intro-to-project-lombok

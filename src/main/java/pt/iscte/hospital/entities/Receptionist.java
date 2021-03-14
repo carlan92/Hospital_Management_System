@@ -2,12 +2,12 @@ package pt.iscte.hospital.entities;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import pt.iscte.hospital.entities.invoice.Invoice;
 import pt.iscte.hospital.security.Role;
 
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import java.util.Set;
 
@@ -15,8 +15,7 @@ import java.util.Set;
 @PrimaryKeyJoinColumn(name = "receptionist_id")
 public class Receptionist extends Employee {
     // Attributes
-    @OneToMany(mappedBy = "receptionist")
-    private Set<Invoice> invoices;
+
 
     // Constructors
     public Receptionist() {
@@ -39,10 +38,6 @@ public class Receptionist extends Employee {
     }
 
     // Methods
-    public Set<Invoice> getInvoices() {
-        return invoices;
-    }
-
     @Override
     public List<GrantedAuthority> getAuthorities() {
         List<GrantedAuthority> roles = new ArrayList<>();
