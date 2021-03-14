@@ -11,6 +11,7 @@ import pt.iscte.hospital.entities.states.AppointmentState;
 import pt.iscte.hospital.entities.waiting.DoctorWaitingPatient;
 import pt.iscte.hospital.exceptions.ImageSizeException;
 import pt.iscte.hospital.exceptions.ImageTypeException;
+import pt.iscte.hospital.objects.utils.AlertMessageImage;
 import pt.iscte.hospital.repositories.AppointmentRepository;
 import pt.iscte.hospital.repositories.waiting.DoctorWaitingPatientRepository;
 import pt.iscte.hospital.services.*;
@@ -222,14 +223,11 @@ public class UserController {
     @GetMapping(value = "/{userType}/appointment-details/{tempo}/{appointmentId}/cancel")
     public String showAppointmentDetailsAfterCancel(ModelMap modelMap,
                                                     @PathVariable(value = "userType") String userType,
-                                                    @PathVariable(value = "tempo") String tempo,
                                                     @PathVariable(value = "appointmentId") Long appointmentId) {
 
-        List<Speciality> specialities = specialityService.findAll(Sort.by(Sort.Direction.ASC, "name"));
         User userLogged = userService.currentUser();
         Appointment appointment = appointmentService.findByAppointmentId(appointmentId);
 
-        Patient patient = patientService.findByUserId(appointment.getPatient().getUserId());
 
         if (userType.equals("patient")) {
             cancelAppointment(DESMARCADA_PELO_UTENTE.getStateNr(), appointment);
@@ -237,16 +235,10 @@ public class UserController {
             cancelAppointment(DESMARCADA_PELO_MEDICO.getStateNr(), appointment);
         }
 
-        String appointmentDescription = AppointmentState.searchState(appointment.getAppointmentStatus());
-
-        modelMap.put("specialities", specialities);
+        modelMap.put("message", "A consulta foi cancelada com sucesso.");
+        modelMap.put("imageURL", AlertMessageImage.SUCCESS.getImageURL());
         modelMap.put("user_logged", userLogged);
-        modelMap.put("patient", patient);
-        modelMap.put("appointment", appointment);
-        modelMap.put("appointmentDescription", appointmentDescription);
-        modelMap.put("userType", userType);
-        modelMap.put("tempo", tempo);
-        return "user/appointment-details";
+        return "components/alert-message";
     }
 
     @GetMapping(value = "/user/lista-chamada")

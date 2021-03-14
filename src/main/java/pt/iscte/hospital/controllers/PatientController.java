@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import pt.iscte.hospital.entities.*;
+import pt.iscte.hospital.objects.utils.AlertMessageImage;
 import pt.iscte.hospital.objects.utils.Calendar;
 import pt.iscte.hospital.objects.utils.Day;
 import pt.iscte.hospital.objects.utils.Month;
@@ -91,9 +92,10 @@ public class PatientController {
     }
 
 
-    @PostMapping(value = {"/patient/make-appointment", "/patient/make-appointment/{saveOption}",
-            "/patient/reschedule/{appointmentId}",
-            "/patient/reschedule/save/{appointmentId}"})
+    @PostMapping(value = {"/patient/make-appointment",
+            "/patient/make-appointment/{saveOption}",
+            "/patient/reschedule/{appointmentId}/{saveOption}",
+            "/patient/reschedule/{appointmentId}"})
     public String makeAppointmentService(ModelMap modelMap,
                                          @RequestParam(required = false, name = "specialityName") String specialityName,
                                          @RequestParam(required = false, name = "doctorId") String doctorId,
@@ -186,13 +188,20 @@ public class PatientController {
         if (slotId != null && !slotId.isEmpty() && saveOption.equals("save")) {
             if(appointmentId==null) {
                 saveAppointment(slotId);
+
+                modelMap.put("message", "A consulta marcada com sucesso.");
+                modelMap.put("imageURL", AlertMessageImage.SUCCESS.getImageURL());
+                modelMap.put("user_logged", userLogged);
             }else{
                 saveAppointment(slotId);
                 Appointment appointmentForCancel = appointmentService.findByAppointmentId(appointmentId);
                 cancelAppointment(DESMARCADA_PELO_UTENTE.getStateNr(), appointmentForCancel);
-                // TODO Redireccionar à página de sucesso de marcação
+
+                modelMap.put("message", "A consulta foi reagendada com sucesso.");
+                modelMap.put("imageURL", AlertMessageImage.SUCCESS.getImageURL());
+                modelMap.put("user_logged", userLogged);
             }
-            return "redirect:/patient/main";
+            return "components/alert-message";
         }
 
         modelMap.put("specialities", specialities);
