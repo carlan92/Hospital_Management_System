@@ -51,8 +51,8 @@
                     <thead>
                     <tr>
                         <th>Data</th>
-                        <th>Utente</th>
                         <th>Hora</th>
+                        <th>Utente</th>
                         <th>Especialidade</th>
                         <th>Médico</th>
                     </tr>
@@ -60,27 +60,22 @@
                     <tbody>
                     <tr>
                         <td>20/12/2020</td>
-                        <td>Alice Costa</td>
                         <td>10:00</td>
+                        <td>Alice Costa</td>
+                        <td>Cardiologia</td>
+                        <td> Dr. Alberto</td>
+                    </tr>
+                    <tr>
+                        <td>20/12/2020</td>
+                        <td>10:00</td>
+                        <td>Alice Costa</td>
                         <td>Cardiologia</td>
                         <td> Dr. Alberto</td>
                     </tr>
 
-                    <tr>
-                        <td>20/12/2020</td>
-                        <td>Ana Costa</td>
-                        <td>10:15</td>
-                        <td>Cardiologia</td>
-                        <td> Dr. Alberto</td>
-                    </tr>
 
-                    <tr>
-                        <td>20/12/2020</td>
-                        <td>Bruno Costa</td>
-                        <td>10:30</td>
-                        <td>Cardiologia</td>
-                        <td> Dr. Alberto</td>
-                    </tr>
+
+
                     </tbody>
                 </table>
             </section>

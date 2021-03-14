@@ -174,8 +174,9 @@
 
                 <div class="row">
 
-                    <div class="col-5 next_appt_time">
-                        <span class="time_box2">${appointment.getSlot().getTimeBeginStr()}</span>
+                    <div class="col-5 next_appt_time time_box2">
+                        <span class="time_box2"><i
+                                class="fas fa-clock clocktime"></i>${appointment.getSlot().getTimeBeginStr()}</span>
                     </div>
 
                     <div class="col-7">
