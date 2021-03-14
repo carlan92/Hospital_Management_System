@@ -86,6 +86,7 @@
                 <c:if test="${appointment.getAppointmentStatus()==1}">
                 <div class="perfil-row">
                     <c:if test="${user_logged.getAccount().equals('Utente') ||  user_logged.getAccount().equals('Médico')}">
+
                         <div class="cell-row">
                             <a href="/${userType}/appointment-details/${tempo}/${appointmentId}/cancel"
                                class="btn btn-green">Cancelar Consulta</a>
@@ -93,7 +94,7 @@
                     </c:if>
                     <c:if test="${user_logged.getAccount().equals('Utente')}">
                         <div class="cell-row">
-                            <a href="" class="btn btn-blue">Reagendar Consulta</a>
+                            <a href="/patient/reschedule/${appointmentId}" class="btn btn-blue">Reagendar Consulta</a>
                         </div>
                     </c:if>
                 </div>

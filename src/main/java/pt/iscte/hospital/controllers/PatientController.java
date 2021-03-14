@@ -52,8 +52,9 @@ public class PatientController {
     }
 
 
-    @GetMapping(value = "/patient/make-appointment")
-    public String showMakeAppointment(ModelMap modelMap) {
+    @GetMapping(value = {"/patient/make-appointment", "/patient/reschedule/{appointmentId}"})
+    public String showMakeAppointment(ModelMap modelMap,
+                                      @PathVariable(required = false, name = "appointmentId") Long appointmentId) {
         List<Speciality> specialities = specialityService.findAll(Sort.by(Sort.Direction.ASC, "name"));
 
         User userLogged = userService.currentUser();
@@ -80,18 +81,27 @@ public class PatientController {
         modelMap.put("strMonth", strMonth);
         modelMap.put("chosenDay", chosenDay);
         modelMap.put("user_logged", userLogged);
+        modelMap.put("appointmentId", appointmentId);
+        if (appointmentId == null) {
+            modelMap.put("isToBeReschedule", false);
+        } else {
+            modelMap.put("isToBeReschedule", true);
+        }
         return "patient/make-appointment";
     }
 
 
-    @PostMapping(value = {"/patient/make-appointment", "/patient/make-appointment/{saveOption}"})
+    @PostMapping(value = {"/patient/make-appointment", "/patient/make-appointment/{saveOption}",
+            "/patient/reschedule/{appointmentId}",
+            "/patient/reschedule/save/{appointmentId}"})
     public String makeAppointmentService(ModelMap modelMap,
                                          @RequestParam(required = false, name = "specialityName") String specialityName,
                                          @RequestParam(required = false, name = "doctorId") String doctorId,
                                          @RequestParam(required = false, name = "slotId") String slotId,
                                          @RequestParam(required = false, name = "chosenDay") String chosenDay,
                                          @RequestParam(required = false, name = "arrowMonth") String arrowMonth,
-                                         @PathVariable(required = false, name = "saveOption") String saveOption) {
+                                         @PathVariable(required = false, name = "saveOption") String saveOption,
+                                         @PathVariable(required = false, name = "appointmentId") Long appointmentId) {
         // **********
         LocalDate todayDate = LocalDate.now();
         LocalDate chosenDate;
@@ -153,7 +163,7 @@ public class PatientController {
             specialityName = "";
         }
 
-        if(saveOption == null){
+        if (saveOption == null) {
             saveOption = "";
         }
 
@@ -167,15 +177,21 @@ public class PatientController {
         List<Day> calendar = Calendar.calendarList(calYear, calMonth);
         if (!doctorId.isEmpty()) {
             calendar = slotService.calendarColor(calendar, doctor);
-        } else if(!specialityName.isEmpty()){
+        } else if (!specialityName.isEmpty()) {
             calendar = slotService.calendarColor(calendar, specialityName);
         }
         User userLogged = userService.currentUser();
 
         // Marcar consulta
         if (slotId != null && !slotId.isEmpty() && saveOption.equals("save")) {
-            saveAppointment(slotId);
-            // TODO Redireccionar à página de sucesso de marcação
+            if(appointmentId==null) {
+                saveAppointment(slotId);
+            }else{
+                saveAppointment(slotId);
+                Appointment appointmentForCancel = appointmentService.findByAppointmentId(appointmentId);
+                cancelAppointment(DESMARCADA_PELO_UTENTE.getStateNr(), appointmentForCancel);
+                // TODO Redireccionar à página de sucesso de marcação
+            }
             return "redirect:/patient/main";
         }
 
@@ -195,8 +211,17 @@ public class PatientController {
         modelMap.put("strMonth", strMonth);
         modelMap.put("chosenDay", chosenDay);
         modelMap.put("user_logged", userLogged);
+        modelMap.put("appointmentId", appointmentId);
+        if (appointmentId == null) {
+            modelMap.put("isToBeReschedule", false);
+        } else {
+            modelMap.put("isToBeReschedule", true);
+        }
+
         return ("patient/make-appointment");
     }
+
+    // Private Methods
 
     private void saveAppointment(String slotId) {
         // Encontrar slot por id
@@ -217,5 +242,13 @@ public class PatientController {
 
         appointmentService.saveAppointment(appointment);
         System.out.println("Sucesso: consulta marcada - " + appointment + slot);
+    }
+
+    private void cancelAppointment(int stateNr, Appointment appointment) {
+        appointment.setAppointmentStatus(stateNr);
+        appointmentService.saveAppointment(appointment);
+        Slot slot = appointment.getSlot();
+        slot.setAvailable(true);
+        slotService.saveSlot(slot);
     }
 }

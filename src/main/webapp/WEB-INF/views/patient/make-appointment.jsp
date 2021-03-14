@@ -30,7 +30,10 @@
         </div>
 
 
-        <form class="registration-form" action="/patient/make-appointment" name="appointmentForm" method="post">
+        <form class="registration-form"
+        <c:if test="${isToBeReschedule==false}">action="/patient/make-appointment"</c:if>
+        <c:if test="${isToBeReschedule==true}">action="/patient/reschedule/${appointmentId}"</c:if>
+         name="appointmentForm" method="post">
             <div class="perfil-main-col">
 
                 <div class="perfil-row">
@@ -159,7 +162,11 @@
                         </select>
                         <p class="msg-error">${errorMsgHora}</p>
                         <br/>
-                        <button type="submit" class="btn btn-green" formaction="/patient/make-appointment/save">Marcar Consulta</button>
+                        <button type="submit" class="btn btn-green"
+                        <c:if test="${isToBeReschedule==false}"> formaction="/patient/make-appointment/save"</c:if>
+                        <c:if test="${isToBeReschedule==true}"> formaction="/patient/reschedule/${appointmentId}/save"</c:if>
+
+                        >Marcar Consulta</button>
                     </div>
                 </div>
             </div>
