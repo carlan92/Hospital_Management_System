@@ -12,10 +12,6 @@ public class PatientWaitingAppointment {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long PatientWaitingAppointmentId;
 
-    private LocalTime timeFirstCall;
-
-    private LocalTime timeLatestCall;
-
     @ManyToOne
     @JoinColumn(name = "doctor_id")
     private Doctor doctor;

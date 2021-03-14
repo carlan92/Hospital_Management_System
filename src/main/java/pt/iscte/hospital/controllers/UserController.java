@@ -251,7 +251,7 @@ public class UserController {
 
     @GetMapping(value = "/user/lista-chamada")
     public String showListaChamada(ModelMap modelMap) {
-        // TODO top 10 e ordenar
+        // Top 10 e ordenar
         LocalDate todayDate = LocalDate.now();
         List<DoctorWaitingPatient> listaChamada = doctorWaitingPatientRepository.findAllByDate(todayDate);
 
