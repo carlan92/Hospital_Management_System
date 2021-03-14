@@ -28,6 +28,7 @@ public class InvoiceServiceImpl implements InvoiceService {
 
         getList(filter);
         payInvoice("1e8de1e8-68fc-435f-9e87-c780de42212ee1");
+        getInvoiceInfo("1e8de1e8-68fc-435f-9e87-c780de412ee1");
     }
 
     public static void exp() {
@@ -76,6 +77,30 @@ public class InvoiceServiceImpl implements InvoiceService {
 
     // Informação da Fatura
     // /invoices/:company_nif/info/:invoice_id
+    public static Invoice getInvoiceInfo(String invoiceId) {
+        // create an instance of RestTemplate
+        RestTemplate restTemplate = new RestTemplate();
+
+        // create headers
+        HttpHeaders headers = new HttpHeaders();
+        headers.setContentType(MediaType.APPLICATION_JSON);
+
+        // request url
+        String requestUrl = BASE_URL + String.format(INFO_URL, COMPANY_NIF, invoiceId);
+
+        // request
+        InvoiceResponse response = restTemplate.getForObject(requestUrl, InvoiceResponse.class);
+
+        if (response == null || response.getStatus().equals("error")) {
+            //TODO fazer qualquer coisa com o erro
+            return new Invoice();
+        }
+        System.out.println(response);
+        System.out.println("dddddd" + response.getInvoice().getStatus());
+
+        //TODO fazer qualquer coisa com o invoice
+        return response.getInvoice();
+    }
 
 
     // Pagar Fatura

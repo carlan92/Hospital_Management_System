@@ -1,10 +1,9 @@
 package pt.iscte.hospital.entities.states;
 
 public enum InvoiceState {
-    NAO_FACTURADA(1, "Não facturada"),
-    FACTURADA(2, "Facturada"),
-    AGUARDA_PAGAMENTO(3, "A aguardar pagamento"),
-    PAGA(4, "Paga");
+    PAGA(1, "Paga"),
+    NAO_FACTURADA(2, "Não paga");
+
 
     // Attributes
     private int stateNr;

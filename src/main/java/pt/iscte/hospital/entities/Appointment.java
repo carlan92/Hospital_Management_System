@@ -1,7 +1,8 @@
 package pt.iscte.hospital.entities;
 
+import lombok.Getter;
+import lombok.Setter;
 import org.springframework.format.annotation.DateTimeFormat;
-import pt.iscte.hospital.entities.invoice.Invoice;
 import pt.iscte.hospital.entities.states.AppointmentState;
 import pt.iscte.hospital.entities.waiting.DoctorWaitingPatient;
 import pt.iscte.hospital.objects.utils.Calendar;
@@ -11,6 +12,7 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 
 @Entity
+@Getter @Setter
 public class Appointment implements Comparable<Appointment> {
     // Attributes
     @Id
@@ -29,8 +31,7 @@ public class Appointment implements Comparable<Appointment> {
     @JoinColumn(name = "patient_id")
     private Patient patient;
 
-    @OneToOne(mappedBy = "appointment")
-    private Invoice invoice;
+    private String invoiceId;
 
     @ManyToOne
     @JoinColumn(name = "slot_id")
@@ -115,14 +116,6 @@ public class Appointment implements Comparable<Appointment> {
 
     public void setHasChecked(Boolean hasChecked) {
         this.hasChecked = hasChecked;
-    }
-
-    public Invoice getInvoice() {
-        return invoice;
-    }
-
-    public void setInvoice(Invoice invoice) {
-        this.invoice = invoice;
     }
 
     public Slot getSlot() {

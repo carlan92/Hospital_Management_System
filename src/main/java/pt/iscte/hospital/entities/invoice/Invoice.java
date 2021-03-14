@@ -23,15 +23,18 @@ public class Invoice {
     private LocalDateTime paidDate;
     private double value;
     private List<InvoiceItem> items;
+    private String status;
     private String url;
 
-    //getters e setters
-    public int getInvoiceState() {
-        return 1;
-    }
     // Constructors
 
     // Methods
     // Getters e Setters made by Lombok
+    public int getInvoiceState() {
+        if (status.equals("paid")) {
+            return 1;
+        }
+        return 2;
+    }
 
 }

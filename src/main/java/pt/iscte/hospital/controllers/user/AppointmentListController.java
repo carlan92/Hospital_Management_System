@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import pt.iscte.hospital.entities.*;
+import pt.iscte.hospital.entities.invoice.Invoice;
+import pt.iscte.hospital.entities.invoice.InvoiceServiceImpl;
 import pt.iscte.hospital.entities.states.AppointmentState;
 import pt.iscte.hospital.entities.states.InvoiceState;
 import pt.iscte.hospital.repositories.AppointmentRepository;
@@ -192,7 +194,7 @@ public class AppointmentListController {
         List<AppointmentState> appointmentStatesAll = Arrays.asList(AppointmentState.values());
         List<InvoiceState> invoiceStates = Arrays.asList(InvoiceState.values());
 
-        Long userId=userLogged.getUserId();
+        Long userId = userLogged.getUserId();
 
         if (specialityName == null) {
             specialityName = "";
@@ -253,7 +255,7 @@ public class AppointmentListController {
         if (specialityName == null) {
             specialityName = "";
         }
-        Long userId=userLogged.getUserId();
+        Long userId = userLogged.getUserId();
 
         Integer appointmentStateNr;
         if (stateAppointment == null) {
@@ -307,7 +309,7 @@ public class AppointmentListController {
         if (specialityName == null) {
             specialityName = "";
         }
-        Long userId=userLogged.getUserId();
+        Long userId = userLogged.getUserId();
 
         Integer appointmentStateNr;
         if (stateAppointment == null) {
@@ -508,10 +510,13 @@ public class AppointmentListController {
         }
 
         // Estado da facturação
+        //TODO FActuração!!!!!!!!!!
         if (invoiceStateNr != null) {
             Set<Appointment> tempList = new HashSet<>();
             for (Appointment appointment : result) {
-                if (appointment.getInvoice() != null && appointment.getInvoice().getInvoiceState() == invoiceStateNr) {
+                String invoiceId = appointment.getInvoiceId(); // TODO a ser revisto
+                Invoice invoice = InvoiceServiceImpl.getInvoiceInfo(invoiceId);
+                if (invoiceId != null && invoice.getInvoiceState() == invoiceStateNr) {
                     tempList.add(appointment);
                 }
             }
