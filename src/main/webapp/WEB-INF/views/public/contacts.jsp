@@ -25,102 +25,72 @@
     </c:choose>
 
     <div class="main">
-      <!--menu da direita-->
-      <div class="row first_row">
-        <div class="col-4">
-          <img src="/imagens/noun_contact.svg" alt="" class="icon1" />
+        <!--menu da direita-->
+        <div class="row first_row">
+            <div class="col-4">
+                <img src="/imagens/noun_contact.svg" alt="" class="icon1" />
+            </div>
+            <div class="col-8 intro">
+                <h3 class="title_next_appt">Contactos</h3>
+            </div>
         </div>
-        <div class="col-8 intro">
-          <h1>Contactos</h1>
-          <p id="texto-intro">
-            Selecione a sua localização e obtenha os contactos para poder falar connosco!
-          </p>
+
+
+
+        <div class="row">
+            <div class="col-md-4">
+                <div class="contact-info">
+                    <div class="contact-info-item">
+                        <div class="contact-info-icon">
+                            <i class="fas fa-map-marked"></i>
+                        </div>
+                        <div class="contact-info-text">
+                            <h2>Morada</h2>
+                            <span>R. Retiro dos Pacatos 50 Edifício Startup, 2635-224 Rio de Mouro (Sintra) </span>
+                            <span>Lisboa , Portugal</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="contact-info">
+                    <div class="contact-info-item">
+                        <div class="contact-info-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div class="contact-info-text">
+                            <h2> E-mail</h2>
+                            <span> geral@hospital.upskill.pt </span>
+                            <span> 211 123 123</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="contact-info">
+                    <div class="contact-info-item">
+                        <div class="contact-info-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <div class="contact-info-text">
+                            <h2>Horário de funcionamento</h2>
+                            <span>Seg - Dom 08:00 - 17.00</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
-      
-      <div class="row middle-row">
 
-        <div class="contactbox">
-                
-           <div class="contactbox1"> Selecione o centro Hospitalar UPskill mais perto da sua localização:</div>
-         
-           <div class="contactbox2">
-        <select onchange="showAnswer(this.value)">
-          <option value="ANH">Centro Hospitalar UPskill de Angra do Heroismo</option> 
-          <option value="AVR">Centro Hospitalar UPskill de Aveiro</option>
-          <option value="BJA">Clínica UPskill de Beja</option>
-          <option value="BRG">Centro Hospitalar UPskill de Braga</option>
-          <option value="CLD">Clínica UPskill das Caldas da Rainha</option>
-          <option value="CTB">Centro Hospitalar UPskill de Castelo Branco</option>
-          <option value="CMB">Centro Hospitalar UPskill de Coimbra</option>
-          <option value="EVR">Centro Hospitalar UPskill de Évora</option>
-          <option value="FAR">Centro Hospitalar UPskill de Faro</option>
-          <option value="FIG">Clínica UPskill da Figueira da Foz</option>
-          <option value="FNC">Centro Hospitalar UPskill do Funchal</option>
-          <option value="GRD">Centro Hospitalar UPskill da Guarda</option>
-          <option value="LRA">Centro Hospitalar UPskill de Leiria</option>
-          <option value="LSB">Centro Hospitalar UPskill de Lisboa</option>
-          <option value="MFR">Clínica UPskill de Mafra</option>
-          <option value="NZR">Clínica UPskill da Nazaré</option>
-          <option value="ODV">Clínica UPskill de Odivelas</option>
-          <option value="PNI">Clínica UPskill de Peniche</option>
-          <option value="PBL">Clínica UPskill de Pombal</option>
-          <option value="PTM">Clínica UPskill de Portimão</option>
-          <option value="PRT">Centro Hospitalar UPskill do Porto</option>
-          <option value="RMR">Clínica UPskill de Rio Maior</option>
-          <option value="STR">Centro Hospitalar UPskill de Santarém</option>
-          <option value="STB">Clínica UPskill de Setúbal</option>
-          <option value="SNT">Clínica UPskill de Sintra</option>
-          <option value="TVD">Clínica UPskill de Torres Vedras</option>
-          <option value="VNF">Clínica UPskill de Vila Nova de Famalicão</option>
-          <option value="VIS">Centro Hospitalar UPskill de Viseu</option>
+        <div class="row">
 
-
-        </select>
-      </div>
-        <hr>
-        
-        <div id="answer">
-           
-        <script type="text/javascript">
-                function showAnswer(id) {
-          document.getElementById('answer').innerHTML = answers[id];
-        }
-        
-        var answers = {
-          ANH: 'Telefone: 295 123 123 | Email: geral.angra@hospital.upskill.pt',
-          AVR: 'Telefone: 234 123 123 | Email: geral.aveiro@hospital.upskill.pt',
-          BJA: 'Telefone: 284 123 123 | Email: geral.beja@hospital.upskill.pt',
-          BRG: 'Telefone: 253 123 123 | Email: geral.braga@hospital.upskill.pt',
-          CLD: 'Telefone: 262 123 123 | Email: geral.caldasrainha@hospital.upskill.pt',
-          CTB: 'Telefone: 272 123 123 | Email: geral.castelobranco@hospital.upskill.pt',
-          CMB: 'Telefone: 239 123 123 | Email: geral.coimbra@hospital.upskill.pt',
-          EVR: 'Telefone: 266 123 123 | Email: geral.evora@hospital.upskill.pt',
-          FAR: 'Telefone: 289 123 123 | Email: geral.faro@hospital.upskill.pt',
-          FIG: 'Telefone: 233 123 123 | Email: geral.figueira@hospital.upskill.pt',
-          FNC: 'Telefone: 291 123 123 | Email: geral.funchal@hospital.upskill.pt',
-          GRD: 'Telefone: 271 123 123 | Email: geral.guarda@hospital.upskill.pt',
-          LRA: 'Telefone: 244 123 123 | Email: geral.leiria@hospital.upskill.pt',
-          LSB: 'Telefone: 21 123 123 1 | Email: geral.lisboa@hospital.upskill.pt',
-          MFR: 'Telefone: 261 123 123 | Email: geral.mafra@hospital.upskill.pt',
-          NZR: 'Telefone: 262 123 124 | Email: geral.nazare@hospital.upskill.pt',
-          ODV: 'Telefone: 21 123 123 2 | Email: geral.odivelas@hospital.upskill.pt',
-          PNI: 'Telefone: 262 123 125 | Email: geral.peniche@hospital.upskill.pt',
-          PBL: 'Telefone: 236 123 123 | Email: geral.pombal@hospital.upskill.pt',
-          PTM: 'Telefone: 282 123 123 | Email: geral.portimao@hospital.upskill.pt',
-          PRT: 'Telefone: 22 123 123 1 | Email: geral.porto@hospital.upskill.pt',
-          RMR: 'Telefone: 243 123 123 | Email: geral.riomaior@hospital.upskill.pt',
-          STR: 'Telefone: 243 123 124 | Email: geral.santarem@hospital.upskill.pt',
-          STB: 'Telefone: 265 123 123 | Email: geral.setubal@hospital.upskill.pt',
-          SNT: 'Telefone: 21 123 123 3 | Email: geral.sintra@hospital.upskill.pt',
-          TVD: 'Telefone: 261 123 124 | Email: geral.torresvedras@hospital.upskill.pt',
-          VNF: 'Telefone: 252 123 123 | Email: geral.famalicao@hospital.upskill.pt',
-          VIS: 'Telefone: 232 123 123 | Email: geral.viseu@hospital.upskill.pt'
-         };
-            </script>
-      </div>
-      </div>
-      </div>
+            <div class="local-map">
+                <div class="contact-page-map">
+                    <iframe
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3110.531213057455!2d-9.33411158486233!3d38.774454879589804!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd1ecfd0a05e1a79%3A0x80d6a364aa1a39c1!2sStartUp%20Sintra!5e0!3m2!1spt-BR!2spt!4v1615518514179!5m2!1spt-BR!2spt"
+                            width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                </div>
+            </div>
+        </div>
     </div>
 </body>
 
