@@ -1191,7 +1191,7 @@ select option:disabled {
   width: 80%;
 }
 
-/*Menu Consultas: Medico (falta rever)*/
+/*Menu Consultas: Medico*/
 
 .consultas_title {
   margin-top: auto;
@@ -1450,6 +1450,72 @@ select option:disabled {
   min-height: 300px;
 }
 
+/*Página Contactos*/
+
+.contact-info * {
+  text-align: center;
+}
+
+.contact-info {
+  display: inline-block;
+  width: 100%;
+  margin-bottom: 0px;
+}
+
+.contact-info-icon {
+  margin-bottom: 15px;
+}
+
+.contact-info-item {
+  background: #ffffff;
+  padding: 30px 0px;
+  margin-top: 30px;
+  width: 320px;
+  height: 250px;
+}
+
+.contact-info-icon i {
+  font-size: 48px;
+  color: #98c33e;
+}
+
+.contact-info-text p {
+  margin-bottom: 0px;
+}
+
+.contact-info-text h2 {
+  color: #31ade0;
+  font-size: 22px;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.contact-info-text span {
+  color: #999999;
+  font-size: 16px;
+  display: inline-block;
+  width: 100%;
+}
+
+.local-map {
+  display: block;
+  margin: auto;
+}
+
+.contact-page-map {
+  margin-top: 36px;
+}
+
+/*Lista de consultas facturação*/
+.specialTable1 {
+  font-size: 17px;
+  font-weight: bold;
+}
+
+.specialTable2 {
+  font-size: 17px;
+  text-decoration: underline;
+}
 
 @media screen and (max-height: 450px) {
   .sidenav {
