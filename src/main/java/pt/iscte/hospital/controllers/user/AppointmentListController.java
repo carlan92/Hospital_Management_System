@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import pt.iscte.hospital.entities.*;
-import pt.iscte.hospital.entities.invoice.Invoice;
+
 import pt.iscte.hospital.entities.invoice.InvoiceServiceImpl;
 import pt.iscte.hospital.entities.states.AppointmentState;
 import pt.iscte.hospital.entities.states.InvoiceState;
@@ -514,9 +514,7 @@ public class AppointmentListController {
         if (invoiceStateNr != null) {
             Set<Appointment> tempList = new HashSet<>();
             for (Appointment appointment : result) {
-                String invoiceId = appointment.getInvoiceId(); // TODO a ser revisto
-                Invoice invoice = InvoiceServiceImpl.getInvoiceInfo(invoiceId);
-                if (invoiceId != null && invoice.getInvoiceState() == invoiceStateNr) {
+                if (appointment.getInvoice() != null && appointment.getInvoice().getInvoiceState() == invoiceStateNr) {
                     tempList.add(appointment);
                 }
             }

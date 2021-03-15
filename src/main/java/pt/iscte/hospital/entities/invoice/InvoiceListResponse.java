@@ -9,7 +9,7 @@ import java.util.List;
 @Getter @Setter @ToString
 public class InvoiceListResponse {
     private String status;
-    private List<Invoice> invoices;
+    private List<InvoiceApi> invoices;
 
     //getters e setters
 

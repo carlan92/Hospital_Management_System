@@ -2,14 +2,12 @@ package pt.iscte.hospital.entities;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
-import pt.iscte.hospital.entities.invoice.Invoice;
 import pt.iscte.hospital.security.Role;
 
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
 
 @Entity
 @PrimaryKeyJoinColumn(name = "receptionist_id")

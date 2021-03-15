@@ -51,4 +51,9 @@ public class InvoiceFilter {
         }
         return filter;
     }
+
+    // Methods
+    public void setSearch(String search) {
+        this.search = search;
+    }
 }

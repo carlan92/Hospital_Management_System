@@ -6,7 +6,7 @@ import lombok.Setter;
 @Getter @Setter
 public class InvoiceResponse {
     private String status;
-    private Invoice invoice;
+    private InvoiceApi invoice;
 
     //getters e setters
 

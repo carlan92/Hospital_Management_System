@@ -22,7 +22,7 @@ public class InvoiceServiceImpl implements InvoiceService {
     public static void main(String[] args) {
         InvoiceFilter filter = new InvoiceFilter();
         System.out.println(filter.toString());
-        filter.setSearch("José");
+        filter.setSearch("");
 
         getList(filter);
         payInvoice("1e8de1e8-68fc-435f-9e87-c780de42212ee1");
@@ -32,7 +32,7 @@ public class InvoiceServiceImpl implements InvoiceService {
 
     // Criar factura
     // /invoices/:company_nif/create
-    public static Invoice createInvoice(String name,
+    public static InvoiceApi createInvoice(String name,
                                         String email,
                                         long nif,
                                         LocalDate dueDate,
@@ -71,7 +71,7 @@ public class InvoiceServiceImpl implements InvoiceService {
         }
         System.out.println(response);
 
-        Invoice invoice = response.getInvoice();
+        InvoiceApi invoice = response.getInvoice();
         System.out.println(invoice);
         //TODO fazer qualquer coisa com o invoice
 
@@ -85,7 +85,7 @@ public class InvoiceServiceImpl implements InvoiceService {
 
     // Informação da Fatura
     // /invoices/:company_nif/info/:invoice_id
-    public static Invoice getInvoiceInfo(String invoiceId) {
+    public static InvoiceApi getInvoiceInfo(String invoiceId) {
         // create an instance of RestTemplate
         RestTemplate restTemplate = new RestTemplate();
 
@@ -101,7 +101,7 @@ public class InvoiceServiceImpl implements InvoiceService {
 
         if (response == null || response.getStatus().equals("error")) {
             //TODO fazer qualquer coisa com o erro
-            return new Invoice();
+            return new InvoiceApi();
         }
         System.out.println(response);
         System.out.println("dddddd" + response.getInvoice().getStatus());
@@ -152,7 +152,7 @@ public class InvoiceServiceImpl implements InvoiceService {
 
     // Listar Faturas
     // /invoices/:company_nif/list
-    public static List<Invoice> getList(InvoiceFilter invoiceFilter) {
+    public static List<InvoiceApi> getList(InvoiceFilter invoiceFilter) {
         // create an instance of RestTemplate
         RestTemplate restTemplate = new RestTemplate();
 

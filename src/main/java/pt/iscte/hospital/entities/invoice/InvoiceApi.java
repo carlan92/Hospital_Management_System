@@ -13,7 +13,7 @@ import java.util.List;
 @Setter
 @ToString
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class Invoice {
+public class InvoiceApi {
     private String id;
     private String name;
     private String email;

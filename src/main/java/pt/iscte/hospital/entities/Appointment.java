@@ -2,6 +2,7 @@ package pt.iscte.hospital.entities;
 
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 import org.springframework.format.annotation.DateTimeFormat;
 import pt.iscte.hospital.entities.states.AppointmentState;
 import pt.iscte.hospital.entities.waiting.DoctorWaitingPatient;
@@ -12,7 +13,9 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 
 @Entity
-@Getter @Setter
+@Getter
+@Setter
+@ToString
 public class Appointment implements Comparable<Appointment> {
     // Attributes
     @Id
@@ -31,7 +34,8 @@ public class Appointment implements Comparable<Appointment> {
     @JoinColumn(name = "patient_id")
     private Patient patient;
 
-    private String invoiceId;
+    @OneToOne(mappedBy = "appointment")
+    private Invoice invoice;
 
     @ManyToOne
     @JoinColumn(name = "slot_id")
@@ -63,7 +67,7 @@ public class Appointment implements Comparable<Appointment> {
         return patient;
     }
 
-    public Doctor getDoctor(){
+    public Doctor getDoctor() {
         return this.slot.getDoctor();
     }
 
@@ -138,7 +142,7 @@ public class Appointment implements Comparable<Appointment> {
         return appointmentStatus;
     }
 
-    public String getAppointmentStatusStr(){
+    public String getAppointmentStatusStr() {
         return AppointmentState.searchState(appointmentStatus);
     }
 
@@ -154,21 +158,11 @@ public class Appointment implements Comparable<Appointment> {
         this.doctorWaitingPatient = doctorWaitingPatient;
     }
 
-    public boolean missedAppointment(){
+    public boolean missedAppointment() {
         int missedAppointmentNr = AppointmentState.NAO_REALIZADA.getStateNr();
         return appointmentStatus == missedAppointmentNr;
     }
 
-    @Override
-    public String toString() {
-        return "Appointment{" +
-                "idAppointment=" + appointmentId +
-                ", date=" + date +
-                ", hourBegin=" + timeBegin +
-                ", hourEnd=" + timeEnd +
-                ", notes='" + notes + '\'' +
-                '}';
-    }
 
     @Override
     public int compareTo(Appointment o) {
