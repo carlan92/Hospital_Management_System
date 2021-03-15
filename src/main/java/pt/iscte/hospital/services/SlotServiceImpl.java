@@ -184,8 +184,7 @@ public class SlotServiceImpl implements SlotService {
 
     }
 
-    //TODO disponibilidade mensal <--
-
+    @Override
     public boolean hasDisponibilidadeNoMes(List<Day> calendar, Doctor doctor) {
         for (Day day : calendar) {
             long availableSlots = countByDoctorAndIsAvailableAndDate(doctor, true, day.getDate());

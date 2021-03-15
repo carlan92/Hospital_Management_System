@@ -154,7 +154,7 @@
                     </div>
 
                     <div class="cell-row">
-                        <label for="hora_id">Hora</label>
+                        <c:if test="${hasSlotForDoctor==true}"><label for="hora_id">Hora</label>
                         <select id="hora_id" type="text" class="form-input" name="slotId">
                             <option value="" disabled selected>Escolha a hora pretendida</option>
                                 <c:forEach var="slot" items="${slots}">
@@ -166,9 +166,11 @@
                         <button type="submit" class="btn btn-green"
                         <c:if test="${isToBeReschedule==false}"> formaction="/patient/make-appointment/save"</c:if>
                         <c:if test="${isToBeReschedule==true}"> formaction="/patient/reschedule/${appointmentId}/save"</c:if>
-
                         >Marcar Consulta</button>
+                        </c:if>
+                        <c:if test="${(hasSlotForDoctor==false) and (hasSelectDoctor==true)}"><button type="submit" class="btn btn-blue">Fazer pedido de Vaga</button></c:if>
                     </div>
+
                 </div>
             </div>
         </form>

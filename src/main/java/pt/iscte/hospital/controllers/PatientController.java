@@ -177,12 +177,17 @@ public class PatientController {
         List<Doctor> doctors = doctorService.findAllBySpecialityOrderByNameAsc(speciality);
         List<Slot> slots = slotService.findAllByDoctorAndIsAvailableAndDateOrderByTimeBeginAsc(doctor, true, chosenDate);
         List<Day> calendar = Calendar.calendarList(calYear, calMonth);
+        boolean hasSelectDoctor=!doctorId.isEmpty();
         if (!doctorId.isEmpty()) {
             calendar = slotService.calendarColor(calendar, doctor);
         } else if (!specialityName.isEmpty()) {
             calendar = slotService.calendarColor(calendar, specialityName);
         }
         User userLogged = userService.currentUser();
+
+        boolean hasSlotForDoctor= slotService.hasDisponibilidadeNoMes(calendar,doctor);
+        modelMap.put("hasSlotForDoctor",hasSlotForDoctor);
+        modelMap.put("hasSelectDoctor",hasSelectDoctor);
 
         // Marcar consulta
         if (slotId != null && !slotId.isEmpty() && saveOption.equals("save")) {
