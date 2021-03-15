@@ -264,7 +264,6 @@ public class UserController {
     // solicitar factura
     @GetMapping(value = "/receptionist/appointment-details/resume/{appointmentId}/ask-invoice")
     public String showAskInvoice(ModelMap modelMap,
-
                                  @PathVariable(value = "appointmentId") Long appointmentId) {
 
         User userLogged = userService.currentUser();
