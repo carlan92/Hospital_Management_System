@@ -5,6 +5,7 @@ import lombok.Setter;
 import lombok.ToString;
 import org.springframework.format.annotation.DateTimeFormat;
 import pt.iscte.hospital.entities.states.InvoiceState;
+import pt.iscte.hospital.services.invoice.InvoiceApi;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
@@ -15,6 +16,8 @@ import java.time.LocalDateTime;
 @ToString
 public class Invoice {
     // Attributes
+    public static long NR_DAYS_TO_PAY_INVOICE = 2;
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long invoiceId;
@@ -41,13 +44,21 @@ public class Invoice {
         this.invoiceState = InvoiceState.NAO_FACTURADA.getStateNr();
     }
 
+    public Invoice(Appointment appointment, InvoiceApi invoiceApi) {
+        this.invoiceApiId = invoiceApi.getId();
+        this.appointment = appointment;
+        this.issuedDate = invoiceApi.getIssuedDate();
+        this.dueDate = invoiceApi.getDueDate();
+        this.value = invoiceApi.getValue();
+        this.invoiceState = InvoiceState.NAO_FACTURADA.getStateNr();
+    }
+
     public Invoice(Long invoiceId) {
         this.invoiceId = invoiceId;
         this.invoiceState = InvoiceState.NAO_FACTURADA.getStateNr();
     }
 
     // Methods
-
 
 
     public Appointment getAppointment() {

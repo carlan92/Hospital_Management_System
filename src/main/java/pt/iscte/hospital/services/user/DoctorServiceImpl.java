@@ -8,12 +8,17 @@ import pt.iscte.hospital.entities.states.AppointmentState;
 import pt.iscte.hospital.entities.waiting.DoctorWaitingPatient;
 import pt.iscte.hospital.entities.waiting.PatientWaitingAppointment;
 import pt.iscte.hospital.repositories.AppointmentRepository;
+import pt.iscte.hospital.repositories.InvoiceRepository;
 import pt.iscte.hospital.repositories.user.DoctorRepository;
 import pt.iscte.hospital.repositories.SpecialityRepository;
 import pt.iscte.hospital.repositories.waiting.DoctorWaitingPatientRepository;
 import pt.iscte.hospital.repositories.waiting.PatientWaitingAppointmentRepository;
+import pt.iscte.hospital.services.invoice.InvoiceApi;
+import pt.iscte.hospital.services.invoice.InvoiceItem;
+import pt.iscte.hospital.services.invoice.InvoiceService;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -30,7 +35,8 @@ public class DoctorServiceImpl implements DoctorService {
     private PatientWaitingAppointmentRepository patientWaitingAppointmentRepository;
     @Autowired
     private DoctorWaitingPatientRepository doctorWaitingPatientRepository;
-
+    @Autowired
+    private InvoiceService invoiceService;
 
     //Methods
     @Override
@@ -38,10 +44,9 @@ public class DoctorServiceImpl implements DoctorService {
         // Coloca ou actualiza chamada na base de dados
         DoctorWaitingPatient doctorWaitingPatient = appointment.getDoctorWaitingPatient();
 
-        if (doctorWaitingPatient == null){
+        if (doctorWaitingPatient == null) {
             doctorWaitingPatient = new DoctorWaitingPatient(appointment);
             appointment.setDoctorWaitingPatient(doctorWaitingPatient);
-
         }
 
         doctorWaitingPatient.setTimeLatestCall(LocalTime.now());
@@ -60,13 +65,9 @@ public class DoctorServiceImpl implements DoctorService {
     public void endAppointment(Appointment appointment) {
         appointment.setAppointmentStatus(AppointmentState.REALIZADA.getStateNr());
         appointment.setTimeEnd(LocalTime.now());
-
-        // Pedir nº de factura TODO
-
-        // se existir nº, adicionar o número ao appointment
-
-
         appointmentRepository.save(appointment);
+
+        invoiceService.createInvoice(appointment);
     }
 
     @Override

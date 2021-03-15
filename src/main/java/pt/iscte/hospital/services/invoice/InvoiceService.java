@@ -1,9 +1,14 @@
 package pt.iscte.hospital.services.invoice;
 
+import pt.iscte.hospital.entities.Appointment;
+
 import java.time.LocalDateTime;
 import java.util.List;
 
 public interface InvoiceService {
+    void createInvoice(Appointment appointment);
+
+    // Connection to Invoice API
     /**
      * Criar factura <br>
      * /invoices/:company_nif/create <br>
@@ -15,7 +20,7 @@ public interface InvoiceService {
      * @param value        Valor em euros total [opcional ou null]
      * @param invoiceItems Lista de itens com {description, value} [opcional ou null]
      */
-    public InvoiceApi createInvoice(String name,
+    public InvoiceApi createInvoiceAPI(String name,
                                     String email,
                                     long nif,
                                     LocalDateTime dueDate,
@@ -29,13 +34,13 @@ public interface InvoiceService {
      * @param invoiceId Invoice ID from the Invoice API.
      * @return String with the Invoice page at the Invoice API.
      */
-    public String getInvoiceUrl(String invoiceId);
+    public String getInvoiceUrlAPI(String invoiceId);
 
     /**
      * Informação da Fatura <br>
      * /invoices/:company_nif/info/:invoice_id
      */
-    InvoiceApi getInvoiceInfo(String invoiceId);
+    InvoiceApi getInvoiceInfoAPI(String invoiceId);
 
     /**
      * Pagar Fatura <br>
@@ -44,7 +49,7 @@ public interface InvoiceService {
      * @param invoiceId Invoice ID from the Invoice API.
      * @return true if payment register is successful, false otherwise.
      */
-    boolean payInvoice(String invoiceId);
+    boolean payInvoiceAPI(String invoiceId);
 
     /**
      * Listar Faturas <br>
@@ -53,5 +58,5 @@ public interface InvoiceService {
      * @param invoiceFilter Filter to apply to the API search.
      * @return Returns a list filtered.
      */
-    List<InvoiceApi> getList(InvoiceFilter invoiceFilter);
+    List<InvoiceApi> getListAPI(InvoiceFilter invoiceFilter);
 }
