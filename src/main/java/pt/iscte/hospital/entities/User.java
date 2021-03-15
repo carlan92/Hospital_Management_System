@@ -13,6 +13,7 @@ import java.time.LocalDate;
 import java.time.Period;
 import java.util.Date;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
@@ -20,6 +21,7 @@ public abstract class User {
     // Attributes
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "user_id")
     private Long userId;
     private String name;
     private String username;
@@ -39,6 +41,9 @@ public abstract class User {
     private String email;
     private String password;
     private String photoURL;
+
+    @OneToMany(mappedBy = "user")
+    private Set<Message> messages;
 
     // Constructors
     public User() {
