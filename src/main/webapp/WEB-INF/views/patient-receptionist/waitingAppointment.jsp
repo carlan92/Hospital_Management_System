@@ -32,7 +32,7 @@
 
             <div class="row">
                 <div class=search_options>
-                    <form action="patient-receptionist/waitingAppointment" method="post">
+                    <form action="${userTypeURL}" method="post">
                         <div class="middle-row">
                             <div class="search-container">
 
@@ -84,10 +84,10 @@
                                     <td>${patientWaitingAppointment.getDate()}</td>
 
                                     <c:if test="${user_logged.getAccount().equals('Recepcionista')}">
-                                        <td>${patientWaitingAppointment.getPatient()}</td>
+                                        <td>${patientWaitingAppointment.getPatient().getName()}</td>
                                     </c:if>
                                     <td>${patientWaitingAppointment.getDoctor().getSpeciality().getName()}</td>
-                                    <td> ${patientWaitingAppointment.getDoctor()}</td>
+                                    <td> ${patientWaitingAppointment.getDoctor().getName()}</td>
 
                                     <td><a href="">Ver mais</a></td>
                                 </tr>

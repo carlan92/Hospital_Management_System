@@ -5,6 +5,8 @@ import org.springframework.stereotype.Service;
 import pt.iscte.hospital.entities.waiting.PatientWaitingAppointment;
 import pt.iscte.hospital.repositories.waiting.PatientWaitingAppointmentRepository;
 
+import java.util.List;
+
 @Service
 public class PatientWaitingAppointmentServiceImpl implements PatientWaitingAppointmentService{
 
@@ -16,6 +18,12 @@ public class PatientWaitingAppointmentServiceImpl implements PatientWaitingAppoi
         patientWaitingAppointmentRepository.save(patientWaitingAppointment);
 
     }
+    @Override
+    public List<PatientWaitingAppointment> findAll(){
+        return patientWaitingAppointmentRepository.findAll();
+    }
+
+
 
 
 }

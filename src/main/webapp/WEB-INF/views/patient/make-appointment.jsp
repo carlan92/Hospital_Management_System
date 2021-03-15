@@ -168,7 +168,7 @@
                         <c:if test="${isToBeReschedule==true}"> formaction="/patient/reschedule/${appointmentId}/save"</c:if>
                         >Marcar Consulta</button>
                         </c:if>
-                        <c:if test="${(hasSlotForDoctor==false) and (hasSelectDoctor==true)}"><button type="submit" class="btn btn-blue" formaction="patient-receptionist/waitingAppointment">Entrar em lista de espera para Marcação</button></c:if>
+                        <c:if test="${(hasSlotForDoctor==false) and (hasSelectDoctor==true)}"><button type="submit" class="btn btn-blue" formaction="/patient/waitingAppointment">Entrar em lista de espera para Marcação</button></c:if>
                     </div>
 
                 </div>
