@@ -60,6 +60,12 @@ public class DoctorServiceImpl implements DoctorService {
     public void endAppointment(Appointment appointment) {
         appointment.setAppointmentStatus(AppointmentState.REALIZADA.getStateNr());
         appointment.setTimeEnd(LocalTime.now());
+
+        // Pedir nº de factura TODO
+
+        // se existir nº, adicionar o número ao appointment
+
+
         appointmentRepository.save(appointment);
     }
 

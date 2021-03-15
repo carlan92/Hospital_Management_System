@@ -3,10 +3,12 @@ package pt.iscte.hospital.services.invoice;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
+import org.springframework.stereotype.Component;
 
 
 import java.time.LocalDate;
 
+@Component
 @Getter
 @Setter
 @ToString

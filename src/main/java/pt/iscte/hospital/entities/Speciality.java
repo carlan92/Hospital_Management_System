@@ -1,9 +1,13 @@
 package pt.iscte.hospital.entities;
 
+import lombok.Getter;
+import lombok.ToString;
+
 import javax.persistence.*;
 import java.util.List;
 
 @Entity
+@Getter
 public class Speciality {
     // Attributes
     @Id
@@ -11,6 +15,8 @@ public class Speciality {
     private Long specialityId;
 
     private String name;
+
+    private double price;
 
     @OneToMany(mappedBy="speciality")
     private List<Doctor> doctors;

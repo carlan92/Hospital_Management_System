@@ -2,6 +2,7 @@ package pt.iscte.hospital.services.invoice;
 
 import org.json.JSONObject;
 import org.springframework.http.*;
+import org.springframework.stereotype.Service;
 import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.client.HttpServerErrorException;
 import org.springframework.web.client.RestTemplate;
@@ -12,6 +13,7 @@ import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.util.*;
 
+@Service
 public class InvoiceServiceImpl implements InvoiceService {
     // Attributes
     public static final long COMPANY_NIF = 565486995;
