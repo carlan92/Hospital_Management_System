@@ -1,4 +1,4 @@
-package pt.iscte.hospital.entities.invoice;
+package pt.iscte.hospital.services.invoice;
 
 import lombok.Getter;
 import lombok.Setter;

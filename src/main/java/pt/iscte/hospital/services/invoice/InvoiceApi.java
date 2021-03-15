@@ -1,4 +1,4 @@
-package pt.iscte.hospital.entities.invoice;
+package pt.iscte.hospital.services.invoice;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Getter;

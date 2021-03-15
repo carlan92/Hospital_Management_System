@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import pt.iscte.hospital.entities.*;
 
-import pt.iscte.hospital.entities.invoice.InvoiceServiceImpl;
 import pt.iscte.hospital.entities.states.AppointmentState;
 import pt.iscte.hospital.entities.states.InvoiceState;
 import pt.iscte.hospital.repositories.AppointmentRepository;
