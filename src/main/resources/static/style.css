@@ -1557,6 +1557,15 @@ select option:disabled {
   font-weight: bold;
 }
 
+.invoiceimg {
+  width: 60%;
+  margin: 25px 0 45px 10px;
+}
+
+.invoice-upskill {
+  width: 70%;
+  max-width: 300px;
+}
 
 @media screen and (max-height: 450px) {
   .sidenav {
