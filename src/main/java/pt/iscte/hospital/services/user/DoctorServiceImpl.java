@@ -8,13 +8,10 @@ import pt.iscte.hospital.entities.states.AppointmentState;
 import pt.iscte.hospital.entities.waiting.DoctorWaitingPatient;
 import pt.iscte.hospital.entities.waiting.PatientWaitingAppointment;
 import pt.iscte.hospital.repositories.AppointmentRepository;
-import pt.iscte.hospital.repositories.InvoiceRepository;
 import pt.iscte.hospital.repositories.user.DoctorRepository;
 import pt.iscte.hospital.repositories.SpecialityRepository;
 import pt.iscte.hospital.repositories.waiting.DoctorWaitingPatientRepository;
 import pt.iscte.hospital.repositories.waiting.PatientWaitingAppointmentRepository;
-import pt.iscte.hospital.services.invoice.InvoiceApi;
-import pt.iscte.hospital.services.invoice.InvoiceItem;
 import pt.iscte.hospital.services.invoice.InvoiceService;
 
 import java.time.LocalDate;
@@ -90,13 +87,16 @@ public class DoctorServiceImpl implements DoctorService {
 
     @Override
     public void desmarcarConsultaByDoctor(Appointment appointment) {
+
+        LocalDateTime dataToday= LocalDateTime.now();
         Doctor doctor = appointment.getDoctor();
         Patient patient = appointment.getPatient();
+
         appointment.setAppointmentStatus(AppointmentState.DESMARCADA_PELO_MEDICO.getStateNr());
         appointmentRepository.save(appointment);
 
         // Enviar utente para lista de espera de consulta
-        PatientWaitingAppointment patientWaitingAppointment = new PatientWaitingAppointment(doctor, patient);
+        PatientWaitingAppointment patientWaitingAppointment = new PatientWaitingAppointment(dataToday, doctor, patient);
         patientWaitingAppointmentRepository.save(patientWaitingAppointment);
     }
 
