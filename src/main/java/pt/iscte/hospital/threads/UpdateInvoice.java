@@ -18,13 +18,11 @@ public class UpdateInvoice {
     AppointmentService appointmentService;
     @Autowired
     InvoiceService invoiceService;
-    @Autowired
-    AppointmentRepository appointmentRepository;
 
     // Verifica todas as consultas sem factura e solicita factura
     @Scheduled(fixedRate = 60000)
     public void solicitarFacturas() {
-        List<Appointment> appointments = appointmentRepository.findAllByAppointmentStatusAndInvoice(AppointmentState.REALIZADA.getStateNr(), null);
+        List<Appointment> appointments = appointmentService.findAllByAppointmentStatusAndInvoice(AppointmentState.REALIZADA.getStateNr(), null);
 
         System.out.println("Verificação de existência de facturas");
 

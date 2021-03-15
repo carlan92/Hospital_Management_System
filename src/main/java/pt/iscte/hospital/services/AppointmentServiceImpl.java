@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import pt.iscte.hospital.entities.Appointment;
 import pt.iscte.hospital.entities.Doctor;
+import pt.iscte.hospital.entities.Invoice;
 import pt.iscte.hospital.entities.Patient;
 import pt.iscte.hospital.repositories.AppointmentRepository;
 
@@ -208,5 +209,11 @@ public class AppointmentServiceImpl implements AppointmentService {
                 date,
                 appointmentState,
                 hasChecked);
+    }
+
+    // Thread
+    @Override
+    public List<Appointment> findAllByAppointmentStatusAndInvoice(int appointmentStatus, Invoice invoice){
+        return appointmentRepository.findAllByAppointmentStatusAndInvoice(appointmentStatus, invoice);
     }
 }

@@ -1,6 +1,7 @@
 package pt.iscte.hospital.services;
 
 import pt.iscte.hospital.entities.Appointment;
+import pt.iscte.hospital.entities.Invoice;
 import pt.iscte.hospital.entities.Patient;
 
 import java.time.LocalDate;
@@ -104,4 +105,7 @@ public interface AppointmentService {
             LocalDate date,
             int appointmentState,
             boolean hasChecked);
+
+    // Thread
+    List<Appointment> findAllByAppointmentStatusAndInvoice(int appointmentStatus, Invoice invoice);
 }
