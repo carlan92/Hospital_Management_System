@@ -127,18 +127,17 @@
                             <td>${appointment.getAppointmentStatusStr()}</td>
 
                             <td><a
-                                    href="/${userType}/appointment-details/${tempo}/${appointment.getAppointmentId()}">Clicar
-                                aqui</a></td>
+                                    href="/${userType}/appointment-details/${tempo}/${appointment.getAppointmentId()}">Ver mais
+                                </a></td>
                         </tr>
 
                         <tr>
-                            <td style='border:none;' colspan=""></td>
-                            <td style='border:none;' colspan=""></td>
-                            <td class="specialTable1" style='border:none;' colspan="">Faturação:</td>
-                            <td class="specialTable2" style='border:none;' colspan="">Faturada</td>
+                            <td style='border:none;'></td>
+                            <td style='border:none;'></td>
+                            <td class="specialTable1" style='border:none;'> Facturação:</td>
+                            <td class="specialTable2" style='border:none;'>Facturada</td>
                         </tr>
                     </c:forEach>
-
 
                     </tbody>
                 </table>

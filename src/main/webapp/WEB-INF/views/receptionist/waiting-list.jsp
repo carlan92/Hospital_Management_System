@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -11,39 +12,12 @@
 
 <div class="main">
     <!--menu da direita-->
-
     <div class="white_box2 box-align-left">
 
         <div class="perfil-row">
             <img src="/imagens/waiting.svg" alt="patientsPage" class="img-fill-form"/>
             <h3 class="consultas_title">Lista de espera para consulta </h3>
         </div>
-
-        <div class="row">
-            <div class=search_options>
-
-                <form>
-                    <div class="middle-row">
-                        <div class="search-container">
-                            <input id="data_id" type="date" class="form-input sm" placeholder="Data"
-                                   name="data">
-                            <input type="text" class="form-input sm" placeholder="Nome do Utente">
-                            <select id="speciality_id" class="form-input sm" name="speciality">
-                                <option value="" disabled selected>Especialidade</option>
-                                <option value="1">Todas</option>
-                                <option value="2">Cardiologia</option>
-                                <option value="3">Osteopatia</option>
-                            </select>
-                            <input type="text" class="form-input sm" placeholder="Nome do Médico">
-                            <button class="btn-search2" type="submit">Pesquisar</button>
-
-                        </div>
-                    </div>
-                </form>
-
-            </div>
-        </div>
-
 
         <div class="row">
             <section class="content-area middle-row">
@@ -58,28 +32,20 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <tr>
-                        <td>20/12/2020</td>
-                        <td>10:00</td>
-                        <td>Alice Costa</td>
-                        <td>Cardiologia</td>
-                        <td> Dr. Alberto</td>
-                    </tr>
-                    <tr>
-                        <td>20/12/2020</td>
-                        <td>10:00</td>
-                        <td>Alice Costa</td>
-                        <td>Cardiologia</td>
-                        <td> Dr. Alberto</td>
-                    </tr>
 
-
-
+                    <c:forEach var="appointment" items="${appointments}">
+                        <tr class="appointment-table-details">
+                            <td>${appointment.getSlot().getDateStr()}</td>
+                            <td>${appointment.getSlot().getTimeBegin()}</td>
+                            <td>${appointment.getPatient().getName()}</td>
+                            <td>${appointment.getSlot().getDoctor().getSpeciality().getName()}</td>
+                            <td>${appointment.getSlot().getDoctor().getTitleAndName()}</td>
+                        </tr>
+                    </c:forEach>
 
                     </tbody>
                 </table>
             </section>
-
         </div>
     </div>
 </div>

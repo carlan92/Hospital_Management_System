@@ -31,7 +31,6 @@
         <div class="row">
             <section class="content-area middle-row">
                 <table class="table">
-
                     <thead>
                     <tr class="appointment-table-title">
                         <th>Hora</th>
@@ -40,7 +39,6 @@
                         <th>Médico</th>
                     </tr>
                     </thead>
-
                     <tbody>
                     <!-- For -->
                     <c:forEach var="chamada" items="${listaChamada}">
@@ -55,9 +53,7 @@
 
                 </table>
             </section>
-
         </div>
-
     </div>
 </div>
 </body>

@@ -16,7 +16,10 @@ import pt.iscte.hospital.services.user.UserService;
 import pt.iscte.hospital.services.validation.SpecialityValidationService;
 import pt.iscte.hospital.services.validation.UserValidationService;
 
+import java.time.LocalDate;
 import java.util.List;
+
+import static pt.iscte.hospital.entities.states.AppointmentState.MARCADA;
 
 @Controller
 public class ReceptionistController {
@@ -31,6 +34,8 @@ public class ReceptionistController {
     private DoctorService doctorService;
     @Autowired
     private NationalityService nationalityService;
+    @Autowired
+    private AppointmentService appointmentService;
     @Autowired
     private SpecialityValidationService specialityValidationService;
     @Autowired
@@ -50,12 +55,20 @@ public class ReceptionistController {
         return "receptionist/main";
     }
 
-
+    //TODO confirmar página lista de espera para consulta para o dia de hoje
     @GetMapping(value = "/receptionist/waiting-list")
     public String showWaitingList(ModelMap modelMap) {
         User userLogged = userService.currentUser();
+        LocalDate date = LocalDate.now();
+
+        List<Appointment> appointments = appointmentService.findAllBySlotDateAndAppointmentStatus(
+                date,
+                MARCADA.getStateNr());
+
+        appointments.sort(null);
 
         modelMap.put("user_logged", userLogged);
+        modelMap.put("appointments", appointments);
         return "receptionist/waiting-list";
     }
 
