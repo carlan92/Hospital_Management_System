@@ -37,6 +37,14 @@
             </div>
         </div>
 
+        <c:if test="${hasButton2}">
+            <div class="perfil-row">
+                <div class="cell-back">
+                    <a href="${button2_url}" class="btn btn-outline-dark btn-back">${button2_text}</a>
+                </div>
+            </div>
+        </c:if>
+
     </div>
 
 

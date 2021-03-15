@@ -57,11 +57,27 @@
 
             <c:if test="${user_logged.getAccount().equals('Utente') ||  user_logged.getAccount().equals('Recepcionista')}">
                 <div class="perfil-row">
-                    <div class="cell-row">Estado da facturação:<span class="cell-row"> Paga</span></div>
+                    <c:if test="${appointment.foiRealizada()}">
+                        <div class="cell-row">Estado da facturação:
+                            <c:if test="${appointment.hasInvoice()}">
+                                <span class="cell-row">${appointment.getInvoice().getInvoiceStateStr()}</span>
+                            </c:if>
+                            <c:if test="${!appointment.hasInvoice()}">
+                                <span class="cell-row">Sem factura</span>
+                            </c:if>
+                        </div>
 
-                    <div class="cell-row">
-                        <a class="cell-row">Ver Fatura</a>
-                    </div>
+                        <div class="cell-row">
+                            faltam 1 links: um para ver a factura quando existe, mostrar a factura!!!!!
+                            <c:if test="${appointment.hasInvoice()}">
+                                <a class="cell-row">Ver Fatura</a>
+                            </c:if>
+                            <c:if test="${!appointment.hasInvoice() && user_logged.getAccount().equals('Recepcionista')}">
+                                <a href="/receptionist/appointment-details/resume/${appointmentId}/ask-invoice"
+                                   class="btn btn-green">Pedir Facturação</a>
+                            </c:if>
+                        </div>
+                    </c:if>
                 </div>
             </c:if>
 
@@ -74,9 +90,7 @@
                 <c:if test="${user_logged.getAccount().equals('Médico')}">
                     <form action="/action_page.php">
                         <h3>Notas:</h3>
-                        <p class="text-black-50"> Dores nas costas, possível lesão devido a má postura a trabalhar
-                            ao
-                            computador</p>
+                        <p class="text-black-50">${appointment.getNotes()}</p>
                     </form>
                 </c:if>
             </div>
@@ -84,20 +98,21 @@
 
             <div class="perfil-main-col">
                 <c:if test="${appointment.getAppointmentStatus()==1}">
-                <div class="perfil-row">
-                    <c:if test="${user_logged.getAccount().equals('Utente') ||  user_logged.getAccount().equals('Médico')}">
+                    <div class="perfil-row">
+                        <c:if test="${user_logged.getAccount().equals('Utente') ||  user_logged.getAccount().equals('Médico')}">
 
-                        <div class="cell-row">
-                            <a href="/${userType}/appointment-details/${tempo}/${appointmentId}/cancel"
-                               class="btn btn-green">Cancelar Consulta</a>
-                        </div>
-                    </c:if>
-                    <c:if test="${user_logged.getAccount().equals('Utente')}">
-                        <div class="cell-row">
-                            <a href="/patient/reschedule/${appointmentId}" class="btn btn-blue">Reagendar Consulta</a>
-                        </div>
-                    </c:if>
-                </div>
+                            <div class="cell-row">
+                                <a href="/${userType}/appointment-details/${tempo}/${appointmentId}/cancel"
+                                   class="btn btn-green">Cancelar Consulta</a>
+                            </div>
+                        </c:if>
+                        <c:if test="${user_logged.getAccount().equals('Utente')}">
+                            <div class="cell-row">
+                                <a href="/patient/reschedule/${appointmentId}" class="btn btn-blue">Reagendar
+                                    Consulta</a>
+                            </div>
+                        </c:if>
+                    </div>
                 </c:if>
                 <div class="perfil-row">
                     <div class="cell-back">

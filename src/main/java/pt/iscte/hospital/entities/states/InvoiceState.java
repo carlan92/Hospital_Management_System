@@ -23,4 +23,13 @@ public enum InvoiceState {
     public String getDescription() {
         return description;
     }
+
+    public static String searchState(int stateNr) {
+        for (InvoiceState invoiceState : InvoiceState.values()) {
+            if (invoiceState.getStateNr() == stateNr) {
+                return invoiceState.description;
+            }
+        }
+        return null;
+    }
 }

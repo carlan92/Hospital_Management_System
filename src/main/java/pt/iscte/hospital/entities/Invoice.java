@@ -77,6 +77,10 @@ public class Invoice {
         return invoiceState;
     }
 
+    public String getInvoiceStateStr() {
+        return InvoiceState.searchState(invoiceState);
+    }
+
     public void setInvoiceState(int invoiceState) {
         this.invoiceState = invoiceState;
     }

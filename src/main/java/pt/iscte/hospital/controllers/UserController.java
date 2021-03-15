@@ -16,6 +16,7 @@ import pt.iscte.hospital.repositories.AppointmentRepository;
 import pt.iscte.hospital.repositories.waiting.DoctorWaitingPatientRepository;
 import pt.iscte.hospital.services.*;
 
+import pt.iscte.hospital.services.invoice.InvoiceService;
 import pt.iscte.hospital.services.user.DoctorService;
 import pt.iscte.hospital.services.user.PatientService;
 import pt.iscte.hospital.services.user.UserService;
@@ -51,6 +52,8 @@ public class UserController {
     private SlotService slotService;
     @Autowired
     private DoctorWaitingPatientRepository doctorWaitingPatientRepository;
+    @Autowired
+    private InvoiceService invoiceService;
 
     @Autowired
     AppointmentRepository appointmentRepository;
@@ -248,9 +251,9 @@ public class UserController {
         List<DoctorWaitingPatient> listaChamada = doctorWaitingPatientRepository.findAllByDate(todayDate);
 
         // Últimas 10 chamadas
-        int minLength = Math.min(9, Math.max(listaChamada.size() - 1,0));
+        int minLength = Math.min(9, Math.max(listaChamada.size() - 1, 0));
         Collections.sort(listaChamada, Collections.reverseOrder());
-        listaChamada.subList(0,minLength);
+        listaChamada.subList(0, minLength);
 
         modelMap.put("user_logged", userService.currentUser());
         modelMap.put("listaChamada", listaChamada);
@@ -258,8 +261,28 @@ public class UserController {
         return "user/lista-chamada";
     }
 
+    // solicitar factura
+    @GetMapping(value = "/receptionist/appointment-details/resume/{appointmentId}/ask-invoice")
+    public String showAskInvoice(ModelMap modelMap,
 
-    //
+                                 @PathVariable(value = "appointmentId") Long appointmentId) {
+
+        User userLogged = userService.currentUser();
+        Appointment appointment = appointmentService.findByAppointmentId(appointmentId);
+
+        invoiceService.createInvoice(appointment);
+
+        modelMap.put("message", "Efectuado pedido da Factura.");
+        modelMap.put("imageURL", AlertMessageImage.SUCCESS.getImageURL());
+        modelMap.put("hasButton2", true);
+        modelMap.put("button2_text", "Regressar ao detalhe da consulta");
+        modelMap.put("button2_url", "/receptionist/appointment-details/resume/" + appointmentId);
+        modelMap.put("user_logged", userLogged);
+        return "components/alert-message";
+    }
+
+
+    // Private Methods
     private void validation(User user, MultipartFile file) {
         User connectedUser = userService.currentUser();
         userValidationService.clear().setUser(user)

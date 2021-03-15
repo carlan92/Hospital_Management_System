@@ -163,6 +163,14 @@ public class Appointment implements Comparable<Appointment> {
         return appointmentStatus == missedAppointmentNr;
     }
 
+    public boolean hasInvoice(){
+        return invoice != null;
+    }
+
+    public boolean foiRealizada(){
+        return appointmentStatus == AppointmentState.REALIZADA.getStateNr();
+    }
+
 
     @Override
     public int compareTo(Appointment o) {
