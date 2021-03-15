@@ -37,12 +37,12 @@
 
 * {
   font-family: "Lato", "Comic Sans MS";
-  font-size: 20px;
+  font-size: 18px;
   text-align: left;
 }
 
 body {
-  margin: 0%;
+  margin: 0;
 }
 
 a:hover {
@@ -136,10 +136,10 @@ h1 {
 
 .logo {
   box-sizing: border-box;
-  width: 80%;
+  width: 60%;
   display: block;
-  margin: 35px;
-  margin-top: 20px;
+  margin: 20px auto;
+
 }
 
 .welcome_box {
@@ -180,7 +180,7 @@ h1 {
   color: #ababab;
   margin-left: 35px;
   margin-top: 30px;
-  margin-bottom: 10.5px;
+  margin-bottom: 10px;
 }
 
 .sidenav_row button {
@@ -189,7 +189,7 @@ h1 {
   background-color: transparent;
   color: #7e7e7e;
   border: solid transparent 6px;
-  padding: 12.5px 35px;
+  padding: 2px 35px;
 }
 
 .sidenav_row button:hover {
@@ -534,7 +534,7 @@ option {
   text-decoration: none;
   color: #7e7e7e;
   border: solid transparent 6px;
-  padding: 12.5px 35px;
+  padding: 8px 35px;
 }
 
 .botao_acessos:hover {

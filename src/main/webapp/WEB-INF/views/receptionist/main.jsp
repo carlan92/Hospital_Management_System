@@ -84,53 +84,8 @@
 
     </div>
 
-    <div class="row last-row">
 
-        <div id="carouselExampleInterval" class="carousel slide" data-ride="carousel">
-
-            <div class="carousel-inner">
-                <div class="carousel-item active" data-interval="10000">
-                    <img src="/imagens/pub_1.png" class="d-block w-100" alt="First slide"/>
-                </div>
-                <div class="carousel-item">
-                    <img src="/imagens/pub_2.png" class="d-block w-100" alt="Second slide"/>
-                </div>
-                <div class="carousel-item">
-                    <img src="/imagens/pub_3.png" class="d-block w-100" alt="Third slide"/>
-                </div>
-                <div class="carousel-item ">
-                    <img src="/imagens/pub_4.png" class="d-block w-100" alt="Fourth slide"/>
-                </div>
-                <div class="carousel-item">
-                    <img src="/imagens/pub_5.png" class="d-block w-100" alt="Fifth slide"/>
-                </div>
-                <div class="carousel-item">
-                    <img src="/imagens/pub_6.png" class="d-block w-100" alt="Sixth slide"/>
-                </div>
-                <div class="carousel-item">
-                    <img src="/imagens/pub_7.png" class="d-block w-100" alt="Seventh slide"/>
-                </div>
-                <div class="carousel-item">
-                    <img src="/imagens/pub_8.png" class="d-block w-100" alt="Eighth slide"/>
-                </div>
-            </div>
-
-            <a class="carousel-control-prev seta" href="#carouselExampleInterval" role="button" data-slide="prev">
-                <i class="fas fa-less-than simbolo_seta"></i>
-            </a>
-
-            <a class="carousel-control-next seta" href="#carouselExampleInterval" role="button" data-slide="next">
-                <i class="fas fa-greater-than simbolo_seta"></i>
-            </a>
-
-        </div>
-    </div>
 </div>
-
-<script>
-    $('.carousel').carousel();
-
-</script>
 
 </body>
 
