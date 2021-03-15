@@ -259,4 +259,8 @@ public class InvoiceServiceImpl implements InvoiceService {
 
         return response.getInvoices();
     }
+    @Override
+    public Invoice findByInvoiceId (Long invoiceId){
+        return invoiceRepository.findByInvoiceId(invoiceId);
+    }
 }

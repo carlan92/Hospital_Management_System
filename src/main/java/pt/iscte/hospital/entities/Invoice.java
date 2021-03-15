@@ -5,6 +5,7 @@ import lombok.Setter;
 import lombok.ToString;
 import org.springframework.format.annotation.DateTimeFormat;
 import pt.iscte.hospital.entities.states.InvoiceState;
+import pt.iscte.hospital.objects.utils.Calendar;
 import pt.iscte.hospital.services.invoice.InvoiceApi;
 
 import javax.persistence.*;
@@ -85,4 +86,17 @@ public class Invoice {
         this.invoiceState = invoiceState;
     }
 
+    public String getDueDateStr(){
+        return dueDate.format(Calendar.FORMATTER);
+    }
+    public String getIssuedDateStr(){
+        return issuedDate.format(Calendar.FORMATTER);
+    }
+    public String getPaidDateStr(){
+        return paidDate.format(Calendar.FORMATTER);
+    }
+
+    public boolean isPaid(){
+        return invoiceState==InvoiceState.PAGA.getStateNr();
+    }
 }

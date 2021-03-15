@@ -1,6 +1,7 @@
 package pt.iscte.hospital.services.invoice;
 
 import pt.iscte.hospital.entities.Appointment;
+import pt.iscte.hospital.entities.Invoice;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -59,4 +60,6 @@ public interface InvoiceService {
      * @return Returns a list filtered.
      */
     List<InvoiceApi> getListAPI(InvoiceFilter invoiceFilter);
+
+    Invoice findByInvoiceId (Long invoiceId);
 }

@@ -17,18 +17,18 @@
 </c:if>
 
 <div class="main">
-    <!--Form da direita-->
-
+    <!--menu da direita-->
     <div class="white_box box-align-left">
         <div class="row first_row">
-            <div class="col-4">
-                <img src="imagens/draw_invoice.png" alt="" class="icon1" />
-            </div>
-            <div class="col-8 intro">
-                <h3 class="title_next_appt">Factura</h3>
+            <div class="row first_row invoiceimg">
+                <div class="col-4">
+                    <img src="/imagens/draw_invoice.png" alt="" class="icon1" />
+                </div>
+                <div class="col-8 intro">
+                    <h3 class="title_next_appt">Factura</h3>
+                </div>
             </div>
         </div>
-
         <div class="invoice-box">
             <table cellpadding="0" cellspacing="0">
                 <tr class="top">
@@ -36,18 +36,21 @@
                         <table>
                             <tr>
                                 <td class="title">
-                                    <img src="imagens/noun_centro_hospitalar_logo.svg" style="width:70%; max-width:300px;">
+                                    <img src="/imagens/noun_centro_hospitalar_logo.svg"
+                                         style="width:70%; max-width:300px;">
                                 </td>
 
                                 <td>
-                                    Factura # <span>123</span>
+                                    Factura # <span>${invoice.getInvoiceApiId()}</span>
                                     <br>
                                     <br>
-                                    Emissão: <span>14-03-2021</span>
+                                    Emissão: <span>${invoice.getDueDateStr()}</span>
                                     <br>
-                                    Vencimento: <span>14-03-2021</span>
+                                    Vencimento: <span>${invoice.getIssuedDateStr()}</span>
                                     <br>
-                                    Pagamento: <span>14-03-2021</span>
+                                    <c:if test="${invoice.isPaid()}">
+                                   <span>  Pagamento: ${invoice.getPaidDateStr()}</span>
+                                    </c:if>
                                 </td>
                             </tr>
                         </table>
@@ -67,12 +70,11 @@
                                 </td>
 
                                 <td>
-                                    Jorge Rafael
+                                        ${appointment.getPatient().getFirstAndLastName()}
                                     <br>
-                                    111122223
+                                        ${appointment.getPatient().getNIF()}
                                     <br>
-                                    jorge.rafael@exemplo.pt
-                                </td>
+                                        ${appointment.getPatient().getEmail()}                                </td>
                             </tr>
                         </table>
                     </td>
@@ -84,17 +86,16 @@
                 </tr>
 
                 <tr class="details">
-                    <td colspan="3">Serviço</td>
-                    <td>50.00</td>
+                    <td colspan="3">${appointment.getSlot().getDoctor().getSpeciality().getName()}</td>
+                    <td>${invoice.getValue()}</td>
                 </tr>
 
                 <tr class="total">
                     <td colspan="3"></td>
-                    <td>Total: 50.00€</td>
+                    <td>Total: ${invoice.getValue()}€</td>
                 </tr>
             </table>
         </div>
-
     </div>
 </div>
 
