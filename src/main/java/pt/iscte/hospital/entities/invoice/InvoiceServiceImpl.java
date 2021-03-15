@@ -3,14 +3,17 @@ package pt.iscte.hospital.entities.invoice;
 import org.json.JSONObject;
 import org.springframework.http.*;
 import org.springframework.web.client.HttpClientErrorException;
+import org.springframework.web.client.HttpServerErrorException;
 import org.springframework.web.client.RestTemplate;
+import org.springframework.web.client.UnknownHttpStatusCodeException;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.*;
 
 public class InvoiceServiceImpl implements InvoiceService {
+    // Attributes
     public static final long COMPANY_NIF = 565486995;
     public static final String BASE_URL = "https://serro.pt";
     public static final String CREATE_URL = "/invoices/%s/create";      // %s company_nif
@@ -19,25 +22,25 @@ public class InvoiceServiceImpl implements InvoiceService {
     public static final String PAY_URL = "/invoices/%s/pay/%s";         // %s company nif, %s invoice_id
     public static final String LIST_URL = "/invoices/%s/list";          // %s company nif
 
-    public static void main(String[] args) {
-        InvoiceFilter filter = new InvoiceFilter();
-        System.out.println(filter.toString());
-        filter.setSearch("");
-
-        getList(filter);
-        payInvoice("1e8de1e8-68fc-435f-9e87-c780de42212ee1");
-        getInvoiceInfo("1e8de1e8-68fc-435f-9e87-c780de412ee1");
-    }
-
-
-    // Criar factura
-    // /invoices/:company_nif/create
-    public static InvoiceApi createInvoice(String name,
-                                        String email,
-                                        long nif,
-                                        LocalDate dueDate,
-                                        Double value,
-                                        List<InvoiceItem> invoiceItems) {
+    // Methods
+    /**
+     * Criar factura <br>
+     * /invoices/:company_nif/create <br>
+     *
+     * @param name         Nome do cliente
+     * @param email        Email do cliente
+     * @param nif          NIF do cliente
+     * @param dueDate      Date<ISO8601> Data de Vencimento
+     * @param value        Valor em euros total [opcional ou null]
+     * @param invoiceItems Lista de itens com {description, value} [opcional ou null]
+     */
+    @Override
+    public InvoiceApi createInvoice(String name,
+                                    String email,
+                                    long nif,
+                                    LocalDateTime dueDate,
+                                    Double value,
+                                    List<InvoiceItem> invoiceItems) {
         DateFormat df = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm'Z'");
         df.setTimeZone(TimeZone.getTimeZone("UTC"));
 
@@ -61,31 +64,48 @@ public class InvoiceServiceImpl implements InvoiceService {
         }
 
         // request url
-        String requestUrl =  BASE_URL + String.format(CREATE_URL, COMPANY_NIF);
+        String requestUrl = BASE_URL + String.format(CREATE_URL, COMPANY_NIF);
 
         // request
-        InvoiceResponse response = restTemplate.postForObject(requestUrl, new HttpEntity<>(invoiceRequest.toString(), headers), InvoiceResponse.class);
-        if (response == null || response.getStatus().equals("error")) {
-            //TODO fazer qualquer coisa com o erro
+        InvoiceResponse response;
+        try {
+            response = restTemplate.postForObject(
+                    requestUrl,
+                    new HttpEntity<>(invoiceRequest.toString(), headers),
+                    InvoiceResponse.class);
+        } catch (HttpClientErrorException | HttpServerErrorException e) {
+            System.out.println(e.getStatusCode().value());
+            System.out.println(e.getMessage());
+            return null;
+        } catch (UnknownHttpStatusCodeException e) {
             return null;
         }
-        System.out.println(response);
 
-        InvoiceApi invoice = response.getInvoice();
-        System.out.println(invoice);
-        //TODO fazer qualquer coisa com o invoice
+        if (response == null || response.getStatus().equals("error")) {
+            return null;
+        }
 
-        return invoice;
+        return response.getInvoice();
     }
 
+    /**
+     * Visualizar factura <br>
+     * /invoices/:company_nif/get/:invoice_id
+     *
+     * @param invoiceId Invoice ID from the Invoice API.
+     * @return String with the Invoice page at the Invoice API.
+     */
+    @Override
+    public String getInvoiceUrl(String invoiceId) {
+        return BASE_URL + String.format(GET_URL, COMPANY_NIF, invoiceId);
+    }
 
-    // Vizualizar factura
-    // /invoices/:company_nif/get/:invoice_id
-
-
-    // Informação da Fatura
-    // /invoices/:company_nif/info/:invoice_id
-    public static InvoiceApi getInvoiceInfo(String invoiceId) {
+    /**
+     * Informação da Fatura <br>
+     * /invoices/:company_nif/info/:invoice_id
+     */
+    @Override
+    public InvoiceApi getInvoiceInfo(String invoiceId) {
         // create an instance of RestTemplate
         RestTemplate restTemplate = new RestTemplate();
 
@@ -97,23 +117,33 @@ public class InvoiceServiceImpl implements InvoiceService {
         String requestUrl = BASE_URL + String.format(INFO_URL, COMPANY_NIF, invoiceId);
 
         // request
-        InvoiceResponse response = restTemplate.getForObject(requestUrl, InvoiceResponse.class);
+        InvoiceResponse response;
+        try {
+            response = restTemplate.getForObject(requestUrl, InvoiceResponse.class);
+        } catch (HttpClientErrorException | HttpServerErrorException e) {
+            System.out.println(e.getStatusCode().value());
+            System.out.println(e.getMessage());
+            return null;
+        } catch (UnknownHttpStatusCodeException e) {
+            return null;
+        }
 
         if (response == null || response.getStatus().equals("error")) {
-            //TODO fazer qualquer coisa com o erro
-            return new InvoiceApi();
+            return null;
         }
-        System.out.println(response);
-        System.out.println("dddddd" + response.getInvoice().getStatus());
 
-        //TODO fazer qualquer coisa com o invoice
         return response.getInvoice();
     }
 
-
-    // Pagar Fatura
-    // /invoices/:company_nif/pay/:invoice_id
-    public static void payInvoice(String invoiceId) {
+    /**
+     * Pagar Fatura <br>
+     * /invoices/:company_nif/pay/:invoice_id
+     *
+     * @param invoiceId Invoice ID from the Invoice API.
+     * @return true if payment register is successful, false otherwise.
+     */
+    @Override
+    public boolean payInvoice(String invoiceId) {
         // create an instance of RestTemplate
         RestTemplate restTemplate = new RestTemplate();
 
@@ -130,29 +160,30 @@ public class InvoiceServiceImpl implements InvoiceService {
         InvoiceResponse response = null;
         try {
             response = restTemplate.postForObject(requestUrl, new HttpEntity<>(headers), InvoiceResponse.class);
-        } catch (HttpClientErrorException e) {
+        } catch (HttpClientErrorException | HttpServerErrorException e) {
             System.out.println(e.getStatusCode().value());
             System.out.println(e.getMessage());
+            return false;
+        } catch (UnknownHttpStatusCodeException e) {
+            return false;
         }
 
         if (response == null || response.getStatus().equals("error")) {
-            //TODO fazer qualquer coisa com o erro
-
-            return;
+            return false;
         }
-        System.out.println(response);
 
-
-        System.out.println(response.getStatus());
-
-        //TODO fazer qualquer coisa com o invoice
-
+        return true;
     }
 
-
-    // Listar Faturas
-    // /invoices/:company_nif/list
-    public static List<InvoiceApi> getList(InvoiceFilter invoiceFilter) {
+    /**
+     * Listar Faturas <br>
+     * /invoices/:company_nif/list
+     *
+     * @param invoiceFilter Filter to apply to the API search.
+     * @return Returns a list filtered.
+     */
+    @Override
+    public List<InvoiceApi> getList(InvoiceFilter invoiceFilter) {
         // create an instance of RestTemplate
         RestTemplate restTemplate = new RestTemplate();
 
@@ -166,16 +197,21 @@ public class InvoiceServiceImpl implements InvoiceService {
         String requestUrl = BASE_URL + String.format(LIST_URL, COMPANY_NIF) + filters;
 
         // request
-        InvoiceListResponse response = restTemplate.getForObject(requestUrl, InvoiceListResponse.class);
+        InvoiceListResponse response;
+        try {
+            response = restTemplate.getForObject(requestUrl, InvoiceListResponse.class);
+        } catch (HttpClientErrorException | HttpServerErrorException e) {
+            System.out.println(e.getStatusCode().value());
+            System.out.println(e.getMessage());
+            return new ArrayList<>();
+        } catch (UnknownHttpStatusCodeException e) {
+            return null;
+        }
 
         if (response == null || response.getStatus().equals("error")) {
-            //TODO fazer qualquer coisa com o erro
-            return new ArrayList<>();
+            return null;
         }
-        System.out.println(response);
 
-        //TODO fazer qualquer coisa com o invoice
         return response.getInvoices();
     }
-
 }

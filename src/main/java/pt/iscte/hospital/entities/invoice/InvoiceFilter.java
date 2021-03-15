@@ -2,12 +2,14 @@ package pt.iscte.hospital.entities.invoice;
 
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 
 
 import java.time.LocalDate;
 
 @Getter
 @Setter
+@ToString
 public class InvoiceFilter {
     private Long nif;                   // long            Filtrar por NIF do cliente
     private String status;              // <paid|unpaid> | Filtrar por status da fatura
@@ -52,8 +54,4 @@ public class InvoiceFilter {
         return filter;
     }
 
-    // Methods
-    public void setSearch(String search) {
-        this.search = search;
-    }
 }
