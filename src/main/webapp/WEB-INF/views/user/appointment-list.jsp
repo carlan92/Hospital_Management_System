@@ -119,8 +119,7 @@
                             <c:if test="${user_logged.getAccount().equals('Recepcionista')}">
                                 <td>${appointment.getPatient().getFirstAndLastName()}</td>
                             </c:if>
-                            <c:if test="${user_logged.getAccount().equals('Utente') ||
-                        user_logged.getAccount().equals('Recepcionista')}">
+                            <c:if test="${user_logged.getAccount().equals('Utente') || user_logged.getAccount().equals('Recepcionista')}">
                                 <td>${appointment.getSlot().getDoctor().getSpeciality().getName()}</td>
                                 <td> ${appointment.getSlot().getDoctor().getTitleAndName()}</td>
                             </c:if>

@@ -235,7 +235,7 @@ public class UserController {
         if (userType.equals("patient")) {
             cancelAppointment(DESMARCADA_PELO_UTENTE.getStateNr(), appointment);
         } else if (userType.equals("doctor")) {
-            cancelAppointment(DESMARCADA_PELO_MEDICO.getStateNr(), appointment);
+            doctorService.desmarcarConsultaByDoctor(appointment);
         }
 
         modelMap.put("message", "A consulta foi cancelada com sucesso.");

@@ -22,7 +22,7 @@ import java.util.List;
 import static pt.iscte.hospital.entities.states.AppointmentState.MARCADA;
 
 @Controller
-public class CheckIn {
+public class CheckInController {
     private static final String PATIENT_TYPE_URL = "/patient/checkin";
     private static final String RECEPTIONIST_TYPE_URL = "/receptionist/checkin";
     private static final String USER_TYPE_URL = "patient-receptionist/checkin";

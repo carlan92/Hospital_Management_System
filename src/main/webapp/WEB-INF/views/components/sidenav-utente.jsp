@@ -49,6 +49,9 @@
                     <a href="/user/lista-chamada" class="botao_acessos">
                         <img src="/imagens/draw_cal_checkmark.svg"/> Lista de Chamada
                     </a>
+                    <a href="/patient-receptionist/waitingAppointment" class="botao_acessos">
+                        <img src="/imagens/draw_cal_checkmark.svg"/> Lista de Espera para Marcação
+                    </a>
                 </div>
 
                 <div class="sidenav_row">
