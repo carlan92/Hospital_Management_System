@@ -6,7 +6,6 @@ import org.springframework.stereotype.Component;
 import pt.iscte.hospital.entities.Appointment;
 import pt.iscte.hospital.entities.waiting.DoctorWaitingPatient;
 import pt.iscte.hospital.repositories.AppointmentRepository;
-import pt.iscte.hospital.services.waiting.DoctorWaitingPatientService;
 
 
 import java.time.LocalDate;
@@ -18,7 +17,6 @@ import static pt.iscte.hospital.entities.states.AppointmentState.*;
 
 
 @Component
-
 public class CloseAppointment {
     private static final long MAX_HOURS = 24;           // Tempo máximo em horas que uma consulta pode ficar no estado Marcada, sem ser fechada.
     private static final long TOLERANCIA_MINUTES = 10;  // Tolerância máxima para a chegada do paciente à consulta após chamada, depois passa a não realizada
