@@ -19,7 +19,6 @@ public class Common {
     }
 
 
-
     public User currentUser() {
         return userService.currentUser();
     }
@@ -27,7 +26,10 @@ public class Common {
     public ModelMap sideNavMap() {
         ModelMap modelMap = new ModelMap();
 
-        boolean hasUnreadMessages = messageService.hasUnreadMessages(currentUser().getUserId());
+        boolean hasUnreadMessages = false;
+        if (currentUser() != null) {
+            hasUnreadMessages = messageService.hasUnreadMessages(currentUser().getUserId());
+        }
 
         modelMap.put("user_logged", currentUser());
         modelMap.put("hasUnreadMessages", hasUnreadMessages);
