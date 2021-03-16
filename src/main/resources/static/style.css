@@ -36,6 +36,27 @@
 }
 
 * {
+  scrollbar-width: thin;
+  scrollbar-color: #31ade0 #transparent;
+}
+
+/* Works on Chrome, Edge, and Safari */
+*::-webkit-scrollbar {
+  width: 8px;
+}
+
+*::-webkit-scrollbar-track {
+  background: #dcdcdc;
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #31ade0;
+  border-radius: 20px;
+  border: 0px solid #dcdcdc;
+}
+
+
+* {
   font-family: "Lato", "Comic Sans MS";
   font-size: 18px;
   text-align: left;
@@ -74,7 +95,7 @@ h1 {
 .container {
   display: flex;
   min-width: 100%;
-  padding: 0px;
+  padding: 0;
 }
 
 .sidenav {
@@ -86,7 +107,7 @@ h1 {
   display: flex;
   flex-direction: column;
   box-sizing: border-box;
-  box-shadow: 5px 0px 20px #00000029;
+  box-shadow: 5px 0 20px #00000029;
   width: 25vw;
   min-height: 100vh;
   z-index: 2;
@@ -126,10 +147,10 @@ h1 {
   background-repeat: no-repeat;
   background-size: cover;
   position: absolute;
-  top: 0px;
-  right: 0px;
-  bottom: 0px;
-  left: 0px;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
   opacity: 0.7;
   z-index: -1;
 }
@@ -213,13 +234,13 @@ h1 {
 
 .log_out_box hr {
   border: 1px solid #dcdcdc;
-  margin: 7px 0px 4px 0px;
+  margin: 7px 0 4px 0;
 }
 
 .log_out_box #upskill_logo {
   width: 98px;
   height: 33px;
-  margin: 0px 0px 0px 20px;
+  margin: 0 0 0 20px;
 }
 
 .main .first_row {
@@ -300,7 +321,7 @@ h1 {
   width: 100%;
   background-color: transparent;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-  margin-top: 0px;
+  margin-top: 0;
 }
 
 .card_box * {
@@ -314,8 +335,8 @@ h1 {
 }
 
 .main h5 {
-  padding: 0px;
-  margin: 0px;
+  padding: 0;
+  margin: 0;
 }
 
 .utentes {
@@ -1016,7 +1037,7 @@ select option:disabled {
 .first_appt_ask {
   font-size: 15px;
   color: #000000;
-  margin: 0px;
+  margin: 0;
 }
 
 /* botoes por carla rever*/
