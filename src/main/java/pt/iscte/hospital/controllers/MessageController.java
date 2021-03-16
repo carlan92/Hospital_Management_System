@@ -24,9 +24,10 @@ public class MessageController {
                                @PathVariable (value = "userType") String userType){
 
         List<Message> messages = messageService.findAllByUserUserIdOrderByDateTimeDesc(currentUser().getUserId()) ;
-
+        System.out.println(messages);
         modelMap.put("user_logged", currentUser());
         modelMap.put("messages", messages);
+        modelMap.put("userType", userType);
         return "user/message-list";
     }
 

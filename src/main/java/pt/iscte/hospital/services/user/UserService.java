@@ -15,6 +15,8 @@ public interface UserService {
 
     User findByUsername(String username);
 
+    User findByUserId(Long userId);
+
     User findUser(String username);
 
     User currentUser();

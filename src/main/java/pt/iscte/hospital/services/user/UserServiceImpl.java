@@ -72,6 +72,11 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    public User findByUserId(Long userId){
+        return userRepository.findByUserId(userId);
+    }
+
+    @Override
     public Role getUserRole(User user) {
         Role role = Enum.valueOf(Role.class, user.getAuthorities().get(0).getAuthority());
         return role;

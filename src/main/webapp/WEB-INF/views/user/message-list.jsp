@@ -46,7 +46,7 @@
                                 <input id="msg-open" type="checkbox" name="msgState" value="open">
                             </div>
 
-                                <div class="msg-state-choice">
+                            <div class="msg-state-choice">
                                 <label for="msg-open">
                                     <img src="../imagens/message/mail-close.svg" class="mail-icon" alt="apagar"/>
                                 </label>
@@ -68,31 +68,37 @@
 
                     <thead>
                     <tr class="appointment-table-title">
-                        <th>Lido?</th>
+                        <th><img src="../imagens/message/mail-close.svg" class="mail-icon" alt="fechada"/></th>
                         <th>Data</th>
                         <th>Assunto</th>
                         <th>Mensagem</th>
-                        <th>Apagar</th>
+                        <th><img src="../imagens/message/recycle-bin.svg" class="mail-icon" alt="apagar"/></th>
                     </tr>
                     </thead>
                     <tbody>
 
                     <!-- For -->
-                    <tr class="appointment-table-details">
-                        <td><img src="../imagens/message/mail-open.svg" class="mail-icon" alt="apagar"/>
-                            <img src="../imagens/message/mail-close.svg" class="mail-icon" alt="apagar"/></td>
-                        <td>2</td>
-                        <td>3</td>
-                        <td>4</td>
-                        <td><img src="../imagens/message/recycle-bin.svg" class="mail-icon" alt="apagar"/></td>
-                    </tr>
                     <c:forEach var="message" items="${messages}">
                         <tr class="appointment-table-details">
-                            <td>${message.isReadMsg()}</td>
+                            <td>
+                                <c:if test="${message.isReadMsg()}">
+                                    <img src="../imagens/message/mail-open.svg" class="mail-icon" alt="aberta"/>
+                                </c:if>
+                                <c:if test="${!message.isReadMsg()}">
+                                    <a href=" ../${userType}/messages/read/${message.getMessageId()}">
+                                        <img src="../imagens/message/mail-close.svg" class="mail-icon" alt="fechada"/>
+                                    </a>
+                                </c:if>
+                            </td>
                             <td>${message.getDateStr()}</td>
                             <td>${message.getSubject()}</td>
                             <td>${message.getMessage()}</td>
-                            <td><img src="../imagens/message/recycle-bin.svg" alt="apagar"/></td>
+
+                            <td>
+                                <a href=" ../${userType}/messages/delete/${message.getMessageId()}">
+                                    <img src="../imagens/message/recycle-bin.svg" class="mail-icon" alt="apagar"/>
+                                </a>
+                            </td>
                         </tr>
                     </c:forEach>
 
