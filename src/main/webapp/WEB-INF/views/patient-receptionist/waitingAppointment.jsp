@@ -64,7 +64,7 @@
 
                         <thead>
                             <tr class="appointment-table-title">
-                                <th>Posição na Lista de Espera</th>
+                                <th>Posição na Lista</th>
                                 <th>Data do Pedido</th>
                                 <c:if test="${user_logged.getAccount().equals('Recepcionista')}">
                                     <th>Utente</th>
@@ -79,12 +79,12 @@
                             <!-- For -->
                             <c:forEach var="patientWaitingAppointment" items="${patientWaitingAppointments}">
                                 <tr class="appointment-table-details">
-                                    <td>Posição na Lista de Espera</td>
+                                    <td>Posição na Lista</td>
 
-                                    <td>${patientWaitingAppointment.getDate()}</td>
+                                    <td>${patientWaitingAppointment.getDate().toString().replace( "T" , " " )}</td>
 
                                     <c:if test="${user_logged.getAccount().equals('Recepcionista')}">
-                                        <td>${patientWaitingAppointment.getPatient().getName()}</td>
+                                        <td>${patientWaitingAppointment.getPatient().getFirstAndLastName()}</td>
                                     </c:if>
                                     <td>${patientWaitingAppointment.getDoctor().getSpeciality().getName()}</td>
                                     <td> ${patientWaitingAppointment.getDoctor().getName()}</td>

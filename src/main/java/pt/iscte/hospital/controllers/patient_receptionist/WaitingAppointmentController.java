@@ -8,16 +8,15 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import pt.iscte.hospital.entities.Doctor;
 import pt.iscte.hospital.entities.Speciality;
 import pt.iscte.hospital.entities.User;
 import pt.iscte.hospital.entities.waiting.PatientWaitingAppointment;
+import pt.iscte.hospital.repositories.waiting.PatientWaitingAppointmentRepository;
 import pt.iscte.hospital.services.SpecialityService;
 import pt.iscte.hospital.services.user.DoctorService;
 import pt.iscte.hospital.services.user.UserService;
 import pt.iscte.hospital.services.waiting.PatientWaitingAppointmentService;
 
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -37,20 +36,22 @@ public class WaitingAppointmentController {
     private DoctorService doctorService;
     @Autowired
     private PatientWaitingAppointmentService patientWaitingAppointmentService;
+    @Autowired
+    private PatientWaitingAppointmentRepository patientWaitingAppointmentRepository;
 
     @GetMapping(value = "patient/waitingAppointment")
     public String showPatientWaitingAppointmentList(ModelMap modelMap) {
-        List<PatientWaitingAppointment> patientWaitingAppointments = new ArrayList<>();
-        patientWaitingAppointments=patientWaitingAppointmentService.findAll();
-        List<Speciality> specialities = specialityService.findAll(Sort.by(Sort.Direction.ASC, "name"));
         User userLogged = userService.currentUser();
+        Long userId = userLogged.getUserId();
 
-
+        List<PatientWaitingAppointment> patientWaitingAppointments =
+                patientWaitingAppointmentService.findAllByPatientUserIdAndClosed(userId, false);
 
         modelMap.addAllAttributes(appointmentListView(
                 patientWaitingAppointments,
                 userLogged,
                 PATIENT_TYPE_URL,
+                null,
                 null));
 
         return USER_TYPE_URL;
@@ -59,42 +60,47 @@ public class WaitingAppointmentController {
     //marcar pedido de lista de espera
     @PostMapping(value = "patient/waitingAppointment")
     public String showMakeApplyForPatientWaitingAppointment(ModelMap modelMap,
-                                                     @RequestParam(required = false, name = "specialityName") String specialityName,
-                                                     @RequestParam(required = false, name = "doctorId") String doctorId) {
-        List<Speciality> specialities = specialityService.findAll(Sort.by(Sort.Direction.ASC, "name"));
-        Speciality speciality = specialityService.findByName(specialityName);
+                                                            @RequestParam(required = false, name = "specialityName") String specialityName,
+                                                            @RequestParam(required = false, name = "doctorName") String doctorName) {
 
         User userLogged = userService.currentUser();
+        Long userId = userLogged.getUserId();
 
-        List<Doctor> doctors = doctorService.findAllBySpecialityOrderByNameAsc(speciality);
-        List<PatientWaitingAppointment> patientWaitingAppointments = new ArrayList<>();
-        patientWaitingAppointments=patientWaitingAppointmentService.findAll();
+        if (specialityName == null) {
+            specialityName = "";
+        }
 
-        modelMap.put("doctors", doctors);
-        modelMap.put("search_speciality", specialityName);
-        modelMap.put("search_doctor", doctorId);
+        List<PatientWaitingAppointment> patientWaitingAppointmentListBeforeFilter =
+                patientWaitingAppointmentService.findAllByPatientUserIdAndClosed(userId, false);
+        List<PatientWaitingAppointment> patientWaitingAppointments = filterWaitingAppointments(
+                patientWaitingAppointmentListBeforeFilter,
+                null,
+                specialityName,
+                doctorName);
+
+        patientWaitingAppointments.sort(null);
 
         modelMap.addAllAttributes(appointmentListView(
                 patientWaitingAppointments,
                 userLogged,
                 PATIENT_TYPE_URL,
+                doctorName,
                 specialityName));
 
         return USER_TYPE_URL;
     }
+
     @GetMapping(value = "receptionist/waitingAppointment")
     public String showReceptionistWaitingAppointmentList(ModelMap modelMap) {
-        List<PatientWaitingAppointment> patientWaitingAppointments = new ArrayList<>();
-        patientWaitingAppointments=patientWaitingAppointmentService.findAll();
-        List<Speciality> specialities = specialityService.findAll(Sort.by(Sort.Direction.ASC, "name"));
+        List<PatientWaitingAppointment> patientWaitingAppointments =
+                patientWaitingAppointmentService.findAllByClosed(false);
         User userLogged = userService.currentUser();
-
-
 
         modelMap.addAllAttributes(appointmentListView(
                 patientWaitingAppointments,
                 userLogged,
                 RECEPTIONIST_TYPE_URL,
+                null,
                 null));
 
         return USER_TYPE_URL;
@@ -103,25 +109,28 @@ public class WaitingAppointmentController {
     //marcar pedido de lista de espera
     @PostMapping(value = "receptionist/waitingAppointment")
     public String showMakeApplyForReceptionistWaitingAppointment(ModelMap modelMap,
-                                                     @RequestParam(required = false, name = "specialityName") String specialityName,
-                                                     @RequestParam(required = false, name = "doctorId") String doctorId) {
-        List<Speciality> specialities = specialityService.findAll(Sort.by(Sort.Direction.ASC, "name"));
-        Speciality speciality = specialityService.findByName(specialityName);
+                                                                 @RequestParam(required = false, name = "specialityName") String specialityName,
+                                                                 @RequestParam(required = false, name = "patientName") String patientName,
+                                                                 @RequestParam(required = false, name = "doctorName") String doctorName) {
 
         User userLogged = userService.currentUser();
 
-        List<Doctor> doctors = doctorService.findAllBySpecialityOrderByNameAsc(speciality);
-        List<PatientWaitingAppointment> patientWaitingAppointments = new ArrayList<>();
-        patientWaitingAppointments=patientWaitingAppointmentService.findAll();
+        List<PatientWaitingAppointment> patientWaitingAppointmentListBeforeFilter =
+                patientWaitingAppointmentService.findAllByClosed(false);
 
-        modelMap.put("doctors", doctors);
-        modelMap.put("search_speciality", specialityName);
-        modelMap.put("search_doctor", doctorId);
+        List<PatientWaitingAppointment> patientWaitingAppointments = filterWaitingAppointments(
+                patientWaitingAppointmentListBeforeFilter,
+                patientName,
+                specialityName,
+                doctorName);
+
+        patientWaitingAppointments.sort(null);
 
         modelMap.addAllAttributes(appointmentListView(
                 patientWaitingAppointments,
                 userLogged,
                 RECEPTIONIST_TYPE_URL,
+                doctorName,
                 specialityName));
 
         return USER_TYPE_URL;
@@ -132,6 +141,7 @@ public class WaitingAppointmentController {
     private ModelMap appointmentListView(List<PatientWaitingAppointment> patientWaitingAppointments,
                                          User userLogged,
                                          String userTypeURL,
+                                         String doctorName,
                                          String specialityName) {
         ModelMap modelMap = new ModelMap();
 
@@ -141,28 +151,16 @@ public class WaitingAppointmentController {
         modelMap.put("patientWaitingAppointments", patientWaitingAppointments);
         modelMap.put("user_logged", userLogged);
         modelMap.put("userTypeURL", userTypeURL);
+        modelMap.put("doctorName", doctorName);
         modelMap.put("specialityName", specialityName);
         return modelMap;
     }
 
     private List<PatientWaitingAppointment> filterWaitingAppointments(List<PatientWaitingAppointment> waitingAppointments,
-                                                                      LocalDateTime date,
                                                                       String patientName,
                                                                       String specialityName,
                                                                       String doctorName) {
         List<PatientWaitingAppointment> result = waitingAppointments;
-        // Filter by date
-        if (date != null) {
-            Set<PatientWaitingAppointment> tempList = new HashSet<>();
-            for (PatientWaitingAppointment waitingAppointment : result) {
-                if (waitingAppointment.getDate().equals(date)) {
-                    tempList.add(waitingAppointment);
-                }
-            }
-            result.clear();
-            result.addAll(tempList);
-        }
-
         // Filter by Patient Name
         if (patientName != null && !patientName.isEmpty()) {
             Set<PatientWaitingAppointment> tempList = new HashSet<>();
