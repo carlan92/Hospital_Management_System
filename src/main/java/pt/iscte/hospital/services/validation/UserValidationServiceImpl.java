@@ -1,6 +1,7 @@
 package pt.iscte.hospital.services.validation;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.datetime.DateFormatter;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.ModelMap;
 import pt.iscte.hospital.entities.Doctor;
@@ -14,6 +15,7 @@ import pt.iscte.hospital.services.ErrorMessage;
 import pt.iscte.hospital.services.ImageUploadService;
 
 import java.text.SimpleDateFormat;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 @Service
@@ -233,8 +235,8 @@ public class UserValidationServiceImpl implements UserValidationService {
     @Override
     public UserValidationService validBirthday() {
         String pattern = "dd/MM/yyyy";
-        SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern);
-        String date = simpleDateFormat.format(user.getBirthday());
+        DateTimeFormatter df = DateTimeFormatter.ofPattern(pattern);
+        String date = user.getBirthday().format(df);
         //validação feita a nivel dos campos. //todo validar a nivel de data real
         if (date.matches("[0-9]{2}/[0-9]{2}/[0-9]{4}")) {
             return this;
