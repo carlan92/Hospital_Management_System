@@ -118,6 +118,12 @@ h1 {
   padding-top: 20px;
 }
 
+.sidenav-icon{
+  height: 33px;
+  width: 33px;
+  margin-right: 5px;
+}
+
 .panel-scroll {
   display: flex;
   flex-direction: column;

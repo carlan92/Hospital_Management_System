@@ -36,8 +36,9 @@
 		<div class="panel-scroll">
 			<div class="sidenav_row">
 				<a href="/receptionist/main" class="botao_acessos">
-					<img src="/imagens/noun_home.svg" /> Início
+					<img src="/imagens/noun_home.svg" class="sidenav-icon"/> Início
 				</a>
+				<%@ include file="../components/mail.jsp" %>
 				<a href="/doctor-receptionist/patient-list" class="botao_acessos">
 					<img src="/imagens/noun_utentes.svg" /> Utentes
 				</a>

@@ -37,6 +37,7 @@
                     <a href="/doctor/main" class="botao_acessos">
                         <img src="/imagens/noun_home.svg" /> Início
                     </a>
+                    <%@ include file="../components/mail.jsp" %>
                     <a href="/doctor-receptionist/patient-list" class="botao_acessos">
                         <img src="/imagens/noun_utentes.svg" /> Utentes
                     </a>
