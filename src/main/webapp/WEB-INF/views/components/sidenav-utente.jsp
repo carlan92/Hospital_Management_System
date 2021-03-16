@@ -39,7 +39,7 @@
             </a>
             <%@ include file="../components/mail.jsp" %>
             <a href="/user/doctor-list" class="botao_acessos">
-                <img src="/imagens/noun_doctor-list.svg" Médicos
+                <img src="/imagens/noun_doctor-list.svg" class="sidenav-icon"> Médicos
             </a>
 
             <a href="/patient/appointment-list/current" class="botao_acessos">
