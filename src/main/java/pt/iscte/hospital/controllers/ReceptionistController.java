@@ -8,10 +8,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import pt.iscte.hospital.controllers.utils.Common;
 import pt.iscte.hospital.entities.*;
 import pt.iscte.hospital.services.*;
-import pt.iscte.hospital.services.user.DoctorService;
-import pt.iscte.hospital.services.user.PatientService;
 import pt.iscte.hospital.services.user.UserService;
 import pt.iscte.hospital.services.validation.SpecialityValidationService;
 import pt.iscte.hospital.services.validation.UserValidationService;
@@ -24,41 +23,46 @@ import static pt.iscte.hospital.entities.states.AppointmentState.MARCADA;
 @Controller
 public class ReceptionistController {
     // Attributes
-    @Autowired
-    private SpecialityService specialityService;
-    @Autowired
-    private UserService userService;
-    @Autowired
-    private PatientService patientService;
-    @Autowired
-    private DoctorService doctorService;
-    @Autowired
-    private NationalityService nationalityService;
-    @Autowired
-    private AppointmentService appointmentService;
-    @Autowired
-    private SpecialityValidationService specialityValidationService;
-    @Autowired
-    private UserValidationService userValidationService;
-    @Autowired
-    private RegistrationService registrationService;
+    private final SpecialityService specialityService;
+    private final UserService userService;
+    private final NationalityService nationalityService;
+    private final AppointmentService appointmentService;
+    private final SpecialityValidationService specialityValidationService;
+    private final UserValidationService userValidationService;
+    private final RegistrationService registrationService;
+    private final Common common;
 
     // Constructor
+    @Autowired
+    public ReceptionistController(SpecialityService specialityService,
+                                  UserService userService,
+                                  NationalityService nationalityService,
+                                  AppointmentService appointmentService,
+                                  SpecialityValidationService specialityValidationService,
+                                  UserValidationService userValidationService,
+                                  RegistrationService registrationService,
+                                  Common common) {
+        this.specialityService = specialityService;
+        this.userService = userService;
+        this.nationalityService = nationalityService;
+        this.appointmentService = appointmentService;
+        this.specialityValidationService = specialityValidationService;
+        this.userValidationService = userValidationService;
+        this.registrationService = registrationService;
+        this.common = common;
+    }
 
 
     // Methods
     @GetMapping(value = "/receptionist/main")
     public String showReceptionistMain(ModelMap modelMap) {
-        User userLogged = userService.currentUser();
-
-        modelMap.put("user_logged", userLogged);
+        modelMap.addAllAttributes(common.sideNavMap());
         return "receptionist/main";
     }
 
     //TODO confirmar página lista de espera para consulta para o dia de hoje
     @GetMapping(value = "/receptionist/waiting-list")
     public String showWaitingList(ModelMap modelMap) {
-        User userLogged = userService.currentUser();
         LocalDate date = LocalDate.now();
 
         List<Appointment> appointments = appointmentService.findAllBySlotDateAndAppointmentStatus(
@@ -67,7 +71,7 @@ public class ReceptionistController {
 
         appointments.sort(null);
 
-        modelMap.put("user_logged", userLogged);
+        modelMap.addAllAttributes(common.sideNavMap());
         modelMap.put("appointments", appointments);
         return "receptionist/waiting-list";
     }
@@ -75,9 +79,7 @@ public class ReceptionistController {
 
     @GetMapping(value = "/receptionist/add-speciality")
     public String addSpecialityPage(ModelMap modelMap) {
-        User userLogged = userService.currentUser();
-
-        modelMap.put("user_logged", userLogged);
+        modelMap.addAllAttributes(common.sideNavMap());
         return "receptionist/add-speciality";
     }
 
@@ -105,12 +107,10 @@ public class ReceptionistController {
     public String addUserPage(ModelMap modelMap) {
         List<Nationality> nationalities = nationalityService.findAll();
         List<Speciality> specialities = specialityService.findAll(Sort.by(Sort.Direction.ASC, "name"));
-        User userLogged = userService.currentUser();
 
         modelMap.put("nationalities", nationalities);
         modelMap.put("specialities", specialities);
-
-        modelMap.put("user_logged", userLogged);
+        modelMap.addAllAttributes(common.sideNavMap());
         return "receptionist/add-user";
     }
 
@@ -122,11 +122,9 @@ public class ReceptionistController {
                           @RequestParam String confirmarPassword2,
                           @RequestParam String account,
                           @RequestParam(required = false, name = "specialityName") String specialityName) {
-
-        User userLogged = userService.currentUser();
         List<Nationality> nationalities = nationalityService.findAll();
         List<Speciality> specialities = specialityService.findAll(Sort.by(Sort.Direction.ASC, "name"));
-        mpError.put("user_logged", userLogged);
+        mpError.addAllAttributes(common.sideNavMap());
         mpError.put("nationalities", nationalities);
         mpError.put("specialities", specialities);
         mpError.put("specialityName",specialityName);
@@ -193,7 +191,7 @@ public class ReceptionistController {
         List<Nationality> nationalities = nationalityService.findAll();
         List<Speciality> specialities = specialityService.findAll(Sort.by(Sort.Direction.ASC, "name"));
         User userLogged = userService.currentUser();
-        modelMap.put("user_logged", userLogged);
+        modelMap.addAllAttributes(common.sideNavMap());
         modelMap.put("nationalities", nationalities);
         modelMap.put("specialities", specialities);
         modelMap.put("specialityName",specialityName);
@@ -205,7 +203,7 @@ public class ReceptionistController {
             modelMap.put("medicalCondition", false);
         }
 
-        modelMap.put("user_logged", userLogged);
+        modelMap.addAllAttributes(common.sideNavMap());
         if (user.getAccount().equals("Médico")) {
             modelMap.put("user", user);
         } else if (patient.getAccount().equals("Utente")) {

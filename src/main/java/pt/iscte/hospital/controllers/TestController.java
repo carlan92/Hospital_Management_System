@@ -5,12 +5,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
-import pt.iscte.hospital.entities.*;
+import pt.iscte.hospital.controllers.utils.Common;
 import pt.iscte.hospital.objects.utils.TimeInterval;
-import pt.iscte.hospital.security.IAuthenticationFacade;
 import pt.iscte.hospital.services.*;
-import pt.iscte.hospital.services.user.DoctorService;
-import pt.iscte.hospital.services.user.UserService;
 
 import java.time.DayOfWeek;
 import java.time.LocalTime;
@@ -21,18 +18,19 @@ import java.util.List;
 @Controller
 public class TestController {
 
-    @Autowired
-    private UserService userService;
+    private final Common common;
+    private final SlotService slotService;
 
     @Autowired
-    private SlotService slotService;
+    public TestController(Common common, SlotService slotService) {
+        this.common = common;
+        this.slotService = slotService;
+    }
 
 
     @GetMapping(value = "/patient-receptionist/payments-history")
     public String page(ModelMap modelMap) {
-        User userLogged = userService.currentUser();
-
-        modelMap.put("user_logged", userLogged);
+        modelMap.addAllAttributes(common.sideNavMap());
         return "patient-receptionist/payments-history";
     }
 
@@ -43,10 +41,10 @@ public class TestController {
         List<TimeInterval> timeIntervalList = new ArrayList<>();
         List<DayOfWeek> weekDaysList = new ArrayList<>();
         int year = 2021;
-        int month = 03;
+        int month = 3;
 
-        timeIntervalList.add(new TimeInterval(LocalTime.of(9,00),LocalTime.of(12,00) ));
-        timeIntervalList.add(new TimeInterval(LocalTime.of(13,00),LocalTime.of(17,00) ));
+        timeIntervalList.add(new TimeInterval(LocalTime.of(9, 0), LocalTime.of(12, 0)));
+        timeIntervalList.add(new TimeInterval(LocalTime.of(13, 0), LocalTime.of(17, 0)));
 
         /*weekDaysList.add(DayOfWeek.MONDAY);
         weekDaysList.add(DayOfWeek.TUESDAY);

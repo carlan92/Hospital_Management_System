@@ -6,23 +6,27 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import pt.iscte.hospital.controllers.utils.Common;
 import pt.iscte.hospital.entities.User;
 import pt.iscte.hospital.services.RegistrationService;
 import pt.iscte.hospital.services.user.UserService;
 
 @Controller
 public class PublicController {
-    @Autowired
-    private UserService userService;
-    @Autowired
-    private RegistrationService registrationService;
+    private final UserService userService;
+    private final RegistrationService registrationService;
+    private final Common common;
 
+    @Autowired
+    public PublicController(UserService userService, RegistrationService registrationService, Common common) {
+        this.userService = userService;
+        this.registrationService = registrationService;
+        this.common = common;
+    }
 
     @GetMapping(value = "/public/contacts")
     public String ShowContacts(ModelMap modelMap) {
-        User userLogged = userService.currentUser();
-
-        modelMap.put("user_logged", userLogged);
+        modelMap.addAllAttributes(common.sideNavMap());
         return "public/contacts";
     }
 
@@ -33,15 +37,13 @@ public class PublicController {
         if(user != null){
             return "redirect:" + mainPage;
         }
-        modelMap.put("user_logged", user);
+        modelMap.addAllAttributes(common.sideNavMap());
         return mainPage;
     }
 
     @GetMapping(value = "/public/general-information")
     public String showGeneralInformation(ModelMap modelMap) {
-        User userLogged = userService.currentUser();
-
-        modelMap.put("user_logged", userLogged);
+        modelMap.addAllAttributes(common.sideNavMap());
         return "public/general-information";
     }
 

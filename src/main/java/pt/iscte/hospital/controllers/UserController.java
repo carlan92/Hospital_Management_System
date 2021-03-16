@@ -6,13 +6,13 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
+import pt.iscte.hospital.controllers.utils.Common;
 import pt.iscte.hospital.entities.*;
 import pt.iscte.hospital.entities.states.AppointmentState;
 import pt.iscte.hospital.entities.waiting.DoctorWaitingPatient;
 import pt.iscte.hospital.exceptions.ImageSizeException;
 import pt.iscte.hospital.exceptions.ImageTypeException;
 import pt.iscte.hospital.objects.utils.AlertMessageImage;
-import pt.iscte.hospital.repositories.AppointmentRepository;
 import pt.iscte.hospital.repositories.waiting.DoctorWaitingPatientRepository;
 import pt.iscte.hospital.services.*;
 
@@ -27,33 +27,50 @@ import java.time.LocalDate;
 import java.util.Collections;
 import java.util.List;
 
-import static pt.iscte.hospital.entities.states.AppointmentState.DESMARCADA_PELO_MEDICO;
 import static pt.iscte.hospital.entities.states.AppointmentState.DESMARCADA_PELO_UTENTE;
 
 @Controller
 public class UserController {
+    private final AppointmentService appointmentService;
+    private final PatientService patientService;
+    private final DoctorService doctorService;
+    private final SpecialityService specialityService;
+    private final UserService userService;
+    private final ImageUploadService imageUploadService;
+    private final NationalityService nationalityService;
+    private final UserValidationService userValidationService;
+    private final SlotService slotService;
+    private final DoctorWaitingPatientRepository doctorWaitingPatientRepository;
+    private final InvoiceService invoiceService;
+    private final Common common;
+
+    public UserController(AppointmentService appointmentService,
+                          PatientService patientService,
+                          DoctorService doctorService,
+                          SpecialityService specialityService,
+                          UserService userService,
+                          ImageUploadService imageUploadService,
+                          NationalityService nationalityService,
+                          UserValidationService userValidationService,
+                          SlotService slotService,
+                          DoctorWaitingPatientRepository doctorWaitingPatientRepository, InvoiceService invoiceService, Common common) {
+        this.appointmentService = appointmentService;
+        this.patientService = patientService;
+        this.doctorService = doctorService;
+        this.specialityService = specialityService;
+        this.userService = userService;
+        this.imageUploadService = imageUploadService;
+        this.nationalityService = nationalityService;
+        this.userValidationService = userValidationService;
+        this.slotService = slotService;
+        this.doctorWaitingPatientRepository = doctorWaitingPatientRepository;
+        this.invoiceService = invoiceService;
+        this.common = common;
+    }
+
     @Autowired
-    private AppointmentService appointmentService;
-    @Autowired
-    private PatientService patientService;
-    @Autowired
-    private DoctorService doctorService;
-    @Autowired
-    private SpecialityService specialityService;
-    @Autowired
-    private UserService userService;
-    @Autowired
-    private ImageUploadService imageUploadService;
-    @Autowired
-    private NationalityService nationalityService;
-    @Autowired
-    private UserValidationService userValidationService;
-    @Autowired
-    private SlotService slotService;
-    @Autowired
-    private DoctorWaitingPatientRepository doctorWaitingPatientRepository;
-    @Autowired
-    private InvoiceService invoiceService;
+
+
 
     @GetMapping(value = "/user/change-profile-data")
     public String showChangeProfileData(ModelMap modelMap) {
@@ -63,7 +80,7 @@ public class UserController {
         modelMap.put("nationalities", nationalities);
         modelMap.put("specialities", specialities);
 
-        modelMap.put("user_logged", userService.currentUser());
+        modelMap.addAllAttributes(common.sideNavMap());
         modelMap.put("user", userService.currentUser());
 
         return "user/change-profile-data";
@@ -88,7 +105,7 @@ public class UserController {
                 modelMap.addAllAttributes(userValidationService.getErrorModelMap());
                 modelMap.put("nationalities", nationalities);
 
-                modelMap.put("user_logged", userService.currentUser());
+                modelMap.addAllAttributes(common.sideNavMap());
                 modelMap.put("user", patient);
                 return "user/change-profile-data";
             }
@@ -135,7 +152,7 @@ public class UserController {
                 modelMap.addAllAttributes(userValidationService.getErrorModelMap());
                 modelMap.put("nationalities", nationalities);
 
-                modelMap.put("user_logged", userService.currentUser());
+                modelMap.addAllAttributes(common.sideNavMap());
                 modelMap.put("user", receptionist);
                 return "user/change-profile-data";
             }
@@ -169,11 +186,10 @@ public class UserController {
     public String showDoctorList(ModelMap modelMap) {
         List<Speciality> specialities = specialityService.findAll(Sort.by(Sort.Direction.ASC, "name"));
         List<Doctor> doctors = doctorService.findAll(Sort.by(Sort.Direction.ASC, "name"));
-        User userLogged = userService.currentUser();
 
         modelMap.put("specialities", specialities);
         modelMap.put("doctors", doctors);
-        modelMap.put("user_logged", userLogged);
+        modelMap.addAllAttributes(common.sideNavMap());
         return "user/doctor-list";
     }
 
@@ -190,13 +206,12 @@ public class UserController {
         }
 
         List<Speciality> specialities = specialityService.findAll(Sort.by(Sort.Direction.ASC, "name"));
-        User userLogged = userService.currentUser();
 
         modelMap.put("search_name", name);
         modelMap.put("search_speciality", speciality);
         modelMap.put("specialities", specialities);
         modelMap.put("doctors", doctors);
-        modelMap.put("user_logged", userLogged);
+        modelMap.addAllAttributes(common.sideNavMap());
         return "user/doctor-list";
     }
 
@@ -204,13 +219,12 @@ public class UserController {
     @GetMapping(value = "/{userType}/appointment-details/{tempo}/{appointmentId}")
     public String showAppointmentDetails(ModelMap modelMap, @PathVariable(value = "userType") String userType, @PathVariable(value = "tempo") String tempo, @PathVariable(value = "appointmentId") Long appointmentId) {
         List<Speciality> specialities = specialityService.findAll(Sort.by(Sort.Direction.ASC, "name"));
-        User userLogged = userService.currentUser();
         Appointment appointment = appointmentService.findByAppointmentId(appointmentId);
         String appointmentDescription = AppointmentState.searchState(appointment.getAppointmentStatus());
         Patient patient = patientService.findByUserId(appointment.getPatient().getUserId());
 
         modelMap.put("specialities", specialities);
-        modelMap.put("user_logged", userLogged);
+        modelMap.addAllAttributes(common.sideNavMap());
         modelMap.put("patient", patient);
         modelMap.put("appointment", appointment);
         modelMap.put("appointmentDescription", appointmentDescription);
@@ -224,8 +238,6 @@ public class UserController {
     public String showAppointmentDetailsAfterCancel(ModelMap modelMap,
                                                     @PathVariable(value = "userType") String userType,
                                                     @PathVariable(value = "appointmentId") Long appointmentId) {
-
-        User userLogged = userService.currentUser();
         Appointment appointment = appointmentService.findByAppointmentId(appointmentId);
 
 
@@ -237,7 +249,7 @@ public class UserController {
 
         modelMap.put("message", "A consulta foi cancelada com sucesso.");
         modelMap.put("imageURL", AlertMessageImage.SUCCESS.getImageURL());
-        modelMap.put("user_logged", userLogged);
+        modelMap.addAllAttributes(common.sideNavMap());
         return "components/alert-message";
     }
 
@@ -252,7 +264,7 @@ public class UserController {
         Collections.sort(listaChamada, Collections.reverseOrder());
         listaChamada.subList(0, minLength);
 
-        modelMap.put("user_logged", userService.currentUser());
+        modelMap.addAllAttributes(common.sideNavMap());
         modelMap.put("listaChamada", listaChamada);
 
         return "user/lista-chamada";
@@ -262,8 +274,6 @@ public class UserController {
     @GetMapping(value = "/receptionist/appointment-details/resume/{appointmentId}/ask-invoice")
     public String showAskInvoice(ModelMap modelMap,
                                  @PathVariable(value = "appointmentId") Long appointmentId) {
-
-        User userLogged = userService.currentUser();
         Appointment appointment = appointmentService.findByAppointmentId(appointmentId);
 
         invoiceService.createInvoice(appointment);
@@ -273,7 +283,7 @@ public class UserController {
         modelMap.put("hasButton2", true);
         modelMap.put("button2_text", "Regressar ao detalhe da consulta");
         modelMap.put("button2_url", "/receptionist/appointment-details/resume/" + appointmentId);
-        modelMap.put("user_logged", userLogged);
+        modelMap.addAllAttributes(common.sideNavMap());
         return "components/alert-message";
     }
 

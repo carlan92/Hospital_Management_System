@@ -8,19 +8,18 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import pt.iscte.hospital.controllers.utils.Common;
 import pt.iscte.hospital.entities.*;
 import pt.iscte.hospital.entities.waiting.PatientWaitingAppointment;
 import pt.iscte.hospital.objects.utils.AlertMessageImage;
 import pt.iscte.hospital.objects.utils.Calendar;
 import pt.iscte.hospital.objects.utils.Day;
 import pt.iscte.hospital.objects.utils.Month;
-import pt.iscte.hospital.repositories.user.DoctorRepository;
-import pt.iscte.hospital.repositories.user.PatientRepository;
-import pt.iscte.hospital.repositories.waiting.PatientWaitingAppointmentRepository;
 import pt.iscte.hospital.services.*;
 import pt.iscte.hospital.services.user.DoctorService;
 import pt.iscte.hospital.services.user.PatientService;
 import pt.iscte.hospital.services.user.UserService;
+import pt.iscte.hospital.services.waiting.PatientWaitingAppointmentService;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -45,11 +44,9 @@ public class PatientController {
     @Autowired
     private SlotService slotService;
     @Autowired
-    private PatientWaitingAppointmentRepository patientWaitingAppointmentRepository;
+    private PatientWaitingAppointmentService patientWaitingAppointmentService;
     @Autowired
-    private PatientRepository patientRepository;
-    @Autowired
-    private DoctorRepository doctorRepository;
+    private Common common;
 
 
     // Constructor
@@ -57,9 +54,7 @@ public class PatientController {
     // Methods
     @GetMapping(value = {"/patient/main", "/patient"})
     public String showPatientMain(ModelMap modelMap) {
-        User userLogged = userService.currentUser();
-
-        modelMap.put("user_logged", userLogged);
+        modelMap.addAllAttributes(common.sideNavMap());
         return "patient/main";
     }
 
@@ -68,8 +63,6 @@ public class PatientController {
     public String showMakeAppointment(ModelMap modelMap,
                                       @PathVariable(required = false, name = "appointmentId") Long appointmentId) {
         List<Speciality> specialities = specialityService.findAll(Sort.by(Sort.Direction.ASC, "name"));
-
-        User userLogged = userService.currentUser();
 
         LocalDate todayDate = LocalDate.now();
         String chosenDay = todayDate.format(FORMATTER);
@@ -92,7 +85,7 @@ public class PatientController {
         modelMap.put("year", year);
         modelMap.put("strMonth", strMonth);
         modelMap.put("chosenDay", chosenDay);
-        modelMap.put("user_logged", userLogged);
+        modelMap.addAllAttributes(common.sideNavMap());
         modelMap.put("appointmentId", appointmentId);
         if (appointmentId == null) {
             modelMap.put("isToBeReschedule", false);
@@ -194,7 +187,6 @@ public class PatientController {
         } else if (!specialityName.isEmpty()) {
             calendar = slotService.calendarColor(calendar, specialityName);
         }
-        User userLogged = userService.currentUser();
 
         boolean hasSlotForDoctor = slotService.hasDisponibilidadeNoMes(calendar, doctor);
         modelMap.put("hasSlotForDoctor", hasSlotForDoctor);
@@ -207,7 +199,7 @@ public class PatientController {
 
                 modelMap.put("message", "A consulta marcada com sucesso.");
                 modelMap.put("imageURL", AlertMessageImage.SUCCESS.getImageURL());
-                modelMap.put("user_logged", userLogged);
+                modelMap.addAllAttributes(common.sideNavMap());
             } else {
                 saveAppointment(slotId);
                 Appointment appointmentForCancel = appointmentService.findByAppointmentId(appointmentId);
@@ -215,7 +207,7 @@ public class PatientController {
 
                 modelMap.put("message", "A consulta foi reagendada com sucesso.");
                 modelMap.put("imageURL", AlertMessageImage.SUCCESS.getImageURL());
-                modelMap.put("user_logged", userLogged);
+                modelMap.addAllAttributes(common.sideNavMap());
             }
             return "components/alert-message";
         }
@@ -235,7 +227,7 @@ public class PatientController {
         modelMap.put("year", calYear);
         modelMap.put("strMonth", strMonth);
         modelMap.put("chosenDay", chosenDay);
-        modelMap.put("user_logged", userLogged);
+        modelMap.addAllAttributes(common.sideNavMap());
         modelMap.put("appointmentId", appointmentId);
         if (appointmentId == null) {
             modelMap.put("isToBeReschedule", false);
@@ -250,26 +242,25 @@ public class PatientController {
     //fazer pedido de consulta quando não existe vagas
     @GetMapping(value = "/patient/waitingAppointment/ask")
     public String askAppointment(ModelMap modelMap) {
-        User userLogged = userService.currentUser();
+        modelMap.addAllAttributes(common.sideNavMap());
 
-        modelMap.put("user_logged", userLogged);
         return "components/alert-message";
     }
 
-    @PostMapping(value ="/patient/waitingAppointment/ask")
+    @PostMapping(value = "/patient/waitingAppointment/ask")
     public String askAppointmentPost(ModelMap modelMap,
-                                 @RequestParam (name = "doctorId") Long doctorId) {
+                                     @RequestParam(name = "doctorId") Long doctorId) {
         User userLogged = userService.currentUser();
         LocalDateTime dataToday = LocalDateTime.now();
         Long userId = userLogged.getUserId();
-        Patient patient = patientRepository.findByUserId(userId);
-        Doctor doctor = doctorRepository.findByUserId(doctorId);
+        Patient patient = patientService.findByUserId(userId);
+        Doctor doctor = doctorService.findByUserId(doctorId);
         PatientWaitingAppointment patientWaitingAppointment = new PatientWaitingAppointment(dataToday, doctor, patient);
-        patientWaitingAppointmentRepository.save(patientWaitingAppointment);
+        patientWaitingAppointmentService.save(patientWaitingAppointment);
         modelMap.put("message", "O seu pedido de consulta ficou registado.");
         modelMap.put("imageURL", AlertMessageImage.SUCCESS.getImageURL());
 
-        modelMap.put("user_logged", userLogged);
+        modelMap.addAllAttributes(common.sideNavMap());
         return "components/alert-message";
     }
 
