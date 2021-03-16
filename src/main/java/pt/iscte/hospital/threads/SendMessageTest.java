@@ -39,10 +39,10 @@ public class SendMessageTest {
 
         Message msg31 = new Message("Bem vinda Cara Utente!","Desejamos muito sucesso na nossa companhia", user3);
         Message msg32 = new Message("Peças","Estamos com 25% desconto em todas as peças e órgãos!", user3);
-        Message msg33 = new Message("Peças","Spam... por favor apague <a href='www.publico.pt'>clique aqui</a>", user3);
-        Message msg34 = new Message("Peças","Spam... por favor apague <a href='www.publico.pt'>clique aqui</a>", user3);
-        Message msg35 = new Message("Peças","Spam... por favor apague <a href='www.publico.pt'>clique aqui</a>", user3);
-        Message msg36 = new Message("Peças","Spam... por favor apague <a href='www.publico.pt'>clique aqui</a>", user3);
+        Message msg33 = new Message("Peças","Spam... por favor apague <a href='https://www.publico.pt'>clique aqui</a>", user3);
+        Message msg34 = new Message("Peças","Spam... por favor apague <a href='https://www.publico.pt'>clique aqui</a>", user3);
+        Message msg35 = new Message("Peças","Spam... por favor apague <a href='https://www.publico.pt'>clique aqui</a>", user3);
+        Message msg36 = new Message("Peças","Spam... por favor apague <a href='https://www.publico.pt'>clique aqui</a>", user3);
 
         messageService.save(msg11);
         messageService.save(msg12);

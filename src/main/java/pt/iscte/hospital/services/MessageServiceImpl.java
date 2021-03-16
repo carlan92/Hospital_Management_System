@@ -72,6 +72,12 @@ public class MessageServiceImpl implements MessageService {
     }
 
     @Override
+    public boolean hasUnreadMessages(Long userId){
+        Long count = messageRepository.countAllByUserUserIdAndReadMsg(userId, false);
+        return count != 0;
+    }
+
+    @Override
     public void save(Message message){
         messageRepository.save(message);
     }

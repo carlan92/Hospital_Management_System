@@ -10,6 +10,11 @@
 <c:if test="${user_logged.getAccount().equals('Utente')}">
     <a href="/patient/messages" class="botao_acessos">
 </c:if>
-<img src="/imagens/message/mail.svg" class="sidenav-icon"/>Mensagens
-<img src="/imagens/message/mail-alert.svg" class="sidenav-icon"/>Mensagens
+
+<c:if test="${!hasUnreadMessages}">
+    <img src="/imagens/message/mail.svg" class="sidenav-icon"/>Mensagens
+</c:if>
+<c:if test="${hasUnreadMessages}">
+    <img src="/imagens/message/mail-alert.svg" class="sidenav-icon"/>Mensagens
+</c:if>
 </a>

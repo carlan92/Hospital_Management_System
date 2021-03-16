@@ -22,31 +22,11 @@ import java.util.List;
 public class TestController {
 
     @Autowired
-    private DoctorService doctorService;
-
-    @Autowired
-    private SpecialityService specialityService;
-
-    @Autowired
-    private IAuthenticationFacade authenticationFacade;
-
-    @Autowired
     private UserService userService;
 
     @Autowired
     private SlotService slotService;
 
-
-    @GetMapping(value = "/test")
-    public String pageTest(ModelMap modelMap) {
-
-
-        System.out.println("User : " + authenticationFacade.getAuthentication().getName());
-        User userLogged = userService.currentUser();
-
-        modelMap.put("user_logged", userLogged);
-        return "test";
-    }
 
     @GetMapping(value = "/patient-receptionist/payments-history")
     public String page(ModelMap modelMap) {

@@ -30,6 +30,8 @@ public interface MessageService {
 
     void markMessageHasReadById(Long msgId);
 
+    boolean hasUnreadMessages(Long userId);
+
     void save(Message message);
 
     void delete(Message message);
