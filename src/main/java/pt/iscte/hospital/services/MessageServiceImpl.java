@@ -59,6 +59,19 @@ public class MessageServiceImpl implements MessageService {
     }
 
     @Override
+    public void deleteMessageById(Long msgId){
+        Message msg = messageRepository.findByMessageId(msgId);
+        delete(msg);
+    }
+
+    @Override
+    public void markMessageHasReadById(Long msgId){
+        Message msg = messageRepository.findByMessageId(msgId);
+        msg.setReadMsg(true);
+        save(msg);
+    }
+
+    @Override
     public void save(Message message){
         messageRepository.save(message);
     }

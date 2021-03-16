@@ -21,14 +21,34 @@ public class MessageController {
 
     @GetMapping(value = "/{userType}/messages")
     public String verMensagens(ModelMap modelMap,
-                               @PathVariable (value = "userType") String userType){
+                               @PathVariable(value = "userType") String userType) {
 
-        List<Message> messages = messageService.findAllByUserUserIdOrderByDateTimeDesc(currentUser().getUserId()) ;
+        List<Message> messages = messageService.findAllByUserUserIdOrderByDateTimeDesc(currentUser().getUserId());
         System.out.println(messages);
         modelMap.put("user_logged", currentUser());
         modelMap.put("messages", messages);
         modelMap.put("userType", userType);
         return "user/message-list";
+    }
+
+    @GetMapping(value = "/{userType}/messages/delete/{messageId}")
+    public String deleteMensagem(ModelMap modelMap,
+                                 @PathVariable(value = "userType") String userType,
+                                 @PathVariable(value = "messageId") Long messageId) {
+
+        messageService.deleteMessageById(messageId);
+
+        return "redirect:/" + userType + "/messages";
+    }
+
+    @GetMapping(value = "/{userType}/messages/read/{messageId}")
+    public String markHasReadMensagens(ModelMap modelMap,
+                                       @PathVariable(value = "userType") String userType,
+                                       @PathVariable(value = "messageId") Long messageId) {
+
+        messageService.markMessageHasReadById(messageId);
+
+        return "redirect:/" + userType + "/messages";
     }
 
     // Private Methods

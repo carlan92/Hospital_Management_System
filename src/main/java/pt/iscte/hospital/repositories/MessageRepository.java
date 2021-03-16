@@ -21,4 +21,5 @@ public interface MessageRepository extends JpaRepository<Message, Long> {
             Long userId,
             boolean hasRead);
     Long countAllByUserUserIdAndReadMsg(Long userId, boolean hasRead);
+    Message findByMessageId(Long messageId);
 }

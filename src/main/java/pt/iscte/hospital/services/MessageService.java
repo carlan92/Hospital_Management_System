@@ -26,6 +26,10 @@ public interface MessageService {
 
     void createMessage(String subject, String message, User userReceiver);
 
+    void deleteMessageById(Long msgId);
+
+    void markMessageHasReadById(Long msgId);
+
     void save(Message message);
 
     void delete(Message message);
