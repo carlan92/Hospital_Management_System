@@ -2,6 +2,7 @@ package pt.iscte.hospital.entities;
 
 import lombok.Getter;
 import lombok.Setter;
+import pt.iscte.hospital.objects.utils.Calendar;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
@@ -38,4 +39,7 @@ public class Message {
     }
 
     // Methods
+    public String getDateStr(){
+        return dateTime.format(Calendar.FORMATTER);
+    }
 }
