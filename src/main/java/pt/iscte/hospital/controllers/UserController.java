@@ -55,9 +55,6 @@ public class UserController {
     @Autowired
     private InvoiceService invoiceService;
 
-    @Autowired
-    AppointmentRepository appointmentRepository;
-
     @GetMapping(value = "/user/change-profile-data")
     public String showChangeProfileData(ModelMap modelMap) {
         List<Nationality> nationalities = nationalityService.findAll();
