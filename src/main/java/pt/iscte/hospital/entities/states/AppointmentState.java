@@ -6,7 +6,7 @@ public enum AppointmentState {
     DESMARCADA_PELO_UTENTE(3, "Desmarcada pelo Utente"),
     DESMARCADA_PELO_MEDICO(4, "Desmarcada pelo Médico"),
     REALIZADA(5, "Realizada"),
-    NAO_REALIZADA(6, "Não realizada");
+    NAO_REALIZADA(6, "Faltou à Consulta");
 
     // Attributes
     private int stateNr;
