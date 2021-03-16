@@ -68,9 +68,8 @@
                         </div>
 
                         <div class="cell-row">
-                            faltam 1 links: um para ver a factura quando existe, mostrar a factura!!!!!
                             <c:if test="${appointment.hasInvoice()}">
-                                <a class="cell-row">Ver Fatura</a>
+                                <a class="cell-row" href="/patient-receptionist/invoice/${appointment.getInvoice().getInvoiceId()}">Ver Fatura</a>
                             </c:if>
                             <c:if test="${!appointment.hasInvoice() && user_logged.getAccount().equals('Recepcionista')}">
                                 <a href="/receptionist/appointment-details/resume/${appointmentId}/ask-invoice"

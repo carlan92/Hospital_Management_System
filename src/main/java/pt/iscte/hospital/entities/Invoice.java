@@ -78,6 +78,14 @@ public class Invoice {
         return invoiceState;
     }
 
+    public Long getInvoiceId() {
+        return invoiceId;
+    }
+
+    public String getInvoiceApiId() {
+        return invoiceApiId;
+    }
+
     public String getInvoiceStateStr() {
         return InvoiceState.searchState(invoiceState);
     }

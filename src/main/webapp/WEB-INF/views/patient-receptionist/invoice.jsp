@@ -96,6 +96,11 @@
                 </tr>
             </table>
         </div>
+        <c:if test="${user_logged.getAccount().equals('Recepcionista')}">
+            <c:if test="${!appointment.getInvoice().isPaid()}">
+                <a type="button" href="/patient-receptionist/invoice/pay/${appointment.getInvoice().getInvoiceId()}" > Pagar</a> </td>
+            </c:if>
+        </c:if>
     </div>
 </div>
 
