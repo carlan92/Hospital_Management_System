@@ -13,8 +13,8 @@ import java.util.List;
 
 @Controller
 public class MessageController {
-    private Common common;
-    private MessageService messageService;
+    private final Common common;
+    private final MessageService messageService;
 
     @Autowired
     public MessageController(Common common, MessageService messageService) {

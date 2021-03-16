@@ -14,6 +14,8 @@ public interface AppointmentService {
 
     List<Appointment> findAllByAppointmentStatus(Integer appointmentStatus);
 
+    List<Appointment> findAllByPatientUserId(Long userId);
+
     // Patient Filters
     List<Appointment> findAllByPatientAndAppointmentStatus(Patient patient,
                                                            Integer appointmentStatus);

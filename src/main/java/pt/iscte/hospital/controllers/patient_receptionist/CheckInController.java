@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import pt.iscte.hospital.controllers.utils.Common;
 import pt.iscte.hospital.entities.Appointment;
 import pt.iscte.hospital.entities.Speciality;
 import pt.iscte.hospital.entities.User;
@@ -31,11 +32,13 @@ public class CheckInController {
     private static final String REDIRECT_URL = "redirect:%s";
 
     @Autowired
-    UserService userService;
+    private UserService userService;
     @Autowired
-    AppointmentService appointmentService;
+    private AppointmentService appointmentService;
     @Autowired
-    SpecialityService specialityService;
+    private SpecialityService specialityService;
+    @Autowired
+    private Common common;
 
     @GetMapping(value = "/patient/checkin")
     public String pageCheckInByPatient(ModelMap modelMap) {
@@ -51,7 +54,6 @@ public class CheckInController {
 
         modelMap.addAllAttributes(checkInView(
                 appointments,
-                userLogged,
                 PATIENT_TYPE_URL,
                 PATIENT_CHECK_IN_LINK,
                 null,
@@ -80,7 +82,6 @@ public class CheckInController {
     // Receptionist
     @GetMapping(value = "/receptionist/checkin")
     public String pageCheckInByReceptionist(ModelMap modelMap) {
-        User userLogged = userService.currentUser();
         LocalDate date = LocalDate.now();
 
         List<Appointment> appointments = appointmentService.findAllBySlotDateAndAppointmentStatus(
@@ -90,7 +91,6 @@ public class CheckInController {
 
         modelMap.addAllAttributes(checkInView(
                 appointments,
-                userLogged,
                 RECEPTIONIST_TYPE_URL,
                 RECEPTIONIST_CHECK_IN_LINK,
                 null,
@@ -121,7 +121,6 @@ public class CheckInController {
 
         modelMap.addAllAttributes(checkInView(
                 appointments,
-                userLogged,
                 RECEPTIONIST_TYPE_URL,
                 RECEPTIONIST_CHECK_IN_LINK,
                 specialityName,
@@ -159,7 +158,6 @@ public class CheckInController {
     }
 
     private ModelMap checkInView(List<Appointment> appointments,
-                                 User userLogged,
                                  String userTypeURL,
                                  String checkInLink,
                                  String specialityName,
@@ -169,9 +167,9 @@ public class CheckInController {
 
         List<Speciality> specialities = specialityService.findAll(Sort.by(Sort.Direction.ASC, "name"));
 
+        modelMap.addAllAttributes(common.sideNavMap());
         modelMap.put("specialities", specialities);
         modelMap.put("appointments", appointments);
-        modelMap.put("user_logged", userLogged);
         modelMap.put("checkInLink", checkInLink);
         modelMap.put("userTypeURL", userTypeURL);
         modelMap.put("specialityName", specialityName);

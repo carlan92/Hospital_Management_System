@@ -8,13 +8,12 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import pt.iscte.hospital.controllers.utils.Common;
 import pt.iscte.hospital.entities.*;
 
 import pt.iscte.hospital.entities.states.AppointmentState;
 import pt.iscte.hospital.entities.states.InvoiceState;
-import pt.iscte.hospital.repositories.AppointmentRepository;
 import pt.iscte.hospital.services.*;
-import pt.iscte.hospital.services.user.DoctorService;
 import pt.iscte.hospital.services.user.PatientService;
 import pt.iscte.hospital.services.user.UserService;
 
@@ -41,11 +40,7 @@ public class AppointmentListController {
     @Autowired
     private PatientService patientService;
     @Autowired
-    private DoctorService doctorService;
-    @Autowired
-    private SlotService slotService;
-    @Autowired
-    private AppointmentRepository appointmentRepository;
+    private Common common;
 
 
     // Constructor
@@ -72,7 +67,6 @@ public class AppointmentListController {
 
         modelMap.addAllAttributes(appointmentListView(
                 appointments,
-                userLogged,
                 PATIENT_CURRENT_TYPE_URL,
                 null,
                 null,
@@ -106,7 +100,6 @@ public class AppointmentListController {
         modelMap.put("invoiceStates", invoiceStates);
         modelMap.addAllAttributes(appointmentListView(
                 appointments,
-                userLogged,
                 PATIENT_PAST_TYPE_URL,
                 null,
                 null,
@@ -136,7 +129,6 @@ public class AppointmentListController {
         modelMap.put("appointmentStates", appointmentStatesAll);
         modelMap.addAllAttributes(appointmentListView(
                 appointments,
-                userLogged,
                 DOCTOR_TYPE_URL,
                 null,
                 null,
@@ -149,7 +141,6 @@ public class AppointmentListController {
 
     @GetMapping(value = {"/receptionist/appointment-list/resume"})
     public String showAppointmentListReceptionist(ModelMap modelMap) {
-        User userLogged = userService.currentUser();
         List<AppointmentState> appointmentStatesAll = Arrays.asList(AppointmentState.values());
         List<InvoiceState> invoiceStates = Arrays.asList(InvoiceState.values());
 
@@ -168,7 +159,6 @@ public class AppointmentListController {
         modelMap.put("invoiceStates", invoiceStates);
         modelMap.addAllAttributes(appointmentListView(
                 appointments,
-                userLogged,
                 RECEPTIONIST_TYPE_URL,
                 null,
                 null,
@@ -212,7 +202,7 @@ public class AppointmentListController {
             invoiceStateNr = Integer.parseInt(stateInvoice);
         }
 
-        List<Appointment> appointmentListBeforeFilter = appointmentRepository.findAllByPatientUserId(userId);
+        List<Appointment> appointmentListBeforeFilter = appointmentService.findAllByPatientUserId(userId);
         List<Appointment> appointments = filterAppointments(
                 appointmentListBeforeFilter,
                 date,
@@ -229,7 +219,6 @@ public class AppointmentListController {
         modelMap.put("invoiceStates", invoiceStates);
         modelMap.addAllAttributes(appointmentListView(
                 appointments,
-                userLogged,
                 PATIENT_CURRENT_TYPE_URL,
                 date,
                 specialityName,
@@ -269,7 +258,7 @@ public class AppointmentListController {
             invoiceStateNr = Integer.parseInt(stateInvoice);
         }
 
-        List<Appointment> appointmentListBeforeFilter = appointmentRepository.findAllByPatientUserId(userId);
+        List<Appointment> appointmentListBeforeFilter = appointmentService.findAllByPatientUserId(userId);
         List<Appointment> appointments = filterAppointments(
                 appointmentListBeforeFilter,
                 date,
@@ -285,7 +274,6 @@ public class AppointmentListController {
         modelMap.put("invoiceStates", invoiceStates);
         modelMap.addAllAttributes(appointmentListView(
                 appointments,
-                userLogged,
                 PATIENT_PAST_TYPE_URL,
                 date,
                 specialityName,
@@ -317,7 +305,7 @@ public class AppointmentListController {
             appointmentStateNr = Integer.parseInt(stateAppointment);
         }
 
-        List<Appointment> appointmentListBeforeFilter = appointmentRepository.findAllBySlotDoctorUserId(userId);
+        List<Appointment> appointmentListBeforeFilter = appointmentService.findAllBySlotDoctorUserId(userId);
         List<Appointment> appointments = filterAppointments(
                 appointmentListBeforeFilter,
                 date,
@@ -332,7 +320,6 @@ public class AppointmentListController {
 
         modelMap.addAllAttributes(appointmentListView(
                 appointments,
-                userLogged,
                 DOCTOR_TYPE_URL,
                 date,
                 specialityName,
@@ -351,7 +338,6 @@ public class AppointmentListController {
                                                       @RequestParam(required = false) String stateAppointment,
                                                       @RequestParam(required = false) String stateInvoice,
                                                       @RequestParam String doctorName) {
-        User userLogged = userService.currentUser();
         List<AppointmentState> appointmentStatesAll = Arrays.asList(AppointmentState.values());
         List<InvoiceState> invoiceStates = Arrays.asList(InvoiceState.values());
 
@@ -373,7 +359,7 @@ public class AppointmentListController {
             invoiceStateNr = Integer.parseInt(stateInvoice);
         }
 
-        List<Appointment> appointmentListBeforeFilter = appointmentRepository.findAll();
+        List<Appointment> appointmentListBeforeFilter = appointmentService.findAll();
         List<Appointment> appointments = filterAppointments(
                 appointmentListBeforeFilter,
                 date,
@@ -391,7 +377,6 @@ public class AppointmentListController {
 
         modelMap.addAllAttributes(appointmentListView(
                 appointments,
-                userLogged,
                 RECEPTIONIST_TYPE_URL,
                 date,
                 specialityName,
@@ -406,7 +391,6 @@ public class AppointmentListController {
     // Private Methods
 
     private ModelMap appointmentListView(List<Appointment> appointments,
-                                         User userLogged,
                                          String userTypeURL,
                                          LocalDate date,
                                          String specialityName,
@@ -420,7 +404,7 @@ public class AppointmentListController {
 
         modelMap.put("specialities", specialities);
         modelMap.put("appointments", appointments);
-        modelMap.put("user_logged", userLogged);
+        modelMap.addAllAttributes(common.sideNavMap());
         modelMap.put("userTypeURL", userTypeURL);
         modelMap.put("date", date);
         modelMap.put("specialityName", specialityName);

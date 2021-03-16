@@ -34,6 +34,11 @@ public class AppointmentServiceImpl implements AppointmentService {
     }
 
     @Override
+    public List<Appointment> findAllByPatientUserId(Long userId){
+        return appointmentRepository.findAllByPatientUserId(userId);
+    }
+
+    @Override
     public List<Appointment> findAllByPatientAndAppointmentStatus(Patient patient, Integer appointmentStatus) {
         return appointmentRepository.findAllByPatientAndAppointmentStatus(patient, appointmentStatus);
     }

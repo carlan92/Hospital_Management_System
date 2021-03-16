@@ -8,12 +8,11 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import pt.iscte.hospital.controllers.utils.Common;
 import pt.iscte.hospital.entities.Speciality;
 import pt.iscte.hospital.entities.User;
 import pt.iscte.hospital.entities.waiting.PatientWaitingAppointment;
-import pt.iscte.hospital.repositories.waiting.PatientWaitingAppointmentRepository;
 import pt.iscte.hospital.services.SpecialityService;
-import pt.iscte.hospital.services.user.DoctorService;
 import pt.iscte.hospital.services.user.UserService;
 import pt.iscte.hospital.services.waiting.PatientWaitingAppointmentService;
 
@@ -32,11 +31,9 @@ public class WaitingAppointmentController {
     @Autowired
     private UserService userService;
     @Autowired
-    private DoctorService doctorService;
-    @Autowired
     private PatientWaitingAppointmentService patientWaitingAppointmentService;
     @Autowired
-    private PatientWaitingAppointmentRepository patientWaitingAppointmentRepository;
+    private Common common;
 
     @GetMapping(value = "patient/waitingAppointment")
     public String showPatientWaitingAppointmentList(ModelMap modelMap) {
@@ -48,7 +45,6 @@ public class WaitingAppointmentController {
 
         modelMap.addAllAttributes(appointmentListView(
                 patientWaitingAppointments,
-                userLogged,
                 PATIENT_TYPE_URL,
                 null,
                 null));
@@ -81,7 +77,6 @@ public class WaitingAppointmentController {
 
         modelMap.addAllAttributes(appointmentListView(
                 patientWaitingAppointments,
-                userLogged,
                 PATIENT_TYPE_URL,
                 doctorName,
                 specialityName));
@@ -93,11 +88,9 @@ public class WaitingAppointmentController {
     public String showReceptionistWaitingAppointmentList(ModelMap modelMap) {
         List<PatientWaitingAppointment> patientWaitingAppointments =
                 patientWaitingAppointmentService.findAllByClosed(false);
-        User userLogged = userService.currentUser();
 
         modelMap.addAllAttributes(appointmentListView(
                 patientWaitingAppointments,
-                userLogged,
                 RECEPTIONIST_TYPE_URL,
                 null,
                 null));
@@ -127,7 +120,6 @@ public class WaitingAppointmentController {
 
         modelMap.addAllAttributes(appointmentListView(
                 patientWaitingAppointments,
-                userLogged,
                 RECEPTIONIST_TYPE_URL,
                 doctorName,
                 specialityName));
@@ -138,7 +130,6 @@ public class WaitingAppointmentController {
     //private Methods
 
     private ModelMap appointmentListView(List<PatientWaitingAppointment> patientWaitingAppointments,
-                                         User userLogged,
                                          String userTypeURL,
                                          String doctorName,
                                          String specialityName) {
@@ -148,7 +139,7 @@ public class WaitingAppointmentController {
 
         modelMap.put("specialities", specialities);
         modelMap.put("patientWaitingAppointments", patientWaitingAppointments);
-        modelMap.put("user_logged", userLogged);
+        modelMap.addAllAttributes(common.sideNavMap());
         modelMap.put("userTypeURL", userTypeURL);
         modelMap.put("doctorName", doctorName);
         modelMap.put("specialityName", specialityName);
