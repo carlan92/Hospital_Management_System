@@ -104,7 +104,7 @@
                     </div>
                     <div class="col-8 title_next_appt">
                         <span class="text_next_appt">Consulta a decorrer</span>
-                        <p class="text_next_appt2">Ainda não tem consultas a decorrer ou apresentar info:</p>
+                        <p class="text_next_appt2"></p>
                     </div>
                 </div>
 
