@@ -31,6 +31,12 @@ public class Speciality {
         this.name = name;
     }
 
+    public Speciality(String name, double price) {
+
+        this.name = name;
+        this.price= price;
+    }
+
     // Methods
     public Long getSpecialityId() {
         return specialityId;

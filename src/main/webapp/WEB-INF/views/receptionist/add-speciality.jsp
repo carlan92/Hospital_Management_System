@@ -33,6 +33,11 @@
                             <input id="especialidade_id" type="text" class="form-input" name="name_speciality" required
                                 placeholder="Nome da Especialidade" value="" />
                             <p class="msg-error">${errorMsgSpeciality}</p>
+                            </br>
+                            <label for="price">Preço (€)</label>
+                            <input id="price" type="text" class="form-input" name= "price" required
+                                   placeholder="Valor" value="" />
+                            <p class="msg-error">${errorMsgSpeciality}</p>
                         </div>
                     </div>
                 </div>

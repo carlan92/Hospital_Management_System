@@ -82,9 +82,9 @@ public class ReceptionistController {
     }
 
     @PostMapping(value = "/receptionist/add-speciality")
-    public String addSpecialityService(@RequestParam String name_speciality, ModelMap mpError) {
+    public String addSpecialityService(@RequestParam String name_speciality, @RequestParam double price, ModelMap mpError) {
 
-        Speciality speciality = new Speciality(name_speciality);
+        Speciality speciality = new Speciality(name_speciality, price);
 
         // Check if speciality is valid
         specialityValidationService.clear().setSpeciality(speciality)
@@ -95,7 +95,7 @@ public class ReceptionistController {
             mpError.addAllAttributes(specialityValidationService.getErrorModelMap());
             return "receptionist/add-speciality";
         }
-
+//TODO falta validação do preço
         specialityService.addSpeciality(speciality);
 
         return ("redirect:/receptionist/main");
