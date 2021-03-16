@@ -72,7 +72,7 @@
                                 <td>
                                         ${appointment.getPatient().getFirstAndLastName()}
                                     <br>
-                                        ${appointment.getPatient().getNIF()}
+                                        ${appointment.getPatient().getNif()}
                                     <br>
                                         ${appointment.getPatient().getEmail()}                                </td>
                             </tr>
@@ -86,7 +86,7 @@
                 </tr>
 
                 <tr class="details">
-                    <td colspan="3">${appointment.getSlot().getDoctor().getSpeciality().getName()}</td>
+                    <td colspan="3">Consulta de ${appointment.getSlot().getDoctor().getSpeciality().getName()}</td>
                     <td>${invoice.getValue()}</td>
                 </tr>
 
