@@ -1,3 +1,6 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+
 <c:if test="${user_logged.getAccount().equals('Médico')}">
     <a href="/doctor/messages" class="botao_acessos">
 </c:if>
