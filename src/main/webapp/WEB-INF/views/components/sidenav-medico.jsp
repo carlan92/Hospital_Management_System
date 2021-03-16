@@ -42,7 +42,7 @@
                 <img src="/imagens/noun_utentes.svg"/> Utentes
             </a>
             <a href="/user/doctor-list" class="botao_acessos">
-                <img src="/imagens/noun_utentes.svg"/> Médicos
+                <img src="/imagens/noun_doctor-list.svg"/> Médicos
             </a>
             <a href="/doctor/appointment-list/resume" class="botao_acessos">
                 <img src="/imagens/noun_heart_rate.svg"/> Consultas
