@@ -2,12 +2,15 @@ package pt.iscte.hospital.services.invoice;
 
 import pt.iscte.hospital.entities.Appointment;
 import pt.iscte.hospital.entities.Invoice;
+import pt.iscte.hospital.exceptions.PaymentException;
 
 import java.time.LocalDateTime;
 import java.util.List;
 
 public interface InvoiceService {
     void createInvoice(Appointment appointment);
+
+    void payInvoice(Appointment appointment) throws PaymentException;
 
     // Connection to Invoice API
     /**

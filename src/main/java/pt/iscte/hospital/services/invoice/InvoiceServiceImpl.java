@@ -11,11 +11,11 @@ import org.springframework.web.client.UnknownHttpStatusCodeException;
 import pt.iscte.hospital.entities.Appointment;
 import pt.iscte.hospital.entities.Invoice;
 import pt.iscte.hospital.entities.Patient;
+import pt.iscte.hospital.entities.states.InvoiceState;
 import pt.iscte.hospital.repositories.AppointmentRepository;
 import pt.iscte.hospital.repositories.InvoiceRepository;
+import pt.iscte.hospital.exceptions.PaymentException;
 
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.*;
@@ -38,8 +38,8 @@ public class InvoiceServiceImpl implements InvoiceService {
 
     // Methods
     @Override
-    public void createInvoice(Appointment appointment){
-        // Pedir nº de factura TODO
+    public void createInvoice(Appointment appointment) {
+        // Pedir nº de factura
         if (appointment.getInvoice() == null) {
             Patient patient = appointment.getPatient();
             String name = patient.getName();
@@ -67,8 +67,28 @@ public class InvoiceServiceImpl implements InvoiceService {
         }
     }
 
+    @Override
+    public void payInvoice(Appointment appointment) throws PaymentException {
+        // Pedir nº de factura
+        if (appointment.getInvoice() != null) {
+            Invoice invoice = appointment.getInvoice();
+            String invoiceApiId = invoice.getInvoiceApiId();
+            boolean paymentRegistered = payInvoiceAPI(invoiceApiId);
+
+            if (paymentRegistered) {
+                invoice.setPaidDate(LocalDateTime.now());
+                invoice.setInvoiceState(InvoiceState.PAGA.getStateNr());
+                invoiceRepository.save(invoice);
+            } else {
+                throw new PaymentException();       // Pagamento não fica registado no serviço da API
+            }
+
+        }
+    }
+
 
     // Connection to Invoice API
+
     /**
      * Criar factura <br>
      * /invoices/:company_nif/create <br>
@@ -82,11 +102,11 @@ public class InvoiceServiceImpl implements InvoiceService {
      */
     @Override
     public InvoiceApi createInvoiceAPI(String name,
-                                    String email,
-                                    long nif,
-                                    LocalDateTime dueDate,
-                                    Double value,
-                                    List<InvoiceItem> invoiceItems) {
+                                       String email,
+                                       long nif,
+                                       LocalDateTime dueDate,
+                                       Double value,
+                                       List<InvoiceItem> invoiceItems) {
         DateTimeFormatter df = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm'Z'");
 
         // create an instance of RestTemplate
@@ -202,7 +222,7 @@ public class InvoiceServiceImpl implements InvoiceService {
         String requestUrl = BASE_URL + String.format(PAY_URL, COMPANY_NIF, invoiceId);
 
         // request
-        InvoiceResponse response = null;
+        InvoiceResponse response;
         try {
             response = restTemplate.postForObject(requestUrl, new HttpEntity<>(headers), InvoiceResponse.class);
         } catch (HttpClientErrorException | HttpServerErrorException e) {
@@ -259,8 +279,9 @@ public class InvoiceServiceImpl implements InvoiceService {
 
         return response.getInvoices();
     }
+
     @Override
-    public Invoice findByInvoiceId (Long invoiceId){
+    public Invoice findByInvoiceId(Long invoiceId) {
         return invoiceRepository.findByInvoiceId(invoiceId);
     }
 }
