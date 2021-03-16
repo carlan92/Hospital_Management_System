@@ -17,17 +17,14 @@ import java.util.List;
 @Controller
 public class DoctorReceptionistController {
 
-
     private final PatientService patientService;
     private final Common common;
 
+    @Autowired
     public DoctorReceptionistController(PatientService patientService, Common common) {
         this.patientService = patientService;
         this.common = common;
     }
-
-    @Autowired
-
 
     @GetMapping(value = "/doctor-receptionist/patient-list")
     public String showPatientList(ModelMap modelMap) {

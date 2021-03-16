@@ -44,6 +44,7 @@ public class UserController {
     private final InvoiceService invoiceService;
     private final Common common;
 
+    @Autowired
     public UserController(AppointmentService appointmentService,
                           PatientService patientService,
                           DoctorService doctorService,
@@ -67,9 +68,6 @@ public class UserController {
         this.invoiceService = invoiceService;
         this.common = common;
     }
-
-    @Autowired
-
 
 
     @GetMapping(value = "/user/change-profile-data")
