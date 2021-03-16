@@ -87,7 +87,7 @@
                                         <td>${patientWaitingAppointment.getPatient().getFirstAndLastName()}</td>
                                     </c:if>
                                     <td>${patientWaitingAppointment.getDoctor().getSpeciality().getName()}</td>
-                                    <td> ${patientWaitingAppointment.getDoctor().getName()}</td>
+                                    <td> ${patientWaitingAppointment.getDoctor().getFirstAndLastName()}</td>
 
                                     <td><a href="">Ver mais</a></td>
                                 </tr>

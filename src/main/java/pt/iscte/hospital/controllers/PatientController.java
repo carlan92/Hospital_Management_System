@@ -9,16 +9,21 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import pt.iscte.hospital.entities.*;
+import pt.iscte.hospital.entities.waiting.PatientWaitingAppointment;
 import pt.iscte.hospital.objects.utils.AlertMessageImage;
 import pt.iscte.hospital.objects.utils.Calendar;
 import pt.iscte.hospital.objects.utils.Day;
 import pt.iscte.hospital.objects.utils.Month;
+import pt.iscte.hospital.repositories.user.DoctorRepository;
+import pt.iscte.hospital.repositories.user.PatientRepository;
+import pt.iscte.hospital.repositories.waiting.PatientWaitingAppointmentRepository;
 import pt.iscte.hospital.services.*;
 import pt.iscte.hospital.services.user.DoctorService;
 import pt.iscte.hospital.services.user.PatientService;
 import pt.iscte.hospital.services.user.UserService;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 
 import static pt.iscte.hospital.entities.states.AppointmentState.*;
@@ -39,6 +44,12 @@ public class PatientController {
     private DoctorService doctorService;
     @Autowired
     private SlotService slotService;
+    @Autowired
+    private PatientWaitingAppointmentRepository patientWaitingAppointmentRepository;
+    @Autowired
+    private PatientRepository patientRepository;
+    @Autowired
+    private DoctorRepository doctorRepository;
 
 
     // Constructor
@@ -177,7 +188,7 @@ public class PatientController {
         List<Doctor> doctors = doctorService.findAllBySpecialityOrderByNameAsc(speciality);
         List<Slot> slots = slotService.findAllByDoctorAndIsAvailableAndDateOrderByTimeBeginAsc(doctor, true, chosenDate);
         List<Day> calendar = Calendar.calendarList(calYear, calMonth);
-        boolean hasSelectDoctor=!doctorId.isEmpty();
+        boolean hasSelectDoctor = !doctorId.isEmpty();
         if (!doctorId.isEmpty()) {
             calendar = slotService.calendarColor(calendar, doctor);
         } else if (!specialityName.isEmpty()) {
@@ -185,19 +196,19 @@ public class PatientController {
         }
         User userLogged = userService.currentUser();
 
-        boolean hasSlotForDoctor= slotService.hasDisponibilidadeNoMes(calendar,doctor);
-        modelMap.put("hasSlotForDoctor",hasSlotForDoctor);
-        modelMap.put("hasSelectDoctor",hasSelectDoctor);
+        boolean hasSlotForDoctor = slotService.hasDisponibilidadeNoMes(calendar, doctor);
+        modelMap.put("hasSlotForDoctor", hasSlotForDoctor);
+        modelMap.put("hasSelectDoctor", hasSelectDoctor);
 
         // Marcar consulta
         if (slotId != null && !slotId.isEmpty() && saveOption.equals("save")) {
-            if(appointmentId==null) {
+            if (appointmentId == null) {
                 saveAppointment(slotId);
 
                 modelMap.put("message", "A consulta marcada com sucesso.");
                 modelMap.put("imageURL", AlertMessageImage.SUCCESS.getImageURL());
                 modelMap.put("user_logged", userLogged);
-            }else{
+            } else {
                 saveAppointment(slotId);
                 Appointment appointmentForCancel = appointmentService.findByAppointmentId(appointmentId);
                 cancelAppointment(DESMARCADA_PELO_UTENTE.getStateNr(), appointmentForCancel);
@@ -230,9 +241,36 @@ public class PatientController {
             modelMap.put("isToBeReschedule", false);
         } else {
             modelMap.put("isToBeReschedule", true);
+
         }
 
         return ("patient/make-appointment");
+    }
+
+    //fazer pedido de consulta quando não existe vagas
+    @GetMapping(value = "/patient/waitingAppointment/ask")
+    public String askAppointment(ModelMap modelMap) {
+        User userLogged = userService.currentUser();
+
+        modelMap.put("user_logged", userLogged);
+        return "components/alert-message";
+    }
+
+    @PostMapping(value ="/patient/waitingAppointment/ask")
+    public String askAppointmentPost(ModelMap modelMap,
+                                 @RequestParam (name = "doctorId") Long doctorId) {
+        User userLogged = userService.currentUser();
+        LocalDateTime dataToday = LocalDateTime.now();
+        Long userId = userLogged.getUserId();
+        Patient patient = patientRepository.findByUserId(userId);
+        Doctor doctor = doctorRepository.findByUserId(doctorId);
+        PatientWaitingAppointment patientWaitingAppointment = new PatientWaitingAppointment(dataToday, doctor, patient);
+        patientWaitingAppointmentRepository.save(patientWaitingAppointment);
+        modelMap.put("message", "O seu pedido de consulta ficou registado.");
+        modelMap.put("imageURL", AlertMessageImage.SUCCESS.getImageURL());
+
+        modelMap.put("user_logged", userLogged);
+        return "components/alert-message";
     }
 
     // Private Methods

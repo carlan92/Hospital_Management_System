@@ -17,7 +17,6 @@ import pt.iscte.hospital.services.user.DoctorService;
 import pt.iscte.hospital.services.user.UserService;
 import pt.iscte.hospital.services.waiting.PatientWaitingAppointmentService;
 
-import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
