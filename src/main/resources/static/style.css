@@ -302,7 +302,7 @@ h1 {
   width: 25%;
 }
 
-.main .card_box:hover {
+.main .card:hover {
   background-color: white;
   z-index: 2;
   position: relative;
@@ -409,6 +409,10 @@ h1 {
 
 .main .last-row {
   margin-top: 50px;
+}
+
+.checkin_img{
+  margin-top: 33px;
 }
 
 /* Carousel*/
@@ -1304,8 +1308,9 @@ select option:disabled {
 }
 
 .mw-270 {
-  min-width: 262px;
+  min-width: 270px;
   min-height: 388px;
+  max-height: 420px;
 }
 
 /* Menu Informações Gerais */

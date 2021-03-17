@@ -27,12 +27,9 @@
         </div>
     </div>
 
-    <div id="vista_geral">
-    </div>
-
-    <div class="row middle-row">
+    <div class="row middle-row margin-row">
         <div class="card_box">
-            <div class="card">
+            <div class="card mw-270">
                 <div class="card-body">
                     <img src="/imagens/waiting-patient.svg" width="200px" alt="..."/>
                     <p class="utentes"><span id="num_utentes">${pacientes_confirmadosEspera}</span> UTENTES</p>
@@ -48,12 +45,16 @@
 
 
         <div class="card_box">
-            <div class="card">
+            <div class="card mw-270">
                 <div class="card-body">
-                    <h5 class="card-title">CHECK-IN </h5>
-                    <img src="/imagens/check-mark.svg" class="wait_list" width="100px" alt="..."/>
+                    <div class="checkin_img">
+                        <img src="/imagens/check-mark.svg" class="wait_list" width="150px" alt="..."/>
+                    </div>
+                    <p class="linha_2">
+                        Efectue aqui o check-in do utente
+                    </p>
                     <form action="/receptionist/checkinbyAppointmentId" method="post">
-                        <button type="submit" class="btn btn-blue">Efectuar check-in > </button>
+                        <button type="submit" class="btn btn-blue">Check-in</button>
                     </form>
                 </div>
                 <div class="horizontal-border"></div>
@@ -61,18 +62,23 @@
         </div>
 
         <div class="card_box">
-            <div class="card">
+            <div class="card mw-270">
                 <div class="card-body">
-
+                    <img src="/imagens/draw_new_entries.svg" width="160px" alt="..."/>
+                    <p class="">
+                       Adicione aqui uma nova especialidade
+                    </p>
                     <div class="add-pat">
-                        <a class="btn btn-outline-secondary btn-add" href="/receptionist/add-speciality"
-                           type="submit">Adicionar nova especialidade
+                        <a class="btn btn-green" href="/receptionist/add-speciality"
+                           type="submit">Nova especialidade
                         </a>
                     </div>
-
+                    <span class="">
+                        Adicione aqui um novo utilizador
+                    </span>
                     <div class="add-pat">
-                        <a class="btn btn-outline-secondary btn-add" href="/receptionist/add-user" type="submit">Adicionar
-                            novo utilizador</a>
+                        <a class="btn btn-green" href="/receptionist/add-user" type="submit">
+                            Novo utilizador</a>
                     </div>
                 </div>
                 <div class="horizontal-border"></div>

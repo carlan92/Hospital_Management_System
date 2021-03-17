@@ -8,30 +8,27 @@
 
 <body onload="startTime() ; currentDate()">
 <%@ include file="../components/sidenav-utente.jsp" %>
+
 <div class="main">
     <!--menu da direita-->
     <div class="row first_row">
-
         <div class="col-4">
-            <img src="/imagens/draw_patient_inicio.svg" alt="" class="icon1"/>
+            <img src="/imagens/draw_patient_inicio.svg" alt="patient" class="icon1"/>
         </div>
 
         <div class="col-8 display_time">
             <div class="time_box">
                 <i class="fas fa-clock clock2"></i>
-                <span id="hour">
-                    </span>
+                <span id="hour"> </span>
             </div>
             <div class="date_box">
-                    <span id="date">
-                    </span>
+                    <span id="date"> </span>
             </div>
         </div>
     </div>
 
 
     <div class="row middle-row margin-row">
-
         <div class="card_box">
             <div class="card mw-270">
                 <div class="card-body ">
@@ -108,7 +105,7 @@
         let h = today.getHours();
         let m = today.getMinutes();
         m = checkTime(m);
-        h= checkTime(h);
+        h = checkTime(h);
         document.getElementById('hour').innerHTML = h + ":" + m;
         let t = setTimeout(startTime, 500);
     }
