@@ -482,14 +482,21 @@ public class AppointmentListController {
 
         // Estado da consulta
         if (appointmentStateNr != null) {
-            Set<Appointment> tempList = new HashSet<>();
-            for (Appointment appointment : result) {
-                if (appointment.getAppointmentStatus() == appointmentStateNr) {
-                    tempList.add(appointment);
-                }
+            List<Integer> appointmentStateNrs = new ArrayList<>();
+            if (appointmentStateNr.equals(1001)) {
+                appointmentStateNrs = Arrays.asList(
+                        DESMARCADA_PELO_UTENTE.getStateNr(),
+                        DESMARCADA_PELO_MEDICO.getStateNr(),
+                        NAO_REALIZADA.getStateNr());
+            } else if (appointmentStateNr.equals(1002)) {
+                appointmentStateNrs = Arrays.asList(
+                        DESMARCADA_PELO_UTENTE.getStateNr(),
+                        DESMARCADA_PELO_MEDICO.getStateNr());
+            } else {
+                appointmentStateNrs.add(appointmentStateNr);
             }
-            result.clear();
-            result.addAll(tempList);
+
+            result = filterAppointmentsByState(result, appointmentStateNrs);
         }
 
         // Estado da facturação
@@ -504,6 +511,22 @@ public class AppointmentListController {
             result.clear();
             result.addAll(tempList);
         }
+        return result;
+    }
+
+    private List<Appointment> filterAppointmentsByState(List<Appointment> appointmentList,
+                                                        List<Integer> appointmentStateNrs) {
+        List<Appointment> result = appointmentList;
+
+        List<Appointment> tempList = new ArrayList<>();
+        for (Integer appointmentStateNr : appointmentStateNrs) {
+            for (Appointment appointment : result) {
+                if (appointment.getAppointmentStatus() == appointmentStateNr) {
+                    tempList.add(appointment);
+                }
+            }
+        }
+        result = tempList;
         return result;
     }
 

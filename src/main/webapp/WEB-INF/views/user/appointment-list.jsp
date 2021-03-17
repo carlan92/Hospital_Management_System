@@ -59,6 +59,10 @@
                             </br>
                             <select id="appointment-state_id" class="form-input sm" name="stateAppointment">
                                 <option value="" disabled selected>Estado da consulta</option>
+                                <option value="1001">Consultas não Realizadas</option>
+                                <option value="1002">Consultas Desmarcadas</option>
+
+
                                 <!-- For -->
                                 <c:forEach var="state" items="${appointmentStates}">
                                     <option value="${state.getStateNr()}"> ${state.getDescription()}</option>

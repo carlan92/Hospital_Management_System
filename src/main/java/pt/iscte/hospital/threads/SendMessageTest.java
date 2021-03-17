@@ -3,16 +3,11 @@ package pt.iscte.hospital.threads;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
-import pt.iscte.hospital.entities.Appointment;
 import pt.iscte.hospital.entities.Message;
 import pt.iscte.hospital.entities.User;
-import pt.iscte.hospital.entities.states.AppointmentState;
 import pt.iscte.hospital.services.AppointmentService;
 import pt.iscte.hospital.services.MessageService;
-import pt.iscte.hospital.services.invoice.InvoiceService;
 import pt.iscte.hospital.services.user.UserService;
-
-import java.util.List;
 
 
 @Component
@@ -25,7 +20,7 @@ public class SendMessageTest {
     UserService userService;
 
     // Verifica todas as consultas sem factura e solicita factura
-    @Scheduled(fixedRate = 10000000)
+   @Scheduled(fixedRate = 10000000)
     public void sendMessages() {
         User user1 = userService.findByUserId(100L); // Médico 111
         User user2 = userService.findByUserId(215L); // Utente Ana Ribeiro
@@ -44,7 +39,7 @@ public class SendMessageTest {
         Message msg35 = new Message("Peças","Spam... por favor apague <a href='https://www.publico.pt'>clique aqui</a>", user3);
         Message msg36 = new Message("Peças","Spam... por favor apague <a href='https://www.publico.pt'>clique aqui</a>", user3);
 
-        messageService.save(msg11);
+        /*messageService.save(msg11);
         messageService.save(msg12);
 
         messageService.save(msg21);
@@ -55,7 +50,7 @@ public class SendMessageTest {
         messageService.save(msg33);
         messageService.save(msg34);
         messageService.save(msg35);
-        messageService.save(msg36);
+        messageService.save(msg36);*/
 
         System.out.println("Mensagens criadas!");
     }
