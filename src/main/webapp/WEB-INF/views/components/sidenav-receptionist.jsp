@@ -40,22 +40,22 @@
             </a>
             <%@ include file="../components/mail.jsp" %>
             <a href="/doctor-receptionist/patient-list" class="botao_acessos">
-                <img src="/imagens/noun_utentes.svg"/> Utentes
+                <img src="/imagens/noun_utentes.svg"class="sidenav-icon"/> Utentes
             </a>
             <a href="/user/doctor-list" class="botao_acessos">
                 <img src="/imagens/noun_doctor-list.svg" class="sidenav-icon"/> Médicos
             </a>
             <a href="/receptionist/appointment-list/resume" class="botao_acessos">
-                <img src="/imagens/noun_heart_rate.svg"/> Consultas
+                <img src="/imagens/noun_heart_rate.svg"class="sidenav-icon"/> Consultas
             </a>
             <a href="/receptionist/checkin" class="botao_acessos">
-                <img src="/imagens/draw_cal_checkmark.svg"/> Check in
+                <img src="/imagens/draw_cal_checkmark.svg" class="sidenav-icon"/> Check in
             </a>
             <a href="/user/lista-chamada" class="botao_acessos">
                 <img src="/imagens/noun_time.svg" class="sidenav-icon"/> Lista de Chamada
             </a>
             <a href="/receptionist/waitingAppointment" class="botao_acessos">
-                <img src="/imagens/draw_cal_checkmark.svg"/> Lista de Espera para Marcação
+                <img src="/imagens/noun_wait.svg" class="sidenav-icon"/> Lista de Espera para Marcação
             </a>
         </div>
 

@@ -35,17 +35,17 @@
     <div class="panel-scroll">
         <div class="sidenav_row">
             <a href="/doctor/main" class="botao_acessos">
-                <img src="/imagens/noun_home.svg"/> Início
+                <img src="/imagens/noun_home.svg" class="sidenav-icon"/> Início
             </a>
             <%@ include file="../components/mail.jsp" %>
             <a href="/doctor-receptionist/patient-list" class="botao_acessos">
-                <img src="/imagens/noun_utentes.svg"/> Utentes
+                <img src="/imagens/noun_utentes.svg" class="sidenav-icon"/> Utentes
             </a>
             <a href="/user/doctor-list" class="botao_acessos">
                 <img src="/imagens/noun_doctor-list.svg" class="sidenav-icon"/> Médicos
             </a>
             <a href="/doctor/appointment-list/resume" class="botao_acessos">
-                <img src="/imagens/noun_heart_rate.svg"/> Consultas
+                <img src="/imagens/noun_heart_rate.svg" class="sidenav-icon"/> Consultas
             </a>
             <a href="/user/lista-chamada" class="botao_acessos">
                 <img src="/imagens/noun_time.svg" class="sidenav-icon"/> Lista de Chamada

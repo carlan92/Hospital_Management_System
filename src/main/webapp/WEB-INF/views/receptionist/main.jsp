@@ -34,13 +34,13 @@
         <div class="card_box">
             <div class="card">
                 <div class="card-body">
-                    <img src="/imagens/noun_wait.svg" class="wait_list" alt="..."/>
-                    <h5 class="utentes"><span id="num_utentes">${pacientes_confirmadosEspera}</span> UTENTES</h5>
+                    <img src="/imagens/waiting-patient.svg" width="200px" alt="..."/>
+                    <p class="utentes"><span id="num_utentes">${pacientes_confirmadosEspera}</span> UTENTES</p>
                     <p class="linha_1">A AGUARDAR CONSULTA</p>
                     <p class="linha_2">
                         Nº de utentes atrasados: <span id=num_atrasados>${pacientes_faltaram}</span>
                     </p>
-                    <a href="/receptionist/waiting-list" class="btn btn-button">VER LISTA DE ESPERA</a>
+                    <a href="/receptionist/waiting-list" class="btn btn-blue"> Ver lista de espera</a>
                 </div>
                 <div class="horizontal-border"></div>
             </div>
@@ -50,13 +50,10 @@
         <div class="card_box">
             <div class="card">
                 <div class="card-body">
-                    <h5 class="card-title">CHECK-IN</h5>
-                    <p class="card-text">
-                        Introduza o numero de consulta
-                    </p>
+                    <h5 class="card-title">CHECK-IN </h5>
+                    <img src="/imagens/check-mark.svg" class="wait_list" width="100px" alt="..."/>
                     <form action="/receptionist/checkinbyAppointmentId" method="post">
-                        <input type="text" id="num_consulta" placeholder="Nº de Consulta" name="appointmentId">
-                        <button type="submit" class="btn btn-button btn-2">EFETUAR CHECKIN > </button>
+                        <button type="submit" class="btn btn-blue">Efectuar check-in > </button>
                     </form>
                 </div>
                 <div class="horizontal-border"></div>

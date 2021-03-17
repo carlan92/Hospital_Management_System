@@ -35,7 +35,7 @@
     <div class="panel-scroll">
         <div class="sidenav_row">
             <a href="/patient/main" class="botao_acessos">
-                <img src="/imagens/noun_home.svg"/> Início
+                <img src="/imagens/noun_home.svg" class="sidenav-icon"/> Início
             </a>
             <%@ include file="../components/mail.jsp" %>
             <a href="/user/doctor-list" class="botao_acessos">
@@ -43,11 +43,11 @@
             </a>
 
             <a href="/patient/appointment-list/current" class="botao_acessos">
-                <img src="/imagens/noun_heart_rate.svg"/> Consultas Marcadas
+                <img src="/imagens/noun_heart_rate.svg" class="sidenav-icon"/> Consultas Marcadas
             </a>
 
             <a href="/patient/checkin" class="botao_acessos">
-                <img src="/imagens/draw_cal_checkmark.svg"/> Check in
+                <img src="/imagens/draw_cal_checkmark.svg" class="sidenav-icon"/> Check in
             </a>
 
             <a href="/user/lista-chamada" class="botao_acessos">
@@ -55,7 +55,7 @@
             </a>
 
             <a href="/patient/waitingAppointment" class="botao_acessos">
-                <img src="/imagens/draw_cal_checkmark.svg"/> Lista de Espera para Marcação
+                <img src="/imagens/noun_wait.svg" class="sidenav-icon"/> Lista de Espera para Marcação
             </a>
         </div>
 
