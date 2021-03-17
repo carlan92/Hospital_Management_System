@@ -50,10 +50,8 @@ public class DoctorReceptionistController {
         List<Patient> patients;
         if (name == null || name.isEmpty()) {
             name = "";
-            patients = patientService.findAllByFirstAndLastName(name);
-        } else {
-            patients = patientService.findAllByFirstAndLastName(name);
         }
+        patients = patientService.findAllByFirstAndLastName(name);
 
         modelMap.put("search_name", name);
         modelMap.put("patients", patients);

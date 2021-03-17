@@ -6,6 +6,7 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import pt.iscte.hospital.controllers.utils.Common;
 import pt.iscte.hospital.entities.Appointment;
 import pt.iscte.hospital.entities.Patient;
 import pt.iscte.hospital.entities.User;
@@ -31,6 +32,8 @@ public class DoctorController {
     private UserService userService;
     @Autowired
     private PatientService patientService;
+    @Autowired
+    private Common common;
 
     @GetMapping(value = {"/doctor/main", "/doctor"})
     public String showDoctorMain(ModelMap modelMap) {
@@ -63,14 +66,14 @@ public class DoctorController {
         modelMap.put("isFirstAppointmentCheckedIntMap", isFirstAppointmentCheckedIntMap);
         modelMap.put("isFirstAppointmentOngoingMap", isFirstAppointmentOngoingMap);
         modelMap.put("todayOngoingAppointments", todayOngoingAppointments);
-        modelMap.put("user_logged", currentUser());
+        modelMap.addAllAttributes(common.sideNavMap());
         return "doctor/main";
     }
 
 
     @GetMapping(value = "/doctor/waiting-list")
     public String showWaitingList(ModelMap modelMap) {
-        modelMap.put("user_logged", currentUser());
+        modelMap.addAllAttributes(common.sideNavMap());
         return "doctor/waiting-list";
     }
 
@@ -102,7 +105,7 @@ public class DoctorController {
     @GetMapping(value = "/doctor/appointment/start/{appointmentId}")
     public String startAppointment(ModelMap modelMap,
                                    @PathVariable Long appointmentId) {
-        modelMap.put("user_logged", currentUser());
+        modelMap.addAllAttributes(common.sideNavMap());
 
         Appointment appointment = appointmentService.findByAppointmentId(appointmentId);
 
@@ -123,7 +126,7 @@ public class DoctorController {
     @GetMapping(value = "/doctor/appointment/end/{appointmentId}")
     public String endAppointment(ModelMap modelMap,
                                  @PathVariable Long appointmentId) {
-        modelMap.put("user_logged", currentUser());
+        modelMap.addAllAttributes(common.sideNavMap());
 
         Appointment appointment = appointmentService.findByAppointmentId(appointmentId);
 
@@ -144,7 +147,7 @@ public class DoctorController {
     @GetMapping(value = "/doctor/appointment/cancel/{appointmentId}")
     public String cancelAppointment(ModelMap modelMap,
                                     @PathVariable Long appointmentId) {
-        modelMap.put("user_logged", currentUser());
+        modelMap.addAllAttributes(common.sideNavMap());
 
         Appointment appointment = appointmentService.findByAppointmentId(appointmentId);
 
@@ -165,7 +168,7 @@ public class DoctorController {
     @GetMapping(value = "/doctor/appointment/marcar-falta/{appointmentId}")
     public String marcarFaltaAppointment(ModelMap modelMap,
                                          @PathVariable Long appointmentId) {
-        modelMap.put("user_logged", currentUser());
+        modelMap.addAllAttributes(common.sideNavMap());
 
         Appointment appointment = appointmentService.findByAppointmentId(appointmentId);
 
@@ -186,7 +189,7 @@ public class DoctorController {
     @GetMapping(value = "/doctor/appointment/remover-falta/{appointmentId}")
     public String desmarcarFaltaAppointment(ModelMap modelMap,
                                             @PathVariable Long appointmentId) {
-        modelMap.put("user_logged", currentUser());
+        modelMap.addAllAttributes(common.sideNavMap());
 
         Appointment appointment = appointmentService.findByAppointmentId(appointmentId);
 
@@ -207,7 +210,7 @@ public class DoctorController {
     @GetMapping(value = "/doctor/appointment/chamar-utente/{appointmentId}")
     public String chamarUtente(ModelMap modelMap,
                                @PathVariable Long appointmentId) {
-        modelMap.put("user_logged", currentUser());
+        modelMap.addAllAttributes(common.sideNavMap());
 
         Appointment appointment = appointmentService.findByAppointmentId(appointmentId);
 
@@ -232,7 +235,7 @@ public class DoctorController {
 
         modelMap.put("patient", patient );
         modelMap.put("goToDoctorMain", true);
-        modelMap.put("user_logged", currentUser());
+        modelMap.addAllAttributes(common.sideNavMap());
       return  "doctor-receptionist/patient-profile";
     }
 
@@ -352,7 +355,7 @@ public class DoctorController {
         String isFirstAppointmentStr = isFirstAppointmentStr(patientId,doctorId);
         String appointmentState = AppointmentState.searchState(appointmentStateNr);
 
-        modelMap.put("user_logged", currentUser());
+        modelMap.addAllAttributes(common.sideNavMap());
         modelMap.put("appointment", appointment);
         modelMap.put("isFirstAppointmentStr", isFirstAppointmentStr);
         modelMap.put("appointmentState", appointmentState);
