@@ -500,7 +500,6 @@ public class AppointmentListController {
         }
 
         // Estado da facturação
-        //TODO FActuração!!!!!!!!!!
         if (invoiceStateNr != null) {
             Set<Appointment> tempList = new HashSet<>();
             for (Appointment appointment : result) {
