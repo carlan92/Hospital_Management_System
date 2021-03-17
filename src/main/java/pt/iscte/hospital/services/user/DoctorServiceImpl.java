@@ -22,18 +22,27 @@ import java.util.List;
 
 @Service
 public class DoctorServiceImpl implements DoctorService {
+    private final DoctorRepository doctorRepository;
+    private final SpecialityRepository specialityRepository;
+    private final AppointmentRepository appointmentRepository;
+    private final PatientWaitingAppointmentRepository patientWaitingAppointmentRepository;
+    private final DoctorWaitingPatientRepository doctorWaitingPatientRepository;
+    private final InvoiceService invoiceService;
+
     @Autowired
-    private DoctorRepository doctorRepository;
-    @Autowired
-    private SpecialityRepository specialityRepository;
-    @Autowired
-    private AppointmentRepository appointmentRepository;
-    @Autowired
-    private PatientWaitingAppointmentRepository patientWaitingAppointmentRepository;
-    @Autowired
-    private DoctorWaitingPatientRepository doctorWaitingPatientRepository;
-    @Autowired
-    private InvoiceService invoiceService;
+    public DoctorServiceImpl(DoctorRepository doctorRepository,
+                             SpecialityRepository specialityRepository,
+                             AppointmentRepository appointmentRepository,
+                             PatientWaitingAppointmentRepository patientWaitingAppointmentRepository,
+                             DoctorWaitingPatientRepository doctorWaitingPatientRepository,
+                             InvoiceService invoiceService) {
+        this.doctorRepository = doctorRepository;
+        this.specialityRepository = specialityRepository;
+        this.appointmentRepository = appointmentRepository;
+        this.patientWaitingAppointmentRepository = patientWaitingAppointmentRepository;
+        this.doctorWaitingPatientRepository = doctorWaitingPatientRepository;
+        this.invoiceService = invoiceService;
+    }
 
     //Methods
     @Override
@@ -78,11 +87,6 @@ public class DoctorServiceImpl implements DoctorService {
         appointment.setAppointmentStatus(AppointmentState.EM_CURSO.getStateNr());
         appointment.setTimeBegin(LocalTime.now());
         appointmentRepository.save(appointment);
-    }
-
-    @Override
-    public void verListaDeEspera() {
-
     }
 
     @Override

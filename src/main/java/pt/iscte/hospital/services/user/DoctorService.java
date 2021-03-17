@@ -13,7 +13,6 @@ public interface DoctorService {
     void endAppointment(Appointment appointment);
     void marcarFalta(Appointment appointment);
     void removerFalta(Appointment appointment);
-    void verListaDeEspera();
     void desmarcarConsultaByDoctor(Appointment appointment);
     Doctor findByUserId(Long doctorId);
     List<Doctor> findAll(Sort sort);
