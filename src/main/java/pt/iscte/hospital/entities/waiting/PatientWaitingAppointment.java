@@ -3,6 +3,7 @@ package pt.iscte.hospital.entities.waiting;
 import org.springframework.format.annotation.DateTimeFormat;
 import pt.iscte.hospital.entities.Doctor;
 import pt.iscte.hospital.entities.Patient;
+import pt.iscte.hospital.objects.utils.Calendar;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
@@ -25,6 +26,8 @@ public class PatientWaitingAppointment implements Comparable<PatientWaitingAppoi
     private LocalDateTime date;
 
     private boolean closed;
+
+    private Long position;
 
     public PatientWaitingAppointment() {
     }
@@ -73,6 +76,17 @@ public class PatientWaitingAppointment implements Comparable<PatientWaitingAppoi
 
     public void setClosed(boolean closed) {
         this.closed = closed;
+    }
+
+    public Long getPosition() {
+        return position;
+    }
+    public void setPosition(Long position) {
+        this.position = position;
+    }
+
+    public String getDateTimeStr(){
+        return date.format(Calendar.DATE_TIME_FORMATTER);
     }
 
     @Override

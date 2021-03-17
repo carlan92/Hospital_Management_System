@@ -2,7 +2,6 @@ package pt.iscte.hospital.services.waiting;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import pt.iscte.hospital.entities.Patient;
 import pt.iscte.hospital.entities.waiting.PatientWaitingAppointment;
 import pt.iscte.hospital.repositories.waiting.PatientWaitingAppointmentRepository;
 
@@ -36,6 +35,11 @@ public class PatientWaitingAppointmentServiceImpl implements PatientWaitingAppoi
     @Override
     public void save(PatientWaitingAppointment patientWaitingAppointment){
         patientWaitingAppointmentRepository.save(patientWaitingAppointment);
+    }
+
+    @Override
+    public List<PatientWaitingAppointment> findAllByClosedOrderByDate(boolean closed){
+        return patientWaitingAppointmentRepository.findAllByClosedOrderByDate(closed);
     }
 
 

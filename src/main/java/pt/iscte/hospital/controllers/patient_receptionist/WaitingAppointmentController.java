@@ -43,6 +43,15 @@ public class WaitingAppointmentController {
         List<PatientWaitingAppointment> patientWaitingAppointments =
                 patientWaitingAppointmentService.findAllByPatientUserIdAndClosed(userId, false);
 
+        List<PatientWaitingAppointment> patientWaitingAppointmentsPosition=
+                patientWaitingAppointmentService.findAllByClosedOrderByDate(false);
+        Long i=1L;
+        for(PatientWaitingAppointment patientWaitingAppointment:patientWaitingAppointmentsPosition){
+            patientWaitingAppointment.setPosition(i);
+            i++;
+            patientWaitingAppointmentService.save(patientWaitingAppointment);
+        }
+
         modelMap.addAllAttributes(appointmentListView(
                 patientWaitingAppointments,
                 PATIENT_TYPE_URL,
@@ -89,6 +98,15 @@ public class WaitingAppointmentController {
         List<PatientWaitingAppointment> patientWaitingAppointments =
                 patientWaitingAppointmentService.findAllByClosed(false);
 
+        List<PatientWaitingAppointment> patientWaitingAppointmentsPosition=
+                patientWaitingAppointmentService.findAllByClosedOrderByDate(false);
+        Long i=1L;
+        for(PatientWaitingAppointment patientWaitingAppointment:patientWaitingAppointmentsPosition){
+            patientWaitingAppointment.setPosition(i);
+            i++;
+            patientWaitingAppointmentService.save(patientWaitingAppointment);
+        }
+
         modelMap.addAllAttributes(appointmentListView(
                 patientWaitingAppointments,
                 RECEPTIONIST_TYPE_URL,
@@ -117,6 +135,8 @@ public class WaitingAppointmentController {
                 doctorName);
 
         patientWaitingAppointments.sort(null);
+
+
 
         modelMap.addAllAttributes(appointmentListView(
                 patientWaitingAppointments,

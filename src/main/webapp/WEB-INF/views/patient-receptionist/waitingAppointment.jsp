@@ -79,9 +79,9 @@
                             <!-- For -->
                             <c:forEach var="patientWaitingAppointment" items="${patientWaitingAppointments}">
                                 <tr class="appointment-table-details">
-                                    <td>Posição na Lista</td>
+                                    <td>${patientWaitingAppointment.getPosition()}</td>
 
-                                    <td>${patientWaitingAppointment.getDate().toString().replace( "T" , " " )}</td>
+                                    <td>${patientWaitingAppointment.getDateTimeStr()}</td>
 
                                     <c:if test="${user_logged.getAccount().equals('Recepcionista')}">
                                         <td>${patientWaitingAppointment.getPatient().getFirstAndLastName()}</td>
@@ -89,7 +89,12 @@
                                     <td>${patientWaitingAppointment.getDoctor().getSpeciality().getName()}</td>
                                     <td> ${patientWaitingAppointment.getDoctor().getFirstAndLastName()}</td>
 
-                                    <td><a href="">Ver mais</a></td>
+                                    <c:if test="${user_logged.getAccount().equals('Utente')}">
+                                    <td><a href="">Cancelar</a></td>
+                                    </c:if>
+                                    <c:if test="${user_logged.getAccount().equals('Recepcionista')}">
+                                    <td><a href="">Atribuir Vaga</a></td>
+                                    </c:if>
                                 </tr>
 
                             </c:forEach>
