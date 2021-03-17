@@ -6,12 +6,14 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import pt.iscte.hospital.controllers.utils.Common;
 import pt.iscte.hospital.entities.Speciality;
 import pt.iscte.hospital.entities.User;
 import pt.iscte.hospital.entities.waiting.PatientWaitingAppointment;
+import pt.iscte.hospital.objects.utils.AlertMessageImage;
 import pt.iscte.hospital.services.SpecialityService;
 import pt.iscte.hospital.services.user.UserService;
 import pt.iscte.hospital.services.waiting.PatientWaitingAppointmentService;
@@ -34,6 +36,10 @@ public class WaitingAppointmentController {
     private PatientWaitingAppointmentService patientWaitingAppointmentService;
     @Autowired
     private Common common;
+
+
+    //****************************************************************************************
+    //patient----------------------------------------------------------------------------
 
     @GetMapping(value = "patient/waitingAppointment")
     public String showPatientWaitingAppointmentList(ModelMap modelMap) {
@@ -93,6 +99,27 @@ public class WaitingAppointmentController {
         return USER_TYPE_URL;
     }
 
+    @GetMapping(value = "patient/waitingAppointment/{patientWaitingAppointmentId}/cancel")
+    public String cancelPatientWaitingAppointmentRequest(ModelMap modelMap,
+                                                         @PathVariable(name = "patientWaitingAppointmentId") Long patientWaitingAppointmentId) {
+        User userLogged = userService.currentUser();
+        PatientWaitingAppointment patientWaitingAppointment=
+                patientWaitingAppointmentService.findByPatientWaitingAppointmentId(patientWaitingAppointmentId);
+
+        patientWaitingAppointment.setClosed(true);
+        patientWaitingAppointment.setPosition(0L);
+        patientWaitingAppointmentService.save(patientWaitingAppointment);
+
+
+        modelMap.put("user_logged", userLogged);
+        modelMap.put("message", "O seu pedido de marcação de consulta em lista de espera foi cancelado com sucesso.");
+        modelMap.put("imageURL", AlertMessageImage.SUCCESS.getImageURL());
+
+        return "components/alert-message";
+    }
+    //****************************************************************************************
+    //receptionist----------------------------------------------------------------------------
+    //ver pedidos de marcações em lista de espera
     @GetMapping(value = "receptionist/waitingAppointment")
     public String showReceptionistWaitingAppointmentList(ModelMap modelMap) {
         List<PatientWaitingAppointment> patientWaitingAppointments =
@@ -116,7 +143,7 @@ public class WaitingAppointmentController {
         return USER_TYPE_URL;
     }
 
-    //marcar pedido de lista de espera
+
     @PostMapping(value = "receptionist/waitingAppointment")
     public String showMakeApplyForReceptionistWaitingAppointment(ModelMap modelMap,
                                                                  @RequestParam(required = false, name = "specialityName") String specialityName,
@@ -147,6 +174,8 @@ public class WaitingAppointmentController {
         return USER_TYPE_URL;
     }
 
+
+    //*****************************************************************************************************
     //private Methods
 
     private ModelMap appointmentListView(List<PatientWaitingAppointment> patientWaitingAppointments,

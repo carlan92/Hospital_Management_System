@@ -42,6 +42,10 @@ public class PatientWaitingAppointmentServiceImpl implements PatientWaitingAppoi
         return patientWaitingAppointmentRepository.findAllByClosedOrderByDate(closed);
     }
 
+    @Override
+    public PatientWaitingAppointment findByPatientWaitingAppointmentId(Long patientWaitingAppointmentId){
+        return patientWaitingAppointmentRepository.findByPatientWaitingAppointmentId(patientWaitingAppointmentId);
+    }
 
 
 }

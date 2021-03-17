@@ -12,7 +12,7 @@ import java.time.LocalDateTime;
 public class PatientWaitingAppointment implements Comparable<PatientWaitingAppointment> {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long PatientWaitingAppointmentId;
+    private Long patientWaitingAppointmentId;
 
     @ManyToOne
     @JoinColumn(name = "doctor_id")
@@ -39,11 +39,11 @@ public class PatientWaitingAppointment implements Comparable<PatientWaitingAppoi
     }
 
     public Long getPatientWaitingAppointmentId() {
-        return PatientWaitingAppointmentId;
+        return patientWaitingAppointmentId;
     }
 
     public void setPatientWaitingAppointmentId(Long patientWaitingAppointmentId) {
-        PatientWaitingAppointmentId = patientWaitingAppointmentId;
+        this.patientWaitingAppointmentId = patientWaitingAppointmentId;
     }
 
     public Doctor getDoctor() {
