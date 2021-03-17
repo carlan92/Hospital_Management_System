@@ -38,7 +38,7 @@
                     <h5 class="utentes"><span id="num_utentes">${pacientes_confirmadosEspera}</span> UTENTES</h5>
                     <p class="linha_1">A AGUARDAR CONSULTA</p>
                     <p class="linha_2">
-                        <span id=num_atrasados>${pacientes_faltaram}</span> utentes estão atrasados
+                        Nº de utentes atrasados: <span id=num_atrasados>${pacientes_faltaram}</span>
                     </p>
                     <a href="/receptionist/waiting-list" class="btn btn-button">VER LISTA DE ESPERA</a>
                 </div>
