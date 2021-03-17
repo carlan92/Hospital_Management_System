@@ -6,7 +6,6 @@ import pt.iscte.hospital.objects.utils.Calendar;
 
 import javax.persistence.*;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.time.LocalTime;
 
 @Entity
@@ -44,6 +43,9 @@ public class Message {
 
     // Methods
     public String getDateStr(){
+        if(date == null){
+            return "";
+        }
         return date.format(Calendar.FORMATTER);
     }
 }
