@@ -3,7 +3,7 @@ package pt.iscte.hospital.entities;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.security.core.GrantedAuthority;
 import pt.iscte.hospital.objects.utils.Calendar;
-import pt.iscte.hospital.objects.utils.HostpitalFormatter;
+import pt.iscte.hospital.objects.utils.HospitalFormatter;
 
 import javax.persistence.*;
 import java.time.LocalDate;
@@ -210,7 +210,7 @@ public abstract class User {
     }
 
     public String getPhoneStr() {
-        return HostpitalFormatter.formatValue(phone, HostpitalFormatter.PHONE);
+        return HospitalFormatter.formatValue(phone, HospitalFormatter.PHONE);
     }
 
     public void setPhone(Long phone) {

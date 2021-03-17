@@ -5,7 +5,6 @@ import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 import pt.iscte.hospital.entities.Appointment;
 import pt.iscte.hospital.entities.states.AppointmentState;
-import pt.iscte.hospital.repositories.AppointmentRepository;
 import pt.iscte.hospital.services.AppointmentService;
 import pt.iscte.hospital.services.invoice.InvoiceService;
 
@@ -14,10 +13,14 @@ import java.util.List;
 
 @Component
 public class UpdateInvoice {
+    private final AppointmentService appointmentService;
+    private final InvoiceService invoiceService;
+
     @Autowired
-    AppointmentService appointmentService;
-    @Autowired
-    InvoiceService invoiceService;
+    public UpdateInvoice(AppointmentService appointmentService, InvoiceService invoiceService) {
+        this.appointmentService = appointmentService;
+        this.invoiceService = invoiceService;
+    }
 
     // Verifica todas as consultas sem factura e solicita factura
     @Scheduled(fixedRate = 60000)

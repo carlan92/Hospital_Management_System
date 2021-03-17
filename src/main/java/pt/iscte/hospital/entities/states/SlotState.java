@@ -5,8 +5,8 @@ public enum SlotState {
     INDISPONIVEL(false, "Indisponível");
 
     // Attributes
-    private boolean isAvailable;
-    private String description;
+    private final boolean isAvailable;
+    private final String description;
 
     // Constructor
     SlotState(boolean isAvailable, String description) {

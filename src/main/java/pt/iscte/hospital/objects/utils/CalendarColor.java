@@ -6,8 +6,8 @@ public enum CalendarColor {
     RED("red", 1),
     YELLOW("yellow", 0.5);
 
-    private String name;
-    private double minFraction;
+    private final String name;
+    private final double minFraction;
 
     CalendarColor(String name, double minFraction) {
         this.name = name;

@@ -5,8 +5,8 @@ public enum DoctorDailyState {
     INDISPONIVEL(false, "Indisponível");
 
     // Attributes
-    private boolean isAvailable;
-    private String description;
+    private final boolean isAvailable;
+    private final String description;
 
     // Constructor
     DoctorDailyState(boolean isAvailable, String description) {

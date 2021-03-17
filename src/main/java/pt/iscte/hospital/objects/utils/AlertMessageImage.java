@@ -5,7 +5,7 @@ public enum AlertMessageImage {
     FAILURE("/imagens/draw_error.svg"),
     SUCCESS("/imagens/draw_success.svg");
 
-    private String imageURL;
+    private final String imageURL;
 
     AlertMessageImage(String imageURL) {
         this.imageURL = imageURL;

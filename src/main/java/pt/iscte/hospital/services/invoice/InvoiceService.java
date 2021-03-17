@@ -24,7 +24,7 @@ public interface InvoiceService {
      * @param value        Valor em euros total [opcional ou null]
      * @param invoiceItems Lista de itens com {description, value} [opcional ou null]
      */
-    public InvoiceApi createInvoiceAPI(String name,
+    InvoiceApi createInvoiceAPI(String name,
                                     String email,
                                     long nif,
                                     LocalDateTime dueDate,
@@ -38,7 +38,7 @@ public interface InvoiceService {
      * @param invoiceId Invoice ID from the Invoice API.
      * @return String with the Invoice page at the Invoice API.
      */
-    public String getInvoiceUrlAPI(String invoiceId);
+    String getInvoiceUrlAPI(String invoiceId);
 
     /**
      * Informação da Fatura <br>

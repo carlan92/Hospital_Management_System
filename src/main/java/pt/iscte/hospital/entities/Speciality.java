@@ -1,7 +1,6 @@
 package pt.iscte.hospital.entities;
 
 import lombok.Getter;
-import lombok.ToString;
 
 import javax.persistence.*;
 import java.util.List;

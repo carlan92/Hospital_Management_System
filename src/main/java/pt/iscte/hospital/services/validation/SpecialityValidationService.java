@@ -9,5 +9,5 @@ public interface SpecialityValidationService {
     SpecialityValidationService validLength();
     boolean isValid();
     ModelMap getErrorModelMap();
-    public SpecialityValidationService clear();
+    SpecialityValidationService clear();
 }

@@ -21,8 +21,12 @@ public class CloseAppointment {
     private static final long MAX_HOURS = 24;           // Tempo máximo em horas que uma consulta pode ficar no estado Marcada, sem ser fechada.
     private static final long TOLERANCIA_MINUTES = 10;  // Tolerância máxima para a chegada do paciente à consulta após chamada, depois passa a não realizada
 
+    private final AppointmentRepository appointmentRepository;
+
     @Autowired
-    AppointmentRepository appointmentRepository;
+    public CloseAppointment(AppointmentRepository appointmentRepository) {
+        this.appointmentRepository = appointmentRepository;
+    }
 
     // Fechar todas as consultas que se encontrarem abertas ao fim de 24h
     @Scheduled(fixedRate = 60000)

@@ -3,7 +3,7 @@ package pt.iscte.hospital.objects.utils;
 import java.text.DecimalFormat;
 import java.text.DecimalFormatSymbols;
 
-public class HostpitalFormatter {
+public class HospitalFormatter {
     public static final String PHONE = "###,###";
 
     public static String formatValue(Number value, String formatString) {

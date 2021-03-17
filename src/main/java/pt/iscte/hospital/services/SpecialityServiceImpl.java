@@ -10,8 +10,12 @@ import java.util.List;
 
 @Service
 public class SpecialityServiceImpl implements SpecialityService {
+    private final SpecialityRepository specialityRepository;
+
     @Autowired
-    private SpecialityRepository specialityRepository;
+    public SpecialityServiceImpl(SpecialityRepository specialityRepository) {
+        this.specialityRepository = specialityRepository;
+    }
 
     @Override
     public void addSpeciality(Speciality speciality) {

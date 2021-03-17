@@ -9,8 +9,8 @@ public enum AppointmentState {
     NAO_REALIZADA(6, "Faltou à Consulta");
 
     // Attributes
-    private int stateNr;
-    private String description;
+    private final int stateNr;
+    private final String description;
 
     // Constructor
     AppointmentState(int stateNr, String description) {

@@ -6,8 +6,8 @@ public enum InvoiceState {
 
 
     // Attributes
-    private int stateNr;
-    private String description;
+    private final int stateNr;
+    private final String description;
 
     // Constructor
     InvoiceState(int stateNr, String description) {

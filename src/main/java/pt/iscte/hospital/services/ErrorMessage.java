@@ -36,7 +36,7 @@ public enum ErrorMessage {
     SPECIALITY_LENGTH("Nome de especialidade demasiado curto");
 
     // Attributes
-    private String errorMsg;
+    private final String errorMsg;
 
     // Constructor
     ErrorMessage(String errorMsg) {

@@ -3,10 +3,10 @@ package pt.iscte.hospital.objects.utils;
 import java.time.LocalDate;
 
 public class Day {
-    private Integer dayId;
-    private Integer dayNumber;
-    private String dateStr;
-    private LocalDate date;
+    private final Integer dayId;
+    private final Integer dayNumber;
+    private final String dateStr;
+    private final LocalDate date;
     private String color;
 
     public Day(Integer dayId, Integer dayNumber, String dateStr, LocalDate date) {

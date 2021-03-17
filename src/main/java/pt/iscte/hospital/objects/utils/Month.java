@@ -5,7 +5,7 @@ public enum Month {
 
     // Attributes
     private final int monthNumber;
-    private String description;
+    private final String description;
 
     // Constructor
     Month(int monthNumber, String description) {
