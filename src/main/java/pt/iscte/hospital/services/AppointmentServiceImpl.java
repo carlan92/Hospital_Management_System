@@ -181,6 +181,27 @@ public class AppointmentServiceImpl implements AppointmentService {
         return appointmentRepository.findAllBySlotDoctorUserIdAndAppointmentStatus(doctorId, appointmentStatus);
     }
 
+    // Verificar número de utentes com consulta e que nao compareceram
+    @Override
+    public long countBySlotDateAndAppointmentStatus(
+            LocalDate date,
+            int appointmentState) {
+        return appointmentRepository.countBySlotDateAndAppointmentStatus(
+                date,
+                appointmentState);
+    }
+    // Verificar número de utentes com consulta com check in efetuado para o dia de hoje
+    @Override
+    public long countBySlotDateAndAppointmentStatusAndHasChecked(
+            LocalDate date,
+            int appointmentState,
+            boolean hasChecked) {
+        return appointmentRepository.countBySlotDateAndAppointmentStatusAndHasChecked(
+                date,
+                appointmentState,
+                hasChecked);
+    }
+
     // Verificar número de consultas de um utente com um médico
     @Override
     public long countBySlotDoctorUserIdAndPatientUserIdAndAppointmentStatus(

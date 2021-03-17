@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import pt.iscte.hospital.controllers.utils.Common;
 import pt.iscte.hospital.entities.*;
+import pt.iscte.hospital.entities.states.AppointmentState;
 import pt.iscte.hospital.services.*;
 import pt.iscte.hospital.services.user.UserService;
 import pt.iscte.hospital.services.validation.SpecialityValidationService;
@@ -56,7 +57,11 @@ public class ReceptionistController {
     // Methods
     @GetMapping(value = "/receptionist/main")
     public String showReceptionistMain(ModelMap modelMap) {
+        LocalDate dateToday = LocalDate.now();
+
+        modelMap.addAllAttributes(infoForTopMain(dateToday));
         modelMap.addAllAttributes(common.sideNavMap());
+
         return "receptionist/main";
     }
 
@@ -252,5 +257,28 @@ public class ReceptionistController {
         } else {
             user.setPhotoURL("user-female.jpg");
         }
+    }
+
+//metodos privados
+    private User currentUser() {
+        return userService.currentUser();
+    }
+//todo utentes a aguardar
+    private ModelMap infoForTopMain(LocalDate dateToday) {
+        ModelMap modelMap = new ModelMap();
+
+        long pacientes_confirmadosEspera= appointmentService.countBySlotDateAndAppointmentStatusAndHasChecked(
+                dateToday,
+                AppointmentState.MARCADA.getStateNr(),
+                true);
+
+        long pacientes_faltaram = appointmentService.countBySlotDateAndAppointmentStatus(
+                dateToday,
+                AppointmentState.NAO_REALIZADA.getStateNr());
+
+        modelMap.put("pacientes_confirmadosEspera", pacientes_confirmadosEspera);
+        modelMap.put("pacientes_faltaram", pacientes_faltaram);
+
+        return modelMap;
     }
 }

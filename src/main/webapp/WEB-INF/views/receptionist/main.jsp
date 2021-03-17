@@ -35,10 +35,10 @@
             <div class="card">
                 <div class="card-body">
                     <img src="/imagens/noun_wait.svg" class="wait_list" alt="..."/>
-                    <h5 class="utentes"><span id="num_utentes">?</span> UTENTES</h5>
+                    <h5 class="utentes"><span id="num_utentes">${pacientes_confirmadosEspera}</span> UTENTES</h5>
                     <p class="linha_1">A AGUARDAR CONSULTA</p>
                     <p class="linha_2">
-                        <span id=num_atrasados>?</span> utentes estão atrasados
+                        <span id=num_atrasados>${pacientes_faltaram}</span> utentes estão atrasados
                     </p>
                     <a href="/receptionist/waiting-list" class="btn btn-button">VER LISTA DE ESPERA</a>
                 </div>

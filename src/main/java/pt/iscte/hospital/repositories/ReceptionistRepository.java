@@ -6,4 +6,5 @@ import pt.iscte.hospital.entities.Receptionist;
 
 @Repository
 public interface ReceptionistRepository  extends JpaRepository<Receptionist,Long> {
+
 }

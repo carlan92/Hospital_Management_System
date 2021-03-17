@@ -56,7 +56,9 @@ public interface AppointmentService {
     List<Appointment> findAllBySlotDateAndPatientNameContainingIgnoreCaseAndSlotDoctorUserId(LocalDate date,
                                                                                              String patientName,
                                                                                              Long userId);
+
     List<Appointment> findAllBySlotDoctorUserIdAndAppointmentStatus(Long doctorId, int appointmentStatus);
+
     // Receptionist Filters
     List<Appointment> findAllBySlotDateAndSlotDoctorNameContainingIgnoreCaseAndPatientNameContainingIgnoreCaseAndSlotDoctorSpecialityNameContainingIgnoreCase(
             LocalDate date,
@@ -88,6 +90,17 @@ public interface AppointmentService {
             LocalDate date,
             int appointmentState
     );
+
+    // Verificar número de utentes com consulta e que nao compareceram
+    long countBySlotDateAndAppointmentStatus(
+            LocalDate date,
+            int appointmentState);
+
+    // Verificar número de utentes com consulta com check in efetuado para o dia de hoje
+    long countBySlotDateAndAppointmentStatusAndHasChecked(
+            LocalDate date,
+            int appointmentState,
+            boolean hasChecked);
 
     // Verificar número de consultas de um utente com um médico
     long countBySlotDoctorUserIdAndPatientUserIdAndAppointmentStatus(
