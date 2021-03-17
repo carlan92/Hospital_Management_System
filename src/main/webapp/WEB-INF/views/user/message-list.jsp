@@ -33,27 +33,41 @@
 
         <div class="row">
             <div class=search_options>
-                <form action="${userTypeURL}" method="post">
+                <form action="/${userType}/messages" method="post">
                     <div class="middle-row">
                         <div class="search-container">
 
-                            <input id="data_id" type="date" class="form-input sm" placeholder="Data" name="date">
+                            <input id="data_id" type="date" class="form-input sm" placeholder="Data" name="dateSrc">
 
                             <div class="msg-state-choice">
-                                <label for="msg-open">
-                                    <img src="../imagens/message/mail-open.svg" class="mail-icon" alt="apagar"/>
-                                </label>
-                                <input id="msg-open" type="checkbox" name="msgState" value="open">
-                            </div>
+                                <div class="msg-state">
+                                    <label for="msg-open">
+                                        <img src="../imagens/message/mail-open.svg" class="mail-icon" alt="mail-open"/>
+                                    </label>
+                                    <input id="msg-open" type="radio" name="msgStateSrc" value="open"/>
+                                </div>
 
-                            <div class="msg-state-choice">
-                                <label for="msg-open">
-                                    <img src="../imagens/message/mail-close.svg" class="mail-icon" alt="apagar"/>
-                                </label>
-                                <input id="msg-close" type="checkbox" name="msgState" value="close">
+
+                                <div class="msg-state">
+                                    <label for="msg-close">
+                                        <img src="../imagens/message/mail-close.svg" class="mail-icon"
+                                             alt="mail-close"/>
+                                    </label>
+                                    <input id="msg-close" type="radio" name="msgStateSrc" value="close"/>
+                                </div>
+
+                                <div class="msg-state">
+                                    <label for="msg-all">
+                                        <img src="../imagens/message/mail-all.svg" class="mail-icon"
+                                             alt="mail-close"/>
+                                    </label>
+                                    <input id="msg-all" type="radio" name="msgStateSrc" value="all" checked/>
+                                </div>
+
                             </div>
 
                             <button class="btn-search2" type="submit">Pesquisar</button>
+
                         </div>
                     </div>
                 </form>
@@ -85,7 +99,7 @@
                                     <img src="../imagens/message/mail-open.svg" class="mail-icon" alt="aberta"/>
                                 </c:if>
                                 <c:if test="${!message.isReadMsg()}">
-                                    <a href=" ../${userType}/messages/read/${message.getMessageId()}">
+                                    <a href=" ../${userType}/messages/read/${message.getMessageId()}" style="padding: 0">
                                         <img src="../imagens/message/mail-close.svg" class="mail-icon" alt="fechada"/>
                                     </a>
                                 </c:if>
@@ -95,7 +109,7 @@
                             <td>${message.getMessage()}</td>
 
                             <td>
-                                <a href=" ../${userType}/messages/delete/${message.getMessageId()}">
+                                <a href=" ../${userType}/messages/delete/${message.getMessageId()}" style="padding: 0">
                                     <img src="../imagens/message/recycle-bin.svg" class="mail-icon" alt="apagar"/>
                                 </a>
                             </td>

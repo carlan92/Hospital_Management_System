@@ -5,7 +5,9 @@ import lombok.Setter;
 import pt.iscte.hospital.objects.utils.Calendar;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.LocalTime;
 
 @Entity
 @Getter
@@ -17,7 +19,8 @@ public class Message {
     private Long messageId;
     private String subject;
     private String message;
-    private LocalDateTime dateTime;
+    private LocalDate date;
+    private LocalTime time;
     private boolean readMsg;
 
     @ManyToOne
@@ -33,13 +36,14 @@ public class Message {
     public Message(String subject, String message, User userReceiver) {
         this.subject = subject;
         this.message = message;
-        this.dateTime = LocalDateTime.now();
+        this.date = LocalDate.now();
+        this.time = LocalTime.now();
         this.user = userReceiver;
         readMsg = false;
     }
 
     // Methods
     public String getDateStr(){
-        return dateTime.format(Calendar.FORMATTER);
+        return date.format(Calendar.FORMATTER);
     }
 }

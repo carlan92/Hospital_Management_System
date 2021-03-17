@@ -6,7 +6,7 @@ import pt.iscte.hospital.entities.Message;
 import pt.iscte.hospital.entities.User;
 import pt.iscte.hospital.repositories.MessageRepository;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 import java.util.List;
 
 @Service
@@ -15,31 +15,31 @@ public class MessageServiceImpl implements MessageService {
     MessageRepository messageRepository;
 
     @Override
-    public List<Message> findAllByUserUserIdOrderByDateTimeDesc(Long userId) {
-        return messageRepository.findAllByUserUserIdOrderByDateTimeDesc(userId);
+    public List<Message> findAllByUserUserIdOrderByDateDesc(Long userId) {
+        return messageRepository.findAllByUserUserIdOrderByDateDesc(userId);
     }
 
     @Override
-    public List<Message> findAllByUserUserIdAndDateTimeOrderByDateTimeDesc(Long userId, LocalDateTime dateTime) {
-        return messageRepository.findAllByUserUserIdAndDateTimeOrderByDateTimeDesc(userId, dateTime);
+    public List<Message> findAllByUserUserIdAndDateOrderByDateDesc(Long userId, LocalDate date) {
+        return messageRepository.findAllByUserUserIdAndDateOrderByDateDesc(userId, date);
     }
 
     @Override
-    public List<Message> findAllByUserUserIdAndDateTimeAndReadMsgOrderByDateTimeDesc(
+    public List<Message> findAllByUserUserIdAndDateAndReadMsgOrderByDateDesc(
             Long userId,
-            LocalDateTime dateTime,
+            LocalDate date,
             boolean hasRead) {
-        return messageRepository.findAllByUserUserIdAndDateTimeAndReadMsgOrderByDateTimeDesc(
+        return messageRepository.findAllByUserUserIdAndDateAndReadMsgOrderByDateDesc(
                 userId,
-                dateTime,
+                date,
                 hasRead);
     }
 
     @Override
-    public List<Message> findAllByUserUserIdAndReadMsgOrderByDateTimeDesc(
+    public List<Message> findAllByUserUserIdAndReadMsgOrderByDateDesc(
             Long userId,
             boolean hasRead) {
-        return messageRepository.findAllByUserUserIdAndReadMsgOrderByDateTimeDesc(
+        return messageRepository.findAllByUserUserIdAndReadMsgOrderByDateDesc(
                 userId,
                 hasRead);
     }

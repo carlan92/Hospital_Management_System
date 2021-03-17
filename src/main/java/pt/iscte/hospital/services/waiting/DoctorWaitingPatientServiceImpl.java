@@ -9,7 +9,7 @@ import java.time.LocalDate;
 import java.util.List;
 
 @Service
-public class DoctorWaitingPatientServiceImpl {
+public class DoctorWaitingPatientServiceImpl implements DoctorWaitingPatientService {
     @Autowired
     DoctorWaitingPatientRepository doctorWaitingPatientRepository;
 

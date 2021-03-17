@@ -25,7 +25,7 @@ public class SendMessageTest {
     UserService userService;
 
     // Verifica todas as consultas sem factura e solicita factura
-    /*@Scheduled(fixedRate = 10000000)
+    @Scheduled(fixedRate = 10000000)
     public void sendMessages() {
         User user1 = userService.findByUserId(100L); // Médico 111
         User user2 = userService.findByUserId(215L); // Utente Ana Ribeiro
@@ -58,5 +58,5 @@ public class SendMessageTest {
         messageService.save(msg36);
 
         System.out.println("Mensagens criadas!");
-    }*/
+    }
 }

@@ -21,6 +21,7 @@ import pt.iscte.hospital.services.user.DoctorService;
 import pt.iscte.hospital.services.user.PatientService;
 import pt.iscte.hospital.services.user.UserService;
 import pt.iscte.hospital.services.validation.UserValidationService;
+import pt.iscte.hospital.services.waiting.DoctorWaitingPatientService;
 
 import java.io.IOException;
 import java.time.LocalDate;
@@ -40,7 +41,7 @@ public class UserController {
     private final NationalityService nationalityService;
     private final UserValidationService userValidationService;
     private final SlotService slotService;
-    private final DoctorWaitingPatientRepository doctorWaitingPatientRepository;
+    private final DoctorWaitingPatientService doctorWaitingPatientService;
     private final InvoiceService invoiceService;
     private final Common common;
 
@@ -54,7 +55,7 @@ public class UserController {
                           NationalityService nationalityService,
                           UserValidationService userValidationService,
                           SlotService slotService,
-                          DoctorWaitingPatientRepository doctorWaitingPatientRepository, InvoiceService invoiceService, Common common) {
+                          DoctorWaitingPatientService doctorWaitingPatientService, InvoiceService invoiceService, Common common) {
         this.appointmentService = appointmentService;
         this.patientService = patientService;
         this.doctorService = doctorService;
@@ -64,7 +65,7 @@ public class UserController {
         this.nationalityService = nationalityService;
         this.userValidationService = userValidationService;
         this.slotService = slotService;
-        this.doctorWaitingPatientRepository = doctorWaitingPatientRepository;
+        this.doctorWaitingPatientService = doctorWaitingPatientService;
         this.invoiceService = invoiceService;
         this.common = common;
     }
@@ -255,7 +256,7 @@ public class UserController {
     public String showListaChamada(ModelMap modelMap) {
         // Top 10 e ordenar
         LocalDate todayDate = LocalDate.now();
-        List<DoctorWaitingPatient> listaChamada = doctorWaitingPatientRepository.findAllByDate(todayDate);
+        List<DoctorWaitingPatient> listaChamada = doctorWaitingPatientService.findAllByDate(todayDate);
 
         // Últimas 10 chamadas
         int minLength = Math.min(9, Math.max(listaChamada.size() - 1, 0));

@@ -3,22 +3,22 @@ package pt.iscte.hospital.services;
 import pt.iscte.hospital.entities.Message;
 import pt.iscte.hospital.entities.User;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 import java.util.List;
 
 public interface MessageService {
-    List<Message> findAllByUserUserIdOrderByDateTimeDesc(Long userId);
+    List<Message> findAllByUserUserIdOrderByDateDesc(Long userId);
 
-    List<Message> findAllByUserUserIdAndDateTimeOrderByDateTimeDesc(
+    List<Message> findAllByUserUserIdAndDateOrderByDateDesc(
             Long userId,
-            LocalDateTime dateTime);
+            LocalDate date);
 
-    List<Message> findAllByUserUserIdAndDateTimeAndReadMsgOrderByDateTimeDesc(
+    List<Message> findAllByUserUserIdAndDateAndReadMsgOrderByDateDesc(
             Long userId,
-            LocalDateTime dateTime,
+            LocalDate date,
             boolean hasRead);
 
-    List<Message> findAllByUserUserIdAndReadMsgOrderByDateTimeDesc(
+    List<Message> findAllByUserUserIdAndReadMsgOrderByDateDesc(
             Long userId,
             boolean hasRead);
 
