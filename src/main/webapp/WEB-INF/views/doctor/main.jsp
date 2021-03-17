@@ -196,7 +196,7 @@
                         </div>
 
                         <div class="row">
-                            <a href="/doctor-receptionist/patient-profile/${appointment.getPatient().getUserId()}"
+                            <a href="/doctor/see-profile/${appointment.getPatient().getUserId()}"
                                class="btn-blue btn-w85">Ver Perfil</a>
                         </div>
                     </div>

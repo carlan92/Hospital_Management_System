@@ -24,8 +24,8 @@
     <div class="white_box2 box-align-left">
 
         <div class="perfil-row">
-            <img src="/imagens/draw_patient.svg" alt="patientsPage" class="img-fill-form"/>
-            <h3 class="utente_title">Lista de Chamada</h3>
+            <img src="/imagens/draw_call-wait.svg" alt="patientsPage" class="img-fill-form"/>
+            <h3 class="consultas_title">Lista de Chamada</h3>
         </div>
 
         <div class="row">

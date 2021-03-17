@@ -23,7 +23,7 @@
             <div class="white_box2 box-align-left">
 
                 <div class="perfil-row">
-                    <img src="/imagens/draw_checking.svg" alt="patientsPage" class="img-fill-form" />
+                    <img src="/imagens/draw_check_in.svg" alt="patientsPage" class="img-fill-form" />
                     <h3 class="consultas_title">Check in</h3>
                 </div>
 

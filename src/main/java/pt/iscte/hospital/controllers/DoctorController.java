@@ -7,11 +7,13 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import pt.iscte.hospital.entities.Appointment;
+import pt.iscte.hospital.entities.Patient;
 import pt.iscte.hospital.entities.User;
 import pt.iscte.hospital.entities.states.AppointmentState;
 import pt.iscte.hospital.objects.utils.AlertMessageImage;
 import pt.iscte.hospital.services.AppointmentService;
 import pt.iscte.hospital.services.user.DoctorService;
+import pt.iscte.hospital.services.user.PatientService;
 import pt.iscte.hospital.services.user.UserService;
 
 import java.time.LocalDate;
@@ -27,6 +29,8 @@ public class DoctorController {
     private DoctorService doctorService;
     @Autowired
     private UserService userService;
+    @Autowired
+    private PatientService patientService;
 
     @GetMapping(value = {"/doctor/main", "/doctor"})
     public String showDoctorMain(ModelMap modelMap) {
@@ -219,6 +223,17 @@ public class DoctorController {
             modelMap.put("imageURL", AlertMessageImage.FAILURE.getImageURL());
         }
         return "components/alert-message";
+    }
+
+    @GetMapping(value = "/doctor/see-profile/{patientId}")
+    public String showProfile(ModelMap modelMap, @PathVariable Long patientId) {
+
+        Patient patient= patientService.findByUserId(patientId);
+
+        modelMap.put("patient", patient );
+        modelMap.put("goToDoctorMain", true);
+        modelMap.put("user_logged", currentUser());
+      return  "doctor-receptionist/patient-profile";
     }
 
 

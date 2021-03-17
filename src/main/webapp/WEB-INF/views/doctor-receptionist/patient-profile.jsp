@@ -96,9 +96,11 @@
                 </div>
                 <div class="perfil-row">
                     <div class="cell-row">
+                        <c:if test="${!goToDoctorMain}">
                         <form  action="/doctor-receptionist/patient-list" method="get">
                             <button class="btn-blue btn-w65">Voltar atrás</button>
                         </form>
+                        </c:if>
                     </div>
                     <div class="cell-row">
                         <form action="/userToMain" method="get">

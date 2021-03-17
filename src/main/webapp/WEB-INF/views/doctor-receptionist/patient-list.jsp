@@ -48,6 +48,7 @@
                     <i class="fas fa-birthday-cake ">
                         <span class="patient_birthday">${patient.getBirthdayStr()}</span>
                     </i>
+                    <br/>
                     <i class="fas fa-phone-square">
                         <span class="patient_age">${patient.getPhone()}</span>
                     </i>
