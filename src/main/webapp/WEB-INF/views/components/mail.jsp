@@ -11,10 +11,26 @@
     <a href="/patient/messages" class="botao_acessos">
 </c:if>
 
-<c:if test="${!hasUnreadMessages}">
-    <img src="/imagens/message/mail.svg" class="sidenav-icon"/>Mensagens
-</c:if>
-<c:if test="${hasUnreadMessages}">
-    <img src="/imagens/message/mail-alert.svg" class="sidenav-icon"/>Mensagens
-</c:if>
+
+<img id="imgMailId" src="/imagens/message/mail.svg" class="sidenav-icon"/>Mensagens
 </a>
+
+<script>
+    myFunction()
+    setInterval(myFunction(), 3000)
+
+    function myFunction(userId) {
+        let oReq = new XMLHttpRequest();
+        oReq.addEventListener("load", reqListener);
+        oReq.open("GET", "/user/messages/rest/has-unread-messages/");
+        oReq.send();
+    }
+
+    function reqListener() {
+        if (this.responseText === 'true') {
+            document.getElementById('imgMailId').src = '/imagens/message/mail-alert.svg'
+        } else {
+            document.getElementById('imgMailId').src = '/imagens/message/mail.svg'
+        }
+    }
+</script>
