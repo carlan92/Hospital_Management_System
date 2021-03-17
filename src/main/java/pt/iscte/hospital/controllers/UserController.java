@@ -13,7 +13,6 @@ import pt.iscte.hospital.entities.waiting.DoctorWaitingPatient;
 import pt.iscte.hospital.exceptions.ImageSizeException;
 import pt.iscte.hospital.exceptions.ImageTypeException;
 import pt.iscte.hospital.objects.utils.AlertMessageImage;
-import pt.iscte.hospital.repositories.waiting.DoctorWaitingPatientRepository;
 import pt.iscte.hospital.services.*;
 
 import pt.iscte.hospital.services.invoice.InvoiceService;
@@ -127,7 +126,7 @@ public class UserController {
                 modelMap.addAllAttributes(userValidationService.getErrorModelMap());
                 modelMap.put("nationalities", nationalities);
 
-                modelMap.put("user_logged", userService.currentUser());
+                modelMap.addAllAttributes(common.sideNavMap());
                 modelMap.put("user", doctor);
                 return "user/change-profile-data";
             }
@@ -169,9 +168,7 @@ public class UserController {
     // change data form
     @GetMapping(value = "/user/user-profile")
     public String showUserProfile(ModelMap modelMap) {
-        User userLogged = userService.currentUser();
-
-        modelMap.put("user_logged", userLogged);
+        modelMap.addAllAttributes(common.sideNavMap());
         return "user/user-profile";
     }
 
