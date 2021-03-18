@@ -1471,6 +1471,13 @@ select option:disabled {
   display: none;
 }
 
+.invoice-paid{
+  text-align: center;
+  font: normal normal 300 27px/33px Lato;
+  letter-spacing: 0.22px;
+  color: #2c363e;
+}
+
 /*Consultas + detalhes*/
 .cell-back, .btn-back {
   width: 100%;

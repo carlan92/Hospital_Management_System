@@ -37,7 +37,7 @@
                             <tr>
                                 <td class="title">
                                     <img src="/imagens/noun_centro_hospitalar_logo.svg"
-                                         style="width:70%; max-width:300px;">
+                                         class="" style="width:70%; max-width:300px;">
                                 </td>
 
                                 <td>
@@ -98,8 +98,13 @@
         </div>
         <c:if test="${user_logged.getAccount().equals('Recepcionista')}">
             <c:if test="${!appointment.getInvoice().isPaid()}">
-                <a type="button" href="/patient-receptionist/invoice/pay/${appointment.getInvoice().getInvoiceId()}" > Pagar</a> </td>
+                <br/>
+                <a type="button" href="/patient-receptionist/invoice/pay/${appointment.getInvoice().getInvoiceId()}" class="btn-blue" > Pagar </a> </td>
             </c:if>
+        <c:if test="${appointment.getInvoice().isPaid()}">
+            <br/>
+            <p class="invoice-paid"> Factura Paga</p>
+        </c:if>
         </c:if>
     </div>
 </div>
