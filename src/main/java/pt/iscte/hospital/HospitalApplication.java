@@ -13,9 +13,6 @@ public class HospitalApplication {
 
 		// TODO Run thread de marcar slots
 
-		// TODO Run thread de gestão da lista de espera para marcação de consulta
-
-
 	}
 
 }

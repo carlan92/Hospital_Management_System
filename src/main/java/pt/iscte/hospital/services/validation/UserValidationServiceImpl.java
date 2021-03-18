@@ -74,7 +74,6 @@ public class UserValidationServiceImpl implements UserValidationService {
 
     @Override
     public UserValidationService validPassword() {
-        // TODO para mais tarde repensar nas limitações
         if (!user.getPassword().matches(".{1,15}")) {
             isValid = false;
             errorModelMap.put("errorMsgPassword", ErrorMessage.ERROR_MESSAGE_PASSWORD.getErrorMsg());
@@ -152,7 +151,6 @@ public class UserValidationServiceImpl implements UserValidationService {
     public UserValidationService validDocumentNumber() {
         if (user.getDocumentType().equals("Cartão de Cidadão")) {
             String cc = String.valueOf(user.getDocumentNumber());
-            //todo deve aceitar o numero de documento ou basta numero civil??
             if (cc.matches("[0-9]{8}")) {
                 return this;
             }
@@ -165,7 +163,6 @@ public class UserValidationServiceImpl implements UserValidationService {
         }
         if (user.getDocumentType().equals("Passaporte")) {
             String passaporte = String.valueOf(user.getDocumentNumber());
-            //todo falta saber que condições o numero de passaporte deve aceitar??
             if (passaporte.matches("[0-9]{8}")) {
                 return this;
             }
@@ -202,7 +199,6 @@ public class UserValidationServiceImpl implements UserValidationService {
 
     @Override
     public UserValidationService validEmail2() {
-        // todo validação mais aproximada que consegui
         if (user.getEmail().matches("^[a-zA-Z0-9_+&*-]+(?:\\.[a-zA-Z0-9_+&*-]+)*@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,3}$")) {
             return this;
         }
@@ -237,7 +233,7 @@ public class UserValidationServiceImpl implements UserValidationService {
         String pattern = "dd/MM/yyyy";
         DateTimeFormatter df = DateTimeFormatter.ofPattern(pattern);
         String date = user.getBirthday().format(df);
-        //validação feita a nivel dos campos. //todo validar a nivel de data real
+        // validação feita a nível dos campos.
         if (date.matches("[0-9]{2}/[0-9]{2}/[0-9]{4}")) {
             return this;
         }
