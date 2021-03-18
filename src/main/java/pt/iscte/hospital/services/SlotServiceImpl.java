@@ -39,7 +39,7 @@ public class SlotServiceImpl implements SlotService {
     @Override
     public List<Slot> findAllByDoctorAndIsAvailableOrderByTimeBeginAsc(
             Doctor doctor,
-            boolean isAvailable){
+            boolean isAvailable) {
         return slotRepository.findAllByDoctorAndIsAvailableOrderByTimeBeginAsc(doctor, isAvailable);
     }
 
@@ -202,4 +202,12 @@ public class SlotServiceImpl implements SlotService {
         return false;
     }
 
+    @Override
+    public boolean hasDisponibilidadeNoDia(LocalDate day, Doctor doctor) {
+        long availableSlots = countByDoctorAndIsAvailableAndDate(doctor, true, day);
+        if (availableSlots > 0) {
+            return true;
+        }
+        return false;
+    }
 }

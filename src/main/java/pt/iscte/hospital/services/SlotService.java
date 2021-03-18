@@ -47,4 +47,6 @@ public interface SlotService {
     List<Day> calendarColor(List<Day> calendar, String specialityName);
 
     boolean hasDisponibilidadeNoMes(List<Day> calendar, Doctor doctor);
+
+    boolean hasDisponibilidadeNoDia(LocalDate day, Doctor doctor);
 }

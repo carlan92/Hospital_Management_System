@@ -150,7 +150,7 @@
 
                         <div class="cell-row">
 
-                            <c:if test="${hasSlotForDoctor==true}">
+                            <c:if test="${(hasSlotForDoctorDate==true) and (hasSlotForDoctor==true)}">
                                 <label for="hora_id">Hora</label>
                                 <select id="hora_id" type="text" class="form-input" name="slotId">
                                     <option value="" disabled selected>Escolha a hora pretendida</option>
@@ -165,7 +165,7 @@
                                     Consulta</button>
                             </c:if>
 
-                            <c:if test="${(hasSlotForDoctor==false) and (hasSelectDoctor==true)}">
+                            <c:if test="${(hasSlotForDoctorDate==false) and (hasSelectDoctor==true)}">
                                 <label for="timeSlot_id">Criar Vaga Extra</label>
                                 <div class="perfil-row">
                                     <div class="cell-row">
@@ -180,7 +180,7 @@
                                     </div>
                                 </div>
                                 <button type="submit" class="btn btn-blue"
-                                    formaction="/receptionist/make-extraAppointment/${userIdStr}/${patientWaitingAppointmentId}/save">Marcar
+                                    formaction="/receptionist/make-extraAppointment/${userIdStr}/${patientWaitingAppointmentId}/extra">Marcar
                                     Consulta em Vaga Extra</button>
                             </c:if>
 

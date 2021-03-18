@@ -22,6 +22,7 @@ import pt.iscte.hospital.services.validation.UserValidationService;
 import pt.iscte.hospital.services.waiting.PatientWaitingAppointmentService;
 
 import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.List;
 
 import static pt.iscte.hospital.entities.states.AppointmentState.MARCADA;
@@ -321,7 +322,9 @@ public class ReceptionistController {
                                               @RequestParam(required = false, name = "arrowMonth") String arrowMonth,
                                               @PathVariable(required = false, name = "saveOption") String saveOption,
                                               @PathVariable(name = "userIdStr") String userIdStr,
-                                              @PathVariable(name = "patientWaitingAppointmentId") Long patientWaitingAppointmentId) {
+                                              @PathVariable(name = "patientWaitingAppointmentId") Long patientWaitingAppointmentId,
+                                              @RequestParam(required = false, name ="timeBegin") LocalTime timeBegin,
+                                              @RequestParam(required = false, name ="timeEnd") LocalTime timeEnd) {
         // **********
         LocalDate todayDate = LocalDate.now();
         LocalDate chosenDate;
@@ -403,9 +406,21 @@ public class ReceptionistController {
         }
 
         boolean hasSlotForDoctor = slotService.hasDisponibilidadeNoMes(calendar, doctor);
+        boolean hasSlotForDoctorDate =slotService.hasDisponibilidadeNoDia(chosenDate, doctor);
         //todo adicionar campo que revela slot livre em waiting appointment
         modelMap.put("hasSlotForDoctor", hasSlotForDoctor);
         modelMap.put("hasSelectDoctor", hasSelectDoctor);
+        modelMap.put("hasSlotForDoctorDate", hasSlotForDoctorDate);
+
+
+        if(saveOption.equals("extra")){
+            saveAppointment((saveSlot(doctor, chosenDate,timeBegin,timeEnd)), userIdStr, patientWaitingAppointmentId);
+            modelMap.put("message", "A consulta do utente foi marcada com sucesso.");
+            modelMap.put("imageURL", AlertMessageImage.SUCCESS.getImageURL());
+            modelMap.addAllAttributes(common.sideNavMap());
+
+            return "components/alert-message";
+        }
 
         // Marcar consulta
         if (slotId != null && !slotId.isEmpty() && saveOption.equals("save")) {
@@ -461,7 +476,17 @@ public class ReceptionistController {
 
         return modelMap;
     }
+    //criar slot
+    private String saveSlot(Doctor doctor, LocalDate date, LocalTime timeBegin, LocalTime timeEnd){
+        Slot extraSlot = new Slot(doctor, date, timeBegin, timeEnd);
+        extraSlot.setAvailable(true);
+        slotService.saveSlot(extraSlot);
+        String newSlotId=extraSlot.getSlotId().toString();
+        return newSlotId;
+    }
 
+
+    //criar consulta
     private void saveAppointment(String slotId, String userIdStr, Long patientWaitingAppointmentId) {
         // Encontrar slot por id
         Slot slot = slotService.findBySlotId(Long.parseLong(slotId));
