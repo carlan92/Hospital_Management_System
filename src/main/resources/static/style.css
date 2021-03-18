@@ -1161,7 +1161,16 @@ select option:disabled {
 .add-pat {
   margin-bottom: 10px;
   margin-top: 10px;
-;
+}
+
+.add-img{
+  width: 178px;
+  margin-top: 15px;
+  margin-bottom: 27px;
+}
+
+.add-title{
+  margin-top: 9px;
 }
 
 .card_list_patient {

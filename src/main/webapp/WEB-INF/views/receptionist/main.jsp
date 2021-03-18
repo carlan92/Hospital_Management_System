@@ -31,7 +31,7 @@
         <div class="card_box">
             <div class="card mw-270">
                 <div class="card-body">
-                    <img src="/imagens/waiting-patient.svg" width="200px" alt="..."/>
+                    <img src="/imagens/draw_patient-wait.svg" class="add-img" alt="..."/>
                     <p class="utentes"><span id="num_utentes">${pacientes_confirmadosEspera}</span> UTENTES</p>
                     <p class="linha_1">A AGUARDAR CONSULTA</p>
                     <p class="linha_2">
@@ -48,7 +48,7 @@
             <div class="card mw-270">
                 <div class="card-body">
                     <div class="checkin_img">
-                        <img src="/imagens/check-mark.svg" class="wait_list" width="150px" alt="..."/>
+                        <img src="/imagens/check-in-mark.svg" class="wait_list" width="150px" alt="..."/>
                     </div>
                     <p class="linha_2">
                         Efectue aqui o check-in do utente
@@ -64,21 +64,15 @@
         <div class="card_box">
             <div class="card mw-270">
                 <div class="card-body">
-                    <img src="/imagens/draw_new_entries.svg" width="160px" alt="..."/>
-                    <p class="">
-                       Adicione aqui uma nova especialidade
-                    </p>
+                    <p class="utentes add-title">ADICIONAR</p>
+                    <img src="/imagens/draw_new_entries.svg" class="add-img" alt="..."/>
                     <div class="add-pat">
-                        <a class="btn btn-green" href="/receptionist/add-speciality"
+                        <a class="btn btn-blue" href="/receptionist/add-user" type="submit">
+                            Novo utilizador</a>
+                        <p></p>
+                        <a class="btn btn-blue" href="/receptionist/add-speciality"
                            type="submit">Nova especialidade
                         </a>
-                    </div>
-                    <span class="">
-                        Adicione aqui um novo utilizador
-                    </span>
-                    <div class="add-pat">
-                        <a class="btn btn-green" href="/receptionist/add-user" type="submit">
-                            Novo utilizador</a>
                     </div>
                 </div>
                 <div class="horizontal-border"></div>

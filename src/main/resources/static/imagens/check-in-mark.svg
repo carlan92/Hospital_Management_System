@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="136.45386mm"
+   height="136.6796mm"
+   viewBox="0 0 136.45386 136.6796"
+   version="1.1"
+   id="svg4415"
+   inkscape:version="1.0.2 (e86c8708, 2021-01-15)"
+   sodipodi:docname="check-in-mark.svg">
+  <defs
+     id="defs4409" />
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="0.20691575"
+     inkscape:cx="-370.22962"
+     inkscape:cy="267.04054"
+     inkscape:document-units="mm"
+     inkscape:current-layer="layer1"
+     inkscape:document-rotation="0"
+     showgrid="false"
+     inkscape:window-width="1440"
+     inkscape:window-height="785"
+     inkscape:window-x="0"
+     inkscape:window-y="25"
+     inkscape:window-maximized="0"
+     inkscape:snap-center="true" />
+  <metadata
+     id="metadata4412">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Camada 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(-37.465805,-82.790695)">
+    <ellipse
+       cx="105.69273"
+       cy="151.13049"
+       fill="#e6e6e6"
+       id="circle3744"
+       style="stroke-width:0.69145"
+       rx="68.226929"
+       ry="68.339798" />
+    <ellipse
+       cx="105.69273"
+       cy="151.13049"
+       fill="#99c33d"
+       id="circle3746"
+       style="stroke-width:0.69145"
+       rx="56.855766"
+       ry="56.949837" />
+    <polygon
+       points="81.088,90.896 92.44,105.492 130.789,65.011 143.612,77.16 91.121,132.566 67.146,101.741 "
+       fill="#ffffff"
+       id="polygon3756"
+       transform="matrix(0.69087896,0,0,0.69202202,37.465808,82.790663)" />
+  </g>
+</svg>
