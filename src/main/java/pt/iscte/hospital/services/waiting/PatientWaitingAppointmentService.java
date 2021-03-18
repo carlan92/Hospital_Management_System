@@ -12,6 +12,8 @@ public interface PatientWaitingAppointmentService {
 
     List<PatientWaitingAppointment> findAllByClosed(boolean closed);
 
+    List<PatientWaitingAppointment> findAllByClosedAndRepliedToOffer(boolean closed, boolean repliedToOffer);
+
     List<PatientWaitingAppointment> findAllByPatientUserIdAndClosed(long userId, boolean closed);
 
     void save(PatientWaitingAppointment patientWaitingAppointment);

@@ -15,6 +15,8 @@ public interface PatientWaitingAppointmentRepository extends JpaRepository<Patie
 
     List<PatientWaitingAppointment> findAllByClosed(boolean closed);
 
+    List<PatientWaitingAppointment> findAllByClosedAndRepliedToOffer(boolean closed, boolean repliedToOffer);
+
     List<PatientWaitingAppointment> findAllByClosedOrderByDate(boolean closed);
 
     PatientWaitingAppointment findByPatientWaitingAppointmentId(Long patientWaitingAppointmentId);
