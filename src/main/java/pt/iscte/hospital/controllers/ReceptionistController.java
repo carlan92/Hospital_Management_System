@@ -20,6 +20,7 @@ import pt.iscte.hospital.services.user.UserService;
 import pt.iscte.hospital.services.validation.SpecialityValidationService;
 import pt.iscte.hospital.services.validation.UserValidationService;
 import pt.iscte.hospital.services.waiting.PatientWaitingAppointmentService;
+import pt.iscte.hospital.threads.MakeAppointment;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -45,6 +46,10 @@ public class ReceptionistController {
     private final PatientService patientService;
     private final PatientWaitingAppointmentService patientWaitingAppointmentService;
     private final Common common;
+    private final MakeAppointment makeAppointment;
+    private final MessageService messageService;
+    private final Long WAITING_PERIOD_HOURS = 24L;
+    private final Long WAITING_PERIOD_FOR_NEXT_DAY_HOURS = 1L;
 
     // Constructor
     @Autowired
@@ -59,7 +64,9 @@ public class ReceptionistController {
                                   SlotService slotService,
                                   PatientService patientService,
                                   PatientWaitingAppointmentService patientWaitingAppointmentService,
-                                  Common common) {
+                                  Common common,
+                                  MakeAppointment makeAppointment,
+                                  MessageService messageService) {
         this.specialityService = specialityService;
         this.userService = userService;
         this.nationalityService = nationalityService;
@@ -72,6 +79,8 @@ public class ReceptionistController {
         this.patientService = patientService;
         this.patientWaitingAppointmentService = patientWaitingAppointmentService;
         this.common = common;
+        this.makeAppointment=makeAppointment;
+        this.messageService=messageService;
     }
 
 
@@ -415,7 +424,6 @@ public class ReceptionistController {
 
         boolean hasSlotForDoctor = slotService.hasDisponibilidadeNoMes(calendar, doctor);
         boolean hasSlotForDoctorDate = slotService.hasDisponibilidadeNoDia(chosenDate, doctor);
-        //todo adicionar campo que revela slot livre em waiting appointment
         modelMap.put("hasSlotForDoctor", hasSlotForDoctor);
         modelMap.put("hasSelectDoctor", hasSelectDoctor);
         modelMap.put("hasSlotForDoctorDate", hasSlotForDoctorDate);
@@ -519,9 +527,14 @@ public class ReceptionistController {
                 patientWaitingAppointmentService.findByPatientWaitingAppointmentId(patientWaitingAppointmentId);
 
         patientWaitingAppointment.setClosed(true);
+        patientWaitingAppointment.setLimitDateToReply(replyTime(slot));
         patientWaitingAppointment.setPosition(0L);
+        patientWaitingAppointment.setSlot(slot);
         patientWaitingAppointmentService.save(patientWaitingAppointment);
 
+        LocalDateTime dateTime=LocalDateTime.of(slot.getDate(), slot.getTimeBegin());
+        Message message=makeAppointment.mensagemConfirmacao(patientWaitingAppointment, dateTime);
+        messageService.save(message);
 
         System.out.println("Sucesso: consulta marcada - " + appointment + slot);
     }
@@ -537,4 +550,20 @@ public class ReceptionistController {
         }
         return result;
     }
+
+    private LocalDateTime replyTime(Slot slot) {
+        LocalDate slotDate = slot.getDate();
+        LocalTime slotTime = slot.getTimeBegin();
+        LocalDateTime slotDateTime = LocalDateTime.of(slotDate, slotTime);
+        LocalDateTime todayDateTime = LocalDateTime.now();
+        LocalDateTime result = todayDateTime;
+        if (slotDateTime.isBefore(todayDateTime.plusHours(24L))) {
+            result = todayDateTime.plusHours(WAITING_PERIOD_FOR_NEXT_DAY_HOURS);
+        } else {
+            result=todayDateTime.plusHours(WAITING_PERIOD_HOURS);
+        }
+        return result;
+    }
+
 }
+

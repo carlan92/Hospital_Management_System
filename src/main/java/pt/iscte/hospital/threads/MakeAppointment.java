@@ -99,7 +99,7 @@ public class MakeAppointment {
     }
 
 
-    private Message mensagemConfirmacao(PatientWaitingAppointment patientWaiting, LocalDateTime dateTime) {
+    public Message mensagemConfirmacao(PatientWaitingAppointment patientWaiting, LocalDateTime dateTime) {
         Long patientWaiting_id = patientWaiting.getPatientWaitingAppointmentId();
         Doctor doctor = patientWaiting.getDoctor();
         Patient patient = patientWaiting.getPatient();
@@ -110,7 +110,7 @@ public class MakeAppointment {
         } else {
             artigo = "a";
         }
-        String drName = doctor.getTitleAndName() + " " + doctor.getFirstAndLastName();
+        String drName = doctor.getTitleAndName();
         String especialidade = doctor.getSpeciality().getName();
         String data = dateTime.format(Calendar.FORMATTER);
         String horas = dateTime.format(Calendar.TIME_FORMATTER);
