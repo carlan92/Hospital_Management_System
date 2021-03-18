@@ -277,11 +277,9 @@ public class PatientController {
         slotService.saveSlot(slot);
 
         // Adicionar consulta à base de dados
-        Appointment appointment = new Appointment();
         Patient patient = patientService.findByUsername(userService.currentUser().getUsername());
-        appointment.setPatient(patient);
-        appointment.setSlot(slot);
-        appointment.setAppointmentStatus(MARCADA.getStateNr());
+
+        Appointment appointment = new Appointment(patient, slot);
 
         appointmentService.saveAppointment(appointment);
         System.out.println("Sucesso: consulta marcada - " + appointment + slot);

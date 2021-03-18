@@ -1,14 +1,19 @@
 package pt.iscte.hospital.entities.waiting;
 
+import lombok.Getter;
+import lombok.Setter;
 import org.springframework.format.annotation.DateTimeFormat;
 import pt.iscte.hospital.entities.Doctor;
 import pt.iscte.hospital.entities.Patient;
+import pt.iscte.hospital.entities.Slot;
 import pt.iscte.hospital.objects.utils.Calendar;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
 
 @Entity
+@Getter
+@Setter
 public class PatientWaitingAppointment implements Comparable<PatientWaitingAppointment> {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -25,7 +30,16 @@ public class PatientWaitingAppointment implements Comparable<PatientWaitingAppoi
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
     private LocalDateTime date;
 
+    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
+    private LocalDateTime limitDateToReply;
+
+    @ManyToOne
+    @JoinColumn(name = "slot_id")
+    private Slot slot;
+
     private boolean closed;
+
+    private boolean slotAccepted;
 
     private Long position;
 

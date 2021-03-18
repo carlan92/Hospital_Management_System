@@ -25,7 +25,8 @@ public class Doctor extends Employee {
     private Set<Slot> slots;
 
     @OneToMany(mappedBy = "doctor")
-    private Set<PatientWaitingAppointment> patientWaitingAppointment;
+    private Set<PatientWaitingAppointment> patientWaitingAppointments;
+
 
 
 

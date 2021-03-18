@@ -1,6 +1,7 @@
 package pt.iscte.hospital.entities;
 
 import org.springframework.format.annotation.DateTimeFormat;
+import pt.iscte.hospital.entities.waiting.PatientWaitingAppointment;
 
 import javax.persistence.*;
 import java.time.LocalDate;
@@ -14,6 +15,7 @@ public class Slot implements Comparable<Slot> {
     // Attributes
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "slot_id")
     private Long slotId;
 
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
@@ -28,6 +30,9 @@ public class Slot implements Comparable<Slot> {
     @ManyToOne
     @JoinColumn(name = "doctor_id")
     private Doctor doctor;
+
+    @OneToMany(mappedBy = "slot")
+    private Set<PatientWaitingAppointment> patientWaitingAppointments;
 
     private boolean isAvailable = true;
 

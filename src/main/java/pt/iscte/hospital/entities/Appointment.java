@@ -50,6 +50,12 @@ public class Appointment implements Comparable<Appointment> {
     public Appointment() {
     }
 
+    public Appointment(Patient patient, Slot slot) {
+        this.patient = patient;
+        this.slot = slot;
+        this.appointmentStatus = AppointmentState.MARCADA.getStateNr();
+    }
+
     public Appointment(LocalDate date, LocalTime timeBegin, LocalTime timeEnd, String notes) {
         this.date = date;
         this.timeBegin = timeBegin;

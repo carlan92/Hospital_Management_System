@@ -37,6 +37,13 @@ public class SlotServiceImpl implements SlotService {
     }
 
     @Override
+    public List<Slot> findAllByDoctorAndIsAvailableOrderByTimeBeginAsc(
+            Doctor doctor,
+            boolean isAvailable){
+        return slotRepository.findAllByDoctorAndIsAvailableOrderByTimeBeginAsc(doctor, isAvailable);
+    }
+
+    @Override
     public List<Slot> findAllByDoctorAndIsAvailableAndDateOrderByTimeBeginAsc(
             Doctor doctor,
             boolean isAvailable,
