@@ -14,7 +14,7 @@
 </head>
 
 <body>
-    <%@ include file="../components/sidenav-utente.jsp" %>
+    <%@ include file="../components/sidenav-receptionist.jsp" %>
     <div class="main">
         <!--menu da direita-->
         <div class="white_box box-align-left">
@@ -31,7 +31,8 @@
             </div>
 
 
-            <form class="registration-form" action="/receptionist/make-extraAppointment/${userIdStr}/${patientWaitingAppointmentId}"
+            <form class="registration-form"
+                action="/receptionist/make-extraAppointment/${userIdStr}/${patientWaitingAppointmentId}"
                 name="appointmentForm" method="post">
                 <div class="perfil-main-col">
                     <div class="perfil-row">
@@ -148,17 +149,40 @@
                         </div>
 
                         <div class="cell-row">
-                            <label for="hora_id">Hora</label>
-                            <select id="hora_id" type="text" class="form-input" name="slotId">
-                                <option value="" disabled selected>Escolha a hora pretendida</option>
-                                <c:forEach var="slot" items="${slots}">
-                                    <option value="${slot.getSlotId()}">${slot.getTimeBegin()}</option>
-                                </c:forEach>
-                            </select>
-                            <p class="msg-error">${errorMsgHora}</p>
-                            <br />
-                            <button type="submit" class="btn btn-green"
-                                formaction="/receptionist/make-extraAppointment/${userIdStr}/${patientWaitingAppointmentId}/save">Marcar Consulta</button>
+
+                            <c:if test="${hasSlotForDoctor==true}">
+                                <label for="hora_id">Hora</label>
+                                <select id="hora_id" type="text" class="form-input" name="slotId">
+                                    <option value="" disabled selected>Escolha a hora pretendida</option>
+                                    <c:forEach var="slot" items="${slots}">
+                                        <option value="${slot.getSlotId()}">${slot.getTimeBegin()}</option>
+                                    </c:forEach>
+                                </select>
+                                <p class="msg-error">${errorMsgHora}</p>
+                                <br />
+                                <button type="submit" class="btn btn-green"
+                                    formaction="/receptionist/make-extraAppointment/${userIdStr}/${patientWaitingAppointmentId}/save">Marcar
+                                    Consulta</button>
+                            </c:if>
+
+                            <c:if test="${(hasSlotForDoctor==false) and (hasSelectDoctor==true)}">
+                                <label for="timeSlot_id">Criar Vaga Extra</label>
+                                <div class="perfil-row">
+                                    <div class="cell-row">
+                                        <input id="timeBegin_id" type="time" class="form-input"
+                                            value="${slot.getTimeBegin()}" name="timeBegin" required />
+                                        <p class="msg-error">${errorMsgHora}</p>
+                                    </div>
+                                    <div class="cell-row">
+                                        <input id="timeEnd_id" type="time" class="form-input"
+                                            value="${slot.getTimeEnd()}" name="timeEnd" required />
+                                        <p class="msg-error">${errorMsgHora}</p>
+                                    </div>
+                                </div>
+                                <button type="submit" class="btn btn-blue"
+                                    formaction="/receptionist/make-extraAppointment/${userIdStr}/${patientWaitingAppointmentId}/save">Marcar
+                                    Consulta em Vaga Extra</button>
+                            </c:if>
 
                         </div>
                     </div>
