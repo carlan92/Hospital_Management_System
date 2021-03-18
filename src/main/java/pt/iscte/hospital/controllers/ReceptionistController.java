@@ -22,7 +22,9 @@ import pt.iscte.hospital.services.validation.UserValidationService;
 import pt.iscte.hospital.services.waiting.PatientWaitingAppointmentService;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.LocalTime;
+import java.util.ArrayList;
 import java.util.List;
 
 import static pt.iscte.hospital.entities.states.AppointmentState.MARCADA;
@@ -402,6 +404,7 @@ public class ReceptionistController {
         Speciality speciality = specialityService.findByName(specialityName);
         List<Doctor> doctors = doctorService.findAllBySpecialityOrderByNameAsc(speciality);
         List<Slot> slots = slotService.findAllByDoctorAndIsAvailableAndDateOrderByTimeBeginAsc(doctor, true, chosenDate);
+        slots = filterPastHour(slots);
         List<Day> calendar = Calendar.calendarList(calYear, calMonth);
         boolean hasSelectDoctor = !doctorId.isEmpty();
         if (!doctorId.isEmpty()) {
@@ -521,5 +524,17 @@ public class ReceptionistController {
 
 
         System.out.println("Sucesso: consulta marcada - " + appointment + slot);
+    }
+
+    private List<Slot> filterPastHour(List<Slot> slotList) {
+        LocalDateTime dateTimeToday = LocalDateTime.now();
+        List<Slot> result = new ArrayList<>();
+        for (Slot slot : slotList) {
+            LocalDateTime localDateTime = LocalDateTime.of(slot.getDate(), slot.getTimeBegin());
+            if (localDateTime.isAfter(dateTimeToday)) {
+                result.add(slot);
+            }
+        }
+        return result;
     }
 }
