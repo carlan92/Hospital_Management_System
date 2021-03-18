@@ -458,12 +458,12 @@ public class ReceptionistController {
         return ("receptionist/make-extraAppointment");
     }
 
-    //metodos privados
+    // métodos privados
     private User currentUser() {
         return userService.currentUser();
     }
 
-    //todo utentes a aguardar
+    // utentes a aguardar
     private ModelMap infoForTopMain(LocalDate dateToday) {
         ModelMap modelMap = new ModelMap();
 
