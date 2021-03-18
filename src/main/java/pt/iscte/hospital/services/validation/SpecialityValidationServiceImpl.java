@@ -46,6 +46,20 @@ public class SpecialityValidationServiceImpl implements SpecialityValidationServ
     }
 
     @Override
+    public SpecialityValidationService validPrice() {
+        if (speciality.getPrice() >= 0) {
+            String price = String.valueOf(speciality.getPrice());
+            if (price.matches("\\d{1,3}(.\\d{0,2})")) { // validar de 0 a 999.99 maximo 2 casas decimais
+                return this;
+            }
+        }
+        isValid = false;
+        errorModelMap.put("errorMsgPrice", ErrorMessage.SPECIALITY_PRICE.getErrorMsg());
+        return this;
+
+    }
+
+    @Override
     public SpecialityValidationService validLength() {
         if (speciality.getName().length() < 4) {      // verificar se nome pequeno (evitar nomes curtos)
             isValid = false;
@@ -65,7 +79,7 @@ public class SpecialityValidationServiceImpl implements SpecialityValidationServ
     }
 
     @Override
-    public SpecialityValidationService clear(){
+    public SpecialityValidationService clear() {
         errorModelMap = new ModelMap();
         speciality = null;
         isValid = true;

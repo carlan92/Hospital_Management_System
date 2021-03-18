@@ -7,6 +7,7 @@ public interface SpecialityValidationService {
     SpecialityValidationService setSpeciality(Speciality speciality);
     SpecialityValidationService validName();
     SpecialityValidationService validLength();
+    SpecialityValidationService validPrice();
     boolean isValid();
     ModelMap getErrorModelMap();
     SpecialityValidationService clear();

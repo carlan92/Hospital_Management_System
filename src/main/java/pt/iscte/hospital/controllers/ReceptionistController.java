@@ -103,6 +103,8 @@ public class ReceptionistController {
 
     @GetMapping(value = "/receptionist/add-speciality")
     public String addSpecialityPage(ModelMap modelMap) {
+
+
         modelMap.addAllAttributes(common.sideNavMap());
         return "receptionist/add-speciality";
     }
@@ -111,17 +113,20 @@ public class ReceptionistController {
     public String addSpecialityService(@RequestParam String name_speciality, @RequestParam double price, ModelMap mpError) {
 
         Speciality speciality = new Speciality(name_speciality, price);
+        mpError.addAllAttributes(common.sideNavMap());
 
         // Check if speciality is valid
         specialityValidationService.clear().setSpeciality(speciality)
                 .validName()
-                .validLength();
+                .validLength()
+                .validPrice();
 
         if (!specialityValidationService.isValid()) {
             mpError.addAllAttributes(specialityValidationService.getErrorModelMap());
+
             return "receptionist/add-speciality";
         }
-//TODO falta validação do preço
+
         specialityService.addSpeciality(speciality);
 
         return ("redirect:/receptionist/main");
@@ -280,8 +285,8 @@ public class ReceptionistController {
     //marca consulta extra para utente na lista de espera para marcação de consulta
     @GetMapping(value = "/receptionist/make-extraAppointment/{userIdStr}/{patientWaitingAppointmentId}")
     public String showMakeExtraAppointment(ModelMap modelMap,
-                                           @PathVariable(name="userIdStr") String userIdStr,
-                                           @PathVariable(name="patientWaitingAppointmentId") Long patientWaitingAppointmentId) {
+                                           @PathVariable(name = "userIdStr") String userIdStr,
+                                           @PathVariable(name = "patientWaitingAppointmentId") Long patientWaitingAppointmentId) {
         List<Speciality> specialities = specialityService.findAll(Sort.by(Sort.Direction.ASC, "name"));
 
         LocalDate todayDate = LocalDate.now();
@@ -306,7 +311,7 @@ public class ReceptionistController {
         modelMap.put("strMonth", strMonth);
         modelMap.put("chosenDay", chosenDay);
         modelMap.put("userIdStr", userIdStr);
-        modelMap.put("patientWaitingAppointmentId",patientWaitingAppointmentId);
+        modelMap.put("patientWaitingAppointmentId", patientWaitingAppointmentId);
         modelMap.addAllAttributes(common.sideNavMap());
 
         return "receptionist/make-extraAppointment";
@@ -323,8 +328,8 @@ public class ReceptionistController {
                                               @PathVariable(required = false, name = "saveOption") String saveOption,
                                               @PathVariable(name = "userIdStr") String userIdStr,
                                               @PathVariable(name = "patientWaitingAppointmentId") Long patientWaitingAppointmentId,
-                                              @RequestParam(required = false, name ="timeBegin") LocalTime timeBegin,
-                                              @RequestParam(required = false, name ="timeEnd") LocalTime timeEnd) {
+                                              @RequestParam(required = false, name = "timeBegin") LocalTime timeBegin,
+                                              @RequestParam(required = false, name = "timeEnd") LocalTime timeEnd) {
         // **********
         LocalDate todayDate = LocalDate.now();
         LocalDate chosenDate;
@@ -406,15 +411,15 @@ public class ReceptionistController {
         }
 
         boolean hasSlotForDoctor = slotService.hasDisponibilidadeNoMes(calendar, doctor);
-        boolean hasSlotForDoctorDate =slotService.hasDisponibilidadeNoDia(chosenDate, doctor);
+        boolean hasSlotForDoctorDate = slotService.hasDisponibilidadeNoDia(chosenDate, doctor);
         //todo adicionar campo que revela slot livre em waiting appointment
         modelMap.put("hasSlotForDoctor", hasSlotForDoctor);
         modelMap.put("hasSelectDoctor", hasSelectDoctor);
         modelMap.put("hasSlotForDoctorDate", hasSlotForDoctorDate);
 
 
-        if(saveOption.equals("extra")){
-            saveAppointment((saveSlot(doctor, chosenDate,timeBegin,timeEnd)), userIdStr, patientWaitingAppointmentId);
+        if (saveOption.equals("extra")) {
+            saveAppointment((saveSlot(doctor, chosenDate, timeBegin, timeEnd)), userIdStr, patientWaitingAppointmentId);
             modelMap.put("message", "A consulta do utente foi marcada com sucesso.");
             modelMap.put("imageURL", AlertMessageImage.SUCCESS.getImageURL());
             modelMap.addAllAttributes(common.sideNavMap());
@@ -476,12 +481,13 @@ public class ReceptionistController {
 
         return modelMap;
     }
+
     //criar slot
-    private String saveSlot(Doctor doctor, LocalDate date, LocalTime timeBegin, LocalTime timeEnd){
+    private String saveSlot(Doctor doctor, LocalDate date, LocalTime timeBegin, LocalTime timeEnd) {
         Slot extraSlot = new Slot(doctor, date, timeBegin, timeEnd);
         extraSlot.setAvailable(true);
         slotService.saveSlot(extraSlot);
-        String newSlotId=extraSlot.getSlotId().toString();
+        String newSlotId = extraSlot.getSlotId().toString();
         return newSlotId;
     }
 
@@ -506,7 +512,7 @@ public class ReceptionistController {
         appointmentService.saveAppointment(appointment);
 
         //remover pedido de marcacao de consulta em lista de espera
-        PatientWaitingAppointment patientWaitingAppointment=
+        PatientWaitingAppointment patientWaitingAppointment =
                 patientWaitingAppointmentService.findByPatientWaitingAppointmentId(patientWaitingAppointmentId);
 
         patientWaitingAppointment.setClosed(true);

@@ -37,17 +37,12 @@
                             <label for="price">Preço (€)</label>
                             <input id="price" type="text" class="form-input" name= "price" required
                                    placeholder="Valor" value="" />
-                            <p class="msg-error">${errorMsgSpeciality}</p>
+                            <p class="msg-error">${errorMsgPrice}</p>
                         </div>
                     </div>
                 </div>
                 <button type="submit" class="btn btn-blue">Criar Especialidade</button>
             </form>
-
-
-
-
-
 
         </div>
 
