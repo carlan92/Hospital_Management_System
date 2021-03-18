@@ -64,9 +64,6 @@
             <a type="button" href="/public/general-information" class="botao_acessos">
                 <img src="/imagens/noun_information.svg"/> Informações gerais
             </a>
-            <button type="button" class="botao_acessos">
-                <img src="/imagens/noun_calendar.svg"/> Calendário de vagas
-            </button>
             <a type="button" href="/public/contacts" class="botao_acessos">
                 <img src="/imagens/noun_phone.svg"/> Contactos
             </a>
