@@ -238,21 +238,6 @@
 
 <script>
 
-    function startTime() {
-        let today = new Date();
-        let h = today.getHours();
-        let m = today.getMinutes();
-        m = checkTime(m);
-        h = checkTime(h);
-        document.getElementById('hour').innerHTML = h + ":" + m;
-        let t = setTimeout(startTime, 500);
-    }
-
-    function checkTime(i) {
-        if (i === 0 || i < 10) {
-            i = "0" + i;
-        }
-
         function startTime() {
             let today = new Date();
             let h = today.getHours();
@@ -270,8 +255,6 @@
             return i;
         }
 
-        return i;
-    }
 
     function currentDate() {
         let todayDate = new Date();
