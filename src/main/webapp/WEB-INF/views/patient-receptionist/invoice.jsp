@@ -41,7 +41,7 @@
                                 </td>
 
                                 <td>
-                                    Factura # <span>${invoice.getInvoiceApiId()}</span>
+                                    Factura # <span>${invoice.getShortId()}</span>
                                     <br>
                                     <br>
                                     Emissão: <span>${invoice.getDueDateStr()}</span>

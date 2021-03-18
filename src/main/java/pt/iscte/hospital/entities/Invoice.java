@@ -82,8 +82,11 @@ public class Invoice {
         return invoiceId;
     }
 
-    public String getInvoiceApiId() {
-        return invoiceApiId;
+    public String getInvoiceApiId() { return invoiceApiId;
+    }
+
+    public String getShortId(){
+        return invoiceApiId.split("-")[0];
     }
 
     public String getInvoiceStateStr() {
