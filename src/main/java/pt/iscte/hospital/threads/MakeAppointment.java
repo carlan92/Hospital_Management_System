@@ -73,8 +73,6 @@ public class MakeAppointment {
                 }
             }
         }
-
-
     }
 
 
@@ -83,15 +81,22 @@ public class MakeAppointment {
         Doctor doctor = patientWaiting.getDoctor();
         Patient patient = patientWaiting.getPatient();
 
+        String artigo = "";
+        if(doctor.getSex().equalsIgnoreCase("masculino")){
+            artigo = "o";
+        }else {
+            artigo = "a";
+        }
         String drName = doctor.getTitleAndName() + " " + doctor.getFirstAndLastName();
         String especialidade = doctor.getSpeciality().getName();
         String data = dateTime.format(Calendar.FORMATTER);
         String horas = dateTime.format(Calendar.TIME_FORMATTER);
 
         String messageStr = String.format(
-                "Por favor confirme se deseja a sua consulta com o %s, %s, para a data %s às %s horas. " +
+                "Por favor confirme se deseja a sua consulta com %s %s, %s, para a data %s às %s horas. " +
                         "Confirma: <a class=\"btn-msg btn-msg-green\" href=\"%s\">Sim</a>  " +
                         "  <a <a class=\"btn-msg btn-msg-blue\"href=\"%s\">Não</a>",
+                artigo,
                 drName,
                 especialidade,
                 data,

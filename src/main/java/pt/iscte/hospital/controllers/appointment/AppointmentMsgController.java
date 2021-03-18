@@ -45,7 +45,7 @@ public class AppointmentMsgController {
         boolean hasAlreadyRepliedToOffer = patientWA.isRepliedToOffer();
 
         if (hasAlreadyRepliedToOffer) {
-            modelMap.put("message", "Já tinha respondido a esta mensagem.");
+            modelMap.put("message", "Já tinha respondido a esta mensagem ou não respondeu a tempo.");
             modelMap.put("imageURL", AlertMessageImage.FAILURE.getImageURL());
             return "components/alert-message";
         }
