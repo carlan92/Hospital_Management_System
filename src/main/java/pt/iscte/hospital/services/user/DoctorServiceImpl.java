@@ -7,11 +7,13 @@ import pt.iscte.hospital.entities.*;
 import pt.iscte.hospital.entities.states.AppointmentState;
 import pt.iscte.hospital.entities.waiting.DoctorWaitingPatient;
 import pt.iscte.hospital.entities.waiting.PatientWaitingAppointment;
+import pt.iscte.hospital.objects.utils.Calendar;
 import pt.iscte.hospital.repositories.AppointmentRepository;
 import pt.iscte.hospital.repositories.user.DoctorRepository;
 import pt.iscte.hospital.repositories.SpecialityRepository;
 import pt.iscte.hospital.repositories.waiting.DoctorWaitingPatientRepository;
 import pt.iscte.hospital.repositories.waiting.PatientWaitingAppointmentRepository;
+import pt.iscte.hospital.services.MessageService;
 import pt.iscte.hospital.services.invoice.InvoiceService;
 
 import java.time.LocalDate;
@@ -28,6 +30,7 @@ public class DoctorServiceImpl implements DoctorService {
     private final PatientWaitingAppointmentRepository patientWaitingAppointmentRepository;
     private final DoctorWaitingPatientRepository doctorWaitingPatientRepository;
     private final InvoiceService invoiceService;
+    private final MessageService messageService;
 
     @Autowired
     public DoctorServiceImpl(DoctorRepository doctorRepository,
@@ -35,13 +38,15 @@ public class DoctorServiceImpl implements DoctorService {
                              AppointmentRepository appointmentRepository,
                              PatientWaitingAppointmentRepository patientWaitingAppointmentRepository,
                              DoctorWaitingPatientRepository doctorWaitingPatientRepository,
-                             InvoiceService invoiceService) {
+                             InvoiceService invoiceService,
+                             MessageService messageService) {
         this.doctorRepository = doctorRepository;
         this.specialityRepository = specialityRepository;
         this.appointmentRepository = appointmentRepository;
         this.patientWaitingAppointmentRepository = patientWaitingAppointmentRepository;
         this.doctorWaitingPatientRepository = doctorWaitingPatientRepository;
         this.invoiceService = invoiceService;
+        this.messageService = messageService;
     }
 
     //Methods
@@ -92,7 +97,7 @@ public class DoctorServiceImpl implements DoctorService {
     @Override
     public void desmarcarConsultaByDoctor(Appointment appointment) {
 
-        LocalDateTime dataToday= LocalDateTime.now();
+        LocalDateTime dataToday = LocalDateTime.now();
         Doctor doctor = appointment.getDoctor();
         Patient patient = appointment.getPatient();
 
@@ -102,6 +107,10 @@ public class DoctorServiceImpl implements DoctorService {
         // Enviar utente para lista de espera de consulta
         PatientWaitingAppointment patientWaitingAppointment = new PatientWaitingAppointment(dataToday, doctor, patient);
         patientWaitingAppointmentRepository.save(patientWaitingAppointment);
+
+        // Enviar mensagem ao utente que a consulta foi cancelada e que este foi colocado em lista de espera
+        Message message = mensagemCancelarConsultaListaEspera(appointment);
+        messageService.save(message);
     }
 
     @Override
@@ -157,6 +166,37 @@ public class DoctorServiceImpl implements DoctorService {
             }
         }
         return result;
+    }
+
+    private Message mensagemCancelarConsultaListaEspera(Appointment appointment) {
+        Doctor doctor = appointment.getDoctor();
+        Patient patient = appointment.getPatient();
+        Slot slot = appointment.getSlot();
+
+        String artigo = "";
+        if (doctor.getSex().equalsIgnoreCase("masculino")) {
+            artigo = "o";
+        } else {
+            artigo = "a";
+        }
+        String drName = doctor.getTitleAndName() + " " + doctor.getFirstAndLastName();
+        String especialidade = doctor.getSpeciality().getName();
+        String data = slot.getDate().format(Calendar.FORMATTER);
+        String horas = slot.getTimeBegin().format(Calendar.TIME_FORMATTER);
+
+        String messageStr = String.format(
+                "A sua consulta com %s %s, %s, para dia data %s às %s horas foi desmarcada. " +
+                        "Encontra-se neste momento em lista de espera",
+                artigo,
+                drName,
+                especialidade,
+                data,
+                horas);
+
+        return new Message(
+                "Desmarcação de consulta",
+                messageStr,
+                patient);
     }
 
 }
