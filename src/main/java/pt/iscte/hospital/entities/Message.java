@@ -17,10 +17,12 @@ public class Message {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long messageId;
     private String subject;
+    @Column(length=2000)
     private String message;
     private LocalDate date;
     private LocalTime time;
     private boolean readMsg;
+
 
     @ManyToOne
     @JoinColumn(name = "user_id")

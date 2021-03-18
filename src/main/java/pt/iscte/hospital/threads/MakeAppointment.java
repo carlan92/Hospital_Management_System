@@ -5,7 +5,9 @@ import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 import pt.iscte.hospital.entities.*;
 import pt.iscte.hospital.entities.waiting.PatientWaitingAppointment;
-import pt.iscte.hospital.services.AppointmentService;
+import pt.iscte.hospital.objects.utils.Calendar;
+
+import pt.iscte.hospital.services.MessageService;
 import pt.iscte.hospital.services.SlotService;
 import pt.iscte.hospital.services.waiting.PatientWaitingAppointmentService;
 
@@ -16,18 +18,21 @@ import java.util.List;
 
 @Component
 public class MakeAppointment {
-    private final String URL_CONFIRMA_SIM = "";
-    private final String URL_CONFIRMA_NAO = "";
+    private final Long WAITING_PERIOD_HOURS = 24L;
+    private final Long WAITING_PERIOD_FOR_NEXT_DAY_HOURS = 1L;
+    private final String URL_CONFIRMA_SIM = "/patient/waiting-appointment/%s/yes";
+    private final String URL_CONFIRMA_NAO = "/patient/waiting-appointment/%s/no";
 
     @Autowired
     private PatientWaitingAppointmentService patientWaitingAppointmentService;
-    @Autowired
-    private AppointmentService appointmentService;
+
     @Autowired
     private SlotService slotService;
+    @Autowired
+    private MessageService messageService;
 
     // Verifica todas as entradas da lista de espera e tenta marcar consultas para as vagas abertas
-    //@Scheduled(fixedRate = 60000)
+    @Scheduled(fixedRate = 60000)
     public void marcarConsultasEmEspera() {
         System.out.println("Iniciado sistema de marcação de consultas em lista de espera.");
         LocalDateTime todayDateTime = LocalDateTime.now();
@@ -45,23 +50,24 @@ public class MakeAppointment {
                 LocalDate slotDate = slot.getDate();
                 LocalTime slotTime = slot.getTimeBegin();
                 LocalDateTime slotDateTime = LocalDateTime.of(slotDate, slotTime);
-                if(slotDateTime.isAfter(todayDateTime)){
+
+                if (slotDateTime.isAfter(todayDateTime.plusHours(WAITING_PERIOD_FOR_NEXT_DAY_HOURS))) {
                     slot.setAvailable(false);
                     slotService.saveSlot(slot);
 
                     patientWaiting.setClosed(true);
+                    patientWaiting.setSlot(slot);
+                    if (slotDateTime.isBefore(todayDateTime.plusHours(24L))) {
+                        patientWaiting.setLimitDateToReply(todayDateTime.plusHours(WAITING_PERIOD_FOR_NEXT_DAY_HOURS));
+                    } else {
+                        patientWaiting.setLimitDateToReply(todayDateTime.plusHours(WAITING_PERIOD_HOURS));
+                    }
+
                     patientWaitingAppointmentService.save(patientWaiting);
 
-                    Patient patient = patientWaiting.getPatient();
+                    Message message = mensagemConfirmacao(patientWaiting, slotDateTime);
+                    messageService.save(message);
 
-                    /*Appointment appointment = new Appointment(patient, slot);
-                    appointmentService.saveAppointment(appointment);*/
-
-                    Message message = new Message(
-                            "Marcação de consulta",
-                            "Por favor confirme se deseja a sua consulta com o {Drname}, {especialidade}, para a data" +
-                                    "{data} às {horas}. Confirma: <a class=\"login-a\" href=\"/public/registration\">Sim</a>   <a class=\"login-a\" href=\"/public/registration\">Não</a>",
-                            patient);
                     System.out.println("Consulta marcada!");
                     break;
                 }
@@ -69,5 +75,33 @@ public class MakeAppointment {
         }
 
 
+    }
+
+
+    private Message mensagemConfirmacao(PatientWaitingAppointment patientWaiting, LocalDateTime dateTime) {
+        Long patientWaiting_id = patientWaiting.getPatientWaitingAppointmentId();
+        Doctor doctor = patientWaiting.getDoctor();
+        Patient patient = patientWaiting.getPatient();
+
+        String drName = doctor.getTitleAndName() + " " + doctor.getFirstAndLastName();
+        String especialidade = doctor.getSpeciality().getName();
+        String data = dateTime.format(Calendar.FORMATTER);
+        String horas = dateTime.format(Calendar.TIME_FORMATTER);
+
+        String messageStr = String.format(
+                "Por favor confirme se deseja a sua consulta com o %s, %s, para a data %s às %s horas. " +
+                        "Confirma: <a class=\"btn-msg btn-msg-green\" href=\"%s\">Sim</a>  " +
+                        "  <a <a class=\"btn-msg btn-msg-blue\"href=\"%s\">Não</a>",
+                drName,
+                especialidade,
+                data,
+                horas,
+                String.format(URL_CONFIRMA_SIM, patientWaiting_id),
+                String.format(URL_CONFIRMA_NAO, patientWaiting_id));
+
+        return new Message(
+                "Marcação de consulta",
+                messageStr,
+                patient);
     }
 }

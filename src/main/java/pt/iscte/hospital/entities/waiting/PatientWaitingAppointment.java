@@ -41,6 +41,8 @@ public class PatientWaitingAppointment implements Comparable<PatientWaitingAppoi
 
     private boolean slotAccepted;
 
+    private boolean repliedToOffer;
+
     private Long position;
 
     public PatientWaitingAppointment() {

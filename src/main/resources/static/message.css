@@ -9,3 +9,30 @@
 .msg-state {
     margin: 0px 15px;
 }
+
+a.btn-msg {
+    border-radius: 6px;
+    width: 65px;
+    height: 30px;
+    display: inline-block;
+    margin: 2px;
+    padding: 5px;
+
+    text-align: center;
+    color: white;
+    text-decoration: none;
+    font: normal normal bold 15px/19px "Lato";
+    letter-spacing: 1px;
+}
+
+a.btn-msg-blue{
+    background-color: #31ade0;
+}
+
+a.btn-msg-green{
+    background-color: #98c33e;
+}
+
+a.btn-msg-red{
+    background-color: red;
+}
