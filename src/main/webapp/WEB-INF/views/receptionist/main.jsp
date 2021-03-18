@@ -47,8 +47,8 @@
         <div class="card_box">
             <div class="card mw-270">
                 <div class="card-body">
-                    <div class="checkin_img">
-                        <img src="/imagens/draw_office.svg" class="wait_list" width="198px" alt="..."/>
+                    <div>
+                        <img src="/imagens/draw_office.svg"  width="220px" height="201px" alt="..."/>
                     </div>
                     <p class="linha_2">
                         Efectue aqui o check-in do utente
