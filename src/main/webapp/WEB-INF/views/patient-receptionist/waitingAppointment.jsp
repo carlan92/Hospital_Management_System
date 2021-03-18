@@ -93,7 +93,7 @@
                                     <td><a href="/patient/waitingAppointment/${patientWaitingAppointment.getPatientWaitingAppointmentId()}/cancel">Cancelar</a></td>
                                     </c:if>
                                     <c:if test="${user_logged.getAccount().equals('Recepcionista')}">
-                                    <td><a href="">Atribuir Vaga</a></td>
+                                    <td><a href="/receptionist/make-extraAppointment/${patientWaitingAppointment.getPatient().getUserId()}/${patientWaitingAppointment.getPatientWaitingAppointmentId()}">Atribuir Vaga</a></td>
                                     </c:if>
                                 </tr>
 

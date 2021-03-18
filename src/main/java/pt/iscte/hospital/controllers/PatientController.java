@@ -197,7 +197,7 @@ public class PatientController {
             if (appointmentId == null) {
                 saveAppointment(slotId);
 
-                modelMap.put("message", "A consulta marcada com sucesso.");
+                modelMap.put("message", "A consulta foi marcada com sucesso.");
                 modelMap.put("imageURL", AlertMessageImage.SUCCESS.getImageURL());
                 modelMap.addAllAttributes(common.sideNavMap());
             } else {

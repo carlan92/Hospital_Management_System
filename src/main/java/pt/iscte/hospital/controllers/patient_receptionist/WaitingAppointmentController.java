@@ -99,6 +99,7 @@ public class WaitingAppointmentController {
         return USER_TYPE_URL;
     }
 
+    //cancelar pedido de marcação de consulta em lista de espera
     @GetMapping(value = "patient/waitingAppointment/{patientWaitingAppointmentId}/cancel")
     public String cancelPatientWaitingAppointmentRequest(ModelMap modelMap,
                                                          @PathVariable(name = "patientWaitingAppointmentId") Long patientWaitingAppointmentId) {
