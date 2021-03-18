@@ -33,6 +33,13 @@ public class PatientWaitingAppointmentServiceImpl implements PatientWaitingAppoi
     }
 
     @Override
+    public List<PatientWaitingAppointment> findAllByClosedAndRepliedToOffer(
+            boolean closed,
+            boolean repliedToOffer){
+        return patientWaitingAppointmentRepository.findAllByClosedAndRepliedToOffer(closed, repliedToOffer);
+    }
+
+    @Override
     public void save(PatientWaitingAppointment patientWaitingAppointment){
         patientWaitingAppointmentRepository.save(patientWaitingAppointment);
     }

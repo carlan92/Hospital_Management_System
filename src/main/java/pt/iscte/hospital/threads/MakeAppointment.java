@@ -75,6 +75,29 @@ public class MakeAppointment {
         }
     }
 
+    // Verifica se utentes responderam às vagas propostas
+    @Scheduled(fixedRate = 60000)
+    public void verificarRespostas() {
+        System.out.println("Verifica se utentes responderam às vagas propostas.");
+
+        List<PatientWaitingAppointment> listaDeEspera = patientWaitingAppointmentService.findAllByClosedAndRepliedToOffer(true, false);
+        LocalDateTime todayDateTime = LocalDateTime.now();
+
+        for (PatientWaitingAppointment patientWaitingAppointment : listaDeEspera) {
+            if (patientWaitingAppointment.getLimitDateToReply().isBefore(todayDateTime)) {
+                Slot slot = patientWaitingAppointment.getSlot();
+                slot.setAvailable(true);
+                slotService.saveSlot(slot);
+
+                patientWaitingAppointment.setRepliedToOffer(true);
+                patientWaitingAppointment.setSlotAccepted(false);
+                patientWaitingAppointmentService.save(patientWaitingAppointment);
+                System.out.println("Processo de atribuição de vaga fechado.");
+            }
+        }
+
+    }
+
 
     private Message mensagemConfirmacao(PatientWaitingAppointment patientWaiting, LocalDateTime dateTime) {
         Long patientWaiting_id = patientWaiting.getPatientWaitingAppointmentId();
@@ -82,9 +105,9 @@ public class MakeAppointment {
         Patient patient = patientWaiting.getPatient();
 
         String artigo = "";
-        if(doctor.getSex().equalsIgnoreCase("masculino")){
+        if (doctor.getSex().equalsIgnoreCase("masculino")) {
             artigo = "o";
-        }else {
+        } else {
             artigo = "a";
         }
         String drName = doctor.getTitleAndName() + " " + doctor.getFirstAndLastName();
