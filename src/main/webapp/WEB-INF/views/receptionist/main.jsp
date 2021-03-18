@@ -31,7 +31,7 @@
         <div class="card_box">
             <div class="card mw-270">
                 <div class="card-body">
-                    <img src="/imagens/draw_patient-wait.svg" class="add-img" alt="..."/>
+                    <img src="/imagens/draw_patient-wait.svg" class="wait-img" alt="..."/>
                     <p class="utentes"><span id="num_utentes">${pacientes_confirmadosEspera}</span> UTENTES</p>
                     <p class="linha_1">A AGUARDAR CONSULTA</p>
                     <p class="linha_2">

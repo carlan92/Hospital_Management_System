@@ -1158,13 +1158,19 @@ select option:disabled {
   margin-top: 10px;
 }
 
-.add-pat {
+.add-pat{
   margin-bottom: 10px;
   margin-top: 10px;
 }
 
 .add-img{
   width: 178px;
+  margin-top: 15px;
+  margin-bottom: 27px;
+}
+
+.wait-img{
+  width: 192px;
   margin-top: 15px;
   margin-bottom: 27px;
 }
