@@ -12,7 +12,7 @@
 </c:if>
 
 
-<img id="imgMailId" src="/imagens/message/mail.svg" class="sidenav-icon"/>Mensagens
+<img id="imgMailId" src="/imagens/message/mail.svg" class="sidenav-icon"/> Mensagens
 </a>
 
 <script>
