@@ -1,7 +1,6 @@
 package pt.iscte.hospital.services.validation;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.format.datetime.DateFormatter;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.ModelMap;
 import pt.iscte.hospital.entities.Doctor;
@@ -14,9 +13,7 @@ import pt.iscte.hospital.repositories.SpecialityRepository;
 import pt.iscte.hospital.services.ErrorMessage;
 import pt.iscte.hospital.services.ImageUploadService;
 
-import java.text.SimpleDateFormat;
 import java.time.format.DateTimeFormatter;
-import java.util.List;
 
 @Service
 public class UserValidationServiceImpl implements UserValidationService {
