@@ -130,7 +130,7 @@
                             <td>${appointment.getAppointmentStatusStr()}</td>
 
                             <td><a
-                                    href="/${userType}/appointment-details/${tempo}/${appointment.getAppointmentId()}">Ver
+                                    href="/${userType}/appointment-details/${tempo}/${appointment.getAppointmentId()}"  class="btn btn-link">Ver
                                 mais
                             </a></td>
                         </tr>
