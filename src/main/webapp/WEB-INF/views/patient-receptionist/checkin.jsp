@@ -94,8 +94,8 @@
                                         <td>
                                             <c:choose>
                                                 <c:when test="${!appointment.getHasChecked()}">
-                                                    <a href=${String.format(checkInLink,
-                                                        appointment.getAppointmentId())}>Check in</a>
+                                                    <a href="${String.format(checkInLink,
+                                                        appointment.getAppointmentId())}" class="btn btn-link" >Check in</a>
                                                 </c:when>
                                                 <c:otherwise>
                                                     Feito às ${appointment.getTimeOfArrivalStr()}

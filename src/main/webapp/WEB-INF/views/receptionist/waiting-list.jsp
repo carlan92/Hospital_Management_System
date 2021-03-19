@@ -23,7 +23,7 @@
             <section class="content-area middle-row">
                 <table class="table">
                     <thead>
-                    <tr>
+                    <tr class="appointment-table-title">
                         <th>Data</th>
                         <th>Hora</th>
                         <th>Utente</th>
