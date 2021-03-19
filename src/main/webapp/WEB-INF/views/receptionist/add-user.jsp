@@ -235,7 +235,7 @@
 
                             <div class="perfil-row <c:if test='${!medicalCondition}'>hidden</c:if>" id="med">
                                 <div class="cell-row">
-                                    <label for="nrCedulaProfissional_id">Nº Cédula Profissional </label>
+                                    <label for="nrCedulaProfissional_id">Nº Cédula Profissional *</label>
                                     <input id="nrCedulaProfissional_id" type="text" class="form-input"
                                         name="licenseNumber" placeholder="Nº Cédula Profissional"
                                         value="${doctor.getLicenseNumber()}" />
@@ -243,7 +243,7 @@
                                 </div>
 
                                 <div class="cell-row">
-                                    <label for="especialidade_id">Especialidade </label>
+                                    <label for="especialidade_id">Especialidade * </label>
                                     <select id="especialidade_id" class="form-input" name="specialityName">
                                         <option value="" disabled <c:if test="${empty speciality}">
                                             selected
