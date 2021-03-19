@@ -921,8 +921,12 @@ select option:disabled {
   width: 35%;
   display: block;
   margin: auto;
-  padding: 8px;
-  font-size: 15px;
+  padding: 10px;
+  font-size: 16px;
+}
+
+.btn-w40:hover{
+  text-decoration: none;
 }
 
 .display_time {
@@ -1303,6 +1307,12 @@ select option:disabled {
   border-radius: 0.25rem;
   text-align: center;
   transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.btn-search2:hover {
+  opacity: 0.8;
+  cursor: pointer;
+  border: none;
 }
 
 .sm {

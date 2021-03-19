@@ -56,7 +56,6 @@
                                 <input type="text" class="form-input sm" placeholder="Nome do Médico"
                                        name="doctorName">
                             </c:if>
-                            </br>
                             <select id="appointment-state_id" class="form-input sm" name="stateAppointment">
                                 <option value="" disabled selected>Estado da consulta</option>
                                 <option value="1001">Consultas não Realizadas</option>
