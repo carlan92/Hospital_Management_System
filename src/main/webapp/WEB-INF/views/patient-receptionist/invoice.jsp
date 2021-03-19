@@ -37,7 +37,7 @@
                             <tr>
                                 <td class="title">
                                     <img src="/imagens/noun_centro_hospitalar_logo.svg"
-                                         class="" style="width:70%; max-width:300px;">
+                                         class="invoice_img">
                                 </td>
 
                                 <td>

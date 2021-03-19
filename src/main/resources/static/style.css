@@ -1229,7 +1229,6 @@ select option:disabled {
 
 .spec_title {
   font-size: 15px;
-  text-decoration: underline;
   font-weight: bolder;
   color: #444444;
   margin-top: 5px;
@@ -1241,9 +1240,22 @@ select option:disabled {
   color: #000000
 }
 
+.spec_name_pretty{
+  font-size: 20px;
+  color: #fefefe;
+  margin: 5px;
+}
+
 .btn-w80 {
   margin: 5px;
   width: 80%;
+}
+
+.pretty_spec{
+  border: solid;
+  border-radius: 10px;
+  margin: 0 15px 0 15px;
+  background-image: linear-gradient(to right, #5eb8da 0%, #8fb36f 100%);
 }
 
 /*Menu Consultas: Medico*/
@@ -1449,6 +1461,10 @@ select option:disabled {
   text-align: right;
   margin: 20px;
   max-height: 85px;
+}
+.invoice_img{
+ width:70%;
+  max-width:300px;
 }
 
 .answer {
