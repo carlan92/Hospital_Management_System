@@ -5,7 +5,7 @@
 
 @font-face {
   font-family: "Lato";
-  font-weight: medium;
+  font-weight: normal;
   src: url("fonts/Lato-Medium.ttf");
 }
 
@@ -24,7 +24,7 @@
 @font-face {
   font-family: "Lato";
   font-style: italic;
-  font-weight: medium;
+  font-weight: normal;
   src: url("fonts/Lato-MediumItalic.ttf");
 }
 
@@ -57,7 +57,7 @@
 
 
 * {
-  font-family: "Lato", "Comic Sans MS";
+  font-family: "Lato", "Arial";
   font-size: 18px;
   text-align: left;
 }
@@ -1261,11 +1261,13 @@ select option:disabled {
   width: 80%;
 }
 
-.pretty_spec{
+.pretty_spec {
   border: solid;
   border-radius: 10px;
+  border-color: #98c33e;
   margin: 0 15px 0 15px;
   background-image: linear-gradient(to top, #c4c5c7 0%, #dcdddf 52%, #ebebeb 100%);
+}
 
 /*Menu Consultas: Medico*/
 
