@@ -321,6 +321,10 @@ h1 {
   background-color: #98c33e;
 }
 
+.main .card_box:hover .horiz_blue{
+  background-color: #31ade0;
+}
+
 .main .card {
   box-sizing: border-box;
   height: 100%;
@@ -376,6 +380,10 @@ h1 {
   margin-bottom: 47px;
 }
 
+.pad{
+  padding: 0 14px 0 14px;
+}
+
 .wait_list {
   margin-bottom: 18px;
 }
@@ -412,7 +420,8 @@ h1 {
 }
 
 .checkin_img{
-  margin-top: 33px;
+  width: 220px;
+  height: 201px;
 }
 
 /* Carousel*/

@@ -48,7 +48,7 @@
                 <img src="/imagens/noun_heart_rate.svg" class="sidenav-icon"/> Consultas
             </a>
             <a href="/user/lista-chamada" class="botao_acessos">
-                <img src="/imagens/noun_time.svg" class="sidenav-icon"/> Lista de Chamada
+                <img src="/imagens/noun_time.svg" class="sidenav-icon"/> Chamada para consulta
             </a>
         </div>
 

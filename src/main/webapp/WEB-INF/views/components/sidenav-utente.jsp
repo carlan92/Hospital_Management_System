@@ -47,11 +47,11 @@
             </a>
 
             <a href="/patient/checkin" class="botao_acessos">
-                <img src="/imagens/draw_cal_checkmark.svg" class="sidenav-icon"/> Check in
+                <img src="/imagens/draw_cal_checkmark.svg" class="sidenav-icon"/> Check-in
             </a>
 
             <a href="/user/lista-chamada" class="botao_acessos">
-                <img src="/imagens/noun_time.svg" class="sidenav-icon"/> Lista de Chamada
+                <img src="/imagens/noun_time.svg" class="sidenav-icon"/> Chamada para consulta
             </a>
 
             <a href="/patient/waitingAppointment" class="botao_acessos">

@@ -39,7 +39,7 @@
                     </p>
                     <a href="/receptionist/waiting-list" class="btn btn-blue"> Ver lista de espera</a>
                 </div>
-                <div class="horizontal-border"></div>
+                <div class="horizontal-border horiz_blue"></div>
             </div>
         </div>
 
@@ -47,17 +47,17 @@
         <div class="card_box">
             <div class="card mw-270">
                 <div class="card-body">
-                    <div>
-                        <img src="/imagens/draw_office.svg"  width="220px" height="201px" alt="..."/>
+                    <div >
+                        <img src="/imagens/draw_office.svg" class="checkin_img" alt="..."/>
                     </div>
-                    <p class="linha_2">
+                    <p class="linha_2 pad">
                         Efectue aqui o check-in do utente
                     </p>
                     <form action="/receptionist/checkinbyAppointmentId" method="post">
                         <button type="submit" class="btn btn-blue">Check-in</button>
                     </form>
                 </div>
-                <div class="horizontal-border"></div>
+                <div class="horizontal-border horiz_blue"></div>
             </div>
         </div>
 
@@ -75,7 +75,7 @@
                         </a>
                     </div>
                 </div>
-                <div class="horizontal-border"></div>
+                <div class="horizontal-border horiz_blue"></div>
             </div>
         </div>
 
