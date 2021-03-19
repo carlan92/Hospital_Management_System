@@ -124,6 +124,11 @@ public class DoctorServiceImpl implements DoctorService {
     }
 
     @Override
+    public List<Doctor> findAll(){
+        return doctorRepository.findAll();
+    };
+
+    @Override
     public List<Doctor> findAllBySpeciality(String specialityName) {
         Speciality speciality = specialityRepository.findByName(specialityName);
         return doctorRepository.findAllBySpeciality(speciality);

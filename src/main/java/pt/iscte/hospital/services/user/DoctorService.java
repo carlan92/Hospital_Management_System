@@ -16,6 +16,7 @@ public interface DoctorService {
     void desmarcarConsultaByDoctor(Appointment appointment);
     Doctor findByUserId(Long doctorId);
     List<Doctor> findAll(Sort sort);
+    List<Doctor> findAll();
     List<Doctor> findAllBySpeciality(String specialityName);
     List<Doctor> findAllBySpecialityOrderByNameAsc(Speciality speciality);
     List<Doctor> findAllByNameContainingIgnoreCase(String name);

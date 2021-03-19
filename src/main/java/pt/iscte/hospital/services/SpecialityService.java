@@ -11,4 +11,6 @@ public interface SpecialityService {
     Speciality findByName(String name);
 
     List<Speciality> findAll(Sort sort);
+
+    List<Speciality> findAll();
 }

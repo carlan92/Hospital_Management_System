@@ -1,0 +1,11 @@
+package pt.iscte.hospital.services.user;
+
+import org.springframework.stereotype.Service;
+import pt.iscte.hospital.entities.Receptionist;
+
+import java.util.List;
+
+@Service
+public interface ReceptionistService {
+    List<Receptionist> findAll();
+}

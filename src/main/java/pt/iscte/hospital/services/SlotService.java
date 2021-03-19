@@ -3,6 +3,7 @@ package pt.iscte.hospital.services;
 import org.springframework.data.domain.Sort;
 import pt.iscte.hospital.entities.Doctor;
 import pt.iscte.hospital.entities.Slot;
+import pt.iscte.hospital.entities.Speciality;
 import pt.iscte.hospital.objects.utils.Day;
 import pt.iscte.hospital.objects.utils.TimeInterval;
 
@@ -49,4 +50,14 @@ public interface SlotService {
     boolean hasDisponibilidadeNoMes(List<Day> calendar, Doctor doctor);
 
     boolean hasDisponibilidadeNoDia(LocalDate day, Doctor doctor);
+
+    Long countAllByIsAvailableAndDoctorSpecialityAndDateBetween(boolean isAvailable,
+                                                  Speciality speciality,
+                                                  LocalDate dateBegin,
+                                                  LocalDate dateEnd);
+
+    Long countAllByIsAvailableAndDoctorAndDateBetween(boolean isAvailable,
+                                        Doctor doctor,
+                                        LocalDate dateBegin,
+                                        LocalDate dateEnd);
 }

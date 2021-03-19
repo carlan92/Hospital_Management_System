@@ -5,6 +5,7 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import pt.iscte.hospital.entities.Doctor;
 import pt.iscte.hospital.entities.Slot;
+import pt.iscte.hospital.entities.Speciality;
 import pt.iscte.hospital.objects.utils.CalendarColor;
 import pt.iscte.hospital.objects.utils.Day;
 import pt.iscte.hospital.objects.utils.TimeInterval;
@@ -209,5 +210,31 @@ public class SlotServiceImpl implements SlotService {
             return true;
         }
         return false;
+    }
+
+    @Override
+    public Long countAllByIsAvailableAndDoctorSpecialityAndDateBetween(
+            boolean isAvailable,
+            Speciality speciality,
+            LocalDate dateBegin,
+            LocalDate dateEnd) {
+        return slotRepository.countAllByIsAvailableAndDoctorSpecialityAndDateBetween(
+                isAvailable,
+                speciality,
+                dateBegin,
+                dateEnd);
+    }
+
+    @Override
+    public Long countAllByIsAvailableAndDoctorAndDateBetween(
+            boolean isAvailable,
+            Doctor doctor,
+            LocalDate dateBegin,
+            LocalDate dateEnd) {
+        return slotRepository.countAllByIsAvailableAndDoctorAndDateBetween(
+                isAvailable,
+                doctor,
+                dateBegin,
+                dateEnd);
     }
 }

@@ -4,6 +4,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 import pt.iscte.hospital.entities.Doctor;
 import pt.iscte.hospital.entities.Slot;
+import pt.iscte.hospital.entities.Speciality;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -30,4 +31,16 @@ public interface SlotRepository extends JpaRepository<Slot, Long> {
     Long countByDoctorSpecialityNameAndIsAvailableAndDate(String specialityName, boolean isAvailable, LocalDate date);
 
     Slot findBySlotId(Long slotId);
+
+    Long countAllByIsAvailableAndDoctorSpecialityAndDateBetween(
+            boolean isAvailable,
+            Speciality speciality,
+            LocalDate dateBegin,
+            LocalDate dateEnd);
+
+    Long countAllByIsAvailableAndDoctorAndDateBetween(
+            boolean isAvailable,
+            Doctor doctor,
+            LocalDate dateBegin,
+            LocalDate dateEnd);
 }
