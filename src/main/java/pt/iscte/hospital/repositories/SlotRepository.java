@@ -7,6 +7,7 @@ import pt.iscte.hospital.entities.Slot;
 import pt.iscte.hospital.entities.Speciality;
 
 import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.List;
 
 @Repository
@@ -43,4 +44,6 @@ public interface SlotRepository extends JpaRepository<Slot, Long> {
             Doctor doctor,
             LocalDate dateBegin,
             LocalDate dateEnd);
+
+    Slot findByDoctorAndDateAndTimeBegin(Doctor doctor, LocalDate date, LocalTime timeBegin);
 }

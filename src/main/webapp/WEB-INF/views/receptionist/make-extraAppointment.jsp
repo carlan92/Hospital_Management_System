@@ -171,14 +171,13 @@
                                     <div class="cell-row">
                                         <input id="timeBegin_id" type="time" class="form-input"
                                             value="${slot.getTimeBegin()}" name="timeBegin" required />
-                                        <p class="msg-error">${errorMsgHora}</p>
                                     </div>
                                     <div class="cell-row">
                                         <input id="timeEnd_id" type="time" class="form-input"
                                             value="${slot.getTimeEnd()}" name="timeEnd" required />
-                                        <p class="msg-error">${errorMsgHora}</p>
                                     </div>
                                 </div>
+                                <p class="msg-error">${errorMsgSlot}</p>
                                 <button type="submit" class="btn btn-blue"
                                     formaction="/receptionist/make-extraAppointment/${userIdStr}/${patientWaitingAppointmentId}/extra">Marcar
                                     Consulta em Vaga Extra</button>

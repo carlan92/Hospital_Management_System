@@ -14,6 +14,7 @@ import pt.iscte.hospital.services.*;
 import pt.iscte.hospital.services.user.DoctorService;
 import pt.iscte.hospital.services.user.PatientService;
 import pt.iscte.hospital.services.user.UserService;
+import pt.iscte.hospital.services.validation.SlotValidationService;
 import pt.iscte.hospital.services.validation.SpecialityValidationService;
 import pt.iscte.hospital.services.validation.UserValidationService;
 import pt.iscte.hospital.services.waiting.PatientWaitingAppointmentService;
@@ -46,6 +47,7 @@ public class ReceptionistController {
     private final Common common;
     private final MakeAppointment makeAppointment;
     private final MessageService messageService;
+    private final SlotValidationService slotValidationService;
     private final Long WAITING_PERIOD_HOURS = 24L;
     private final Long WAITING_PERIOD_FOR_NEXT_DAY_HOURS = 1L;
 
@@ -64,7 +66,8 @@ public class ReceptionistController {
                                   PatientWaitingAppointmentService patientWaitingAppointmentService,
                                   Common common,
                                   MakeAppointment makeAppointment,
-                                  MessageService messageService) {
+                                  MessageService messageService,
+                                  SlotValidationService slotValidationService) {
         this.specialityService = specialityService;
         this.userService = userService;
         this.nationalityService = nationalityService;
@@ -77,8 +80,9 @@ public class ReceptionistController {
         this.patientService = patientService;
         this.patientWaitingAppointmentService = patientWaitingAppointmentService;
         this.common = common;
-        this.makeAppointment=makeAppointment;
-        this.messageService=messageService;
+        this.makeAppointment = makeAppointment;
+        this.messageService = messageService;
+        this.slotValidationService = slotValidationService;
     }
 
 
@@ -341,7 +345,7 @@ public class ReceptionistController {
                                               @PathVariable(name = "userIdStr") String userIdStr,
                                               @PathVariable(name = "patientWaitingAppointmentId") Long patientWaitingAppointmentId,
                                               @RequestParam(required = false, name = "timeBegin") LocalTime timeBegin,
-                                              @RequestParam(required = false, name = "timeEnd") LocalTime timeEnd) {
+                                              @RequestParam(required = false, name = "timeEnd") LocalTime timeEnd){
         // **********
         LocalDate todayDate = LocalDate.now();
         LocalDate chosenDate;
@@ -430,14 +434,50 @@ public class ReceptionistController {
         modelMap.put("hasSlotForDoctorDate", hasSlotForDoctorDate);
 
 
-        if (saveOption.equals("extra")) {
-            saveAppointment((saveSlot(doctor, chosenDate, timeBegin, timeEnd)), userIdStr, patientWaitingAppointmentId);
+        if (saveOption.equals("extra")){
+
+            //criar slot extra
+            Slot extraSlot = new Slot(doctor, chosenDate, timeBegin, timeEnd);
+            //validar slot extra
+            slotValidationService.clear().setSlot(extraSlot)
+                    .validSlot();
+
+            if (!slotValidationService.isValid()) {
+                modelMap.addAllAttributes(slotValidationService.getErrorModelMap());
+
+                modelMap.put("specialities", specialities);
+                modelMap.put("doctors", doctors);
+                modelMap.put("slots", slots);
+                modelMap.put("search_speciality", specialityName);
+                modelMap.put("search_doctor", doctorId);
+                modelMap.put("search_slot", slotId);
+                modelMap.put("calendarDays", calendar);
+                modelMap.put("nextMonth", nextMonthDate);
+                modelMap.put("previousMonth", previousMonthDate);
+                modelMap.put("previousArrowState", previousArrowState);
+                modelMap.put("nextArrowState", nextArrowState);
+                modelMap.put("dayOfToday", dayOfToday);
+                modelMap.put("year", calYear);
+                modelMap.put("strMonth", strMonth);
+                modelMap.put("chosenDay", chosenDay);
+                modelMap.put("userIdStr", userIdStr);
+                modelMap.addAllAttributes(common.sideNavMap());
+
+                return "receptionist/make-extraAppointment";
+            }
+            //salvar slot extra
+            extraSlot.setAvailable(true);
+            slotService.saveSlot(extraSlot);
+            String newSlotId = extraSlot.getSlotId().toString();
+            //marcar consulta para o slot extra criado
+            saveAppointment(newSlotId, userIdStr, patientWaitingAppointmentId);
             modelMap.put("message", "A consulta do utente foi marcada com sucesso.");
             modelMap.put("imageURL", AlertMessageImage.SUCCESS.getImageURL());
             modelMap.addAllAttributes(common.sideNavMap());
 
             return "components/alert-message";
         }
+
 
         // Marcar consulta
         if (slotId != null && !slotId.isEmpty() && saveOption.equals("save")) {
@@ -494,16 +534,6 @@ public class ReceptionistController {
         return modelMap;
     }
 
-    //criar slot
-    private String saveSlot(Doctor doctor, LocalDate date, LocalTime timeBegin, LocalTime timeEnd) {
-        Slot extraSlot = new Slot(doctor, date, timeBegin, timeEnd);
-        extraSlot.setAvailable(true);
-        slotService.saveSlot(extraSlot);
-        String newSlotId = extraSlot.getSlotId().toString();
-        return newSlotId;
-    }
-
-
     //criar consulta
     private void saveAppointment(String slotId, String userIdStr, Long patientWaitingAppointmentId) {
         // Encontrar slot por id
@@ -533,8 +563,8 @@ public class ReceptionistController {
         patientWaitingAppointment.setSlot(slot);
         patientWaitingAppointmentService.save(patientWaitingAppointment);
 
-        LocalDateTime dateTime=LocalDateTime.of(slot.getDate(), slot.getTimeBegin());
-        Message message=makeAppointment.mensagemConfirmacao(patientWaitingAppointment, dateTime);
+        LocalDateTime dateTime = LocalDateTime.of(slot.getDate(), slot.getTimeBegin());
+        Message message = makeAppointment.mensagemConfirmacao(patientWaitingAppointment, dateTime);
         messageService.save(message);
 
         System.out.println("Sucesso: consulta marcada - " + appointment + slot);
@@ -561,7 +591,7 @@ public class ReceptionistController {
         if (slotDateTime.isBefore(todayDateTime.plusHours(24L))) {
             result = todayDateTime.plusHours(WAITING_PERIOD_FOR_NEXT_DAY_HOURS);
         } else {
-            result=todayDateTime.plusHours(WAITING_PERIOD_HOURS);
+            result = todayDateTime.plusHours(WAITING_PERIOD_HOURS);
         }
         return result;
     }

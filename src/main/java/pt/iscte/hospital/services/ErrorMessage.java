@@ -34,7 +34,10 @@ public enum ErrorMessage {
     // Specialty  validation message error
     SPECIALITY_NAME("Já existe essa especialidade"),
     SPECIALITY_PRICE("Valor inválido"),
-    SPECIALITY_LENGTH("Nome de especialidade demasiado curto");
+    SPECIALITY_LENGTH("Nome de especialidade demasiado curto"),
+
+    // Slot validation message error
+    SLOT_DUPLICATED("O Médico já está ocupado nesse tempo");
 
     // Attributes
     private final String errorMsg;
