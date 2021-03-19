@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <svg
+   xmlns:osb="http://www.openswatchbook.org/uri/2009/osb"
    xmlns:dc="http://purl.org/dc/elements/1.1/"
    xmlns:cc="http://creativecommons.org/ns#"
    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
@@ -27,7 +28,50 @@
     </rdf:RDF>
   </metadata>
   <defs
-     id="defs920" />
+     id="defs920">
+    <linearGradient
+       inkscape:collect="always"
+       id="linearGradient2992">
+      <stop
+         style="stop-color:#ffffff;stop-opacity:1;"
+         offset="0"
+         id="stop2988" />
+      <stop
+         style="stop-color:#ffffff;stop-opacity:0;"
+         offset="1"
+         id="stop2990" />
+    </linearGradient>
+    <linearGradient
+       id="linearGradient2961"
+       osb:paint="solid">
+      <stop
+         style="stop-color:#ffffff;stop-opacity:1;"
+         offset="0"
+         id="stop2959" />
+    </linearGradient>
+    <linearGradient
+       inkscape:collect="always"
+       id="linearGradient1009"
+       osb:paint="gradient">
+      <stop
+         style="stop-color:#0f0000;stop-opacity:0.95317727;"
+         offset="0"
+         id="stop1005" />
+      <stop
+         style="stop-color:#ffffff;stop-opacity:0;"
+         offset="1"
+         id="stop1007" />
+    </linearGradient>
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient2992"
+       id="linearGradient2994"
+       x1="277.47287"
+       y1="305.63343"
+       x2="711.47287"
+       y2="305.63343"
+       gradientUnits="userSpaceOnUse" />
+  </defs>
   <sodipodi:namedview
      pagecolor="#ffffff"
      bordercolor="#666666"
@@ -37,17 +81,18 @@
      guidetolerance="10"
      inkscape:pageopacity="0"
      inkscape:pageshadow="2"
-     inkscape:window-width="842"
-     inkscape:window-height="738"
+     inkscape:window-width="1680"
+     inkscape:window-height="997"
      id="namedview918"
      showgrid="false"
-     inkscape:zoom="0.33899121"
-     inkscape:cx="26.044488"
-     inkscape:cy="118.63124"
-     inkscape:window-x="722"
-     inkscape:window-y="75"
-     inkscape:window-maximized="0"
-     inkscape:current-layer="a6165653-2719-4fed-8ed9-8fe7d02b0919" />
+     inkscape:zoom="0.72173602"
+     inkscape:cx="338.24765"
+     inkscape:cy="520.10276"
+     inkscape:window-x="0"
+     inkscape:window-y="25"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="a6165653-2719-4fed-8ed9-8fe7d02b0919"
+     inkscape:document-rotation="0" />
   <path
      d="M941.53245,725.07007c13.35843-15.199,76.26477-90.00934,31.55383-102.34248-33.58077-9.26295-37.322,41.69916-36.1949,75.89894-5.37716-23.04158-15.813-49.95781-34.14772-38.0819-26.42393,17.11543,23.08826,54.99167,36.02171,64.28979.21236,1.89073.35246,2.94155.35246,2.94155s.5305-.57846,1.47618-1.643c.73881.51734,1.14973.79519,1.14973.79519S941.675,726.2579,941.53245,725.07007Z"
      transform="translate(-211.09726 -130.22403)"
@@ -163,7 +208,8 @@
   <path
      d="m 703.97287,541.63343 h -419 a 7.5082,7.5082 0 0 1 -7.5,-7.5 V 77.133425 a 7.5082,7.5082 0 0 1 7.5,-7.5 h 419 a 7.5082,7.5082 0 0 1 7.5,7.5 V 534.13343 a 7.5082,7.5082 0 0 1 -7.5,7.5 z m -419,-469.000005 a 4.50493,4.50493 0 0 0 -4.5,4.5 V 534.13343 a 4.50492,4.50492 0 0 0 4.5,4.5 h 419 a 4.50491,4.50491 0 0 0 4.5,-4.5 V 77.133425 a 4.50492,4.50492 0 0 0 -4.5,-4.5 z"
      fill="#e6e6e6"
-     id="path38" />
+     id="path38"
+     style="opacity:1;mix-blend-mode:normal;fill:url(#linearGradient2994);fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-opacity:1;stroke-linejoin:round;stroke-width:3.5;stroke-miterlimit:4;stroke-dasharray:none" />
   <circle
      cx="371.43512"
      cy="230.13637"
