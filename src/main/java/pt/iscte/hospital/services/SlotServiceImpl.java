@@ -98,11 +98,10 @@ public class SlotServiceImpl implements SlotService {
                               List<TimeInterval> timeIntervalList,
                               List<DayOfWeek> weekDaysList,
                               int year,
-                              int month) {
+                              int month,
+                              List<Doctor> doctors) {
 
         int nrDays = LocalDate.of(year, month, 1).lengthOfMonth(); // number of days in the month
-        List<Doctor> doctors = doctorRepository.findAll();
-
 
         // For each day
         for (int day = 1; day <= nrDays; day++) {

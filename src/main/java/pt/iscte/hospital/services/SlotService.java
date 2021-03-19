@@ -41,7 +41,8 @@ public interface SlotService {
                        List<TimeInterval> timeIntervalList,
                        List<DayOfWeek> weekDaysList,
                        int year,
-                       int month);
+                       int month,
+                       List<Doctor> doctors);
 
     List<Day> calendarColor(List<Day> calendar, Doctor doctor);
 

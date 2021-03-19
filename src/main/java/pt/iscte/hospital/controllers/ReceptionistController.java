@@ -9,10 +9,7 @@ import pt.iscte.hospital.controllers.utils.Common;
 import pt.iscte.hospital.entities.*;
 import pt.iscte.hospital.entities.states.AppointmentState;
 import pt.iscte.hospital.entities.waiting.PatientWaitingAppointment;
-import pt.iscte.hospital.objects.utils.AlertMessageImage;
-import pt.iscte.hospital.objects.utils.Calendar;
-import pt.iscte.hospital.objects.utils.Day;
-import pt.iscte.hospital.objects.utils.Month;
+import pt.iscte.hospital.objects.utils.*;
 import pt.iscte.hospital.services.*;
 import pt.iscte.hospital.services.user.DoctorService;
 import pt.iscte.hospital.services.user.PatientService;
@@ -22,6 +19,7 @@ import pt.iscte.hospital.services.validation.UserValidationService;
 import pt.iscte.hospital.services.waiting.PatientWaitingAppointmentService;
 import pt.iscte.hospital.threads.MakeAppointment;
 
+import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
@@ -193,6 +191,9 @@ public class ReceptionistController {
             Speciality speciality = specialityService.findByName(specialityName);
             doctor.setSpeciality(speciality);
             userService.addUser(doctor);
+
+            // generate slots for doctor
+            generateSlotsDoctor(doctor);
         }
         //add patient account
         if (patient.getAccount().equals("Utente")) {
@@ -565,5 +566,36 @@ public class ReceptionistController {
         return result;
     }
 
+    private void generateSlotsDoctor(Doctor doctor){
+        int duration = 60;
+        List<TimeInterval> timeIntervalList = new ArrayList<>();
+        List<DayOfWeek> weekDaysList = new ArrayList<>();
+
+        LocalDate todayDate = LocalDate.now();
+        LocalDate nextMonth = todayDate.plusMonths(1);
+
+        int year1 = todayDate.getYear();
+        int month1 = todayDate.getMonth().getValue();
+
+        int year2 = nextMonth.getYear();
+        int month2 = nextMonth.getMonth().getValue();
+
+        List<Doctor> doctors = new ArrayList<>();
+        doctors.add(doctor);
+
+        timeIntervalList.add(new TimeInterval(LocalTime.of(9, 0), LocalTime.of(12, 0)));
+        timeIntervalList.add(new TimeInterval(LocalTime.of(13, 0), LocalTime.of(17, 0)));
+
+        weekDaysList.add(DayOfWeek.MONDAY);
+        weekDaysList.add(DayOfWeek.TUESDAY);
+        weekDaysList.add(DayOfWeek.WEDNESDAY);
+        weekDaysList.add(DayOfWeek.THURSDAY);
+        weekDaysList.add(DayOfWeek.FRIDAY);
+        weekDaysList.add(DayOfWeek.SATURDAY);
+        weekDaysList.add(DayOfWeek.SUNDAY);
+
+        slotService.generateSlots(duration, timeIntervalList, weekDaysList, year1, month1, doctors);
+        slotService.generateSlots(duration, timeIntervalList, weekDaysList, year2, month2, doctors);
+    }
 }
 

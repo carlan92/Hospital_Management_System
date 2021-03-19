@@ -6,8 +6,10 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 import pt.iscte.hospital.controllers.utils.Common;
+import pt.iscte.hospital.entities.Doctor;
 import pt.iscte.hospital.objects.utils.TimeInterval;
 import pt.iscte.hospital.services.*;
+import pt.iscte.hospital.services.user.DoctorService;
 
 import java.time.DayOfWeek;
 import java.time.LocalTime;
@@ -20,19 +22,15 @@ public class TestController {
 
     private final Common common;
     private final SlotService slotService;
+    private final DoctorService doctorService;
 
     @Autowired
-    public TestController(Common common, SlotService slotService) {
+    public TestController(Common common, SlotService slotService, DoctorService doctorService) {
         this.common = common;
         this.slotService = slotService;
+        this.doctorService = doctorService;
     }
 
-
-    @GetMapping(value = "/patient-receptionist/payments-history")
-    public String page(ModelMap modelMap) {
-        modelMap.addAllAttributes(common.sideNavMap());
-        return "patient-receptionist/payments-history";
-    }
 
     @GetMapping(value = "/test/slot")
     public void generateSlots() {
@@ -42,6 +40,7 @@ public class TestController {
         List<DayOfWeek> weekDaysList = new ArrayList<>();
         int year = 2021;
         int month = 3;
+        List<Doctor> doctors = doctorService.findAll();
 
         timeIntervalList.add(new TimeInterval(LocalTime.of(9, 0), LocalTime.of(12, 0)));
         timeIntervalList.add(new TimeInterval(LocalTime.of(13, 0), LocalTime.of(17, 0)));
@@ -54,7 +53,7 @@ public class TestController {
         weekDaysList.add(DayOfWeek.SATURDAY);
         weekDaysList.add(DayOfWeek.SUNDAY);
 
-        slotService.generateSlots(duration, timeIntervalList, weekDaysList, year, month);
+        slotService.generateSlots(duration, timeIntervalList, weekDaysList, year, month, doctors);
     }
 
 
