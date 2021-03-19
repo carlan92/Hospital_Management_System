@@ -26,7 +26,7 @@
 
         <div class="perfil-row">
 
-            <img src="/imagens/draw_patient.svg" alt="doctorsPage" class="img-fill-form"/>
+            <img src="/imagens/draw_list-doctor.svg" alt="doctorsPage" class="img-fill-form"/>
             <h3 class="utente_title">Lista de Médicos</h3>
 
             <form action="/search-doctors" method="post" class="form-inline">
