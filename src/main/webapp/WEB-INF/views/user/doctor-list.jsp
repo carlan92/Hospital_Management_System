@@ -73,8 +73,8 @@
                     <div class="pretty_spec">
                     <h6 class="spec_name_pretty">${doctor.getSpeciality().getName()} </h6>
                     </div>
-                    <small class="ced_title">Nº Cédula Profissional:</small>
-                    <small class="ced_name">${doctor.getLicenseNumber()} </small>
+                    <p class="ced_title ced_marg">Nº Cédula Profissional:</p>
+                    <p class="ced_title">${doctor.getLicenseNumber()} </p>
 
                 </div>
             </c:forEach>

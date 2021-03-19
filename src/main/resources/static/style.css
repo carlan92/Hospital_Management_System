@@ -1208,7 +1208,7 @@ select option:disabled {
   margin: auto;
   margin-top: 10px;
   min-width: 270px;
-  min-height: 330px;
+  min-height: 320px;
 }
 
 .w-50 {
@@ -1242,8 +1242,18 @@ select option:disabled {
 
 .spec_name_pretty{
   font-size: 16px;
-  color: #fefefe;
+  color: black;
   margin: 5px;
+}
+
+.ced_title{
+  display: block;
+  margin: auto;
+  font-size: 12px;
+ }
+
+.ced_marg{
+  margin-top: 5px;
 }
 
 .btn-w80 {
@@ -1255,8 +1265,7 @@ select option:disabled {
   border: solid;
   border-radius: 10px;
   margin: 0 15px 0 15px;
-  background-image: linear-gradient(to right, #5eb8da 0%, #8fb36f 100%);
-}
+  background-image: linear-gradient(to top, #c4c5c7 0%, #dcdddf 52%, #ebebeb 100%);
 
 /*Menu Consultas: Medico*/
 
