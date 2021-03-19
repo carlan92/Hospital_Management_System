@@ -92,7 +92,6 @@ public class Doctor extends Employee {
                 super.toString() +
                 ", licenseNumber=" + licenseNumber +
                 ", speciality=" + speciality.getName() +
-                ", slots=" + slots +
                 '}';
     }
 }

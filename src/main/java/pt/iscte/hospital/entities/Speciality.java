@@ -17,14 +17,13 @@ public class Speciality {
 
     private double price;
 
-    @OneToMany(mappedBy="speciality")
+    @OneToMany(mappedBy = "speciality")
     private List<Doctor> doctors;
 
 
     // Constructors
     public Speciality() {
     }
-
 
     public Speciality(String name) {
         this.name = name;
@@ -33,7 +32,7 @@ public class Speciality {
     public Speciality(String name, double price) {
 
         this.name = name;
-        this.price= price;
+        this.price = price;
     }
 
     // Methods
@@ -66,7 +65,7 @@ public class Speciality {
         return "Speciality{" +
                 "specialityId=" + specialityId +
                 ", name='" + name + '\'' +
-                ", doctors=" + doctors +
+                ", price=" + price +
                 '}';
     }
 }
