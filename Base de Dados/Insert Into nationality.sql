@@ -195,3 +195,4 @@ VALUES ('Afegã'),
 ('Vietnamita'),
 ('Zambiana'),
 ('Zimbabueana');
+select * from nationality;
