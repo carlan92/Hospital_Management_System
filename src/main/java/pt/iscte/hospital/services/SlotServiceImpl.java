@@ -113,26 +113,28 @@ public class SlotServiceImpl implements SlotService {
             if (weekDaysList.contains(dayOfWeek)) {
                 // for each doctor
                 for (Doctor doctor : doctors) {
-
+                    List<Slot> listSlots = slotRepository.findAllByDoctorAndDateOrderByTimeBeginAsc(doctor, slotDate);
                     for (TimeInterval timeInterval : timeIntervalList) {
                         LocalTime slotTimeBegin = timeInterval.getTimeBegin();
                         LocalTime slotTimeEnd = slotTimeBegin.plusMinutes(duration);
 
-                        while ((slotTimeBegin.isAfter(timeInterval.getTimeBegin()) && slotTimeBegin.isBefore(timeInterval.getTimeEnd()))
-                                || slotTimeBegin.equals(timeInterval.getTimeBegin())
-                                || (slotTimeEnd.isAfter(timeInterval.getTimeBegin()) && slotTimeEnd.isBefore(timeInterval.getTimeEnd()))
-                                || slotTimeEnd.equals(timeInterval.getTimeEnd())) {
+
+                        while (insideTimeInterval(timeInterval, slotTimeBegin, slotTimeEnd)) {
                             // while inside the interval
 
-                            // create slot
-                            Slot slot = new Slot();
-                            slot.setDate(slotDate);
-                            slot.setTimeBegin(slotTimeBegin);
-                            slot.setTimeEnd(slotTimeEnd);
-                            slot.setDoctor(doctor);
+                            // check if it is inside an existing slot
+                            if (!checkIfInsideListSlot(listSlots, slotTimeBegin, slotTimeEnd)) {
 
-                            saveSlot(slot);
+                                // create slot
+                                Slot slot = new Slot();
+                                slot.setDate(slotDate);
+                                slot.setTimeBegin(slotTimeBegin);
+                                slot.setTimeEnd(slotTimeEnd);
+                                slot.setDoctor(doctor);
 
+                                saveSlot(slot);
+
+                            }
                             slotTimeBegin = slotTimeEnd;
                             slotTimeEnd = slotTimeBegin.plusMinutes(duration);
 
@@ -143,6 +145,42 @@ public class SlotServiceImpl implements SlotService {
         }
         System.out.println("Geração de Vagas concluída");
     }
+
+    private boolean insideTimeInterval(TimeInterval timeInterval,
+                                       LocalTime slotTimeBegin,
+                                       LocalTime slotTimeEnd) {
+
+
+        // Begin time is inside time interval
+        boolean cond1 = slotTimeBegin.isAfter(timeInterval.getTimeBegin());
+        boolean cond2 = slotTimeBegin.isBefore(timeInterval.getTimeEnd());
+        boolean cond3 = slotTimeBegin.equals(timeInterval.getTimeBegin());
+        boolean cond4 = (cond1 && cond2) || cond3;
+
+        // End time is inside time interval
+        boolean cond5 = slotTimeEnd.isAfter(timeInterval.getTimeBegin());
+        boolean cond6 = slotTimeEnd.isBefore(timeInterval.getTimeEnd());
+        boolean cond7 = slotTimeEnd.equals(timeInterval.getTimeEnd());
+        boolean cond8 = (cond5 && cond6) || cond7;
+
+        return cond4 && cond8;  // TODO check
+    }
+
+    private boolean checkIfInsideListSlot(
+            List<Slot> listSlots,
+            LocalTime slotTimeBegin,
+            LocalTime slotTimeEnd) {
+        for (Slot existingSlot : listSlots) {
+            TimeInterval interval = new TimeInterval(existingSlot.getTimeBegin(), existingSlot.getTimeEnd());
+            if (insideTimeInterval(interval, slotTimeBegin, slotTimeEnd)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+
+    //////////////////////////////////////////////////////////////////////////////////////////////
 
     /**
      * Recebe uma lista de dias e devolve uma lista com cores atribuídas a cada dia de acordo com

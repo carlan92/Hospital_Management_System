@@ -50,8 +50,8 @@ public class SendMessageTest {
         messageService.save(msg33);
         messageService.save(msg34);
         messageService.save(msg35);
-        messageService.save(msg36);*/
+        messageService.save(msg36);
 
-        System.out.println("Mensagens criadas!");
+        System.out.println("Mensagens criadas!");*/
     }
 }
