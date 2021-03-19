@@ -1,5 +1,5 @@
 INSERT INTO user(user_id, username, password, name, sex, birthday, address, post_code, city, account, nationality, document_type, document_number, nif, patient_number, phone, email, photourl)
-VALUES (1,'med012', '$2a$10$sCyfntHoJxJkaV8/hToChe3xcls99gqWMnAFxm8Vr8fRUYmG1OPse', 'Tomás Santos', 'Masculino', '1932-10-25', 'Rua da Junqueira', '2674-999', 'Loures', 'Médico', 'Portuguesa', 'Bilhete de Identidade', '33696253', '118341462', '535478583', '963706322', 'med012@hospital.upskill.com', 'doctor-male.jpg'),
+VALUES (396,'med012', '$2a$10$sCyfntHoJxJkaV8/hToChe3xcls99gqWMnAFxm8Vr8fRUYmG1OPse', 'Tomás Santos', 'Masculino', '1932-10-25', 'Rua da Junqueira', '2674-999', 'Loures', 'Médico', 'Portuguesa', 'Bilhete de Identidade', '33696253', '118341462', '535478583', '963706322', 'med012@hospital.upskill.com', 'doctor-male.jpg'),
 (2,'med013', '$2a$10$GkLiK5N952Cp5JQU3yCpAeqKg0CwrOdQsYYy9uwa7KAmDLEKCk.ba', 'André Nogueira', 'Masculino', '1977-06-11', 'Estrada Militar', '2914-110', 'Setúbal', 'Médico', 'Portuguesa', 'Bilhete de Identidade', '58060035', '500525330', '639557550', '966710210', 'med013@hospital.upskill.com', 'doctor-male.jpg'),
 (3,'med014', '$2a$10$27NnE99YDimv1priWckUiOh2bkfx6uX1kBLTgMcochqJ0dH80q0by', 'Sara Miranda', 'Feminino', '1973-09-18', 'Rua do Sol a Santana', '3000-412', 'Coimbra', 'Médico', 'Portuguesa', 'Bilhete de Identidade', '28644332', '439805765', '665084101', '910103682', 'med014@hospital.upskill.com', 'doctor-female.jpg'),
 (4,'med015', '$2a$10$H5KCkkVPVCWO4epryVFN0O0IViz0x0K7zaJavtV0bg5ovN1jYLN9i', 'Sofia Fonseca', 'Feminino', '1957-10-16', 'Rua de São Bento', '1200-505', 'Lisboa', 'Médico', 'Portuguesa', 'Bilhete de Identidade', '39128367', '580249488', '963855058', '963418644', 'med015@hospital.upskill.com', 'doctor-female.jpg'),
@@ -189,7 +189,7 @@ VALUES (1,'med012', '$2a$10$sCyfntHoJxJkaV8/hToChe3xcls99gqWMnAFxm8Vr8fRUYmG1OPs
 
 
 INSERT INTO employee(employee_id)
-VALUES (1),
+VALUES (396),
 (2),
 (3),
 (4),
@@ -379,7 +379,7 @@ VALUES (1),
 
 
 INSERT INTO doctor(doctor_id, license_number, speciality_id)
-VALUES (1,'9005693905941900', '1'),
+VALUES (396,'9005693905941900', '1'),
 (2,'6605353667692320', '2'),
 (3,'7092418714304750', '3'),
 (4,'6860011748332600', '4'),
