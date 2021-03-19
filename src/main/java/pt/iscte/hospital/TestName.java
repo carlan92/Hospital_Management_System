@@ -8,7 +8,7 @@ public class TestName {
 
     public static void main(String[] args) {
         System.out.println(DayOfWeek.FRIDAY.getValue());
-        LocalDate date1 = LocalDate.of(2021, 03, 05);
+        LocalDate date1 = LocalDate.of(2021, 3, 5);
         System.out.println(date1.getDayOfWeek().getValue());
 
         int year = LocalDate.now().getYear();
@@ -26,6 +26,7 @@ public class TestName {
             System.out.println(day);
         }
 
+        testName();
 
     }
 

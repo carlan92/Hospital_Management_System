@@ -2,10 +2,8 @@ package pt.iscte.hospital.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
-import pt.iscte.hospital.controllers.utils.Common;
 import pt.iscte.hospital.entities.Doctor;
 import pt.iscte.hospital.objects.utils.TimeInterval;
 import pt.iscte.hospital.services.*;
@@ -17,16 +15,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 @RestController
-@Controller
 public class TestController {
 
-    private final Common common;
     private final SlotService slotService;
     private final DoctorService doctorService;
 
     @Autowired
-    public TestController(Common common, SlotService slotService, DoctorService doctorService) {
-        this.common = common;
+    public TestController(SlotService slotService, DoctorService doctorService) {
         this.slotService = slotService;
         this.doctorService = doctorService;
     }
@@ -55,6 +50,4 @@ public class TestController {
 
         slotService.generateSlots(duration, timeIntervalList, weekDaysList, year, month, doctors);
     }
-
-
 }

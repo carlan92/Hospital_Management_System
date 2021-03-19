@@ -23,13 +23,13 @@ public enum ErrorMessage {
     ERROR_MESSAGE_EMAIL2("Email inválido"),
     ERROR_MESSAGE_USERNAME("Username já existe"),
     ERROR_MESSAGE_ACCOUNT("Tipo de conta inválida"),
-    ERROR_MESSAGE_LICENSE_NUMBER("Numéro de cédula profissional inválido"),
+    ERROR_MESSAGE_LICENSE_NUMBER("Número de cédula profissional inválido"),
     ERROR_MESSAGE_SPECIALITY("Nome de especialidade inválido"),
 
     // Photo Image validation message error
     PHOTO_UPLOAD("Erro ao fazer upload da imagem"),
     IMAGE_TYPE("Formato da imagem inválido. Usar jpg ou png."),
-    IMAGE_SIZE("Tamanho máximo permitido para a foto é de %d MB"), // %d placehoder for an integer or long number
+    IMAGE_SIZE("Tamanho máximo permitido para a foto é de %d MB"), // %d placeholder for an integer or long number
 
     // Specialty  validation message error
     SPECIALITY_NAME("Já existe essa especialidade"),
