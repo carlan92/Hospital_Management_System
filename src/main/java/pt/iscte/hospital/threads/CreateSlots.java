@@ -55,4 +55,38 @@ public class CreateSlots {
                 month,
                 doctors);
     }
+
+
+    @Scheduled(fixedRate = 60000000)
+    public void createSlotsCurrentMonth(){
+        // For generating cron expressions: cronmaker.com
+        LocalDate todayDate = LocalDate.now();
+
+        int duration = 60*2;
+        List<TimeInterval> timeIntervalList = new ArrayList<>();
+        List<DayOfWeek> weekDaysList = new ArrayList<>();
+        int year = todayDate.getYear();
+        int month = todayDate.getMonthValue();
+        List<Doctor> doctors = doctorService.findAll();
+
+        timeIntervalList.add(new TimeInterval(LocalTime.of(9, 0), LocalTime.of(12, 0)));
+        timeIntervalList.add(new TimeInterval(LocalTime.of(13, 0), LocalTime.of(17, 0)));
+
+        weekDaysList.add(DayOfWeek.MONDAY);
+        weekDaysList.add(DayOfWeek.TUESDAY);
+        weekDaysList.add(DayOfWeek.WEDNESDAY);
+        weekDaysList.add(DayOfWeek.THURSDAY);
+        weekDaysList.add(DayOfWeek.FRIDAY);
+        weekDaysList.add(DayOfWeek.SATURDAY);
+        weekDaysList.add(DayOfWeek.SUNDAY);
+
+
+        slotService.generateSlots(
+                duration,
+                timeIntervalList,
+                weekDaysList,
+                year,
+                month,
+                doctors);
+    }
 }
