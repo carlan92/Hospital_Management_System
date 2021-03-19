@@ -99,7 +99,7 @@
         <c:if test="${user_logged.getAccount().equals('Recepcionista')}">
             <c:if test="${!appointment.getInvoice().isPaid()}">
                 <br/>
-                <a type="button" href="/patient-receptionist/invoice/pay/${appointment.getInvoice().getInvoiceId()}" class="btn-blue" > Pagar </a> </td>
+                <a type="button" href="/patient-receptionist/invoice/pay/${appointment.getInvoice().getInvoiceId()}" class="btn btn-green" > Pagar </a> </td>
             </c:if>
         <c:if test="${appointment.getInvoice().isPaid()}">
             <br/>

@@ -130,24 +130,28 @@
                             <td>${appointment.getAppointmentStatusStr()}</td>
 
                             <td><a
-                                    href="/${userType}/appointment-details/${tempo}/${appointment.getAppointmentId()}"  class="btn btn-link">Ver
+                                    href="/${userType}/appointment-details/${tempo}/${appointment.getAppointmentId()}"
+                                    class="btn btn-link">Ver
                                 mais
                             </a></td>
                         </tr>
                         <c:if test="${user_logged.getAccount().equals('Utente') || user_logged.getAccount().equals('Recepcionista')}">
-                        <c:if test="${appointment.hasInvoice()}">
-                        <tr>
-                                <td style='border:none;'></td>
-                                <td style='border:none;'></td>
-                        <td class="specialTable1" style='border:none;'> Facturação: <span
-                                        class="specialTable1"> ${appointment.getInvoice().getInvoiceStateStr()}</span></td>
-                                <c:if test="${user_logged.getAccount().equals('Recepcionista')}">
-                                    <c:if test="${!appointment.getInvoice().isPaid()}">
-                                        <td style='border:none;'> <a type="button" href="/patient-receptionist/invoice/${appointment.getInvoice().getInvoiceId()}" > Pagar</a> </td>
+                            <c:if test="${appointment.hasInvoice()}">
+                                <tr class="appointment-table-details">
+                                    <td style='border:none;'></td>
+                                    <td style='border:none;'></td>
+                                    <td class="specialTable1" style='border:none;'> Facturação: <span
+                                            class="specialTable2"> ${appointment.getInvoice().getInvoiceStateStr()}</span>
+                                    </td>
+                                    <c:if test="${user_logged.getAccount().equals('Recepcionista')}">
+                                        <c:if test="${!appointment.getInvoice().isPaid()}">
+                                            <td style='border:none;'><a type="button"
+                                                                        href="/patient-receptionist/invoice/${appointment.getInvoice().getInvoiceId()}"
+                                                                        class="btn btn-green btn-w65"> Pagar</a></td>
+                                        </c:if>
                                     </c:if>
-                                </c:if>
-                            </tr>
-                        </c:if>
+                                </tr>
+                            </c:if>
                         </c:if>
 
                     </c:forEach>
