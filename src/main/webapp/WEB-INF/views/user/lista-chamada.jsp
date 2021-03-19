@@ -32,7 +32,7 @@
             <section class="content-area middle-row">
                 <table class="table">
                     <thead>
-                    <tr class="appointment-table-title">
+                    <tr>
                         <th>Hora</th>
                         <th>Utente</th>
                         <th>Especialidade</th>
@@ -42,7 +42,7 @@
                     <tbody>
                     <!-- For -->
                     <c:forEach var="chamada" items="${listaChamada}">
-                        <tr class="appointment-table-details">
+                        <tr>
                             <td>${chamada.getTimeLatestCallStr()}</td>
                             <td>${chamada.getAppointment().getPatient().getName()}</td>
                             <td>${chamada.getAppointment().getSlot().getDoctor().getSpeciality().getName()}</td>
