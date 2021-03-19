@@ -1241,7 +1241,7 @@ select option:disabled {
 }
 
 .spec_name_pretty{
-  font-size: 20px;
+  font-size: 16px;
   color: #fefefe;
   margin: 5px;
 }
