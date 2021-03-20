@@ -36,7 +36,7 @@
                             </br>
                             <label for="price">Preço (€)</label>
                             <input id="price" type="text" class="form-input" name= "price" required
-                                   placeholder="Valor" value="" />
+                                   pattern='[0-9]+(\.[0-9][0-9]?)?' placeholder="Valor" value="" />
                             <p class="msg-error">${errorMsgPrice}</p>
                         </div>
                     </div>
