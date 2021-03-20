@@ -427,7 +427,7 @@ h1 {
 /* Carousel*/
 
 .slide {
-  width: 50%;
+  width: 70%;
   display: block;
   margin: auto;
 }
@@ -443,11 +443,11 @@ h1 {
 }
 
 .carousel-control-prev {
-  margin-left: -70px;
+margin-left: -90px;
 }
 
 .carousel-control-next {
-  margin-right: -70px;
+  margin-right: -90px;
 }
 
 .simbolo_seta {
