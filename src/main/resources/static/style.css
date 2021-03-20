@@ -1274,6 +1274,12 @@ select option:disabled {
   box-shadow: 2px 0px 6px #9e9d9d;
 }
 
+.spec_name_pretty:hover {
+  font-size: 17px;
+  font-weight: bold;
+  cursor: default;
+}
+
 /*Menu Consultas: Medico*/
 
 .consultas_title {
