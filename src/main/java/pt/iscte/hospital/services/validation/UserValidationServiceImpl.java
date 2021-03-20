@@ -13,7 +13,10 @@ import pt.iscte.hospital.repositories.SpecialityRepository;
 import pt.iscte.hospital.services.ErrorMessage;
 import pt.iscte.hospital.services.ImageUploadService;
 
+import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
+import java.time.format.ResolverStyle;
 
 @Service
 public class UserValidationServiceImpl implements UserValidationService {
@@ -227,16 +230,24 @@ public class UserValidationServiceImpl implements UserValidationService {
 
     @Override
     public UserValidationService validBirthday() {
-        String pattern = "dd/MM/yyyy";
-        DateTimeFormatter df = DateTimeFormatter.ofPattern(pattern);
-        String date = user.getBirthday().format(df);
-        // validação feita a nível dos campos.
-        if (date.matches("[0-9]{2}/[0-9]{2}/[0-9]{4}")) {
+        String pattern = "uuuu-MM-dd";
+        DateTimeFormatter df = DateTimeFormatter
+                .ofPattern(pattern)
+                .withResolverStyle(ResolverStyle.STRICT);
+
+        try {
+            LocalDate date = LocalDate.parse(user.getBirthdayStr(), df);
+            if(date.isAfter(LocalDate.now())|| date.isBefore(LocalDate.of(1900,1,1))){
+                isValid = false;
+                errorModelMap.put("errorMsgBirthday", ErrorMessage.ERROR_MESSAGE_BIRTHDAY.getErrorMsg());
+                return this;
+            }
+            return this;
+        } catch (DateTimeParseException e) {
+            isValid = false;
+            errorModelMap.put("errorMsgBirthday", ErrorMessage.ERROR_MESSAGE_BIRTHDAY.getErrorMsg());
             return this;
         }
-        isValid = false;
-        errorModelMap.put("errorMsgBirthday", ErrorMessage.ERROR_MESSAGE_BIRTHDAY.getErrorMsg());
-        return this;
     }
 
     @Override
