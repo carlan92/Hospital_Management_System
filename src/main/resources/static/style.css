@@ -1275,7 +1275,6 @@ select option:disabled {
 }
 
 .spec_name_pretty:hover {
-  font-size: 17px;
   font-weight: bold;
   cursor: default;
 }
