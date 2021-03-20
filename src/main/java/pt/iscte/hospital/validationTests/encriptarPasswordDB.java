@@ -1,4 +1,4 @@
-package pt.iscte.hospital;
+package pt.iscte.hospital.validationTests;
 
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 

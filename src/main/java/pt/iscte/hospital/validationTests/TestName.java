@@ -1,4 +1,4 @@
-package pt.iscte.hospital;
+package pt.iscte.hospital.validationTests;
 
 import java.time.DayOfWeek;
 import java.time.LocalDate;
