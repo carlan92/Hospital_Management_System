@@ -76,7 +76,7 @@
                                 <div class="cell-row">
                                     <label for="dataDeNascimento_id">Data de Nascimento *</label>
                                     <input id="dataDeNascimento_id" type="date" class="form-input"
-                                        value="${user.getBirthdayStr()}" name="birthday" required>
+                                        value="${user.getBirthdayStr()}" name="birthday" max="2999-12-31" min="1900-01-01" required>
                                     <p class="msg-error">${errorMsgBirthday}</p>
                                 </div>
                             </div>
