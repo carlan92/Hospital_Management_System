@@ -168,7 +168,6 @@
 
                     <div class="col-8 title_next_appt">
                         <span class="text_next_appt">Próxima consulta</span>
-                        <p class="text_next_appt2">Consulte a sua próxima consulta e paciente</p>
                     </div>
                 </div>
 
@@ -232,7 +231,6 @@
         </div>
     </c:forEach>
     <!-- Próxima Consulta (end) -->
-
 
 </div>
 

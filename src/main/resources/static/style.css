@@ -1228,7 +1228,7 @@ select option:disabled {
 
 .fa-birthday-cake, .fa-phone-square {
   margin: 4px;
-  color: #31ade0;
+  color: #6c757d;;
 }
 
 .spec_title {
@@ -1246,7 +1246,7 @@ select option:disabled {
 
 .spec_name_pretty{
   font-size: 16px;
-  color: black;
+  color: white;
   margin: 5px;
 }
 
@@ -1266,11 +1266,12 @@ select option:disabled {
 }
 
 .pretty_spec {
-  border: solid;
-  border-radius: 10px;
-  border-color: #98c33e;
+  border: none;
+  padding: 5px;
+  border-radius: 35px;
   margin: 0 15px 0 15px;
-  background-image: linear-gradient(to top, #c4c5c7 0%, #dcdddf 52%, #ebebeb 100%);
+  background-image: linear-gradient(to right, #31ade0 7%, #31ade0 5%, #98c33e 97%);
+  box-shadow: 2px 0px 6px #9e9d9d;
 }
 
 /*Menu Consultas: Medico*/
