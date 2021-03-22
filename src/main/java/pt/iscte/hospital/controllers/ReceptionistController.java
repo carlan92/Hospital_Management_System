@@ -97,7 +97,7 @@ public class ReceptionistController {
         return "receptionist/main";
     }
 
-    //TODO confirmar página lista de espera para consulta para o dia de hoje
+
     @GetMapping(value = "/receptionist/waiting-list")
     public String showWaitingList(ModelMap modelMap) {
         LocalDate date = LocalDate.now();

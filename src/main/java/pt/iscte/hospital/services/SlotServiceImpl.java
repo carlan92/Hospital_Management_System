@@ -163,7 +163,7 @@ public class SlotServiceImpl implements SlotService {
         boolean cond7 = slotTimeEnd.equals(timeInterval.getTimeEnd());
         boolean cond8 = (cond5 && cond6) || cond7;
 
-        return cond4 && cond8;  // TODO check
+        return cond4 && cond8;
     }
 
     private boolean checkIfInsideListSlot(
