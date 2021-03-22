@@ -86,4 +86,10 @@ public class PublicController {
         return "public/recover-password";
     }
 
+    // terms and conditions
+    @GetMapping(value = "/public/termsandconditions")
+    public String showTermsAndConditions(){
+        return "public/termsandconditions";
+    }
+
 }

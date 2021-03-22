@@ -226,7 +226,7 @@
                         <div class="cell-row cell-morada">
                             <input id="termos_id" type="checkbox" name="termos" required />
                             <label for="termos_id"> Declaro que aceito os
-                                <a href="/termsandconditions.html" target="_blank" class="link">termos e
+                                <a href="/public/termsandconditions" target="_blank" class="link">termos e
                                     condições</a> *</label>
                             <p class="nota">* campos de preenchimento obrigatório</p>
                         </div>

@@ -1,22 +1,18 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>Centro Hospitalar UPskill</title>
-
-    <link rel="stylesheet" href="style.css" />
-
+    <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+    <%@ include file="../components/head.jsp" %>
 </head>
 
 <body>
+    <%@ include file="../components/sidenav-login.jsp" %>
     <div class="main">
         <div class="white_box box-align-left">
 
-            <img src="imagens\noun_centro_hospitalar_logo.svg" alt="logo" class="logo_small" />
+            <img src="/imagens/noun_centro_hospitalar_logo.svg" alt="logo" class="logo_small" />
             <h3 class="registo">
                 Termos e Condições
             </h3>
@@ -146,10 +142,7 @@
                 Foro competente
             </h4>
             <p>
-                Para dirimir todas as questões e litígios que possam surgir, inerentes aos presentes Termos e Condições, é competente em exclusivo o foro da Comarca de Lisboa, com expressa renúncia a qualquer outro.
-            </p>
-            <p>
-                Para dirimir todas as questões e litígios que possam surgir, inerentes aos presentes Termos e Condições, é competente em exclusivo o foro da Comarca de Lisboa, com expressa renúncia a qualquer outro.
+                Para todas as questões e litígios que possam surgir, inerentes aos presentes Termos e Condições, é competente em exclusivo o foro da Comarca de Lisboa, com expressa renúncia a qualquer outro.
             </p>
             <p>
                 Data da última atualização: 22 de Fevereiro de 2021
