@@ -1,9 +1,12 @@
-Carla Alexandra Gonçalves Nogueira 
 
-Marco Humberto Américo Manuel 
+Realizado por:
 
-Pedro Miguel Duarte André 
++ [Carla Alexandra Gonçalves Nogueira](https://github.com/carlan92)
 
-Rodrigo de Sá Ramos Esteves
++ [Marco Humberto Americo Manuel](https://github.com/Ocram82)
+
++ [Pedro Miguel Duarte André](https://github.com/PedroMDAndre)
+
++ [Rodrigo de Sá Ramos Esteves](https://github.com/Kio76)
 
 Turma B
