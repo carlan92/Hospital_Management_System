@@ -8,7 +8,7 @@ detém hospitais e clínicas em vários pontos do país. O sistema responde aos 
 [Apresentação resumida (pdf)](./Documentação/Apresentação_Finalv2.pdf)
 
 
-![Sistema Intro](./intro.jpg)
+![Sistema Intro](./Hospital_UPskill.png)
 
 
 ## Descrição do Sistema
